@@ -3,6 +3,8 @@ var appDaily = {
     var btn = document.querySelector('.menu-toggle');
     var nav = document.querySelector('.navbar');
 
+    app.use(express.static(__dirname + '../../public'));//设置静态文件目录
+
     btn.addEventListener('click', function() {
       var c = nav.getAttribute('class') || '';
 
@@ -12,6 +14,7 @@ var appDaily = {
         nav.setAttribute('class', (c + ' show-force').trim());
       }
     });
+
   }
 };
 

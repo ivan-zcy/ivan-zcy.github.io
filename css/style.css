@@ -171,43 +171,6 @@ td,
 th {
   padding: 0; }
 
-#rocket-to-top div {
-  left: 0;
-  margin: 0;
-  overflow: hidden;
-  padding: 0;
-  position: absolute;
-  top: 0;
-  width: 149px; }
-
-#rocket-to-top .level-2 {
-  background: url("../images/rocket_button_up.png") no-repeat scroll -149px 0 transparent;
-  display: none;
-  height: 250px;
-  opacity: 0;
-  z-index: 1; }
-
-#rocket-to-top .level-3 {
-  background: none repeat scroll 0 0 transparent;
-  cursor: pointer;
-  display: block;
-  height: 150px;
-  z-index: 2; }
-
-#rocket-to-top {
-  background: url("../images/rocket_button_up.png") no-repeat scroll 0 0 transparent;
-  cursor: default;
-  display: block;
-  height: 250px;
-  margin: -125px 0 0;
-  overflow: hidden;
-  padding: 0;
-  position: fixed;
-  right: 0;
-  top: 80%;
-  width: 149px;
-  z-index: 11; }
-
 body,
 html {
   height: 100%; }
@@ -870,43 +833,6 @@ Footer
     text-decoration: none;
     color: #666666; }
 
-#rocket-to-top div {
-  left: 0;
-  margin: 0;
-  overflow: hidden;
-  padding: 0;
-  position: absolute;
-  top: 0;
-  width: 149px; }
-
-#rocket-to-top .level-2 {
-  background: url("../images/rocket_button_up.png") no-repeat scroll -149px 0 transparent;
-  display: none;
-  height: 250px;
-  opacity: 0;
-  z-index: 1; }
-
-#rocket-to-top .level-3 {
-  background: none repeat scroll 0 0 transparent;
-  cursor: pointer;
-  display: block;
-  height: 150px;
-  z-index: 2; }
-
-#rocket-to-top {
-  background: url("../images/rocket_button_up.png") no-repeat scroll 0 0 transparent;
-  cursor: default;
-  display: block;
-  height: 250px;
-  margin: -125px 0 0;
-  overflow: hidden;
-  padding: 0;
-  position: fixed;
-  right: 0;
-  top: 80%;
-  width: 149px;
-  z-index: 11; }
-
 .site-header {
   width: 100%;
   background: #fff;
@@ -996,43 +922,6 @@ a.header-name {
     .navbar ul li:hover {
       opacity: 1; }
 
-#rocket-to-top div {
-  left: 0;
-  margin: 0;
-  overflow: hidden;
-  padding: 0;
-  position: absolute;
-  top: 0;
-  width: 149px; }
-
-#rocket-to-top .level-2 {
-  background: url("../images/rocket_button_up.png") no-repeat scroll -149px 0 transparent;
-  display: none;
-  height: 250px;
-  opacity: 0;
-  z-index: 1; }
-
-#rocket-to-top .level-3 {
-  background: none repeat scroll 0 0 transparent;
-  cursor: pointer;
-  display: block;
-  height: 150px;
-  z-index: 2; }
-
-#rocket-to-top {
-  background: url("../images/rocket_button_up.png") no-repeat scroll 0 0 transparent;
-  cursor: default;
-  display: block;
-  height: 250px;
-  margin: -125px 0 0;
-  overflow: hidden;
-  padding: 0;
-  position: fixed;
-  right: 0;
-  top: 80%;
-  width: 149px;
-  z-index: 11; }
-
 .post {
   padding: 0px 20px 30px;
   box-shadow: 5px 5px 25px #dadada; }
@@ -1082,43 +971,6 @@ a.header-name {
   .entry-content a:hover {
     color: #3769c9;
     opacity: 0.8; }
-
-#rocket-to-top div {
-  left: 0;
-  margin: 0;
-  overflow: hidden;
-  padding: 0;
-  position: absolute;
-  top: 0;
-  width: 149px; }
-
-#rocket-to-top .level-2 {
-  background: url("../images/rocket_button_up.png") no-repeat scroll -149px 0 transparent;
-  display: none;
-  height: 250px;
-  opacity: 0;
-  z-index: 1; }
-
-#rocket-to-top .level-3 {
-  background: none repeat scroll 0 0 transparent;
-  cursor: pointer;
-  display: block;
-  height: 150px;
-  z-index: 2; }
-
-#rocket-to-top {
-  background: url("../images/rocket_button_up.png") no-repeat scroll 0 0 transparent;
-  cursor: default;
-  display: block;
-  height: 250px;
-  margin: -125px 0 0;
-  overflow: hidden;
-  padding: 0;
-  position: fixed;
-  right: 0;
-  top: 80%;
-  width: 149px;
-  z-index: 11; }
 
 /*
  * From https://github.com/pinggod/hexo-theme-apollo/blob/master/source/scss/_partial/post.scss
@@ -1300,43 +1152,6 @@ pre {
   pre .xml .cdata {
     opacity: 0.5; }
 
-#rocket-to-top div {
-  left: 0;
-  margin: 0;
-  overflow: hidden;
-  padding: 0;
-  position: absolute;
-  top: 0;
-  width: 149px; }
-
-#rocket-to-top .level-2 {
-  background: url("../images/rocket_button_up.png") no-repeat scroll -149px 0 transparent;
-  display: none;
-  height: 250px;
-  opacity: 0;
-  z-index: 1; }
-
-#rocket-to-top .level-3 {
-  background: none repeat scroll 0 0 transparent;
-  cursor: pointer;
-  display: block;
-  height: 150px;
-  z-index: 2; }
-
-#rocket-to-top {
-  background: url("../images/rocket_button_up.png") no-repeat scroll 0 0 transparent;
-  cursor: default;
-  display: block;
-  height: 250px;
-  margin: -125px 0 0;
-  overflow: hidden;
-  padding: 0;
-  position: fixed;
-  right: 0;
-  top: 80%;
-  width: 149px;
-  z-index: 11; }
-
 .archive {
   padding-bottom: 60px; }
   .archive h2.year {
@@ -1351,43 +1166,6 @@ pre {
     margin-right: 30px;
     color: #7f8c8d; }
 
-#rocket-to-top div {
-  left: 0;
-  margin: 0;
-  overflow: hidden;
-  padding: 0;
-  position: absolute;
-  top: 0;
-  width: 149px; }
-
-#rocket-to-top .level-2 {
-  background: url("../images/rocket_button_up.png") no-repeat scroll -149px 0 transparent;
-  display: none;
-  height: 250px;
-  opacity: 0;
-  z-index: 1; }
-
-#rocket-to-top .level-3 {
-  background: none repeat scroll 0 0 transparent;
-  cursor: pointer;
-  display: block;
-  height: 150px;
-  z-index: 2; }
-
-#rocket-to-top {
-  background: url("../images/rocket_button_up.png") no-repeat scroll 0 0 transparent;
-  cursor: default;
-  display: block;
-  height: 250px;
-  margin: -125px 0 0;
-  overflow: hidden;
-  padding: 0;
-  position: fixed;
-  right: 0;
-  top: 80%;
-  width: 149px;
-  z-index: 11; }
-
 #comment #ds-thread #ds-reset a.ds-like-thread-button {
   background-color: #fff;
   background-image: none; }
@@ -1397,43 +1175,6 @@ pre {
 
 #comment #ds-thread #ds-reset .ds-powered-by {
   display: none; }
-
-#rocket-to-top div {
-  left: 0;
-  margin: 0;
-  overflow: hidden;
-  padding: 0;
-  position: absolute;
-  top: 0;
-  width: 149px; }
-
-#rocket-to-top .level-2 {
-  background: url("../images/rocket_button_up.png") no-repeat scroll -149px 0 transparent;
-  display: none;
-  height: 250px;
-  opacity: 0;
-  z-index: 1; }
-
-#rocket-to-top .level-3 {
-  background: none repeat scroll 0 0 transparent;
-  cursor: pointer;
-  display: block;
-  height: 150px;
-  z-index: 2; }
-
-#rocket-to-top {
-  background: url("../images/rocket_button_up.png") no-repeat scroll 0 0 transparent;
-  cursor: default;
-  display: block;
-  height: 250px;
-  margin: -125px 0 0;
-  overflow: hidden;
-  padding: 0;
-  position: fixed;
-  right: 0;
-  top: 80%;
-  width: 149px;
-  z-index: 11; }
 
 @media screen and (max-width: 1140px) {
   .content-area {
@@ -1491,40 +1232,3 @@ pre {
   .footer-widgets .inside-wrapper {
     padding-left: 5px;
     padding-right: 5px; } }
-
-#rocket-to-top div {
-  left: 0;
-  margin: 0;
-  overflow: hidden;
-  padding: 0;
-  position: absolute;
-  top: 0;
-  width: 149px; }
-
-#rocket-to-top .level-2 {
-  background: url("../images/rocket_button_up.png") no-repeat scroll -149px 0 transparent;
-  display: none;
-  height: 250px;
-  opacity: 0;
-  z-index: 1; }
-
-#rocket-to-top .level-3 {
-  background: none repeat scroll 0 0 transparent;
-  cursor: pointer;
-  display: block;
-  height: 150px;
-  z-index: 2; }
-
-#rocket-to-top {
-  background: url("../images/rocket_button_up.png") no-repeat scroll 0 0 transparent;
-  cursor: default;
-  display: block;
-  height: 250px;
-  margin: -125px 0 0;
-  overflow: hidden;
-  padding: 0;
-  position: fixed;
-  right: 0;
-  top: 80%;
-  width: 149px;
-  z-index: 11; }
