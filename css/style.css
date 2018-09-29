@@ -1279,3 +1279,77 @@ pre {
     right: -4px; }
   .post-meta .tag:hover::after {
     color: #6E7173; }
+
+#tags .tags-container {
+  width: 66%;
+  background-color: #ffffff;
+  border-radius: 2px;
+  box-shadow: 0 2px 5px -2px rgba(0, 0, 0, 0.05);
+  overflow: hidden;
+  box-sizing: border-box;
+  width: 66%;
+  padding: 0; }
+
+#tags .tags {
+  padding: 25px 25px 20px;
+  border-bottom: 1px solid rgba(178, 186, 194, 0.15); }
+  #tags .tags a,
+  #tags .tags .tag {
+    display: inline-block;
+    padding: 0 10px;
+    line-height: 1.6em;
+    font-size: 14px;
+    text-decoration: none;
+    margin-bottom: 6px;
+    cursor: pointer;
+    border: 1px solid #6E7173;
+    border-radius: 20px;
+    color: #404040;
+    font-weight: 200;
+    transition: all 0.1s; }
+    #tags .tags a:hover, #tags .tags a:active,
+    #tags .tags .tag:hover,
+    #tags .tags .tag:active {
+      color: white;
+      border-color: #007fff;
+      background-color: #007fff; }
+
+#tags .tag-list {
+  padding: 20px 25px 15px;
+  border-bottom: 1px solid rgba(178, 186, 194, 0.15); }
+  #tags .tag-list .listing-seperator {
+    color: #007fff; }
+    #tags .tag-list .listing-seperator .tag-text {
+      font-weight: 200;
+      line-height: 1.7; }
+  #tags .tag-list .post-preview {
+    margin-left: 16px; }
+    #tags .tag-list .post-preview h2.post-title {
+      color: #404040;
+      transition: 0.3s color; }
+      #tags .tag-list .post-preview h2.post-title:hover {
+        color: #007fff; }
+
+#tags .post-preview {
+  position: relative; }
+  #tags .post-preview > .post-meta {
+    position: absolute;
+    right: 5px;
+    bottom: 0px;
+    margin: 0px;
+    font-size: 12px;
+    line-height: 12px; }
+  #tags .post-preview > a .post-title {
+    font-size: 16px;
+    font-weight: 500;
+    margin-top: 20px; }
+  #tags .post-preview > a .post-subtitle {
+    font-size: 12px; }
+
+@media (min-width: 1032px) {
+  #tags {
+    width: 1000px; } }
+
+@media (max-width: 700px) {
+  #tags .tags-container {
+    width: 100%; } }
