@@ -51,6 +51,41 @@
   <!-- Custom CSS/Sass -->
   <link rel="stylesheet" href="/css/style.css">
     <script src="http://oct3pmpde.bkt.clouddn.com/jquery.js"></script>
+    <script src="//cdn1.lncld.net/static/js/3.0.4/av-min.js"></script>
+    <script src="//unjkp.com/valine/dist/Valine.min.js"></script>  //删除Valine核心代码库外链调用
+    <script src="../../source/js/Valine.min.js"></script>  //调用刚下载的本地文件以加速加载速度
+
+    {% set valine_uri = '../../source/js/Valine.min.js' %}  //这里改为从本地加载
+    {% if theme.vendors.valine %}
+    {% set valine_uri = theme.vendors.valine %}
+    {% endif %}
+    <script src="{{ valine_uri }}"></script>
+
+    <script type="text/javascript">
+        var GUEST = ['nick','mail','link'];
+        var guest = '{{ theme.valine.guest_info }}';
+        guest = guest.split(',').filter(function (item) {
+            return GUEST.indexOf(item)>-1;
+        });
+        new Valine({
+            el: '#comments' ,
+            verify: {{ theme.valine.verify }},
+        notify: {{ theme.valine.notify }},
+        appId: '{{ theme.valine.appid }}',
+            appKey: '{{ theme.valine.appkey }}',
+            placeholder: '{{ theme.valine.placeholder }}',
+            avatar:'{{ theme.valine.avatar }}',
+            guest_info:['nick'] ,  //评论者只需要提供评论的昵称即可
+            pageSize:'{{ theme.valine.pageSize }}' || 10,
+        });
+        //增加以下六行代码去除 power by valine
+        var infoEle = document.querySelector('#comments .info');
+        if (infoEle && infoEle.childNodes && infoEle.childNodes.length > 0){
+            infoEle.childNodes.forEach(function(item) {
+                item.parentNode.removeChild(item);
+            });
+        }
+    </script>
 </head>
 
 
@@ -172,12 +207,8 @@
         <!-- Post Main Content -->
         <div class="entry-content">
           <h2 id="在一切变好之前，我们总要经历一些不开心的日子，这段日子也许很长，也许只是一觉醒来，所以请给自己一点耐心，给好运一点时间。"><a href="#在一切变好之前，我们总要经历一些不开心的日子，这段日子也许很长，也许只是一觉醒来，所以请给自己一点耐心，给好运一点时间。" class="headerlink" title="在一切变好之前，我们总要经历一些不开心的日子，这段日子也许很长，也许只是一觉醒来，所以请给自己一点耐心，给好运一点时间。"></a><strong>在一切变好之前，我们总要经历一些不开心的日子，这段日子也许很长，也许只是一觉醒来，所以请给自己一点耐心，给好运一点时间。</strong></h2><p><br><br><br></p>
-<p><blockquote class="blockquote-center">念念不忘，必有回响</blockquote><br><br></p>
-<blockquote>
-<p>加油 坚持！！</p>
-</blockquote>
-<p><script type="text/javascript"><br>var duoshuoQuery = {short_name:”&lt;%= theme.duoshuo_shortname %&gt;”};<br>    (function() {<br>        var ds = document.createElement(‘script’);<br>        ds.type = ‘text/javascript’;ds.async = true;<br>        ds.src = (document.location.protocol == ‘https:’ ? ‘https:’ : ‘http:’) + ‘//static.duoshuo.com/embed.js’;<br>        ds.charset = ‘UTF-8’;<br>        (document.getElementsByTagName(‘head’)[0]<br>         || document.getElementsByTagName(‘body’)[0]).appendChild(ds);<br>    })();<br>    </script></p>
-<div class="ds-recent-visitors" data-num-items="38" data-avatar-size="42" id="ds-recent-visitors"></div>
+<p><blockquote class="blockquote-center">念念不忘，必有回响</blockquote></p>
+<div class="comment"></div><br><script type="text/javascript"><br>var duoshuoQuery = {short_name:”&lt;%= theme.duoshuo_shortname %&gt;”};<br>    (function() {<br>        var ds = document.createElement(‘script’);<br>        ds.type = ‘text/javascript’;ds.async = true;<br>        ds.src = (document.location.protocol == ‘https:’ ? ‘https:’ : ‘http:’) + ‘//static.duoshuo.com/embed.js’;<br>        ds.charset = ‘UTF-8’;<br>        (document.getElementsByTagName(‘head’)[0]<br>         || document.getElementsByTagName(‘body’)[0]).appendChild(ds);<br>    })();<br>    </script><br><div class="ds-recent-visitors" data-num-items="38" data-avatar-size="42" id="ds-recent-visitors"></div>
 
 <p><div class="ds-thread" data-thread-key="<%= page.layout %>-<%= page.slug %>" data-title="<%= page.title %>" data-url="<%= page.permalink %>"></div><br><br><br><br></p>
 
