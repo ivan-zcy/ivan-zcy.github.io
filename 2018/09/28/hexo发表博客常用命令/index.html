@@ -181,8 +181,7 @@
         <!-- Post Main Content -->
         <div class="entry-content">
           <p><img src="/2018/09/28/hexo发表博客常用命令/man.jpg" alt="man"></p>
-<p>​    <a id="more"></a></p>
-<p>## </p>
+<a id="more"></a>
 <h5 id="以下命令需要在本地Blog路径下执行"><a href="#以下命令需要在本地Blog路径下执行" class="headerlink" title="以下命令需要在本地Blog路径下执行"></a>以下命令需要在本地Blog路径下执行</h5><h3 id="Step1-创建文章"><a href="#Step1-创建文章" class="headerlink" title="Step1 创建文章"></a>Step1 创建文章</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">$ hexo new <span class="string">"My New Post"</span></span><br><span class="line">$ hexo n <span class="string">"My New Post"</span>    //安装hexo-asset-image后可使用</span><br></pre></td></tr></table></figure>
 <h3 id="Step2-编辑文章"><a href="#Step2-编辑文章" class="headerlink" title="Step2 编辑文章"></a>Step2 编辑文章</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">文章头部加</span><br><span class="line">---</span><br><span class="line">title: //此处填写文章名</span><br><span class="line">date: //此处填写发布日期</span><br><span class="line">tags: </span><br><span class="line">  - //此处填写标签名(可多个)</span><br><span class="line">---</span><br></pre></td></tr></table></figure>
 <p>由于在首页中显示文章内容使用的是 <code>post.content</code> 我们如果想在主页中实现文章的部分内容渲染，需要在文章中添加一个 <code>&lt;!-- more --&gt;</code> 标记。添加了这个标记之后，<code>post.excerpt</code> 将会获取到标记之前的内容</p>
