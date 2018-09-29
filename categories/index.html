@@ -180,7 +180,11 @@
           </p>
         <!-- Post Main Content -->
         <div class="entry-content">
-          
+          <div class="archive content-area"><br>  <div class="container"><br>    <h1 class="entry-title">&lt;%- title %&gt;</h1><br>    <div class="row"><br>      <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1"><br>        <!-- Use lodash to classify posts. See https://lodash.com/docs#groupBy
+          1. group site.posts by year
+          2. sort posts-in-one-year by Month and Day
+        --><br>        &lt;%<br>          var groupObj = _.groupBy(site.posts.toArray(), function(p){return p.date.format(‘YYYY’)});<br>          var groupArr = [];<br>          for (var year in groupObj){<br>            var postsInThisYear = groupObj[year];<br>            var sortedPosts = _.sortBy(postsInThisYear, function(p) { return p.date.format(‘MMDD’) });<br>            groupArr.push({<br>              year: year,<br>              posts: sortedPosts.reverse()<br>            });<br>          }<br>        %&gt;<br><br>        &lt;% groupArr.reverse().forEach(function(item) { %&gt;<br>          <h2 class="year">&lt;%- item.year %&gt;</h2><br>          <ul class="list"><br>            &lt;%- partial(‘_partial/article-archive’, {posts: item.posts}) %&gt;<br>          </ul><br>        &lt;% }) %&gt;<br>      </div><br>    </div><br>  </div><br></div>
+
         </div>
       </article>
     </div>
