@@ -1348,7 +1348,8 @@ pre {
 
 @media (min-width: 1032px) {
   #tags {
-    width: 1000px; } }
+    width: 1000px;
+    margin-top: 100px; } }
 
 @media (max-width: 700px) {
   #tags .tags-container {
