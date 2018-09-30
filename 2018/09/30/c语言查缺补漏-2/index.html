@@ -190,7 +190,7 @@
 <p>关于默认生成的a.out，它是临时性的可执行文件。如果同一路径下多个c语言源文件采用了默认编译，a.out中输出的内容为最后一个C语言源文件所执行的结果（也就是说之前源文件编译生成的a.out被覆盖掉了)</p>
 <p>这时候就体现了 gcc -o 的-o的作用 它可以指定生成输出文件</p>
 <p>以下到第三步之前是附加内容（除此之外</p>
-<p>选项 -E 可以将test.c预处理输出到test.i文件（其中-E的功能是预处理test.c并输出到终端，不生成文件)</p>
+<p>选项 -E 可以将test.c预处理输出（其中-E的功能是预处理test.c并输出到终端，不生成文件)</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ gcc -E test.c -o test.i</span><br></pre></td></tr></table></figure>
 <p>选项 -S 可以将test.c汇编成test.s文件（也就是从源文件-&gt;汇编代码)</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">$ gcc -S  -o test.s test.c </span><br><span class="line">$ gcc -S test.c (简写 效果一样)</span><br></pre></td></tr></table></figure>
