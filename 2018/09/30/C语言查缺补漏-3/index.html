@@ -16,7 +16,7 @@
 
   <!--Open Graph Title-->
   
-      <meta property="og:title" content="Zcy"/>
+      <meta property="og:title" content="C语言查缺补漏(三)"/>
   
   <!--Open Graph Description-->
   
@@ -24,7 +24,7 @@
   <meta property="og:site_name" content="Zcy"/>
   <!--Type page-->
   
-      <meta property="og:type" content="website" />
+      <meta property="og:type" content="article" />
   
   <!--Page Cover-->
   
@@ -42,7 +42,7 @@
     </script>
   <!-- Title -->
   
-  <title>收藏 - Zcy</title>
+  <title>C语言查缺补漏(三) - Zcy</title>
 
 
   <link rel="shortcut icon" href="/favicon.ico">
@@ -162,110 +162,73 @@
 
 
   <!-- Main Content -->
-  
-
-<!-- Main Content -->
-<div class="archive content-area">
-  <div class="container">
-    <h1 class="entry-title">#收藏</h1>
-    <div class="row">
-      <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
-        <!-- Use lodash to classify posts. See https://lodash.com/docs#groupBy
-          1. group site.posts by year
-          2. sort posts-in-one-year by Month and Day
-        -->
-        
-
-        
-          <h2 class="year">2018</h2>
-          <ul class="list">
+  <div class="content-area">
+  <div class="post">
+    <!-- Post Content -->
+    <div class="container">
+      <article>
+        <!-- Title date & tags -->
+        <div class="post-header">
+          <h1 class="entry-title">
+            C语言查缺补漏(三)
             
-  <li>
-    <span class="date">
-      2018-09-30
-    </span>
-    <a href="/2018/09/30/Blog搭建流程-Mac系统完结帖/" class="title">
-      Blog搭建流程(Mac系统完结帖)
-    </a>
-  </li>
+          </h1>
+         
+        </div>
+         <p class="a-posted-on">
+          2018-09-30
+          </p>
+        <!-- Post Main Content -->
+        <div class="entry-content">
+          <p><img src="/2018/09/30/C语言查缺补漏-3/title.jpg" alt="title"></p>
+<a id="more"></a>
+<h3 id="忽略点三-空格规范以及通用long-long类型的定义"><a href="#忽略点三-空格规范以及通用long-long类型的定义" class="headerlink" title="忽略点三:空格规范以及通用long long类型的定义"></a>忽略点三:空格规范以及通用long long类型的定义</h3><p>​    大一大二两年时间都没有注意过空格的规范，导致自己写的代码奇丑无比，被队友同学诟病 冷汗！</p>
+<p>​    直到我看到另一份比我更丑的代码后，我才意识到代码的规范有多重要！！</p>
+<h5 id="尤其是空格的合理使用！！！！"><a href="#尤其是空格的合理使用！！！！" class="headerlink" title="尤其是空格的合理使用！！！！"></a>尤其是空格的合理使用！！！！</h5><p>​    为了避免后来难改这种陋习，建议从刚开始学C语言就贯彻空格的使用规范</p>
+<p>​        ——逗号，分号后加空格</p>
+<p>​        ——运算符前后都需要加空格</p>
+<p>​        ——if，switch等关键字与左括号之间加空格</p>
+<p>​        ——函数名与左括号之间加空格</p>
+<p>​        ——左花括号前，右花括号后加空格</p>
+<p>​        —— -&gt;或者.后不能加空格！！</p>
+<p>​    为了避免同学同事幽怨的目光，请妥善使用空格哈哈哈！！！</p>
+<p>​    在ACM竞赛中，官方会提前告诉我们对于long long类型，我们是用%lld输出(Linux系统)，还是用%I64d输出(Windows系统) </p>
+<p>​    不过，我们有一种兼容的写法（这个特别重要！因为这种写法兼容性好，真需要代码移植的时候就不需要挨个手动改了)</p>
+<p>​    通用写法: int64_t a;</p>
+<p>​             printf (“%”PRID64”\n”, a);   </p>
+<p>​    其中PRID64为宏替换，在Linux下为lld，在Windows下为I64d</p>
+<p>​    除了long long类型的int64_t以外,还有int32_t，int8_t等等，就不一一列举了，大家可以自行百度！ </p>
+<p><a href="http://ivan-zcy.top" target="_blank" rel="noopener">转载请注明出处！！！</a>  </p>
+<p>如果有写的不对或者不全面的地方 可通过主页的联系方式进行指正，谢谢！</p>
 
-  <li>
-    <span class="date">
-      2018-09-30
-    </span>
-    <a href="/2018/09/30/实用网站汇总——持续更新/" class="title">
-      实用网站汇总(持续更新)
-    </a>
-  </li>
-
-  <li>
-    <span class="date">
-      2018-09-30
-    </span>
-    <a href="/2018/09/30/c语言查缺补漏-2/" class="title">
-      C语言查缺补漏(二)
-    </a>
-  </li>
-
-  <li>
-    <span class="date">
-      2018-09-30
-    </span>
-    <a href="/2018/09/30/c语言查缺补漏-1/" class="title">
-      C语言查缺补漏(一)
-    </a>
-  </li>
-
-  <li>
-    <span class="date">
-      2018-09-30
-    </span>
-    <a href="/2018/09/30/C语言查缺补漏-3/" class="title">
-      C语言查缺补漏(三)
-    </a>
-  </li>
-
-  <li>
-    <span class="date">
-      2018-09-29
-    </span>
-    <a href="/2018/09/29/18-09-29博客搭建进度/" class="title">
-      18.09.29博客搭建进度
-    </a>
-  </li>
-
-  <li>
-    <span class="date">
-      2018-09-28
-    </span>
-    <a href="/2018/09/28/hexo更换主题流程/" class="title">
-      hexo更换主题流程
-    </a>
-  </li>
-
-  <li>
-    <span class="date">
-      2018-09-28
-    </span>
-    <a href="/2018/09/28/hexo发表博客常用命令/" class="title">
-      hexo发表博客常用命令
-    </a>
-  </li>
-
-  <li>
-    <span class="date">
-      2018-09-28
-    </span>
-    <a href="/2018/09/28/First-Blog/" class="title">
-      First Blog
-    </a>
-  </li>
-
-
-          </ul>
-        
-      </div>
+        </div>
+      </article>
     </div>
+    <!-- Pre or Next -->
+    
+	<div class="container" >
+           <ul class="pager">
+    	     
+           
+              <li class="next">
+              <a href="/2018/09/30/c语言查缺补漏-2/" rel="prev">上一篇</a>
+            </li>
+           
+          </ul>
+       </div>
+　　　　<!-- Comments -->
+    <div class="container">
+      
+<section id="comment">
+  <!-- <h1 class="title">Comments</h1> -->
+
+  
+</section>
+
+
+    </div>
+   
+　　　　
   </div>
 </div>
 
