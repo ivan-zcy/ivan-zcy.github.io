@@ -16,7 +16,7 @@
 
   <!--Open Graph Title-->
   
-      <meta property="og:title" content="C语言查缺补漏(四)"/>
+      <meta property="og:title" content="C语言查缺补漏之宏定义与#、##用法"/>
   
   <!--Open Graph Description-->
   
@@ -42,7 +42,7 @@
     </script>
   <!-- Title -->
   
-  <title>C语言查缺补漏(四) - Zcy</title>
+  <title>C语言查缺补漏之宏定义与#、##用法 - Zcy</title>
 
 
   <link rel="shortcut icon" href="/favicon.ico">
@@ -170,7 +170,7 @@
         <!-- Title date & tags -->
         <div class="post-header">
           <h1 class="entry-title">
-            C语言查缺补漏(四)
+            C语言查缺补漏之宏定义与#、##用法
             
           </h1>
          
@@ -217,7 +217,11 @@
 <p>​    所以，要想宏定义科学计数法，需：</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">#define a int(1e5)</span><br></pre></td></tr></table></figure>
 <p>​    此时a的值为100000</p>
-<h3 id="关于宏中-和-的用法："><a href="#关于宏中-和-的用法：" class="headerlink" title="关于宏中#和##的用法："></a>关于宏中#和##的用法：</h3>
+<h3 id="关于宏中-和-的用法："><a href="#关于宏中-和-的用法：" class="headerlink" title="关于宏中#和##的用法："></a>关于宏中#和##的用法：</h3><p>在字符序列中：</p>
+<p>​    用#可以把宏参数变为一个字符串</p>
+<p>​    用##可以把两个宏参数连接在一起</p>
+<p>例如下面代码：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">#define STR(s)     #s 		</span><br><span class="line">#define CONS(a,b) int(a##e##b)</span><br><span class="line">//...省略其余代码</span><br><span class="line">printf(STR(hello));           	// 输出字符串&quot;vck&quot; </span><br><span class="line">printf(&quot;%d/n&quot;, CONS(1,5)); 		// 输出:100000</span><br></pre></td></tr></table></figure>
         </div>
       </article>
     </div>
