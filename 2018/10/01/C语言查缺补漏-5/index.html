@@ -1,0 +1,276 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+
+<!-- Head tag -->
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+
+  <!--Description-->
+  
+
+  <!--Author-->
+  
+  <meta name="author" content="Zcy">
+  
+
+  <!--Open Graph Title-->
+  
+      <meta property="og:title" content="C语言查缺补漏(五)"/>
+  
+  <!--Open Graph Description-->
+  
+  <!--Open Graph Site Name-->
+  <meta property="og:site_name" content="Zcy"/>
+  <!--Type page-->
+  
+      <meta property="og:type" content="article" />
+  
+  <!--Page Cover-->
+  
+
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <!-- 百度统计 -->
+    <script>
+	var _hmt = _hmt || [];
+	(function() {
+  	var hm = document.createElement("script");
+  	hm.src = "https://hm.baidu.com/hm.js?c0451e16533956173997b85f7a8de666";
+  	var s = document.getElementsByTagName("script")[0]; 
+  	s.parentNode.insertBefore(hm, s);
+	})();
+    </script>
+  <!-- Title -->
+  
+  <title>C语言查缺补漏(五) - Zcy</title>
+
+
+  <link rel="shortcut icon" href="/favicon.ico">
+    <!--font-awesome-->
+  <link rel="stylesheet" href="//cdn.bootcss.com/font-awesome/4.5.0/css/font-awesome.min.css">
+  <!-- Custom CSS/Sass -->
+  <link rel="stylesheet" href="/css/style.css">
+    <script src="http://oct3pmpde.bkt.clouddn.com/jquery.js"></script>
+</head>
+
+
+<body>
+
+  <!-- Nav -->
+  <header class="site-header">
+  <div class="header-inside">
+    
+    <div class="logo">
+      <a href="/" rel="home">
+        
+        <img src="http://oct3pmpde.bkt.clouddn.com/timg.jpg" alt="Zcy" height="60">
+        
+      </a>
+    </div>
+    <a class="header-name" href="/">
+            <span>Zcy</span>
+            的小屋
+        </a>
+    <!-- navbar -->
+    <nav class="navbar">
+      <!--  nav links -->
+      <div class="collapse">
+        <ul class="navbar-nav">
+          
+          
+            <li>
+              <a href="/.">
+                
+                  <i class="fa fa-home "></i>
+                
+                小屋
+              </a>
+            </li>
+          
+            <li>
+              <a href="/archives">
+                
+                  <i class="fa fa-archive "></i>
+                
+                点滴
+              </a>
+            </li>
+          
+            <li>
+              <a href="/tags">
+                
+                  <i class="fa fa-archive "></i>
+                
+                标签
+              </a>
+            </li>
+          
+            <li>
+              <a href="/project">
+                
+                  <i class="fa fa-folder-open "></i>
+                
+                项目
+              </a>
+            </li>
+          
+            <li>
+              <a href="/photo">
+                
+                  <i class="fa fa-photo "></i>
+                
+                相册
+              </a>
+            </li>
+          
+            <li>
+              <a href="/guestbook">
+                
+                  <i class="fa fa-edit "></i>
+                
+                留言
+              </a>
+            </li>
+          
+            <li>
+              <a href="/about">
+                
+                  <i class="fa fa-user "></i>
+                
+                关于我
+              </a>
+            </li>
+          
+            <li>
+              <a href="/friendly">
+                
+                  <i class="fa fa-bicycle "></i>
+                
+                友情链接
+              </a>
+            </li>
+          
+        </ul>
+      </div>
+      <!-- /.navbar-collapse -->
+    </nav>
+    <div class="button-wrap">
+      <button class="menu-toggle">Primary Menu</button>
+    </div>
+  </div>
+</header>
+
+
+  <!-- Main Content -->
+  <div class="content-area">
+  <div class="post">
+    <!-- Post Content -->
+    <div class="container">
+      <article>
+        <!-- Title date & tags -->
+        <div class="post-header">
+          <h1 class="entry-title">
+            C语言查缺补漏(五)
+            
+          </h1>
+         
+        </div>
+         <p class="a-posted-on">
+          2018-10-01
+          </p>
+        <!-- Post Main Content -->
+        <div class="entry-content">
+          <p><img src="/2018/10/01/C语言查缺补漏-5/title.jpg" alt="title"></p>
+<a id="more"></a>
+<h3 id="忽略点五-指针作参"><a href="#忽略点五-指针作参" class="headerlink" title="忽略点五:指针作参"></a>忽略点五:指针作参</h3><p>​    平时比赛很少用到指针（链表，动态数组都有对应的STL，字典树也可以用数组模拟），业精于勤荒于嬉，C语言的指针就这样被我遗忘了。。</p>
+<p>​    之前博文说过，C语言的优势之一就是在于能够直接访问物理地址，C语言的一大特色就是指针！！所以，学C语言舍弃指针是非常不明智的选择，终归是要还以前忽略的债。。苦笑～</p>
+<p>​    关于指针，自己忽略的部分有很多，这一篇主要讲一下关于指针作参的用法：</p>
+<h4 id="——对于函数来说："><a href="#——对于函数来说：" class="headerlink" title="——对于函数来说："></a>——对于函数来说：</h4><p>​    它不像变量那样可以进行值传递，我们在将函数作参进行传递时，需要传递它的地址，格式为：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">int g (int (*f)(int), int a) &#123;		//定义</span><br><span class="line">    return f(a);</span><br><span class="line">&#125;</span><br><span class="line">//省略代码</span><br><span class="line">g(函数名, int型变量); 				//调用</span><br></pre></td></tr></table></figure>
+<h4 id=""><a href="#" class="headerlink" title=" "></a> </h4><h4 id="——对于一维数组来说："><a href="#——对于一维数组来说：" class="headerlink" title="——对于一维数组来说："></a>——对于一维数组来说：</h4><p>​    它的格式为：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">void f (int *p) &#123;		//定义</span><br><span class="line">    //省略代码</span><br><span class="line">&#125;</span><br><span class="line">//省略代码</span><br><span class="line">int a[5];</span><br><span class="line">f (a);				//调用</span><br></pre></td></tr></table></figure>
+<p>​    关于这个a，我对它的理解是数组的初始位置，它等价于&amp;a[0]。因为我们在声明指针指向a数组时，是通过 int *p = a来实现的。</p>
+<h4 id="——对于二维数组来说："><a href="#——对于二维数组来说：" class="headerlink" title="——对于二维数组来说："></a>——对于二维数组来说：</h4><p>它的格式为：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">void f (int *p) &#123;		//定义</span><br><span class="line">    //省略代码</span><br><span class="line">&#125;</span><br><span class="line">//省略代码</span><br><span class="line">int a[5][5];</span><br><span class="line">f (a[0]);	//调用 由一维数组可知，a[0]等价于&amp;a[0][0]，也等价于*a</span><br></pre></td></tr></table></figure>
+<p>​    a[0]等同于二维数组的首地址，也是二维数组下标为0行的首地址，同理a[1]为下标为1行的首地址，以此类推。</p>
+<p>​    下面的问题没想明白，欢迎大佬来为我解惑。</p>
+<p>​    我的认识（不一定正确）：那么二维数组的a是什么呢？从上边我们可以知道，a[0], a[1]等等都是地址信息，把他们整体来看，就是一个一维的指针数组。那么a为这个一维指针数组的首地址，而*a就是a[0]的值，也就是二维数组的首地址，从下面代码中也可以证实我的观点：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">void f(int *p) &#123;</span><br><span class="line">    for (int i = 0; i &lt; 4; i++) &#123;</span><br><span class="line">        printf(&quot;%d\n&quot;, p[i]);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line">//省略代码</span><br><span class="line">int a[2][2] = &#123;1, 2, 3, 4&#125;;</span><br><span class="line">f(*a);</span><br></pre></td></tr></table></figure>
+<p>​    最后结果输出 1，2，3，4，说明了*a 等价于a[0]，也就是二维数组的首地址</p>
+<p>​    但是按上面的逻辑，<em>a等价于a[0]，那么a就是存储a[0]指针地址的地址，可我通过以下代码输出发现，a的值等于 </em>a</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">int a[2][2] = &#123;1, 2, 3, 4&#125;;</span><br><span class="line">printf(&quot;%p\n&quot;, a);</span><br><span class="line">printf(&quot;%p\n&quot;, *a);</span><br></pre></td></tr></table></figure>
+<p>输出为：</p>
+<p><img src="/2018/10/01/C语言查缺补漏-5/515E7E54-C1C3-4E2B-A854-93D2AAD5748D.png" alt="515E7E54-C1C3-4E2B-A854-93D2AAD5748D"></p>
+<p>如果a的值等于*a，以下代码却报错：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">void f(int *p) &#123;</span><br><span class="line">    for (int i = 0; i &lt; 4; i++) &#123;</span><br><span class="line">        printf(&quot;%d\n&quot;, p[i]);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line">//省略代码</span><br><span class="line">int a[2][2] = &#123;1, 2, 3, 4&#125;;</span><br><span class="line">f(a);</span><br></pre></td></tr></table></figure>
+<p>很迷茫。。。希望有大佬能为我解惑～</p>
+<h4 id="——对于结构体来说："><a href="#——对于结构体来说：" class="headerlink" title="——对于结构体来说："></a>——对于结构体来说：</h4><p>​    结构体指针和变量指针作参类似，但它的指针可通过 -&gt;符指向它的成员，举个栗子(截取遍历链表代码的一部分)：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">struct node &#123;</span><br><span class="line">    int val;</span><br><span class="line">    node *next;</span><br><span class="line">&#125;</span><br><span class="line">void f(node *root) &#123;</span><br><span class="line">    while (root -&gt; next != NULL) &#123;</span><br><span class="line">        printf(&quot;%d\n&quot;, root -&gt; val)</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>​    root -&gt; val等价于 *(root).val</p>
+<p>​    只要捋清楚每个变量所代表的意义，指针作参就不会那么迷糊了，就酱紫～</p>
+
+        </div>
+      </article>
+    </div>
+    <!-- Pre or Next -->
+    
+	<div class="container" >
+           <ul class="pager">
+    	     
+           
+              <li class="next">
+              <a href="/2018/10/01/C语言查缺补漏-4/" rel="prev">上一篇</a>
+            </li>
+           
+          </ul>
+       </div>
+　　　　<!-- Comments -->
+    <div class="container">
+      
+<section id="comment">
+  <!-- <h1 class="title">Comments</h1> -->
+
+  
+</section>
+
+
+    </div>
+   
+　　　　
+  </div>
+</div>
+
+
+  <!-- Footer -->
+  <!-- top -->
+<div id="rocket-to-top">
+  <div class="level-2"></div>
+  <div class="level-3"></div>
+</div>
+<script src="http://oct3pmpde.bkt.clouddn.com/top.js"></script>
+<script type="text/javascript" src="http://oct3pmpde.bkt.clouddn.com/jquery.js"></script>
+
+<!-- Footer -->
+<footer class="site-info">
+  <p>
+    <span>Zcy &copy; 2018</span>
+    
+      <span class="split">|</span>
+      <span>Zcy</span>
+    
+  </p>
+  <script async src="//dn-lbstatics.qbox.me/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+  本站总访问量<span id="busuanzi_value_site_pv"></span>次
+  本站访客数<span id="busuanzi_value_site_uv"></span>人次
+</footer>
+
+
+  <!-- After footer scripts -->
+  <!-- scripts -->
+<script src="/js/app.js"></script>
+
+
+
+</body>
+
+</html>
