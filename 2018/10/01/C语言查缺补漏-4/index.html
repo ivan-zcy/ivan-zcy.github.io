@@ -11,8 +11,6 @@
 
   <!--Author-->
   
-  <meta name="author" content="Zcy">
-  
 
   <!--Open Graph Title-->
   
@@ -35,7 +33,7 @@
 	var _hmt = _hmt || [];
 	(function() {
   	var hm = document.createElement("script");
-  	hm.src = "";
+  	hm.src = "https://hm.baidu.com/hm.js?c0451e16533956173997b85f7a8de666";
   	var s = document.getElementsByTagName("script")[0]; 
   	s.parentNode.insertBefore(hm, s);
 	})();
@@ -63,7 +61,7 @@
     <div class="logo">
       <a href="/" rel="home">
         
-        <img src="/images/timg.jpg" alt="Zcy" height="60">
+        <img src="http://oct3pmpde.bkt.clouddn.com/timg.jpg" alt="Zcy" height="60">
         
       </a>
     </div>
@@ -188,17 +186,17 @@
 <p>​    如果不使用宏定义，在发生函数调用时，需要保留调用函数的现场，以便子函数执行结束后能返回继续执行，同样在子函数执行完后要恢复调用函数的现场，这都需要一定的时间，当函数调用次数特别多的时候，这些时间的消耗是不可忽略的。</p>
 <p>​    而使用宏定义就不会出现这个问题，因为它在预处理阶段即进行了宏展开，在执行时不需要转换。</p>
 <p>宏定义有无参宏定义和带参数宏定义两种</p>
-<h5 id="1-无参宏定义的一般形式为"><a href="#1-无参宏定义的一般形式为" class="headerlink" title="1.无参宏定义的一般形式为:"></a>1.无参宏定义的一般形式为:</h5><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"># define 宏名 字符序列    //宏名与字符序列之间用空格符分隔，用于替代后面的字符序列</span><br></pre></td></tr></table></figure>
+<h5 id="1-无参宏定义的一般形式为"><a href="#1-无参宏定义的一般形式为" class="headerlink" title="1.无参宏定义的一般形式为:"></a>1.无参宏定义的一般形式为:</h5><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line"># define 宏名 字符序列    //宏名与字符序列之间用空格符分隔，用于替代后面的字符序列</span><br></pre></td></tr></table></figure>
 <p>​    </p>
 <p>​    ——每个宏定义都在源程序中单独占一行，换行符是宏定义的结束标志。如果一个宏定义一行不够时可采用续行的方法。续行是在按回车前先输入符号”/“</p>
 <p>​    <strong>注意！！回车要紧接在符号”/“后，中间不能插入其它符号</strong></p>
 <p>​    ——宏定义的有效范围称为辖域，辖域从定义开始到源文件末尾。可用预处理命令#undef终止宏定义名的辖域</p>
 <p>​    ——宏名可被重复定义，重定义后会覆盖之前的字符序列</p>
 <p>一般无参宏定义用于定义常量，比如定义数组长度（数组长度不能由变量定义，除了宏定义外，还可以使用const 关键字定义）</p>
-<h5 id="2-带参宏定义的一般形式为"><a href="#2-带参宏定义的一般形式为" class="headerlink" title="2.带参宏定义的一般形式为:"></a>2.带参宏定义的一般形式为:</h5><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"># define 宏名(参数表) 字符序列  //参数间用逗号分隔，字符序列中应包含参数表中的参数</span><br></pre></td></tr></table></figure>
+<h5 id="2-带参宏定义的一般形式为"><a href="#2-带参宏定义的一般形式为" class="headerlink" title="2.带参宏定义的一般形式为:"></a>2.带参宏定义的一般形式为:</h5><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line"># define 宏名(参数表) 字符序列  //参数间用逗号分隔，字符序列中应包含参数表中的参数</span><br></pre></td></tr></table></figure>
 <p>​    <strong>注意！！宏名与左圆括号之间不允许有空白符</strong></p>
 <h4 id="以下是易错点！！！！！！！！！！！！！"><a href="#以下是易错点！！！！！！！！！！！！！" class="headerlink" title="以下是易错点！！！！！！！！！！！！！"></a>以下是易错点！！！！！！！！！！！！！</h4><p>​    易错点一：大家要深入理解宏替换的“替换”两个字！例如：</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">#define F(x) x * x</span><br></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">#define F(x) x * x</span><br></pre></td></tr></table></figure>
 <p>​    如果a = 1, b = 2，那么F(a + b)为多少？</p>
 <p>​    很多同学会认为是9，但是答案是5。</p>
 <p>​    原因是替换！只是简单的替换！！！</p>
@@ -206,22 +204,22 @@
 <p>​    就是酱紫。。所以代码需要改成#define F(x) (x) * (x) 才会输出9</p>
 <p>​    在宏定义中，我们使用#把宏参数变为一个字符串</p>
 <p>​    用##把两个宏参数连在一起（这里说的是在预处理是对源文件的操作）<br>​    例如：</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">#define S(s)   #s </span><br><span class="line">#define F(a,b) int(a##e##b)</span><br></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">#define S(s)   #s </span><br><span class="line">#define F(a,b) int(a##e##b)</span><br></pre></td></tr></table></figure>
 <p>​    </p>
 <p>​    易错点二：</p>
 <p>​    对于以下代码</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">#define a 1e5</span><br><span class="line">const int b = 1e5;</span><br></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">#define a 1e5</span><br><span class="line">const int b = 1e5;</span><br></pre></td></tr></table></figure>
 <p>​    输出a和b的值，分别是多少呢？</p>
 <p>​    a:   -272632256</p>
 <p>​    b: 100000</p>
 <p>​    所以，要想宏定义科学计数法，需：</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">#define a int(1e5)</span><br></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">#define a int(1e5)</span><br></pre></td></tr></table></figure>
 <p>​    此时a的值为100000</p>
 <h3 id="关于宏中-和-的用法："><a href="#关于宏中-和-的用法：" class="headerlink" title="关于宏中#和##的用法："></a>关于宏中#和##的用法：</h3><p>在字符序列中：</p>
 <p>​    用#可以把宏参数变为一个字符串</p>
 <p>​    用##可以把两个宏参数连接在一起</p>
 <p>例如下面代码：</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">#define STR(s)     #s 		</span><br><span class="line">#define CONS(a,b) int(a##e##b)</span><br><span class="line">//...省略其余代码</span><br><span class="line">printf(STR(hello));           	// 输出字符串&quot;vck&quot; </span><br><span class="line">printf(&quot;%d/n&quot;, CONS(1,5)); 		// 输出:100000</span><br></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">#define STR(s)     #s 		</span><br><span class="line">#define CONS(a,b) int(a##e##b)</span><br><span class="line">//...省略其余代码</span><br><span class="line">printf(STR(hello));           	// 输出字符串&quot;vck&quot; </span><br><span class="line">printf(&quot;%d/n&quot;, CONS(1,5)); 		// 输出:100000</span><br></pre></td></tr></table></figure>
         </div>
       </article>
     </div>
