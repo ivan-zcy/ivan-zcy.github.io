@@ -195,16 +195,16 @@
 <p>​    我的认识（不一定正确）：那么二维数组的a是什么呢？从上边我们可以知道，a[0], a[1]等等都是地址信息，把他们整体来看，就是一个一维的指针数组。那么a为这个一维指针数组的首地址，而*a就是a[0]的值，也就是二维数组的首地址，从下面代码中也可以证实我的观点：</p>
 <figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">void f(int *p) &#123;</span><br><span class="line">    for (int i = 0; i &lt; 4; i++) &#123;</span><br><span class="line">        printf(&quot;%d\n&quot;, p[i]);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line">//省略代码</span><br><span class="line">int a[2][2] = &#123;1, 2, 3, 4&#125;;</span><br><span class="line">f(*a);</span><br></pre></td></tr></table></figure>
 <p>​    最后结果输出 1，2，3，4，说明了*a 等价于a[0]，也就是二维数组的首地址</p>
-<p>​    但是按上面的逻辑，<em>a等价于a[0]，那么a就是存储a[0]指针地址的地址，可我通过以下代码输出发现，a的值等于 </em>a</p>
+<p>​    按上面的逻辑，<em>a等价于a[0]，那么a就是存储a[0]指针地址的地址，所以a的值应该与a[0]不相同，也就是与 </em>a不相同，所以以下代码会报错：</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">void f(int *p) &#123;</span><br><span class="line">    for (int i = 0; i &lt; 4; i++) &#123;</span><br><span class="line">        printf(&quot;%d\n&quot;, p[i]);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line">//省略代码</span><br><span class="line">int a[2][2] = &#123;1, 2, 3, 4&#125;;</span><br><span class="line">f(a);</span><br></pre></td></tr></table></figure>
+<p>可我通过以下代码输出发现，a的值等于 a[0]</p>
 <figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">int a[2][2] = &#123;1, 2, 3, 4&#125;;</span><br><span class="line">printf(&quot;%p\n&quot;, a);</span><br><span class="line">printf(&quot;%p\n&quot;, *a);</span><br></pre></td></tr></table></figure>
 <p>输出为：</p>
 <p><img src="/2018/10/01/C语言查缺补漏-5/515E7E54-C1C3-4E2B-A854-93D2AAD5748D.png" alt="515E7E54-C1C3-4E2B-A854-93D2AAD5748D"></p>
-<p>如果a的值等于*a，以下代码却报错：</p>
-<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">void f(int *p) &#123;</span><br><span class="line">    for (int i = 0; i &lt; 4; i++) &#123;</span><br><span class="line">        printf(&quot;%d\n&quot;, p[i]);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line">//省略代码</span><br><span class="line">int a[2][2] = &#123;1, 2, 3, 4&#125;;</span><br><span class="line">f(a);</span><br></pre></td></tr></table></figure>
 <p>很迷茫。。。希望有大佬能为我解惑～</p>
 <h4 id="——对于结构体来说："><a href="#——对于结构体来说：" class="headerlink" title="——对于结构体来说："></a>——对于结构体来说：</h4><p>​    结构体指针和变量指针作参类似，但它的指针可通过 -&gt;符指向它的成员，举个栗子(截取遍历链表代码的一部分)：</p>
 <figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">struct node &#123;</span><br><span class="line">    int val;</span><br><span class="line">    node *next;</span><br><span class="line">&#125;</span><br><span class="line">void f(node *root) &#123;</span><br><span class="line">    while (root -&gt; next != NULL) &#123;</span><br><span class="line">        printf(&quot;%d\n&quot;, root -&gt; val)</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<p>​    root -&gt; val等价于 *(root).val</p>
+<p>​    root -&gt; val等价于 (*root).val</p>
 <p>​    只要捋清楚每个变量所代表的意义，指针作参就不会那么迷糊了，就酱紫～</p>
 
         </div>
