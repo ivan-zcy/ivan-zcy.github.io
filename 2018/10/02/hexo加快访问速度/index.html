@@ -14,7 +14,7 @@
 
   <!--Open Graph Title-->
   
-      <meta property="og:title" content="一个特别搞笑的故事哈哈"/>
+      <meta property="og:title" content="hexo加快访问速度"/>
   
   <!--Open Graph Description-->
   
@@ -40,7 +40,7 @@
     </script>
   <!-- Title -->
   
-  <title>一个特别搞笑的故事哈哈 - Zcy</title>
+  <title>hexo加快访问速度 - Zcy</title>
 
 
   <link rel="shortcut icon" href="/favicon.ico">
@@ -168,7 +168,7 @@
         <!-- Title date & tags -->
         <div class="post-header">
           <h1 class="entry-title">
-            一个特别搞笑的故事哈哈
+            hexo加快访问速度
             
           </h1>
          
@@ -178,10 +178,31 @@
           </p>
         <!-- Post Main Content -->
         <div class="entry-content">
-          <p><img src="/2018/10/02/一个特别搞笑的故事哈哈/title.jpg" alt="title"></p>
+          <p><img src="/2018/10/02/hexo加快访问速度/title.jpg" alt="title"></p>
 <a id="more"></a>
-<h3 id="分享一个特别长的程序猿的故事："><a href="#分享一个特别长的程序猿的故事：" class="headerlink" title="分享一个特别长的程序猿的故事："></a>分享一个特别长的程序猿的故事：</h3><p><img src="/2018/10/02/一个特别搞笑的故事哈哈/1.jpeg" alt="1"></p>
-<p><img src="/2018/10/02/一个特别搞笑的故事哈哈/2.jpeg" alt="2"></p>
+<p>​    hexo+github访问速度超慢！！！这两天算是领悟到了它的龟速暴击。。。原因只有一个，托管网站的github是外网，访问外网慢是必然的。</p>
+<p>​    有很多人博客采用hexo+github+coding方式，至于coding是什么？大家可以理解为中国版的github，如果把代码既托管到coding上，又托管到github上，让大陆的用户访问的是由coding托管的网站，歪果仁访问的是由github托管的网站，这样访问速度就能上去了。</p>
+<p>​    hexo与github的步骤不再重复，全在之前的博客里 <a href="http://www.ivan-zcy.top/2018/09/30/Blog搭建流程-Mac系统完结帖/" target="_blank" rel="noopener">点这里跳转</a> </p>
+<p>​    完成上面步骤，我们接着往下走：</p>
+<p>​    Step1:此时我们需要创建一个coding账号，然后添加一个项目，项目名为你的coding账号名，例如我的账号名是ivan-zcy，所以我新建的项目为ivan-zcy，注意要在初始化项目那一项打勾</p>
+<p>​    <img src="/2018/10/02/hexo加快访问速度/1.png" alt="1"></p>
+<p>​    </p>
+<p>​    Step2:进入项目 -&gt; 设置 -&gt; 部署公匙 -&gt;新建部署公匙，给项目添加公匙SSH，ssh公匙获取方法和github一样，在之前博客 <a href="http://www.ivan-zcy.top/2018/09/30/Blog搭建流程-Mac系统完结帖/" target="_blank" rel="noopener">点这里跳转</a>  第四步有详细的介绍。公匙名称可以不填，但是授予推送权限选项必须打勾，这样你才有写权限</p>
+<p>​    Step3: 在你的域名管理平台中（比如阿里云，腾讯云之类的），域名 -&gt;管理-&gt; 解析域名，增加一条CNAME信息，记录值为 youruser.coding.me（youruser为你的coding用户名）例如我的：</p>
+<p><img src="/2018/10/02/hexo加快访问速度/2.png" alt="2"></p>
+<p>​    </p>
+<p>Step4:等到第三步的解析生效（最长十分钟），在coding中，项目 -&gt; 代码 -&gt; Pages服务中，一键部署Pages。在Pages的设置里，自定义自己的域名并绑定（域名前加www.前缀）</p>
+<p>Step5:在本地博客路径下，修改_config.yml下的deploy，改为：</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">deploy:</span><br><span class="line">  type: git</span><br><span class="line">  repo:</span><br><span class="line">      github:</span><br><span class="line">      	  git@github.com:yourname/yourname.github.io.git,master</span><br><span class="line">      coding: </span><br><span class="line">      	  git@git.coding.net:yourname/yourname.git,master</span><br></pre></td></tr></table></figure>
+<p>格式一定要正确！！！不然会报错！！！</p>
+<p>Step6:</p>
+<p>​    在本地博客路径下，执行命令：</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">$ hexo clean</span><br><span class="line">$ hexo g</span><br><span class="line">$ hexo d</span><br></pre></td></tr></table></figure>
+<p>Ok!这样本地博客就能同时同步到github和coding上了，访问你的域名会解析到coding平台上，速度比github快很多</p>
+<p>最后！！！关于万恶的coding广告，每次跳转你的域名都会弹出coding的广告，有两个解决办法：</p>
+<p>​    1.充钱即王道，198元包年。。。</p>
+<p>​    2.在博客首页加入它的推广链接，然后像官方申请去除广告（建议平民采用这种方法）只需要将以下代码加入到首页html任意位置即可：</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">&lt;p&gt;Hosted by &lt;a href=&quot;https://pages.coding.me&quot; style=&quot;font-weight: bold&quot;&gt;Coding Pages&lt;/a&gt;&lt;/p&gt;</span><br></pre></td></tr></table></figure>
 <p>​    </p>
 
         </div>
@@ -192,13 +213,9 @@
 	<div class="container" >
            <ul class="pager">
     	     
-      	     <li class="previous">
-              <a href="/2018/10/02/hexo加快访问速度/" rel="prev">下一篇</a>
-             </li>
-           
            
               <li class="next">
-              <a href="/2018/10/01/C语言查缺补漏-5/" rel="prev">上一篇</a>
+              <a href="/2018/10/02/一个特别搞笑的故事哈哈/" rel="prev">上一篇</a>
             </li>
            
           </ul>
