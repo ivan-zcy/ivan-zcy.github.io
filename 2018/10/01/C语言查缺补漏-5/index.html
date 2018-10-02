@@ -203,7 +203,7 @@
 <p><img src="/2018/10/01/C语言查缺补漏-5/515E7E54-C1C3-4E2B-A854-93D2AAD5748D.png" alt="515E7E54-C1C3-4E2B-A854-93D2AAD5748D"></p>
 <p>很迷茫。。。希望有大佬能为我解惑～</p>
 <h4 id="——对于结构体来说："><a href="#——对于结构体来说：" class="headerlink" title="——对于结构体来说："></a>——对于结构体来说：</h4><p>​    结构体指针和变量指针作参类似，但它的指针可通过 -&gt;符指向它的成员，举个栗子(截取遍历链表代码的一部分)：</p>
-<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">struct node &#123;</span><br><span class="line">    int val;</span><br><span class="line">    node *next;</span><br><span class="line">&#125;</span><br><span class="line">void f(node *root) &#123;</span><br><span class="line">    while (root -&gt; next != NULL) &#123;</span><br><span class="line">        printf(&quot;%d\n&quot;, root -&gt; val)</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">struct node &#123;</span><br><span class="line">    int val;</span><br><span class="line">    node *next;</span><br><span class="line">&#125;</span><br><span class="line">void f(node *root) &#123;</span><br><span class="line">    while (root -&gt; next != NULL) &#123;</span><br><span class="line">        printf(&quot;%d\n&quot;, root -&gt; val)</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line">//省略代码</span><br><span class="line">node root = &#123;a, NULL&#125;;</span><br><span class="line">f(&amp;root);</span><br></pre></td></tr></table></figure>
 <p>​    root -&gt; val等价于 (*root).val</p>
 <p>​    只要捋清楚每个变量所代表的意义，指针作参就不会那么迷糊了，就酱紫～</p>
 
