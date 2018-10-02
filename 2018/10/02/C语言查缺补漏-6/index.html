@@ -181,7 +181,7 @@
           <p><img src="/2018/10/02/C语言查缺补漏-6/title.jpg" alt="title"></p>
 <a id="more"></a>
 <h3 id="忽略点六-内存空间，指针的指针"><a href="#忽略点六-内存空间，指针的指针" class="headerlink" title="忽略点六:内存空间，指针的指针"></a>忽略点六:内存空间，指针的指针</h3><p>​    介绍内存前，我们首先要知道一个由C/C++编译的程序占用的内存分为哪几个部分：</p>
-<p>​    ——栈内存：C语言程序在编译时会被分配到内存的一片有限的连续区域，这部分内存会用于存储局部变量（函数中声明的变量），这部分连续区域被成为栈内存，又编译器自动分配和释放</p>
+<p>​    ——栈内存：C语言程序在编译时会被分配到内存的一片有限的连续区域，这部分内存会用于存储局部变量（函数中声明的变量），这部分连续区域被成为栈内存，由编译器自动分配和释放</p>
 <p>​    ——堆内存：一般由程序员分配和释放，若程序员没有释放，则可能在程序结束时由操作系统回收（并不一定）。注意它与数据结构中的堆是两种东西！！</p>
 <p>​    ——全局区(静态区，static)：程序的全局变量和静态变量都存放在这里， 初始化存放在一块区域，未初始化的放在相邻的另一块区域（BSS），程序结束后由系统释放。注意！它既不是栈内存，也不是堆内存！</p>
 <p>​    ——文字常量区：也叫字面量池区。常量字符串就是放在这里，又系统释放。</p>
@@ -199,7 +199,7 @@
 <p>​    malloc (sizeof (int))表示申请该大小的内存空间，返回值为void型的指针</p>
 <p>​    (int *)表示强制转换成int类型的指针</p>
 <h5 id="另一个是calloc函数，它个格式为："><a href="#另一个是calloc函数，它个格式为：" class="headerlink" title="另一个是calloc函数，它个格式为："></a>另一个是calloc函数，它个格式为：</h5><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">int *p = (int *) calloc (n, sizeof(int));</span><br></pre></td></tr></table></figure>
-<p>​    该代码意义同malloc一致，至于两者的区别，malloc申请后不初始化，儿calloc申请后全部初始化为0</p>
+<p>​    该代码意义同malloc一致，至于两者的区别，malloc申请后不初始化，而calloc申请后全部初始化为0</p>
 <p>​    ——释放有一个函数free，它的用法如下</p>
 <figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">free(p);	//将p所指向的堆内存空间释放回系统</span><br><span class="line">p = NULL;	//为避免错误使用p指针碰触已释放的内存，应设置为 p = NULL</span><br></pre></td></tr></table></figure>
 <p>​    以上就是内存空间的申请和释放，可能会有童鞋说还有new,delete，这些属于C++中的内容，等到C++查缺补漏时再总结～</p>
