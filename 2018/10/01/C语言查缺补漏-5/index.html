@@ -188,6 +188,9 @@
 <h4 id=""><a href="#" class="headerlink" title=" "></a> </h4><h4 id="——对于一维数组来说："><a href="#——对于一维数组来说：" class="headerlink" title="——对于一维数组来说："></a>——对于一维数组来说：</h4><p>​    它的格式为：</p>
 <figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">void f (int *p) &#123;		//定义</span><br><span class="line">    //省略代码</span><br><span class="line">&#125;</span><br><span class="line">//省略代码</span><br><span class="line">int a[5];</span><br><span class="line">f (a);				//调用</span><br></pre></td></tr></table></figure>
 <p>​    关于这个a，我对它的理解是数组的初始位置，它等价于&amp;a[0]。因为我们在声明指针指向a数组时，是通过 int *p = a来实现的。</p>
+<h4 id="注意点！！！！"><a href="#注意点！！！！" class="headerlink" title="注意点！！！！"></a>注意点！！！！</h4><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">void f (int a[5]) &#123;		//定义</span><br><span class="line">    //省略代码</span><br><span class="line">&#125;</span><br><span class="line">//省略代码</span><br><span class="line">int a[5];</span><br><span class="line">f (a);				//调用</span><br></pre></td></tr></table></figure>
+<p>​    对于 void f(int a[5])，参数int a[5]就真的是数组吗？</p>
+<p>​    答案是否定的，这里如果真的把数组作为函数参数的话，需要分配临时的栈区执行拷贝等操作，会特别麻烦。所以编译器对代码进行了优化，把数组退化成了指针。从调用传入的是a（指针）就可以看出。</p>
 <h4 id="——对于二维数组来说："><a href="#——对于二维数组来说：" class="headerlink" title="——对于二维数组来说："></a>——对于二维数组来说：</h4><p>它的格式为：</p>
 <figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">void f (int *p) &#123;		//定义</span><br><span class="line">    //省略代码</span><br><span class="line">&#125;</span><br><span class="line">//省略代码</span><br><span class="line">int a[5][5];</span><br><span class="line">f (a[0]);	//调用 由一维数组可知，a[0]等价于&amp;a[0][0]，也等价于*a</span><br></pre></td></tr></table></figure>
 <p>​    a[0]等同于二维数组的首地址，也是二维数组下标为0行的首地址，同理a[1]为下标为1行的首地址，以此类推。</p>
@@ -206,6 +209,8 @@
 <figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">struct node &#123;</span><br><span class="line">    int val;</span><br><span class="line">    node *next;</span><br><span class="line">&#125;</span><br><span class="line">void f(node *root) &#123;</span><br><span class="line">    while (root -&gt; next != NULL) &#123;</span><br><span class="line">        printf(&quot;%d\n&quot;, root -&gt; val)</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line">//省略代码</span><br><span class="line">node root = &#123;a, NULL&#125;;</span><br><span class="line">f(&amp;root);</span><br></pre></td></tr></table></figure>
 <p>​    root -&gt; val等价于 (*root).val</p>
 <p>​    只要捋清楚每个变量所代表的意义，指针作参就不会那么迷糊了，就酱紫～</p>
+<p><a href="http://ivan-zcy.top">转载请注明出处！！！</a>  </p>
+<p>如果有写的不对或者不全面的地方 可通过主页的联系方式进行指正，谢谢！</p>
 
         </div>
       </article>
