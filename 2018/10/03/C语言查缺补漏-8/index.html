@@ -14,7 +14,7 @@
 
   <!--Open Graph Title-->
   
-      <meta property="og:title" content="hexo加快访问速度"/>
+      <meta property="og:title" content="C语言查缺补漏(八)"/>
   
   <!--Open Graph Description-->
   
@@ -40,7 +40,7 @@
     </script>
   <!-- Title -->
   
-  <title>hexo加快访问速度 - Zcy</title>
+  <title>C语言查缺补漏(八) - Zcy</title>
 
 
   <link rel="shortcut icon" href="/favicon.ico">
@@ -168,44 +168,47 @@
         <!-- Title date & tags -->
         <div class="post-header">
           <h1 class="entry-title">
-            hexo加快访问速度
+            C语言查缺补漏(八)
             
           </h1>
          
         </div>
          <p class="a-posted-on">
-          2018-10-02
+          2018-10-03
           </p>
         <!-- Post Main Content -->
         <div class="entry-content">
-          <p><img src="/2018/10/02/hexo加快访问速度/title.jpg" alt="title"></p>
+          <p><img src="/2018/10/03/C语言查缺补漏-8/title.jpg" alt="title"></p>
 <a id="more"></a>
-<p>​    hexo+github访问速度超慢！！！这两天算是领悟到了它的龟速暴击。。。原因只有一个，托管网站的github是外网，访问外网慢是必然的。</p>
-<p>​    有很多人博客采用hexo+github+coding方式，至于coding是什么？大家可以理解为中国版的github，如果把代码既托管到coding上，又托管到github上，让大陆的用户访问的是由coding托管的网站，歪果仁访问的是由github托管的网站，这样访问速度就能上去了。</p>
-<p>​    hexo与github的步骤不再重复，全在之前的博客里 <a href="http://www.ivan-zcy.top/2018/09/30/Blog搭建流程-Mac系统完结帖/" target="_blank" rel="noopener">点这里跳转</a> </p>
-<p>​    完成上面步骤，我们接着往下走：</p>
-<p>​    Step1:此时我们需要创建一个coding账号，然后添加一个项目，项目名为你的coding账号名，例如我的账号名是ivan-zcy，所以我新建的项目为ivan-zcy，注意要在初始化项目那一项打勾</p>
-<p>​    <img src="/2018/10/02/hexo加快访问速度/1.png" alt="1"></p>
+<h3 id="忽略点八：typedef的使用"><a href="#忽略点八：typedef的使用" class="headerlink" title="忽略点八：typedef的使用"></a>忽略点八：typedef的使用</h3><p>至于typedef，说起来实在是太丢人了！！这两年一直以为这个关键字是结构体的专属关键字：</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">typedef 结构体类型 &#123;</span><br><span class="line">    //省略代码</span><br><span class="line">&#125; 类型别名</span><br><span class="line"></span><br><span class="line">类型别名 变量名		//定义</span><br></pre></td></tr></table></figure>
+<p>​    最近才发现，它不仅可以给结构体起别名，还可以给各种各样的类型起各种各样的别名，用法实在是太活了！</p>
+<p>​    ——比如基本数据类型：</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">typedef	int size;</span><br><span class="line">size a;				//等价于int a;</span><br></pre></td></tr></table></figure>
+<p>​    ——比如数组：</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">typedef int T[105];</span><br><span class="line">T a;				//等价于 int a[105];</span><br></pre></td></tr></table></figure>
 <p>​    </p>
-<p>​    Step2:进入项目 -&gt; 设置 -&gt; 部署公匙 -&gt;新建部署公匙，给项目添加公匙SSH，ssh公匙获取方法和github一样，在之前博客 <a href="http://www.ivan-zcy.top/2018/09/30/Blog搭建流程-Mac系统完结帖/" target="_blank" rel="noopener">点这里跳转</a>  第四步有详细的介绍。公匙名称可以不填，但是授予推送权限选项必须打勾，这样你才有写权限</p>
-<p>​    Step3: 在你的域名管理平台中（比如阿里云，腾讯云之类的），域名 -&gt;管理-&gt; 解析域名，增加一条CNAME信息，记录值为 youruser.coding.me（youruser为你的coding用户名）例如我的：</p>
-<p><img src="/2018/10/02/hexo加快访问速度/2.png" alt="2"></p>
+<p>​    ——比如指针：</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">typedef char* ps;</span><br><span class="line">ps p1, p2;			//等价于 char *p1, *p2;</span><br></pre></td></tr></table></figure>
+<p>​    说到这儿，有一个代码大家需要注意：</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">char* p1, p2;</span><br></pre></td></tr></table></figure>
+<p>​    这里面的p1和p2分别是什么类型？</p>
+<p>​    可能和大家想的不太一样（反正到时我是掉坑里了，尴尬），p1是char型指针，p2是char型。</p>
+<p>​    ——用来定义与平台无关的东西：</p>
+<p>​    比如定义一个叫Max_Double的浮点类型:</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">typedef long double Max_Double; //在一般平台的定义</span><br><span class="line">typedef double Max_Double;		//在不支持long double平台的定义</span><br><span class="line">typedef float Max_Double;  		//在不支持double平台的定义</span><br></pre></td></tr></table></figure>
+<p>​    这样在跨平台时，只需要改一下Max_Double定义即可，比如之前博文写的通用long long写法 <a href="http://www.ivan-zcy.top/2018/09/30/C语言查缺补漏-3/" target="_blank" rel="noopener">点这儿走你</a> 添加的&lt;inttype.h&gt;头文件就是采用了该方法。</p>
+<p>​    要记住！！！typedef是定义了一种类型的新别名，不是简单的字符串替换！！比如:</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">typedef int* T;</span><br><span class="line">int mystrcmp(const T);</span><br></pre></td></tr></table></figure>
+<p>​    const T等同于什么？我当初不假思索地以为是const int<em> 。然后现实给了我狠狠的打嘴巴子，它实际上相当于int</em> const。<strong>原因在于const给予了整个指针本身以常量性，也就是形成了常量指针int* const</strong> (简单来说，记住当const和typedef一起出现时，typedef不会是简单的字符串替换就行。)</p>
+<p>​    说到const int<em> 和 int</em> const等几个的区别：</p>
+<p>​    ——const int  *a; 表示a是一个指针，可以任意指向int型常量或变量</p>
+<p>​    ——int const    <em>a： 同const int </em>a</p>
+<p>​    ——int * const a; 表示a是一个指针常量，初始化时必须固定指向一个int变量，之后就不能再指向别的地方了</p>
 <p>​    </p>
-<p>Step4:等到第三步的解析生效（最长十分钟），在coding中，项目 -&gt; 代码 -&gt; Pages服务中，一键部署Pages。在Pages的设置里，自定义自己的域名并绑定（域名前加www.前缀）</p>
-<p>Step5:在本地博客路径下，修改_config.yml下的deploy，改为：</p>
-<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">deploy:</span><br><span class="line">  type: git</span><br><span class="line">  repo:</span><br><span class="line">      github:</span><br><span class="line">      	  git@github.com:yourname/yourname.github.io.git,master</span><br><span class="line">      coding: </span><br><span class="line">      	  git@git.coding.net:yourname/yourname.git,master</span><br></pre></td></tr></table></figure>
-<p>格式一定要正确！！！不然会报错！！！</p>
-<p>Step6:</p>
-<p>​    在本地博客路径下，执行命令：</p>
-<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">$ hexo clean</span><br><span class="line">$ hexo g</span><br><span class="line">$ hexo d</span><br></pre></td></tr></table></figure>
-<p>Ok!这样本地博客就能同时同步到github和coding上了，访问你的域名会解析到coding平台上，速度比github快很多</p>
-<p>最后！！！关于万恶的coding广告，每次跳转你的域名都会弹出coding的广告，有两个解决办法：</p>
-<p>​    1.充钱即王道，198元包年。。。</p>
-<p>​    2.在博客首页加入它的推广链接（只需要将以下代码加入到首页html任意位置即可），然后向官方申请去除广告（建议平民采用这种方法，大概一天审批时间，审批方法：主页头像 -&gt; 切换旧版 -&gt; 项目 -&gt; 代码 -&gt; Pages中）：</p>
-<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">&lt;p&gt;Hosted by &lt;a href=&quot;https://pages.coding.me&quot; style=&quot;font-weight: bold&quot;&gt;Coding Pages&lt;/a&gt;&lt;/p&gt;</span><br></pre></td></tr></table></figure>
-<p>​    </p>
-<p><a href="http://www.ivan-zcy.top" target="_blank" rel="noopener">转载请注明出处！！！</a>  </p>
-<p>如果有写的不对或者不全面的地方 可通过主页的联系方式进行指正，谢谢！</p>
+<p>​    除此之外，typedef不能影响对象的存储特性！！！例如以下代码会出错：</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">typedef static int T;   //无法与之前的&apos;typedef&apos;声明说明符结合使用</span><br></pre></td></tr></table></figure>
+<p>​    最后再总结一句：typedef作用是为类型起别名，但不同于#define的简单替换！而且不同于#define替换时不作正确性检查，typedef是在编译时处理的。</p>
 
         </div>
       </article>
@@ -215,13 +218,9 @@
 	<div class="container" >
            <ul class="pager">
     	     
-      	     <li class="previous">
-              <a href="/2018/10/02/C语言查缺补漏-6/" rel="prev">下一篇</a>
-             </li>
-           
            
               <li class="next">
-              <a href="/2018/10/02/一个特别搞笑的故事哈哈/" rel="prev">上一篇</a>
+              <a href="/2018/10/03/C语言查缺补漏-7/" rel="prev">上一篇</a>
             </li>
            
           </ul>

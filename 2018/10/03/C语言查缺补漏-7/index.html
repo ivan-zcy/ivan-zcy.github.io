@@ -1,0 +1,284 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+
+<!-- Head tag -->
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+
+  <!--Description-->
+  
+
+  <!--Author-->
+  
+
+  <!--Open Graph Title-->
+  
+      <meta property="og:title" content="C语言查缺补漏(七)"/>
+  
+  <!--Open Graph Description-->
+  
+  <!--Open Graph Site Name-->
+  <meta property="og:site_name" content="Zcy"/>
+  <!--Type page-->
+  
+      <meta property="og:type" content="article" />
+  
+  <!--Page Cover-->
+  
+
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <!-- 百度统计 -->
+    <script>
+	var _hmt = _hmt || [];
+	(function() {
+  	var hm = document.createElement("script");
+  	hm.src = "https://hm.baidu.com/hm.js?c0451e16533956173997b85f7a8de666";
+  	var s = document.getElementsByTagName("script")[0]; 
+  	s.parentNode.insertBefore(hm, s);
+	})();
+    </script>
+  <!-- Title -->
+  
+  <title>C语言查缺补漏(七) - Zcy</title>
+
+
+  <link rel="shortcut icon" href="/favicon.ico">
+    <!--font-awesome-->
+  <link rel="stylesheet" href="//cdn.bootcss.com/font-awesome/4.5.0/css/font-awesome.min.css">
+  <!-- Custom CSS/Sass -->
+  <link rel="stylesheet" href="/css/style.css">
+    <script src="http://oct3pmpde.bkt.clouddn.com/jquery.js"></script>
+</head>
+
+
+<body>
+
+  <!-- Nav -->
+  <header class="site-header">
+  <div class="header-inside">
+    
+    <div class="logo">
+      <a href="/" rel="home">
+        
+        <img src="http://oct3pmpde.bkt.clouddn.com/timg.jpg" alt="Zcy" height="60">
+        
+      </a>
+    </div>
+    <a class="header-name" href="/">
+            <span>Zcy</span>
+            的小屋
+        </a>
+    <!-- navbar -->
+    <nav class="navbar">
+      <!--  nav links -->
+      <div class="collapse">
+        <ul class="navbar-nav">
+          
+          
+            <li>
+              <a href="/.">
+                
+                  <i class="fa fa-home "></i>
+                
+                小屋
+              </a>
+            </li>
+          
+            <li>
+              <a href="/archives">
+                
+                  <i class="fa fa-archive "></i>
+                
+                点滴
+              </a>
+            </li>
+          
+            <li>
+              <a href="/tags">
+                
+                  <i class="fa fa-archive "></i>
+                
+                标签
+              </a>
+            </li>
+          
+            <li>
+              <a href="/project">
+                
+                  <i class="fa fa-folder-open "></i>
+                
+                项目
+              </a>
+            </li>
+          
+            <li>
+              <a href="/photo">
+                
+                  <i class="fa fa-photo "></i>
+                
+                相册
+              </a>
+            </li>
+          
+            <li>
+              <a href="/guestbook">
+                
+                  <i class="fa fa-edit "></i>
+                
+                留言
+              </a>
+            </li>
+          
+            <li>
+              <a href="/about">
+                
+                  <i class="fa fa-user "></i>
+                
+                关于我
+              </a>
+            </li>
+          
+            <li>
+              <a href="/friendly">
+                
+                  <i class="fa fa-bicycle "></i>
+                
+                友情链接
+              </a>
+            </li>
+          
+        </ul>
+      </div>
+      <!-- /.navbar-collapse -->
+    </nav>
+    <div class="button-wrap">
+      <button class="menu-toggle">Primary Menu</button>
+    </div>
+  </div>
+</header>
+
+
+  <!-- Main Content -->
+  <div class="content-area">
+  <div class="post">
+    <!-- Post Content -->
+    <div class="container">
+      <article>
+        <!-- Title date & tags -->
+        <div class="post-header">
+          <h1 class="entry-title">
+            C语言查缺补漏(七)
+            
+          </h1>
+         
+        </div>
+         <p class="a-posted-on">
+          2018-10-03
+          </p>
+        <!-- Post Main Content -->
+        <div class="entry-content">
+          <p><img src="/2018/10/03/C语言查缺补漏-7/titile.jpg" alt="titile"></p>
+<a id="more"></a>
+<h3 id="忽略点七-结构体内存对齐原则"><a href="#忽略点七-结构体内存对齐原则" class="headerlink" title="忽略点七:结构体内存对齐原则"></a>忽略点七:结构体内存对齐原则</h3><p>​    直到前几个星期做了一道选择题才知道，结构体元素的声明顺序可能影响结构体使用时所需的内存大小！！！</p>
+<p>​    一查才知道，在C语言中结构体有内存对齐原则，这个原则可以总结为两点：</p>
+<h5 id="——数据成员对齐规则："><a href="#——数据成员对齐规则：" class="headerlink" title="——数据成员对齐规则："></a>——数据成员对齐规则：</h5><p>​        结构体或联合体的数据成员，第一个数据成员放在offset为0的地方，以后每个成员存储的起始位置为该成员大小（当该成员为基本类型时）或者该成员的最大子成员大小(当该成员为数组，结构体等时)的整数倍位置</p>
+<h5 id="——收尾："><a href="#——收尾：" class="headerlink" title="——收尾："></a>——收尾：</h5><p>​        结构体所占内存的总大小，必须是它内部最大成员所占内存大小的整数倍(像数组，结构体等成员在计算时按其成员的最大成员所占内存算)，不是要补齐</p>
+<p>​    </p>
+<p>​    对于以上的文字，大家可能会不理解，给大家上份代码理解一手：</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">struct bb &#123;</span><br><span class="line">    int id;     	//所占内存位置为0～3</span><br><span class="line">    double weight;	//所占内存位置为8～15</span><br><span class="line">    char s[10];		//所占位置为16~25</span><br><span class="line">&#125;;					//整个结构体bb所占内存位置为 0~31	</span><br><span class="line"></span><br><span class="line">struct aa &#123;</span><br><span class="line">    char name[2]; 	//所占内存位置为0～1</span><br><span class="line">    bb	b;			//所占内存位置为8~39;</span><br><span class="line">    int age;		//所占内存位置为40~43;</span><br><span class="line">&#125;;					//整个结构体aa所占内存位置0~47</span><br></pre></td></tr></table></figure>
+<p>在结构体bb中：</p>
+<p>​    int类型id为4字节，所以占用0～3位置</p>
+<p>​    double类型weight为8字节，它的起始位置必须是8的整数倍，所以它的起始位置为8，占用位置为8～15</p>
+<p>​    char型数组s中最大成员单个char是1字节，所以char数组的起始位置必须是1的整数倍，所以它的起始位置为16，而数组长度为10，总占用字节为10，所以占用位置为16～25</p>
+<p>​    在结构体bb中，最大成员为double型的weight（有同学会说char s[10]最大，为什么不是char s[10]？因为char s的最大成员所占内存为1，s按照1进行比较），所以结构体bb总占用内存必须为8的整数倍，所以结构体bb的总内存地址为0～31</p>
+<p>在结构体aa中：</p>
+<p>​    char型数组name数组长度为2，单个char占1字节，数组总共占两字节，所以占用位置为0～1</p>
+<p>​    bb型结构体b中最大成员为double型的weight，所以bb类型的起始位置必须是8的整数倍，也就是8，而结构体bb总占用内存是32，所以占用b位置为8～39</p>
+<p>​    int型age为4字节，所以起始位置必须是4的整数倍，也就是40,所以它占用的位置是40～43</p>
+<p>​    在结构体aa中，最大成员是结构体b（它的最大成员weight占用内存为8），所以结构体aa总占用内存必须是8的整数倍，所以结构体aa的总内存地址为0～47</p>
+<p>​    </p>
+<p>​    讲到这儿，我们会有一个疑问，C语言为什么要有对齐原则呢？多浪费空间呀！大家可能知道桶排这种算法，以空间换时间。对齐原则也不例外，以耗费空间为代价，来加快寻址速度。</p>
+<p>​    至于原理：如果一个结构的最大成员字长为w，那么系统会假设在这种体系结构上字长为w的数据使用最频繁，优先提高对w位数据操作。所有的数据访问都以w位对齐，这样需要传输的地址位减少，寻址自然就可以加快。</p>
+<p>​    那么我们可以自己设定对齐规则吗？在规定的范围内是可以的，例如：</p>
+<p>​    在文件开头加 #pragma pack(1)            //不对齐</p>
+<p>​                #pragma pack(2)            //支持1,2对齐 </p>
+<p>​                #pragma pack(4)            //支持1,2,4对齐</p>
+<p>​                #pragma pack(8)            //支持1,2,4,8对齐（默认）</p>
+<p>​    也就是说pack是多少，结构体中的成员它的初始位置最多是多少的倍数</p>
+<p>​    </p>
+<p>​    嗯嗯，就酱紫~</p>
+<p>​    <a href="http://www.ivan-zcy.top" target="_blank" rel="noopener">转载请注明出处！！！</a>  </p>
+<p>​    如果有写的不对或者不全面的地方 可通过主页的联系方式进行指正，谢谢！</p>
+<p>​                </p>
+
+        </div>
+      </article>
+    </div>
+    <!-- Pre or Next -->
+    
+	<div class="container" >
+           <ul class="pager">
+    	     
+      	     <li class="previous">
+              <a href="/2018/10/03/C语言查缺补漏-8/" rel="prev">下一篇</a>
+             </li>
+           
+           
+              <li class="next">
+              <a href="/2018/10/02/C语言查缺补漏-6/" rel="prev">上一篇</a>
+            </li>
+           
+          </ul>
+       </div>
+　　　　<!-- Comments -->
+    <div class="container">
+      
+<section id="comment">
+  <!-- <h1 class="title">Comments</h1> -->
+
+  
+</section>
+
+
+    </div>
+   
+　　　　
+  </div>
+</div>
+
+
+  <!-- Footer -->
+  <!-- top -->
+<div id="rocket-to-top">
+  <div class="level-2"></div>
+  <div class="level-3"></div>
+</div>
+<script src="http://oct3pmpde.bkt.clouddn.com/top.js"></script>
+<script type="text/javascript" src="http://oct3pmpde.bkt.clouddn.com/jquery.js"></script>
+
+<!-- Footer -->
+<footer class="site-info">
+  <p>
+    <span>Zcy &copy; 2018</span>
+    
+      <span class="split">|</span>
+      <span>Zcy</span>
+      <p>Hosted by <a href="https://pages.coding.me" style="font-weight: bold">Coding Pages</a></p>
+    
+  </p>
+  <script async src="//dn-lbstatics.qbox.me/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+  本站总访问量22<span id="busuanzi_value_site_pv"></span>次
+  本站访客数13<span id="busuanzi_value_site_uv"></span>人次
+</footer>
+
+
+  <!-- After footer scripts -->
+  <!-- scripts -->
+<script src="/js/app.js"></script>
+
+
+
+</body>
+
+</html>
