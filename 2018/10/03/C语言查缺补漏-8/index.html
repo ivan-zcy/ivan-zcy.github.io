@@ -197,7 +197,7 @@
 <p>​    ——用来定义与平台无关的东西：</p>
 <p>​    比如定义一个叫Max_Double的浮点类型:</p>
 <figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">typedef long double Max_Double; //在一般平台的定义</span><br><span class="line">typedef double Max_Double;		//在不支持long double平台的定义</span><br><span class="line">typedef float Max_Double;  		//在不支持double平台的定义</span><br></pre></td></tr></table></figure>
-<p>​    这样在跨平台时，只需要改一下Max_Double定义即可，比如之前博文写的通用long long写法 <a href="http://www.ivan-zcy.top/2018/09/30/C语言查缺补漏-3/" target="_blank" rel="noopener">点这儿走你</a> 添加的&lt;inttype.h&gt;头文件就是采用了该方法。</p>
+<p>​    这样在跨平台时，只需要改一下Max_Double定义即可，比如之前博文写的通用long long写法 <a href="http://www.ivan-zcy.top/2018/09/30/C语言查缺补漏-3/">点这儿走你</a> 添加的&lt;inttype.h&gt;头文件就是采用了该方法。</p>
 <p>​    要记住！！！typedef是定义了一种类型的新别名，不是简单的字符串替换！！比如:</p>
 <figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">typedef int* T;</span><br><span class="line">int mystrcmp(const T);</span><br></pre></td></tr></table></figure>
 <p>​    const T等同于什么？我当初不假思索地以为是const int<em> 。然后现实给了我狠狠的打嘴巴子，它实际上相当于int</em> const。<strong>原因在于const给予了整个指针本身以常量性，也就是形成了常量指针int* const</strong> (简单来说，记住当const和typedef一起出现时，typedef不会是简单的字符串替换就行。)</p>
@@ -209,7 +209,7 @@
 <p>​    除此之外，typedef不能影响对象的存储特性！！！例如以下代码会出错：</p>
 <figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">typedef static int T;   //无法与之前的&apos;typedef&apos;声明说明符结合使用</span><br></pre></td></tr></table></figure>
 <p>​    最后再总结一句：typedef作用是为类型起别名，但不同于#define的简单替换！而且不同于#define替换时不作正确性检查，typedef是在编译时处理的。</p>
-<p><a href="http://www.ivan-zcy.top" target="_blank" rel="noopener">转载请注明出处！！！</a>  </p>
+<p><a href="http://www.ivan-zcy.top">转载请注明出处！！！</a>  </p>
 <p>​    如果有写的不对或者不全面的地方 可通过主页的联系方式进行指正，谢谢！</p>
 
         </div>
