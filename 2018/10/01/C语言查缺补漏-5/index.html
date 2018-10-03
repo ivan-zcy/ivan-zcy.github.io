@@ -178,7 +178,7 @@
           </p>
         <!-- Post Main Content -->
         <div class="entry-content">
-          <p><img src="/2018/10/01/C语言查缺补漏-5/title.jpg" alt="title"></p>
+          <p><img src="/01/C语言查缺补漏-5/title.jpg" alt="title"></p>
 <a id="more"></a>
 <h3 id="忽略点五-指针作参"><a href="#忽略点五-指针作参" class="headerlink" title="忽略点五:指针作参"></a>忽略点五:指针作参</h3><p>​    平时比赛很少用到指针（链表，动态数组都有对应的STL，字典树也可以用数组模拟），业精于勤荒于嬉，C语言的指针就这样被我遗忘了。。</p>
 <p>​    之前博文说过，C语言的优势之一就是在于能够直接访问物理地址，C语言的一大特色就是指针！！所以，学C语言舍弃指针是非常不明智的选择，终归是要还以前忽略的债。。苦笑～</p>
@@ -203,7 +203,7 @@
 <p>可我通过以下代码输出发现，a的值等于 a[0]</p>
 <figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">int a[2][2] = &#123;1, 2, 3, 4&#125;;</span><br><span class="line">printf(&quot;%p\n&quot;, a);</span><br><span class="line">printf(&quot;%p\n&quot;, *a);</span><br></pre></td></tr></table></figure>
 <p>输出为：</p>
-<p><img src="/2018/10/01/C语言查缺补漏-5/515E7E54-C1C3-4E2B-A854-93D2AAD5748D.png" alt="515E7E54-C1C3-4E2B-A854-93D2AAD5748D"></p>
+<p><img src="/01/C语言查缺补漏-5/515E7E54-C1C3-4E2B-A854-93D2AAD5748D.png" alt="515E7E54-C1C3-4E2B-A854-93D2AAD5748D"></p>
 <p>很迷茫。。。希望有大佬能为我解惑～</p>
 <h4 id="——对于结构体来说："><a href="#——对于结构体来说：" class="headerlink" title="——对于结构体来说："></a>——对于结构体来说：</h4><p>​    结构体指针和变量指针作参类似，但它的指针可通过 -&gt;符指向它的成员，举个栗子(截取遍历链表代码的一部分)：</p>
 <figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">struct node &#123;</span><br><span class="line">    int val;</span><br><span class="line">    node *next;</span><br><span class="line">&#125;</span><br><span class="line">void f(node *root) &#123;</span><br><span class="line">    while (root -&gt; next != NULL) &#123;</span><br><span class="line">        printf(&quot;%d\n&quot;, root -&gt; val)</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line">//省略代码</span><br><span class="line">node root = &#123;a, NULL&#125;;</span><br><span class="line">f(&amp;root);</span><br></pre></td></tr></table></figure>
