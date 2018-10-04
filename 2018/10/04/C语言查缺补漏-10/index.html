@@ -14,7 +14,7 @@
 
   <!--Open Graph Title-->
   
-      <meta property="og:title" content="Zcy"/>
+      <meta property="og:title" content="C语言查缺补漏(十)"/>
   
   <!--Open Graph Description-->
   
@@ -22,7 +22,7 @@
   <meta property="og:site_name" content="Zcy"/>
   <!--Type page-->
   
-      <meta property="og:type" content="website" />
+      <meta property="og:type" content="article" />
   
   <!--Page Cover-->
   
@@ -42,7 +42,7 @@
     </script>
   <!-- Title -->
   
-  <title>Archives: 2018/10 - Zcy</title>
+  <title>C语言查缺补漏(十) - Zcy</title>
 
 
   <link rel="shortcut icon" href="/favicon.ico">
@@ -162,201 +162,72 @@
 
 
   <!-- Main Content -->
-  
+  <div class="content-area">
+    <div class="post">
+        <!-- Post Content -->
+        <div class="container">
+            <article>
+                <!-- Title date & tags -->
+                <div class="post-header">
+                    <h1 class="entry-title">
+                        C语言查缺补漏(十)
+                        
+                    </h1>
 
-<!-- Main Content -->
-<div class="archive content-area">
-  <div class="container">
-    <h1 class="entry-title">2018/10</h1>
-    <div class="row">
-      <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
-        <!-- Use lodash to classify posts. See https://lodash.com/docs#groupBy
-          1. group site.posts by year
-          2. sort posts-in-one-year by Month and Day
-        -->
-        
+                </div>
+                <p class="a-posted-on">
+                    2018-10-04
+                </p>
+                <!-- Post Main Content -->
+                <div class="entry-content">
+                    <p><img src="/2018/10/04/C语言查缺补漏-10/title.jpg" alt="title"></p>
+<a id="more"></a>
+<h3 id="忽略点十：-ifndef与-endif"><a href="#忽略点十：-ifndef与-endif" class="headerlink" title="忽略点十：#ifndef与#endif"></a>忽略点十：#ifndef与#endif</h3><p>​    印象中两者在C/C++项目创建头文件时自动添加，一直没有深究它的意义，决定跟大家讲一下它的用法，顺便也是对自己的查缺补漏</p>
+<p>​    要将他们，首先要说一下项目，对于C语言项目来说，多文件中的每个文件的特殊全局变量，类型定义，函数可能需要在多个文件中被使用，这时可将这些全局变量，类型定义，函数声明单独写成一个头文件</p>
+<p>​    这些头文件一般采用  源文件名.h  命名，在需要用到该头文件的文件中采用#include “源文件名.h” 引用（注意不是尖括号&lt;&gt;，而是””）,不仅源文件可以引用头文件，头文件也可以引用头文件。</p>
+<p>​    这时候，会出现一种情况：源文件1.c中引用2.h和3.h头文件，而2.h头文件中也引用了3.h头文件。    这时3.h头文件被引用了两次，有可能会造成函数，变量的重复声明！！！</p>
+<p>​    为了避免这一种情况的出现，我们可以在3.h中定义一个宏：</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">#define 宏名</span><br></pre></td></tr></table></figure>
+<p>​    只要这个宏定义过，就跳过整个3.h的整个内容</p>
+<p>​    如何实现这一点呢？</p>
+<p>​    对，就是利用#ifndef 宏名和#endif，格式如下：</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">#ifndef 宏名		//判断是否声明过该宏名，如果声明过，直接跳到#endif</span><br><span class="line">#define 宏名		//如果没有声明过，声明该宏名</span><br><span class="line">//.h文件内容</span><br><span class="line">#endif</span><br></pre></td></tr></table></figure>
+<p>​    这样又会造成一个问题，若2.h的验证宏名为p（即#ifndef后声明的宏名），3.h的验证宏名也为p，那么先引用2.h，后引用3.h，会造成3.h引用不上。也就是说，必须得保证每个头文件的#ifndef后的宏名都不一样！！！</p>
+<p>​    因此，此类宏名有一个固定格式，即：工程名 _ 路径名_ 文件名_ H_ </p>
+<p>​    这样就能避免重名的风险</p>
+<p>​    以上就是#ifndef和#endif的全部，Over！</p>
+<p><a href="http://www.ivan-zcy.top">转载请注明出处！！！</a>  </p>
+<p>​    如果有写的不对或者不全面的地方 可通过主页的联系方式进行指正，谢谢！</p>
 
+                </div>
+            </article>
+        </div>
+        <!-- Pre or Next -->
         
-          <h2 class="year">2018</h2>
-          <ul class="list">
+        <div class="container" >
+            <ul class="pager">
+                
+                
+                <li class="next">
+                    <a href="/2018/10/04/C语言查缺补漏-9/" rel="prev">上一篇</a>
+                </li>
+                
+            </ul>
+        </div>
+        　　　　<!-- Comments -->
+        <div class="container">
             
-  <li>
-    <span class="date">
-      2018-10-04
-    </span>
-    <a href="/2018/10/04/C语言查缺补漏-9/" class="title">
-      C语言查缺补漏(九)
-    </a>
-  </li>
+<section id="comment">
+  <!-- <h1 class="title">Comments</h1> -->
 
-  <li>
-    <span class="date">
-      2018-10-04
-    </span>
-    <a href="/2018/10/04/C语言查缺补漏-10/" class="title">
-      C语言查缺补漏(十)
-    </a>
-  </li>
-
-  <li>
-    <span class="date">
-      2018-10-03
-    </span>
-    <a href="/2018/10/03/hexo18-10-03维护日志/" class="title">
-      hexo18.10.03维护日志
-    </a>
-  </li>
-
-  <li>
-    <span class="date">
-      2018-10-03
-    </span>
-    <a href="/2018/10/03/C语言查缺补漏-8/" class="title">
-      C语言查缺补漏(八)
-    </a>
-  </li>
-
-  <li>
-    <span class="date">
-      2018-10-03
-    </span>
-    <a href="/2018/10/03/C语言查缺补漏-7/" class="title">
-      C语言查缺补漏(七)
-    </a>
-  </li>
-
-  <li>
-    <span class="date">
-      2018-10-02
-    </span>
-    <a href="/2018/10/02/一个特别搞笑的故事哈哈/" class="title">
-      一个特别搞笑的故事哈哈
-    </a>
-  </li>
-
-  <li>
-    <span class="date">
-      2018-10-02
-    </span>
-    <a href="/2018/10/02/hexo加快访问速度/" class="title">
-      hexo加快访问速度
-    </a>
-  </li>
-
-  <li>
-    <span class="date">
-      2018-10-02
-    </span>
-    <a href="/2018/10/02/C语言查缺补漏-6/" class="title">
-      C语言查缺补漏(六)
-    </a>
-  </li>
-
-  <li>
-    <span class="date">
-      2018-10-01
-    </span>
-    <a href="/2018/10/01/C语言查缺补漏-5/" class="title">
-      C语言查缺补漏(五)
-    </a>
-  </li>
-
-  <li>
-    <span class="date">
-      2018-10-01
-    </span>
-    <a href="/2018/10/01/C语言查缺补漏-4/" class="title">
-      C语言查缺补漏(四)
-    </a>
-  </li>
-
-  <li>
-    <span class="date">
-      2018-09-30
-    </span>
-    <a href="/2018/09/30/Blog搭建流程-Mac系统完结帖/" class="title">
-      Blog搭建流程(Mac系统完结帖)
-    </a>
-  </li>
-
-  <li>
-    <span class="date">
-      2018-09-30
-    </span>
-    <a href="/2018/09/30/实用网站汇总——持续更新/" class="title">
-      实用网站汇总(持续更新)
-    </a>
-  </li>
-
-  <li>
-    <span class="date">
-      2018-09-30
-    </span>
-    <a href="/2018/09/30/c语言查缺补漏-1/" class="title">
-      C语言查缺补漏(一)
-    </a>
-  </li>
-
-  <li>
-    <span class="date">
-      2018-09-30
-    </span>
-    <a href="/2018/09/30/c语言查缺补漏-2/" class="title">
-      C语言查缺补漏(二)
-    </a>
-  </li>
-
-  <li>
-    <span class="date">
-      2018-09-30
-    </span>
-    <a href="/2018/09/30/C语言查缺补漏-3/" class="title">
-      C语言查缺补漏(三)
-    </a>
-  </li>
-
-  <li>
-    <span class="date">
-      2018-09-29
-    </span>
-    <a href="/2018/09/29/18-09-29博客搭建进度/" class="title">
-      18.09.29博客搭建进度
-    </a>
-  </li>
-
-  <li>
-    <span class="date">
-      2018-09-28
-    </span>
-    <a href="/2018/09/28/hexo更换主题流程/" class="title">
-      hexo更换主题流程
-    </a>
-  </li>
-
-  <li>
-    <span class="date">
-      2018-09-28
-    </span>
-    <a href="/2018/09/28/hexo发表博客常用命令/" class="title">
-      hexo发表博客常用命令
-    </a>
-  </li>
-
-  <li>
-    <span class="date">
-      2018-09-28
-    </span>
-    <a href="/2018/09/28/First-Blog/" class="title">
-      First Blog
-    </a>
-  </li>
+  
+</section>
 
 
-          </ul>
+        </div>
         
-      </div>
+        　　　　
     </div>
-  </div>
 </div>
 
 
