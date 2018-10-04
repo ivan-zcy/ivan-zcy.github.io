@@ -1,0 +1,284 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+
+<!-- Head tag -->
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+
+  <!--Description-->
+  
+
+  <!--Author-->
+  
+
+  <!--Open Graph Title-->
+  
+      <meta property="og:title" content="C语言查缺补漏(九)"/>
+  
+  <!--Open Graph Description-->
+  
+  <!--Open Graph Site Name-->
+  <meta property="og:site_name" content="Zcy"/>
+  <!--Type page-->
+  
+      <meta property="og:type" content="article" />
+  
+  <!--Page Cover-->
+  
+
+    <meta name="baidu-site-verification" content="8vgn54BtUC" />
+
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <!-- 百度统计 -->
+    <script>
+	var _hmt = _hmt || [];
+	(function() {
+  	var hm = document.createElement("script");
+  	hm.src = "https://hm.baidu.com/hm.js?c0451e16533956173997b85f7a8de666";
+  	var s = document.getElementsByTagName("script")[0]; 
+  	s.parentNode.insertBefore(hm, s);
+	})();
+    </script>
+  <!-- Title -->
+  
+  <title>C语言查缺补漏(九) - Zcy</title>
+
+
+  <link rel="shortcut icon" href="/favicon.ico">
+    <!--font-awesome-->
+  <link rel="stylesheet" href="//cdn.bootcss.com/font-awesome/4.5.0/css/font-awesome.min.css">
+  <!-- Custom CSS/Sass -->
+  <link rel="stylesheet" href="/css/style.css">
+    <script src="http://oct3pmpde.bkt.clouddn.com/jquery.js"></script>
+</head>
+
+
+<body>
+
+  <!-- Nav -->
+  <header class="site-header">
+  <div class="header-inside">
+    
+    <div class="logo">
+      <a href="/" rel="home">
+        
+        <img src="http://oct3pmpde.bkt.clouddn.com/timg.jpg" alt="Zcy" height="60">
+        
+      </a>
+    </div>
+    <a class="header-name" href="/">
+            <span>Zcy</span>
+            的小屋
+        </a>
+    <!-- navbar -->
+    <nav class="navbar">
+      <!--  nav links -->
+      <div class="collapse">
+        <ul class="navbar-nav">
+          
+          
+            <li>
+              <a href="/.">
+                
+                  <i class="fa fa-home "></i>
+                
+                小屋
+              </a>
+            </li>
+          
+            <li>
+              <a href="/archives">
+                
+                  <i class="fa fa-archive "></i>
+                
+                点滴
+              </a>
+            </li>
+          
+            <li>
+              <a href="/tags">
+                
+                  <i class="fa fa-archive "></i>
+                
+                标签
+              </a>
+            </li>
+          
+            <li>
+              <a href="/project">
+                
+                  <i class="fa fa-folder-open "></i>
+                
+                项目
+              </a>
+            </li>
+          
+            <li>
+              <a href="/photo">
+                
+                  <i class="fa fa-photo "></i>
+                
+                相册
+              </a>
+            </li>
+          
+            <li>
+              <a href="/guestbook">
+                
+                  <i class="fa fa-edit "></i>
+                
+                留言
+              </a>
+            </li>
+          
+            <li>
+              <a href="/about">
+                
+                  <i class="fa fa-user "></i>
+                
+                关于我
+              </a>
+            </li>
+          
+            <li>
+              <a href="/friendly">
+                
+                  <i class="fa fa-bicycle "></i>
+                
+                友情链接
+              </a>
+            </li>
+          
+        </ul>
+      </div>
+      <!-- /.navbar-collapse -->
+    </nav>
+    <div class="button-wrap">
+      <button class="menu-toggle">Primary Menu</button>
+    </div>
+  </div>
+</header>
+
+
+  <!-- Main Content -->
+  <div class="content-area">
+    <div class="post">
+        <!-- Post Content -->
+        <div class="container">
+            <article>
+                <!-- Title date & tags -->
+                <div class="post-header">
+                    <h1 class="entry-title">
+                        C语言查缺补漏(九)
+                        
+                    </h1>
+
+                </div>
+                <p class="a-posted-on">
+                    2018-10-04
+                </p>
+                <!-- Post Main Content -->
+                <div class="entry-content">
+                    <p><img src="/2018/10/04/C语言查缺补漏-9/title.jpg" alt="title"></p>
+<a id="more"></a>
+<h3 id="忽略点九：共用体与枚举类型"><a href="#忽略点九：共用体与枚举类型" class="headerlink" title="忽略点九：共用体与枚举类型"></a>忽略点九：共用体与枚举类型</h3><p>​    共用体？What？它是什么，上了两年大学的我有点懵逼。共用体已然成了我C语言的盲区。</p>
+<p>​    存在必然有它的意义，所以恶补了一下有关共用体的知识。</p>
+<p>​    在我的理解里，共用体和上一篇博文所介绍的结构体，都是用来存储不同数据类型的“容器”。</p>
+<p>​    那么他们两个的区别呢？从上上篇查缺补漏系列博文中 <a href="http://www.ivan-zcy.top/2018/10/03/C语言查缺补漏-7/">跳转至查缺补漏（七）</a>，我们知道结构体不同类型类型成员按照内存对齐规则，“排队”占用内存，而共用体，则是所有类型成员共用同一块内存（也就是说他们的起始位置都是从0开始）。</p>
+<p>​    既然所占用内存都是从0开始，那么共用体有两个特征：</p>
+<h3 id="——成员不会同时出现使用"><a href="#——成员不会同时出现使用" class="headerlink" title="——成员不会同时出现使用"></a>——成员不会同时出现使用</h3><p>后面出现的成员会覆盖掉之前成员的内容(也会相互影响)，因为两者的内存地址都是从0开始的，例如：</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">union A &#123;</span><br><span class="line">    int a;</span><br><span class="line">    int b;</span><br><span class="line">&#125;;</span><br><span class="line">//省略代码</span><br><span class="line">A p1;</span><br><span class="line">p1.a = 1; p1.b = 2;</span><br><span class="line">printf(&quot;%d %d\n&quot;, p1.a, p1.b);		//结果p1.a，p1.b输出都为2</span><br><span class="line">p1.a++;</span><br><span class="line">printf(&quot;%d %d\n&quot;, p1.a, p2.b);		//结果p1.a, p1.b都输出为3</span><br></pre></td></tr></table></figure>
+<h3 id="——收尾："><a href="#——收尾：" class="headerlink" title="——收尾："></a>——收尾：</h3><p> 共用体所占内存的总大小，必须是它内部最大成员所占内存大小的整数倍(像数组，结构体等成员在计算时按其成员的最大成员所占内存算)，不是要补齐</p>
+<p>给大家上份代码理解一手：</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">union A &#123;</span><br><span class="line">    int a;		//所占内存地址为0~3</span><br><span class="line">    int b;		//所占内存地址为0～3</span><br><span class="line">    char s[10]; //所占内存为0～9</span><br><span class="line">&#125;;				//共用体A总共所占内存地址为0～11</span><br><span class="line"></span><br><span class="line">union B &#123;</span><br><span class="line">    double t;	//所占内存地址为0～7</span><br><span class="line">    A a;		//所占内存地址为0～11</span><br><span class="line">    int b[3];	//所占内存内存地址0～11</span><br><span class="line">&#125;;				//共用体B总共所占内存地址为0～15</span><br></pre></td></tr></table></figure>
+<p>在共用体A中：</p>
+<p>​    int类型a为4字节，所以占用0～3位置</p>
+<p>​    int类型a为4字节，所以占用0～3位置</p>
+<p>​    char型数组s中最大成员单个char为1字节，而数组长度为10，所以占用0～9位置</p>
+<p>​    在共用体A中，最大成员为int型的4字节，所用占用内存大小为4的倍数，由于最大占用空间为10，所以共用体至少占用内存位置为0～11</p>
+<p>在共用体B中：</p>
+<p>​    double类型t为8字节，所以占用0～7位置</p>
+<p>​    A类型a中最大成员为int类型为4字节，A类型总的内存占用为12字节，所以占用0～11位置</p>
+<p>​    int型数组b中最大成员单个int为4字节，而数组长度为3，所以占用0～11位置</p>
+<p>​    在共用体B中，最大成员为double型的8字节，所用占用内存大小为8的倍数，由于最大占用空间为12，所以共用体至少占用内存位置为0～15</p>
+<p>​    </p>
+<p>由于共用体特别节省内存，所以大家不能学我，它在C语言中是不容忽略的！！！（比如用于存储IPV4，IPV6地址，可用共用体来存储）</p>
+<p>​    枚举类型大学期间使用次数仅仅比共用体好上那么一丢丢，举个枚举类型的栗子：</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">enum week &#123;</span><br><span class="line">    Sunday, Monday, Tuesday, Wednesday, Thursday, Friday, Saturday			//注意，最后没有分号！！！！！</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
+<p>关于枚举类型只要记住两点就可以：</p>
+<h5 id="——枚举类型只能由整数成员组成，每个成员对应一个整数编号（默认从0开始）"><a href="#——枚举类型只能由整数成员组成，每个成员对应一个整数编号（默认从0开始）" class="headerlink" title="——枚举类型只能由整数成员组成，每个成员对应一个整数编号（默认从0开始）"></a>——枚举类型只能由整数成员组成，每个成员对应一个整数编号（默认从0开始）</h5><p>​    例如上边代码，默认Sunday的值为0，Monday的值为1，一直到Saturday的值为6</p>
+<h5 id="——枚举类型的值可相同，未显性赋值的成员将从它前一个显性编号的成员以此-1"><a href="#——枚举类型的值可相同，未显性赋值的成员将从它前一个显性编号的成员以此-1" class="headerlink" title="——枚举类型的值可相同，未显性赋值的成员将从它前一个显性编号的成员以此+1"></a>——枚举类型的值可相同，未显性赋值的成员将从它前一个显性编号的成员以此+1</h5><p>​    例如以下代码中：</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">enum week &#123;</span><br><span class="line">    Sunday = 1, Monday, Tuesday, Wednesday = 0, Thursday, Friday, Saturday			//注意，最后没有分号！！！！！</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
+<p>​    上边代码中，Sunday为1，Monday为2，Tuesday为3，Wednesday为0，Thursday为1，Friday为2， Saturday为3</p>
+<p>​    好啦，共用体和枚举类型查缺补漏完毕！</p>
+<p><a href="http://www.ivan-zcy.top">转载请注明出处！！！</a>  </p>
+<p>​    如果有写的不对或者不全面的地方 可通过主页的联系方式进行指正，谢谢！</p>
+
+                </div>
+            </article>
+        </div>
+        <!-- Pre or Next -->
+        
+        <div class="container" >
+            <ul class="pager">
+                
+                
+                <li class="next">
+                    <a href="/2018/10/03/hexo18-10-03维护日志/" rel="prev">上一篇</a>
+                </li>
+                
+            </ul>
+        </div>
+        　　　　<!-- Comments -->
+        <div class="container">
+            
+<section id="comment">
+  <!-- <h1 class="title">Comments</h1> -->
+
+  
+</section>
+
+
+        </div>
+        
+        　　　　
+    </div>
+</div>
+
+
+
+  <!-- Footer -->
+  <!-- top -->
+<div id="rocket-to-top">
+  <div class="level-2"></div>
+  <div class="level-3"></div>
+</div>
+<script src="http://oct3pmpde.bkt.clouddn.com/top.js"></script>
+<script type="text/javascript" src="http://oct3pmpde.bkt.clouddn.com/jquery.js"></script>
+
+<!-- Footer -->
+<footer class="site-info">
+  <p>
+    <span>Zcy &copy; 2018</span>
+    
+      <span class="split">|</span>
+      <span>Zcy</span>
+      <p>Hosted by <a href="https://pages.coding.me" style="font-weight: bold">Coding Pages</a></p>
+    
+  </p>
+  <script async src="//dn-lbstatics.qbox.me/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+  本站总访问量22<span id="busuanzi_value_site_pv"></span>次
+  本站访客数13<span id="busuanzi_value_site_uv"></span>人次
+</footer>
+
+
+  <!-- After footer scripts -->
+  <!-- scripts -->
+<script src="/js/app.js"></script>
+
+
+
+</body>
+
+</html>
