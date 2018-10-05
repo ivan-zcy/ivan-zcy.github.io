@@ -239,13 +239,16 @@ window.document.write('<script id="changyan_mobile_js" charset="utf-8" type="tex
       (function(){
           function _scroll(){
               var acticles = $('.article > .container');
-              console.log(acticles);
               var height = window.innerHeight || document.body.offsetHeight;
-              console.log(height);
+              acticles.each(function () {
+                  var top = this.getBoundingClientRect().top;
+                  if(top < height - 100){
+                      $(this).addClass('animated');
+                  }
+              })
               $(window).scroll(function () {
                   acticles.each(function () {
                       var top = this.getBoundingClientRect().top;
-                      console.log(top + 'px');
                       if(top < height - 100){
                           $(this).addClass('animated');
                       }
