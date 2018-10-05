@@ -242,9 +242,9 @@
         </div>
       
         <div class="post-preview">
-            <a href="/2018/09/30/C语言查缺补漏-3/">
+            <a href="/2018/10/01/C语言查缺补漏-4/">
                 <h2 class="post-title">
-                    C语言查缺补漏(三)
+                    C语言查缺补漏(四)
                 </h2>
                 
             </a>
@@ -252,9 +252,9 @@
         </div>
       
         <div class="post-preview">
-            <a href="/2018/10/01/C语言查缺补漏-4/">
+            <a href="/2018/09/30/C语言查缺补漏-3/">
                 <h2 class="post-title">
-                    C语言查缺补漏(四)
+                    C语言查缺补漏(三)
                 </h2>
                 
             </a>
@@ -450,7 +450,6 @@
               var height = window.innerHeight || document.body.offsetHeight;
               acticles.each(function () {
                   var top = this.getBoundingClientRect().top;
-                  console.log(top);
                   if(top < height - 100){
                       if(!$(this).hasClass('animated')) {
                           $(this).addClass('slideInRight');
@@ -462,7 +461,6 @@
               $(window).scroll(function () {
                   acticles.each(function () {
                       var top = this.getBoundingClientRect().top;
-                      console.log(top);
                       if(top < height - 100){
                           if(!$(this).hasClass('animated')) {
                               $(this).addClass('slideInRight');
