@@ -371,7 +371,7 @@ li span.language{
                   acticles.each(function () {
                       var top = this.getBoundingClientRect().top;
                       console.log(top);
-                      if(top < height - 300){
+                      if(top < height - 100){
                           if(!$(this).hasClass('animated')) {
                               $(this).css(display, 'block');
                               $(this).addClass('animated');
