@@ -281,7 +281,7 @@
               var height = window.innerHeight || document.body.offsetHeight;
               acticles.each(function () {
                   var top = this.getBoundingClientRect().top;
-                  if(top < height){
+                  if(top < height ){
                       if(!$(this).hasClass('animated')) {
                           $(this).addClass('slideInRight');
                           $(this).addClass('animated');
@@ -292,7 +292,7 @@
               $(window).scroll(function () {
                   acticles.each(function () {
                       var top = this.getBoundingClientRect().top;
-                      if(top < height){
+                      if(top < height ){
                           if(!$(this).hasClass('animated')) {
                               $(this).addClass('slideInRight');
                               $(this).addClass('animated');
