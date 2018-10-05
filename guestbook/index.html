@@ -247,7 +247,7 @@ window.document.write('<script id="changyan_mobile_js" charset="utf-8" type="tex
                       console.log(top);
                       if(top < height - 300){
                           if(!$(this).hasClass('animated')) {
-                              $(this).(display, 'block');
+                              $(this).css(display, 'block');
                               $(this).addClass('animated');
                           }
                       }
