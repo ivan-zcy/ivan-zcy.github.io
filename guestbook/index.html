@@ -237,6 +237,7 @@ window.document.write('<script id="changyan_mobile_js" charset="utf-8" type="tex
 
   <script>
       (function(){
+
           function _scroll(){
               var acticles = $('.article > .container');
               var height = window.innerHeight || document.body.offsetHeight;
@@ -250,7 +251,20 @@ window.document.write('<script id="changyan_mobile_js" charset="utf-8" type="tex
                       }
                   }
               })
-              $(window).scroll(function () {
+              var throttle = function(func,delay){
+                  var prev = Date.now();
+                  return function(){
+                      var context = this;
+                      var args = arguments;
+                      var now = Date.now();
+                      if(now-prev>=delay){
+                          func.apply(context,args);
+                          prev = Date.now();
+                      }
+                  }
+              }
+
+              $(window).scroll(throttle(function () {
                   acticles.each(function () {
                       var top = this.getBoundingClientRect().top;
                       if(top < height - 100){
@@ -260,8 +274,10 @@ window.document.write('<script id="changyan_mobile_js" charset="utf-8" type="tex
                           }
                       }
                   })
-              })
+              },200))
           }
+
+
           var bp = document.createElement('script');
           var curProtocol = window.location.protocol.split(':')[0];
           if (curProtocol === 'https') {
