@@ -54,7 +54,6 @@
   <!-- Custom CSS/Sass -->
   <link rel="stylesheet" href="/css/style.css">
     <script src="http://oct3pmpde.bkt.clouddn.com/jquery.js"></script>
-    <script src="/js/scroll.js"></script>
 </head>
 
 
@@ -471,6 +470,20 @@
 
   <script>
       (function(){
+          function _scroll(){
+              var acticles = $('.article');
+              console.log(acticles);
+              var height = window.innerHeight || document.body.offsetHeight;
+              $(window).scroll(function () {
+                  acticles.each(function () {
+                      var top = this.getBoundingClientRect().top();
+                      console.log(top);
+                      if(top < height - 100){
+                          $(this).addClass('animated');
+                      }
+                  })
+              })
+          }
           var bp = document.createElement('script');
           var curProtocol = window.location.protocol.split(':')[0];
           if (curProtocol === 'https') {
@@ -481,6 +494,7 @@
           }
           var s = document.getElementsByTagName("script")[0];
           s.parentNode.insertBefore(bp, s);
+          _scroll();
       })();
   </script>
 
