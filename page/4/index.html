@@ -468,14 +468,22 @@
           function _scroll(){
               var acticles = $('.article > .container');
               var height = window.innerHeight || document.body.offsetHeight;
-              console.log(height);
+              acticles.each(function () {
+                  var top = this.getBoundingClientRect().top;
+                  console.log(top);
+                  if(top < height - 100){
+                      if(!$(this).hasClass('animated')) {
+                          $(this).addClass('rubberBand');
+                          $(this).addClass('animated');
+                      }
+                  }
+              })
               $(window).scroll(function () {
                   acticles.each(function () {
                       var top = this.getBoundingClientRect().top;
-                      console.log(top);
                       if(top < height - 100){
                           if(!$(this).hasClass('animated')) {
-                              $(this).addClass('rollIn');
+                              $(this).addClass('rubberBand');
                               $(this).addClass('animated');
                           }
                       }

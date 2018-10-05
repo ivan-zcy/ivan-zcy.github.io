@@ -242,6 +242,16 @@
         </div>
       
         <div class="post-preview">
+            <a href="/2018/10/01/C语言查缺补漏-5/">
+                <h2 class="post-title">
+                    C语言查缺补漏(五)
+                </h2>
+                
+            </a>
+            <!-- <p class="post-meta">{{ post.date | date:"%Y-%m-%d" }}</p> -->
+        </div>
+      
+        <div class="post-preview">
             <a href="/2018/09/30/C语言查缺补漏-3/">
                 <h2 class="post-title">
                     C语言查缺补漏(三)
@@ -262,19 +272,9 @@
         </div>
       
         <div class="post-preview">
-            <a href="/2018/10/01/C语言查缺补漏-5/">
+            <a href="/2018/10/03/C语言查缺补漏-8/">
                 <h2 class="post-title">
-                    C语言查缺补漏(五)
-                </h2>
-                
-            </a>
-            <!-- <p class="post-meta">{{ post.date | date:"%Y-%m-%d" }}</p> -->
-        </div>
-      
-        <div class="post-preview">
-            <a href="/2018/10/02/C语言查缺补漏-6/">
-                <h2 class="post-title">
-                    C语言查缺补漏(六)
+                    C语言查缺补漏(八)
                 </h2>
                 
             </a>
@@ -292,9 +292,9 @@
         </div>
       
         <div class="post-preview">
-            <a href="/2018/10/03/C语言查缺补漏-8/">
+            <a href="/2018/10/02/C语言查缺补漏-6/">
                 <h2 class="post-title">
-                    C语言查缺补漏(八)
+                    C语言查缺补漏(六)
                 </h2>
                 
             </a>
@@ -339,16 +339,6 @@
       </span>
       
         <div class="post-preview">
-            <a href="/2018/10/02/hexo加快访问速度/">
-                <h2 class="post-title">
-                    hexo加快访问速度
-                </h2>
-                
-            </a>
-            <!-- <p class="post-meta">{{ post.date | date:"%Y-%m-%d" }}</p> -->
-        </div>
-      
-        <div class="post-preview">
             <a href="/2018/09/28/hexo发表博客常用命令/">
                 <h2 class="post-title">
                     hexo发表博客常用命令
@@ -359,9 +349,9 @@
         </div>
       
         <div class="post-preview">
-            <a href="/2018/09/28/hexo更换主题流程/">
+            <a href="/2018/10/02/hexo加快访问速度/">
                 <h2 class="post-title">
-                    hexo更换主题流程
+                    hexo加快访问速度
                 </h2>
                 
             </a>
@@ -372,6 +362,16 @@
             <a href="/2018/10/04/如何让hexo博文被百度收录/">
                 <h2 class="post-title">
                     如何让hexo博文被百度收录
+                </h2>
+                
+            </a>
+            <!-- <p class="post-meta">{{ post.date | date:"%Y-%m-%d" }}</p> -->
+        </div>
+      
+        <div class="post-preview">
+            <a href="/2018/09/28/hexo更换主题流程/">
+                <h2 class="post-title">
+                    hexo更换主题流程
                 </h2>
                 
             </a>
@@ -447,14 +447,22 @@
           function _scroll(){
               var acticles = $('.article > .container');
               var height = window.innerHeight || document.body.offsetHeight;
-              console.log(height);
+              acticles.each(function () {
+                  var top = this.getBoundingClientRect().top;
+                  console.log(top);
+                  if(top < height - 100){
+                      if(!$(this).hasClass('animated')) {
+                          $(this).addClass('rubberBand');
+                          $(this).addClass('animated');
+                      }
+                  }
+              })
               $(window).scroll(function () {
                   acticles.each(function () {
                       var top = this.getBoundingClientRect().top;
-                      console.log(top);
                       if(top < height - 100){
                           if(!$(this).hasClass('animated')) {
-                              $(this).addClass('rollIn');
+                              $(this).addClass('rubberBand');
                               $(this).addClass('animated');
                           }
                       }
