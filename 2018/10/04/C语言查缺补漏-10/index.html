@@ -274,10 +274,11 @@
           function _scroll(){
               var acticles = $('.article > .container');
               var height = window.innerHeight || document.body.offsetHeight;
-
+              console.log(height);
               $(window).scroll(function () {
                   acticles.each(function () {
                       var top = this.getBoundingClientRect().top;
+                      console.log(top);
                       if(top < height - 100){
                           $(this).addClass('animated');
                       }

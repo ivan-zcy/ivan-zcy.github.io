@@ -262,9 +262,9 @@
         </div>
       
         <div class="post-preview">
-            <a href="/2018/10/01/C语言查缺补漏-5/">
+            <a href="/2018/10/02/C语言查缺补漏-6/">
                 <h2 class="post-title">
-                    C语言查缺补漏(五)
+                    C语言查缺补漏(六)
                 </h2>
                 
             </a>
@@ -272,9 +272,9 @@
         </div>
       
         <div class="post-preview">
-            <a href="/2018/10/02/C语言查缺补漏-6/">
+            <a href="/2018/10/01/C语言查缺补漏-5/">
                 <h2 class="post-title">
-                    C语言查缺补漏(六)
+                    C语言查缺补漏(五)
                 </h2>
                 
             </a>
@@ -447,10 +447,11 @@
           function _scroll(){
               var acticles = $('.article > .container');
               var height = window.innerHeight || document.body.offsetHeight;
-
+              console.log(height);
               $(window).scroll(function () {
                   acticles.each(function () {
                       var top = this.getBoundingClientRect().top;
+                      console.log(top);
                       if(top < height - 100){
                           $(this).addClass('animated');
                       }
