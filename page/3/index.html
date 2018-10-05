@@ -498,7 +498,7 @@
                   }
               }
 
-              $(window).scroll(throttle(function () {
+              $(window).scroll(function () {
                   acticles.each(function () {
                       var top = this.getBoundingClientRect().top;
                       if(top < height - 100){
@@ -508,7 +508,7 @@
                           }
                       }
                   })
-              },1))
+              })
           }
 
 

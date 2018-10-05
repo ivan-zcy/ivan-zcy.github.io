@@ -265,7 +265,7 @@ window.document.write('<script id="changyan_mobile_js" charset="utf-8" type="tex
                   }
               }
 
-              $(window).scroll(throttle(function () {
+              $(window).scroll(function () {
                   acticles.each(function () {
                       var top = this.getBoundingClientRect().top;
                       if(top < height - 100){
@@ -275,7 +275,7 @@ window.document.write('<script id="changyan_mobile_js" charset="utf-8" type="tex
                           }
                       }
                   })
-              },1))
+              })
           }
 
 
