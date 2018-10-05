@@ -255,8 +255,10 @@ window.document.write('<script id="changyan_mobile_js" charset="utf-8" type="tex
               $(window).scroll(function () {
                   acticles.each(function () {
                       var top = this.getBoundingClientRect().top;
+                      console.log(top);
                       if(top < height - 100){
                           if(!$(this).hasClass('animated')) {
+                              console.log("ok");
                               $(this).addClass('slideInRight');
                               $(this).addClass('animated');
                           }
