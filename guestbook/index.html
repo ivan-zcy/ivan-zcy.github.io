@@ -246,7 +246,9 @@ window.document.write('<script id="changyan_mobile_js" charset="utf-8" type="tex
                       var top = this.getBoundingClientRect().top;
                       console.log(top);
                       if(top < height - 100){
-                          $(this).addClass('animated');
+                          if(!$(this).hasClass('animated')) {
+                              $(this).addClass('animated');
+                          }
                       }
                   })
               })
