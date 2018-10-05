@@ -768,7 +768,7 @@ Content
 .meta-arraw {
   width: 10px;
   height: 17px;
-  background: url("../images/arrow-left.svg") no-repeat;
+  background: url("./images/arrow-left.svg") no-repeat;
   display: inline-block;
   margin-bottom: -4px;
   margin-right: 5px;
@@ -776,10 +776,10 @@ Content
   transition: opacity 0.5s ease; }
 
 .meta-arraw-left {
-  background: url("../images/arrow-left.svg") no-repeat; }
+  background: url("./images/arrow-left.svg") no-repeat; }
 
 .meta-arraw-right {
-  background: url("../images/arrow-right.svg") no-repeat; }
+  background: url("./images/arrow-right.svg") no-repeat; }
 
 /*--------------------------------------------------------------
 Comment
@@ -855,7 +855,7 @@ Footer
   .site-header .menu-toggle {
     width: 20px;
     height: 20px;
-    background: url("../images/menu.svg") center no-repeat;
+    background: url("./images/menu.svg") center no-repeat;
     text-indent: -99999px;
     overflow: hidden;
     border: none;
