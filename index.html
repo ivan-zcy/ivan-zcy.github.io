@@ -48,6 +48,8 @@
   <link rel="shortcut icon" href="/favicon.ico">
     <!--font-awesome-->
   <link rel="stylesheet" href="//cdn.bootcss.com/font-awesome/4.5.0/css/font-awesome.min.css">
+
+    <link rel="stylesheet" href="/css/thplayer.css">
   <!-- Custom CSS/Sass -->
   <link rel="stylesheet" href="/css/style.css">
     <script src="http://oct3pmpde.bkt.clouddn.com/jquery.js"></script>
@@ -414,6 +416,16 @@
 
 
   </main>
+    <div id="Thplayer"></div>
+    <script type="application/javascript" src="/js/thplayer.min.js"></script>
+    <script>
+        $("#Thplayer").thplayer({
+            title: "蓝莲花",
+            author: "许巍",
+            cover: "http://p3.music.126.net/C6txAWMGlVmAcAD37RVutQ==/122045790684028.jpg",
+            music: "http://p2.music.126.net/K7TQv1uggESpMwlYo2hvlQ==/7724069186226916.mp3"
+        });
+    </script>
 
 </div>
 
