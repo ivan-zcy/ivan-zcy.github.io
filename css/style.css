@@ -519,7 +519,9 @@ Common
 Content
 --------------------------------------------------------------*/
 .site-content {
-  min-height: calc(100% - 274px); }
+  min-height: calc(100% - 274px);
+  width: 100%;
+  overflow-x: hidden; }
 
 .content-header {
   width: 100%;
