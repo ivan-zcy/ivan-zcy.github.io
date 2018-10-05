@@ -1,5 +1,5 @@
 function _scroll(){
-    var acticles = $('main.content-area > div.article');
+    var acticles = $('.article');
     console.log(acticles);
     var height = window.innerHeight || document.body.offsetHeight;
     $(window).scroll(function () {
