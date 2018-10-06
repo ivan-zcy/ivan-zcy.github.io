@@ -209,6 +209,9 @@
 <figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">.PHONY: clean</span><br><span class="line"></span><br><span class="line">clean:</span><br><span class="line">    rm -f array.o main.o main</span><br></pre></td></tr></table></figure>
 <p>抛出一个较为完整的<code>Makefile</code> 栗子：</p>
 <figure class="highlight plain"><table><tr><td class="code"><pre><span class="line"># 井号开头的行是一个注释</span><br><span class="line"># 设置 C 语言的编译器</span><br><span class="line">CC = gcc</span><br><span class="line"></span><br><span class="line"># -g 增加调试信息</span><br><span class="line"># -Wall 打开大部分警告信息</span><br><span class="line">CFLAGS = -g -Wall</span><br><span class="line"></span><br><span class="line"># 整理一下 main 依赖哪些目标文件</span><br><span class="line">MAINOBJS = main.o array.o</span><br><span class="line"></span><br><span class="line">.PHONY: clean</span><br><span class="line"></span><br><span class="line">main: $(MAINOBJS)</span><br><span class="line">    $(CC) $(CFLAGS) -o main $(MAINOBJS)		</span><br><span class="line">    #定义的变量可通过$(变量名)使用</span><br><span class="line"></span><br><span class="line">array.o: array.c array.h</span><br><span class="line">    $(CC) $(CFLAGS) -c -o array.o array.c</span><br><span class="line"></span><br><span class="line">main.o: main.c array.h</span><br><span class="line">    $(CC) $(CFLAGS) -c -o main.o main.c</span><br><span class="line"></span><br><span class="line">clean:</span><br><span class="line">    rm -f $(MAINOBJS) main</span><br></pre></td></tr></table></figure>
+<p><a href="http://www.ivan-zcy.top">转载请注明出处！！！</a>  </p>
+<p>如果有写的不对或者不全面的地方 可通过主页的联系方式进行指正，谢谢！</p>
+
                 </div>
             </article>
         </div>

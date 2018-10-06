@@ -14,7 +14,7 @@
 
   <!--Open Graph Title-->
   
-      <meta property="og:title" content="Zcy"/>
+      <meta property="og:title" content="MacOS High问题及解决方法(转载)"/>
   
   <!--Open Graph Description-->
   
@@ -22,7 +22,7 @@
   <meta property="og:site_name" content="Zcy"/>
   <!--Type page-->
   
-      <meta property="og:type" content="website" />
+      <meta property="og:type" content="article" />
   
   <!--Page Cover-->
   
@@ -42,7 +42,7 @@
     </script>
   <!-- Title -->
   
-  <title>Archives: 2018/10 - Zcy</title>
+  <title>MacOS High问题及解决方法(转载) - Zcy</title>
 
 
   <link rel="shortcut icon" href="/favicon.ico">
@@ -165,264 +165,83 @@
 
 
   <!-- Main Content -->
-  
+  <div class="content-area">
+    <div class="post">
+        <!-- Post Content -->
+        <div class="container">
+            <article>
+                <!-- Title date & tags -->
+                <div class="post-header">
+                    <h1 class="entry-title">
+                        MacOS High问题及解决方法(转载)
+                        
+                    </h1>
 
-<!-- Main Content -->
-<div class="archive content-area">
-  <div class="container">
-    <h1 class="entry-title">2018/10</h1>
-    <div class="row">
-      <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
-        <!-- Use lodash to classify posts. See https://lodash.com/docs#groupBy
-          1. group site.posts by year
-          2. sort posts-in-one-year by Month and Day
-        -->
-        
+                </div>
+                <p class="a-posted-on">
+                    2018-10-06
+                </p>
+                <!-- Post Main Content -->
+                <div class="entry-content">
+                    <p><img src="/2018/10/06/MacOS-High问题及解决方法-转载/title.jpg" alt="title"></p>
+<a id="more"></a>
+<h2 id="原文地址：https-blog-csdn-net-jackymvc-article-details-78256120"><a href="#原文地址：https-blog-csdn-net-jackymvc-article-details-78256120" class="headerlink" title="原文地址：https://blog.csdn.net/jackymvc/article/details/78256120"></a>原文地址：<a href="https://blog.csdn.net/jackymvc/article/details/78256120" target="_blank" rel="noopener">https://blog.csdn.net/jackymvc/article/details/78256120</a></h2><p><div id="article_content" class="article_content clearfix csdn-tracking-statistics" data-pid="blog" data-mod="popu_307" data-dsm="post"><br>                                            <link rel="stylesheet" href="https://csdnimg.cn/release/phoenix/template/css/ck_htmledit_views-e2445db1a8.css"><br>                        <div class="htmledit_views"><br>OSX的High Sierra正式版出来半个月有余，听着什么自媒体、科技媒体吹这系统多么牛B，手贱点了升级，好在升级过程中没有遇到各种坑还挺顺利的，但是我没有感觉多么好用的同时，却给我带来不大不小的麻烦。且听我一一道来……</div></div></p>
+<p>10.13版本加强了权限的限制，尤其是对/usr/local目录，默认开通 SIP （System Intergrity Protection），它禁止了软件以root身份在Mac上运行，不管你是在终端中如何运行</p>
+<p>MyMBP:~ Jacky$ sudo chown -R $(whoami) /usr/local ，返回给你的就是 chown: Operation not permitted，哪怕你是用root的身份。</p>
+<p>有些软件在运行过程中需要对/usr/local下的文件读写，比如你更新ruby，起因是我要通过homebrew来安装zookeeper</p>
+<p>brew install zookeeper</p>
+<p>运行后下载了zookeeper，但是安装过程中，报了一个ruby的错误（原谅我没有截图），大意是ruby 2.3.0已经不被High Sierra支持了，看样子是要更新ruby</p>
+<p>顺序做了一些操作，都没有起什么作用</p>
+<p>rvm -v发现是1.19.3版本最新的已经到1.29.3了</p>
+<p>ruby -v版本是2.3.0，最新已经到2.4.2了</p>
+<p>rvm install 2.4.2也是由于权限问题安装不了</p>
+<p>看来只有关掉SIP了</p>
+<p>1.重启Mac，按住Command + R键直到Apple Logo出现，进入Recovery Mode模式（我感觉我是按了好半天）</p>
+<p>2.点击工具里的Terminal（终端）</p>
+<p>3.输入csrutil disable，之后回车</p>
+<p>4.重启Mac</p>
+<p>5.重启完成后，终端中输入sudo chflags norestricted /usr/local &amp;&amp; sudo chown -R $(whoami):admin /usr/local</p>
+<p>成功执行，没有报操作不允许了</p>
+<p>（如果想重新开启安全设置，则重复1、2步骤，输入csrutil enable就可以了）</p>
+<p>更新rvm工具：curl -L get.rvm.io | bash -s stable</p>
+<p>rvm install 2.4.2（这次可以正确安装ruby了，别问我为什么是2.4.2版本）</p>
+<p>然后就是安装zookeeper</p>
+<p>brew install zookeeper（这次也正确安装了）</p>
+<p>后来又重启过一次，发现我的mysql不能开机启动了</p>
+<p>在系统偏好设置最下方找到MySQL的图标，打开后发现mysql已经停止，且有一行警告：the /usr/local/mysql/data directory is not owned by the ‘mysql’ or ‘_mysql’ user</p>
+<p>这个好办：sudo chown -R mysql /usr/local/mysql/data</p>
+<p>然后就可以启动mysql了</p>
+<p>自从长乔帮主走后，苹果办事越来越不上心了，哪怕是自己的OSX系统，伤心……估计还会有不少童鞋遇到我类似的情况，不妨一试</p>
 
+                </div>
+            </article>
+        </div>
+        <!-- Pre or Next -->
         
-          <h2 class="year">2018</h2>
-          <ul class="list">
+        <div class="container" >
+            <ul class="pager">
+                
+                
+                <li class="next">
+                    <a href="/2018/10/06/C语言查缺补漏-14/" rel="prev">上一篇</a>
+                </li>
+                
+            </ul>
+        </div>
+        　　　　<!-- Comments -->
+        <div class="container">
             
-  <li>
-    <span class="date">
-      2018-10-06
-    </span>
-    <a href="/2018/10/06/MacOS-High问题及解决方法-转载/" class="title">
-      MacOS High问题及解决方法(转载)
-    </a>
-  </li>
+<section id="comment">
+  <!-- <h1 class="title">Comments</h1> -->
 
-  <li>
-    <span class="date">
-      2018-10-06
-    </span>
-    <a href="/2018/10/06/C语言查缺补漏-14/" class="title">
-      C语言查缺补漏(十四)
-    </a>
-  </li>
-
-  <li>
-    <span class="date">
-      2018-10-06
-    </span>
-    <a href="/2018/10/06/C语言查缺补漏-13/" class="title">
-      C语言查缺补漏(十三)
-    </a>
-  </li>
-
-  <li>
-    <span class="date">
-      2018-10-06
-    </span>
-    <a href="/2018/10/06/C语言查缺补漏-12/" class="title">
-      C语言查缺补漏(十二)
-    </a>
-  </li>
-
-  <li>
-    <span class="date">
-      2018-10-06
-    </span>
-    <a href="/2018/10/06/C语言查缺补漏-11/" class="title">
-      C语言查缺补漏(十一)
-    </a>
-  </li>
-
-  <li>
-    <span class="date">
-      2018-10-05
-    </span>
-    <a href="/2018/10/05/18-10-05博客搭建进度/" class="title">
-      18-10-05博客搭建进度
-    </a>
-  </li>
-
-  <li>
-    <span class="date">
-      2018-10-04
-    </span>
-    <a href="/2018/10/04/如何让hexo博文被百度收录/" class="title">
-      如何让hexo博文被百度收录
-    </a>
-  </li>
-
-  <li>
-    <span class="date">
-      2018-10-04
-    </span>
-    <a href="/2018/10/04/C语言查缺补漏-9/" class="title">
-      C语言查缺补漏(九)
-    </a>
-  </li>
-
-  <li>
-    <span class="date">
-      2018-10-04
-    </span>
-    <a href="/2018/10/04/C语言查缺补漏-10/" class="title">
-      C语言查缺补漏(十)
-    </a>
-  </li>
-
-  <li>
-    <span class="date">
-      2018-10-03
-    </span>
-    <a href="/2018/10/03/C语言查缺补漏-8/" class="title">
-      C语言查缺补漏(八)
-    </a>
-  </li>
-
-  <li>
-    <span class="date">
-      2018-10-03
-    </span>
-    <a href="/2018/10/03/C语言查缺补漏-7/" class="title">
-      C语言查缺补漏(七)
-    </a>
-  </li>
-
-  <li>
-    <span class="date">
-      2018-10-03
-    </span>
-    <a href="/2018/10/03/18-10-03博客搭建进度/" class="title">
-      18-10-03博客搭建进度
-    </a>
-  </li>
-
-  <li>
-    <span class="date">
-      2018-10-02
-    </span>
-    <a href="/2018/10/02/一个特别搞笑的故事哈哈/" class="title">
-      一个特别搞笑的故事哈哈
-    </a>
-  </li>
-
-  <li>
-    <span class="date">
-      2018-10-02
-    </span>
-    <a href="/2018/10/02/hexo加快访问速度/" class="title">
-      hexo加快访问速度
-    </a>
-  </li>
-
-  <li>
-    <span class="date">
-      2018-10-02
-    </span>
-    <a href="/2018/10/02/C语言查缺补漏-6/" class="title">
-      C语言查缺补漏(六)
-    </a>
-  </li>
-
-  <li>
-    <span class="date">
-      2018-10-01
-    </span>
-    <a href="/2018/10/01/C语言查缺补漏-5/" class="title">
-      C语言查缺补漏(五)
-    </a>
-  </li>
-
-  <li>
-    <span class="date">
-      2018-10-01
-    </span>
-    <a href="/2018/10/01/C语言查缺补漏-4/" class="title">
-      C语言查缺补漏(四)
-    </a>
-  </li>
-
-  <li>
-    <span class="date">
-      2018-09-30
-    </span>
-    <a href="/2018/09/30/实用网站汇总——持续更新/" class="title">
-      实用网站汇总(持续更新)
-    </a>
-  </li>
-
-  <li>
-    <span class="date">
-      2018-09-30
-    </span>
-    <a href="/2018/09/30/c语言查缺补漏-2/" class="title">
-      C语言查缺补漏(二)
-    </a>
-  </li>
-
-  <li>
-    <span class="date">
-      2018-09-30
-    </span>
-    <a href="/2018/09/30/c语言查缺补漏-1/" class="title">
-      C语言查缺补漏(一)
-    </a>
-  </li>
-
-  <li>
-    <span class="date">
-      2018-09-30
-    </span>
-    <a href="/2018/09/30/Blog搭建流程-Mac系统完结帖/" class="title">
-      Blog搭建流程(Mac系统完结帖)
-    </a>
-  </li>
-
-  <li>
-    <span class="date">
-      2018-09-30
-    </span>
-    <a href="/2018/09/30/C语言查缺补漏-3/" class="title">
-      C语言查缺补漏(三)
-    </a>
-  </li>
-
-  <li>
-    <span class="date">
-      2018-09-29
-    </span>
-    <a href="/2018/09/29/18-09-29博客搭建进度/" class="title">
-      18.09.29博客搭建进度
-    </a>
-  </li>
-
-  <li>
-    <span class="date">
-      2018-09-28
-    </span>
-    <a href="/2018/09/28/hexo发表博客常用命令/" class="title">
-      hexo发表博客常用命令
-    </a>
-  </li>
-
-  <li>
-    <span class="date">
-      2018-09-28
-    </span>
-    <a href="/2018/09/28/hexo更换主题流程/" class="title">
-      hexo更换主题流程
-    </a>
-  </li>
-
-  <li>
-    <span class="date">
-      2018-09-28
-    </span>
-    <a href="/2018/09/28/First-Blog/" class="title">
-      First Blog
-    </a>
-  </li>
+  
+</section>
 
 
-          </ul>
+        </div>
         
-      </div>
+        　　　　
     </div>
-  </div>
 </div>
 
 
