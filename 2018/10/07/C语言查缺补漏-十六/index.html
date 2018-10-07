@@ -14,7 +14,7 @@
 
   <!--Open Graph Title-->
   
-      <meta property="og:title" content="Zcy"/>
+      <meta property="og:title" content="C语言查缺补漏(十六)"/>
   
   <!--Open Graph Description-->
   
@@ -22,7 +22,7 @@
   <meta property="og:site_name" content="Zcy"/>
   <!--Type page-->
   
-      <meta property="og:type" content="website" />
+      <meta property="og:type" content="article" />
   
   <!--Page Cover-->
   
@@ -42,7 +42,7 @@
     </script>
   <!-- Title -->
   
-  <title>Archives: 2018/10 - Zcy</title>
+  <title>C语言查缺补漏(十六) - Zcy</title>
 
 
   <link rel="shortcut icon" href="/favicon.ico">
@@ -165,282 +165,79 @@
 
 
   <!-- Main Content -->
-  
+  <div class="content-area">
+    <div class="post">
+        <!-- Post Content -->
+        <div class="container">
+            <article>
+                <!-- Title date & tags -->
+                <div class="post-header">
+                    <h1 class="entry-title">
+                        C语言查缺补漏(十六)
+                        
+                    </h1>
 
-<!-- Main Content -->
-<div class="archive content-area">
-  <div class="container">
-    <h1 class="entry-title">2018/10</h1>
-    <div class="row">
-      <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
-        <!-- Use lodash to classify posts. See https://lodash.com/docs#groupBy
-          1. group site.posts by year
-          2. sort posts-in-one-year by Month and Day
-        -->
-        
+                </div>
+                <p class="a-posted-on">
+                    2018-10-07
+                </p>
+                <!-- Post Main Content -->
+                <div class="entry-content">
+                    <p><img src="/2018/10/07/C语言查缺补漏-十六/title.jpg" alt="title"></p>
+<a id="more"></a>
+<h3 id="忽略点十六：EOF-NULL-0的区别"><a href="#忽略点十六：EOF-NULL-0的区别" class="headerlink" title="忽略点十六：EOF NULL  \0的区别"></a>忽略点十六：EOF NULL  \0的区别</h3><h4 id="——关于EOF："><a href="#——关于EOF：" class="headerlink" title="——关于EOF："></a>——关于EOF：</h4><p>​    在C语言中，关于EOF的宏定义：</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">#define EOF -1</span><br></pre></td></tr></table></figure>
+<p>​    也就是说，EOF其实就是-1，由于ASCII代码值的范围是从0～255，不会存在-1的情况，因此可以用EOF作为文件(必须是文本文件)结束标志或输入结束标志！！例如：</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">while (scanf (&quot;%d&quot;, &amp;a) != EOF) &#123;&#125;</span><br></pre></td></tr></table></figure>
+<p>​    EOF结束在windows对应按键是CTRL+Z，在linux对应按键是CTRL+D    </p>
+<h4 id=""><a href="#" class="headerlink" title=" "></a> </h4><h4 id="——关于NULL："><a href="#——关于NULL：" class="headerlink" title="——关于NULL："></a>——关于NULL：</h4><p>​    在C语言中，关于NULL的宏定义：</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">#undef NULL</span><br><span class="line">#if defined(__cplusplus)	//如果存在__cplusplus这个宏定义</span><br><span class="line">#define NULL 0				//NULL代表0</span><br><span class="line">#else						//否则</span><br><span class="line">#define NULL ((void *)0)	//NULL代表((void *)0)</span><br><span class="line">#endif</span><br></pre></td></tr></table></figure>
+<p>​    由于__cplusplus宏定义只存在于C++中，所以在C语言里，NULL代表的是值为0的void型指针，称为空地址；</p>
+<p>​    空地址真的是空吗？我们通过下面代码来输出一下NULL指针的地址：</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">int *p=NULL;</span><br><span class="line">printf(&quot;%p\n&quot;,p);		//输出结果为0x00000000</span><br></pre></td></tr></table></figure>
+<p>​    也就是说，NULL是用来代表指针为空的，但NULL也有地址，它并不是真正意义的空！！！它的作用是用来防止出现野指针的。从下面代码中就可以看出：</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">int *p;</span><br><span class="line">if(p == NULL) &#123;</span><br><span class="line">    printf(&quot;Ok\n&quot;);			//不会执行，表明野指针并不为空</span><br><span class="line">&#125;</span><br><span class="line">printf(&quot;%p\n&quot;, p);		//输出为一个随机地址</span><br></pre></td></tr></table></figure>
+<p>​    </p>
+<p>​    我们可以使用NULL作为空指针常量使用，例如：<code>int<em> p = NULL;</em></code>也可以直接使用0作为空指针常量，例如：<code>int p = 0;</code> </p>
+<p>​    所以NULL常常用于指代对象或指针为空。例如用在链表中：</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">node* p = root;</span><br><span class="line">while (p -&gt; next != NULL) &#123;		</span><br><span class="line">//前提条件是最后一个节点的next成员已经赋值为NULL，不然野指针并不为NULL</span><br><span class="line">    p = p -&gt; next;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h4 id="——关于-0"><a href="#——关于-0" class="headerlink" title="——关于\0:"></a>——关于\0:</h4><p>​    ‘\0’是一个ASCII控制字符(转义字符)，它代表空字符，作为字符串结尾字符～</p>
+<p>​    比如用在某个字符串的遍历中：</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">char s[15] = &quot;hello ACM&quot;;</span><br><span class="line">int i = 0;</span><br><span class="line">while (s[i] != &apos;\0&apos;) &#123;</span><br><span class="line">    i ++;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>​    至于为什么拿出这三个来讲，是因为有时在while()里面对字符串，文本文件，指针之类的操作，!= 后加什么有时候迷糊～</p>
+<p>​    就酱紫～</p>
+<p><a href="http://www.ivan-zcy.top">转载请注明出处！！！</a>  </p>
+<p>如果有写的不对或者不全面的地方 可通过主页的联系方式进行指正，谢谢！</p>
 
+                </div>
+            </article>
+        </div>
+        <!-- Pre or Next -->
         
-          <h2 class="year">2018</h2>
-          <ul class="list">
+        <div class="container" >
+            <ul class="pager">
+                
+                
+                <li class="next">
+                    <a href="/2018/10/07/C语言查缺补漏-十五/" rel="prev">上一篇</a>
+                </li>
+                
+            </ul>
+        </div>
+        　　　　<!-- Comments -->
+        <div class="container">
             
-  <li>
-    <span class="date">
-      2018-10-07
-    </span>
-    <a href="/2018/10/07/C语言查缺补漏-十六/" class="title">
-      C语言查缺补漏(十六)
-    </a>
-  </li>
+<section id="comment">
+  <!-- <h1 class="title">Comments</h1> -->
 
-  <li>
-    <span class="date">
-      2018-10-07
-    </span>
-    <a href="/2018/10/07/C语言查缺补漏-十五/" class="title">
-      C语言查缺补漏(十五)
-    </a>
-  </li>
-
-  <li>
-    <span class="date">
-      2018-10-06
-    </span>
-    <a href="/2018/10/06/MacOS-High问题及解决方法-转载/" class="title">
-      MacOS High问题及解决方法(转载)
-    </a>
-  </li>
-
-  <li>
-    <span class="date">
-      2018-10-06
-    </span>
-    <a href="/2018/10/06/C语言查缺补漏-14/" class="title">
-      C语言查缺补漏(十四)
-    </a>
-  </li>
-
-  <li>
-    <span class="date">
-      2018-10-06
-    </span>
-    <a href="/2018/10/06/C语言查缺补漏-13/" class="title">
-      C语言查缺补漏(十三)
-    </a>
-  </li>
-
-  <li>
-    <span class="date">
-      2018-10-06
-    </span>
-    <a href="/2018/10/06/C语言查缺补漏-12/" class="title">
-      C语言查缺补漏(十二)
-    </a>
-  </li>
-
-  <li>
-    <span class="date">
-      2018-10-06
-    </span>
-    <a href="/2018/10/06/C语言查缺补漏-11/" class="title">
-      C语言查缺补漏(十一)
-    </a>
-  </li>
-
-  <li>
-    <span class="date">
-      2018-10-05
-    </span>
-    <a href="/2018/10/05/18-10-05博客搭建进度/" class="title">
-      18-10-05博客搭建进度
-    </a>
-  </li>
-
-  <li>
-    <span class="date">
-      2018-10-04
-    </span>
-    <a href="/2018/10/04/如何让hexo博文被百度收录/" class="title">
-      如何让hexo博文被百度收录
-    </a>
-  </li>
-
-  <li>
-    <span class="date">
-      2018-10-04
-    </span>
-    <a href="/2018/10/04/C语言查缺补漏-9/" class="title">
-      C语言查缺补漏(九)
-    </a>
-  </li>
-
-  <li>
-    <span class="date">
-      2018-10-04
-    </span>
-    <a href="/2018/10/04/C语言查缺补漏-10/" class="title">
-      C语言查缺补漏(十)
-    </a>
-  </li>
-
-  <li>
-    <span class="date">
-      2018-10-03
-    </span>
-    <a href="/2018/10/03/C语言查缺补漏-8/" class="title">
-      C语言查缺补漏(八)
-    </a>
-  </li>
-
-  <li>
-    <span class="date">
-      2018-10-03
-    </span>
-    <a href="/2018/10/03/C语言查缺补漏-7/" class="title">
-      C语言查缺补漏(七)
-    </a>
-  </li>
-
-  <li>
-    <span class="date">
-      2018-10-03
-    </span>
-    <a href="/2018/10/03/18-10-03博客搭建进度/" class="title">
-      18-10-03博客搭建进度
-    </a>
-  </li>
-
-  <li>
-    <span class="date">
-      2018-10-02
-    </span>
-    <a href="/2018/10/02/一个特别搞笑的故事哈哈/" class="title">
-      一个特别搞笑的故事哈哈
-    </a>
-  </li>
-
-  <li>
-    <span class="date">
-      2018-10-02
-    </span>
-    <a href="/2018/10/02/hexo加快访问速度/" class="title">
-      hexo加快访问速度
-    </a>
-  </li>
-
-  <li>
-    <span class="date">
-      2018-10-02
-    </span>
-    <a href="/2018/10/02/C语言查缺补漏-6/" class="title">
-      C语言查缺补漏(六)
-    </a>
-  </li>
-
-  <li>
-    <span class="date">
-      2018-10-01
-    </span>
-    <a href="/2018/10/01/C语言查缺补漏-4/" class="title">
-      C语言查缺补漏(四)
-    </a>
-  </li>
-
-  <li>
-    <span class="date">
-      2018-10-01
-    </span>
-    <a href="/2018/10/01/C语言查缺补漏-5/" class="title">
-      C语言查缺补漏(五)
-    </a>
-  </li>
-
-  <li>
-    <span class="date">
-      2018-09-30
-    </span>
-    <a href="/2018/09/30/Blog搭建流程-Mac系统完结帖/" class="title">
-      Blog搭建流程(Mac系统完结帖)
-    </a>
-  </li>
-
-  <li>
-    <span class="date">
-      2018-09-30
-    </span>
-    <a href="/2018/09/30/实用网站汇总——持续更新/" class="title">
-      实用网站汇总(持续更新)
-    </a>
-  </li>
-
-  <li>
-    <span class="date">
-      2018-09-30
-    </span>
-    <a href="/2018/09/30/c语言查缺补漏-2/" class="title">
-      C语言查缺补漏(二)
-    </a>
-  </li>
-
-  <li>
-    <span class="date">
-      2018-09-30
-    </span>
-    <a href="/2018/09/30/c语言查缺补漏-1/" class="title">
-      C语言查缺补漏(一)
-    </a>
-  </li>
-
-  <li>
-    <span class="date">
-      2018-09-30
-    </span>
-    <a href="/2018/09/30/C语言查缺补漏-3/" class="title">
-      C语言查缺补漏(三)
-    </a>
-  </li>
-
-  <li>
-    <span class="date">
-      2018-09-29
-    </span>
-    <a href="/2018/09/29/18-09-29博客搭建进度/" class="title">
-      18.09.29博客搭建进度
-    </a>
-  </li>
-
-  <li>
-    <span class="date">
-      2018-09-28
-    </span>
-    <a href="/2018/09/28/hexo更换主题流程/" class="title">
-      hexo更换主题流程
-    </a>
-  </li>
-
-  <li>
-    <span class="date">
-      2018-09-28
-    </span>
-    <a href="/2018/09/28/hexo发表博客常用命令/" class="title">
-      hexo发表博客常用命令
-    </a>
-  </li>
-
-  <li>
-    <span class="date">
-      2018-09-28
-    </span>
-    <a href="/2018/09/28/First-Blog/" class="title">
-      First Blog
-    </a>
-  </li>
+  
+</section>
 
 
-          </ul>
+        </div>
         
-      </div>
+        　　　　
     </div>
-  </div>
 </div>
 
 
