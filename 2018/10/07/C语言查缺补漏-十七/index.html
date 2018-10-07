@@ -14,7 +14,7 @@
 
   <!--Open Graph Title-->
   
-      <meta property="og:title" content="C语言查缺补漏(十六)"/>
+      <meta property="og:title" content="C语言查缺补漏(十七)"/>
   
   <!--Open Graph Description-->
   
@@ -42,7 +42,7 @@
     </script>
   <!-- Title -->
   
-  <title>C语言查缺补漏(十六) - Zcy</title>
+  <title>C语言查缺补漏(十七) - Zcy</title>
 
 
   <link rel="shortcut icon" href="/favicon.ico">
@@ -173,7 +173,7 @@
                 <!-- Title date & tags -->
                 <div class="post-header">
                     <h1 class="entry-title">
-                        C语言查缺补漏(十六)
+                        C语言查缺补漏(十七)
                         
                     </h1>
 
@@ -183,29 +183,27 @@
                 </p>
                 <!-- Post Main Content -->
                 <div class="entry-content">
-                    <p><img src="/2018/10/07/C语言查缺补漏-十六/title.jpg" alt="title"></p>
+                    <p><img src="/2018/10/07/C语言查缺补漏-十七/title.jpg" alt="title"></p>
 <a id="more"></a>
-<h3 id="忽略点十六：EOF-NULL-0的区别"><a href="#忽略点十六：EOF-NULL-0的区别" class="headerlink" title="忽略点十六：EOF NULL  \0的区别"></a>忽略点十六：EOF NULL  \0的区别</h3><h4 id="——关于EOF："><a href="#——关于EOF：" class="headerlink" title="——关于EOF："></a>——关于EOF：</h4><p>​    在C语言中，关于EOF的宏定义：</p>
-<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">#define EOF -1</span><br></pre></td></tr></table></figure>
-<p>​    也就是说，EOF其实就是-1，由于ASCII代码值的范围是从0～255，不会存在-1的情况，因此可以用EOF作为文件(必须是文本文件)结束标志或输入结束标志！！例如：</p>
-<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">while (scanf (&quot;%d&quot;, &amp;a) != EOF) &#123;&#125;</span><br></pre></td></tr></table></figure>
-<p>​    EOF结束在windows对应按键是CTRL+Z，在linux对应按键是CTRL+D    </p>
-<h4 id=""><a href="#" class="headerlink" title=" "></a> </h4><h4 id="——关于NULL："><a href="#——关于NULL：" class="headerlink" title="——关于NULL："></a>——关于NULL：</h4><p>​    在C语言中，关于NULL的宏定义：</p>
-<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">#undef NULL</span><br><span class="line">#if defined(__cplusplus)	//如果存在__cplusplus这个宏定义</span><br><span class="line">#define NULL 0				//NULL代表0</span><br><span class="line">#else						//否则</span><br><span class="line">#define NULL ((void *)0)	//NULL代表((void *)0)</span><br><span class="line">#endif</span><br></pre></td></tr></table></figure>
-<p>​    由于__cplusplus宏定义只存在于C++中，所以在C语言里，NULL代表的是值为0的void型指针，称为空地址；</p>
-<p>​    空地址真的是空吗？我们通过下面代码来输出一下NULL指针的地址：</p>
-<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">int *p=NULL;</span><br><span class="line">printf(&quot;%p\n&quot;,p);		//输出结果为0x00000000</span><br></pre></td></tr></table></figure>
-<p>​    也就是说，NULL是用来代表指针为空的，但NULL也有地址，它并不是真正意义的空！！！它的作用是用来防止出现野指针的。从下面代码中就可以看出：</p>
-<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">int *p;</span><br><span class="line">if(p == NULL) &#123;</span><br><span class="line">    printf(&quot;Ok\n&quot;);			//不会执行，表明野指针并不为空</span><br><span class="line">&#125;</span><br><span class="line">printf(&quot;%p\n&quot;, p);		//输出为一个随机地址</span><br></pre></td></tr></table></figure>
-<p>​    </p>
-<p>​    我们可以使用NULL作为空指针常量使用，例如：<code>int<em> p = NULL;</em></code>也可以直接使用0作为空指针常量，例如：<code>int p = 0;</code> </p>
-<p>​    所以NULL常常用于指代对象或指针为空。例如用在链表中：</p>
-<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">node* p = root;</span><br><span class="line">while (p -&gt; next != NULL) &#123;		</span><br><span class="line">//前提条件是最后一个节点的next成员已经赋值为NULL，不然野指针并不为NULL</span><br><span class="line">    p = p -&gt; next;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<h4 id="——关于-0"><a href="#——关于-0" class="headerlink" title="——关于\0:"></a>——关于\0:</h4><p>​    ‘\0’是一个ASCII控制字符(转义字符)，它代表空字符，作为字符串结尾字符～</p>
-<p>​    比如用在某个字符串的遍历中：</p>
-<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">char s[15] = &quot;hello ACM&quot;;</span><br><span class="line">int i = 0;</span><br><span class="line">while (s[i] != &apos;\0&apos;) &#123;</span><br><span class="line">    i ++;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<p>​    至于为什么拿出这三个来讲，是因为有时在while()里面对字符串，文本文件，指针之类的操作，!= 后加什么有时候迷糊～</p>
-<p>​    就酱紫～</p>
+<h3 id="忽略点十七：指针空间补充与堆内存保存函数中的值"><a href="#忽略点十七：指针空间补充与堆内存保存函数中的值" class="headerlink" title="忽略点十七：指针空间补充与堆内存保存函数中的值"></a>忽略点十七：指针空间补充与堆内存保存函数中的值</h3><p>​    关于之前讲解就不再重复，点➡️ <a href="http://www.ivan-zcy.top/2018/10/02/C语言查缺补漏-6/">点我</a> 跳转</p>
+<h4 id="补充1"><a href="#补充1" class="headerlink" title="补充1:"></a>补充1:</h4><p>​    除了之前讲的malloc和calloc外，还有一个特别重要的函数——realloc()，具体格式如下：</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">void* realloc (void* ptr, size_t size);</span><br></pre></td></tr></table></figure>
+<p>​    realloc可以将已分配的堆内存扩充到size的大小，并返回扩充后的内存起始地址（注意！当第一个参数所指向的内存空间不够扩大到size时，realloc将会重新分配一段足够大的内存空间，将旧内存空间中的内容拷贝到新地址并释放旧内存空间）</p>
+<h4 id="补充2"><a href="#补充2" class="headerlink" title="补充2:"></a>补充2:</h4><p>​    易错点：对于下面代码，会输出什么？</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">char* test = &quot;test&quot;;</span><br><span class="line">test[0] = &apos;j&apos;;</span><br><span class="line">printf(&quot;%s\n&quot;, test);</span><br></pre></td></tr></table></figure>
+<p>​    既不是”test”，也不是”jest”，也不是”j”， 由于”test”存在内存的常量区，因此不能修改</p>
+<h4 id="补充3"><a href="#补充3" class="headerlink" title="补充3:"></a>补充3:</h4><p>​    由于函数执行完毕后会释放掉函数所占用的栈内存，所以在函数中定义的东西就会随栈内存的释放而消失。那么，我们怎么样才能保存函数中一些有用的信息呢？</p>
+<p>​    我暂时就想到以下3种方法，欢迎大佬们补充：</p>
+<p>​    ——利用返回值：</p>
+<p>​    我们可以利用返回值把函数中的某一个值传入到main函数中，如果有多个值，我们也可以专门定义一个结构体，把多个值放到结构体中，返回该结构体（如果你们不嫌麻烦的话）例如：</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">struct node &#123;</span><br><span class="line">    char name[10];</span><br><span class="line">    int age;</span><br><span class="line">    char address[15];</span><br><span class="line">&#125;;</span><br><span class="line">node fun() &#123;</span><br><span class="line">    node t;</span><br><span class="line">    int age = 12;</span><br><span class="line">    char name[10] = &quot;Ivan&quot;;</span><br><span class="line">    char address[15] = &quot;Shan Dong&quot;;</span><br><span class="line">    t.age = age;</span><br><span class="line">    strcpy(t.name, name);</span><br><span class="line">    strcat(t.address, address);</span><br><span class="line">    return t;</span><br><span class="line">&#125;</span><br><span class="line">int main() &#123;</span><br><span class="line">    node k = fun();</span><br><span class="line">    printf(&quot;%s\n&quot;, k.name);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>​    ——利用静态变量</p>
+<p>​    我们可以在函数中声明该变量为静态变量，这样变量就不会随着函数的结束而消失，而是直到整个程序结束后才会释放。但是声明静态变量有个局限性，就是该变量的作用域！！在函数内定义的静态变量，它虽然不会随着函数的消失而消失，但它只能作用于函数中！！例如：</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">void fun() &#123;</span><br><span class="line">    static int a = 0;</span><br><span class="line">    a ++;</span><br><span class="line">    printf(&quot;%d\n&quot;, a);</span><br><span class="line">&#125;</span><br><span class="line">int main() &#123;</span><br><span class="line">    fun();		//此时a输出1</span><br><span class="line">    fun();		//此时a输出2 表明上次fun函数释放后a的值保存了下来</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>​    ——创建堆内存存储并返回指向堆内存空间的指针</p>
+<p>​    感觉这是最好的解决办法了，专门声明一块堆内存空间，然后把函数中想保存的东西存到里面，然后返回指向该内存空间的指针。这样就不会随函数的消失而消失，而且无论什么情况下都可通过指针去调用。例如：</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">int* fun() &#123;</span><br><span class="line">    int a[5] = &#123;1, 2, 3, 4, 5&#125;;</span><br><span class="line">    int *p = (int *)malloc(5 * sizeof(int));</span><br><span class="line">    for (int i = 0; i &lt; 5; i ++) &#123;</span><br><span class="line">        p[i] = a[i];</span><br><span class="line">    &#125;</span><br><span class="line">    return p;</span><br><span class="line">&#125;</span><br><span class="line">int main() &#123;</span><br><span class="line">    int *k = fun();</span><br><span class="line">    for (int i = 0; i &lt; 5; i ++) &#123;</span><br><span class="line">        printf(&quot;%d &quot;, k[i]);		//输出为1 2 3 4 5</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>​    ​        </p>
 <p><a href="http://www.ivan-zcy.top">转载请注明出处！！！</a>  </p>
 <p>如果有写的不对或者不全面的地方 可通过主页的联系方式进行指正，谢谢！</p>
 
@@ -217,13 +215,9 @@
         <div class="container" >
             <ul class="pager">
                 
-                <li class="previous">
-                    <a href="/2018/10/07/C语言查缺补漏-十七/" rel="prev">下一篇</a>
-                </li>
-                
                 
                 <li class="next">
-                    <a href="/2018/10/07/C语言查缺补漏-十五/" rel="prev">上一篇</a>
+                    <a href="/2018/10/07/C语言查缺补漏-十六/" rel="prev">上一篇</a>
                 </li>
                 
             </ul>
