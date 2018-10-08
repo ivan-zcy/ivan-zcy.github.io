@@ -14,7 +14,7 @@
 
   <!--Open Graph Title-->
   
-      <meta property="og:title" content="Zcy"/>
+      <meta property="og:title" content="Project Euler-001"/>
   
   <!--Open Graph Description-->
   
@@ -22,7 +22,7 @@
   <meta property="og:site_name" content="Zcy"/>
   <!--Type page-->
   
-      <meta property="og:type" content="website" />
+      <meta property="og:type" content="article" />
   
   <!--Page Cover-->
   
@@ -42,7 +42,7 @@
     </script>
   <!-- Title -->
   
-  <title>Archives: 2018 - Zcy</title>
+  <title>Project Euler-001 - Zcy</title>
 
 
   <link rel="shortcut icon" href="/favicon.ico">
@@ -165,318 +165,72 @@
 
 
   <!-- Main Content -->
-  
+  <div class="content-area">
+    <div class="post">
+        <!-- Post Content -->
+        <div class="container">
+            <article>
+                <!-- Title date & tags -->
+                <div class="post-header">
+                    <h1 class="entry-title">
+                        Project Euler-001
+                        
+                    </h1>
 
-<!-- Main Content -->
-<div class="archive content-area">
-  <div class="container">
-    <h1 class="entry-title">2018</h1>
-    <div class="row">
-      <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
-        <!-- Use lodash to classify posts. See https://lodash.com/docs#groupBy
-          1. group site.posts by year
-          2. sort posts-in-one-year by Month and Day
-        -->
-        
+                </div>
+                <p class="a-posted-on">
+                    2018-10-08
+                </p>
+                <!-- Post Main Content -->
+                <div class="entry-content">
+                    <p><img src="/2018/10/08/Project-Euler-001/title.jpg" alt="title"></p>
+<a id="more"></a>
+<p>欧拉计划里面都是一些数学题，可以通过编程来解决它，只需要输入最后的结果即可。从简单到容易，一点一点做，加油！</p>
+<h3 id="001题："><a href="#001题：" class="headerlink" title="001题："></a>001题：</h3><p>题意：</p>
+<p>​    如果我们列出10以内所有3或5的倍数，我们将得到3、5、6和9，这些数的和是23。</p>
+<p>​    求1000以内（不包括1000）所有3或5的倍数的和</p>
+<p>思路：</p>
+<p>​    有两个：1.用暴力的方法遍历从1～999，只要是3或5的倍数就累加</p>
+<p>​            2.利用容斥原理，用3的倍数的和 + 5的倍数的和 - 15的倍数的和</p>
+<p>代码：</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">#include &lt;stdio.h&gt;</span><br><span class="line">int main () &#123;</span><br><span class="line">    int num3 = 999 / 3;	//求出1000以内3的倍数的个数</span><br><span class="line">    int num5 = 999 / 5;	//求出1000以内5的倍数的个数</span><br><span class="line">    int num15 = 999 / 15;	//求出1000以内15的倍数的个数</span><br><span class="line">    //求出1000以内3的倍数的数的累加和</span><br><span class="line">    int ans3 = (1 + num3) * num3 / 2 * 3;	</span><br><span class="line">    //求出1000以内5的倍数的数的累加和</span><br><span class="line">    int ans5 = (1 + num5) * num5 / 2 * 5;</span><br><span class="line">    //求出1000以内15的倍数的数的累加和</span><br><span class="line">    int ans15 = (1 + num15) * num15 / 2 * 15;</span><br><span class="line">    //通过容斥原理求得结果为233168</span><br><span class="line">    printf (&quot;%d\n&quot;, ans3 + ans5 - ans15);</span><br><span class="line">    return 0;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>​    Over～</p>
+<p><a href="http://www.ivan-zcy.top">转载请注明出处！！！</a>  </p>
+<p>如果有写的不对或者不全面的地方 可通过主页的联系方式进行指正，谢谢！</p>
 
+                </div>
+            </article>
+        </div>
+        <!-- Pre or Next -->
         
-          <h2 class="year">2018</h2>
-          <ul class="list">
+        <div class="container" >
+            <ul class="pager">
+                
+                <li class="previous">
+                    <a href="/2018/10/08/Project-Euler-002/" rel="prev">下一篇</a>
+                </li>
+                
+                
+                <li class="next">
+                    <a href="/2018/10/07/C语言查缺补漏-十七/" rel="prev">上一篇</a>
+                </li>
+                
+            </ul>
+        </div>
+        　　　　<!-- Comments -->
+        <div class="container">
             
-  <li>
-    <span class="date">
-      2018-10-08
-    </span>
-    <a href="/2018/10/08/Project-Euler-003/" class="title">
-      Project Euler-003
-    </a>
-  </li>
+<section id="comment">
+  <!-- <h1 class="title">Comments</h1> -->
 
-  <li>
-    <span class="date">
-      2018-10-08
-    </span>
-    <a href="/2018/10/08/Project-Euler-002/" class="title">
-      Project Euler-002
-    </a>
-  </li>
-
-  <li>
-    <span class="date">
-      2018-10-08
-    </span>
-    <a href="/2018/10/08/Project-Euler-001/" class="title">
-      Project Euler-001
-    </a>
-  </li>
-
-  <li>
-    <span class="date">
-      2018-10-07
-    </span>
-    <a href="/2018/10/07/C语言查缺补漏-十六/" class="title">
-      C语言查缺补漏(十六)
-    </a>
-  </li>
-
-  <li>
-    <span class="date">
-      2018-10-07
-    </span>
-    <a href="/2018/10/07/C语言查缺补漏-十五/" class="title">
-      C语言查缺补漏(十五)
-    </a>
-  </li>
-
-  <li>
-    <span class="date">
-      2018-10-07
-    </span>
-    <a href="/2018/10/07/C语言查缺补漏-十七/" class="title">
-      C语言查缺补漏(十七)
-    </a>
-  </li>
-
-  <li>
-    <span class="date">
-      2018-10-06
-    </span>
-    <a href="/2018/10/06/MacOS-High问题及解决方法-转载/" class="title">
-      MacOS High问题及解决方法(转载)
-    </a>
-  </li>
-
-  <li>
-    <span class="date">
-      2018-10-06
-    </span>
-    <a href="/2018/10/06/C语言查缺补漏-14/" class="title">
-      C语言查缺补漏(十四)
-    </a>
-  </li>
-
-  <li>
-    <span class="date">
-      2018-10-06
-    </span>
-    <a href="/2018/10/06/C语言查缺补漏-13/" class="title">
-      C语言查缺补漏(十三)
-    </a>
-  </li>
-
-  <li>
-    <span class="date">
-      2018-10-06
-    </span>
-    <a href="/2018/10/06/C语言查缺补漏-12/" class="title">
-      C语言查缺补漏(十二)
-    </a>
-  </li>
-
-  <li>
-    <span class="date">
-      2018-10-06
-    </span>
-    <a href="/2018/10/06/C语言查缺补漏-11/" class="title">
-      C语言查缺补漏(十一)
-    </a>
-  </li>
-
-  <li>
-    <span class="date">
-      2018-10-05
-    </span>
-    <a href="/2018/10/05/18-10-05博客搭建进度/" class="title">
-      18-10-05博客搭建进度
-    </a>
-  </li>
-
-  <li>
-    <span class="date">
-      2018-10-04
-    </span>
-    <a href="/2018/10/04/如何让hexo博文被百度收录/" class="title">
-      如何让hexo博文被百度收录
-    </a>
-  </li>
-
-  <li>
-    <span class="date">
-      2018-10-04
-    </span>
-    <a href="/2018/10/04/C语言查缺补漏-9/" class="title">
-      C语言查缺补漏(九)
-    </a>
-  </li>
-
-  <li>
-    <span class="date">
-      2018-10-04
-    </span>
-    <a href="/2018/10/04/C语言查缺补漏-10/" class="title">
-      C语言查缺补漏(十)
-    </a>
-  </li>
-
-  <li>
-    <span class="date">
-      2018-10-03
-    </span>
-    <a href="/2018/10/03/C语言查缺补漏-8/" class="title">
-      C语言查缺补漏(八)
-    </a>
-  </li>
-
-  <li>
-    <span class="date">
-      2018-10-03
-    </span>
-    <a href="/2018/10/03/C语言查缺补漏-7/" class="title">
-      C语言查缺补漏(七)
-    </a>
-  </li>
-
-  <li>
-    <span class="date">
-      2018-10-03
-    </span>
-    <a href="/2018/10/03/18-10-03博客搭建进度/" class="title">
-      18-10-03博客搭建进度
-    </a>
-  </li>
-
-  <li>
-    <span class="date">
-      2018-10-02
-    </span>
-    <a href="/2018/10/02/一个特别搞笑的故事哈哈/" class="title">
-      一个特别搞笑的故事哈哈
-    </a>
-  </li>
-
-  <li>
-    <span class="date">
-      2018-10-02
-    </span>
-    <a href="/2018/10/02/hexo加快访问速度/" class="title">
-      hexo加快访问速度
-    </a>
-  </li>
-
-  <li>
-    <span class="date">
-      2018-10-02
-    </span>
-    <a href="/2018/10/02/C语言查缺补漏-6/" class="title">
-      C语言查缺补漏(六)
-    </a>
-  </li>
-
-  <li>
-    <span class="date">
-      2018-10-01
-    </span>
-    <a href="/2018/10/01/C语言查缺补漏-5/" class="title">
-      C语言查缺补漏(五)
-    </a>
-  </li>
-
-  <li>
-    <span class="date">
-      2018-10-01
-    </span>
-    <a href="/2018/10/01/C语言查缺补漏-4/" class="title">
-      C语言查缺补漏(四)
-    </a>
-  </li>
-
-  <li>
-    <span class="date">
-      2018-09-30
-    </span>
-    <a href="/2018/09/30/Blog搭建流程-Mac系统完结帖/" class="title">
-      Blog搭建流程(Mac系统完结帖)
-    </a>
-  </li>
-
-  <li>
-    <span class="date">
-      2018-09-30
-    </span>
-    <a href="/2018/09/30/实用网站汇总——持续更新/" class="title">
-      实用网站汇总(持续更新)
-    </a>
-  </li>
-
-  <li>
-    <span class="date">
-      2018-09-30
-    </span>
-    <a href="/2018/09/30/c语言查缺补漏-2/" class="title">
-      C语言查缺补漏(二)
-    </a>
-  </li>
-
-  <li>
-    <span class="date">
-      2018-09-30
-    </span>
-    <a href="/2018/09/30/c语言查缺补漏-1/" class="title">
-      C语言查缺补漏(一)
-    </a>
-  </li>
-
-  <li>
-    <span class="date">
-      2018-09-30
-    </span>
-    <a href="/2018/09/30/C语言查缺补漏-3/" class="title">
-      C语言查缺补漏(三)
-    </a>
-  </li>
-
-  <li>
-    <span class="date">
-      2018-09-29
-    </span>
-    <a href="/2018/09/29/18-09-29博客搭建进度/" class="title">
-      18.09.29博客搭建进度
-    </a>
-  </li>
-
-  <li>
-    <span class="date">
-      2018-09-28
-    </span>
-    <a href="/2018/09/28/hexo更换主题流程/" class="title">
-      hexo更换主题流程
-    </a>
-  </li>
-
-  <li>
-    <span class="date">
-      2018-09-28
-    </span>
-    <a href="/2018/09/28/hexo发表博客常用命令/" class="title">
-      hexo发表博客常用命令
-    </a>
-  </li>
-
-  <li>
-    <span class="date">
-      2018-09-28
-    </span>
-    <a href="/2018/09/28/First-Blog/" class="title">
-      First Blog
-    </a>
-  </li>
+  
+</section>
 
 
-          </ul>
+        </div>
         
-      </div>
+        　　　　
     </div>
-  </div>
 </div>
 
 

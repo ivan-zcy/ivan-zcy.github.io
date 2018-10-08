@@ -14,7 +14,7 @@
 
   <!--Open Graph Title-->
   
-      <meta property="og:title" content="Zcy"/>
+      <meta property="og:title" content="Project Euler-003"/>
   
   <!--Open Graph Description-->
   
@@ -22,7 +22,7 @@
   <meta property="og:site_name" content="Zcy"/>
   <!--Type page-->
   
-      <meta property="og:type" content="website" />
+      <meta property="og:type" content="article" />
   
   <!--Page Cover-->
   
@@ -42,7 +42,7 @@
     </script>
   <!-- Title -->
   
-  <title>Archives: 2018 - Zcy</title>
+  <title>Project Euler-003 - Zcy</title>
 
 
   <link rel="shortcut icon" href="/favicon.ico">
@@ -165,318 +165,71 @@
 
 
   <!-- Main Content -->
-  
+  <div class="content-area">
+    <div class="post">
+        <!-- Post Content -->
+        <div class="container">
+            <article>
+                <!-- Title date & tags -->
+                <div class="post-header">
+                    <h1 class="entry-title">
+                        Project Euler-003
+                        
+                    </h1>
 
-<!-- Main Content -->
-<div class="archive content-area">
-  <div class="container">
-    <h1 class="entry-title">2018</h1>
-    <div class="row">
-      <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
-        <!-- Use lodash to classify posts. See https://lodash.com/docs#groupBy
-          1. group site.posts by year
-          2. sort posts-in-one-year by Month and Day
-        -->
-        
+                </div>
+                <p class="a-posted-on">
+                    2018-10-08
+                </p>
+                <!-- Post Main Content -->
+                <div class="entry-content">
+                    <p><img src="/2018/10/08/Project-Euler-003/title.jpg" alt="title"></p>
+<a id="more"></a>
+<h3 id="003题："><a href="#003题：" class="headerlink" title="003题："></a>003题：</h3><p>题意：</p>
+<p>​    13195的所有质因数为5、7、13和29。</p>
+<p>​    600851475143最大的质因数是多少？</p>
+<p>思路：</p>
+<p>​    600851475143大概是6e11，如果纯暴力找它的每个因子，然后再判断每个因子是不是质数，时间复杂度大约是1e22，家用电脑估计一个小时也跑不完吧～</p>
+<p>​    有些人继续优化，说可以用线性筛求[2,600851475143]范围内的质数，然后找最大满足是600851475143因子的质数。这样时间复杂度是1e11，家里电脑依然跑不完～而且线性筛需要开两个1e11的数组分别用来判断是否为质数和存质数，我们无法开这么大的数组。</p>
+<p>​    这时候，我们就需要明白一点，600851475143的临界值是多少？嗯，这个数的临界值为（int）(sqrt(600851475143))，为什么呢？</p>
+<p>​    仔细想一下，如果最大质因子小于等于(int)(sqrt(600851475143))，那么我们只需要线性筛前(int)(sqrt(600851475143))就可以找出它的最大质因子。</p>
+<p>​    如果最大质因子大于(int)(sqrt(600851475143))，那么600851475143中不可能同时存在两个大于(int)(sqrt(600851475143))的质因子（如果存在，两个质因子相乘就大于600851475143啦），所以我们可以通过除以(int)(sqrt(600851475143))以内所有600851475143的质因子，最后剩下的数，就是大于(int)(sqrt(600851475143))的质因子。</p>
+<p>​    而(int)(sqrt(600851475143))为<strong>775146</strong>,用线性筛求775146范围内的质数时间复杂度只有1e6左右，家用电脑一秒钟以内肯定能求出来～</p>
+<p>代码如下：</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">#include &lt;stdio.h&gt;</span><br><span class="line">#include &lt;math.h&gt;</span><br><span class="line">#include &lt;string.h&gt;</span><br><span class="line">#include &lt;inttypes.h&gt;</span><br><span class="line">#define ll int64_t</span><br><span class="line">#define d int32_t</span><br><span class="line">#define len 775150</span><br><span class="line">ll n = 600851475143;</span><br><span class="line">//prime[]用于存素数</span><br><span class="line">d prime[len];</span><br><span class="line">//choose[i]用于判断i是否为素数,0是，1不是</span><br><span class="line">bool choose[len];</span><br><span class="line"></span><br><span class="line">ll init() &#123;</span><br><span class="line">    ll maxx = 0; 	//用来存储最大的质因子</span><br><span class="line">    prime[0] = 0; 	//用来记录质数个数</span><br><span class="line">    memset (choose, 0, sizeof(choose));</span><br><span class="line">    for (d i = 2; i &lt; len; i ++) &#123;</span><br><span class="line">        if (!choose[i]) &#123;</span><br><span class="line">        	//如果i是素数就添加到prime中</span><br><span class="line">            prime [++prime[0]] = i;</span><br><span class="line">            //如果i是不断缩小的n的因子，则n循环累除i</span><br><span class="line">            if(n % i == 0) &#123;</span><br><span class="line">                while (n % i == 0) &#123;</span><br><span class="line">                    n /= i;</span><br><span class="line">                &#125;</span><br><span class="line">                //更新质因子的最大值</span><br><span class="line">                maxx = i;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        //线性筛的性质</span><br><span class="line">      	for (d j = 1; j &lt;= prime[0] &amp;&amp; i * prime[j] &lt; len; j++) &#123;     </span><br><span class="line">            choose[i * prime[j]] = 1;</span><br><span class="line">            if (i % prime[j] == 0) &#123;</span><br><span class="line">                break;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    //如果此时n不为1，说明最大质因子大于(int)sqrt(600851475143)</span><br><span class="line">    if (n != 1) &#123;</span><br><span class="line">        maxx = n; //那么更新最大质因子</span><br><span class="line">    &#125;</span><br><span class="line">    return maxx;	//最后返回值即为结果</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">int main() &#123;</span><br><span class="line">    ll ans = init();</span><br><span class="line">    printf(&quot;%&quot; PRId64&quot;\n&quot;, ans);</span><br><span class="line">    return 0;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>​    最后输出答案为<strong>6857</strong> ，Over～</p>
+<p><a href="http://www.ivan-zcy.top">转载请注明出处！！！</a>  </p>
+<p>如果有写的不对或者不全面的地方 可通过主页的联系方式进行指正，谢谢！</p>
 
+                </div>
+            </article>
+        </div>
+        <!-- Pre or Next -->
         
-          <h2 class="year">2018</h2>
-          <ul class="list">
+        <div class="container" >
+            <ul class="pager">
+                
+                
+                <li class="next">
+                    <a href="/2018/10/08/Project-Euler-002/" rel="prev">上一篇</a>
+                </li>
+                
+            </ul>
+        </div>
+        　　　　<!-- Comments -->
+        <div class="container">
             
-  <li>
-    <span class="date">
-      2018-10-08
-    </span>
-    <a href="/2018/10/08/Project-Euler-003/" class="title">
-      Project Euler-003
-    </a>
-  </li>
+<section id="comment">
+  <!-- <h1 class="title">Comments</h1> -->
 
-  <li>
-    <span class="date">
-      2018-10-08
-    </span>
-    <a href="/2018/10/08/Project-Euler-002/" class="title">
-      Project Euler-002
-    </a>
-  </li>
-
-  <li>
-    <span class="date">
-      2018-10-08
-    </span>
-    <a href="/2018/10/08/Project-Euler-001/" class="title">
-      Project Euler-001
-    </a>
-  </li>
-
-  <li>
-    <span class="date">
-      2018-10-07
-    </span>
-    <a href="/2018/10/07/C语言查缺补漏-十六/" class="title">
-      C语言查缺补漏(十六)
-    </a>
-  </li>
-
-  <li>
-    <span class="date">
-      2018-10-07
-    </span>
-    <a href="/2018/10/07/C语言查缺补漏-十五/" class="title">
-      C语言查缺补漏(十五)
-    </a>
-  </li>
-
-  <li>
-    <span class="date">
-      2018-10-07
-    </span>
-    <a href="/2018/10/07/C语言查缺补漏-十七/" class="title">
-      C语言查缺补漏(十七)
-    </a>
-  </li>
-
-  <li>
-    <span class="date">
-      2018-10-06
-    </span>
-    <a href="/2018/10/06/MacOS-High问题及解决方法-转载/" class="title">
-      MacOS High问题及解决方法(转载)
-    </a>
-  </li>
-
-  <li>
-    <span class="date">
-      2018-10-06
-    </span>
-    <a href="/2018/10/06/C语言查缺补漏-14/" class="title">
-      C语言查缺补漏(十四)
-    </a>
-  </li>
-
-  <li>
-    <span class="date">
-      2018-10-06
-    </span>
-    <a href="/2018/10/06/C语言查缺补漏-13/" class="title">
-      C语言查缺补漏(十三)
-    </a>
-  </li>
-
-  <li>
-    <span class="date">
-      2018-10-06
-    </span>
-    <a href="/2018/10/06/C语言查缺补漏-12/" class="title">
-      C语言查缺补漏(十二)
-    </a>
-  </li>
-
-  <li>
-    <span class="date">
-      2018-10-06
-    </span>
-    <a href="/2018/10/06/C语言查缺补漏-11/" class="title">
-      C语言查缺补漏(十一)
-    </a>
-  </li>
-
-  <li>
-    <span class="date">
-      2018-10-05
-    </span>
-    <a href="/2018/10/05/18-10-05博客搭建进度/" class="title">
-      18-10-05博客搭建进度
-    </a>
-  </li>
-
-  <li>
-    <span class="date">
-      2018-10-04
-    </span>
-    <a href="/2018/10/04/如何让hexo博文被百度收录/" class="title">
-      如何让hexo博文被百度收录
-    </a>
-  </li>
-
-  <li>
-    <span class="date">
-      2018-10-04
-    </span>
-    <a href="/2018/10/04/C语言查缺补漏-9/" class="title">
-      C语言查缺补漏(九)
-    </a>
-  </li>
-
-  <li>
-    <span class="date">
-      2018-10-04
-    </span>
-    <a href="/2018/10/04/C语言查缺补漏-10/" class="title">
-      C语言查缺补漏(十)
-    </a>
-  </li>
-
-  <li>
-    <span class="date">
-      2018-10-03
-    </span>
-    <a href="/2018/10/03/C语言查缺补漏-8/" class="title">
-      C语言查缺补漏(八)
-    </a>
-  </li>
-
-  <li>
-    <span class="date">
-      2018-10-03
-    </span>
-    <a href="/2018/10/03/C语言查缺补漏-7/" class="title">
-      C语言查缺补漏(七)
-    </a>
-  </li>
-
-  <li>
-    <span class="date">
-      2018-10-03
-    </span>
-    <a href="/2018/10/03/18-10-03博客搭建进度/" class="title">
-      18-10-03博客搭建进度
-    </a>
-  </li>
-
-  <li>
-    <span class="date">
-      2018-10-02
-    </span>
-    <a href="/2018/10/02/一个特别搞笑的故事哈哈/" class="title">
-      一个特别搞笑的故事哈哈
-    </a>
-  </li>
-
-  <li>
-    <span class="date">
-      2018-10-02
-    </span>
-    <a href="/2018/10/02/hexo加快访问速度/" class="title">
-      hexo加快访问速度
-    </a>
-  </li>
-
-  <li>
-    <span class="date">
-      2018-10-02
-    </span>
-    <a href="/2018/10/02/C语言查缺补漏-6/" class="title">
-      C语言查缺补漏(六)
-    </a>
-  </li>
-
-  <li>
-    <span class="date">
-      2018-10-01
-    </span>
-    <a href="/2018/10/01/C语言查缺补漏-5/" class="title">
-      C语言查缺补漏(五)
-    </a>
-  </li>
-
-  <li>
-    <span class="date">
-      2018-10-01
-    </span>
-    <a href="/2018/10/01/C语言查缺补漏-4/" class="title">
-      C语言查缺补漏(四)
-    </a>
-  </li>
-
-  <li>
-    <span class="date">
-      2018-09-30
-    </span>
-    <a href="/2018/09/30/Blog搭建流程-Mac系统完结帖/" class="title">
-      Blog搭建流程(Mac系统完结帖)
-    </a>
-  </li>
-
-  <li>
-    <span class="date">
-      2018-09-30
-    </span>
-    <a href="/2018/09/30/实用网站汇总——持续更新/" class="title">
-      实用网站汇总(持续更新)
-    </a>
-  </li>
-
-  <li>
-    <span class="date">
-      2018-09-30
-    </span>
-    <a href="/2018/09/30/c语言查缺补漏-2/" class="title">
-      C语言查缺补漏(二)
-    </a>
-  </li>
-
-  <li>
-    <span class="date">
-      2018-09-30
-    </span>
-    <a href="/2018/09/30/c语言查缺补漏-1/" class="title">
-      C语言查缺补漏(一)
-    </a>
-  </li>
-
-  <li>
-    <span class="date">
-      2018-09-30
-    </span>
-    <a href="/2018/09/30/C语言查缺补漏-3/" class="title">
-      C语言查缺补漏(三)
-    </a>
-  </li>
-
-  <li>
-    <span class="date">
-      2018-09-29
-    </span>
-    <a href="/2018/09/29/18-09-29博客搭建进度/" class="title">
-      18.09.29博客搭建进度
-    </a>
-  </li>
-
-  <li>
-    <span class="date">
-      2018-09-28
-    </span>
-    <a href="/2018/09/28/hexo更换主题流程/" class="title">
-      hexo更换主题流程
-    </a>
-  </li>
-
-  <li>
-    <span class="date">
-      2018-09-28
-    </span>
-    <a href="/2018/09/28/hexo发表博客常用命令/" class="title">
-      hexo发表博客常用命令
-    </a>
-  </li>
-
-  <li>
-    <span class="date">
-      2018-09-28
-    </span>
-    <a href="/2018/09/28/First-Blog/" class="title">
-      First Blog
-    </a>
-  </li>
+  
+</section>
 
 
-          </ul>
+        </div>
         
-      </div>
+        　　　　
     </div>
-  </div>
 </div>
 
 

@@ -14,7 +14,7 @@
 
   <!--Open Graph Title-->
   
-      <meta property="og:title" content="C语言查缺补漏(十七)"/>
+      <meta property="og:title" content="Project Euler-002"/>
   
   <!--Open Graph Description-->
   
@@ -42,7 +42,7 @@
     </script>
   <!-- Title -->
   
-  <title>C语言查缺补漏(十七) - Zcy</title>
+  <title>Project Euler-002 - Zcy</title>
 
 
   <link rel="shortcut icon" href="/favicon.ico">
@@ -173,37 +173,37 @@
                 <!-- Title date & tags -->
                 <div class="post-header">
                     <h1 class="entry-title">
-                        C语言查缺补漏(十七)
+                        Project Euler-002
                         
                     </h1>
 
                 </div>
                 <p class="a-posted-on">
-                    2018-10-07
+                    2018-10-08
                 </p>
                 <!-- Post Main Content -->
                 <div class="entry-content">
-                    <p><img src="/2018/10/07/C语言查缺补漏-十七/title.jpg" alt="title"></p>
+                    <p><img src="/2018/10/08/Project-Euler-002/title.jpg" alt="title"></p>
 <a id="more"></a>
-<h3 id="忽略点十七：指针空间补充与堆内存保存函数中的值"><a href="#忽略点十七：指针空间补充与堆内存保存函数中的值" class="headerlink" title="忽略点十七：指针空间补充与堆内存保存函数中的值"></a>忽略点十七：指针空间补充与堆内存保存函数中的值</h3><p>​    关于之前讲解就不再重复，点➡️ <a href="http://www.ivan-zcy.top/2018/10/02/C语言查缺补漏-6/">点我</a> 跳转</p>
-<h4 id="补充1"><a href="#补充1" class="headerlink" title="补充1:"></a>补充1:</h4><p>​    除了之前讲的malloc和calloc外，还有一个特别重要的函数——realloc()，具体格式如下：</p>
-<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">void* realloc (void* ptr, size_t size);</span><br></pre></td></tr></table></figure>
-<p>​    realloc可以将已分配的堆内存扩充到size的大小，并返回扩充后的内存起始地址（注意！当第一个参数所指向的内存空间不够扩大到size时，realloc将会重新分配一段足够大的内存空间，将旧内存空间中的内容拷贝到新地址并释放旧内存空间）</p>
-<h4 id="补充2"><a href="#补充2" class="headerlink" title="补充2:"></a>补充2:</h4><p>​    易错点：对于下面代码，会输出什么？</p>
-<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">char* test = &quot;test&quot;;</span><br><span class="line">test[0] = &apos;j&apos;;</span><br><span class="line">printf(&quot;%s\n&quot;, test);</span><br></pre></td></tr></table></figure>
-<p>​    既不是”test”，也不是”jest”，也不是”j”， 由于”test”存在内存的常量区，因此不能修改</p>
-<h4 id="补充3"><a href="#补充3" class="headerlink" title="补充3:"></a>补充3:</h4><p>​    由于函数执行完毕后会释放掉函数所占用的栈内存，所以在函数中定义的东西就会随栈内存的释放而消失。那么，我们怎么样才能保存函数中一些有用的信息呢？</p>
-<p>​    我暂时就想到以下3种方法，欢迎大佬们补充：</p>
-<p>​    ——利用返回值：</p>
-<p>​    我们可以利用返回值把函数中的某一个值传入到main函数中，如果有多个值，我们也可以专门定义一个结构体，把多个值放到结构体中，返回该结构体（如果你们不嫌麻烦的话）例如：</p>
-<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">struct node &#123;</span><br><span class="line">    char name[10];</span><br><span class="line">    int age;</span><br><span class="line">    char address[15];</span><br><span class="line">&#125;;</span><br><span class="line">node fun() &#123;</span><br><span class="line">    node t;</span><br><span class="line">    int age = 12;</span><br><span class="line">    char name[10] = &quot;Ivan&quot;;</span><br><span class="line">    char address[15] = &quot;Shan Dong&quot;;</span><br><span class="line">    t.age = age;</span><br><span class="line">    strcpy(t.name, name);</span><br><span class="line">    strcat(t.address, address);</span><br><span class="line">    return t;</span><br><span class="line">&#125;</span><br><span class="line">int main() &#123;</span><br><span class="line">    node k = fun();</span><br><span class="line">    printf(&quot;%s\n&quot;, k.name);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<p>​    ——利用静态变量</p>
-<p>​    我们可以在函数中声明该变量为静态变量，这样变量就不会随着函数的结束而消失，而是直到整个程序结束后才会释放。但是声明静态变量有个局限性，就是该变量的作用域！！在函数内定义的静态变量，它虽然不会随着函数的消失而消失，但它只能作用于函数中！！例如：</p>
-<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">void fun() &#123;</span><br><span class="line">    static int a = 0;</span><br><span class="line">    a ++;</span><br><span class="line">    printf(&quot;%d\n&quot;, a);</span><br><span class="line">&#125;</span><br><span class="line">int main() &#123;</span><br><span class="line">    fun();		//此时a输出1</span><br><span class="line">    fun();		//此时a输出2 表明上次fun函数释放后a的值保存了下来</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<p>​    ——创建堆内存存储并返回指向堆内存空间的指针</p>
-<p>​    感觉这是最好的解决办法了，专门声明一块堆内存空间，然后把函数中想保存的东西存到里面，然后返回指向该内存空间的指针。这样就不会随函数的消失而消失，而且无论什么情况下都可通过指针去调用。例如：</p>
-<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">int* fun() &#123;</span><br><span class="line">    int a[5] = &#123;1, 2, 3, 4, 5&#125;;</span><br><span class="line">    int *p = (int *)malloc(5 * sizeof(int));</span><br><span class="line">    for (int i = 0; i &lt; 5; i ++) &#123;</span><br><span class="line">        p[i] = a[i];</span><br><span class="line">    &#125;</span><br><span class="line">    return p;</span><br><span class="line">&#125;</span><br><span class="line">int main() &#123;</span><br><span class="line">    int *k = fun();</span><br><span class="line">    for (int i = 0; i &lt; 5; i ++) &#123;</span><br><span class="line">        printf(&quot;%d &quot;, k[i]);		//输出为1 2 3 4 5</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<p>​    ​        </p>
+<h3 id="002题："><a href="#002题：" class="headerlink" title="002题："></a>002题：</h3><p>题意：</p>
+<p>​    斐波那契数列中每一项都是前两项的和。由1和2开始生成的斐波那契数列前10项为：</p>
+<p>​    1, 2, 3, 5, 8, 13, 21, 34, 55, 89, …</p>
+<p>​    考虑该斐波那契数列中不超过四百万的项，求其中为偶数的项之和</p>
+<p>思路：</p>
+<p>​    本题也想到了两个思路：</p>
+<p>​    思路一：由于斐波那契数列增长速度非常快，所以不超过四百万的斐波那契数顶多有100个，极限了。因此我们可以通过while(Fib[i] &lt;= 4e6) 循环查找出为偶数的项并累加求和</p>
+<p>​    思路二（有点脱了裤子放屁的感觉～）：我们通过斐波那契数列的性质可知，对于该斐波那契数列：</p>
+<p>​    1 2 3 5 8 13 21 34…..</p>
+<p>​    有以下两个有用的性质：</p>
+<p>​    1.  S(n) = Fib[n + 2] - 2     </p>
+<p>​        //S(n)代表斐波那契数列前n项和 ，Fib[i]代表下标为i的斐波那契数</p>
+<p>​    2.  对于前下角标为3的倍数 + 2个斐波那契数，项数为偶数的和等于项数为奇数的和 + 1</p>
+<p>​    </p>
+<p>​    因此我们可以通过二分法套矩阵快速幂来求取4e6以内的最大斐波那契数，并返回该数在斐波那契数中的下角标n，然后用矩阵快速幂求Fib[n + 2]，求的n + 2的下角标为3的倍数 + 2，所以偶数项的和为（Fib[n+2] - 1） / 2;</p>
+<p>代码如下：</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">#include &lt;stdio.h&gt;</span><br><span class="line">#include &lt;string.h&gt;</span><br><span class="line">#define ll long long</span><br><span class="line">int N = 2;</span><br><span class="line">//用于矩阵相乘</span><br><span class="line">void multi(ll *a, ll *b) &#123;		</span><br><span class="line">    ll c[N][N];</span><br><span class="line">    memset(c, 0, sizeof(c));</span><br><span class="line">    for (int i = 0; i &lt; N; i++) &#123;</span><br><span class="line">        for (int j = 0; j &lt; N; j++) &#123;</span><br><span class="line">            for (int k = 0; k &lt; N; k++) &#123;</span><br><span class="line">                c[i][j] += *(a + i * N + k) * *(b + k * N + j);</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    for (int i = 0; i &lt; N; i++) &#123;</span><br><span class="line">        for (int j = 0; j &lt; N; j++) &#123;</span><br><span class="line">            *(a + i * N + j) = c[i][j];</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line">//矩阵快速幂</span><br><span class="line">void quick(ll *a, ll n) &#123;	</span><br><span class="line">    ll ans[N][N];</span><br><span class="line">    memset(ans, 0, sizeof(ans));</span><br><span class="line">    for (int i = 0; i &lt; N; i++) &#123;</span><br><span class="line">        ans[i][i] = 1;</span><br><span class="line">    &#125;</span><br><span class="line">    while (n) &#123;</span><br><span class="line">        if (n &amp; 1) &#123;</span><br><span class="line">            multi(ans[0], a);</span><br><span class="line">        &#125;</span><br><span class="line">        n &gt;&gt;= 1;</span><br><span class="line">        multi(a, a);</span><br><span class="line">    &#125;</span><br><span class="line">    for (int i = 0; i &lt; N; i++) &#123;</span><br><span class="line">        for (int j = 0; j &lt; N; j++) &#123;</span><br><span class="line">            *(a + i * N + j) = ans[i][j];</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line">//二分法找4e6以内最大斐波那契数，并返回该下角标</span><br><span class="line">int erfen(int l, int r, ll val) &#123;	</span><br><span class="line">    while (l &lt;= r) &#123;</span><br><span class="line">        int mid = (l + r) &gt;&gt; 1;</span><br><span class="line">        ll root[N][N], a[N][N];</span><br><span class="line">        memset(root, 0, sizeof(root));</span><br><span class="line">        memset(a, 0, sizeof(a));</span><br><span class="line">        root[1][0] = 1;</span><br><span class="line">        a[0][1] = 1; a[1][0] = 1; a[1][1] = 1;</span><br><span class="line">        quick(a[0], mid);</span><br><span class="line">        multi(a[0], root[0]);</span><br><span class="line">        ll res = a[1][0];</span><br><span class="line">        if(res &lt;= val) &#123;</span><br><span class="line">            l = mid + 1;</span><br><span class="line">        &#125;else &#123;</span><br><span class="line">            r = mid - 1;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    return r;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">int main() &#123;</span><br><span class="line">	//感觉不会超过100个啦，就二分的下标1到100</span><br><span class="line">    int res = erfen(1, 100, 4000000);	</span><br><span class="line">    ll root[N][N], a[N][N], sum;</span><br><span class="line">    memset(root, 0, sizeof(root));</span><br><span class="line">    memset(a, 0, sizeof(a));</span><br><span class="line">    root[1][0] = 1;</span><br><span class="line">    a[0][1] = 1; a[1][0] = 1; a[1][1] = 1;</span><br><span class="line">    if (res % 3 == 2) &#123;</span><br><span class="line">        quick(a[0], res + 2);</span><br><span class="line">        multi(a[0], root[0]);</span><br><span class="line">        sum = (a[1][0] - 1 )/ 2;</span><br><span class="line">    &#125;else if(res % 3 == 1) &#123;</span><br><span class="line">        //由于满足res % 3 == 2 就不再考虑</span><br><span class="line">    &#125;else &#123;</span><br><span class="line">        //由于满足res % 3 == 2 就不再考虑</span><br><span class="line">    &#125;</span><br><span class="line">    printf(&quot;%lld\n&quot;, sum);	</span><br><span class="line">    return 0;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>​    最后求出结果为：<strong>4613732</strong></p>
+<p>​    第二个想法虽好，但由于最后发现下角标的值才40多！！可能二分+矩阵快速幂比纯暴力还慢。。。就酱紫～</p>
 <p><a href="http://www.ivan-zcy.top">转载请注明出处！！！</a>  </p>
 <p>如果有写的不对或者不全面的地方 可通过主页的联系方式进行指正，谢谢！</p>
 
@@ -216,12 +216,12 @@
             <ul class="pager">
                 
                 <li class="previous">
-                    <a href="/2018/10/08/Project-Euler-001/" rel="prev">下一篇</a>
+                    <a href="/2018/10/08/Project-Euler-003/" rel="prev">下一篇</a>
                 </li>
                 
                 
                 <li class="next">
-                    <a href="/2018/10/07/C语言查缺补漏-十六/" rel="prev">上一篇</a>
+                    <a href="/2018/10/08/Project-Euler-001/" rel="prev">上一篇</a>
                 </li>
                 
             </ul>
