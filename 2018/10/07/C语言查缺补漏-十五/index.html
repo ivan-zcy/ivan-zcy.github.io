@@ -185,7 +185,7 @@
                 <div class="entry-content">
                     <p><img src="/2018/10/07/C语言查缺补漏-十五/titile.jpg" alt="titile"></p>
 <a id="more"></a>
-<h3 id="忽略点十五：streak-的使用"><a href="#忽略点十五：streak-的使用" class="headerlink" title="忽略点十五：streak()的使用"></a>忽略点十五：streak()的使用</h3><p>​    在ACM中，常常使用字符串函数诸如：strlen求字符串长度，strcpy字符串复制，strcmp字符串比较，strcat字符串追加等等，但忽略了一个特别重要的函数——strtok()</p>
+<h3 id="忽略点十五：strtok-的使用"><a href="#忽略点十五：strtok-的使用" class="headerlink" title="忽略点十五：strtok()的使用"></a>忽略点十五：strtok()的使用</h3><p>​    在ACM中，常常使用字符串函数诸如：strlen求字符串长度，strcpy字符串复制，strcmp字符串比较，strcat字符串追加等等，但忽略了一个特别重要的函数——strtok()</p>
 <figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">char* strtok(char* str, const char* delimiters);</span><br></pre></td></tr></table></figure>
 <p>​        它用于将字符串<code>str</code>用分隔符<code>delimiters</code>分为更短的字符串。<code>delimiters</code>是含多个字符的字符串，其中每个字符都是一个独立的分隔符。如<code>\n\t</code>中<code>\n</code>和<code>\t</code>都是分隔符。</p>
 <p>​    需要注意！！<code>strtok</code>函数会改变源字符串<code>str</code>，返回值指向第一个由非分隔符字符的指针的分割片段；之后每次调用，都要把<code>NULL</code>作为第一个参数，如果调用成功就会返回下一个分割片段，如果已经到达<code>str</code>的末尾则会返回<code>NULL</code></p>
