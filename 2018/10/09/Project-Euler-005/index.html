@@ -14,7 +14,7 @@
 
   <!--Open Graph Title-->
   
-      <meta property="og:title" content="Project Euler-003"/>
+      <meta property="og:title" content="Project Euler-005"/>
   
   <!--Open Graph Description-->
   
@@ -42,7 +42,7 @@
     </script>
   <!-- Title -->
   
-  <title>Project Euler-003 - Zcy</title>
+  <title>Project Euler-005 - Zcy</title>
 
 
   <link rel="shortcut icon" href="/favicon.ico">
@@ -173,33 +173,41 @@
                 <!-- Title date & tags -->
                 <div class="post-header">
                     <h1 class="entry-title">
-                        Project Euler-003
+                        Project Euler-005
                         
                     </h1>
 
                 </div>
                 <p class="a-posted-on">
-                    2018-10-08
+                    2018-10-09
                 </p>
                 <!-- Post Main Content -->
                 <div class="entry-content">
-                    <p><img src="/2018/10/08/Project-Euler-003/title.jpg" alt="title"></p>
+                    <p><img src="/2018/10/09/Project-Euler-005/title.jpg" alt="title"></p>
 <a id="more"></a>
-<h3 id="003题："><a href="#003题：" class="headerlink" title="003题："></a>003题：</h3><p>题意：</p>
-<p>​    13195的所有质因数为5、7、13和29。</p>
-<p>​    600851475143最大的质因数是多少？</p>
+<h3 id="005题："><a href="#005题：" class="headerlink" title="005题："></a>005题：</h3><p>题意：</p>
+<p>​    2520是最小的能够被1到10整除的数。</p>
+<p>​    最小的能够被1到20整除的正数是多少？</p>
 <p>思路：</p>
-<p>​    600851475143大概是6e11，如果纯暴力找它的每个因子，然后再判断每个因子是不是质数，时间复杂度大约是1e22，家用电脑估计一个小时也跑不完吧～</p>
-<p>​    有些人继续优化，说可以用线性筛求[2,600851475143]范围内的质数，然后找最大满足是600851475143因子的质数。这样时间复杂度是1e11，家里电脑依然跑不完～而且线性筛需要开两个1e11的数组分别用来判断是否为质数和存质数，我们无法开这么大的数组。</p>
-<p>​    这时候，我们就需要明白一点，600851475143的临界值是多少？嗯，这个数的临界值为（int）(sqrt(600851475143))，为什么呢？</p>
-<p>​    仔细想一下，如果最大质因子小于等于(int)(sqrt(600851475143))，那么我们只需要线性筛前(int)(sqrt(600851475143))就可以找出它的最大质因子。</p>
-<p>​    如果最大质因子大于(int)(sqrt(600851475143))，那么600851475143中不可能同时存在两个大于(int)(sqrt(600851475143))的质因子（如果存在，两个质因子相乘就大于600851475143啦），所以我们可以通过除以(int)(sqrt(600851475143))以内所有600851475143的质因子，最后剩下的数，就是大于(int)(sqrt(600851475143))的质因子。</p>
-<p>​    而(int)(sqrt(600851475143))为<strong>775146</strong>,用线性筛求775146范围内的质数时间复杂度只有1e6左右，家用电脑一秒钟以内肯定能求出来～</p>
-<p>代码如下：</p>
-<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">#include &lt;stdio.h&gt;</span><br><span class="line">#include &lt;math.h&gt;</span><br><span class="line">#include &lt;string.h&gt;</span><br><span class="line">#include &lt;inttypes.h&gt;</span><br><span class="line">#define ll int64_t</span><br><span class="line">#define d int32_t</span><br><span class="line">#define len 775150</span><br><span class="line">ll n = 600851475143;</span><br><span class="line">//prime[]用于存素数</span><br><span class="line">d prime[len];</span><br><span class="line">//choose[i]用于判断i是否为素数,0是，1不是</span><br><span class="line">bool choose[len];</span><br><span class="line"></span><br><span class="line">ll init() &#123;</span><br><span class="line">    ll maxx = 0; 	//用来存储最大的质因子</span><br><span class="line">    prime[0] = 0; 	//用来记录质数个数</span><br><span class="line">    memset (choose, 0, sizeof(choose));</span><br><span class="line">    for (d i = 2; i &lt; len; i ++) &#123;</span><br><span class="line">        if (!choose[i]) &#123;</span><br><span class="line">        	//如果i是素数就添加到prime中</span><br><span class="line">            prime [++prime[0]] = i;</span><br><span class="line">            //如果i是不断缩小的n的因子，则n循环累除i</span><br><span class="line">            if(n % i == 0) &#123;</span><br><span class="line">                while (n % i == 0) &#123;</span><br><span class="line">                    n /= i;</span><br><span class="line">                &#125;</span><br><span class="line">                //更新质因子的最大值</span><br><span class="line">                maxx = i;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        //线性筛的性质</span><br><span class="line">      	for (d j = 1; j &lt;= prime[0] &amp;&amp; i * prime[j] &lt; len; j++) &#123;     </span><br><span class="line">            choose[i * prime[j]] = 1;</span><br><span class="line">            if (i % prime[j] == 0) &#123;</span><br><span class="line">                break;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    //如果此时n不为1，说明最大质因子大于(int)sqrt(600851475143)</span><br><span class="line">    if (n != 1) &#123;</span><br><span class="line">        maxx = n; //那么更新最大质因子</span><br><span class="line">    &#125;</span><br><span class="line">    return maxx;	//最后返回值即为结果</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">int main() &#123;</span><br><span class="line">    ll ans = init();</span><br><span class="line">    printf(&quot;%&quot; PRId64&quot;\n&quot;, ans);</span><br><span class="line">    return 0;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<p>​    最后输出答案为<strong>6857</strong> ，Over～</p>
+<p>​    我们能够想到，既然是12的倍数，那么也一定会是1，2，3，4，6的倍数；既然是14的倍数，也一定会是7的倍数；既然是15的倍数，也一定是5的倍数；既然是16的倍数，也一定是8的倍数；既然是18的倍数，也一定是9的倍数；既然是20的倍数，那一定也是10的倍数</p>
+<p>​    所以，我们只需要考虑11～20的最小公倍数即可</p>
+<p>​    思路一：​    利用辗转相除法求11和12的最大公因子，进而通过11*12/gcd(11,12)来求它们的最小公倍数，然后求最小公倍数和13的最小公倍数并更新最小公倍数，循环上述过程直到20</p>
+<p>​    思路二：我们知道，两个数的最小公倍数，相比它俩相乘，缩小了它俩的公共因数倍。</p>
+<p>​    类比到多个数，比如： 2，3， 6， 12，16：</p>
+<p>​    2 = 2； 3 = 3； 6 = 3 <em> 2； 12 = 3 </em> 2 <em> 2；16 = 2 </em> 2 <em> 2 </em> 2；</p>
+<p>​    我们发现：</p>
+<p>​    公因子2在2中存在1次，在6中存在1次，在12中存在2次，在16中存在4次</p>
+<p>​    公因子3在3中存在1次，在6中存在1次，在12中存在1次</p>
+<p>​    那么它们的最小公倍数，就是pow（2，4）* pow（3，1）= 48</p>
+<p>​    也就是说，每个因子找这些数中它出现的最大次数，其它数都是重复的，可以去掉，然后累乘每个因子的最大次数幂即为最小公倍数。</p>
+<p>​    除了运算速度快之外，还可以避免辗转相除法取余1e9+7导致错误的尴尬（只有累乘不会出错，但是中途取余求gcd会造成错误）</p>
+<p>​    兴冲冲的发现了这个规律后，结果一百度发现已经存在这个定理了，叫短除法。。哎，优队算法就这样没了。。。</p>
+<p>代码：</p>
+<p>​    和之前一样，暴力求法不写</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">#include &lt;stdio.h&gt;</span><br><span class="line">#include &lt;algorithm&gt;</span><br><span class="line">#include &lt;inttypes.h&gt;</span><br><span class="line">#define ll int64_t</span><br><span class="line">#define d int32_t</span><br><span class="line">using namespace std;</span><br><span class="line"></span><br><span class="line">d a[10];</span><br><span class="line">ll ans = 1;         //最终结果</span><br><span class="line">ll prime[8] = &#123;2, 3, 5, 7, 11, 13, 17, 19&#125;;  //20以内的质数</span><br><span class="line"></span><br><span class="line">//用于存储11～20</span><br><span class="line">void init() &#123;</span><br><span class="line">    for (d i = 0; i &lt; 10; i ++) &#123;</span><br><span class="line">        a[i] = 11 + i;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">//快速幂函数</span><br><span class="line">ll quick (ll a, d b) &#123;</span><br><span class="line">    ll res = 1;</span><br><span class="line">    while (b) &#123;</span><br><span class="line">        if (b &amp; 1) res *= a;</span><br><span class="line">        b &gt;&gt;= 1;</span><br><span class="line">        a *= a;</span><br><span class="line">    &#125;</span><br><span class="line">    return res;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">//短除法</span><br><span class="line">void short_division() &#123;</span><br><span class="line">    for (d i = 0; i &lt; 8; i ++) &#123;</span><br><span class="line">        d maxx = 0;                 //对于11～20，能够循环整除prime[i]的最大次数</span><br><span class="line">        for (d j = 0; j &lt; 10; j++) &#123;</span><br><span class="line">            d inx = 0;              //记录当前数能循环整除prime[i]的最大次数</span><br><span class="line">            while (a[j] % prime[i] == 0) &#123;</span><br><span class="line">                a[j] /= prime[i];</span><br><span class="line">                inx ++;</span><br><span class="line">            &#125;</span><br><span class="line">            maxx = max(maxx, inx);</span><br><span class="line">        &#125;</span><br><span class="line">        ans *= quick(prime[i], maxx);   //结果乘质因子的最大循环整除次数次幂</span><br><span class="line">    &#125;</span><br><span class="line">    printf(&quot;%&quot; PRId64&quot;\n&quot;, ans);    //最后结果为11～20，也就是1～20的最小公倍数</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">int main()</span><br><span class="line">&#123;</span><br><span class="line">    init();</span><br><span class="line">    short_division();</span><br><span class="line">    return 0;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>最后结果为：<strong>232792560</strong></p>
 <p><a href="http://www.ivan-zcy.top">转载请注明出处！！！</a>  </p>
-<p>如果有写的不对或者不全面的地方 可通过主页的联系方式进行指正，谢谢！</p>
+<p>如果有写的不对或者不全面的地方 可通过主页的联系方式进行指正，谢谢</p>
 
                 </div>
             </article>
@@ -209,13 +217,9 @@
         <div class="container" >
             <ul class="pager">
                 
-                <li class="previous">
-                    <a href="/2018/10/09/Project-Euler-030/" rel="prev">下一篇</a>
-                </li>
-                
                 
                 <li class="next">
-                    <a href="/2018/10/08/Project-Euler-002/" rel="prev">上一篇</a>
+                    <a href="/2018/10/09/Project-Euler-030/" rel="prev">上一篇</a>
                 </li>
                 
             </ul>

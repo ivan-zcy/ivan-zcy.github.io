@@ -14,7 +14,7 @@
 
   <!--Open Graph Title-->
   
-      <meta property="og:title" content="Project Euler-003"/>
+      <meta property="og:title" content="Project Euler-030"/>
   
   <!--Open Graph Description-->
   
@@ -42,7 +42,7 @@
     </script>
   <!-- Title -->
   
-  <title>Project Euler-003 - Zcy</title>
+  <title>Project Euler-030 - Zcy</title>
 
 
   <link rel="shortcut icon" href="/favicon.ico">
@@ -173,33 +173,42 @@
                 <!-- Title date & tags -->
                 <div class="post-header">
                     <h1 class="entry-title">
-                        Project Euler-003
+                        Project Euler-030
                         
                     </h1>
 
                 </div>
                 <p class="a-posted-on">
-                    2018-10-08
+                    2018-10-09
                 </p>
                 <!-- Post Main Content -->
                 <div class="entry-content">
-                    <p><img src="/2018/10/08/Project-Euler-003/title.jpg" alt="title"></p>
+                    <p><img src="/2018/10/09/Project-Euler-030/title.jpg" alt="title"></p>
 <a id="more"></a>
-<h3 id="003题："><a href="#003题：" class="headerlink" title="003题："></a>003题：</h3><p>题意：</p>
-<p>​    13195的所有质因数为5、7、13和29。</p>
-<p>​    600851475143最大的质因数是多少？</p>
+<p>跳题是因为有些题简单没有写的必要，或者难度大需要在后面写，循序渐进～</p>
+<h3 id="030题："><a href="#030题：" class="headerlink" title="030题："></a>030题：</h3><p>该题与Project Euler-034和Project Euler-036类似，有时间的童鞋可以看一下那两道题</p>
+<p>题意：</p>
+<p>有三个数可以写成它们各位数字的四次幂之和：</p>
+<blockquote>
+<p>1634 = 1^4 + 6^4 + 3^4 + 4^4<br>8208 = 8^4 + 2^4 + 0^4 + 8^4<br>9474 = 9^4 + 4^4 + 7^4 + 4^4</p>
+</blockquote>
+<p>由于1 = 1^4不是一个和，所以这里并没有把它包括进去。</p>
+<p>这些数的和是1634 + 8208 + 9474 = 19316。</p>
+<p>找出所有可以写成它们各位数字的五次幂之和的数，并求这些数的和。</p>
 <p>思路：</p>
-<p>​    600851475143大概是6e11，如果纯暴力找它的每个因子，然后再判断每个因子是不是质数，时间复杂度大约是1e22，家用电脑估计一个小时也跑不完吧～</p>
-<p>​    有些人继续优化，说可以用线性筛求[2,600851475143]范围内的质数，然后找最大满足是600851475143因子的质数。这样时间复杂度是1e11，家里电脑依然跑不完～而且线性筛需要开两个1e11的数组分别用来判断是否为质数和存质数，我们无法开这么大的数组。</p>
-<p>​    这时候，我们就需要明白一点，600851475143的临界值是多少？嗯，这个数的临界值为（int）(sqrt(600851475143))，为什么呢？</p>
-<p>​    仔细想一下，如果最大质因子小于等于(int)(sqrt(600851475143))，那么我们只需要线性筛前(int)(sqrt(600851475143))就可以找出它的最大质因子。</p>
-<p>​    如果最大质因子大于(int)(sqrt(600851475143))，那么600851475143中不可能同时存在两个大于(int)(sqrt(600851475143))的质因子（如果存在，两个质因子相乘就大于600851475143啦），所以我们可以通过除以(int)(sqrt(600851475143))以内所有600851475143的质因子，最后剩下的数，就是大于(int)(sqrt(600851475143))的质因子。</p>
-<p>​    而(int)(sqrt(600851475143))为<strong>775146</strong>,用线性筛求775146范围内的质数时间复杂度只有1e6左右，家用电脑一秒钟以内肯定能求出来～</p>
-<p>代码如下：</p>
-<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">#include &lt;stdio.h&gt;</span><br><span class="line">#include &lt;math.h&gt;</span><br><span class="line">#include &lt;string.h&gt;</span><br><span class="line">#include &lt;inttypes.h&gt;</span><br><span class="line">#define ll int64_t</span><br><span class="line">#define d int32_t</span><br><span class="line">#define len 775150</span><br><span class="line">ll n = 600851475143;</span><br><span class="line">//prime[]用于存素数</span><br><span class="line">d prime[len];</span><br><span class="line">//choose[i]用于判断i是否为素数,0是，1不是</span><br><span class="line">bool choose[len];</span><br><span class="line"></span><br><span class="line">ll init() &#123;</span><br><span class="line">    ll maxx = 0; 	//用来存储最大的质因子</span><br><span class="line">    prime[0] = 0; 	//用来记录质数个数</span><br><span class="line">    memset (choose, 0, sizeof(choose));</span><br><span class="line">    for (d i = 2; i &lt; len; i ++) &#123;</span><br><span class="line">        if (!choose[i]) &#123;</span><br><span class="line">        	//如果i是素数就添加到prime中</span><br><span class="line">            prime [++prime[0]] = i;</span><br><span class="line">            //如果i是不断缩小的n的因子，则n循环累除i</span><br><span class="line">            if(n % i == 0) &#123;</span><br><span class="line">                while (n % i == 0) &#123;</span><br><span class="line">                    n /= i;</span><br><span class="line">                &#125;</span><br><span class="line">                //更新质因子的最大值</span><br><span class="line">                maxx = i;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        //线性筛的性质</span><br><span class="line">      	for (d j = 1; j &lt;= prime[0] &amp;&amp; i * prime[j] &lt; len; j++) &#123;     </span><br><span class="line">            choose[i * prime[j]] = 1;</span><br><span class="line">            if (i % prime[j] == 0) &#123;</span><br><span class="line">                break;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    //如果此时n不为1，说明最大质因子大于(int)sqrt(600851475143)</span><br><span class="line">    if (n != 1) &#123;</span><br><span class="line">        maxx = n; //那么更新最大质因子</span><br><span class="line">    &#125;</span><br><span class="line">    return maxx;	//最后返回值即为结果</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">int main() &#123;</span><br><span class="line">    ll ans = init();</span><br><span class="line">    printf(&quot;%&quot; PRId64&quot;\n&quot;, ans);</span><br><span class="line">    return 0;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<p>​    最后输出答案为<strong>6857</strong> ，Over～</p>
+<p>​    遇到这个题，我们首先需要确定它的上界是什么，不然暴力枚举都不知道终止条件。</p>
+<p>​    对于每一位来说，9^5最大，因此我们通过每位都是9的数来确定它的上界。我们设上限为n</p>
+<p>​    当n为二位数时，最大累计和为六位数;  当n为三位数时，最大累计和为六位数;  当n为四位数时，最大累计和为六位数;  当n为五位数时，最大累计和为六位数;  当n为六位数时，最大累计和为六位数; 当n为七位数时，最大累计和为六位数。</p>
+<p>​    从上边就可以看出，当一个数为7位数及更大，它的最大累计和都不足该数的位数，说明n的上限为6位数。</p>
+<p>​    因此，我有以下两个思路：</p>
+<p>​    思路一：求出6个9^5的和为354294，然后遍历2～354294之间的数，只要满足条件就累加求和，时间复杂度为1e6</p>
+<p>​    思路二：分别求出0～9的五次方（快速幂），然后遍历位数（从2～6），多少位就相当于取多少个数（利用dfs剪枝），只需判断这些数的五次方和是否为与位数相同且等同与这几个数，相同就累加，时间复杂度大概1e5（就相当于有10种球，每种球无限个，同时取2个，3个，4个，5个，6个的方案数，经计算只有7997种）</p>
+<p>代码：</p>
+<p>​    老规矩，暴力代码不写：</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">#include &lt;stdio.h&gt;</span><br><span class="line">#include &lt;string.h&gt;</span><br><span class="line">int num[10];</span><br><span class="line">int ans;</span><br><span class="line">int book1[10], book2[10];</span><br><span class="line">int sss = 0;</span><br><span class="line">//快速幂函数</span><br><span class="line">int quick (int a, int b) &#123;</span><br><span class="line">    int res = 1;</span><br><span class="line">    while (b) &#123;</span><br><span class="line">        if (b &amp; 1)  res *= a;</span><br><span class="line">        a *= a;</span><br><span class="line">        b &gt;&gt;= 1;</span><br><span class="line">    &#125;</span><br><span class="line">    return res;</span><br><span class="line">&#125;</span><br><span class="line">//预处理0～9的五次方</span><br><span class="line">void init () &#123;</span><br><span class="line">    memset (num, 0, sizeof(num));</span><br><span class="line">    for (int i = 0; i &lt; 10; i++) &#123;</span><br><span class="line">        num[i] = quick (i, 5);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line">//dfs剪枝求当为n位数的不同数字组合</span><br><span class="line">void dfs(int now, int inx, int n, int val) &#123;</span><br><span class="line">    if (inx == n) &#123;</span><br><span class="line">        sss ++;       //计算枚举的个数</span><br><span class="line">        memset (book2, 0, sizeof(book2));</span><br><span class="line">        int vall = val, flag = 0;</span><br><span class="line">        while (vall) &#123;</span><br><span class="line">            book2[vall % 10] ++;</span><br><span class="line">            vall /= 10;</span><br><span class="line">        &#125;</span><br><span class="line">        for (int i = 0; i &lt; 10; i ++) &#123;</span><br><span class="line">            if (book1[i] != book2[i]) &#123;</span><br><span class="line">                flag = 1;</span><br><span class="line">                break;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        if (!flag) &#123;</span><br><span class="line">            ans +=val;</span><br><span class="line">        &#125;</span><br><span class="line">        return;</span><br><span class="line">    &#125;</span><br><span class="line">    //剪枝精髓</span><br><span class="line">    for (int i = now; i &lt; 10; i++) &#123;</span><br><span class="line">        book1[i] ++;</span><br><span class="line">        dfs (i, inx + 1, n, val + num[i]);</span><br><span class="line">        book1[i] --;</span><br><span class="line">    &#125;</span><br><span class="line">    return;</span><br><span class="line">&#125;</span><br><span class="line">int main () &#123;</span><br><span class="line">    init();</span><br><span class="line">    ans = 0;</span><br><span class="line">    for (int i = 2; i &lt;= 6; i ++) &#123;</span><br><span class="line">        memset(book1, 0, sizeof(book1));</span><br><span class="line">        dfs(0, 0, i, 0);</span><br><span class="line">    &#125;</span><br><span class="line">    printf(&quot;%d\n&quot;, ans);</span><br><span class="line">    //printf(&quot;%d\n&quot;, sss);  //真正枚举的个数，只有7997</span><br><span class="line">    return 0;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>最后输出答案为: <strong>443839</strong></p>
 <p><a href="http://www.ivan-zcy.top">转载请注明出处！！！</a>  </p>
-<p>如果有写的不对或者不全面的地方 可通过主页的联系方式进行指正，谢谢！</p>
+<p>如果有写的不对或者不全面的地方 可通过主页的联系方式进行指正，谢谢</p>
 
                 </div>
             </article>
@@ -210,12 +219,12 @@
             <ul class="pager">
                 
                 <li class="previous">
-                    <a href="/2018/10/09/Project-Euler-030/" rel="prev">下一篇</a>
+                    <a href="/2018/10/09/Project-Euler-005/" rel="prev">下一篇</a>
                 </li>
                 
                 
                 <li class="next">
-                    <a href="/2018/10/08/Project-Euler-002/" rel="prev">上一篇</a>
+                    <a href="/2018/10/08/Project-Euler-003/" rel="prev">上一篇</a>
                 </li>
                 
             </ul>
