@@ -14,7 +14,7 @@
 
   <!--Open Graph Title-->
   
-      <meta property="og:title" content="操作系统与系统编程（二）"/>
+      <meta property="og:title" content="Project Euler-32"/>
   
   <!--Open Graph Description-->
   
@@ -42,7 +42,7 @@
     </script>
   <!-- Title -->
   
-  <title>操作系统与系统编程（二） - Zcy</title>
+  <title>Project Euler-32 - Zcy</title>
 
 
   <link rel="shortcut icon" href="/favicon.ico">
@@ -173,7 +173,7 @@
                 <!-- Title date & tags -->
                 <div class="post-header">
                     <h1 class="entry-title">
-                        操作系统与系统编程（二）
+                        Project Euler-32
                         
                     </h1>
 
@@ -183,29 +183,24 @@
                 </p>
                 <!-- Post Main Content -->
                 <div class="entry-content">
-                    <p><img src="/2018/10/10/操作系统与系统编程-二/title.jpg" alt="title"></p>
+                    <p><img src="/2018/10/10/Project-Euler-32/title3.jpg" alt="title3"></p>
 <a id="more"></a>
-<h3 id="（二）进程与线程"><a href="#（二）进程与线程" class="headerlink" title="（二）进程与线程"></a>（二）进程与线程</h3><p>1.关于进程：</p>
-<p>​    ——进程在用户方面，包含了程序的运行状态和这个程序所用的抽象内存及存储数据。</p>
-<p>​    ——进程在操作系统方面：包括：</p>
-<p>​    (1)一个进程的运行状态(通过在进程中存储”状态寄存器、指令计数器、栈指针、通用寄存器“等代表进程目前运行状态的值实现)</p>
-<p>​    (2)从抽象内存向实际内存和外存（磁盘等存储设备）的映射，以便通过抽象内存的地址获得物理地址及其存储的数据（通过分页存储、分段存储等方法来实现映射）</p>
-<p>​    我们可以将进程笼统看成是一个或多个线程与一个地址空间的结合体</p>
+<h3 id="032题："><a href="#032题：" class="headerlink" title="032题："></a>032题：</h3><p>题意：</p>
+<p><strong>全数字的乘积</strong></p>
+<p>​    如果一个n位数包含了1至n的所有数字恰好一次，我们称它为全数字的；例如，五位数15234就是1至5全数字的。</p>
+<p>​    7254是一个特殊的乘积，因为在等式39 × 186 = 7254中，被乘数、乘数和乘积恰好是1至9全数字的。</p>
+<p>​    找出所有被乘数、乘数和乘积恰好是1至9全数字的乘法等式，并求出这些等式中乘积的和。</p>
+<p>​    注意：有些乘积可能从多个乘法等式中得到，但在求和的时候只计算一次</p>
+<p>思路：</p>
+<p>​    和之前一样，不讲暴力。我们想要满足被乘数、乘数和乘积恰好是1至9全数字的，必须保证乘数位数+被乘数位数+乘积位数 = 9</p>
+<p>​    我们知道，乘积位数 = 乘数位数 + 被乘数位数  -  0或1；我们可进一步去重，保证乘数位数 &lt;= 被乘数位数</p>
+<p>​    因此我们发现要想存在1～9全数字乘法等式，只有两种情况：</p>
+<p>​        1.乘数是1位数，被乘数是4位数，乘积是4位数</p>
+<p>​        2.乘数是2位数，被乘数是3位数，乘积是4位数</p>
+<p>​    我们进一步优化，可用dfs+标记找出所有的位值不同的2位数，3位数,4位数,然后用筛选过的2位数乘3位数，看是否满足全数字；再用1位数乘4位数，看是否满足全数字。满足的乘积用map处理一下，第一次出现的累加到结果中</p>
+<p>代码：</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">#include &lt;stdio.h&gt;</span><br><span class="line">#include &lt;string.h&gt;</span><br><span class="line">#include &lt;inttypes.h&gt;</span><br><span class="line">#include &lt;map&gt;</span><br><span class="line">#define mem(a) memset(a, 0, sizeof(a))</span><br><span class="line">#define ll int64_t</span><br><span class="line">#define d int32_t</span><br><span class="line">using namespace std;</span><br><span class="line"></span><br><span class="line">d num[5][3500];   //num[i][j]表示预处理i位数每位不相同的数，其中num[i][0]代表i位这样的数的个数</span><br><span class="line">d book [15];      //标记数组</span><br><span class="line">d ans = 0;        //总结果</span><br><span class="line">map &lt;d, d&gt;zcy;    //用于映射满足条件的乘积</span><br><span class="line"></span><br><span class="line">void dfs(d n, d inx, d val) &#123;      //n代表位数，inx代表当前位, val代表数字的值</span><br><span class="line">    if (inx == n) &#123;</span><br><span class="line">        num[n][++num[n][0]] = val;</span><br><span class="line">        return;</span><br><span class="line">    &#125;</span><br><span class="line">    for (d i = 1; i &lt;= 9; i++) &#123;</span><br><span class="line">        if (!book[i]) &#123;</span><br><span class="line">            book[i] = 1;</span><br><span class="line">            dfs(n, inx + 1, val * 10 + i);</span><br><span class="line">            book[i] = 0;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    return;</span><br><span class="line">&#125;</span><br><span class="line">//预处理函数</span><br><span class="line">void init() &#123;</span><br><span class="line">    mem(book);</span><br><span class="line">    mem(num);</span><br><span class="line">    zcy.clear();</span><br><span class="line">    num[1][0] = 8;</span><br><span class="line">    //预处理1,2,3,4位数每位不相同的数</span><br><span class="line">    for (d i = 2; i &lt;= 9; i++) &#123;</span><br><span class="line">        num[1][i - 1] = i;</span><br><span class="line">    &#125;</span><br><span class="line">    for (d i = 2; i &lt; 5; i ++) &#123;</span><br><span class="line">        mem(book);</span><br><span class="line">        dfs (i, 0, 0);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">//用于判断单个数字</span><br><span class="line">bool chooes1(d x, d *sum) &#123;</span><br><span class="line">    while (x) &#123;</span><br><span class="line">        if (book[x % 10] || (x % 10 == 0)) &#123;</span><br><span class="line">            return 0;</span><br><span class="line">        &#125;</span><br><span class="line">        *sum += 1;</span><br><span class="line">        book [x % 10] = 1;</span><br><span class="line">        x /= 10;</span><br><span class="line">    &#125;</span><br><span class="line">    return 1;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">//用于判断乘法算式是否为全数字</span><br><span class="line">void chooes(d x, d y, d z) &#123;</span><br><span class="line">    mem(book);</span><br><span class="line">    d sum = 0;</span><br><span class="line">    bool flag1 = chooes1(x, &amp;sum);</span><br><span class="line">    bool flag2 = chooes1(y, &amp;sum);</span><br><span class="line">    bool flag3 = chooes1(z, &amp;sum);</span><br><span class="line">    if (flag1 &amp;&amp; flag2 &amp;&amp; flag3 &amp;&amp; sum == 9) &#123;</span><br><span class="line">        if (!zcy[z]) &#123;</span><br><span class="line">            ans += z;</span><br><span class="line">            zcy[z] = 1;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    return;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">void work() &#123;</span><br><span class="line">    for (d i = 1; i &lt;= num[1][0]; i++) &#123;        //处理1位数*4位数</span><br><span class="line">        d x = num[1][i];</span><br><span class="line">        for (d j = 1; j &lt;= num[4][0]; j++) &#123;</span><br><span class="line">            d y = num[4][j];</span><br><span class="line">            d z = x * y;</span><br><span class="line">            chooes(x, y, z);</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    for (d i = 1; i &lt;= num[2][0]; i++) &#123;        //处理2位数*3位数</span><br><span class="line">        d x = num[2][i];</span><br><span class="line">        for (d j = 1; j &lt;= num[3][0]; j++) &#123;</span><br><span class="line">            d y = num[3][j];</span><br><span class="line">            d z = x * y;</span><br><span class="line">            chooes(x, y, z);</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    return;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">d main() &#123;</span><br><span class="line">    init();</span><br><span class="line">    work();</span><br><span class="line">    printf(&quot;%&quot; PRId32&quot;\n&quot;, ans);</span><br><span class="line">    return 0;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 <p>​    </p>
-<p>2.关于进程的地址空间：</p>
-<p>​    一个进程的全部内存地址和存储的数据，称为这个进程的地址空间</p>
-<p>3.关于线程：</p>
-<p>​    由于多核计算机程序可并发，因此一个进程可能同时包含多个不同的运行状态。为更好区分进程在一个处理器上的运行状态和进程本身的运行状态，于是引入“线程”这一概念。</p>
-<p>​    </p>
-<p>4.​进程控制块和线程控制块：</p>
-<p>​    每个线程拥有一个线程控制块，用来存储“状态寄存器、指令计数器、栈指针、通用寄存器”等数值（也就是在该线程下的进程运行状态），同一进程的所有线程都共享同一个地址空间</p>
-<p>​    进程控制块中包含实现地址转换信息和进程运行状态的线程信息，以及系统在调度进程时需要的信息（比如进程号、进程所处状态、进程优先级等）</p>
-<h4 id="​-注意！！"><a href="#​-注意！！" class="headerlink" title="​    注意！！"></a>​    注意！！</h4><p>​    进程控制块只需存储从抽象内存地址获得实际物理地址的方法，而不会将整个地址空间中地址及其数据都存储</p>
-<p>​    由于进程控制块中的信息是用户进程无权修改的，因此进程控制块存储在内核空间中</p>
-<p>5.三态模型和五态模型</p>
-<p>​    进程三态模型包括运行态（正在执行），就绪态（准备就绪，排入就绪队列等待执行），等待态（等待某一事件发生后才会变为就绪态）</p>
-<p>​    五态模型还包括新建态（被创建尚未加入就绪队列的状态。内核建一个进程需要给它分配资源等，在这个过程中进程就处于新建态）和终止态（终止态对应进程结束但尚未被系统收回的状态，此时系统仍可以获得该进程结束时的信息）</p>
-<p>​    新建态可避免一个新进程在未获得全部资源前就开始运行，终止态可避免一个进程运行完毕后即被系统收回而导致无法获取其信息（因为无法获取该进程信息而导致某一进程停滞不前，产生“僵尸进程”）</p>
 <p><a href="http://www.ivan-zcy.top">转载请注明出处！！！</a>  </p>
 <p>如果有写的不对或者不全面的地方 可通过主页的联系方式进行指正，谢谢</p>
 
@@ -217,13 +212,9 @@
         <div class="container" >
             <ul class="pager">
                 
-                <li class="previous">
-                    <a href="/2018/10/10/Project-Euler-32/" rel="prev">下一篇</a>
-                </li>
-                
                 
                 <li class="next">
-                    <a href="/2018/10/10/操作系统与系统编程-一/" rel="prev">上一篇</a>
+                    <a href="/2018/10/10/操作系统与系统编程-二/" rel="prev">上一篇</a>
                 </li>
                 
             </ul>
