@@ -14,7 +14,7 @@
 
   <!--Open Graph Title-->
   
-      <meta property="og:title" content="Zcy"/>
+      <meta property="og:title" content="Project Euler-031"/>
   
   <!--Open Graph Description-->
   
@@ -22,7 +22,7 @@
   <meta property="og:site_name" content="Zcy"/>
   <!--Type page-->
   
-      <meta property="og:type" content="website" />
+      <meta property="og:type" content="article" />
   
   <!--Page Cover-->
   
@@ -42,7 +42,7 @@
     </script>
   <!-- Title -->
   
-  <title>ACM - Zcy</title>
+  <title>Project Euler-031 - Zcy</title>
 
 
   <link rel="shortcut icon" href="/favicon.ico">
@@ -165,91 +165,83 @@
 
 
   <!-- Main Content -->
-  
+  <div class="content-area">
+    <div class="post">
+        <!-- Post Content -->
+        <div class="container">
+            <article>
+                <!-- Title date & tags -->
+                <div class="post-header">
+                    <h1 class="entry-title">
+                        Project Euler-031
+                        
+                    </h1>
 
-<!-- Main Content -->
-<div class="archive content-area">
-  <div class="container">
-    <h1 class="entry-title">#ACM</h1>
-    <div class="row">
-      <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
-        <!-- Use lodash to classify posts. See https://lodash.com/docs#groupBy -->
+                </div>
+                <p class="a-posted-on">
+                    2018-10-10
+                </p>
+                <!-- Post Main Content -->
+                <div class="entry-content">
+                    <p><img src="/2018/10/10/Project-Euler-031/title.jpg" alt="title"></p>
+<a id="more"></a>
+<h3 id="031题："><a href="#031题：" class="headerlink" title="031题："></a>031题：</h3><p>题意：</p>
+<p>​    英国的货币单位包括英镑£和便士p，在流通中的硬币一共有八种：</p>
+<blockquote>
+<p>1p, 2p, 5p, 10p, 20p, 50p, £1 (100p), £2 (200p)</p>
+</blockquote>
+<p>​    以下是组成£2的其中一种可行方式：</p>
+<blockquote>
+<p>1×£1 + 1×50p + 2×20p + 1×5p + 1×2p + 3×1p</p>
+</blockquote>
+<p>不限定使用的硬币数目，组成£2有多少种不同的方式？</p>
+<p>思路：</p>
+<p>​    题目很简单～有一个坑点。</p>
+<p>​    起初的DP推导式：</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">dp[0] = 1;		//dp[i]代表当有i元时的组合方案数</span><br><span class="line">for (d i = 1; i &lt;= 200; i++) &#123;</span><br><span class="line">    for (d j = 0; j &lt; 8; j++) &#123;</span><br><span class="line">        d t = i - money[j];		</span><br><span class="line">        if (t &gt;= 0) &#123;</span><br><span class="line">            dp[i] += dp[t];</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>​    以上代码会造成重复，比如当i为5的时候，dp[4] = 5，它把1+1+1+1，2+1+1，1+2+1，1+1+2，2+2分别当成了一种。</p>
+<p>​    我们知道，2+1+1，1+2+1，1+1+2它们三个应该算作一种，应当怎样避免这种重复呢？</p>
+<p>​    我们可以通过创建二维数组dp【i】【j】（代表共有i元钱，其中最大的钱为money[j]的方案数）来解决（确定好最大的钱，以后添加的钱只能大于等于最大的钱，就可以避免重复问题，比如上面i为4时，只会出现1+1+1+1，1+1+2，2+2三种情况）。最后累加dp【200】【0】～dp【200】【7】,即是正确答案</p>
+<p>代码：</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">#include &lt;stdio.h&gt;</span><br><span class="line">#include &lt;string.h&gt;</span><br><span class="line">#include &lt;inttypes.h&gt;</span><br><span class="line">#define ll int64_t</span><br><span class="line">#define d int32_t</span><br><span class="line"></span><br><span class="line">d dp[205][10]; //dp[i][j]代表共有i元钱，其中最大的钱为money[j]的方案数</span><br><span class="line">d money[8] = &#123;1, 2, 5, 10, 20, 50, 100, 200&#125;;	//存储钱的种类</span><br><span class="line"></span><br><span class="line">d main() &#123;</span><br><span class="line">    d ans = 0;			//存储总方案数</span><br><span class="line">    memset(dp, 0, sizeof(dp));</span><br><span class="line">    dp[0][0] = 1;		</span><br><span class="line">    for (d i = 1; i &lt;= 200; i++) &#123;</span><br><span class="line">        for (d j = 0; j &lt; 8; j++) &#123;</span><br><span class="line">            d t = i - money[j];</span><br><span class="line">            if (t &gt;= 0) &#123;				</span><br><span class="line">                for (d p = 0; p &lt;= j; p++) &#123;	//避免重复计算精髓</span><br><span class="line">                    dp[i][j] += dp[t][p];</span><br><span class="line">                &#125;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    for (d i = 0; i &lt; 8; i ++) &#123;</span><br><span class="line">        ans += dp[200][i];</span><br><span class="line">    &#125;</span><br><span class="line">    printf(&quot;%&quot; PRId32&quot;\n&quot;, ans);</span><br><span class="line">    return 0;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>答案为：<strong>73682</strong>   Over～</p>
+<p>—————————分割线————————</p>
+<p>​    呃呃呃，上面二维DP数组可以简化为一维，就是完全背包了。。今天脑子不好使了～</p>
+<p>​    推导式如下：</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">dp[0] = 1;		//dp[i]代表当有i元时的组合方案数</span><br><span class="line">for (d j = 0; j &lt; 8; j++) &#123;</span><br><span class="line">	for (d i = 1; i &lt;= 200; i++) &#123;</span><br><span class="line">        d t = i - money[j];		</span><br><span class="line">        if (t &gt;= 0) &#123;</span><br><span class="line">            dp[i] += dp[t];</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>​    没错。。就是将两个for循环的位置调换一下，就可解决重复问题，因为遍历钱的种类数在外层，就使得后面钱种类一定大于等于前面</p>
+<p><a href="http://www.ivan-zcy.top">转载请注明出处！！！</a>  </p>
+<p>如果有写的不对或者不全面的地方 可通过主页的联系方式进行指正，谢谢</p>
+
+                </div>
+            </article>
+        </div>
+        <!-- Pre or Next -->
         
-        
-          <h2 class="year">2018</h2>
-          <ul class="list">
+        <div class="container" >
+            <ul class="pager">
+                
+                
+                <li class="next">
+                    <a href="/2018/10/09/Project-Euler-014/" rel="prev">上一篇</a>
+                </li>
+                
+            </ul>
+        </div>
+        　　　　<!-- Comments -->
+        <div class="container">
             
-  <li>
-    <span class="date">
-      2018-10-10
-    </span>
-    <a href="/2018/10/10/Project-Euler-031/" class="title">
-      Project Euler-031
-    </a>
-  </li>
+<section id="comment">
+  <!-- <h1 class="title">Comments</h1> -->
 
-  <li>
-    <span class="date">
-      2018-10-09
-    </span>
-    <a href="/2018/10/09/Project-Euler-014/" class="title">
-      Project Euler-014
-    </a>
-  </li>
-
-  <li>
-    <span class="date">
-      2018-10-09
-    </span>
-    <a href="/2018/10/09/Project-Euler-005/" class="title">
-      Project Euler-005
-    </a>
-  </li>
-
-  <li>
-    <span class="date">
-      2018-10-09
-    </span>
-    <a href="/2018/10/09/Project-Euler-030/" class="title">
-      Project Euler-030
-    </a>
-  </li>
-
-  <li>
-    <span class="date">
-      2018-10-08
-    </span>
-    <a href="/2018/10/08/Project-Euler-003/" class="title">
-      Project Euler-003
-    </a>
-  </li>
-
-  <li>
-    <span class="date">
-      2018-10-08
-    </span>
-    <a href="/2018/10/08/Project-Euler-002/" class="title">
-      Project Euler-002
-    </a>
-  </li>
-
-  <li>
-    <span class="date">
-      2018-10-08
-    </span>
-    <a href="/2018/10/08/Project-Euler-001/" class="title">
-      Project Euler-001
-    </a>
-  </li>
-
-
-          </ul>
-        
-      </div>
-    </div>
-  </div>
   
+</section>
 
+
+        </div>
+        
+        　　　　
+    </div>
 </div>
 
 
