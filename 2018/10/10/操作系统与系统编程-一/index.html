@@ -14,7 +14,7 @@
 
   <!--Open Graph Title-->
   
-      <meta property="og:title" content="Project Euler-031"/>
+      <meta property="og:title" content="操作系统与系统编程(-)"/>
   
   <!--Open Graph Description-->
   
@@ -42,7 +42,7 @@
     </script>
   <!-- Title -->
   
-  <title>Project Euler-031 - Zcy</title>
+  <title>操作系统与系统编程(-) - Zcy</title>
 
 
   <link rel="shortcut icon" href="/favicon.ico">
@@ -173,7 +173,7 @@
                 <!-- Title date & tags -->
                 <div class="post-header">
                     <h1 class="entry-title">
-                        Project Euler-031
+                        操作系统与系统编程(-)
                         
                     </h1>
 
@@ -183,33 +183,45 @@
                 </p>
                 <!-- Post Main Content -->
                 <div class="entry-content">
-                    <p><img src="/2018/10/10/Project-Euler-031/title.jpg" alt="title"></p>
+                    <p><img src="/2018/10/10/操作系统与系统编程-一/title.jpg" alt="title"></p>
 <a id="more"></a>
-<h3 id="031题："><a href="#031题：" class="headerlink" title="031题："></a>031题：</h3><p>题意：</p>
-<p>​    英国的货币单位包括英镑£和便士p，在流通中的硬币一共有八种：</p>
-<blockquote>
-<p>1p, 2p, 5p, 10p, 20p, 50p, £1 (100p), £2 (200p)</p>
-</blockquote>
-<p>​    以下是组成£2的其中一种可行方式：</p>
-<blockquote>
-<p>1×£1 + 1×50p + 2×20p + 1×5p + 1×2p + 3×1p</p>
-</blockquote>
-<p>不限定使用的硬币数目，组成£2有多少种不同的方式？</p>
-<p>思路：</p>
-<p>​    题目很简单～有一个坑点。</p>
-<p>​    起初的DP推导式：</p>
-<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">dp[0] = 1;		//dp[i]代表当有i元时的组合方案数</span><br><span class="line">for (d i = 1; i &lt;= 200; i++) &#123;</span><br><span class="line">    for (d j = 0; j &lt; 8; j++) &#123;</span><br><span class="line">        d t = i - money[j];		</span><br><span class="line">        if (t &gt;= 0) &#123;</span><br><span class="line">            dp[i] += dp[t];</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<p>​    以上代码会造成重复，比如当i为5的时候，dp[4] = 5，它把1+1+1+1，2+1+1，1+2+1，1+1+2，2+2分别当成了一种。</p>
-<p>​    我们知道，2+1+1，1+2+1，1+1+2它们三个应该算作一种，应当怎样避免这种重复呢？</p>
-<p>​    我们可以通过创建二维数组dp【i】【j】（代表共有i元钱，其中最大的钱为money[j]的方案数）来解决（确定好最大的钱，以后添加的钱只能大于等于最大的钱，就可以避免重复问题，比如上面i为4时，只会出现1+1+1+1，1+1+2，2+2三种情况）。最后累加dp【200】【0】～dp【200】【7】,即是正确答案</p>
-<p>代码：</p>
-<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">#include &lt;stdio.h&gt;</span><br><span class="line">#include &lt;string.h&gt;</span><br><span class="line">#include &lt;inttypes.h&gt;</span><br><span class="line">#define ll int64_t</span><br><span class="line">#define d int32_t</span><br><span class="line"></span><br><span class="line">d dp[205][10]; //dp[i][j]代表共有i元钱，其中最大的钱为money[j]的方案数</span><br><span class="line">d money[8] = &#123;1, 2, 5, 10, 20, 50, 100, 200&#125;;	//存储钱的种类</span><br><span class="line"></span><br><span class="line">d main() &#123;</span><br><span class="line">    d ans = 0;			//存储总方案数</span><br><span class="line">    memset(dp, 0, sizeof(dp));</span><br><span class="line">    dp[0][0] = 1;		</span><br><span class="line">    for (d i = 1; i &lt;= 200; i++) &#123;</span><br><span class="line">        for (d j = 0; j &lt; 8; j++) &#123;</span><br><span class="line">            d t = i - money[j];</span><br><span class="line">            if (t &gt;= 0) &#123;				</span><br><span class="line">                for (d p = 0; p &lt;= j; p++) &#123;	//避免重复计算精髓</span><br><span class="line">                    dp[i][j] += dp[t][p];</span><br><span class="line">                &#125;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    for (d i = 0; i &lt; 8; i ++) &#123;</span><br><span class="line">        ans += dp[200][i];</span><br><span class="line">    &#125;</span><br><span class="line">    printf(&quot;%&quot; PRId32&quot;\n&quot;, ans);</span><br><span class="line">    return 0;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<p>答案为：<strong>73682</strong>   Over～</p>
-<p>—————————分割线————————</p>
-<p>​    呃呃呃，上面二维DP数组可以简化为一维，就是完全背包了。。今天脑子不好使了～</p>
-<p>​    推导式如下：</p>
-<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">dp[0] = 1;		//dp[i]代表当有i元时的组合方案数</span><br><span class="line">for (d j = 0; j &lt; 8; j++) &#123;</span><br><span class="line">	for (d i = 1; i &lt;= 200; i++) &#123;</span><br><span class="line">        d t = i - money[j];		</span><br><span class="line">        if (t &gt;= 0) &#123;</span><br><span class="line">            dp[i] += dp[t];</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<p>​    没错。。就是将两个for循环的位置调换一下，就可解决重复问题，因为遍历钱的种类数在外层，就使得后面钱种类一定大于等于前面</p>
+<h3 id="（一）操作系统的一些理解与概念"><a href="#（一）操作系统的一些理解与概念" class="headerlink" title="（一）操作系统的一些理解与概念"></a>（一）操作系统的一些理解与概念</h3><p>1.一般程序猿也不会参与系统编程，那么还有学习操作系统和系统编程的必要吗？                       </p>
+<p>​    答案是肯定，因为理解操作系统可以更好地服务于编程，比如更深入的理解多线程等</p>
+<p>2.操作系统的理解：</p>
+<p>​    操作系统是应用程序和硬件间的抽象层，方便软件利用硬件资源，也可以避免软件直接与物理资源接触（防止恶意程序）</p>
+<p>​    操作系统的抽象包括很多层面，包括文件和文件系统，基于进程的抽象等</p>
+<p>3.操作系统的作用：</p>
+<p>​    ——提供公共服务：如读写文件等（无需用户理解实现原理）</p>
+<p>​    ——协调进程交互：操作系统负责给每个进程分配处理器时间、内存等。进程间同步和通信、进程切换过程中处理器和高速缓存器状态的变化等都属于操作系统的协调范围</p>
+<p>​    ——管理与控制资源：将有限物理资源合理分配给不同的进程，提高资源利用率</p>
+<p>​    以上称为操作系统内核，计算机启动时第一个运行的进程就是内核，所有用户进程都基于内核运行，所有资源管控、进程交互协调都由内核完成。也就是说处理器每隔一段时间就中断正在执行的用户进程，切回内核，让它重新分配物理资源，然后决定下一个运行的用户进程。</p>
+<p>4.关于进程的理解：</p>
+<p>​    我们知道，程序在处理器上运行是不连续的，因为硬件资源有限，不可能为所有程序提供全部处理器时间，同样计算机有限的内存迫使一个程序的部分内存留在磁盘上，只有部分数据存在系统内存中。所以系统处理程序的过程是非常复杂的</p>
+<p>​    如果程序猿在编写程序的过程中需要考虑那么多，估计会累死吧。。所以，就有了“进程”这样一个概念。</p>
+<p>​    我们把占用全部内存和处理器时间的程序（理想状态）抽象为“进程”。“进程”大大方便了多个程序同时在系统中运行（因为程序猿不需考虑在内存中所占大小和位置，也不需考虑上下文切换（从一个进程切换到另一个进程）时的复杂过程，只需考虑自己的程序在理想状态下的运行情况）</p>
+<p>​    而且，每个进程都在抽象的内存空间中进行读写，不直接接触其它进程的内存，从而保护进程不受到其它恶意进程的侵害</p>
+<p>5.关于内核与用户进程的理解：</p>
+<p>​    内核和用户进程都是进程！内核就相当于一个指挥官，而用户进程就相当于小兵，指挥官决定小兵的资源分配以及小兵间的协调配合。</p>
+<p>​    内核与用户进程使用不同的存储空间，防止用户进程获得内核信息（内核所在存储空间称为系统空间 用户进程所用空间称为用户空间）</p>
+<p>6.用户进程到内核的方式</p>
+<p>​    ——系统调用 （关于系统调用，会在8中的（1）里有详细描述）</p>
+<p>​    ——中断（又称外中断或异步中断）包括时钟中断（即一个进程执行一段时间后，时钟发出中断信号使计算机进入内核态）、设备 I/O 中断。</p>
+<p>​    ——异常（又称内中断或同步中断）可能源于程序的非法操作（如除数为0、超长度读取数组等）、硬件故障等，通过内核中对应的异常处理程序处理</p>
+<p>7.关于双模式操作：</p>
+<p>​    我们用两种不同模式来区分用户进程与内核的不同权限，这种区分被称为双模式操作</p>
+<p>​    两种模式由处理器中一个位来区分，当处理器执行只允许内核态执行的操作时，它会通过位判断是否处于内核态，如果不是，处理器就会触发异常并终止该进程</p>
+<p>8.一些疑问和答案：</p>
+<p>（1）诸如文件读写啦，进程间通信啦，都是内核专属的权利，用户进程是没有权限的，那么平时用的软件是怎么实现该操作的呢？</p>
+<p>​    操作系统提供了给用户进程的服务(即系统调用)，它可以使用户进程在固定位置进入系统空间并使用系统提供的服务，这样就可以解决文件读写之类的问题啦</p>
+<p>​    所有系统调用的地址存放在系统调用表里（存储的是系统自带的系统调用的地址！！）</p>
+<h3 id="​注意！！！"><a href="#​注意！！！" class="headerlink" title="​注意！！！"></a>​注意！！！</h3><p>​    编程中新建一个数组是用户进程使用自己已分配的一段内存，并不需要进入内核态！！！</p>
+<p>​    而从磁盘中读取文件，写入文件，处理异常等操作都需进入内核态！！</p>
+<p>（2）如果同时有多个中断发生时，处理器将怎么处理？</p>
+<p>​    处理器会先处理优先级高的中断。如果在处理一个中断过程中出现另一个优先级更高的中断信号，那么处理器可能切换处理新的中断信号，这时会出现多重中断。</p>
+<p>​    为避免中断耗费过多时间，在处理中断信号时会屏蔽某一优先等级的中断信号或某个单独的中断信号</p>
+<p>​    </p>
+<p>（3）怎么控制用户进程获取系统调用？</p>
+<p>​    所有中断服务程序的地址按顺序存储在中断向量表中。向量表控制用户进程进入系统的地址，保护内核不被篡改。处理器可以利用中断向量表转入中断服务程序</p>
 <p><a href="http://www.ivan-zcy.top">转载请注明出处！！！</a>  </p>
 <p>如果有写的不对或者不全面的地方 可通过主页的联系方式进行指正，谢谢</p>
 
@@ -221,13 +233,9 @@
         <div class="container" >
             <ul class="pager">
                 
-                <li class="previous">
-                    <a href="/2018/10/10/操作系统与系统编程-一/" rel="prev">下一篇</a>
-                </li>
-                
                 
                 <li class="next">
-                    <a href="/2018/10/09/Project-Euler-014/" rel="prev">上一篇</a>
+                    <a href="/2018/10/10/Project-Euler-031/" rel="prev">上一篇</a>
                 </li>
                 
             </ul>
