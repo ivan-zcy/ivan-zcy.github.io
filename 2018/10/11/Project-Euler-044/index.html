@@ -14,7 +14,7 @@
 
   <!--Open Graph Title-->
   
-      <meta property="og:title" content="Zcy"/>
+      <meta property="og:title" content="Project Euler-044"/>
   
   <!--Open Graph Description-->
   
@@ -22,7 +22,7 @@
   <meta property="og:site_name" content="Zcy"/>
   <!--Type page-->
   
-      <meta property="og:type" content="website" />
+      <meta property="og:type" content="article" />
   
   <!--Page Cover-->
   
@@ -42,7 +42,7 @@
     </script>
   <!-- Title -->
   
-  <title>系统编程 - Zcy</title>
+  <title>Project Euler-044 - Zcy</title>
 
 
   <link rel="shortcut icon" href="/favicon.ico">
@@ -165,37 +165,73 @@
 
 
   <!-- Main Content -->
-  
+  <div class="content-area">
+    <div class="post">
+        <!-- Post Content -->
+        <div class="container">
+            <article>
+                <!-- Title date & tags -->
+                <div class="post-header">
+                    <h1 class="entry-title">
+                        Project Euler-044
+                        
+                    </h1>
 
-<!-- Main Content -->
-<div class="archive content-area">
-  <div class="container">
-    <h1 class="entry-title">#系统编程</h1>
-    <div class="row">
-      <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
-        <!-- Use lodash to classify posts. See https://lodash.com/docs#groupBy -->
+                </div>
+                <p class="a-posted-on">
+                    2018-10-11
+                </p>
+                <!-- Post Main Content -->
+                <div class="entry-content">
+                    <p><img src="/2018/10/11/Project-Euler-044/title1.jpg" alt="title1"></p>
+<a id="more"></a>
+<h3 id="044题："><a href="#044题：" class="headerlink" title="044题："></a>044题：</h3><p>题意：</p>
+<p>​    五边形数由公式Pn=n(3n−1)/2生成。前十个五边形数是：</p>
+<p>​    1, 5, 12, 22, 35, 51, 70, 92, 117, 145, …</p>
+<p>​    可以看出P4 + P7 = 22 + 70 = 92 = P8。然而，它们的差70 − 22 = 48并不是五边形数。</p>
+<p>​    在所有和差均为五边形数的五边形数对Pj和Pk中，找出使D = |Pk − Pj|最小的一对；此时D的值是多少？</p>
+<p>思路：</p>
+<p>​    我们假设a[j] - a[i] = a[t]; a[j] + a[i] = a[k];</p>
+<p>​    想了很久，只能想到极度剪枝的O(n^2)做法，大概三四秒出的答案。</p>
+<p>​    我们可以先预处理出前3000个数，然后用map映射一下。然后从小到大遍历a[t]，内层嵌套遍历a[i],只要有一个满足“a[i] + a[t]存在且2 * a[i] + a[t]存在”，就直接返回a[t]。因为以后再出现的就一定大于等于当前a[t]，可以减少时间浪费。</p>
+<p>​    然后我们进一步剪枝，对于内层for循环遍历a[i]，当i &gt; t时只要a[t] + a[i] &lt; a[i + 1]，那么当i大于当前i值时一定会有a[t] + a[i] &lt; a[i + 1],所以可以直接break跳出</p>
+<p>​    层层剪枝 + map映射之后，速度还是很慢，有些忧伤。。</p>
+<p>代码：</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">#include &lt;stdio.h&gt;</span><br><span class="line">#include &lt;math.h&gt;</span><br><span class="line">#include &lt;string.h&gt;</span><br><span class="line">#include &lt;inttypes.h&gt;</span><br><span class="line">#include &lt;map&gt;</span><br><span class="line">#include &lt;algorithm&gt;</span><br><span class="line">#define ll int64_t</span><br><span class="line">#define d int32_t</span><br><span class="line">#define mem(a) memset(a, 0, sizeof(a));</span><br><span class="line">#define N 3000</span><br><span class="line">using namespace std;</span><br><span class="line"></span><br><span class="line">map&lt;ll, bool&gt;zcy;</span><br><span class="line">ll a[N + 5];</span><br><span class="line"></span><br><span class="line">//预处理前3000个数，并map一下</span><br><span class="line">void init() &#123;</span><br><span class="line">    zcy.clear();</span><br><span class="line">    for (ll i = 1; i &lt;= N; i++) &#123;</span><br><span class="line">        a[i] = i * (3 * i - 1) / 2;</span><br><span class="line">        zcy[a[i]] = 1;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">ll work() &#123;</span><br><span class="line">    for (d i = 1; i &lt; N; i++) &#123;         //外层遍历|a[k] − a[j]|，只要出现第一个，那一定就是最小，直接返回</span><br><span class="line">        for (d j = 1; j &lt; N; j++) &#123;</span><br><span class="line">            if (j &gt; i &amp;&amp; a[i] + a[j] &lt; a[j + 1]) break; //当j &gt; i时只要a[i] + a[j] &lt; a[j + 1]，那么a[i]+a[j + 1]一定小于a[j + 2],所以可以直接break跳出</span><br><span class="line">            if (zcy[a[i] + a[j]] &amp;&amp; zcy[2 * a[j] + a[i]]) &#123;</span><br><span class="line">                return a[i];                </span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    return 0;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">int main () &#123;</span><br><span class="line">    init();</span><br><span class="line">    ll ans = work();</span><br><span class="line">    printf(&quot;%&quot; PRId64&quot;\n&quot;, ans);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>最后答案是：<strong>5482660</strong></p>
+<p>​    也就是当a[2167] - a[1020] = a[1912];   a[2167] + a[1020] = a[2395];时</p>
+<p><a href="http://www.ivan-zcy.top">转载请注明出处！！！</a>  </p>
+<p>如果有写的不对或者不全面的地方 可通过主页的联系方式进行指正，谢谢</p>
+
+                </div>
+            </article>
+        </div>
+        <!-- Pre or Next -->
         
-        
-          <h2 class="year">2018</h2>
-          <ul class="list">
+        <div class="container" >
+            <ul class="pager">
+                
+                
+                <li class="next">
+                    <a href="/2018/10/11/操作系统与系统编程-4/" rel="prev">上一篇</a>
+                </li>
+                
+            </ul>
+        </div>
+        　　　　<!-- Comments -->
+        <div class="container">
             
-  <li>
-    <span class="date">
-      2018-10-11
-    </span>
-    <a href="/2018/10/11/操作系统与系统编程-三/" class="title">
-      操作系统与系统编程（三）
-    </a>
-  </li>
+<section id="comment">
+  <!-- <h1 class="title">Comments</h1> -->
 
-
-          </ul>
-        
-      </div>
-    </div>
-  </div>
   
+</section>
 
+
+        </div>
+        
+        　　　　
+    </div>
 </div>
 
 
