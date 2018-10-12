@@ -14,7 +14,7 @@
 
   <!--Open Graph Title-->
   
-      <meta property="og:title" content="Zcy"/>
+      <meta property="og:title" content="Project Euler-045"/>
   
   <!--Open Graph Description-->
   
@@ -22,7 +22,7 @@
   <meta property="og:site_name" content="Zcy"/>
   <!--Type page-->
   
-      <meta property="og:type" content="website" />
+      <meta property="og:type" content="article" />
   
   <!--Page Cover-->
   
@@ -42,7 +42,7 @@
     </script>
   <!-- Title -->
   
-  <title>数论 - Zcy</title>
+  <title>Project Euler-045 - Zcy</title>
 
 
   <link rel="shortcut icon" href="/favicon.ico">
@@ -165,109 +165,100 @@
 
 
   <!-- Main Content -->
-  
+  <div class="content-area">
+    <div class="post">
+        <!-- Post Content -->
+        <div class="container">
+            <article>
+                <!-- Title date & tags -->
+                <div class="post-header">
+                    <h1 class="entry-title">
+                        Project Euler-045
+                        
+                    </h1>
 
-<!-- Main Content -->
-<div class="archive content-area">
-  <div class="container">
-    <h1 class="entry-title">#数论</h1>
-    <div class="row">
-      <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
-        <!-- Use lodash to classify posts. See https://lodash.com/docs#groupBy -->
+                </div>
+                <p class="a-posted-on">
+                    2018-10-12
+                </p>
+                <!-- Post Main Content -->
+                <div class="entry-content">
+                    <p><img src="/2018/10/12/Project-Euler-045/title.jpg" alt="title"></p>
+<a id="more"></a>
+<h3 id="045题："><a href="#045题：" class="headerlink" title="045题："></a>045题：</h3><p>题意：</p>
+<p>​    三角形数、五边形数和六角形数分别由以下公式给出：</p>
+<table>
+<thead>
+<tr>
+<th></th>
+<th></th>
+<th></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>三角形数</td>
+<td>Tn=n(n+1)/2</td>
+<td>1, 3, 6, 10, 15, …</td>
+</tr>
+<tr>
+<td>五边形数</td>
+<td>Pn=n(3n−1)/2</td>
+<td>1, 5, 12, 22, 35, …</td>
+</tr>
+<tr>
+<td>六边形数</td>
+<td>Hn=n(2n−1)</td>
+<td>1, 6, 15, 28, 45, …</td>
+</tr>
+</tbody>
+</table>
+<p>​    可以验证，T285 = P165 = H143 = 40755。</p>
+<p>​    找出下一个同时是三角形数、五边形数和六角形数的数</p>
+<p>思路：</p>
+<p>​    由于六边形增长速度最快，所以我们优先根据公式遍历六边形数。然后我们看一下三角形数，把n = 2k - 1带入公式，得到Tk = k(2k - 1)，所以，每下角标为2n - 1的三角形数都是六边形数，也就是说是六边形数，一定也是三角形数</p>
+<p>​    因此我们只需要判断六边形数是否为五边形数即可，找到第一个就返回</p>
+<p>​    有以下三个想法判断是否为五边形数：</p>
+<p>​        1.先预处理出前10000个五边形数(应该不会超过这些)，然后利用map<long long,="" bool="">zcy映射一下这些五边形数，然后从144开始遍历六边形数，只要zcy[六边形数]存在就直接输出，时间复杂度O(m + n)，其中m为预处理的五边形数的个数 </long></p>
+<p>​        2.外层for循环从144开始遍历六边形数，然后利用二分五边形数下角标查找是否存在对应的五边形数，若存在则返回并输出，时间复杂度O(n * logn)</p>
+<p>​        3.for循环从144开始遍历六边形数，设得到的数设为t，我们求n(3n−1)/2 = t 的正整数解，也就是n = (1 + sqrt(1 + 24t)) / 6，若n为正整数则该数也为五边形数，时间复杂度O(n)</p>
+<p>代码：</p>
+<p>​    老规矩上时间复杂度最低的：</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">#include &lt;stdio.h&gt;</span><br><span class="line">#include &lt;math.h&gt;</span><br><span class="line">#include &lt;string.h&gt;</span><br><span class="line">#include &lt;inttypes.h&gt;</span><br><span class="line">#include &lt;map&gt;</span><br><span class="line">#include &lt;algorithm&gt;</span><br><span class="line">#define ll int64_t</span><br><span class="line">#define d int32_t</span><br><span class="line">#define f double</span><br><span class="line">#define r return</span><br><span class="line">#define mem(a) memset(a, 0, sizeof(a));</span><br><span class="line">using namespace std;</span><br><span class="line"></span><br><span class="line">//六边形公式</span><br><span class="line">ll g(ll a) &#123;</span><br><span class="line">    r a * (2 * a - 1); 	</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">//判断该六边形数g(a)是否为五边形数</span><br><span class="line">bool chooes(ll a) &#123;</span><br><span class="line">    ll t = g(a);</span><br><span class="line">    f inx = (sqrt(24 * t + 1) + 1 ) / 6;</span><br><span class="line">    if (inx == (ll)inx) return true;</span><br><span class="line">    r false;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">d main () &#123;</span><br><span class="line">    for (ll i = 144; ; i++) &#123;</span><br><span class="line">        if (chooes(i)) &#123;</span><br><span class="line">            printf(&quot;%&quot; PRId64&quot;\n&quot;, g(i));</span><br><span class="line">            break;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    r 0;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>最后答案为：<strong>1533776805</strong></p>
+<p>​    </p>
+<p><a href="http://www.ivan-zcy.top">转载请注明出处！！！</a>  </p>
+<p>如果有写的不对或者不全面的地方 可通过主页的联系方式进行指正，谢谢</p>
+
+                </div>
+            </article>
+        </div>
+        <!-- Pre or Next -->
         
-        
-          <h2 class="year">2018</h2>
-          <ul class="list">
+        <div class="container" >
+            <ul class="pager">
+                
+                
+                <li class="next">
+                    <a href="/2018/10/11/Project-Euler-044/" rel="prev">上一篇</a>
+                </li>
+                
+            </ul>
+        </div>
+        　　　　<!-- Comments -->
+        <div class="container">
             
-  <li>
-    <span class="date">
-      2018-10-12
-    </span>
-    <a href="/2018/10/12/Project-Euler-045/" class="title">
-      Project Euler-045
-    </a>
-  </li>
+<section id="comment">
+  <!-- <h1 class="title">Comments</h1> -->
 
-  <li>
-    <span class="date">
-      2018-10-11
-    </span>
-    <a href="/2018/10/11/Project-Euler-044/" class="title">
-      Project Euler-044
-    </a>
-  </li>
-
-  <li>
-    <span class="date">
-      2018-10-11
-    </span>
-    <a href="/2018/10/11/Project-Euler-038/" class="title">
-      Project Euler-038
-    </a>
-  </li>
-
-  <li>
-    <span class="date">
-      2018-10-10
-    </span>
-    <a href="/2018/10/10/Project-Euler-035/" class="title">
-      Project Euler-035
-    </a>
-  </li>
-
-  <li>
-    <span class="date">
-      2018-10-09
-    </span>
-    <a href="/2018/10/09/Project-Euler-005/" class="title">
-      Project Euler-005
-    </a>
-  </li>
-
-  <li>
-    <span class="date">
-      2018-10-09
-    </span>
-    <a href="/2018/10/09/Project-Euler-030/" class="title">
-      Project Euler-030
-    </a>
-  </li>
-
-  <li>
-    <span class="date">
-      2018-10-08
-    </span>
-    <a href="/2018/10/08/Project-Euler-003/" class="title">
-      Project Euler-003
-    </a>
-  </li>
-
-  <li>
-    <span class="date">
-      2018-10-08
-    </span>
-    <a href="/2018/10/08/Project-Euler-002/" class="title">
-      Project Euler-002
-    </a>
-  </li>
-
-  <li>
-    <span class="date">
-      2018-10-08
-    </span>
-    <a href="/2018/10/08/Project-Euler-001/" class="title">
-      Project Euler-001
-    </a>
-  </li>
-
-
-          </ul>
-        
-      </div>
-    </div>
-  </div>
   
+</section>
 
+
+        </div>
+        
+        　　　　
+    </div>
 </div>
 
 
