@@ -196,7 +196,7 @@
 <p>​    二.利用素勾股数公式：满足gcd(n, m) == 1的互质数，存在a = 2 <em> n </em> m; b = m^2 - n^2; c = m^2 + n ^2，这是只需要遍历n和m（取值范围都是1～32），只要满足a+b+c == 1000即可，时间复杂度大概是1e3</p>
 <p>代码：</p>
 <figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">#include &lt;stdio.h&gt;</span><br><span class="line">#include &lt;math.h&gt;</span><br><span class="line">#include &lt;string.h&gt;</span><br><span class="line">#include &lt;inttypes.h&gt;</span><br><span class="line">#include &lt;algorithm&gt;</span><br><span class="line">#define ll int64_t</span><br><span class="line">#define d int32_t</span><br><span class="line">#define f double</span><br><span class="line">#define r return</span><br><span class="line">#define mem(a) memset(a, 0, sizeof(a));</span><br><span class="line">using namespace std;</span><br><span class="line"></span><br><span class="line">//求gcd</span><br><span class="line">d gcd(d a, d b) &#123;</span><br><span class="line">    r b == 0?a : gcd(b, a % b);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">void work() &#123;</span><br><span class="line">    for (d i = 1; i &lt;= 32; i++) &#123;</span><br><span class="line">        for (d j = i + 1; j &lt;= 32 &amp;&amp; i * i + j * j &lt; 1000; j++) &#123;</span><br><span class="line">            if (gcd(j, i) == 1) &#123;</span><br><span class="line">                d a = 2 * i * j;</span><br><span class="line">                d b = j * j - i * i;</span><br><span class="line">                d c = j * j + i * i;</span><br><span class="line">                d sum = a + b + c;</span><br><span class="line">                if (1000 % sum == 0) &#123;</span><br><span class="line">                    d t = 1000 / sum;</span><br><span class="line">                    printf(&quot;%&quot; PRId64&quot;\n&quot;, (ll)t * t * t * a * b * c);</span><br><span class="line">                    r;</span><br><span class="line">                &#125;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    r;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">d main () &#123;</span><br><span class="line">    work();</span><br><span class="line">    r 0;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<p>​    </p>
+<p>​    答案是：<strong>31875000</strong></p>
 <p><a href="http://www.ivan-zcy.top">转载请注明出处！！！</a>  </p>
 <p>如果有写的不对或者不全面的地方 可通过主页的联系方式进行指正，谢谢</p>
 
@@ -207,6 +207,10 @@
         
         <div class="container" >
             <ul class="pager">
+                
+                <li class="previous">
+                    <a href="/2018/10/12/Project-Euler-012/" rel="prev">下一篇</a>
+                </li>
                 
                 
                 <li class="next">
