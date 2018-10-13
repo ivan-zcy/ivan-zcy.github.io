@@ -14,7 +14,7 @@
 
   <!--Open Graph Title-->
   
-      <meta property="og:title" content="Zcy"/>
+      <meta property="og:title" content="Project Euler-015"/>
   
   <!--Open Graph Description-->
   
@@ -22,7 +22,7 @@
   <meta property="og:site_name" content="Zcy"/>
   <!--Type page-->
   
-      <meta property="og:type" content="website" />
+      <meta property="og:type" content="article" />
   
   <!--Page Cover-->
   
@@ -42,7 +42,7 @@
     </script>
   <!-- Title -->
   
-  <title>数论 - Zcy</title>
+  <title>Project Euler-015 - Zcy</title>
 
 
   <link rel="shortcut icon" href="/favicon.ico">
@@ -165,145 +165,73 @@
 
 
   <!-- Main Content -->
-  
+  <div class="content-area">
+    <div class="post">
+        <!-- Post Content -->
+        <div class="container">
+            <article>
+                <!-- Title date & tags -->
+                <div class="post-header">
+                    <h1 class="entry-title">
+                        Project Euler-015
+                        
+                    </h1>
 
-<!-- Main Content -->
-<div class="archive content-area">
-  <div class="container">
-    <h1 class="entry-title">#数论</h1>
-    <div class="row">
-      <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
-        <!-- Use lodash to classify posts. See https://lodash.com/docs#groupBy -->
+                </div>
+                <p class="a-posted-on">
+                    2018-10-13
+                </p>
+                <!-- Post Main Content -->
+                <div class="entry-content">
+                    <h3 id="015题："><a href="#015题：" class="headerlink" title="015题："></a>015题：</h3><p>题意：</p>
+<p>从一个2×2方阵的左上角出发，只允许向右或向下移动，则恰好有6条通往右下角的路径。</p>
+<p><img src="/2018/10/13/Project-Euler-015/p015.gif" alt="p015"></p>
+<p>对于20×20方阵来说，这样的路径有多少条？</p>
+<p>思路：</p>
+<p>​    有两个解题思路：</p>
+<p>​    一.利用DP求解，我们可以设二维数组<code>dp【i】【j】</code>代表到达第i行第j列的方案数，初始化<code>dp【0】【0】= 1</code>利用dp推导式<code>dp【i】【j】=dp【i-1】【j】+dp【i】【j-1】</code>就可求出<code>dp【20】【20】</code>了。这样复杂度式O(n^2)</p>
+<p>​    </p>
+<p>​    二.我们可以利用组合数求解，由于它只能向右或者向下，那么想要到达第i行第j列，就必须往下走i步，往右走j步，有且只能走i+j步。所以我们就可以转化为有i+j个盒子，红球有i个，蓝球有j个，问不同的颜色组成方案。也就是(i + j)! /(i! * j!)的值，时间复杂度为O(n+m) n为行，m为列.一定要注意爆longlong范围的解决方法。</p>
+<p>代码：</p>
+<p>​    还是只写复杂度最低的代码：</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">#include &lt;stdio.h&gt;</span><br><span class="line">#include &lt;inttypes.h&gt;</span><br><span class="line">#include &lt;algorithm&gt;</span><br><span class="line">#define ll int64_t</span><br><span class="line">#define d int32_t</span><br><span class="line">#define r return</span><br><span class="line">using namespace std;</span><br><span class="line"></span><br><span class="line">//用于求(n + m)! / (n)! * (m)!</span><br><span class="line">ll work (ll n, ll m) &#123;</span><br><span class="line">    ll ans1 = 1, t = 20;</span><br><span class="line">    for (ll i = n + m; i &gt; max(n, m); i--) &#123;</span><br><span class="line">        ans1 *= i;</span><br><span class="line">        while (ans1 % t == 0 &amp;&amp; t &gt;= 2) &#123;		//解决爆longlong</span><br><span class="line">            ans1 /= t;</span><br><span class="line">            t--;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    r ans1;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">d main() &#123;</span><br><span class="line">    ll ans = work (20, 20);</span><br><span class="line">    printf(&quot;%&quot; PRId64&quot;\n&quot;, ans);</span><br><span class="line">    r 0;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>答案为：<strong>137846528820</strong></p>
+<p><a href="http://www.ivan-zcy.top">转载请注明出处！！！</a>  </p>
+<p>如果有写的不对或者不全面的地方 可通过主页的联系方式进行指正，谢谢</p>
+
+                </div>
+            </article>
+        </div>
+        <!-- Pre or Next -->
         
-        
-          <h2 class="year">2018</h2>
-          <ul class="list">
+        <div class="container" >
+            <ul class="pager">
+                
+                <li class="previous">
+                    <a href="/2018/10/13/Project-Euler-024/" rel="prev">下一篇</a>
+                </li>
+                
+                
+                <li class="next">
+                    <a href="/2018/10/12/Project-Euler-012/" rel="prev">上一篇</a>
+                </li>
+                
+            </ul>
+        </div>
+        　　　　<!-- Comments -->
+        <div class="container">
             
-  <li>
-    <span class="date">
-      2018-10-13
-    </span>
-    <a href="/2018/10/13/Project-Euler-024/" class="title">
-      Project Euler-024
-    </a>
-  </li>
+<section id="comment">
+  <!-- <h1 class="title">Comments</h1> -->
 
-  <li>
-    <span class="date">
-      2018-10-13
-    </span>
-    <a href="/2018/10/13/Project-Euler-015/" class="title">
-      Project Euler-015
-    </a>
-  </li>
-
-  <li>
-    <span class="date">
-      2018-10-12
-    </span>
-    <a href="/2018/10/12/Project-Euler-012/" class="title">
-      Project Euler-012
-    </a>
-  </li>
-
-  <li>
-    <span class="date">
-      2018-10-12
-    </span>
-    <a href="/2018/10/12/Project-Euler-009/" class="title">
-      Project Euler-009
-    </a>
-  </li>
-
-  <li>
-    <span class="date">
-      2018-10-12
-    </span>
-    <a href="/2018/10/12/Project-Euler-045/" class="title">
-      Project Euler-045
-    </a>
-  </li>
-
-  <li>
-    <span class="date">
-      2018-10-11
-    </span>
-    <a href="/2018/10/11/Project-Euler-044/" class="title">
-      Project Euler-044
-    </a>
-  </li>
-
-  <li>
-    <span class="date">
-      2018-10-11
-    </span>
-    <a href="/2018/10/11/Project-Euler-038/" class="title">
-      Project Euler-038
-    </a>
-  </li>
-
-  <li>
-    <span class="date">
-      2018-10-10
-    </span>
-    <a href="/2018/10/10/Project-Euler-035/" class="title">
-      Project Euler-035
-    </a>
-  </li>
-
-  <li>
-    <span class="date">
-      2018-10-09
-    </span>
-    <a href="/2018/10/09/Project-Euler-005/" class="title">
-      Project Euler-005
-    </a>
-  </li>
-
-  <li>
-    <span class="date">
-      2018-10-09
-    </span>
-    <a href="/2018/10/09/Project-Euler-030/" class="title">
-      Project Euler-030
-    </a>
-  </li>
-
-  <li>
-    <span class="date">
-      2018-10-08
-    </span>
-    <a href="/2018/10/08/Project-Euler-003/" class="title">
-      Project Euler-003
-    </a>
-  </li>
-
-  <li>
-    <span class="date">
-      2018-10-08
-    </span>
-    <a href="/2018/10/08/Project-Euler-002/" class="title">
-      Project Euler-002
-    </a>
-  </li>
-
-  <li>
-    <span class="date">
-      2018-10-08
-    </span>
-    <a href="/2018/10/08/Project-Euler-001/" class="title">
-      Project Euler-001
-    </a>
-  </li>
-
-
-          </ul>
-        
-      </div>
-    </div>
-  </div>
   
+</section>
 
+
+        </div>
+        
+        　　　　
+    </div>
 </div>
 
 
