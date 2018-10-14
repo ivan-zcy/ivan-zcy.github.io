@@ -191,17 +191,17 @@
 <p>​    这样的函数f就称为积性函数，若a,b不互质也满足上述条件的话，那么函数f又可称为完全积性函数</p>
 <p>​    </p>
 <p>它又有什么性质呢？</p>
-<pre><code>1. 若n = p1^q1✖️p2^q2✖️ …✖️pn^qn，那么对于积性函数f，有：
-</code></pre><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">f(n) = f(p1^q1) * f(p2^q2) * ... * f(pn^qn)</span><br></pre></td></tr></table></figure>
-<ol start="2">
-<li>若积性函数f满足f(p^n) = f^n(p)，那么f也是完全积性函数</li>
-</ol>
+<p>1.若n = p1^q1✖️p2^q2✖️ …✖️pn^qn，那么对于积性函数f，有：</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">f(n) = f(p1^q1) * f(p2^q2) * ... * f(pn^qn)</span><br></pre></td></tr></table></figure>
+<p>2.若积性函数f满足f(p^n) = f^n(p)，那么f也是完全积性函数</p>
 <h4 id="二-那么，狄利克雷卷积是什么呢？"><a href="#二-那么，狄利克雷卷积是什么呢？" class="headerlink" title="二.  那么，狄利克雷卷积是什么呢？"></a>二.  那么，狄利克雷卷积是什么呢？</h4><p>​    对于任意函数f,g，令h = f * g,都有：</p>
 <figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">h(n) = ∑d|n f(d)⋅g(n / d)  //d为能被n整除的数</span><br></pre></td></tr></table></figure>
 <p>​    此时这个h就可以称为f和g的狄利克雷卷积</p>
 <p>它有什么性质呢？</p>
-<p>​    狄利克雷卷积满足交换律，结合律，加法分配律：</p>
+<p>​    1.狄利克雷卷积满足交换律，结合律，加法分配律：</p>
 <figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">f * g = g * f</span><br><span class="line">f * g * h = f * (g * h)</span><br><span class="line">f * (g + h) = f * g + f *h</span><br></pre></td></tr></table></figure>
+<p>​    2.积性函数卷个积性函数的狄利克雷卷积仍旧是积性函数</p>
+<p>​    </p>
 <h3 id="三-常见的积性函数和狄利克雷卷积有哪些？"><a href="#三-常见的积性函数和狄利克雷卷积有哪些？" class="headerlink" title="三.  常见的积性函数和狄利克雷卷积有哪些？"></a>三.  常见的积性函数和狄利克雷卷积有哪些？</h3><p>我们先说一下常见的积性函数：</p>
 <p>  1.id^k(n) = n^k：幂函数，属于完全积性函数</p>
 <p>  2.I(n) = 1:  恒等函数，属于完全积性函数，相当于id^0(n)</p>
