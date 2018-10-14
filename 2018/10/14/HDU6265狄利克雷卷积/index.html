@@ -14,7 +14,7 @@
 
   <!--Open Graph Title-->
   
-      <meta property="og:title" content="（一）积性函数与狄利克雷卷积"/>
+      <meta property="og:title" content="HDU6265狄利克雷卷积"/>
   
   <!--Open Graph Description-->
   
@@ -42,7 +42,7 @@
     </script>
   <!-- Title -->
   
-  <title>（一）积性函数与狄利克雷卷积 - Zcy</title>
+  <title>HDU6265狄利克雷卷积 - Zcy</title>
 
 
   <link rel="shortcut icon" href="/favicon.ico">
@@ -173,7 +173,7 @@
                 <!-- Title date & tags -->
                 <div class="post-header">
                     <h1 class="entry-title">
-                        （一）积性函数与狄利克雷卷积
+                        HDU6265狄利克雷卷积
                         
                     </h1>
 
@@ -183,51 +183,27 @@
                 </p>
                 <!-- Post Main Content -->
                 <div class="entry-content">
-                    <p><img src="/2018/10/14/积性函数与狄利克雷卷积/title1.jpg" alt="title1"></p>
+                    <p><img src="/2018/10/14/HDU6265狄利克雷卷积/title4.jpg" alt="title4"></p>
 <a id="more"></a>
-<p>​    今天做的一道题就是有关积性函数与狄利克雷卷积的，很懵逼。觉得有必要学一手了</p>
-<h4 id="一-积性函数是什么呢？"><a href="#一-积性函数是什么呢？" class="headerlink" title="一.  积性函数是什么呢？"></a>一.  积性函数是什么呢？</h4><p>​    对于函数f，对于任意的a,b互质，都有:</p>
-<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">f(a * b) = f(a) * f(b)</span><br></pre></td></tr></table></figure>
-<p>​    这样的函数f就称为积性函数，若a,b不互质也满足上述条件的话，那么函数f又可称为完全积性函数</p>
-<p>​    </p>
-<p>它又有什么性质呢？</p>
-<p>1.若n = p1^q1✖️p2^q2✖️ …✖️pn^qn，那么对于积性函数f，有：</p>
-<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">f(n) = f(p1^q1) * f(p2^q2) * ... * f(pn^qn)</span><br></pre></td></tr></table></figure>
-<p>2.若积性函数f满足f(p^n) = f^n(p)，那么f也是完全积性函数</p>
-<h4 id="二-那么，狄利克雷卷积是什么呢？"><a href="#二-那么，狄利克雷卷积是什么呢？" class="headerlink" title="二.  那么，狄利克雷卷积是什么呢？"></a>二.  那么，狄利克雷卷积是什么呢？</h4><p>​    对于任意函数f,g，令h = f * g,都有：</p>
-<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">h(n) = ∑d|n f(d)⋅g(n / d)  //d为能被n整除的数</span><br></pre></td></tr></table></figure>
-<p>​    此时这个h就可以称为f和g的狄利克雷卷积</p>
-<p>它有什么性质呢？</p>
-<p>​    1.狄利克雷卷积满足交换律，结合律，加法分配律：</p>
-<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">f * g = g * f</span><br><span class="line">f * g * h = f * (g * h)</span><br><span class="line">f * (g + h) = f * g + f *h</span><br></pre></td></tr></table></figure>
-<p>​    2.积性函数卷个积性函数的狄利克雷卷积仍旧是积性函数</p>
-<p>​    </p>
-<h3 id="三-常见的积性函数和狄利克雷卷积有哪些？"><a href="#三-常见的积性函数和狄利克雷卷积有哪些？" class="headerlink" title="三.  常见的积性函数和狄利克雷卷积有哪些？"></a>三.  常见的积性函数和狄利克雷卷积有哪些？</h3><p>我们先说一下常见的积性函数：</p>
-<p>  1.id^k(n) = n^k：幂函数，属于完全积性函数</p>
-<p>  2.I(n) = 1:  恒等函数，属于完全积性函数，相当于id^0(n)</p>
-<p>  3.id(n) = n： 单位函数，属于完全积性函数，相当于id^1(n)</p>
-<p>  4.e(n) = [n = 1]：代表单位元函数，它卷上任意的函数都得原函数，即：    </p>
-<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">e * f = f</span><br></pre></td></tr></table></figure>
-<p>  5.φ(n)：欧拉函数，表示小于等于 n 且与 n 互质的数的个数</p>
-<p>  6.μ(n)：莫比乌斯函数，在狄利克雷卷积中与恒等函数互为逆元：</p>
-<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">μ * I = e</span><br></pre></td></tr></table></figure>
-<p>​    关于莫比乌斯函数公式：</p>
-<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">μ(n) = 1;			//当n为1时</span><br><span class="line">μ(n) = (-1)^k		//当n由k个不同质数相乘得到时</span><br><span class="line">μ(n) = 0;			//其余情况</span><br></pre></td></tr></table></figure>
-<p>  7.σ(n)：约数和函数，表示n的全部约数和</p>
-<p>  8.τ(n)：约数个数函数，表示n的全部约数个数</p>
-<p>  9.σk(n)=∑d|n d^k ：因数函数，表示n全部约数的k次方和</p>
-<p>再来说一下常用的狄利克雷卷积：</p>
-<ol>
-<li>I ∗ μ = e （即莫比乌斯函数与恒等函数互为逆元）</li>
-<li>μ∗id = φ  (即莫比乌斯函数卷上单位函数为欧拉函数)</li>
-<li>I ∗ id = σ（即恒等函数卷个单位函数为约数和函数）</li>
-<li>I ∗ I = τ  （即恒等函数卷个恒等函数为约数个数函数）</li>
-<li>I * φ = id (即恒等函数卷个欧拉函数为单位函数)</li>
-</ol>
-<p>可以由狄利克雷卷积证明很多结论，比如：</p>
-<p>1.n = ∑d|n  φ(d) ，也就是n等于全部 φ(d)的和（φ(d)为d的欧拉函数）</p>
-<p>2.σ(n) = ∑d|n  τ(d) ∗ φ(n / d)，也就是欧拉函数卷个约数个数函数为约数和函数</p>
-<p>3.二项式反演：<img src="/2018/10/14/积性函数与狄利克雷卷积/1.png" alt="1"></p>
+<p>下面就做一道欧拉函数|积性函数|狄利克雷卷积的题吧，相关原理在上一篇博文：<a href="http://www.ivan-zcy.top/2018/10/14/积性函数与狄利克雷卷积/">点我跳转</a> </p>
+<p>题意：</p>
+<p><img src="/2018/10/14/HDU6265狄利克雷卷积/1.png" alt="1"></p>
+<p>​    翻译成汉语，大概意思就是首先输入一个数T代表有T组样例，每组样例第一行m代表有m对&lt;p,q&gt;（其中p为素数，每对中的p各不相同），计算得到全部pi^qi的乘积n，最后求一下∑d|n φ(d) × n / d的值取模998244353</p>
+<p>思路：</p>
+<p>​    由于p和q数据范围是1e8，我们没办法求出全部p^q的乘积n（爆long long），只能想办法化简公式和通过中间过程来得到答案，又因为给出的∑d|n φ(d) × n / d包含求和，我们遍历辣么大的数的求和铁定超时，所以还应该想办法把公式化简成O(1)的，也就是把求和给去掉</p>
+<p>​    我们接着按照上面的需求想问题：</p>
+<p>​    令函数f(n) = n，令h(n) = ∑d|n φ(d) × n / d，是不是发现了点什么！！！对，h(n）是φ(n)与f(n)的狄利克雷卷积。由于φ(n)是欧拉函数，所以它是积性函数，f(n) = n是单位函数，所以它是完全积性函数，那么h(n)一定也是积性函数，它满足a,b互质，则h(a <em> b) = h(a) </em> h(b)的性质</p>
+<p>​    又因为每对中的p都是不同的素数！！！因此每对pi^qi之间都是互质的，所以,我们就可以解决爆long long 问题：</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">h(n) = h(p1^q1 * p2^q2 * ... * pm^qm) = ∏ h(pi ^ qi)  //i为从1～m</span><br></pre></td></tr></table></figure>
+<p>​    这样我们从求h(n)变成了求m个h(pi^qi)的乘积了</p>
+<p>​    此时pi^qi也会爆long long，我们先别管继续往下走</p>
+<p>​    这时候∑d|n φ(d) × n / d就变成了求∑d|p^q φ(d) × p^q / d .我们需要通过化简∑d|p^q φ(d) × p^q / d为O(1)来解决超时问题，怎么化简呢？手写了一份化简过程：</p>
+<p><img src="/2018/10/14/HDU6265狄利克雷卷积/2.jpg" alt="2"></p>
+<pre><code>我们就可以把h(p^q) = ∑d|p^q φ(d) × p^q / d 化简为h(p^q) = p^q + q * p^(q - 1) * (p - 1)
+</code></pre><p>​    这样我们就可以通过h(n) =  ∏ h(pi ^ qi)来求h(n)了（通过不断的取余998244353来防治爆longlong）</p>
+<p>​    Over～</p>
+<p>代码：</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">#include &lt;stdio.h&gt;</span><br><span class="line">#include &lt;string.h&gt;</span><br><span class="line">#include &lt;inttypes.h&gt;</span><br><span class="line">#define ll int64_t</span><br><span class="line">#define d int32_t</span><br><span class="line">#define f double</span><br><span class="line">#define r return</span><br><span class="line">#define mod 998244353</span><br><span class="line">#define mem(a) memset(a, 0, sizeof(a))</span><br><span class="line">#define scanfd(a) scanf(&quot;%d&quot;, &amp;a)</span><br><span class="line">#define scanfl(a) scanf(&quot;%lld&quot;, &amp;a)</span><br><span class="line">#define printfl(a) printf(&quot;%lld\n&quot;, a)</span><br><span class="line">#define For(i, star, endd) for (d i = star; i &lt;= endd; i++)</span><br><span class="line">#define Forr(i, endd, star) for (d i = endd; i &gt;= star; i--)</span><br><span class="line"></span><br><span class="line">//快速幂</span><br><span class="line">ll quick(ll a, ll b) &#123;</span><br><span class="line">    ll ans = 1;</span><br><span class="line">    while (b) &#123;</span><br><span class="line">        if (b &amp; 1) &#123;</span><br><span class="line">            ans = ans * a % mod;</span><br><span class="line">        &#125;</span><br><span class="line">        b &gt;&gt;= 1;</span><br><span class="line">        a = a * a % mod;</span><br><span class="line">    &#125;</span><br><span class="line">    r ans;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">d main () &#123;</span><br><span class="line">    d T, m;</span><br><span class="line">    ll p, q;</span><br><span class="line">    scanfd(T);</span><br><span class="line">    while (T--) &#123;</span><br><span class="line">        ll ans = 1;</span><br><span class="line">        scanfd(m);</span><br><span class="line">        For (i, 1, m) &#123;</span><br><span class="line">            ll res = 0;</span><br><span class="line">            scanfl(p);</span><br><span class="line">            scanfl(q);</span><br><span class="line">            res = quick(p, q - 1) * q % mod * (p - 1) % mod;</span><br><span class="line">            res = (res + quick(p, q)) % mod;</span><br><span class="line">            ans = ans * res % mod;</span><br><span class="line">        &#125;</span><br><span class="line">        printfl(ans);</span><br><span class="line">    &#125;</span><br><span class="line">    r 0;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 <p><a href="http://www.ivan-zcy.top">转载请注明出处！！！</a>  </p>
 <p>如果有写的不对或者不全面的地方 可通过主页的联系方式进行指正，谢谢</p>
 
@@ -239,13 +215,9 @@
         <div class="container" >
             <ul class="pager">
                 
-                <li class="previous">
-                    <a href="/2018/10/14/HDU6265狄利克雷卷积/" rel="prev">下一篇</a>
-                </li>
-                
                 
                 <li class="next">
-                    <a href="/2018/10/14/HDU6267/" rel="prev">上一篇</a>
+                    <a href="/2018/10/14/积性函数与狄利克雷卷积/" rel="prev">上一篇</a>
                 </li>
                 
             </ul>
