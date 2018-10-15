@@ -1,0 +1,327 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+
+<!-- Head tag -->
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+
+  <!--Description-->
+  
+
+  <!--Author-->
+  
+
+  <!--Open Graph Title-->
+  
+      <meta property="og:title" content="Project Euler-048"/>
+  
+  <!--Open Graph Description-->
+  
+  <!--Open Graph Site Name-->
+  <meta property="og:site_name" content="Zcy"/>
+  <!--Type page-->
+  
+      <meta property="og:type" content="article" />
+  
+  <!--Page Cover-->
+  
+
+    <meta name="baidu-site-verification" content="8vgn54BtUC" />
+
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <!-- 百度统计 -->
+    <script>
+	var _hmt = _hmt || [];
+	(function() {
+  	var hm = document.createElement("script");
+  	hm.src = "https://hm.baidu.com/hm.js?c0451e16533956173997b85f7a8de666";
+  	var s = document.getElementsByTagName("script")[0]; 
+  	s.parentNode.insertBefore(hm, s);
+	})();
+    </script>
+  <!-- Title -->
+  
+  <title>Project Euler-048 - Zcy</title>
+
+
+  <link rel="shortcut icon" href="/favicon.ico">
+    <!--font-awesome-->
+  <link rel="stylesheet" href="//cdn.bootcss.com/font-awesome/4.5.0/css/font-awesome.min.css">
+
+    <link rel="stylesheet" href="/css/animate.css">
+    <link rel="stylesheet" href="/css/thplayer.css">
+  <!-- Custom CSS/Sass -->
+  <link rel="stylesheet" href="/css/style.css">
+    <script src="http://oct3pmpde.bkt.clouddn.com/jquery.js"></script>
+</head>
+
+
+<body>
+
+  <!-- Nav -->
+  <header class="site-header">
+  <div class="header-inside">
+    
+    <div class="logo">
+      <a href="/" rel="home">
+        
+        <img src="http://oct3pmpde.bkt.clouddn.com/timg.jpg" alt="Zcy" height="60">
+        
+      </a>
+    </div>
+    <a class="header-name" href="/">
+            <span>Zcy</span>
+            的小屋
+        </a>
+    <!-- navbar -->
+    <nav class="navbar">
+      <!--  nav links -->
+      <div class="collapse">
+        <ul class="navbar-nav">
+          
+          
+            <li>
+              <a href="/.">
+                
+                  <i class="fa fa-home "></i>
+                
+                小屋
+              </a>
+            </li>
+          
+            <li>
+              <a href="/archives">
+                
+                  <i class="fa fa-archive "></i>
+                
+                点滴
+              </a>
+            </li>
+          
+            <li>
+              <a href="/tags">
+                
+                  <i class="fa fa-archive "></i>
+                
+                标签
+              </a>
+            </li>
+          
+            <li>
+              <a href="/project">
+                
+                  <i class="fa fa-folder-open "></i>
+                
+                项目
+              </a>
+            </li>
+          
+            <li>
+              <a href="/photo">
+                
+                  <i class="fa fa-photo "></i>
+                
+                相册
+              </a>
+            </li>
+          
+            <li>
+              <a href="/guestbook">
+                
+                  <i class="fa fa-edit "></i>
+                
+                留言
+              </a>
+            </li>
+          
+            <li>
+              <a href="/about">
+                
+                  <i class="fa fa-user "></i>
+                
+                关于我
+              </a>
+            </li>
+          
+            <li>
+              <a href="/friendly">
+                
+                  <i class="fa fa-bicycle "></i>
+                
+                友情链接
+              </a>
+            </li>
+          
+        </ul>
+      </div>
+      <!-- /.navbar-collapse -->
+    </nav>
+    <div class="button-wrap">
+      <button class="menu-toggle">Primary Menu</button>
+    </div>
+  </div>
+</header>
+
+
+  <!-- Main Content -->
+  <div class="content-area">
+    <div class="post">
+        <!-- Post Content -->
+        <div class="container">
+            <article>
+                <!-- Title date & tags -->
+                <div class="post-header">
+                    <h1 class="entry-title">
+                        Project Euler-048
+                        
+                    </h1>
+
+                </div>
+                <p class="a-posted-on">
+                    2018-10-15
+                </p>
+                <!-- Post Main Content -->
+                <div class="entry-content">
+                    <p><img src="/2018/10/15/HDU6228/title.jpg" alt="title"></p>
+<a id="more"></a>
+<p>题意：</p>
+<p>Problem Description</p>
+<p>Consider a un-rooted tree T which is not the biological significance of tree or plant, but a tree as an undirected graph in graph theory with n nodes, labelled from 1 to n. If you cannot understand the concept of a tree here, please omit this problem.<br>Now we decide to colour its nodes with k distinct colours, labelled from 1 to k. Then for each colour i = 1, 2, · · · , k, define Ei as the minimum subset of edges connecting all nodes coloured by i. If there is no node of the tree coloured by a specified colour i, Ei will be empty.<br>Try to decide a colour scheme to maximize the size of E1 ∩ E2 · · · ∩ Ek, and output its size.</p>
+<p>Input</p>
+<p>The first line of input contains an integer T (1 ≤ T ≤ 1000), indicating the total number of test cases.<br>For each case, the first line contains two positive integers n which is the size of the tree and k (k ≤ 500) which is the number of colours. Each of the following n - 1 lines contains two integers x and y describing an edge between them. We are sure that the given graph is a tree.<br>The summation of n in input is smaller than or equal to 200000.</p>
+<p>Output</p>
+<p>For each test case, output the maximum size of E1 ∩ E1 … ∩ Ek.</p>
+<p>Sample Input</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">3</span><br><span class="line">4 2</span><br><span class="line">1 2</span><br><span class="line">2 3</span><br><span class="line">3 4</span><br><span class="line">4 2</span><br><span class="line">1 2</span><br><span class="line">1 3</span><br><span class="line">1 4</span><br><span class="line">6 3</span><br><span class="line">1 2</span><br><span class="line">2 3</span><br><span class="line">3 4</span><br><span class="line">3 5</span><br><span class="line">6 2</span><br></pre></td></tr></table></figure>
+<p>Sample Output</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">1</span><br><span class="line">0</span><br><span class="line">1</span><br></pre></td></tr></table></figure>
+<p>​    翻译成汉语大概意思就是有一颗树，在树上的点涂色，每个点涂一种颜色，一共可以涂k种颜色，然后你需要把每种颜色的点按最短路径用该种颜色连起来，问涂k次的边最多有几条？</p>
+<p>​    第一行输入的是T代表有T组样例，每组样例第一行为n，k，分别代表树上有n个节点，可用k种颜色给节点涂色。之后n-1行a,b代表节点a到节点b之间有一条边</p>
+<p>思路：</p>
+<p>​    我们可以把树转化为图，对于每个边进行dfs（利用记忆化搜索），分别求出该边左边和右边的节点数，只要都大于等于k就可以累加，累加和就是答案。时间复杂度，大概也就O(n)吧，因为记忆化搜索dfs多也多不多少。。</p>
+<p>代码：</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">#include &lt;stdio.h&gt;</span><br><span class="line">#include &lt;vector&gt;</span><br><span class="line">#include &lt;string.h&gt;</span><br><span class="line">#include &lt;inttypes.h&gt;</span><br><span class="line">#define d int32_t</span><br><span class="line">using namespace std;</span><br><span class="line"></span><br><span class="line">struct node &#123;</span><br><span class="line">    d left, right;</span><br><span class="line">&#125;bian[200005];</span><br><span class="line">d num[200005][2];         //num[i][0]存储第i个边左边的节点数，num[i][1]存储第i个边右边的节点数</span><br><span class="line">vector&lt;int&gt;zcy[200005];     //zcy[i]存储以i点为端点的边的编号,zcy[i].size()即为边的个数</span><br><span class="line"></span><br><span class="line">//利用dfs+记忆化搜索求编号为now的边的chooes（0为左，1为右）的节点数</span><br><span class="line">int dfs(int now, int chooes) &#123;</span><br><span class="line">    if(num[now][chooes]) return num[now][chooes];       //记忆化搜索</span><br><span class="line">    int ans = 1, t;</span><br><span class="line">    if (chooes == 0) &#123;</span><br><span class="line">        t = bian[now].left;</span><br><span class="line">    &#125; else &#123;</span><br><span class="line">        t = bian[now].right;</span><br><span class="line">    &#125;</span><br><span class="line">    for (int i = 0; i &lt; zcy[t].size(); i++) &#123;</span><br><span class="line">        int next = zcy[t][i];</span><br><span class="line">        if (bian[next].left == bian[now].left &amp;&amp; bian[next].right == bian[now].right) &#123;</span><br><span class="line">            continue;</span><br><span class="line">        &#125;</span><br><span class="line">        if (bian[next].left == t) &#123;</span><br><span class="line">            if (num[next][1]) &#123;          //记忆化搜索</span><br><span class="line">                ans += num[next][1];</span><br><span class="line">            &#125; else &#123;</span><br><span class="line">                ans += dfs(next, 1);</span><br><span class="line">            &#125;</span><br><span class="line">        &#125; else &#123;</span><br><span class="line">            if (num[next][0]) &#123;          //记忆化搜索</span><br><span class="line">                ans += num[next][0];</span><br><span class="line">            &#125; else &#123;</span><br><span class="line">                ans += dfs(next, 0);</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    num[now][chooes] = ans;              //记录中间状态</span><br><span class="line">    return ans;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">int main()</span><br><span class="line">&#123;</span><br><span class="line">    int T, n, k;</span><br><span class="line">    scanf(&quot;%d&quot;, &amp;T);</span><br><span class="line">    while (T--) &#123;</span><br><span class="line">        int ans = 0;</span><br><span class="line">        scanf(&quot;%d%d&quot;, &amp;n, &amp;k);</span><br><span class="line">        memset(num, 0, sizeof(num));</span><br><span class="line">        for (int i = 1; i &lt;= n; i++) &#123;</span><br><span class="line">            zcy[i].clear();</span><br><span class="line">        &#125;</span><br><span class="line">        for (int i = 1; i &lt; n; i++) &#123;</span><br><span class="line">            scanf(&quot;%d%d&quot;, &amp;bian[i].left, &amp;bian[i].right);</span><br><span class="line">            zcy[bian[i].left].push_back(i);</span><br><span class="line">            zcy[bian[i].right].push_back(i);</span><br><span class="line">        &#125;</span><br><span class="line">        for (int i = 1; i &lt; n; i++) &#123;</span><br><span class="line">            dfs(i, 0);    //每个边两个dfs，分别求左边和右边（由于有记忆化搜索，所以可以不用右边=节点数-左边）</span><br><span class="line">            dfs(i, 1);</span><br><span class="line">        &#125;</span><br><span class="line">        for (int i = 1; i &lt; n; i++) &#123;</span><br><span class="line">            if (num[i][0] &gt;= k &amp;&amp; num[i][1] &gt;= k) ans++;        //此时满足条件</span><br><span class="line">        &#125;</span><br><span class="line">        printf(&quot;%d\n&quot;,ans);</span><br><span class="line">    &#125;</span><br><span class="line">    return 0;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p><a href="http://www.ivan-zcy.top">转载请注明出处！！！</a>  </p>
+<p>如果有写的不对或者不全面的地方 可通过主页的联系方式进行指正，谢谢</p>
+
+                </div>
+            </article>
+        </div>
+        <!-- Pre or Next -->
+        
+        <div class="container" >
+            <ul class="pager">
+                
+                
+                <li class="next">
+                    <a href="/2018/10/15/Project-Euler-021/" rel="prev">上一篇</a>
+                </li>
+                
+            </ul>
+        </div>
+        　　　　<!-- Comments -->
+        <div class="container">
+            
+<section id="comment">
+  <!-- <h1 class="title">Comments</h1> -->
+
+  
+</section>
+
+
+        </div>
+        
+        　　　　
+    </div>
+</div>
+
+
+  <div id="Thplayer"></div>
+  <script type="application/javascript" src="/js/thplayer.min.js"></script>
+  <script>
+      $("#Thplayer").thplayer({
+          title: "遇见",
+          author: "孙燕姿",
+          cover: "/img/yj.jpg",
+          music: "http://www.ytmp3.cn/down/37418.mp3"
+      });
+  </script>
+
+  <!-- Footer -->
+  <!-- top -->
+<div id="rocket-to-top">
+  <div class="level-2"></div>
+  <div class="level-3"></div>
+</div>
+<script src="http://oct3pmpde.bkt.clouddn.com/top.js"></script>
+<script type="text/javascript" src="http://oct3pmpde.bkt.clouddn.com/jquery.js"></script>
+
+<!-- Footer -->
+<footer class="site-info">
+  <p>
+    <span>Zcy &copy; 2018</span>
+    
+      <span class="split">|</span>
+      <span>Zcy</span>
+      <p>Hosted by <a href="https://pages.coding.me" style="font-weight: bold">Coding Pages</a></p>
+    
+  </p>
+  <script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+  本站总访问量<span id="busuanzi_value_site_pv"></span>次
+  本站访客数<span id="busuanzi_value_site_uv"></span>人次
+</footer>
+
+
+  <!-- After footer scripts -->
+  <!-- scripts -->
+<script src="/js/app.js"></script>
+
+
+  <script>
+      (function(){
+
+          function _scroll(){
+              var acticles = $('.article > .container');
+              var height = window.innerHeight || document.body.offsetHeight;
+              acticles.each(function () {
+                  var top = this.getBoundingClientRect().top;
+                  if(top < height+1){
+                      if(!$(this).hasClass('animated')) {
+                          $(this).addClass('slideInRight');
+                          $(this).addClass('animated');
+                      }
+                  }
+              })
+
+              $(window).scroll(function () {
+                  acticles.each(function () {
+                      var top = this.getBoundingClientRect().top;
+                      if(top < height+1){
+                          if(!$(this).hasClass('animated')) {
+                              $(this).addClass('slideInRight');
+                              $(this).addClass('animated');
+                          }
+                      }
+                  })
+              })
+          }
+
+
+          var bp = document.createElement('script');
+          var curProtocol = window.location.protocol.split(':')[0];
+          if (curProtocol === 'https') {
+              bp.src = 'https://zz.bdstatic.com/linksubmit/push.js';
+          }
+          else {
+              bp.src = 'http://push.zhanzhang.baidu.com/push.js';
+          }
+          var s = document.getElementsByTagName("script")[0];
+          s.parentNode.insertBefore(bp, s);
+          _scroll();
+      })();
+  </script>
+
+</body>
+
+</html>
