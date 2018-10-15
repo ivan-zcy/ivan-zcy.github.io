@@ -14,7 +14,7 @@
 
   <!--Open Graph Title-->
   
-      <meta property="og:title" content="HDU6265狄利克雷卷积"/>
+      <meta property="og:title" content="Project Euler-021"/>
   
   <!--Open Graph Description-->
   
@@ -42,7 +42,7 @@
     </script>
   <!-- Title -->
   
-  <title>HDU6265狄利克雷卷积 - Zcy</title>
+  <title>Project Euler-021 - Zcy</title>
 
 
   <link rel="shortcut icon" href="/favicon.ico">
@@ -173,37 +173,41 @@
                 <!-- Title date & tags -->
                 <div class="post-header">
                     <h1 class="entry-title">
-                        HDU6265狄利克雷卷积
+                        Project Euler-021
                         
                     </h1>
 
                 </div>
                 <p class="a-posted-on">
-                    2018-10-14
+                    2018-10-15
                 </p>
                 <!-- Post Main Content -->
                 <div class="entry-content">
-                    <p><img src="/2018/10/14/HDU6265狄利克雷卷积/title4.jpg" alt="title4"></p>
+                    <p><img src="/2018/10/15/Project-Euler-021/title3.jpg" alt="title3"></p>
 <a id="more"></a>
-<p>下面就做一道欧拉函数|积性函数|狄利克雷卷积的题吧，相关原理在上一篇博文：<a href="http://www.ivan-zcy.top/2018/10/14/积性函数与狄利克雷卷积/">点我跳转</a> </p>
-<p>题意：</p>
-<p><img src="/2018/10/14/HDU6265狄利克雷卷积/1.png" alt="1"></p>
-<p>​    翻译成汉语，大概意思就是首先输入一个数T代表有T组样例，每组样例第一行m代表有m对&lt;p,q&gt;（其中p为素数，每对中的p各不相同），计算得到全部pi^qi的乘积n，最后求一下∑d|n φ(d) × n / d的值取模998244353</p>
+<h3 id="021题："><a href="#021题：" class="headerlink" title="021题："></a>021题：</h3><p>题意：</p>
+<p>​    记d(n)为n的所有真因数（小于n且整除n的正整数）之和<br>​    如果d(a) = b且d(b) = a，且a ≠ b，那么a和b构成一个亲和数对，a和b被称为亲和数</p>
+<p>​    例如，220的真因数包括1、2、4、5、10、11、20、22、44、55和100，因此d(220) = 284；而284的真因数包括1、2、4、71和142，因此d(284) = 220</p>
+<p>​    求所有小于10000的亲和数的和</p>
 <p>思路：</p>
-<p>​    由于p和q数据范围是1e8，我们没办法求出全部p^q的乘积n（爆long long），只能想办法化简公式和通过中间过程来得到答案，又因为给出的∑d|n φ(d) × n / d包含求和，我们遍历辣么大的数的求和铁定超时，所以还应该想办法把公式化简成O(1)的，也就是把求和给去掉</p>
-<p>​    我们接着按照上面的需求想问题：</p>
-<p>​    令函数f(n) = n，令h(n) = ∑d|n φ(d) × n / d，是不是发现了点什么！！！对，h(n）是φ(n)与f(n)的狄利克雷卷积。由于φ(n)是欧拉函数，所以它是积性函数，f(n) = n是单位函数，所以它是完全积性函数，那么h(n)一定也是积性函数，它满足a,b互质，则h(a <em> b) = h(a) </em> h(b)的性质</p>
-<p>​    又因为每对中的p都是不同的素数！！！因此每对pi^qi之间都是互质的，所以,我们就可以解决爆long long 问题：</p>
-<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">h(n) = h(p1^q1 * p2^q2 * ... * pm^qm) = ∏ h(pi ^ qi)  //i为从1～m</span><br></pre></td></tr></table></figure>
-<p>​    这样我们从求h(n)变成了求m个h(pi^qi)的乘积了</p>
-<p>​    此时pi^qi也会爆long long，我们先别管继续往下走</p>
-<p>​    这时候∑d|n φ(d) × n / d就变成了求∑d|p^q φ(d) × p^q / d .我们需要通过化简∑d|p^q φ(d) × p^q / d为O(1)来解决超时问题，怎么化简呢？手写了一份化简过程：</p>
-<p><img src="/2018/10/14/HDU6265狄利克雷卷积/2.jpg" alt="2"></p>
-<p> 我们就可以把h(p^q) = ∑d|p^q φ(d) × p^q / d 化简为h(p^q) = p^q + q <em> p^(q - 1) </em> (p - 1)</p>
-<p>这样我们就可以通过h(n) =  ∏ h(pi ^ qi)来求h(n)了（通过不断的取余998244353来防治爆longlong）</p>
-<p>​    Over～</p>
+<p>​    在数论中我们称d(n)这样的函数为约数和函数。具体有以下几个性质：</p>
+<p>​    1.约数和函数为积性函数，因此满足任意两个互质的数a，b，都有d(a✖️b) = d(a) ✖️d(b)</p>
+<p>​    2.若b = a ✖️ a中的最小素因子p1 ，也就是</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">a = p1^a1 * p2^a2 * ... * pn^an</span><br><span class="line">b = p1 * p1^a1 * p2^a2 * ... * pn^an</span><br></pre></td></tr></table></figure>
+<p>则：</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">d(b) = d(a) * (1 - p1^(a1 + 2)) / (1 - p1^(a1 + 1))</span><br></pre></td></tr></table></figure>
+<p>​    </p>
+<p>​    3.对于素数来说，它的约数只有1和它本身，所以：</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">d(n) = n + 1;    //当n为素数</span><br></pre></td></tr></table></figure>
+<p>​    </p>
+<p>​    4.对于求解一般的约数和函数，我们有一个约数和定理：</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">d(n)=(p1^0+p1^1+p1^2+…p1^a1)(p2^0+p2^1+p2^2+…p2^a2)…(pk^0+pk^1+pk^2+…pk^ak)</span><br><span class="line">//n = p1^a1 * p2^a2 *...* pk^ak且p都为素数</span><br></pre></td></tr></table></figure>
+<p>​    通过等比数列求和公式化简一下，为：</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">d(n)=Π (1 - pi^(ai + 1)) / (1 - pi)		</span><br><span class="line">//pi为它的素因子，ai为该种素因子的个数</span><br></pre></td></tr></table></figure>
+<p>​    我们就可以根据n的素因子种类pi和每种的个数ai来求约数和了。关于pi和ai我们可以利用之前的线性筛求因子个数框架来求取 抛个链接：<a href="http://www.ivan-zcy.top/2018/10/12/Project-Euler-012/">走你</a> </p>
+<p>​    </p>
 <p>代码：</p>
-<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">#include &lt;stdio.h&gt;</span><br><span class="line">#include &lt;string.h&gt;</span><br><span class="line">#include &lt;inttypes.h&gt;</span><br><span class="line">#define ll int64_t</span><br><span class="line">#define d int32_t</span><br><span class="line">#define f double</span><br><span class="line">#define r return</span><br><span class="line">#define mod 998244353</span><br><span class="line">#define mem(a) memset(a, 0, sizeof(a))</span><br><span class="line">#define scanfd(a) scanf(&quot;%d&quot;, &amp;a)</span><br><span class="line">#define scanfl(a) scanf(&quot;%lld&quot;, &amp;a)</span><br><span class="line">#define printfl(a) printf(&quot;%lld\n&quot;, a)</span><br><span class="line">#define For(i, star, endd) for (d i = star; i &lt;= endd; i++)</span><br><span class="line">#define Forr(i, endd, star) for (d i = endd; i &gt;= star; i--)</span><br><span class="line"></span><br><span class="line">//快速幂</span><br><span class="line">ll quick(ll a, ll b) &#123;</span><br><span class="line">    ll ans = 1;</span><br><span class="line">    while (b) &#123;</span><br><span class="line">        if (b &amp; 1) &#123;</span><br><span class="line">            ans = ans * a % mod;</span><br><span class="line">        &#125;</span><br><span class="line">        b &gt;&gt;= 1;</span><br><span class="line">        a = a * a % mod;</span><br><span class="line">    &#125;</span><br><span class="line">    r ans;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">d main () &#123;</span><br><span class="line">    d T, m;</span><br><span class="line">    ll p, q;</span><br><span class="line">    scanfd(T);</span><br><span class="line">    while (T--) &#123;</span><br><span class="line">        ll ans = 1;</span><br><span class="line">        scanfd(m);</span><br><span class="line">        For (i, 1, m) &#123;</span><br><span class="line">            ll res = 0;</span><br><span class="line">            scanfl(p);</span><br><span class="line">            scanfl(q);</span><br><span class="line">            res = quick(p, q - 1) * q % mod * (p - 1) % mod;</span><br><span class="line">            res = (res + quick(p, q)) % mod;</span><br><span class="line">            ans = ans * res % mod;</span><br><span class="line">        &#125;</span><br><span class="line">        printfl(ans);</span><br><span class="line">    &#125;</span><br><span class="line">    r 0;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">#include &lt;stdio.h&gt;</span><br><span class="line">#include &lt;string.h&gt;</span><br><span class="line">#include &lt;inttypes.h&gt;</span><br><span class="line">#define ll int64_t</span><br><span class="line">#define d int32_t</span><br><span class="line">#define f double</span><br><span class="line">#define r return</span><br><span class="line">#define N (d)1e4</span><br><span class="line">#define mem(a) memset(a, 0, sizeof(a))</span><br><span class="line">#define scanfd(a) scanf(&quot;%d&quot;, &amp;a)</span><br><span class="line">#define scanfl(a) scanf(&quot;%lld&quot;, &amp;a)</span><br><span class="line">#define printfl(a) printf(&quot;%lld\n&quot;, a)</span><br><span class="line">#define printfd(a) printf(&quot;%d\n&quot;, a)</span><br><span class="line">#define For(i, star, endd) for (d i = star; i &lt;= endd; i++)</span><br><span class="line">#define Forr(i, endd, star) for (d i = endd; i &gt;= star; i--)</span><br><span class="line"></span><br><span class="line">ll prime[N + 5];     //存全部的素数</span><br><span class="line">ll dd[N + 5];        //用来存约数和</span><br><span class="line">ll book[N + 5];     //book[i]用来存储i的最小素因子幂次方值，如book[24] = 8</span><br><span class="line"></span><br><span class="line">void init() &#123;</span><br><span class="line">    mem(prime);</span><br><span class="line">    mem(dd);</span><br><span class="line">    mem(book);</span><br><span class="line">    For(i, 2, N) &#123;</span><br><span class="line">        if(!book[i]) &#123;</span><br><span class="line">            prime[++prime[0]] = i;</span><br><span class="line">            dd[i] = i + 1;              //素数的约数只有1和它本身</span><br><span class="line">            book[i] = i;                //素数的最小素因子幂次方值等于它本身</span><br><span class="line">        &#125;</span><br><span class="line">        For(j, 1, prime[0]) &#123;</span><br><span class="line">            ll t = prime[j] * i;</span><br><span class="line">            if (t &gt; N) break;</span><br><span class="line">            if (i % prime[j] == 0) &#123;        //当为性质2的时候</span><br><span class="line">                book[t] = book[i] * prime[j];</span><br><span class="line">                dd[t] = dd[i] * (book[i] * prime[j] * prime[j] - 1) / (book[i] * prime[j] - 1);</span><br><span class="line">                break;</span><br><span class="line">            &#125; else &#123;                        //当为性质1的时候</span><br><span class="line">                dd[t] = dd[prime[j]] * dd[i];</span><br><span class="line">                book[t] = prime[j];</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    r;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">d main () &#123;</span><br><span class="line">    init();</span><br><span class="line">    ll ans = 0;</span><br><span class="line">    For(i, 2, N) &#123;</span><br><span class="line">        dd[i] -= i;</span><br><span class="line">    &#125;</span><br><span class="line">    For(i, 0, N) &#123;</span><br><span class="line">        if (dd[i] != i &amp;&amp; dd[i] &lt;= N &amp;&amp; i == dd[dd[i]]) &#123;</span><br><span class="line">            ans += i;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    printfl(ans);</span><br><span class="line">    r 0;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 <p><a href="http://www.ivan-zcy.top">转载请注明出处！！！</a>  </p>
 <p>如果有写的不对或者不全面的地方 可通过主页的联系方式进行指正，谢谢</p>
 
@@ -215,13 +219,9 @@
         <div class="container" >
             <ul class="pager">
                 
-                <li class="previous">
-                    <a href="/2018/10/15/Project-Euler-021/" rel="prev">下一篇</a>
-                </li>
-                
                 
                 <li class="next">
-                    <a href="/2018/10/14/积性函数与狄利克雷卷积/" rel="prev">上一篇</a>
+                    <a href="/2018/10/14/HDU6265狄利克雷卷积/" rel="prev">上一篇</a>
                 </li>
                 
             </ul>
