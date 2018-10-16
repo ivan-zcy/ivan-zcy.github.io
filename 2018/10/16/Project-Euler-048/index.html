@@ -14,7 +14,7 @@
 
   <!--Open Graph Title-->
   
-      <meta property="og:title" content="Zcy"/>
+      <meta property="og:title" content="Project Euler-048"/>
   
   <!--Open Graph Description-->
   
@@ -22,7 +22,7 @@
   <meta property="og:site_name" content="Zcy"/>
   <!--Type page-->
   
-      <meta property="og:type" content="website" />
+      <meta property="og:type" content="article" />
   
   <!--Page Cover-->
   
@@ -42,7 +42,7 @@
     </script>
   <!-- Title -->
   
-  <title>ACM - Zcy</title>
+  <title>Project Euler-048 - Zcy</title>
 
 
   <link rel="shortcut icon" href="/favicon.ico">
@@ -165,77 +165,70 @@
 
 
   <!-- Main Content -->
-  
+  <div class="content-area">
+    <div class="post">
+        <!-- Post Content -->
+        <div class="container">
+            <article>
+                <!-- Title date & tags -->
+                <div class="post-header">
+                    <h1 class="entry-title">
+                        Project Euler-048
+                        
+                    </h1>
 
-<!-- Main Content -->
-<div class="archive content-area">
-  <div class="container">
-    <h1 class="entry-title">#ACM</h1>
-    <div class="row">
-      <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
-        <!-- Use lodash to classify posts. See https://lodash.com/docs#groupBy -->
+                </div>
+                <p class="a-posted-on">
+                    2018-10-16
+                </p>
+                <!-- Post Main Content -->
+                <div class="entry-content">
+                    <p><img src="/2018/10/16/Project-Euler-048/title.jpg" alt="title"></p>
+<a id="more"></a>
+<h3 id="048题："><a href="#048题：" class="headerlink" title="048题："></a>048题：</h3><p>题意：</p>
+<p>​    十项的自幂级数求和为 1^1 + 2^2 + 3^3 + … + 10^10 = 10405071317。</p>
+<p>​    求如下一千项的自幂级数求和的最后10位数字：1^1 + 2^2 + 3^3 + … + 1000^1000</p>
+<p>思路：</p>
+<p>​    设mod为1e10，根据同余定理，我们可以利用快速幂求i^i关于mod的模。但是有一个问题，就是快速幂中存在两数先相乘再取余mod的过程，可能两数在相乘时就爆long long了。因此，我们可以通过一个小技巧来防治爆long long。</p>
+<p>​    对于a * b % mod，我们设k为1e5，那么一定存在a = ik + j，b = pk + q （其中i = a / k，j = a % k，p = b / k，q = b % k）</p>
+<p>​    把a和b带入原式，得到：</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">a * b % mod = (ik + j) * (pk + q) % mod</span><br><span class="line">			= (ipk^2 + iqk + jpk + jq) % mod</span><br></pre></td></tr></table></figure>
+<p>​    由于ipk^2,iqk,jpk,jq都在longlong范围内，因此解决了爆longlong问题</p>
+<p>代码：</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">#include &lt;stdio.h&gt;</span><br><span class="line">#include &lt;string.h&gt;</span><br><span class="line">#include &lt;inttypes.h&gt;</span><br><span class="line">#define d int32_t</span><br><span class="line">#define r return</span><br><span class="line">#define ll int64_t</span><br><span class="line">#define t (ll)1e5</span><br><span class="line">#define mod (ll)1e10</span><br><span class="line">#define For(i, star, endd) for(d i = star; i &lt;= endd; i++)</span><br><span class="line"></span><br><span class="line">//乘法防爆longlong</span><br><span class="line">ll mul (ll a, ll b) &#123;</span><br><span class="line">    ll ans = 0;</span><br><span class="line">    ll i = a / t;</span><br><span class="line">    ll j = a % t;</span><br><span class="line">    ll p = b / t;</span><br><span class="line">    ll q = b % t;</span><br><span class="line">    ans = (i * p % mod * t % mod *t % mod + i * q % mod * t % mod + j * p % mod * t % mod + j * q % mod) % mod;</span><br><span class="line">    r ans;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">//快速幂</span><br><span class="line">ll quick(ll a, ll b) &#123;</span><br><span class="line">    ll ans = 1;</span><br><span class="line">    while (b) &#123;</span><br><span class="line">        if (b &amp; 1) ans = mul(ans, a);</span><br><span class="line">        b &gt;&gt;= 1;</span><br><span class="line">        a = mul(a, a);</span><br><span class="line">    &#125;</span><br><span class="line">    r ans;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">//循环球i^i</span><br><span class="line">ll work() &#123;</span><br><span class="line">    ll ans = 0;</span><br><span class="line">    For(i, 1, 1000) &#123;</span><br><span class="line">        ans = (ans + quick(i, i)) % mod;</span><br><span class="line">    &#125;</span><br><span class="line">    r ans;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">d main()</span><br><span class="line">&#123;</span><br><span class="line">    ll ans = work();</span><br><span class="line">    printf(&quot;%&quot; PRId64 &quot;\n&quot;, ans);</span><br><span class="line">    r 0;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>最后结果为：<strong>9110846700</strong></p>
+<p><a href="http://www.ivan-zcy.top">转载请注明出处！！！</a>  </p>
+<p>如果有写的不对或者不全面的地方 可通过主页的联系方式进行指正，谢谢</p>
+
+                </div>
+            </article>
+        </div>
+        <!-- Pre or Next -->
         
-        
-          <h2 class="year">2018</h2>
-          <ul class="list">
+        <div class="container" >
+            <ul class="pager">
+                
+                
+                <li class="next">
+                    <a href="/2018/10/15/HDU6228/" rel="prev">上一篇</a>
+                </li>
+                
+            </ul>
+        </div>
+        　　　　<!-- Comments -->
+        <div class="container">
             
-  <li>
-    <span class="date">
-      2018-10-09
-    </span>
-    <a href="/2018/10/09/Project-Euler-030/" class="title">
-      Project Euler-030
-    </a>
-  </li>
+<section id="comment">
+  <!-- <h1 class="title">Comments</h1> -->
 
-  <li>
-    <span class="date">
-      2018-10-08
-    </span>
-    <a href="/2018/10/08/Project-Euler-003/" class="title">
-      Project Euler-003
-    </a>
-  </li>
-
-  <li>
-    <span class="date">
-      2018-10-08
-    </span>
-    <a href="/2018/10/08/Project-Euler-002/" class="title">
-      Project Euler-002
-    </a>
-  </li>
-
-  <li>
-    <span class="date">
-      2018-10-08
-    </span>
-    <a href="/2018/10/08/Project-Euler-001/" class="title">
-      Project Euler-001
-    </a>
-  </li>
-
-
-          </ul>
-        
-      </div>
-    </div>
-  </div>
   
-<div class="container" >
-  <ul class="pager">
-    
-      <li class="previous">
-        <a href="/tags/ACM/">
-          下一页
-        </a>
-      </li>
-    
-    
-  </ul>
-</div>
+</section>
 
 
+        </div>
+        
+        　　　　
+    </div>
 </div>
 
 
