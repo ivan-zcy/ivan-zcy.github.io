@@ -1,0 +1,349 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+
+<!-- Head tag -->
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+
+  <!--Description-->
+  
+
+  <!--Author-->
+  
+
+  <!--Open Graph Title-->
+  
+      <meta property="og:title" content="CodeForces-1047C"/>
+  
+  <!--Open Graph Description-->
+  
+  <!--Open Graph Site Name-->
+  <meta property="og:site_name" content="Zcy"/>
+  <!--Type page-->
+  
+      <meta property="og:type" content="article" />
+  
+  <!--Page Cover-->
+  
+
+    <meta name="baidu-site-verification" content="8vgn54BtUC" />
+
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <!-- 百度统计 -->
+    <script>
+	var _hmt = _hmt || [];
+	(function() {
+  	var hm = document.createElement("script");
+  	hm.src = "https://hm.baidu.com/hm.js?c0451e16533956173997b85f7a8de666";
+  	var s = document.getElementsByTagName("script")[0]; 
+  	s.parentNode.insertBefore(hm, s);
+	})();
+    </script>
+  <!-- Title -->
+  
+  <title>CodeForces-1047C - Zcy</title>
+
+
+  <link rel="shortcut icon" href="/favicon.ico">
+    <!--font-awesome-->
+  <link rel="stylesheet" href="//cdn.bootcss.com/font-awesome/4.5.0/css/font-awesome.min.css">
+
+    <link rel="stylesheet" href="/css/animate.css">
+    <link rel="stylesheet" href="/css/thplayer.css">
+  <!-- Custom CSS/Sass -->
+  <link rel="stylesheet" href="/css/style.css">
+    <script src="http://oct3pmpde.bkt.clouddn.com/jquery.js"></script>
+</head>
+
+
+<body>
+
+  <!-- Nav -->
+  <header class="site-header">
+  <div class="header-inside">
+    
+    <div class="logo">
+      <a href="/" rel="home">
+        
+        <img src="http://oct3pmpde.bkt.clouddn.com/timg.jpg" alt="Zcy" height="60">
+        
+      </a>
+    </div>
+    <a class="header-name" href="/">
+            <span>Zcy</span>
+            的小屋
+        </a>
+    <!-- navbar -->
+    <nav class="navbar">
+      <!--  nav links -->
+      <div class="collapse">
+        <ul class="navbar-nav">
+          
+          
+            <li>
+              <a href="/.">
+                
+                  <i class="fa fa-home "></i>
+                
+                小屋
+              </a>
+            </li>
+          
+            <li>
+              <a href="/archives">
+                
+                  <i class="fa fa-archive "></i>
+                
+                点滴
+              </a>
+            </li>
+          
+            <li>
+              <a href="/tags">
+                
+                  <i class="fa fa-archive "></i>
+                
+                标签
+              </a>
+            </li>
+          
+            <li>
+              <a href="/project">
+                
+                  <i class="fa fa-folder-open "></i>
+                
+                项目
+              </a>
+            </li>
+          
+            <li>
+              <a href="/photo">
+                
+                  <i class="fa fa-photo "></i>
+                
+                相册
+              </a>
+            </li>
+          
+            <li>
+              <a href="/guestbook">
+                
+                  <i class="fa fa-edit "></i>
+                
+                留言
+              </a>
+            </li>
+          
+            <li>
+              <a href="/about">
+                
+                  <i class="fa fa-user "></i>
+                
+                关于我
+              </a>
+            </li>
+          
+            <li>
+              <a href="/friendly">
+                
+                  <i class="fa fa-bicycle "></i>
+                
+                友情链接
+              </a>
+            </li>
+          
+        </ul>
+      </div>
+      <!-- /.navbar-collapse -->
+    </nav>
+    <div class="button-wrap">
+      <button class="menu-toggle">Primary Menu</button>
+    </div>
+  </div>
+</header>
+
+
+  <!-- Main Content -->
+  <div class="content-area">
+    <div class="post">
+        <!-- Post Content -->
+        <div class="container">
+            <article>
+                <!-- Title date & tags -->
+                <div class="post-header">
+                    <h1 class="entry-title">
+                        CodeForces-1047C
+                        
+                    </h1>
+
+                </div>
+                <p class="a-posted-on">
+                    2018-10-16
+                </p>
+                <!-- Post Main Content -->
+                <div class="entry-content">
+                    <p><img src="/2018/10/16/CodeForces-1047C/title5.jpg" alt="title5"></p>
+<a id="more"></a>
+<p>题意：</p>
+<p>​    Mr. F has nn positive integers, a1,a2,…,an.</p>
+<p>​    He thinks the greatest common divisor of these integers is too small. So he wants to enlarge it by removing some of the integers.</p>
+<p>​    But this problem is too simple for him, so he does not want to do it by himself. If you help him, he will give you some scores in reward.</p>
+<p>​    Your task is to calculate the minimum number of integers you need to remove so that the greatest common divisor of the remaining integers is bigger than that of all integers.</p>
+<p>Input:</p>
+<p>​    The first line contains an integer nn (2≤n≤3⋅10^5) — the number of integers Mr. F has.</p>
+<p>​    The second line contains nn integers, a1,a2,…,an (1≤ai≤1.5⋅10^7).</p>
+<p>Output:</p>
+<p>​    Print an integer — the minimum number of integers you need to remove so that the greatest common divisor of the remaining integers is bigger than that of all integers.</p>
+<p>​    You should not remove all of the integers.</p>
+<p>​    If there is no solution, print «-1» (without quotes).</p>
+<p>Examples</p>
+<p>Input</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">3</span><br><span class="line">1 2 4</span><br></pre></td></tr></table></figure>
+<p>Output</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">1</span><br></pre></td></tr></table></figure>
+<p>Input</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">4</span><br><span class="line">6 9 15 30</span><br></pre></td></tr></table></figure>
+<p>Output</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">2</span><br></pre></td></tr></table></figure>
+<p>Input</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">3</span><br><span class="line">1 1 1</span><br></pre></td></tr></table></figure>
+<p>Output</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">-1</span><br></pre></td></tr></table></figure>
+<p>Note</p>
+<p>In the first example, the greatest common divisor is 1 in the beginning. You can remove 1 so that the greatest common divisor is enlarged to 2. The answer is 1.</p>
+<p>In the second example, the greatest common divisor is 3 in the beginning. You can remove 6 and 9 so that the greatest common divisor is enlarged to 15. There is no solution which removes only one integer. So the answer is 2.</p>
+<p>In the third example, there is no solution to enlarge the greatest common divisor. So the answer is −1.</p>
+<p>​    翻译成汉语就是给你n个数，你会得到这n个数的公共gcd，问最少删除几个数，使得删除后的公共gcd比原来的大，如果有输出最少删除数，没有输出-1</p>
+<p>思路：</p>
+<p>​    我们知道，一个数val可以写成p1^a1 ✖️p2^a2✖️ …✖️pn^an的形式，若每个数中都存在pk1，pk2，且pk1在每个数中最少存在t1次，pk2在每个数中最少存在t2次，那么这n个数的公共gcd为pk1^t1✖️pk2^t2</p>
+<p>​    因此，我们想要提高公共gcd的大小，有以下两种办法：</p>
+<p>​    1.对于每个数都存在的素因子，我们去除它最小的幂次方数，如2, 4, 12，它们中都存在素因子2，2中存在1个素因子2，4中存在2个素因子2，12中存在2个素因子2，因此我们只要去掉最小的幂次方的次数，也就是1个素因子2的2，就可以使得gcd变大</p>
+<p>​    2.对于不是每个数都存在的素因子，我们只要去掉存在改素因子的数，就可以使得gcd变大</p>
+<p>​    对于以上两种情况，我们记录一个最小值即可，若最后需要去除n个或者没办法去除，那么就输出-1</p>
+<p>代码：</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">#include &lt;stdio.h&gt;</span><br><span class="line">#include &lt;string.h&gt;</span><br><span class="line">#include &lt;inttypes.h&gt;</span><br><span class="line">#include &lt;algorithm&gt;</span><br><span class="line">#define d int32_t</span><br><span class="line">#define r return</span><br><span class="line">#define ll int64_t</span><br><span class="line">#define N 15000000</span><br><span class="line">#define NN 1000000</span><br><span class="line">#define mem(a) memset(a, 0, sizeof(a))</span><br><span class="line">#define For(i, star, endd) for(d i = star; i &lt;= endd; i++)</span><br><span class="line">using namespace std;</span><br><span class="line"></span><br><span class="line">d book[N + 5];      //book[i]存i的最小素因子在prime中的下角标</span><br><span class="line">d prime[NN + 5];    //存全部素数</span><br><span class="line">d num[NN + 5];      //存该素数在几个数中出现(若个数等于n取答案与numminx[i]的最小值 小于n取答案与n-num[i]的最小值）</span><br><span class="line">d minx[NN + 5];     //该素数在n个数中若出现，存在其中一个数中出现的次数的最小值</span><br><span class="line">d numminx[NN + 5];  //该素数在n个数中若出现且是最小值的个数</span><br><span class="line"></span><br><span class="line">void init() &#123;</span><br><span class="line">    mem(book);</span><br><span class="line">    mem(prime);</span><br><span class="line">    mem(num);</span><br><span class="line">    memset(minx, 0x3f3f3f3f, sizeof(minx));</span><br><span class="line">    mem(numminx);</span><br><span class="line">    For(i, 2, N) &#123;</span><br><span class="line">        if (!book[i]) &#123;</span><br><span class="line">            prime[++prime[0]] = i;</span><br><span class="line">            book[i] = prime[0];</span><br><span class="line">        &#125;</span><br><span class="line">        For(j, 1, prime[0]) &#123;</span><br><span class="line">            if (prime[j] * i &gt; N) &#123;</span><br><span class="line">                break;</span><br><span class="line">            &#125;</span><br><span class="line">            book[i * prime[j]] = j;</span><br><span class="line">            if (i % prime[j] == 0) &#123;</span><br><span class="line">                break;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    r;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">void work(d a) &#123;</span><br><span class="line">    while(a != 1) &#123;</span><br><span class="line">        d aa = a;</span><br><span class="line">        d t = prime[book[a]], inx = 0;</span><br><span class="line">        num[book[a]]++;</span><br><span class="line">        while (a % t == 0) &#123;</span><br><span class="line">            inx ++;</span><br><span class="line">            a /= t;</span><br><span class="line">        &#125;</span><br><span class="line">        if (inx &lt; minx[book[aa]]) &#123;</span><br><span class="line">            minx[book[aa]] = inx;</span><br><span class="line">            numminx[book[aa]] = 1;</span><br><span class="line">        &#125; else if (inx == minx[book[aa]]) &#123;</span><br><span class="line">            numminx[book[aa]] ++;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">d main()</span><br><span class="line">&#123;</span><br><span class="line">    init();</span><br><span class="line">    d n, a;</span><br><span class="line">    d minn = 0x3f3f3f3f;</span><br><span class="line">    scanf(&quot;%d&quot;, &amp;n);</span><br><span class="line">    For(i, 1, n) &#123;</span><br><span class="line">        scanf(&quot;%d&quot;, &amp;a);</span><br><span class="line">        work(a);</span><br><span class="line">    &#125;</span><br><span class="line">    For(i, 1, prime[0]) &#123;</span><br><span class="line">        if(!num[i]) continue;</span><br><span class="line">        if (num[i] == n) &#123;</span><br><span class="line">            minn = min(numminx[i], minn);</span><br><span class="line">        &#125; else &#123;</span><br><span class="line">            minn = min(n - num[i], minn);</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    if (minn == 0x3f3f3f3f || minn == 0 || minn == n) printf(&quot;-1\n&quot;);</span><br><span class="line">    else printf(&quot;%d\n&quot;, minn);</span><br><span class="line">    r 0;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>​    就酱紫～</p>
+<p><a href="http://www.ivan-zcy.top">转载请注明出处！！！</a>  </p>
+<p>如果有写的不对或者不全面的地方 可通过主页的联系方式进行指正，谢谢</p>
+
+                </div>
+            </article>
+        </div>
+        <!-- Pre or Next -->
+        
+        <div class="container" >
+            <ul class="pager">
+                
+                
+                <li class="next">
+                    <a href="/2018/10/16/Project-Euler-048/" rel="prev">上一篇</a>
+                </li>
+                
+            </ul>
+        </div>
+        　　　　<!-- Comments -->
+        <div class="container">
+            
+<section id="comment">
+  <!-- <h1 class="title">Comments</h1> -->
+
+  
+</section>
+
+
+        </div>
+        
+        　　　　
+    </div>
+</div>
+
+
+  <div id="Thplayer"></div>
+  <script type="application/javascript" src="/js/thplayer.min.js"></script>
+  <script>
+      $("#Thplayer").thplayer({
+          title: "遇见",
+          author: "孙燕姿",
+          cover: "/img/yj.jpg",
+          music: "http://www.ytmp3.cn/down/37418.mp3"
+      });
+  </script>
+
+  <!-- Footer -->
+  <!-- top -->
+<div id="rocket-to-top">
+  <div class="level-2"></div>
+  <div class="level-3"></div>
+</div>
+<script src="http://oct3pmpde.bkt.clouddn.com/top.js"></script>
+<script type="text/javascript" src="http://oct3pmpde.bkt.clouddn.com/jquery.js"></script>
+
+<!-- Footer -->
+<footer class="site-info">
+  <p>
+    <span>Zcy &copy; 2018</span>
+    
+      <span class="split">|</span>
+      <span>Zcy</span>
+      <p>Hosted by <a href="https://pages.coding.me" style="font-weight: bold">Coding Pages</a></p>
+    
+  </p>
+  <script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+  本站总访问量<span id="busuanzi_value_site_pv"></span>次
+  本站访客数<span id="busuanzi_value_site_uv"></span>人次
+</footer>
+
+
+  <!-- After footer scripts -->
+  <!-- scripts -->
+<script src="/js/app.js"></script>
+
+
+  <script>
+      (function(){
+
+          function _scroll(){
+              var acticles = $('.article > .container');
+              var height = window.innerHeight || document.body.offsetHeight;
+              acticles.each(function () {
+                  var top = this.getBoundingClientRect().top;
+                  if(top < height+1){
+                      if(!$(this).hasClass('animated')) {
+                          $(this).addClass('slideInRight');
+                          $(this).addClass('animated');
+                      }
+                  }
+              })
+
+              $(window).scroll(function () {
+                  acticles.each(function () {
+                      var top = this.getBoundingClientRect().top;
+                      if(top < height+1){
+                          if(!$(this).hasClass('animated')) {
+                              $(this).addClass('slideInRight');
+                              $(this).addClass('animated');
+                          }
+                      }
+                  })
+              })
+          }
+
+
+          var bp = document.createElement('script');
+          var curProtocol = window.location.protocol.split(':')[0];
+          if (curProtocol === 'https') {
+              bp.src = 'https://zz.bdstatic.com/linksubmit/push.js';
+          }
+          else {
+              bp.src = 'http://push.zhanzhang.baidu.com/push.js';
+          }
+          var s = document.getElementsByTagName("script")[0];
+          s.parentNode.insertBefore(bp, s);
+          _scroll();
+      })();
+  </script>
+
+</body>
+
+</html>
