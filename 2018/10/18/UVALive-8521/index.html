@@ -1,0 +1,338 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+
+<!-- Head tag -->
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+
+  <!--Description-->
+  
+
+  <!--Author-->
+  
+
+  <!--Open Graph Title-->
+  
+      <meta property="og:title" content="UVALive 8521"/>
+  
+  <!--Open Graph Description-->
+  
+  <!--Open Graph Site Name-->
+  <meta property="og:site_name" content="Zcy"/>
+  <!--Type page-->
+  
+      <meta property="og:type" content="article" />
+  
+  <!--Page Cover-->
+  
+
+    <meta name="baidu-site-verification" content="8vgn54BtUC" />
+
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <!-- 百度统计 -->
+    <script>
+	var _hmt = _hmt || [];
+	(function() {
+  	var hm = document.createElement("script");
+  	hm.src = "https://hm.baidu.com/hm.js?c0451e16533956173997b85f7a8de666";
+  	var s = document.getElementsByTagName("script")[0]; 
+  	s.parentNode.insertBefore(hm, s);
+	})();
+    </script>
+  <!-- Title -->
+  
+  <title>UVALive 8521 - Zcy</title>
+
+
+  <link rel="shortcut icon" href="/favicon.ico">
+    <!--font-awesome-->
+  <link rel="stylesheet" href="//cdn.bootcss.com/font-awesome/4.5.0/css/font-awesome.min.css">
+
+    <link rel="stylesheet" href="/css/animate.css">
+    <link rel="stylesheet" href="/css/thplayer.css">
+  <!-- Custom CSS/Sass -->
+  <link rel="stylesheet" href="/css/style.css">
+    <script src="http://oct3pmpde.bkt.clouddn.com/jquery.js"></script>
+</head>
+
+
+<body>
+
+  <!-- Nav -->
+  <header class="site-header">
+  <div class="header-inside">
+    
+    <div class="logo">
+      <a href="/" rel="home">
+        
+        <img src="http://oct3pmpde.bkt.clouddn.com/timg.jpg" alt="Zcy" height="60">
+        
+      </a>
+    </div>
+    <a class="header-name" href="/">
+            <span>Zcy</span>
+            的小屋
+        </a>
+    <!-- navbar -->
+    <nav class="navbar">
+      <!--  nav links -->
+      <div class="collapse">
+        <ul class="navbar-nav">
+          
+          
+            <li>
+              <a href="/.">
+                
+                  <i class="fa fa-home "></i>
+                
+                小屋
+              </a>
+            </li>
+          
+            <li>
+              <a href="/archives">
+                
+                  <i class="fa fa-archive "></i>
+                
+                点滴
+              </a>
+            </li>
+          
+            <li>
+              <a href="/tags">
+                
+                  <i class="fa fa-archive "></i>
+                
+                标签
+              </a>
+            </li>
+          
+            <li>
+              <a href="/project">
+                
+                  <i class="fa fa-folder-open "></i>
+                
+                项目
+              </a>
+            </li>
+          
+            <li>
+              <a href="/photo">
+                
+                  <i class="fa fa-photo "></i>
+                
+                相册
+              </a>
+            </li>
+          
+            <li>
+              <a href="/guestbook">
+                
+                  <i class="fa fa-edit "></i>
+                
+                留言
+              </a>
+            </li>
+          
+            <li>
+              <a href="/about">
+                
+                  <i class="fa fa-user "></i>
+                
+                关于我
+              </a>
+            </li>
+          
+            <li>
+              <a href="/friendly">
+                
+                  <i class="fa fa-bicycle "></i>
+                
+                友情链接
+              </a>
+            </li>
+          
+        </ul>
+      </div>
+      <!-- /.navbar-collapse -->
+    </nav>
+    <div class="button-wrap">
+      <button class="menu-toggle">Primary Menu</button>
+    </div>
+  </div>
+</header>
+
+
+  <!-- Main Content -->
+  <div class="content-area">
+    <div class="post">
+        <!-- Post Content -->
+        <div class="container">
+            <article>
+                <!-- Title date & tags -->
+                <div class="post-header">
+                    <h1 class="entry-title">
+                        UVALive 8521
+                        
+                    </h1>
+
+                </div>
+                <p class="a-posted-on">
+                    2018-10-18
+                </p>
+                <!-- Post Main Content -->
+                <div class="entry-content">
+                    <p><img src="/2018/10/18/UVALive-8521/title6.jpg" alt="title6"></p>
+<a id="more"></a>
+<p>题意：</p>
+<p><strong>problem description</strong></p>
+<p>5 friends play LOL together . Every one should BAN one character and PICK one character . The enemy should BAN 55 characters and PICK 55 characters . All these 2020 heroes must be different .</p>
+<p>Every one can BAN any heroes by his personal washes . But he can only PICK heroes which he has bought .</p>
+<p>Suppose the enemy can PICK or BAN any heroes. How many different ways are there satisfying the conditions?</p>
+<p>For example , a valid way is :</p>
+<p>Player 11 : picks hero 11, bans hero 22</p>
+<p>Player 22 : picks hero 33, bans hero 44</p>
+<p>Player 33 : picks hero 5, bans hero 66</p>
+<p>Player 44 : picks hero 77, bans hero 88</p>
+<p>Player 55 : picks hero 99, bans hero 1010</p>
+<p>Enemies pick heroes 11,12,13,14,1511,12,13,14,15 , ban heroes 16,17,18,19,2016,17,18,19,20 .</p>
+<h3 id="Input"><a href="#Input" class="headerlink" title="Input"></a>Input</h3><p>The input contains multiple test cases.(No more than 2020)</p>
+<p>In each test case . there’s 55 strings S[1] \sim S[5]S[1]∼S[5] ,respectively whose lengths are 100100 , For the ii-th person if he has bought the jj-th hero, the jj-th character of S[i]S[i] is ‘11’, or ‘00’ if not. The total number of heroes is exactly 100100 .</p>
+<h3 id="Output"><a href="#Output" class="headerlink" title="Output"></a>Output</h3><p>For each test case , print the answer mod 10000000071000000007 in a single line .</p>
+<h4 id="样例输入"><a href="#样例输入" class="headerlink" title="样例输入"></a>样例输入</h4><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">0110011100011001001100011110001110001110001010010111111110101010010011010000110100011001001111101011</span><br><span class="line">1000111101111110110100001101001101010001111001001011110001111110101000011101000001011100001001011010</span><br><span class="line">0100101100011110011100110110011100111100010010011001111110101111111000000110001110000110001100001110</span><br><span class="line">1110010101010001000110100011101010001010000110001111111110101010000000001111001110110101110000010011</span><br><span class="line">1000010011111110001101100000101001110100011000111010011111110110111010011111010110101111011111011011</span><br></pre></td></tr></table></figure>
+<h4 id="样例输出"><a href="#样例输出" class="headerlink" title="样例输出"></a>样例输出</h4><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">515649254</span><br></pre></td></tr></table></figure>
+<p>​    翻译成汉语，大概意思是LOL一共有100个英雄，十个人（每队5人）选英雄，每人可以选一个扳一个，问十个人有多少种不同的选扳方案（对答案取余1e9+7）。对面英雄全有，输入5个01串表示我方五个人分别拥有的英雄（1有0无）</p>
+<p>注意点：1.每个人只能选自己拥有的英雄，任意两个人不能选或者扳同一个英雄。同一队伍的1，2，3，4，5召唤师选英雄1，2，3，4，5和选英雄5，4，3，2，1是不同的方案，而1，2，3，4，5召唤师扳英雄1，2，3，4，5和5，4，3，2，1是相同的方案</p>
+<p>思路：</p>
+<p>​    因为我们要求的是全部的方案数，所以我们不用管中间的过程（过程太复杂没法模拟），整体地看待总方案数为：我方选择的英雄方案数✖️敌人选择的英雄方案数✖️我方扳的英雄方案数✖️敌人扳的英雄方案数。</p>
+<p>​    我们无论怎么选取5个英雄，那么敌人只能从剩下的95个中选5个，所以方案数是A（95，5），而我方扳的英雄方案数是C（90， 5），敌人扳的英雄方案数是C（85，5）。至于谁先谁后无所谓，因为：</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">A(95,5) * C(90,5) * C(85,5) = C(95,5) * C(90,5) * A(85,5) = C(95,5) * A(85,5) * C(90,5)</span><br></pre></td></tr></table></figure>
+<p>​    由于敌人选择的英雄方案数✖️我方扳的英雄方案数✖️敌人扳的英雄方案数的值是固定的，我们可以预处理出来，得到g，</p>
+<p>​    因此我们只需要每次利用dp求解我方选择的英雄方案数，再乘g就能得到答案</p>
+<p>​    关于dp求解我方选择的英雄方案数，我们可以设dp【i】【j】代表前j个英雄已经选了i个英雄的方案数，然后遍历每个成员，里层遍历每个英雄。为了避免重复，我们保证每个成员选的英雄都比上一个成员选的英雄下角标大（这样会导致方案数不全，因此我们需在最外层对成员下标进行全排列）</p>
+<p>代码：</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">#include &lt;stdio.h&gt;</span><br><span class="line">#include &lt;inttypes.h&gt;</span><br><span class="line">#include &lt;algorithm&gt;</span><br><span class="line">#include &lt;string.h&gt;</span><br><span class="line">#define d int32_t</span><br><span class="line">#define ll int64_t</span><br><span class="line">#define mod 1000000007</span><br><span class="line">#define r return</span><br><span class="line">#define mem(a) memset(a, 0, sizeof(a));</span><br><span class="line">#define For(i, star, endd) for(d i = star; i &lt;= endd; i++)</span><br><span class="line">using namespace std;</span><br><span class="line"></span><br><span class="line">char s[8][150];</span><br><span class="line">d t[8][150];</span><br><span class="line">ll dp[8][150];</span><br><span class="line"></span><br><span class="line">//扩展欧几里得</span><br><span class="line">ll extend(ll a, ll b, ll &amp;x, ll &amp;y) &#123;</span><br><span class="line">    if (a == 0 &amp;&amp; b==0) r -1;</span><br><span class="line">    if (b == 0) &#123;</span><br><span class="line">        x = 1;</span><br><span class="line">        y = 0;</span><br><span class="line">        r a;</span><br><span class="line">    &#125;</span><br><span class="line">    ll g = extend(b, a % b, y, x);</span><br><span class="line">    y -= a / b * x;</span><br><span class="line">    r g;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">//求逆元</span><br><span class="line">ll mod_re(ll a, ll n) &#123;</span><br><span class="line">    ll x, y;</span><br><span class="line">    ll g = extend(a, n, x, y);</span><br><span class="line">    if(g == 1) r (x % n + n) % n;</span><br><span class="line">    r -1;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">//求A(95，5) * C(90, 5) * C(85, 5)的值</span><br><span class="line">ll init() &#123;</span><br><span class="line">    ll res = 1;</span><br><span class="line">    For(i, 81, 95) &#123;</span><br><span class="line">        res = res * i % mod;</span><br><span class="line">    &#125;</span><br><span class="line">    For(i, 2, 5) &#123;</span><br><span class="line">        ll g = mod_re(i, mod);</span><br><span class="line">        res = res * g % mod * g % mod;</span><br><span class="line">    &#125;</span><br><span class="line">    r res;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">//求我方选择英雄的总类数</span><br><span class="line">ll work() &#123;</span><br><span class="line">    ll ans =0;</span><br><span class="line">    d inx[5] = &#123;0, 1, 2, 3, 4&#125;;</span><br><span class="line">    do &#123;</span><br><span class="line">        mem(dp);</span><br><span class="line">        For(j, 0, 99) &#123;</span><br><span class="line">            dp[0][j] = dp[0][j - 1];</span><br><span class="line">            if(s[inx[0]][j] == &apos;1&apos;) &#123;</span><br><span class="line">                dp[0][j]++;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        For(i, 1, 4) &#123;</span><br><span class="line">            For(j, 0, 99) &#123;</span><br><span class="line">                dp[i][j] = dp[i][j - 1];</span><br><span class="line">                if(s[inx[i]][j] == &apos;1&apos;) &#123;</span><br><span class="line">                    dp[i][j] = (dp[i][j] + dp[i - 1][j - 1]) % mod;</span><br><span class="line">                &#125;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        ans = (ans + dp[4][99]) % mod;</span><br><span class="line">    &#125;while (next_permutation(inx, inx + 5));</span><br><span class="line">    r ans;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">int main() &#123;</span><br><span class="line">    ll g = init();</span><br><span class="line">    while (scanf(&quot;%s&quot;, s[0]) == 1) &#123;</span><br><span class="line">        For(i, 1, 4) &#123;</span><br><span class="line">            scanf(&quot;%s&quot;, s[i]);</span><br><span class="line">        &#125;</span><br><span class="line">        ll ans = work();</span><br><span class="line">        printf(&quot;%lld\n&quot;, g * ans % mod);</span><br><span class="line">    &#125;</span><br><span class="line">    r 0;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p><a href="http://www.ivan-zcy.top">转载请注明出处！！！</a>  </p>
+<p>如果有写的不对或者不全面的地方 可通过主页的联系方式进行指正，谢谢</p>
+
+                </div>
+            </article>
+        </div>
+        <!-- Pre or Next -->
+        
+        <div class="container" >
+            <ul class="pager">
+                
+                
+                <li class="next">
+                    <a href="/2018/10/18/Vim常用命令/" rel="prev">上一篇</a>
+                </li>
+                
+            </ul>
+        </div>
+        　　　　<!-- Comments -->
+        <div class="container">
+            
+<section id="comment">
+  <!-- <h1 class="title">Comments</h1> -->
+
+  
+</section>
+
+
+        </div>
+        
+        　　　　
+    </div>
+</div>
+
+
+  <div id="Thplayer"></div>
+  <script type="application/javascript" src="/js/thplayer.min.js"></script>
+  <script>
+      $("#Thplayer").thplayer({
+          title: "遇见",
+          author: "孙燕姿",
+          cover: "/img/yj.jpg",
+          music: "http://www.ytmp3.cn/down/37418.mp3"
+      });
+  </script>
+
+  <!-- Footer -->
+  <!-- top -->
+<div id="rocket-to-top">
+  <div class="level-2"></div>
+  <div class="level-3"></div>
+</div>
+<script src="http://oct3pmpde.bkt.clouddn.com/top.js"></script>
+<script type="text/javascript" src="http://oct3pmpde.bkt.clouddn.com/jquery.js"></script>
+
+<!-- Footer -->
+<footer class="site-info">
+  <p>
+    <span>Zcy &copy; 2018</span>
+    
+      <span class="split">|</span>
+      <span>Zcy</span>
+      <p>Hosted by <a href="https://pages.coding.me" style="font-weight: bold">Coding Pages</a></p>
+    
+  </p>
+  <script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+  本站总访问量<span id="busuanzi_value_site_pv"></span>次
+  本站访客数<span id="busuanzi_value_site_uv"></span>人次
+</footer>
+
+
+  <!-- After footer scripts -->
+  <!-- scripts -->
+<script src="/js/app.js"></script>
+
+
+  <script>
+      (function(){
+
+          function _scroll(){
+              var acticles = $('.article > .container');
+              var height = window.innerHeight || document.body.offsetHeight;
+              acticles.each(function () {
+                  var top = this.getBoundingClientRect().top;
+                  if(top < height+1){
+                      if(!$(this).hasClass('animated')) {
+                          $(this).addClass('slideInRight');
+                          $(this).addClass('animated');
+                      }
+                  }
+              })
+
+              $(window).scroll(function () {
+                  acticles.each(function () {
+                      var top = this.getBoundingClientRect().top;
+                      if(top < height+1){
+                          if(!$(this).hasClass('animated')) {
+                              $(this).addClass('slideInRight');
+                              $(this).addClass('animated');
+                          }
+                      }
+                  })
+              })
+          }
+
+
+          var bp = document.createElement('script');
+          var curProtocol = window.location.protocol.split(':')[0];
+          if (curProtocol === 'https') {
+              bp.src = 'https://zz.bdstatic.com/linksubmit/push.js';
+          }
+          else {
+              bp.src = 'http://push.zhanzhang.baidu.com/push.js';
+          }
+          var s = document.getElementsByTagName("script")[0];
+          s.parentNode.insertBefore(bp, s);
+          _scroll();
+      })();
+  </script>
+
+</body>
+
+</html>
