@@ -187,19 +187,19 @@
 <a id="more"></a>
 <p>题意：</p>
 <p><strong>problem description</strong></p>
-<p>5 friends play LOL together . Every one should BAN one character and PICK one character . The enemy should BAN 55 characters and PICK 55 characters . All these 2020 heroes must be different .</p>
+<p>5 friends play LOL together . Every one should BAN one character and PICK one character . The enemy should BAN 5 characters and PICK 5 characters . All these 20 heroes must be different .</p>
 <p>Every one can BAN any heroes by his personal washes . But he can only PICK heroes which he has bought .</p>
 <p>Suppose the enemy can PICK or BAN any heroes. How many different ways are there satisfying the conditions?</p>
 <p>For example , a valid way is :</p>
-<p>Player 11 : picks hero 11, bans hero 22</p>
-<p>Player 22 : picks hero 33, bans hero 44</p>
-<p>Player 33 : picks hero 5, bans hero 66</p>
-<p>Player 44 : picks hero 77, bans hero 88</p>
-<p>Player 55 : picks hero 99, bans hero 1010</p>
-<p>Enemies pick heroes 11,12,13,14,1511,12,13,14,15 , ban heroes 16,17,18,19,2016,17,18,19,20 .</p>
-<h3 id="Input"><a href="#Input" class="headerlink" title="Input"></a>Input</h3><p>The input contains multiple test cases.(No more than 2020)</p>
-<p>In each test case . there’s 55 strings S[1] \sim S[5]S[1]∼S[5] ,respectively whose lengths are 100100 , For the ii-th person if he has bought the jj-th hero, the jj-th character of S[i]S[i] is ‘11’, or ‘00’ if not. The total number of heroes is exactly 100100 .</p>
-<h3 id="Output"><a href="#Output" class="headerlink" title="Output"></a>Output</h3><p>For each test case , print the answer mod 10000000071000000007 in a single line .</p>
+<p>Player 1 : picks hero 1, bans hero 2</p>
+<p>Player 2 : picks hero 3, bans hero 4</p>
+<p>Player 3 : picks hero 5, bans hero 6</p>
+<p>Player 4 : picks hero 7, bans hero 8</p>
+<p>Player 5 : picks hero 9, bans hero 10</p>
+<p>Enemies pick heroes 11,12,13,14,15 , ban heroes 16,17,18,19,20 .</p>
+<h3 id="Input"><a href="#Input" class="headerlink" title="Input"></a>Input</h3><p>The input contains multiple test cases.(No more than 20)</p>
+<p>In each test case . there’s 5 strings S[1]∼S[5] ,respectively whose lengths are 100 , For the i-th person if he has bought the j-th hero, the j-th character of S[i] is ‘1’, or ‘0’ if not. The total number of heroes is exactly 100 .</p>
+<h3 id="Output"><a href="#Output" class="headerlink" title="Output"></a>Output</h3><p>For each test case , print the answer mod 1000000007 in a single line .</p>
 <h4 id="样例输入"><a href="#样例输入" class="headerlink" title="样例输入"></a>样例输入</h4><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">0110011100011001001100011110001110001110001010010111111110101010010011010000110100011001001111101011</span><br><span class="line">1000111101111110110100001101001101010001111001001011110001111110101000011101000001011100001001011010</span><br><span class="line">0100101100011110011100110110011100111100010010011001111110101111111000000110001110000110001100001110</span><br><span class="line">1110010101010001000110100011101010001010000110001111111110101010000000001111001110110101110000010011</span><br><span class="line">1000010011111110001101100000101001110100011000111010011111110110111010011111010110101111011111011011</span><br></pre></td></tr></table></figure>
 <h4 id="样例输出"><a href="#样例输出" class="headerlink" title="样例输出"></a>样例输出</h4><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">515649254</span><br></pre></td></tr></table></figure>
 <p>​    翻译成汉语，大概意思是LOL一共有100个英雄，十个人（每队5人）选英雄，每人可以选一个扳一个，问十个人有多少种不同的选扳方案（对答案取余1e9+7）。对面英雄全有，输入5个01串表示我方五个人分别拥有的英雄（1有0无）</p>
