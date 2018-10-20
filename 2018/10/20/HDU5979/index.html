@@ -14,7 +14,7 @@
 
   <!--Open Graph Title-->
   
-      <meta property="og:title" content="Zcy"/>
+      <meta property="og:title" content="HDU5979"/>
   
   <!--Open Graph Description-->
   
@@ -22,7 +22,7 @@
   <meta property="og:site_name" content="Zcy"/>
   <!--Type page-->
   
-      <meta property="og:type" content="website" />
+      <meta property="og:type" content="article" />
   
   <!--Page Cover-->
   
@@ -42,7 +42,7 @@
     </script>
   <!-- Title -->
   
-  <title>ACM - Zcy</title>
+  <title>HDU5979 - Zcy</title>
 
 
   <link rel="shortcut icon" href="/favicon.ico">
@@ -165,221 +165,77 @@
 
 
   <!-- Main Content -->
-  
+  <div class="content-area">
+    <div class="post">
+        <!-- Post Content -->
+        <div class="container">
+            <article>
+                <!-- Title date & tags -->
+                <div class="post-header">
+                    <h1 class="entry-title">
+                        HDU5979
+                        
+                    </h1>
 
-<!-- Main Content -->
-<div class="archive content-area">
-  <div class="container">
-    <h1 class="entry-title">#ACM</h1>
-    <div class="row">
-      <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
-        <!-- Use lodash to classify posts. See https://lodash.com/docs#groupBy -->
+                </div>
+                <p class="a-posted-on">
+                    2018-10-20
+                </p>
+                <!-- Post Main Content -->
+                <div class="entry-content">
+                    <p><img src="/2018/10/20/HDU5979/title2.jpg" alt="title2"></p>
+<a id="more"></a>
+<p>题意：</p>
+<p>We have a special convex that all points have the same distance to origin point.<br>As you know we can get N segments after linking the origin point and the points on the convex. We can also get N angles between each pair of the neighbor segments.<br>Now give you the data about the angle, please calculate the area of the convex </p>
+<p>Input</p>
+<p>There are multiple test cases.<br>The first line contains two integer N and D indicating the number of the points and their distance to origin. (3 &lt;= N &lt;= 10, 1 &lt;= D &lt;= 10)<br>The next lines contain N integers indicating the angles. The sum of the N numbers is always 360. </p>
+<p>Output</p>
+<p>For each test case output one float numbers indicating the area of the convex. The printed values should have 3 digits after the decimal point. </p>
+<p>Sample Input</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">4 1</span><br><span class="line">90 90 90 90</span><br><span class="line">6 1</span><br><span class="line">60 60 60 60 60 60</span><br></pre></td></tr></table></figure>
+<p>Sample Output</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">2.000</span><br><span class="line">2.598</span><br></pre></td></tr></table></figure>
+<p>思路：</p>
+<p>​    大连站的签到题，给出n，k，代表凸n边形，每个顶点距离原点的距离为k。然后下一行给出n个角度a[i]，角度之和等于360度。代表从上一个顶点与下一个顶点之间的夹角是a[i]度。问这个凸n边形的面积是多少？</p>
+<p>​    由于已知角度和两个顶点距离原点的距离，所以我们可以根据三角形面积公式s = 1 / 2 * sin(夹角度数)分别求出每个三角形的面积。n个三角形的面积求和就是凸n变形的面积。</p>
+<p>代码：</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">#include &lt;stdio.h&gt;</span><br><span class="line">#include &lt;string.h&gt;</span><br><span class="line">#include &lt;inttypes.h&gt;</span><br><span class="line">#include &lt;algorithm&gt;</span><br><span class="line">#include &lt;math.h&gt;</span><br><span class="line">#define pi acos(-1.0)</span><br><span class="line">#define d int32_t</span><br><span class="line">#define ll int64_t</span><br><span class="line">#define INF 0x3f3f3f3f</span><br><span class="line">#define N 100</span><br><span class="line">#define mem(a) memset(a, 0, sizeof(a))</span><br><span class="line">#define For(i, star, endd) for(d i = star; i &lt;= endd; i++)</span><br><span class="line">using namespace std;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">d main() &#123;</span><br><span class="line">    d n;</span><br><span class="line">    double t, a;</span><br><span class="line">    while (scanf(&quot;%d%lf&quot;, &amp;n, &amp;t) == 2) &#123;</span><br><span class="line">        double s = 0;</span><br><span class="line">        For(i, 0, n - 1) &#123;</span><br><span class="line">            scanf(&quot;%lf&quot;, &amp;a);</span><br><span class="line">            s += sin(pi * a / 180) * t * t / 2;</span><br><span class="line">        &#125;</span><br><span class="line">        printf(&quot;%.3f\n&quot;, s);</span><br><span class="line">    &#125;</span><br><span class="line">    return 0;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p><a href="http://www.ivan-zcy.top">转载请注明出处！！！</a>  </p>
+<p>如果有写的不对或者不全面的地方 可通过主页的联系方式进行指正，谢谢</p>
+
+                </div>
+            </article>
+        </div>
+        <!-- Pre or Next -->
         
-        
-          <h2 class="year">2018</h2>
-          <ul class="list">
+        <div class="container" >
+            <ul class="pager">
+                
+                <li class="previous">
+                    <a href="/2018/10/20/HDU5980/" rel="prev">下一篇</a>
+                </li>
+                
+                
+                <li class="next">
+                    <a href="/2018/10/19/浅谈线性基/" rel="prev">上一篇</a>
+                </li>
+                
+            </ul>
+        </div>
+        　　　　<!-- Comments -->
+        <div class="container">
             
-  <li>
-    <span class="date">
-      2018-10-20
-    </span>
-    <a href="/2018/10/20/HDU5980/" class="title">
-      HDU5980
-    </a>
-  </li>
+<section id="comment">
+  <!-- <h1 class="title">Comments</h1> -->
 
-  <li>
-    <span class="date">
-      2018-10-20
-    </span>
-    <a href="/2018/10/20/HDU5979/" class="title">
-      HDU5979
-    </a>
-  </li>
-
-  <li>
-    <span class="date">
-      2018-10-19
-    </span>
-    <a href="/2018/10/19/hihoCoder-1636/" class="title">
-      hihoCoder 1636
-    </a>
-  </li>
-
-  <li>
-    <span class="date">
-      2018-10-18
-    </span>
-    <a href="/2018/10/18/ACM快速读写模版/" class="title">
-      ACM快速读写模版
-    </a>
-  </li>
-
-  <li>
-    <span class="date">
-      2018-10-18
-    </span>
-    <a href="/2018/10/18/UVALive-8521/" class="title">
-      UVALive 8521
-    </a>
-  </li>
-
-  <li>
-    <span class="date">
-      2018-10-17
-    </span>
-    <a href="/2018/10/17/hihoCoder-1632/" class="title">
-      hihoCoder 1632
-    </a>
-  </li>
-
-  <li>
-    <span class="date">
-      2018-10-17
-    </span>
-    <a href="/2018/10/17/hihoCoder-1631/" class="title">
-      hihoCoder 1631
-    </a>
-  </li>
-
-  <li>
-    <span class="date">
-      2018-10-17
-    </span>
-    <a href="/2018/10/17/HDU6237/" class="title">
-      HDU6237
-    </a>
-  </li>
-
-  <li>
-    <span class="date">
-      2018-10-16
-    </span>
-    <a href="/2018/10/16/CodeForces-1047C/" class="title">
-      CodeForces-1047C
-    </a>
-  </li>
-
-  <li>
-    <span class="date">
-      2018-10-16
-    </span>
-    <a href="/2018/10/16/Project-Euler-048/" class="title">
-      Project Euler-048
-    </a>
-  </li>
-
-  <li>
-    <span class="date">
-      2018-10-15
-    </span>
-    <a href="/2018/10/15/HDU6228/" class="title">
-      HDU6228
-    </a>
-  </li>
-
-  <li>
-    <span class="date">
-      2018-10-15
-    </span>
-    <a href="/2018/10/15/Project-Euler-021/" class="title">
-      Project Euler-021
-    </a>
-  </li>
-
-  <li>
-    <span class="date">
-      2018-10-14
-    </span>
-    <a href="/2018/10/14/HDU6265狄利克雷卷积/" class="title">
-      HDU6265狄利克雷卷积
-    </a>
-  </li>
-
-  <li>
-    <span class="date">
-      2018-10-14
-    </span>
-    <a href="/2018/10/14/HDU6267/" class="title">
-      HDU6267推规律+线性阶乘逆元
-    </a>
-  </li>
-
-  <li>
-    <span class="date">
-      2018-10-13
-    </span>
-    <a href="/2018/10/13/Project-Euler-019/" class="title">
-      Project Euler-019
-    </a>
-  </li>
-
-  <li>
-    <span class="date">
-      2018-10-13
-    </span>
-    <a href="/2018/10/13/Project-Euler-047/" class="title">
-      Project Euler-047
-    </a>
-  </li>
-
-  <li>
-    <span class="date">
-      2018-10-13
-    </span>
-    <a href="/2018/10/13/Project-Euler-029/" class="title">
-      Project Euler-029
-    </a>
-  </li>
-
-  <li>
-    <span class="date">
-      2018-10-13
-    </span>
-    <a href="/2018/10/13/Project-Euler-024/" class="title">
-      Project Euler-024
-    </a>
-  </li>
-
-  <li>
-    <span class="date">
-      2018-10-13
-    </span>
-    <a href="/2018/10/13/Project-Euler-015/" class="title">
-      Project Euler-015
-    </a>
-  </li>
-
-  <li>
-    <span class="date">
-      2018-10-12
-    </span>
-    <a href="/2018/10/12/Project-Euler-012/" class="title">
-      Project Euler-012
-    </a>
-  </li>
-
-
-          </ul>
-        
-      </div>
-    </div>
-  </div>
   
-<div class="container" >
-  <ul class="pager">
-    
-    
-      <li class="next">
-        <a href="/tags/ACM/page/2/">
-          上一页
-        </a>
-      </li>
-    
-  </ul>
-</div>
+</section>
 
 
+        </div>
+        
+        　　　　
+    </div>
 </div>
 
 
