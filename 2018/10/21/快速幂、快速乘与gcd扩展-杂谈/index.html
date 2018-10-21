@@ -14,7 +14,7 @@
 
   <!--Open Graph Title-->
   
-      <meta property="og:title" content="Zcy"/>
+      <meta property="og:title" content="(数论四)杂谈快速幂与gcd扩展"/>
   
   <!--Open Graph Description-->
   
@@ -22,7 +22,7 @@
   <meta property="og:site_name" content="Zcy"/>
   <!--Type page-->
   
-      <meta property="og:type" content="website" />
+      <meta property="og:type" content="article" />
   
   <!--Page Cover-->
   
@@ -42,7 +42,7 @@
     </script>
   <!-- Title -->
   
-  <title>数论原理 - Zcy</title>
+  <title>(数论四)杂谈快速幂与gcd扩展 - Zcy</title>
 
 
   <link rel="shortcut icon" href="/favicon.ico">
@@ -165,64 +165,84 @@
 
 
   <!-- Main Content -->
-  
+  <div class="content-area">
+    <div class="post">
+        <!-- Post Content -->
+        <div class="container">
+            <article>
+                <!-- Title date & tags -->
+                <div class="post-header">
+                    <h1 class="entry-title">
+                        (数论四)杂谈快速幂与gcd扩展
+                        
+                    </h1>
 
-<!-- Main Content -->
-<div class="archive content-area">
-  <div class="container">
-    <h1 class="entry-title">#数论原理</h1>
-    <div class="row">
-      <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
-        <!-- Use lodash to classify posts. See https://lodash.com/docs#groupBy -->
+                </div>
+                <p class="a-posted-on">
+                    2018-10-21
+                </p>
+                <!-- Post Main Content -->
+                <div class="entry-content">
+                    <p><img src="/2018/10/21/快速幂、快速乘与gcd扩展-杂谈/title.jpg" alt="title"></p>
+<a id="more"></a>
+<p>一.关于快速幂:</p>
+<p>​    我们要想求a^b，也就是b个a相乘，我们可以设置ans = 1，然后for循环b次，用ans累成a得到最终答案ans，这样时间复杂度是O(b)</p>
+<p>​    当b大于1e9，我们用上面的办法就不能在1s内求出结果了。</p>
+<p>​    举个栗子2^11,我们仔细观察一下：</p>
+<p>​        ans = 2 ^ 11</p>
+<p>​            = 2✖️2✖️2✖️2✖️2✖️2✖️2✖️2✖️2✖️2✖️2</p>
+<p>​            =  4✖️4✖️4✖️4✖️4✖️2</p>
+<p>​            =  16✖️16✖️4✖️2</p>
+<p>​            =  256✖️4✖️2</p>
+<p>​    因此我们可以只求2，4，16，256中2,4,256组合得到2^11，而2,4,16,256可以根据平方递推得到，这样要想求得a ^ b的值时间复杂度只有O(log(b))，可以说是非常快了</p>
+<p>​    代码如下：</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">ll quick(ll a, ll b) &#123;				//求a^b</span><br><span class="line">    ll ans = 1;		</span><br><span class="line">    while (b) &#123;		</span><br><span class="line">        if (b &amp; 1) ans *= a;		//只有b为奇数时乘a，例如2^11时ans只累乘2，4，256</span><br><span class="line">        b &gt;&gt;= 1;					//相当于b /= 2</span><br><span class="line">        a *= a;						//就是上面所说的通过平方和递推，优化运算时间</span><br><span class="line">    &#125;</span><br><span class="line">    return ans;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>二. gcd扩展：</p>
+<p>​    gcd几乎是我们刚入学接触的第一个递归了，大家想必已经熟记于心。</p>
+<p>​    根据gcd(a, b) = gcd (b, a % b) （a &gt; b且 b != 0) 公式，我们只需要知道递归的终止条件，就可以写出这个递归代码。</p>
+<p>​    由于b != 0，所以当a % b == 0时不能继续递归。那么，当a % b == 0时，我们应该返回什么呢？谁才是a,b的最小公约数？</p>
+<p>​    由于a % b == 0，因此a一定是b的倍数，也就说b一定是a的因子，又因为b的最大因子是b，因此a,b的最大公约数一定是b，根据gcd(a, b) = gcd(b, a % b)，我们知道b也是最初始的a,b的最大公约数。</p>
+<p>​    实现代码如下：</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">ll gcd (ll a, ll b) &#123;					//前提条件：a,b中不存在0</span><br><span class="line">    if (a &lt; b) swap(a, b);</span><br><span class="line">    //若a,b中存在0，则可添加下一行代码：</span><br><span class="line">    //if(b == 0) return 0;</span><br><span class="line">    return a % b == 0? b: gcd(b, a % b);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>​    好啦，我们说几个gcd的扩展定理：</p>
+<p>​    (1).gcd (ka, kb) = k✖️gcd(a, b)</p>
+<p>​    (2).lcm(ka, kb) = k ✖️lcm(a, b)</p>
+<p>​    (3).lcm(s / a, s / b) = s / gcd(a, b)</p>
+<p>​    </p>
+<p>​    有一些题目可通过这些扩展定理来少走很多弯路～</p>
+<p>​    Over～</p>
+<p><a href="http://www.ivan-zcy.top">转载请注明出处！！！</a>  </p>
+<p>如果有写的不对或者不全面的地方 可通过主页的联系方式进行指正，谢谢</p>
+
+                </div>
+            </article>
+        </div>
+        <!-- Pre or Next -->
         
-        
-          <h2 class="year">2018</h2>
-          <ul class="list">
+        <div class="container" >
+            <ul class="pager">
+                
+                
+                <li class="next">
+                    <a href="/2018/10/21/素数原理/" rel="prev">上一篇</a>
+                </li>
+                
+            </ul>
+        </div>
+        　　　　<!-- Comments -->
+        <div class="container">
             
-  <li>
-    <span class="date">
-      2018-10-21
-    </span>
-    <a href="/2018/10/21/快速幂、快速乘与gcd扩展-杂谈/" class="title">
-      (数论四)杂谈快速幂与gcd扩展
-    </a>
-  </li>
+<section id="comment">
+  <!-- <h1 class="title">Comments</h1> -->
 
-  <li>
-    <span class="date">
-      2018-10-21
-    </span>
-    <a href="/2018/10/21/素数原理/" class="title">
-      (数论三)素数原理
-    </a>
-  </li>
-
-  <li>
-    <span class="date">
-      2018-10-19
-    </span>
-    <a href="/2018/10/19/浅谈线性基/" class="title">
-      (数论二)浅谈线性基
-    </a>
-  </li>
-
-  <li>
-    <span class="date">
-      2018-10-14
-    </span>
-    <a href="/2018/10/14/积性函数与狄利克雷卷积/" class="title">
-      (数论一)积性函数与狄利克雷卷积
-    </a>
-  </li>
-
-
-          </ul>
-        
-      </div>
-    </div>
-  </div>
   
+</section>
 
+
+        </div>
+        
+        　　　　
+    </div>
 </div>
 
 
