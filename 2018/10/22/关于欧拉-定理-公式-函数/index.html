@@ -14,7 +14,7 @@
 
   <!--Open Graph Title-->
   
-      <meta property="og:title" content="(数论四)快速幂与gcd扩展"/>
+      <meta property="og:title" content="(数论六)关于欧拉(定理、公式、函数、降幂)&#39;"/>
   
   <!--Open Graph Description-->
   
@@ -42,7 +42,7 @@
     </script>
   <!-- Title -->
   
-  <title>(数论四)快速幂与gcd扩展 - Zcy</title>
+  <title>(数论六)关于欧拉(定理、公式、函数、降幂)&#39; - Zcy</title>
 
 
   <link rel="shortcut icon" href="/favicon.ico">
@@ -173,45 +173,57 @@
                 <!-- Title date & tags -->
                 <div class="post-header">
                     <h1 class="entry-title">
-                        (数论四)快速幂与gcd扩展
+                        (数论六)关于欧拉(定理、公式、函数、降幂)'
                         
                     </h1>
 
                 </div>
                 <p class="a-posted-on">
-                    2018-10-21
+                    2018-10-22
                 </p>
                 <!-- Post Main Content -->
                 <div class="entry-content">
-                    <p><img src="/2018/10/21/快速幂、快速乘与gcd扩展-杂谈/title.jpg" alt="title"></p>
+                    <p><img src="/2018/10/22/关于欧拉-定理-公式-函数/title.jpg" alt="title"></p>
 <a id="more"></a>
-<p>一.关于快速幂:</p>
-<p>​    我们要想求a^b，也就是b个a相乘，我们可以设置ans = 1，然后for循环b次，用ans累成a得到最终答案ans，这样时间复杂度是O(b)</p>
-<p>​    当b大于1e9，我们用上面的办法就不能在1s内求出结果了。</p>
-<p>​    举个栗子2^11,我们仔细观察一下：</p>
-<p>​        ans = 2 ^ 11</p>
-<p>​            = 2✖️2✖️2✖️2✖️2✖️2✖️2✖️2✖️2✖️2✖️2</p>
-<p>​            =  4✖️4✖️4✖️4✖️4✖️2</p>
-<p>​            =  16✖️16✖️4✖️2</p>
-<p>​            =  256✖️4✖️2</p>
-<p>​    因此我们可以只求2，4，16，256中2,4,256组合得到2^11，而2,4,16,256可以根据平方递推得到，这样要想求得a ^ b的值时间复杂度只有O(log(b))，可以说是非常快了</p>
+<p>​    最最开始的时候，我以为欧拉函数，欧拉定理，欧拉公式是一个东西，傻傻分不清。傻笑～</p>
+<p>​    后来知道，这完完全全是三种东西！！要说有啥必然的联系，它们可能都叫欧拉吧～</p>
+<p>​    首先，我们来讲一下三者的定义：</p>
+<p>​    欧拉定理：若n,a为正整数且互质，则a^(Φ(n)) = 1 (mod n)</p>
+<p>​    欧拉公式：e^(i✖️x) = cos(x) + i✖️sin(x)  （例如把x = π带进去，得e^(i✖️π) = -1）</p>
+<p>​    欧拉函数：Φ(n)，用于求1～n中与n互质的个数，若n为质数，那么Φ(n) = n - 1<br>​    欧拉降幂：我们知道当幂特别大的时候可以用快速幂来求，而当幂大到10^1000时快速幂也求不了了。。这时候就需要用到欧拉降幂，它的定理如下（前提是a，p互质）：</p>
+<p>​              a^b ≡ a^(b % Φ(p) + Φ(p)) (mod p)，当x &gt;= p时</p>
+<p>​               a^b ≡ a^(b % Φ(p)) (mod p)，当x &lt; p时</p>
+<p>关于欧拉公式在ACM中我还没有做过相关的题，因此先只讲欧拉函数和欧拉降幂，欧拉定理</p>
+<p>一.关于欧拉定理没什么好说的～</p>
+<p>​    之前我们说过一嘴费马小定理：a ^ (p - 1 ) ≡ 1 (mod p)</p>
+<p>​    又说过当p为素数时Φ(p) = p - 1，因此欧拉定理实际上是费马小定理的推广</p>
+<p>二.关于欧拉函数的求解，我们知道n为质数的情况了，若n为合数呢？</p>
+<p>​    学到了以下四种求法n的欧拉函数：</p>
+<p>​    1.利用容斥原理：</p>
+<p>​        我们先找到n的全部质因子，然后利用容斥原理删掉全部的因子，剩下的就是与n互质的个数</p>
+<p>​        例如30 = 2✖️3✖️5</p>
+<p>​        Φ(30) = 30 - 30 / 2 - 30 / 3 - 30 / 5 + 30 / (2✖️3) + 30 / (2✖️5) + 30 / (3✖️5) - 30 / (2✖️3✖️5)</p>
+<p>​               = 8</p>
+<p>​    2.上面的写法很麻烦，下面有种简便的写法：</p>
+<p>​            30 = 30✖️1 / 2 ✖️2 / 3✖️4 / 5  = 8，这样就能自动容斥啦，时间复杂度是O(sqrt(n))</p>
+<p>​    3.埃筛法：</p>
+<p>​        是不是很耳熟！！！对，求素数有埃筛和线筛，求欧拉函数也有埃筛和线筛～，埃筛的原理就是利用方法2～，时间复杂度是O(n✖️sqrt(n))</p>
+<p>​        </p>
+<p>​        代码如下：</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">void getEuler() &#123;</span><br><span class="line">    memset(euler, 0, sizeof(euler));</span><br><span class="line">    euler[1] = 1;</span><br><span class="line">    for (int i = 2; i &lt;= N; i++) &#123;</span><br><span class="line">        if (!euler[i]) &#123;</span><br><span class="line">            for (int j = i; j &lt;= N; j += i) &#123;</span><br><span class="line">                if (!euler[j]) &#123;</span><br><span class="line">                    euler[j] = j;					//若不存在先初始化</span><br><span class="line">                &#125;</span><br><span class="line">                euler[j] = euler[j] / i * (i - 1);	//实质就是方法2 </span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>​        </p>
+<p>​    4.线性筛</p>
+<p>​    线性筛，顾名思义就是线性求解1～n的欧拉函数，需用到一下几个性质：</p>
+<p>​        1.当p为素数时，Φ(p) = p - 1;</p>
+<p>​        2.当p为素数且i % p ==0时，Φ(i✖️p) = Φ(i)✖️p</p>
+<p>​        3.当p为素数且i % p != 0时，Φ(i✖️p) = Φ(i)✖️(p - 1)</p>
 <p>​    代码如下：</p>
-<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">ll quick(ll a, ll b) &#123;				//求a^b</span><br><span class="line">    ll ans = 1;		</span><br><span class="line">    while (b) &#123;		</span><br><span class="line">        if (b &amp; 1) ans *= a;		//只有b为奇数时乘a，例如2^11时ans只累乘2，4，256</span><br><span class="line">        b &gt;&gt;= 1;					//相当于b /= 2</span><br><span class="line">        a *= a;						//就是上面所说的通过平方和递推，优化运算时间</span><br><span class="line">    &#125;</span><br><span class="line">    return ans;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<p>二. gcd扩展：</p>
-<p>​    gcd几乎是我们刚入学接触的第一个递归了，大家想必已经熟记于心。</p>
-<p>​    根据gcd(a, b) = gcd (b, a % b) （a &gt; b且 b != 0) 公式，我们只需要知道递归的终止条件，就可以写出这个递归代码。</p>
-<p>​    由于b != 0，所以当a % b == 0时不能继续递归。那么，当a % b == 0时，我们应该返回什么呢？谁才是a,b的最小公约数？</p>
-<p>​    由于a % b == 0，因此a一定是b的倍数，也就说b一定是a的因子，又因为b的最大因子是b，因此a,b的最大公约数一定是b，根据gcd(a, b) = gcd(b, a % b)，我们知道b也是最初始的a,b的最大公约数。</p>
-<p>​    实现代码如下：</p>
-<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">ll gcd (ll a, ll b) &#123;					//前提条件：a,b中不存在0</span><br><span class="line">    return a % b == 0? b: gcd(b, a % b);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<p>​    题外话，以前以为该函数的前提条件是a必须大于b。。。其实a&lt;b也可以，因为经过一次递归，就变成了 a = b, b = a，亏我之前还判断a，b的大小。。</p>
-<p>​    好啦，我们说几个gcd的扩展定理：</p>
-<p>​    (1).gcd (ka, kb) = k✖️gcd(a, b)</p>
-<p>​    (2).lcm(ka, kb) = k ✖️lcm(a, b)</p>
-<p>​    (3).lcm(s / a, s / b) = s / gcd(a, b)</p>
-<p>​    </p>
-<p>​    有一些题目可通过这些扩展定理来少走很多弯路～</p>
-<p>​    Over～</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">ll phi[N + 5];	//存储欧拉函数</span><br><span class="line">ll prime[N + 5];	//存素数</span><br><span class="line">void Euler() &#123;</span><br><span class="line">    phi[1] = 1;</span><br><span class="line">    memset(phi, 0, sizeof(phi));</span><br><span class="line"> 	prime[0] = 0;</span><br><span class="line">    for (int i = 2; i &lt;= N; i++) &#123;</span><br><span class="line">        if(!phi[i]) &#123;				//若i为素数</span><br><span class="line">            phi[i] = i - 1;</span><br><span class="line">            prime[++prime[0]] = i;</span><br><span class="line">        &#125;</span><br><span class="line">        for (int j = 1; j &lt;= prime[0] &amp;&amp; (ll)i * prime[j] &lt;= N; j++) &#123;</span><br><span class="line">            if (i % prime[j]) &#123;</span><br><span class="line">                phi[i * prime[j]] = phi[i] * (prime[j] - 1);</span><br><span class="line">            &#125; else &#123;</span><br><span class="line">                phi[i * prime[j]] = phi[i] * prime[j];</span><br><span class="line">                break;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    return;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>三.欧拉降幂：</p>
+<p>​        根据 a^b ≡ a^(b % Φ(p) + Φ(p)) (mod p)，当x &gt;= p时</p>
+<p>​               a^b ≡ a^(b % Φ(p)) (mod p)，当x &lt; p时    </p>
+<p>​    我们可以得到以下代码：</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line"></span><br><span class="line"></span><br></pre></td></tr></table></figure>
 <p><a href="http://www.ivan-zcy.top">转载请注明出处！！！</a>  </p>
 <p>如果有写的不对或者不全面的地方 可通过主页的联系方式进行指正，谢谢</p>
 
@@ -224,12 +236,12 @@
             <ul class="pager">
                 
                 <li class="previous">
-                    <a href="/2018/10/22/关于欧拉-定理-公式-函数/" rel="prev">下一篇</a>
+                    <a href="/2018/10/22/关于逆元/" rel="prev">下一篇</a>
                 </li>
                 
                 
                 <li class="next">
-                    <a href="/2018/10/21/素数原理/" rel="prev">上一篇</a>
+                    <a href="/2018/10/21/快速幂、快速乘与gcd扩展-杂谈/" rel="prev">上一篇</a>
                 </li>
                 
             </ul>
