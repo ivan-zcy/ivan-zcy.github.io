@@ -14,7 +14,7 @@
 
   <!--Open Graph Title-->
   
-      <meta property="og:title" content="Zcy"/>
+      <meta property="og:title" content="(数论七)关于sqrt、pow与log的巧用"/>
   
   <!--Open Graph Description-->
   
@@ -22,7 +22,7 @@
   <meta property="og:site_name" content="Zcy"/>
   <!--Type page-->
   
-      <meta property="og:type" content="website" />
+      <meta property="og:type" content="article" />
   
   <!--Page Cover-->
   
@@ -42,7 +42,7 @@
     </script>
   <!-- Title -->
   
-  <title>Zcy</title>
+  <title>(数论七)关于sqrt、pow与log的巧用 - Zcy</title>
 
 
   <link rel="shortcut icon" href="/favicon.ico">
@@ -165,186 +165,85 @@
 
 
   <!-- Main Content -->
-  <div class="site-content home">
-      <div class="content-header" style="background: url(http://oct3pmpde.bkt.clouddn.com/back.jpg) no-repeat bottom;">
-        <div class="headline">
-            <a href="#" class="demo">
-                <div class="img" style="background-image:url(http://oct3pmpde.bkt.clouddn.com/avator.jpg)"></div>
-                <div class="cover_mask">
-                    <div class="info">
-                        <span>Welcome</br>by:Zcy</span>
-                    </div>
+  <div class="content-area">
+    <div class="post">
+        <!-- Post Content -->
+        <div class="container">
+            <article>
+                <!-- Title date & tags -->
+                <div class="post-header">
+                    <h1 class="entry-title">
+                        (数论七)关于sqrt、pow与log的巧用
+                        
+                    </h1>
+
                 </div>
-                <div class="border"></div>
-            </a>
-            <h1 id="Hotnews"></h1>
-            <script type="application/javascript">
-               var content = "沉下心来做事";
-               var i = 0;
-               function show(){
-                   var str  = content.substr(0,i);
-                   Hotnews.innerHTML = str + "_";
-                   i++;
-                   if (i>content.length) i=0;
-                   setTimeout("show()",600);
-               }
-               window.onload = show();
-               </script>
-            <div class="header-link">
-              
-                
-                  <a href="https://github.com/ivan-zcy" class="icon-github" target="_blank">
-                      <i class="fa fa-github" aria-hidden="true"></i>
-                  </a>
-                
-                  <a href="https://m.weibo.cn/u/6086305650?uid=6086305650&luicode=10000011&lfid=100103type%3D1%26q%3DIvan-酷酷酷酷" class="icon-weibo" target="_blank">
-                      <i class="fa fa-weibo" aria-hidden="true"></i>
-                  </a>
-                
-                  <a href="http://shang.qq.com/open_webaio.html?sigt=1bb29cf0e25d41c832c39e41e587e146da3754f5d273a017917c3d540899734e4339f99eeba019c94b5c389758e3c6ce&sigu=f77cd5fff2ab7f3340b356ec5e3a8696346394fadda6a1b9119fbca25f6746b7dda8e820567392d1&tuin=296763002" class="icon-qq" target="_blank">
-                      <i class="fa fa-qq" aria-hidden="true"></i>
-                  </a>
-                
-                  <a href="http://mail.qq.com/cgi-bin/qm_share?t=qm_mailme&email=PgwHCAkIDQ4ODH5PTxBdUVM" class="icon-envelope" target="_blank">
-                      <i class="fa fa-envelope" aria-hidden="true"></i>
-                  </a>
-                
-              
-            </div>
+                <p class="a-posted-on">
+                    2018-10-22
+                </p>
+                <!-- Post Main Content -->
+                <div class="entry-content">
+                    <p><img src="/2018/10/22/关于sqrt与log的巧用/title.jpg" alt="title"></p>
+<a id="more"></a>
+<p>一. sqrt</p>
+<p>​    大家都知道sqrt(x)是求x的平方根，c中自带的math.h库有关于该函数的使用。这里就不多叙述~</p>
+<p>​    关于求sqrt，这里有一个神人约翰-卡马克，大家可以百度搜索一下这个神人的辉煌事迹（求sqrt的神秘数字），附上它的代码%一下：</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">float Q_rsqrt( float number )</span><br><span class="line">&#123;</span><br><span class="line">long i;</span><br><span class="line">float x2, y;</span><br><span class="line">const float threehalfs = 1.5F;</span><br><span class="line"></span><br><span class="line">x2 = number * 0.5F;</span><br><span class="line">y = number;</span><br><span class="line">i = * ( long * ) &amp;y; // evil floating point bit level hacking</span><br><span class="line">i = 0x5f3759df - ( i &gt;&gt; 1 ); // what the fuck?</span><br><span class="line">y = * ( float * ) &amp;i;</span><br><span class="line">y = y * ( threehalfs - ( x2 * y * y ) ); // 1st iteration</span><br><span class="line">// y = y * ( threehalfs - ( x2 * y * y ) ); // 2nd iteration, this can be removed</span><br><span class="line"></span><br><span class="line">#ifndef Q3_VM</span><br><span class="line">#ifdef __linux__</span><br><span class="line">assert( !isnan(y) ); // bk010122 - FPE?</span><br><span class="line">#endif</span><br><span class="line">#endif</span><br><span class="line">return y;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>​    它的这段代码求sqrt(number)的倒数，速度比math.h库中的(float)(1.0/sqrt(x))快4倍！！！</p>
+<p>​    注释中的what the fuck? 也表明了我们普通人的心情。。。。</p>
+<p>​    话不多说，%%%%%%%%%%%%%%%%%%%%%%%%%%就完了</p>
+<p>​    </p>
+<p>二.pow</p>
+<p>​    关于pow函数也存在与math.h库中，具体使用也不详细介绍，我们来说一下它的巧用</p>
+<p>​    假如a^b = c，我们已知b和c，如何求a？（其中b &lt;= 200, a &lt;= 1e9, c &lt;=1e100 ）</p>
+<p>​    注意！！c的取值范围是1e100！！！</p>
+<p>​    这时候就有一个巧办法了，虽然double精度不足1e100，但我们只需要知道它的前16位即可，因为当b错一位，c的前16位变化很大。所以虽然double只保留了16位，但计算出的c是唯一的。因此：</p>
+<p>​    pow (c, 1 / n)保留0位小数，即为a</p>
+<p>三.log</p>
+<p>​    关于log的巧妙用法</p>
+<p>​    第一个：例如给出a, b, c, d,如何比较a^b与c^d的大小？</p>
+<p>​    我们只需要求p = b✖️log(a);   q = d✖️log(c)</p>
+<p>​                如果p - q的绝对值 &lt;= 1e-6，则两者相等，</p>
+<p>​                如果 p &lt; q ，则a^b &lt; c^d，</p>
+<p>​                否则a^b &gt; c^d</p>
+<p>​    </p>
+<p>​    第二个：求一个数x有多少位数：</p>
+<p>​        利用(int)log10(x) + 1可以求得x一共多少位</p>
+<p>​    第三个：求一个数x在二进制下有多少位：</p>
+<p>​        利用(int)log2(x) + 1</p>
+<p>g</p>
+<p><a href="http://www.ivan-zcy.top">转载请注明出处！！！</a>  </p>
+<p>如果有写的不对或者不全面的地方 可通过主页的联系方式进行指正，谢谢</p>
+
+                </div>
+            </article>
         </div>
-    </div>
-  <main class="content-area">
-    
-        <div class="article">
-          <div class="container" >
-  <article class="post">
-    <h1 class="entry-title">
-      <a href="/2018/09/28/hexo发表博客常用命令/" rel="bookmark">
-        hexo发表博客常用命令  
-      </a>
-    </h1>
-    
-    <div class="entry-content">
-      <p>
-        <p><img src="/2018/09/28/hexo发表博客常用命令/man.jpg" alt="man"></p>
-      </p>
-    </div>
-    <div class="post-more-link text-center">
-            <a class="btn" href="/2018/09/28/hexo发表博客常用命令/" rel="contents">
-              阅读全文 »
-            </a>
-    </div>
-    <p class="posted-on">
-        <i class="fa fa-calendar" aria-hidden="true"></i>
-    	2018-09-28
-    </p>
-    <div class="tags-links">
-      <i class="fa fa-tags" aria-hidden="true"></i>
-      
-      <a href="/tags/hexo/" rel="tag">
-        hexo
-      </a>
-      
-    </div>
-    
-  </article>
-</div>
+        <!-- Pre or Next -->
+        
+        <div class="container" >
+            <ul class="pager">
+                
+                
+                <li class="next">
+                    <a href="/2018/10/22/关于欧拉-定理-公式-函数/" rel="prev">上一篇</a>
+                </li>
+                
+            </ul>
+        </div>
+        　　　　<!-- Comments -->
+        <div class="container">
+            
+<section id="comment">
+  <!-- <h1 class="title">Comments</h1> -->
 
-        </div> 
-    
-        <div class="article">
-          <div class="container" >
-  <article class="post">
-    <h1 class="entry-title">
-      <a href="/2018/09/28/hexo更换主题流程/" rel="bookmark">
-        hexo更换主题流程  
-      </a>
-    </h1>
-    
-    <div class="entry-content">
-      <p>
-        <p><img src="/2018/09/28/hexo更换主题流程/man.jpg" alt="man"></p>
-      </p>
-    </div>
-    <div class="post-more-link text-center">
-            <a class="btn" href="/2018/09/28/hexo更换主题流程/" rel="contents">
-              阅读全文 »
-            </a>
-    </div>
-    <p class="posted-on">
-        <i class="fa fa-calendar" aria-hidden="true"></i>
-    	2018-09-28
-    </p>
-    <div class="tags-links">
-      <i class="fa fa-tags" aria-hidden="true"></i>
-      
-      <a href="/tags/hexo/" rel="tag">
-        hexo
-      </a>
-      
-    </div>
-    
-  </article>
-</div>
-
-        </div> 
-    
-        <div class="article">
-          <div class="container" >
-  <article class="post">
-    <h1 class="entry-title">
-      <a href="/2018/09/28/First-Blog/" rel="bookmark">
-        First Blog  
-      </a>
-    </h1>
-    
-    <div class="entry-content">
-      <p>
-        <p>​    <img src="/2018/09/28/First-Blog/person.png" alt="person"></p>
-<p>​</p>
-      </p>
-    </div>
-    <div class="post-more-link text-center">
-            <a class="btn" href="/2018/09/28/First-Blog/" rel="contents">
-              阅读全文 »
-            </a>
-    </div>
-    <p class="posted-on">
-        <i class="fa fa-calendar" aria-hidden="true"></i>
-    	2018-09-28
-    </p>
-    <div class="tags-links">
-      <i class="fa fa-tags" aria-hidden="true"></i>
-      
-      <a href="/tags/随笔/" rel="tag">
-        随笔
-      </a>
-      
-    </div>
-    
-  </article>
-</div>
-
-        </div> 
-    
-
-    
-<div class="container" >
-  <ul class="pager">
-    
-      <li class="previous">
-        <a href="/page/16/">
-          下一页
-        </a>
-      </li>
-    
-    
-  </ul>
-</div>
+  
+</section>
 
 
-  </main>
-
+        </div>
+        
+        　　　　
+    </div>
 </div>
 
 
