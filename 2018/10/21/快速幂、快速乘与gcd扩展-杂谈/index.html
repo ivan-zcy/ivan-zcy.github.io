@@ -203,7 +203,8 @@
 <p>​    由于b != 0，所以当a % b == 0时不能继续递归。那么，当a % b == 0时，我们应该返回什么呢？谁才是a,b的最小公约数？</p>
 <p>​    由于a % b == 0，因此a一定是b的倍数，也就说b一定是a的因子，又因为b的最大因子是b，因此a,b的最大公约数一定是b，根据gcd(a, b) = gcd(b, a % b)，我们知道b也是最初始的a,b的最大公约数。</p>
 <p>​    实现代码如下：</p>
-<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">ll gcd (ll a, ll b) &#123;					//前提条件：a,b中不存在0</span><br><span class="line">    if (a &lt; b) swap(a, b);</span><br><span class="line">    //若a,b中存在0，则可添加下一行代码：</span><br><span class="line">    //if(b == 0) return 0;</span><br><span class="line">    return a % b == 0? b: gcd(b, a % b);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">ll gcd (ll a, ll b) &#123;					//前提条件：a,b中不存在0</span><br><span class="line">    return a % b == 0? b: gcd(b, a % b);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>​    题外话，以前以为该函数的前提条件是a必须大于b。。。其实a&lt;b也可以，因为经过一次递归，就变成了 a = b, b = a，亏我之前还判断a，b的大小。。</p>
 <p>​    好啦，我们说几个gcd的扩展定理：</p>
 <p>​    (1).gcd (ka, kb) = k✖️gcd(a, b)</p>
 <p>​    (2).lcm(ka, kb) = k ✖️lcm(a, b)</p>
@@ -221,6 +222,10 @@
         
         <div class="container" >
             <ul class="pager">
+                
+                <li class="previous">
+                    <a href="/2018/10/21/关于逆元/" rel="prev">下一篇</a>
+                </li>
                 
                 
                 <li class="next">
