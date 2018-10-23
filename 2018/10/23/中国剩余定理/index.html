@@ -14,7 +14,7 @@
 
   <!--Open Graph Title-->
   
-      <meta property="og:title" content="(数论七)关于sqrt、pow与log的巧用"/>
+      <meta property="og:title" content="(数论八)中国剩余定理与扩展"/>
   
   <!--Open Graph Description-->
   
@@ -42,7 +42,7 @@
     </script>
   <!-- Title -->
   
-  <title>(数论七)关于sqrt、pow与log的巧用 - Zcy</title>
+  <title>(数论八)中国剩余定理与扩展 - Zcy</title>
 
 
   <link rel="shortcut icon" href="/favicon.ico">
@@ -173,44 +173,63 @@
                 <!-- Title date & tags -->
                 <div class="post-header">
                     <h1 class="entry-title">
-                        (数论七)关于sqrt、pow与log的巧用
+                        (数论八)中国剩余定理与扩展
                         
                     </h1>
 
                 </div>
                 <p class="a-posted-on">
-                    2018-10-22
+                    2018-10-23
                 </p>
                 <!-- Post Main Content -->
                 <div class="entry-content">
-                    <p><img src="/2018/10/22/关于sqrt与log的巧用/title.jpg" alt="title"></p>
+                    <p><img src="/2018/10/23/中国剩余定理/title1.jpg" alt="title1"></p>
 <a id="more"></a>
-<p>一. sqrt</p>
-<p>​    大家都知道sqrt(x)是求x的平方根，c中自带的math.h库有关于该函数的使用。这里就不多叙述~</p>
-<p>​    关于求sqrt，这里有一个神人约翰-卡马克，大家可以百度搜索一下这个神人的辉煌事迹（求sqrt的神秘数字），附上它的代码%一下：</p>
-<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">float Q_rsqrt( float number )</span><br><span class="line">&#123;</span><br><span class="line">long i;</span><br><span class="line">float x2, y;</span><br><span class="line">const float threehalfs = 1.5F;</span><br><span class="line"></span><br><span class="line">x2 = number * 0.5F;</span><br><span class="line">y = number;</span><br><span class="line">i = * ( long * ) &amp;y; // evil floating point bit level hacking</span><br><span class="line">i = 0x5f3759df - ( i &gt;&gt; 1 ); // what the fuck?</span><br><span class="line">y = * ( float * ) &amp;i;</span><br><span class="line">y = y * ( threehalfs - ( x2 * y * y ) ); // 1st iteration</span><br><span class="line">// y = y * ( threehalfs - ( x2 * y * y ) ); // 2nd iteration, this can be removed</span><br><span class="line"></span><br><span class="line">#ifndef Q3_VM</span><br><span class="line">#ifdef __linux__</span><br><span class="line">assert( !isnan(y) ); // bk010122 - FPE?</span><br><span class="line">#endif</span><br><span class="line">#endif</span><br><span class="line">return y;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<p>​    它的这段代码求sqrt(number)的倒数，速度比math.h库中的(float)(1.0/sqrt(x))快4倍！！！</p>
-<p>​    注释中的what the fuck? 也表明了我们普通人的心情。。。。</p>
-<p>​    话不多说，%%%%%%%%%%%%%%%%%%%%%%%%%%就完了</p>
+<p>​    学习中国剩余定理之前必须学会求解逆元： <a href="http://www.ivan-zcy.top/2018/10/22/关于逆元/">跳转</a></p>
+<p>一.中国剩余定理：</p>
+<p>​    记得小时候听过一个故事，就是韩信想知道自己有多少士兵，然后就先让士兵排成x列，余出来a个人，后来又让士兵排成y列，余出来b个人，后来又让士兵排成z列，余出来c个人，最后韩信直接算出了自己的士兵数。。Orz～</p>
+<p>​    呃呃呃，感觉有点像小学的时候做过的奥数题。。。    </p>
+<p>​    假使x，y，z分别为3，5，7，a，b，c分别为2，3，2，那么我们问最小士兵数是多少？</p>
+<p>​    注意一点！！！x,y,z必须满足两两互质！！！</p>
+<p>​    根据逆元的性质，我们可以知道：</p>
+<p>​    3✖️5✖️mod_reverse(15, 7) ≡ 1 （mod 7） （1）</p>
+<p>​    3✖️7✖️mod_reverse(21, 5) ≡ 1 （mod 5)      (2)</p>
+<p>​    5✖️7✖️mod_reverse(35, 3) ≡ 1 （mod 3）    (3)</p>
+<p>​    把(1)乘2，(2)乘3，(3)乘2，得：</p>
+<p>​    2✖️3✖️5✖️mod_reverse(15, 7) ≡ 2 （mod 7） （4）</p>
+<p>​    3✖️3✖️7✖️mod_reverse(21, 5) ≡ 3 （mod 5)      (5)</p>
+<p>​    2✖️5✖️7✖️mod_reverse(35, 3) ≡ 2 （mod 3）    (6)</p>
+<p>​    我们设：</p>
+<p>​    a = 2✖️3✖️5✖️mod_reverse(15, 7)</p>
+<p>​    b = 3✖️3✖️7✖️mod_reverse(21, 5)</p>
+<p>​    c = 2✖️5✖️7✖️mod_reverse(35, 3)</p>
+<p>​    因此我们可以得到：</p>
+<p>​    (a + b + c) % 3 = a % 3 + b % 3 + c % 3 = 0 + 0 + 2 = 2;</p>
+<p>​    (a + b + c) % 5 = a % 5 + b % 5 + c % 5 = 0 + 3 + 0 = 3;</p>
+<p>​    (a + b + c) % 7 = a % 7 + b % 7 + c % 7 = 2 + 0 + 0 = 2;</p>
+<p>​    所以说，士兵数为a + b + c就满足该条件</p>
+<p>​    代码实现如下：</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">//省略扩展欧几里得求逆元的函数</span><br><span class="line">ll china (ll n, ll *a, ll *m) &#123;			//m[i]代表3，5，7等除数，a[i]代表2，3，2等余数</span><br><span class="line">    ll M = 1;			//M代表所有除数的乘积</span><br><span class="line">    ll res = 0;</span><br><span class="line">    for (int i = 0; i &lt; n; i++) &#123;</span><br><span class="line">        M *= m[i];</span><br><span class="line">    &#125;</span><br><span class="line">    for (int i = 0; i &lt; n; i++) &#123;</span><br><span class="line">        ll w = M / m[i];</span><br><span class="line">        ret = (ret + a[i] * w * mod_reverse(w, m[i])) % M;</span><br><span class="line">        //若上面的式子爆longlong，可利用快速乘来求解</span><br><span class="line">    &#125;</span><br><span class="line">    return (ret + M) % M;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 <p>​    </p>
-<p>二.pow</p>
-<p>​    关于pow函数也存在与math.h库中，具体使用也不详细介绍，我们来说一下它的巧用</p>
-<p>​    假如a^b = c，我们已知b和c，如何求a？（其中b &lt;= 200, a &lt;= 1e9, c &lt;=1e100 ）</p>
-<p>​    注意！！c的取值范围是1e100！！！</p>
-<p>​    这时候就有一个巧办法了，虽然double精度不足1e100，但我们只需要知道它的前16位即可，因为当b错一位，c的前16位变化很大。所以虽然double只保留了16位，但计算出的c是唯一的。因此：</p>
-<p>​    pow (c, 1 / n)保留0位小数，即为a</p>
-<p>三.log</p>
-<p>​    关于log的巧妙用法</p>
-<p>​    第一个：例如给出a, b, c, d,如何比较a^b与c^d的大小？</p>
-<p>​    我们只需要求p = b✖️log(a);   q = d✖️log(c)</p>
-<p>​                如果p - q的绝对值 &lt;= 1e-6，则两者相等，</p>
-<p>​                如果 p &lt; q ，则a^b &lt; c^d，</p>
-<p>​                否则a^b &gt; c^d</p>
-<p>​    </p>
-<p>​    第二个：求一个数x有多少位数：</p>
-<p>​        利用(int)log10(x) + 1可以求得x一共多少位</p>
-<p>​    第三个：求一个数x在二进制下有多少位：</p>
-<p>​        利用(int)log2(x) + 1可以求得x在二进制下一共多少位</p>
+<p>二.中国剩余定理扩展：</p>
+<p>​    前边注意中已经标注了，中国剩余定理的前提是x，y，z（也就是说除数）必须两两互质。如果不互质我们又该怎么办呢？</p>
+<p>​    我们假设x ≡ a1 (mod n1)</p>
+<p>​            x ≡ a2 (mod n2)</p>
+<p>​    合并两式，得：n1k1 = n2k2 + a2 - a1</p>
+<p>​    两边同除gcd(n1, n2)，得：</p>
+<p>​    n1k1 / gcd(n1, n2) = n2k2 / gcd(n1, n2) + (a2 - a1) / gcd(n1, n2)</p>
+<p>​    由于n1 / gcd(n1, n2) 与n2 / gcd(n1, n2)互质，因此：</p>
+<p>​    n1k1 / gcd(n1, n2) ≡  (a2 - a1) / gcd(n1, n2)    （mod n2 / gcd(n1, n2)）</p>
+<p>​    同除n1 / gcd (n1, n2)，得：k1 ≡ mod_reverse(n1 / gcd(n1, n2), n2 / gcd(n1, n2))✖️ (a2 - a1) / gcd(n1, n2) （mod n2 / gcd(n1, n2)）</p>
+<p>​    k1 = mod_reverse(n1 / gcd(n1, n2), n2 / gcd(n1, n2))✖️ (a2 - a1) / gcd(n1, n2) + n2 / gcd(n1, n2)✖️y</p>
+<p>​    把k1代入x = n1k1 + a1，得：</p>
+<p>​    x =     mod_reverse(n1 / gcd(n1, n2), n2 / gcd(n1, n2))✖️ (a2 - a1) / gcd(n1, n2)✖️n1 + n1n2 / gcd(n1, n2)✖️y</p>
+<p>​    呃呃呃，解x就求出来了…</p>
+<p>​    这是两个式子的联立，那么多个呢？</p>
+<p>​    对于多个，我们先求出两个数的解x，把x带入到a2中，并把n2替换为lcm(n1, n2)，然后继续求2，3的解，直到递推到n结束。最后n - 1和 n的解x即为答案。</p>
+<p>​    代码如下：</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">const int maxn=1e5+5;</span><br><span class="line">int n;</span><br><span class="line">ll m[maxn],a[maxn];			//m[i]为除数，a[i]为余数</span><br><span class="line"></span><br><span class="line">//求gcd</span><br><span class="line">ll gcd (ll a, ll b) &#123;					</span><br><span class="line">    return a % b == 0? b: gcd(b, a % b);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">//扩展欧几里得算法</span><br><span class="line">ll extend_gcd (ll a, ll b, ll &amp;x, ll &amp;y) &#123;	</span><br><span class="line">    if (a == 0 &amp;&amp; b == 0) return -1;</span><br><span class="line">    if (b == 0) &#123;</span><br><span class="line">        x = 1;</span><br><span class="line">        y = 0;</span><br><span class="line">        return a;</span><br><span class="line">    &#125;</span><br><span class="line">    ll d = extend_gcd(b, a % b, y, x);</span><br><span class="line">    y -= a / b * x;</span><br><span class="line">    return d;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">//求a关于n的逆元</span><br><span class="line">ll mod_reverse (ll a, ll n) &#123;</span><br><span class="line">    ll x, y;</span><br><span class="line">    ll d = extend_gcd(a, n, x, y);</span><br><span class="line">    if (d == 1) return (x % n + n) % n;</span><br><span class="line">    return -1;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">//中国剩余定理扩展</span><br><span class="line">ll work()&#123;</span><br><span class="line">    int flag = 0;</span><br><span class="line">    for (int i = 2; i &lt;= n; i++) &#123;</span><br><span class="line">        ll n1 = m[i - 1], n2 = m[i];</span><br><span class="line">        ll a1 = a[i - 1], a2 = a[i];</span><br><span class="line">        ll d = gcd(n1, n2);</span><br><span class="line">        if ((a2 - a1) % d != 0) &#123;</span><br><span class="line">            flag = 1;</span><br><span class="line">            break;</span><br><span class="line">        &#125;</span><br><span class="line">        m[i] = m[i - 1] / d * m[i];</span><br><span class="line">        ll x = (mod_reverse(n1 / d, n2 / d) * (a2 - a1) / d) % (n2 / d) * n1 + a1;</span><br><span class="line">        x = (x % m[i] + m[i]) % m[i];</span><br><span class="line">        a[i] = x;</span><br><span class="line">    &#125;</span><br><span class="line">    if (flag) return -1;</span><br><span class="line">    return a[n];</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>​    大概就是这样～</p>
 <p><a href="http://www.ivan-zcy.top">转载请注明出处！！！</a>  </p>
 <p>如果有写的不对或者不全面的地方 可通过主页的联系方式进行指正，谢谢</p>
 
@@ -222,13 +241,9 @@
         <div class="container" >
             <ul class="pager">
                 
-                <li class="previous">
-                    <a href="/2018/10/23/中国剩余定理/" rel="prev">下一篇</a>
-                </li>
-                
                 
                 <li class="next">
-                    <a href="/2018/10/22/关于欧拉-定理-公式-函数/" rel="prev">上一篇</a>
+                    <a href="/2018/10/22/关于sqrt与log的巧用/" rel="prev">上一篇</a>
                 </li>
                 
             </ul>
