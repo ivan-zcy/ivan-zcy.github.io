@@ -14,7 +14,7 @@
 
   <!--Open Graph Title-->
   
-      <meta property="og:title" content="杜教BM模版(推规律)"/>
+      <meta property="og:title" content="18-10-23博客搭建进度"/>
   
   <!--Open Graph Description-->
   
@@ -42,7 +42,7 @@
     </script>
   <!-- Title -->
   
-  <title>杜教BM模版(推规律) - Zcy</title>
+  <title>18-10-23博客搭建进度 - Zcy</title>
 
 
   <link rel="shortcut icon" href="/favicon.ico">
@@ -173,7 +173,7 @@
                 <!-- Title date & tags -->
                 <div class="post-header">
                     <h1 class="entry-title">
-                        杜教BM模版(推规律)
+                        18-10-23博客搭建进度
                         
                     </h1>
 
@@ -183,11 +183,27 @@
                 </p>
                 <!-- Post Main Content -->
                 <div class="entry-content">
-                    <p><img src="/2018/10/23/杜教BM模版-推规律/title.jpg" alt="title"></p>
+                    <p><img src="/2018/10/23/18-10-23博客搭建进度/title.jpg" alt="title"></p>
 <a id="more"></a>
-<p>​    无论是矩阵快速幂求第n项，还是给出输出前几项求规律的第n项。。。几乎就没有它做不到的～至于原理。。。呃呃呃，会用就完了！！！</p>
-<p>​    下面是找到的能用的BM模版：</p>
-<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">#include &lt;cstdio&gt;</span><br><span class="line">#include &lt;cstring&gt;</span><br><span class="line">#include &lt;cmath&gt;</span><br><span class="line">#include &lt;algorithm&gt;</span><br><span class="line">#include &lt;vector&gt;</span><br><span class="line">#include &lt;string&gt;</span><br><span class="line">#include &lt;map&gt;</span><br><span class="line">#include &lt;set&gt;</span><br><span class="line">#include &lt;cassert&gt;</span><br><span class="line">using namespace std;</span><br><span class="line">#define rep(i,a,n) for (int i=a;i&lt;n;i++)</span><br><span class="line">#define per(i,a,n) for (int i=n-1;i&gt;=a;i--)</span><br><span class="line">#define pb push_back</span><br><span class="line">#define mp make_pair</span><br><span class="line">#define all(x) (x).begin(),(x).end()</span><br><span class="line">#define fi first</span><br><span class="line">#define se second</span><br><span class="line">#define SZ(x) ((int)(x).size())</span><br><span class="line">typedef vector&lt;int&gt; VI;</span><br><span class="line">typedef long long ll;</span><br><span class="line">typedef pair&lt;int,int&gt; PII;</span><br><span class="line">const ll mod=1000000007;</span><br><span class="line">ll powmod(ll a,ll b) &#123;ll res=1;a%=mod; assert(b&gt;=0); for(;b;b&gt;&gt;=1)&#123;if(b&amp;1)res=res*a%mod;a=a*a%mod;&#125;return res;&#125;</span><br><span class="line">// head</span><br><span class="line"></span><br><span class="line">int _,n;</span><br><span class="line">namespace linear_seq &#123;</span><br><span class="line">    const int N=10010;</span><br><span class="line">    ll res[N],base[N],_c[N],_md[N];</span><br><span class="line">    </span><br><span class="line">    vector&lt;int&gt; Md;</span><br><span class="line">    void mul(ll *a,ll *b,int k) &#123;</span><br><span class="line">        rep(i,0,k+k) _c[i]=0;</span><br><span class="line">        rep(i,0,k) if (a[i]) rep(j,0,k) _c[i+j]=(_c[i+j]+a[i]*b[j])%mod;</span><br><span class="line">        for (int i=k+k-1;i&gt;=k;i--) if (_c[i])</span><br><span class="line">            rep(j,0,SZ(Md)) _c[i-k+Md[j]]=(_c[i-k+Md[j]]-_c[i]*_md[Md[j]])%mod;</span><br><span class="line">        rep(i,0,k) a[i]=_c[i];</span><br><span class="line">    &#125;</span><br><span class="line">    int solve(ll n,VI a,VI b) &#123; // a 系数 b 初值 b[n+1]=a[0]*b[n]+...</span><br><span class="line">        //        printf(&quot;%d\n&quot;,SZ(b));</span><br><span class="line">        ll ans=0,pnt=0;</span><br><span class="line">        int k=SZ(a);</span><br><span class="line">        assert(SZ(a)==SZ(b));</span><br><span class="line">        rep(i,0,k) _md[k-1-i]=-a[i];_md[k]=1;</span><br><span class="line">        Md.clear();</span><br><span class="line">        rep(i,0,k) if (_md[i]!=0) Md.push_back(i);</span><br><span class="line">        rep(i,0,k) res[i]=base[i]=0;</span><br><span class="line">        res[0]=1;</span><br><span class="line">        while ((1ll&lt;&lt;pnt)&lt;=n) pnt++;</span><br><span class="line">        for (int p=pnt;p&gt;=0;p--) &#123;</span><br><span class="line">            mul(res,res,k);</span><br><span class="line">            if ((n&gt;&gt;p)&amp;1) &#123;</span><br><span class="line">                for (int i=k-1;i&gt;=0;i--) res[i+1]=res[i];res[0]=0;</span><br><span class="line">                rep(j,0,SZ(Md)) res[Md[j]]=(res[Md[j]]-res[k]*_md[Md[j]])%mod;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        rep(i,0,k) ans=(ans+res[i]*b[i])%mod;</span><br><span class="line">        if (ans&lt;0) ans+=mod;</span><br><span class="line">        return ans;</span><br><span class="line">    &#125;</span><br><span class="line">    VI BM(VI s) &#123;</span><br><span class="line">        VI C(1,1),B(1,1);</span><br><span class="line">        int L=0,m=1,b=1;</span><br><span class="line">        rep(n,0,SZ(s)) &#123;</span><br><span class="line">            ll d=0;</span><br><span class="line">            rep(i,0,L+1) d=(d+(ll)C[i]*s[n-i])%mod;</span><br><span class="line">            if (d==0) ++m;</span><br><span class="line">            else if (2*L&lt;=n) &#123;</span><br><span class="line">                VI T=C;</span><br><span class="line">                ll c=mod-d*powmod(b,mod-2)%mod;</span><br><span class="line">                while (SZ(C)&lt;SZ(B)+m) C.pb(0);</span><br><span class="line">                rep(i,0,SZ(B)) C[i+m]=(C[i+m]+c*B[i])%mod;</span><br><span class="line">                L=n+1-L; B=T; b=d; m=1;</span><br><span class="line">            &#125; else &#123;</span><br><span class="line">                ll c=mod-d*powmod(b,mod-2)%mod;</span><br><span class="line">                while (SZ(C)&lt;SZ(B)+m) C.pb(0);</span><br><span class="line">                rep(i,0,SZ(B)) C[i+m]=(C[i+m]+c*B[i])%mod;</span><br><span class="line">                ++m;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        return C;</span><br><span class="line">    &#125;</span><br><span class="line">    int gao(VI a,ll n) &#123;</span><br><span class="line">        VI c=BM(a);</span><br><span class="line">        c.erase(c.begin());</span><br><span class="line">        rep(i,0,SZ(c)) c[i]=(mod-c[i])%mod;</span><br><span class="line">        return solve(n,c,VI(a.begin(),a.begin()+SZ(c)));</span><br><span class="line">    &#125;</span><br><span class="line">&#125;;</span><br><span class="line"></span><br><span class="line">int main() &#123;</span><br><span class="line">    while (~scanf(&quot;%d&quot;,&amp;n)) &#123;</span><br><span class="line">        vector&lt;int&gt;v;</span><br><span class="line">        v.push_back(1);			//这儿就可以输入前几项的数，用来推规律</span><br><span class="line">        v.push_back(2);</span><br><span class="line">        v.push_back(4);</span><br><span class="line">        v.push_back(7);</span><br><span class="line">        v.push_back(13);</span><br><span class="line">        v.push_back(24);</span><br><span class="line">        //VI&#123;1,2,4,7,13,24&#125;</span><br><span class="line">        printf(&quot;%d\n&quot;,linear_seq::gao(v,n-1));</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>特点:简约 流畅 死宅</p>
+<h3 id="进度表："><a href="#进度表：" class="headerlink" title="进度表："></a>进度表：</h3><p>​    ——新增标签页，方便查找(感谢帮忙拍版的鹏飞 09.29更新)</p>
+<p>​    ——新增返回顶部的小火箭 (09.29更新）</p>
+<p>​    ——优化布局(09.29更新)</p>
+<p>​    ——新增巨巨们的友情链接(09.29更新)</p>
+<p>​    ——主页新增邮箱与QQ跳转链接(10.03更新)</p>
+<p>​    ——引入“畅言”评论平台(位于留言界面，需等待3秒加载 10.03更新)</p>
+<p>​    ——提供博文百度搜索功能(需审核 10.03更新)</p>
+<p>​    ——关联<a href="http://www.ivan-zcy.com" target="_blank" rel="noopener">www.ivan-zcy.com</a>  与  <a href="http://www.ivan-zcy.top">www.ivan-zcy.top</a>  域名(10.03更新)</p>
+<p>​    ——代码托管从github转到coding，优化网速(10.03更新)</p>
+<p>​    ——修正主页博文标签跳转错误(10.03更新)</p>
+<p>​    ——新增弹出式音乐播放器(10.05更新)</p>
+<p>​    ——新增主页博文出场特效(10.05更新)</p>
+<p>​    ——新增鼠标点击爱心效果(10.20更新)</p>
+<p>​    ——新增页面卡通人物效果(10.20更新)</p>
+<p>​    ——微调音乐布局(10.20更新)</p>
+<p>​    ——微调小火箭布局(10.20更新)</p>
+<p>​    ——新增标签数量统计</p>
+<p>​    ——新增博文数量统计</p>
 
                 </div>
             </article>
@@ -198,12 +214,12 @@
             <ul class="pager">
                 
                 <li class="previous">
-                    <a href="/2018/10/23/容斥原理与抽屉原理/" rel="prev">下一篇</a>
+                    <a href="/2018/10/23/杜教BM模版-推规律/" rel="prev">下一篇</a>
                 </li>
                 
                 
                 <li class="next">
-                    <a href="/2018/10/23/18-10-23博客搭建进度/" rel="prev">上一篇</a>
+                    <a href="/2018/10/22/关于sqrt与log的巧用/" rel="prev">上一篇</a>
                 </li>
                 
             </ul>
