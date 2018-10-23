@@ -14,7 +14,7 @@
 
   <!--Open Graph Title-->
   
-      <meta property="og:title" content="(数论八)中国剩余定理与扩展"/>
+      <meta property="og:title" content="(数论九)卢卡斯定理与扩展卢卡斯"/>
   
   <!--Open Graph Description-->
   
@@ -42,7 +42,7 @@
     </script>
   <!-- Title -->
   
-  <title>(数论八)中国剩余定理与扩展 - Zcy</title>
+  <title>(数论九)卢卡斯定理与扩展卢卡斯 - Zcy</title>
 
 
   <link rel="shortcut icon" href="/favicon.ico">
@@ -173,7 +173,7 @@
                 <!-- Title date & tags -->
                 <div class="post-header">
                     <h1 class="entry-title">
-                        (数论八)中国剩余定理与扩展
+                        (数论九)卢卡斯定理与扩展卢卡斯
                         
                     </h1>
 
@@ -183,53 +183,51 @@
                 </p>
                 <!-- Post Main Content -->
                 <div class="entry-content">
-                    <p><img src="/2018/10/23/中国剩余定理/title1.jpg" alt="title1"></p>
+                    <p><img src="/2018/10/23/关于卢卡斯定理/title.jpg" alt="title"></p>
 <a id="more"></a>
-<p>​    学习中国剩余定理之前必须学会求解逆元： <a href="http://www.ivan-zcy.top/2018/10/22/关于逆元/">跳转</a></p>
-<p>一.中国剩余定理：</p>
-<p>​    记得小时候听过一个故事，就是韩信想知道自己有多少士兵，然后就先让士兵排成x列，余出来a个人，后来又让士兵排成y列，余出来b个人，后来又让士兵排成z列，余出来c个人，最后韩信直接算出了自己的士兵数。。Orz～</p>
-<p>​    呃呃呃，感觉有点像小学的时候做过的奥数题。。。    </p>
-<p>​    假使x，y，z分别为3，5，7，a，b，c分别为2，3，2，那么我们问最小士兵数是多少？</p>
-<p>​    注意一点！！！x,y,z必须满足两两互质！！！</p>
-<p>​    根据逆元的性质，我们可以知道：</p>
-<p>​    3✖️5✖️mod_reverse(15, 7) ≡ 1 （mod 7） （1）</p>
-<p>​    3✖️7✖️mod_reverse(21, 5) ≡ 1 （mod 5)      (2)</p>
-<p>​    5✖️7✖️mod_reverse(35, 3) ≡ 1 （mod 3）    (3)</p>
-<p>​    把(1)乘2，(2)乘3，(3)乘2，得：</p>
-<p>​    2✖️3✖️5✖️mod_reverse(15, 7) ≡ 2 （mod 7） （4）</p>
-<p>​    3✖️3✖️7✖️mod_reverse(21, 5) ≡ 3 （mod 5)      (5)</p>
-<p>​    2✖️5✖️7✖️mod_reverse(35, 3) ≡ 2 （mod 3）    (6)</p>
-<p>​    我们设：</p>
-<p>​    a = 2✖️3✖️5✖️mod_reverse(15, 7)</p>
-<p>​    b = 3✖️3✖️7✖️mod_reverse(21, 5)</p>
-<p>​    c = 2✖️5✖️7✖️mod_reverse(35, 3)</p>
-<p>​    因此我们可以得到：</p>
-<p>​    (a + b + c) % 3 = a % 3 + b % 3 + c % 3 = 0 + 0 + 2 = 2;</p>
-<p>​    (a + b + c) % 5 = a % 5 + b % 5 + c % 5 = 0 + 3 + 0 = 3;</p>
-<p>​    (a + b + c) % 7 = a % 7 + b % 7 + c % 7 = 2 + 0 + 0 = 2;</p>
-<p>​    所以说，士兵数为a + b + c就满足该条件</p>
-<p>​    代码实现如下：</p>
-<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">//省略扩展欧几里得求逆元的函数</span><br><span class="line">ll china (ll n, ll *a, ll *m) &#123;			//m[i]代表3，5，7等除数，a[i]代表2，3，2等余数</span><br><span class="line">    ll M = 1;			//M代表所有除数的乘积</span><br><span class="line">    ll res = 0;</span><br><span class="line">    for (int i = 0; i &lt; n; i++) &#123;</span><br><span class="line">        M *= m[i];</span><br><span class="line">    &#125;</span><br><span class="line">    for (int i = 0; i &lt; n; i++) &#123;</span><br><span class="line">        ll w = M / m[i];</span><br><span class="line">        ret = (ret + a[i] * w * mod_reverse(w, m[i])) % M;</span><br><span class="line">        //若上面的式子爆longlong，可利用快速乘来求解</span><br><span class="line">    &#125;</span><br><span class="line">    return (ret + M) % M;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<p>​    </p>
-<p>二.中国剩余定理扩展：</p>
-<p>​    前边注意中已经标注了，中国剩余定理的前提是x，y，z（也就是说除数）必须两两互质。如果不互质我们又该怎么办呢？</p>
-<p>​    我们假设x ≡ a1 (mod n1)</p>
-<p>​            x ≡ a2 (mod n2)</p>
-<p>​    合并两式，得：n1k1 = n2k2 + a2 - a1</p>
-<p>​    两边同除gcd(n1, n2)，得：</p>
-<p>​    n1k1 / gcd(n1, n2) = n2k2 / gcd(n1, n2) + (a2 - a1) / gcd(n1, n2)</p>
-<p>​    由于n1 / gcd(n1, n2) 与n2 / gcd(n1, n2)互质，因此：</p>
-<p>​    n1k1 / gcd(n1, n2) ≡  (a2 - a1) / gcd(n1, n2)    （mod n2 / gcd(n1, n2)）</p>
-<p>​    同除n1 / gcd (n1, n2)，得：k1 ≡ mod_reverse(n1 / gcd(n1, n2), n2 / gcd(n1, n2))✖️ (a2 - a1) / gcd(n1, n2) （mod n2 / gcd(n1, n2)）</p>
-<p>​    k1 = mod_reverse(n1 / gcd(n1, n2), n2 / gcd(n1, n2))✖️ (a2 - a1) / gcd(n1, n2) + n2 / gcd(n1, n2)✖️y</p>
-<p>​    把k1代入x = n1k1 + a1，得：</p>
-<p>​    x =     mod_reverse(n1 / gcd(n1, n2), n2 / gcd(n1, n2))✖️ (a2 - a1) / gcd(n1, n2)✖️n1 + n1n2 / gcd(n1, n2)✖️y</p>
-<p>​    呃呃呃，解x就求出来了…</p>
-<p>​    这是两个式子的联立，那么多个呢？</p>
-<p>​    对于多个，我们先求出两个数的解x，把x带入到a2中，并把n2替换为lcm(n1, n2)，然后继续求2，3的解，直到递推到n结束。最后n - 1和 n的解x即为答案。</p>
-<p>​    代码如下：</p>
-<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">const int maxn=1e5+5;</span><br><span class="line">int n;</span><br><span class="line">ll m[maxn],a[maxn];			//m[i]为除数，a[i]为余数</span><br><span class="line"></span><br><span class="line">//求gcd</span><br><span class="line">ll gcd (ll a, ll b) &#123;					</span><br><span class="line">    return a % b == 0? b: gcd(b, a % b);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">//扩展欧几里得算法</span><br><span class="line">ll extend_gcd (ll a, ll b, ll &amp;x, ll &amp;y) &#123;	</span><br><span class="line">    if (a == 0 &amp;&amp; b == 0) return -1;</span><br><span class="line">    if (b == 0) &#123;</span><br><span class="line">        x = 1;</span><br><span class="line">        y = 0;</span><br><span class="line">        return a;</span><br><span class="line">    &#125;</span><br><span class="line">    ll d = extend_gcd(b, a % b, y, x);</span><br><span class="line">    y -= a / b * x;</span><br><span class="line">    return d;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">//求a关于n的逆元</span><br><span class="line">ll mod_reverse (ll a, ll n) &#123;</span><br><span class="line">    ll x, y;</span><br><span class="line">    ll d = extend_gcd(a, n, x, y);</span><br><span class="line">    if (d == 1) return (x % n + n) % n;</span><br><span class="line">    return -1;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">//中国剩余定理扩展</span><br><span class="line">ll work()&#123;</span><br><span class="line">    int flag = 0;</span><br><span class="line">    for (int i = 2; i &lt;= n; i++) &#123;</span><br><span class="line">        ll n1 = m[i - 1], n2 = m[i];</span><br><span class="line">        ll a1 = a[i - 1], a2 = a[i];</span><br><span class="line">        ll d = gcd(n1, n2);</span><br><span class="line">        if ((a2 - a1) % d != 0) &#123;</span><br><span class="line">            flag = 1;</span><br><span class="line">            break;</span><br><span class="line">        &#125;</span><br><span class="line">        m[i] = m[i - 1] / d * m[i];</span><br><span class="line">        ll x = (mod_reverse(n1 / d, n2 / d) * (a2 - a1) / d) % (n2 / d) * n1 + a1;</span><br><span class="line">        x = (x % m[i] + m[i]) % m[i];</span><br><span class="line">        a[i] = x;</span><br><span class="line">    &#125;</span><br><span class="line">    if (flag) return -1;</span><br><span class="line">    return a[n];</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<p>​    大概就是这样～</p>
+<p>​    在数论中我们经常遇到求组合数的问题，比如有n个球放入m个箱子里(m &gt; n)，每个箱子只能放一个球，问有多少种方案？类似这种题目就需要用到组合数来求解</p>
+<p>​    学习该内容需学会之前讲的逆元和中国剩余定理。跳转链接：<a href="http://www.ivan-zcy.top/2018/10/22/关于逆元/">逆元</a>  <a href="http://www.ivan-zcy.top/2018/10/23/中国剩余定理/">中国剩余定理</a></p>
+<p>​    那么求组合数都有什么方法呢？</p>
+<p>一.其实早在古代，伟大的先人就解决了求解组合数的问题，那就是伟大的杨辉三角</p>
+<p>​    我们发现        </p>
+<p>​    1</p>
+<p>​    1，1</p>
+<p>​    1，2，1</p>
+<p>​    1，3，3，1</p>
+<p>​    1，4，6，4，1</p>
+<p>​    1，5，10，10，5，1</p>
+<p>​    有没有发现，C（n,m）的值就是第n行m列的值（下标从0开始）</p>
+<p>​    虽然这样可以求组合数，但是它的复杂度是O(n^2)太大了，只能求解1e3以内的组合数</p>
+<p>二.我们可以进一步优化</p>
+<p>​    由于已知C（n,m）= n！/ (n - m)! ✖️m！</p>
+<p>​    我们只需要预处理出前n的阶乘与前n阶乘的逆元，每次就可以O（1）的时间求出组合数的值</p>
+<p>​    因此，我们只需要耗费O(n)的复杂度预处理就可以了</p>
+<p>​    因此它可以求1e6以内的组合数</p>
+<p>三.卢卡斯定理</p>
+<p>​    卢卡斯定理：C（n,m）% p = C（n / p ,m / p)✖️C（n % p ,m % p) % p</p>
+<p>​    当n和m特别大时题目中必须有取余操作，要不会爆longlong，若p小于1e7时卢卡斯定理就派上了用场。</p>
+<p>​    附上代码：</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">ll fact[N + 5];</span><br><span class="line">ll inv[N + 5];</span><br><span class="line"></span><br><span class="line">//省略中间的扩展欧几里得求逆元</span><br><span class="line"></span><br><span class="line">void init () &#123;</span><br><span class="line">    fact[0] = fact[1] = 1;</span><br><span class="line">    for (int i = 2; i &lt;= N; i ++) &#123;</span><br><span class="line">        fact[i] = fact[i - 1] * i % mod;</span><br><span class="line">    &#125;</span><br><span class="line">    inv[N] = mod_reverse(fact[N], mod);     //调用扩展欧几里得求逆元</span><br><span class="line">    for (int i = N -1; i &gt;= 0; i--) &#123;</span><br><span class="line">        inv[i] = inv[i + 1] * (i + 1) % mod;</span><br><span class="line">    &#125;</span><br><span class="line">    return;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">ll C (ll n, ll m) &#123;</span><br><span class="line">    if (n &lt; m || m &lt; 0) return 0;</span><br><span class="line">    if (n &lt; mod) return fact[n] * inv[m] % mod * inv[n - m] % mod;</span><br><span class="line">    return C (n / mod, m / mod) * C (n % mod, m % mod) % mod;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>​    以上代码只适用于p&lt;1e7且p为素数的情况，若p为合数呢？</p>
+<p>​    此时就需要用到扩展卢卡斯定理了（此前需学会中国剩余定理）</p>
+<p>四.扩展卢卡斯定理：</p>
+<p>​    由于p为合数，因此我们可以将p分解为p1^a1✖️p2^a2✖️…pk^ak的形式</p>
+<p>​    因此我们可以利用卢卡斯定理求得：</p>
+<p>​    ans ≡ x1 (mod p1^a1)</p>
+<p>​    ans ≡ x2 (mod p2^a2)</p>
+<p>​    ……</p>
+<p>​     ans ≡ xk (mod pk^ak)    </p>
+<p>​    不同质数的幂次方之间肯定两两互质，通过求得每组的解xi，再利用中国剩余定理就可以合并得到最终答案</p>
+<p>​    每组解xi的求法：C（n，m）% (pi^ai)</p>
+<p>​    因此我们需要获得剔除pi因子后的乘积n！,m！的逆元,（n - m）！的逆元的乘积去取模（pi^ai）并加入被剔除的pi的贡献即可</p>
+<p>​    那么我们如何求n！剔除pi因子的乘积呢？</p>
+<p>​    例如19! % (3^2) = （1✖️2✖️4✖️5✖️7✖️8）✖️(10✖️11✖️13✖️14✖️16✖️17)✖️(19)✖️(1✖️2✖️3✖️4✖️5✖️6)</p>
+<p>​    （）内的代表一个分组，每个分组在取余pi^ai后结果相同，因此只需暴力一个分组，利用快速幂求解即可，对于(19)这种不足一个分组的，可以暴力单度计算。对于(1✖️2✖️3✖️4✖️5✖️6)，可提前预处理出来</p>
+<p>​    最后xi = (n)! % (pi^ai)✖️inv((m)! % (pi^ai), pi^ai)✖️inv((m)! % (pi^ai), pi^ai)✖️pi^k即可（其中k为pi在C(n, m )中出现的次数）</p>
+<p>​    最后利用中国剩余定理将xi合并即可</p>
+<p>​    附上代码：</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">ll ksm(ll a, ll b, ll mod) &#123;&#125;  //省略快速幂</span><br><span class="line">ll extend_gcd(ll a, ll b, ll &amp;x, ll &amp;y) &#123;&#125; //省略扩展欧几里得</span><br><span class="line">ll mod_reverse (ll a, ll n) &#123;&#125; //省略逆元</span><br><span class="line"></span><br><span class="line">//用于求n!%(pi^ai) 其中pk =（pi^ai）</span><br><span class="line">ll mul(ll n,ll pi,ll pk) &#123;</span><br><span class="line">    if(!n) return 1;</span><br><span class="line">    ll ans=1;</span><br><span class="line">    if(n / pk) &#123;</span><br><span class="line">        for(ll i = 2;i &lt; pk; i++)</span><br><span class="line">            if(i % pi) ans = ans * i % pk;</span><br><span class="line">        ans = ksm(ans, n / pk, pk);</span><br><span class="line">    &#125;</span><br><span class="line">    for(ll i = 2;i &lt;= n % pk; i++)</span><br><span class="line">        if(i % pi) ans = ans * i % pk;</span><br><span class="line">    return ans * mul(n / pi, pi, pk) % pk;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">//求xi</span><br><span class="line">ll C(ll n, ll m, ll mod, ll pi, ll pk) &#123;</span><br><span class="line">    if(m &gt; n) return 0;</span><br><span class="line">    ll a = mul(n, pi, pk),b = mul(m, pi, pk),c = mul(n-m, pi, pk);</span><br><span class="line">    ll k=0, ans;</span><br><span class="line">    for(ll i = n; i; i /= pi) k += i / pi;</span><br><span class="line">    for(ll i = m; i; i /= pi) k -= i / pi;</span><br><span class="line">    for(ll i = n - m; i; i /= pi) k -= i / pi;</span><br><span class="line">    ans = a * mod_reverse(b, pk) % pk * mod_reverse(c, pk) % pk * ksm(pi, k, pk) % pk;</span><br><span class="line">    return ans * (mod / pk) % mod * mod_reverse(mod / pk, pk) % mod;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">//扩展卢卡斯</span><br><span class="line">ll exLucas(ll n, ll m, ll mod) &#123;</span><br><span class="line">    ll ans = 0;</span><br><span class="line">    for(ll x = mod, i = 2; i &lt;= mod; i++)</span><br><span class="line">        if(x % i == 0) &#123;</span><br><span class="line">            ll pk = 1;</span><br><span class="line">            while(x % i == 0) &#123;</span><br><span class="line">                pk *= i;</span><br><span class="line">                x /= i;</span><br><span class="line">            &#125;</span><br><span class="line">            ans = (ans + C(n, m, mod, i, pk)) % mod;</span><br><span class="line">        &#125;</span><br><span class="line">    return ans;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>​    完工～</p>
 <p><a href="http://www.ivan-zcy.top">转载请注明出处！！！</a>  </p>
 <p>如果有写的不对或者不全面的地方 可通过主页的联系方式进行指正，谢谢</p>
 
@@ -241,13 +239,9 @@
         <div class="container" >
             <ul class="pager">
                 
-                <li class="previous">
-                    <a href="/2018/10/23/关于卢卡斯定理/" rel="prev">下一篇</a>
-                </li>
-                
                 
                 <li class="next">
-                    <a href="/2018/10/22/关于sqrt与log的巧用/" rel="prev">上一篇</a>
+                    <a href="/2018/10/23/中国剩余定理/" rel="prev">上一篇</a>
                 </li>
                 
             </ul>
