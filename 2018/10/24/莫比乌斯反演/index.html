@@ -14,7 +14,7 @@
 
   <!--Open Graph Title-->
   
-      <meta property="og:title" content="(数论十三)二项式反演"/>
+      <meta property="og:title" content="(数论十四)莫比乌斯反演"/>
   
   <!--Open Graph Description-->
   
@@ -42,7 +42,7 @@
     </script>
   <!-- Title -->
   
-  <title>(数论十三)二项式反演 - Zcy</title>
+  <title>(数论十四)莫比乌斯反演 - Zcy</title>
 
 
   <link rel="shortcut icon" href="/favicon.ico">
@@ -173,7 +173,7 @@
                 <!-- Title date & tags -->
                 <div class="post-header">
                     <h1 class="entry-title">
-                        (数论十三)二项式反演
+                        (数论十四)莫比乌斯反演
                         
                     </h1>
 
@@ -183,27 +183,36 @@
                 </p>
                 <!-- Post Main Content -->
                 <div class="entry-content">
-                    <p><img src="/2018/10/24/二项式反演/title1.jpg" alt="title1"></p>
+                    <p><img src="/2018/10/24/莫比乌斯反演/title.jpg" alt="title"></p>
 <a id="more"></a>
-<p>一.引出反演</p>
-<p>​    对于公式f(n) = g(1) + g(2) + … + g(n)，我们只要已知g(x)的函数方程，就可以得到任意的f(n)。但是已知f(x)的函数方程，我们能得到任意的g(n)吗？</p>
-<p>​    这时候，我们就需要用到反演定理了。利用反演定理，我们就可以通过f(x)求任意的g(n)了</p>
-<p>二.反演定理:</p>
-<p><img src="/2018/10/24/二项式反演/1.png" alt="1"></p>
-<p>​    对于不同的的用法，c，d是不同的，至于推导。。。我是不会，Orz～ 关于常用的反演，数学家们已经推倒出来c函数和d函数，我们直接记住用就可以了。</p>
-<p>​    我们常见的反演有二项式反演，斯特林反演，莫比乌斯反演和最值反演，接下来说一下二项式反演。</p>
-<p>三.二项式反演：</p>
-<p>​        <img src="/2018/10/24/二项式反演/2.png" alt="2"></p>
-<p>​    其中（上:n 下:i）代表C(n, i)</p>
+<p>​    上一篇将了二项式反演，这一篇讲一下莫比乌斯反演</p>
+<p>学习莫比乌斯反演前，我们先要学习一下莫比乌斯函数</p>
+<p>一.莫比乌斯函数定义：</p>
+<p>​    定义如下：</p>
+<p>​        μ(1) = 1    当x = 1时</p>
+<p>​        μ(x) = (-1)^k    当x由k个不同的质数相乘得到时（保证每个质数都不同且只有质数）</p>
+<p>​        μ(x) = 0    其余情况</p>
 <p>​    </p>
-<p>四.例题：</p>
-<p>​    比如，n封信全部装错的方案数？</p>
-<p>​    当然啦，有个错排公式能O(n)的的推出来，我们还是先看一下二项式反演的做法：</p>
-<p>​    我们设g(i)代表i封信全部装错的方案数</p>
-<p>​    那么∑ C(n, i)✖️g(i)正好是全部的装信情况，也就是n!</p>
-<p>​    因此,f(n) = n! = ∑ C(n, i)✖️g(i)</p>
-<p>​    我们根据二项式反演公式得g(n) = ∑ (-1)^(n - i)✖️C(n, i)✖️f(i)</p>
-<p>​    因此我们只需要累加i从0～n的 (-1)^(n - i)✖️C(n, i)✖️(i)!的和，即为正确答案～</p>
+<p>二.莫比乌斯函数性质：</p>
+<p>​    性质1:当n = 1时，∑ μ(d) = 1   （其中d为n的全部因子）</p>
+<p>​            当n&gt;1时，∑ μ(d) = 0   （其中d为n的全部因子）</p>
+<p>​    性质2：∑ μ(d) / d = φ(n) / n     φ(n)为欧拉函数</p>
+<p>三.线性处理莫比乌斯函数：</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">int mu[N + 5], vis[N + 5], prime[N + 5];	//mu数组用来存储莫比乌斯函数值，vis数组用于标记，prime用于存素数</span><br><span class="line">void init()&#123;</span><br><span class="line">    mu[1] = 1;</span><br><span class="line">    for(int i = 2; i &lt;= N; i ++)&#123;</span><br><span class="line">        if(!vis[i])&#123;				//如果是素数</span><br><span class="line">            prime[++prime[0]] = i;</span><br><span class="line">            mu[i] = -1;				//莫比乌斯函数为1</span><br><span class="line">        &#125;</span><br><span class="line">        for(int j = 1; j &lt;= prime[0] &amp;&amp; i * prime[j] &lt;= N; j ++)&#123;</span><br><span class="line">            vis[i * prime[j]] = 1;</span><br><span class="line">            if(i % prime[j]) mu[i * prime[j]] = -mu[i];</span><br><span class="line">            else&#123;</span><br><span class="line">                mu[i * prime[j]] = 0;</span><br><span class="line">                break;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>四.莫比乌斯反演公式：</p>
+<p><img src="/2018/10/24/莫比乌斯反演/1.jpg" alt="1"></p>
+<p>或者：</p>
+<p><img src="/2018/10/24/莫比乌斯反演/2.jpg" alt="2"></p>
+<pre><code>其中d|n表示能被n整除的所有因子d
+</code></pre><p>五.例题</p>
+<p>​    给出x, y的范围(x &lt;= a, y &lt;= b),问满足gcd(x, y) == k的对数？</p>
+<p>​    当然啦，有其它巧妙的思路，比如利用欧拉函数+容斥原理，下面来说一下莫比乌斯反演的做法：</p>
+<p>​    设g(d)为满足gcd(x, y) == d的x,y对数，f(d)为满足gcd(x, y) == d的倍数 的x，y的对数</p>
+<p>​    则：f(1) = g(1) + g(2) + g(3) + …</p>
+<p>​        f(2) = g(2) + g(4) + g(6) + …</p>
+<p>​    我们由题意可得f(n) = (a / n)✖️(b / n)</p>
+<p>​    再根据莫比乌斯反演求解g(1) = μ(1)✖️f(1) + μ(2)✖️f(2) + μ(3)✖️f(3) +… + μ(a)✖️f(a)  (当a &lt; b时)即可</p>
+<p>​    若是对数(1, 2)和(2, 1)算作一个则需要去重！！</p>
 <p><a href="http://www.ivan-zcy.top">转载请注明出处！！！</a>  </p>
 <p>如果有写的不对或者不全面的地方 可通过主页的联系方式进行指正，谢谢</p>
 
@@ -215,13 +224,9 @@
         <div class="container" >
             <ul class="pager">
                 
-                <li class="previous">
-                    <a href="/2018/10/24/莫比乌斯反演/" rel="prev">下一篇</a>
-                </li>
-                
                 
                 <li class="next">
-                    <a href="/2018/10/24/母函数/" rel="prev">上一篇</a>
+                    <a href="/2018/10/24/二项式反演/" rel="prev">上一篇</a>
                 </li>
                 
             </ul>
