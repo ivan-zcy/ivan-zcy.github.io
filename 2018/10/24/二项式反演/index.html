@@ -14,7 +14,7 @@
 
   <!--Open Graph Title-->
   
-      <meta property="og:title" content="Zcy"/>
+      <meta property="og:title" content="(数论十三)二项式反演"/>
   
   <!--Open Graph Description-->
   
@@ -22,7 +22,7 @@
   <meta property="og:site_name" content="Zcy"/>
   <!--Type page-->
   
-      <meta property="og:type" content="website" />
+      <meta property="og:type" content="article" />
   
   <!--Page Cover-->
   
@@ -42,7 +42,7 @@
     </script>
   <!-- Title -->
   
-  <title>数论原理 - Zcy</title>
+  <title>(数论十三)二项式反演 - Zcy</title>
 
 
   <link rel="shortcut icon" href="/favicon.ico">
@@ -165,145 +165,77 @@
 
 
   <!-- Main Content -->
-  
+  <div class="content-area">
+    <div class="post">
+        <!-- Post Content -->
+        <div class="container">
+            <article>
+                <!-- Title date & tags -->
+                <div class="post-header">
+                    <h1 class="entry-title">
+                        (数论十三)二项式反演
+                        
+                    </h1>
 
-<!-- Main Content -->
-<div class="archive content-area">
-  <div class="container">
-    <h1 class="entry-title">#数论原理</h1>
-    <div class="row">
-      <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
-        <!-- Use lodash to classify posts. See https://lodash.com/docs#groupBy -->
+                </div>
+                <p class="a-posted-on">
+                    2018-10-24
+                </p>
+                <!-- Post Main Content -->
+                <div class="entry-content">
+                    <p><img src="/2018/10/24/二项式反演/title1.jpg" alt="title1"></p>
+<a id="more"></a>
+<p>一.引出反演</p>
+<p>​    对于公式f(n) = g(1) + g(2) + … + g(n)，我们只要已知g(x)的函数方程，就可以得到任意的f(n)。但是已知f(x)的函数方程，我们能得到任意的g(n)吗？</p>
+<p>​    这时候，我们就需要用到反演定理了。利用反演定理，我们就可以通过f(x)求任意的g(n)了</p>
+<p>二.反演定理:</p>
+<p><img src="/2018/10/24/二项式反演/1.png" alt="1"></p>
+<p>​    对于不同的的用法，c，d是不同的，至于推导。。。我是不会，Orz～ 关于常用的反演，数学家们已经推倒出来c函数和d函数，我们直接记住用就可以了。</p>
+<p>​    我们常见的反演有二项式反演，斯特林反演，莫比乌斯反演和最值反演，接下来说一下二项式反演。</p>
+<p>三.二项式反演：</p>
+<p>​        <img src="/2018/10/24/二项式反演/2.png" alt="2"></p>
+<p>​    其中（上:n 下:i）代表C(n, i)</p>
+<p>​    </p>
+<p>四.例题：</p>
+<p>​    比如，n封信全部装错的方案数？</p>
+<p>​    当然啦，有个错排公式能O(n)的的推出来，我们还是先看一下二项式反演的做法：</p>
+<p>​    我们设g(i)代表i封信全部装错的方案数</p>
+<p>​    那么∑ C(n, i)✖️g(i)正好是全部的装信情况，也就是n!</p>
+<p>​    因此,f(n) = n! = ∑ C(n, i)✖️g(i)</p>
+<p>​    我们根据二项式反演公式得g(n) = ∑ (-1)^(n - i)✖️C(n, i)✖️f(i)</p>
+<p>​    因此我们只需要累加i从0～n的 (-1)^(n - i)✖️C(n, i)✖️(i)!的和，即为正确答案～</p>
+<p><a href="http://www.ivan-zcy.top">转载请注明出处！！！</a>  </p>
+<p>如果有写的不对或者不全面的地方 可通过主页的联系方式进行指正，谢谢</p>
+
+                </div>
+            </article>
+        </div>
+        <!-- Pre or Next -->
         
-        
-          <h2 class="year">2018</h2>
-          <ul class="list">
+        <div class="container" >
+            <ul class="pager">
+                
+                
+                <li class="next">
+                    <a href="/2018/10/24/母函数/" rel="prev">上一篇</a>
+                </li>
+                
+            </ul>
+        </div>
+        　　　　<!-- Comments -->
+        <div class="container">
             
-  <li>
-    <span class="date">
-      2018-10-24
-    </span>
-    <a href="/2018/10/24/二项式反演/" class="title">
-      (数论十三)二项式反演
-    </a>
-  </li>
+<section id="comment">
+  <!-- <h1 class="title">Comments</h1> -->
 
-  <li>
-    <span class="date">
-      2018-10-24
-    </span>
-    <a href="/2018/10/24/母函数/" class="title">
-      (数论十二)母函数
-    </a>
-  </li>
-
-  <li>
-    <span class="date">
-      2018-10-24
-    </span>
-    <a href="/2018/10/24/康托展开/" class="title">
-      (数论十一)康托展开与逆康托展开
-    </a>
-  </li>
-
-  <li>
-    <span class="date">
-      2018-10-23
-    </span>
-    <a href="/2018/10/23/关于卢卡斯定理/" class="title">
-      (数论十)卢卡斯定理与扩展卢卡斯
-    </a>
-  </li>
-
-  <li>
-    <span class="date">
-      2018-10-23
-    </span>
-    <a href="/2018/10/23/中国剩余定理/" class="title">
-      (数论九)中国剩余定理与扩展
-    </a>
-  </li>
-
-  <li>
-    <span class="date">
-      2018-10-23
-    </span>
-    <a href="/2018/10/23/容斥原理与抽屉原理/" class="title">
-      (数论八)容斥原理与抽屉原理
-    </a>
-  </li>
-
-  <li>
-    <span class="date">
-      2018-10-22
-    </span>
-    <a href="/2018/10/22/关于sqrt与log的巧用/" class="title">
-      (数论七)关于sqrt、pow与log的巧用
-    </a>
-  </li>
-
-  <li>
-    <span class="date">
-      2018-10-22
-    </span>
-    <a href="/2018/10/22/关于欧拉-定理-公式-函数/" class="title">
-      (数论六)关于欧拉(定理、公式、函数、降幂)
-    </a>
-  </li>
-
-  <li>
-    <span class="date">
-      2018-10-22
-    </span>
-    <a href="/2018/10/22/关于逆元/" class="title">
-      (数论五)关于自己理解的逆元
-    </a>
-  </li>
-
-  <li>
-    <span class="date">
-      2018-10-21
-    </span>
-    <a href="/2018/10/21/快速幂、快速乘与gcd扩展-杂谈/" class="title">
-      (数论四)快速幂与gcd扩展
-    </a>
-  </li>
-
-  <li>
-    <span class="date">
-      2018-10-21
-    </span>
-    <a href="/2018/10/21/素数原理/" class="title">
-      (数论三)素数原理
-    </a>
-  </li>
-
-  <li>
-    <span class="date">
-      2018-10-19
-    </span>
-    <a href="/2018/10/19/浅谈线性基/" class="title">
-      (数论二)浅谈线性基
-    </a>
-  </li>
-
-  <li>
-    <span class="date">
-      2018-10-14
-    </span>
-    <a href="/2018/10/14/积性函数与狄利克雷卷积/" class="title">
-      (数论一)积性函数与狄利克雷卷积
-    </a>
-  </li>
-
-
-          </ul>
-        
-      </div>
-    </div>
-  </div>
   
+</section>
 
+
+        </div>
+        
+        　　　　
+    </div>
 </div>
 
 
