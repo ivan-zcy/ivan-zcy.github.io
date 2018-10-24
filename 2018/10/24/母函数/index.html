@@ -185,7 +185,27 @@
                 <div class="entry-content">
                     <p><img src="/2018/10/24/母函数/title2.jpg" alt="title2"></p>
 <a id="more"></a>
+<p>一.引出母函数</p>
+<p>​    母函数，也就是生成函数，在ACM中常常用于求解组合数学的计数问题。</p>
+<p>​    一般的，能用母函数做的题，也能用其它方法（诸如推规律啦，DP啦）等等来做，母函数的复杂度为O(n^3),可以说是非常高了，所以只有在数据特别小且实在想不到其他方法求解的时候才可以尝试一下用母函数来做</p>
+<p>​    那么，什么是母函数呢？</p>
+<p>二.母函数的内容与例子</p>
+<p>​    把一个已知的序列和x的多项式{x^0, x^1, x^2, … , x^n}合并起来，产生的新的多项式就叫做原来序列的母函数。</p>
+<p>​    例如：序列{1, 0, 2, 4, 3, 1, 2}的母函数为f(x) = 1✖️x^0 + 0✖️x^1+ 2✖️x^2 + 4✖️x^3 + 3✖️x^4 + 1✖️x^5 + 2✖️x^6;</p>
+<p>​    下面就讲解两道例题，来说明母函数的用法：</p>
+<p>​    1.例如有1g, 2g, 3g, 4g砝码各一枚，问能称几种重量，每种重量的方案数？</p>
+<p>​        1g砝码就是x^0 + x^1，2g砝码就是 x^0 + x^2，3g砝码就是x^0 + x^3，4g砝码就是x^0 + x^4</p>
+<p>​        把他们累乘并化简，得到：1 + x + x^2 + 2✖️x^3 + 2✖️x^4 + 2✖️x^5 + 2✖️x^6 + 2✖️x^7 + x^8 + x^9 + x^10</p>
+<p>​    我们从方程式可知，可以称0～10种重量，其中3～7有两种称法，其余一种</p>
 <p>​    </p>
+<p>​    2.有1分，2分，3分邮票无限，问贴出不同数值的方案数 （数值小于等于100）？</p>
+<p>​        一分邮票可表示为(x^0 + x^1 + x^2 + x^3 + ….+ x^100)</p>
+<p>​        二分邮票可表示为(x^0 + x^2 + x^4 + x^6 + ….+ x^100)</p>
+<p>​        三分邮票可表示为(x^0 + x^3 + x^6 + x^9 + ….+ x^99)        </p>
+<p>​        将三者累乘即可得到如例1中的方程式，即可一眼得到答案（可利用剪枝省略数值&gt;100的部分）</p>
+<p>三.母函数的代码实现</p>
+<p>​    我们拿第2个例子来说：</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">ll N = 100;		//设置上界</span><br><span class="line">ll c1[N + 5];   //c1[i]为最终多项式幂为i的系数</span><br><span class="line">ll c2[N + 5];   //c2为临时合并的多项式</span><br><span class="line"></span><br><span class="line">void init() &#123;</span><br><span class="line">    c1[0] = 1;  //初始化0的情况算1种</span><br><span class="line">    for (int i = 1; i &lt;= 3; i++) &#123;          //遍历每种邮票</span><br><span class="line">        for (int j = 0; j &lt;= N; j += i) &#123;    //该种邮票存在的次幂j</span><br><span class="line">            for (int k = 0; j + k &lt;= N; k++) &#123;</span><br><span class="line">                c2[j + k] += c1[k] * 1;     //因为每种邮票的不同次幂系数都为1</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        for (int j = 0; j &lt;= N; j++) &#123;     //将中间状态c2转移到c1并清空c2</span><br><span class="line">            c1[j] = c2[j];</span><br><span class="line">            c2[j] = 0;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line">//c1[i]即为组成i分钱的方案数</span><br></pre></td></tr></table></figure>
 <p><a href="http://www.ivan-zcy.top">转载请注明出处！！！</a>  </p>
 <p>如果有写的不对或者不全面的地方 可通过主页的联系方式进行指正，谢谢</p>
 
