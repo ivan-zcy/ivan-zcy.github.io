@@ -14,7 +14,7 @@
 
   <!--Open Graph Title-->
   
-      <meta property="og:title" content="Zcy"/>
+      <meta property="og:title" content="计蒜客Algebraic Teamwork思维"/>
   
   <!--Open Graph Description-->
   
@@ -22,7 +22,7 @@
   <meta property="og:site_name" content="Zcy"/>
   <!--Type page-->
   
-      <meta property="og:type" content="website" />
+      <meta property="og:type" content="article" />
   
   <!--Page Cover-->
   
@@ -42,7 +42,7 @@
     </script>
   <!-- Title -->
   
-  <title>ACM - Zcy</title>
+  <title>计蒜客Algebraic Teamwork思维 - Zcy</title>
 
 
   <link rel="shortcut icon" href="/favicon.ico">
@@ -165,221 +165,72 @@
 
 
   <!-- Main Content -->
-  
+  <div class="content-area">
+    <div class="post">
+        <!-- Post Content -->
+        <div class="container">
+            <article>
+                <!-- Title date & tags -->
+                <div class="post-header">
+                    <h1 class="entry-title">
+                        计蒜客Algebraic Teamwork思维
+                        
+                    </h1>
 
-<!-- Main Content -->
-<div class="archive content-area">
-  <div class="container">
-    <h1 class="entry-title">#ACM</h1>
-    <div class="row">
-      <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
-        <!-- Use lodash to classify posts. See https://lodash.com/docs#groupBy -->
+                </div>
+                <p class="a-posted-on">
+                    2018-11-05
+                </p>
+                <!-- Post Main Content -->
+                <div class="entry-content">
+                    <p>题意：</p>
+<p>The great pioneers of group theory and linear algebra want to cooperate and join their theories. In group theory, permutations – also known as bijective functions – play an important role. For a finite set A, a function σσ: A → A is called a permutation of A if and only if there is some function ρ : A →  A with</p>
+<p>σ(ρ(a))=a and ρ(σ(a))=afor all a∈A.</p>
+<p>The other half of the new team – the experts on linear algebra – deal a lot with idempotent functions. They appear as projections when computing shadows in 3D games or as closure operators like the transitive closure, just to name a few examples. A function pp : A → A is called idempotent if and only if</p>
+<p>p(p(a))=p(a)for all a∈A.</p>
+<p>To continue with their joined research, they need your help. The team is interested in non-idempotent permutations of a given finite set AA. As a first step, they discovered that the result only depends on the set’s size. For a concrete size 1≤n≤10^5, they want you to compute the number of permutations on a set of cardinality nnthat are <strong>not</strong> idempotent.</p>
+<h4 id="Input"><a href="#Input" class="headerlink" title="Input"></a>Input</h4><p>The input starts with the number t≤100 of test cases.</p>
+<p>Then tt lines follow, each containing the set’s size 1≤n≤10^5.</p>
+<h4 id="Output"><a href="#Output" class="headerlink" title="Output"></a>Output</h4><p>Output one line for every test case containing the number modulo 1000000007=(109+7) of <strong>non</strong>-idempotent permutations on a set of cardinality nn.</p>
+<h4 id="样例输入"><a href="#样例输入" class="headerlink" title="样例输入"></a>样例输入</h4><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">3</span><br><span class="line">1</span><br><span class="line">2</span><br><span class="line">2171</span><br></pre></td></tr></table></figure>
+<h4 id="样例输出"><a href="#样例输出" class="headerlink" title="样例输出"></a>样例输出</h4><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">0</span><br><span class="line">1</span><br><span class="line">6425</span><br></pre></td></tr></table></figure>
+<p>​    翻译成汉语，就是给出T组数据，每组数据给出一个集合A的范围n，问有多少对映射σ和ρ，使得σ(ρ(a))=a and ρ(σ(a))=afor all a∈A.但不满足p(p(a))=p(a)for all a∈A.</p>
+<p>思路：</p>
+<p>​    对于第一个条件，我们只要满足a经过ρ，σ映射后还为a且映射关系都为一一映射，这道题刚开始以为是错排的种类数，结果不对后仔细一想，不满足p(p(a))=p(a)for all a∈A.，只要有一个a不满足即可，所以只要不是完全不变的映射即可（种类数为1），答案也就是全排列-1</p>
+<p>代码：</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">#include &lt;stdio.h&gt;</span><br><span class="line">const long long mod = 1e9+7;</span><br><span class="line">long long jc[100005];</span><br><span class="line">void init() &#123;</span><br><span class="line">    jc[1] = 1;</span><br><span class="line">    for (int i = 2; i &lt;= 100000; i++) &#123;</span><br><span class="line">        jc[i] = i * jc[i - 1] % mod;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line">int main() &#123;</span><br><span class="line">    int T, n;</span><br><span class="line">    init();</span><br><span class="line">    scanf(&quot;%d&quot;, &amp;T);</span><br><span class="line">    while(T--) &#123;</span><br><span class="line">        scanf(&quot;%d&quot;, &amp;n);</span><br><span class="line">        printf(&quot;%lld\n&quot;, jc[n] - 1);</span><br><span class="line">    &#125;</span><br><span class="line">    return 0;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p><a href="http://www.ivan-zcy.top">转载请注明出处！！！</a>  </p>
+<p>如果有写的不对或者不全面的地方 可通过主页的联系方式进行指正，谢谢</p>
+
+                </div>
+            </article>
+        </div>
+        <!-- Pre or Next -->
         
-        
-          <h2 class="year">2018</h2>
-          <ul class="list">
+        <div class="container" >
+            <ul class="pager">
+                
+                
+                <li class="next">
+                    <a href="/2018/11/05/计蒜客Bounty-Hunter/" rel="prev">上一篇</a>
+                </li>
+                
+            </ul>
+        </div>
+        　　　　<!-- Comments -->
+        <div class="container">
             
-  <li>
-    <span class="date">
-      2018-11-05
-    </span>
-    <a href="/2018/11/05/计蒜客Algebraic-Teamwork思维/" class="title">
-      计蒜客Algebraic Teamwork思维
-    </a>
-  </li>
+<section id="comment">
+  <!-- <h1 class="title">Comments</h1> -->
 
-  <li>
-    <span class="date">
-      2018-11-05
-    </span>
-    <a href="/2018/11/05/计蒜客Bounty-Hunter/" class="title">
-      计蒜客Bounty Hunter多路dp
-    </a>
-  </li>
-
-  <li>
-    <span class="date">
-      2018-11-04
-    </span>
-    <a href="/2018/11/04/计蒜客Equator/" class="title">
-      计蒜客Equator尺取法
-    </a>
-  </li>
-
-  <li>
-    <span class="date">
-      2018-10-24
-    </span>
-    <a href="/2018/10/24/HDU1430-康托展开/" class="title">
-      HDU1430 康托展开
-    </a>
-  </li>
-
-  <li>
-    <span class="date">
-      2018-10-23
-    </span>
-    <a href="/2018/10/23/杜教BM模版-推规律/" class="title">
-      杜教BM模版(推规律)
-    </a>
-  </li>
-
-  <li>
-    <span class="date">
-      2018-10-21
-    </span>
-    <a href="/2018/10/21/UVA8512线段树维护线性基/" class="title">
-      UVA8512线段树维护线性基
-    </a>
-  </li>
-
-  <li>
-    <span class="date">
-      2018-10-21
-    </span>
-    <a href="/2018/10/21/快到难以想象的快速读模版/" class="title">
-      快到难以想象的快速读模版
-    </a>
-  </li>
-
-  <li>
-    <span class="date">
-      2018-10-20
-    </span>
-    <a href="/2018/10/20/HDU5971/" class="title">
-      HDU5971二分图染色
-    </a>
-  </li>
-
-  <li>
-    <span class="date">
-      2018-10-20
-    </span>
-    <a href="/2018/10/20/HDU-5976/" class="title">
-      HDU 5976思维
-    </a>
-  </li>
-
-  <li>
-    <span class="date">
-      2018-10-20
-    </span>
-    <a href="/2018/10/20/HDU5974/" class="title">
-      HDU5974方程化简
-    </a>
-  </li>
-
-  <li>
-    <span class="date">
-      2018-10-20
-    </span>
-    <a href="/2018/10/20/HDU5978/" class="title">
-      HDU5978水题
-    </a>
-  </li>
-
-  <li>
-    <span class="date">
-      2018-10-20
-    </span>
-    <a href="/2018/10/20/HDU5980/" class="title">
-      HDU5980水题
-    </a>
-  </li>
-
-  <li>
-    <span class="date">
-      2018-10-20
-    </span>
-    <a href="/2018/10/20/HDU5979/" class="title">
-      HDU5979水题
-    </a>
-  </li>
-
-  <li>
-    <span class="date">
-      2018-10-19
-    </span>
-    <a href="/2018/10/19/hihoCoder-1636/" class="title">
-      hihoCoder 1636区间dp
-    </a>
-  </li>
-
-  <li>
-    <span class="date">
-      2018-10-18
-    </span>
-    <a href="/2018/10/18/ACM快速读写模版/" class="title">
-      ACM快速读写模版
-    </a>
-  </li>
-
-  <li>
-    <span class="date">
-      2018-10-18
-    </span>
-    <a href="/2018/10/18/UVALive-8521/" class="title">
-      UVALive 8521组合数+dp
-    </a>
-  </li>
-
-  <li>
-    <span class="date">
-      2018-10-17
-    </span>
-    <a href="/2018/10/17/hihoCoder-1632/" class="title">
-      hihoCoder 1632模拟
-    </a>
-  </li>
-
-  <li>
-    <span class="date">
-      2018-10-17
-    </span>
-    <a href="/2018/10/17/hihoCoder-1631/" class="title">
-      hihoCoder 1631模拟
-    </a>
-  </li>
-
-  <li>
-    <span class="date">
-      2018-10-17
-    </span>
-    <a href="/2018/10/17/HDU6237/" class="title">
-      HDU6237思维
-    </a>
-  </li>
-
-  <li>
-    <span class="date">
-      2018-10-16
-    </span>
-    <a href="/2018/10/16/CodeForces-1047C/" class="title">
-      CodeForces-1047C思维
-    </a>
-  </li>
-
-
-          </ul>
-        
-      </div>
-    </div>
-  </div>
   
-<div class="container" >
-  <ul class="pager">
-    
-    
-      <li class="next">
-        <a href="/tags/ACM/page/2/">
-          上一页
-        </a>
-      </li>
-    
-  </ul>
-</div>
+</section>
 
 
+        </div>
+        
+        　　　　
+    </div>
 </div>
 
 
