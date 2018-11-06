@@ -1,3 +1,4 @@
+http://www.ivan-zcy.top/2018/11/06/SSOI307加分二叉树-区间dp/
 http://www.ivan-zcy.top/2018/11/06/计蒜客Not-a-subsequence动态规划/
 http://www.ivan-zcy.top/2018/11/05/计蒜客Gold-Rush水题/
 http://www.ivan-zcy.top/2018/11/05/计蒜客Algebraic-Teamwork思维/
