@@ -14,7 +14,7 @@
 
   <!--Open Graph Title-->
   
-      <meta property="og:title" content="SSOI307加分二叉树 区间dp"/>
+      <meta property="og:title" content="HDU1520Anniversary party树形dp"/>
   
   <!--Open Graph Description-->
   
@@ -42,7 +42,7 @@
     </script>
   <!-- Title -->
   
-  <title>SSOI307加分二叉树 区间dp - Zcy</title>
+  <title>HDU1520Anniversary party树形dp - Zcy</title>
 
 
   <link rel="shortcut icon" href="/favicon.ico">
@@ -173,7 +173,7 @@
                 <!-- Title date & tags -->
                 <div class="post-header">
                     <h1 class="entry-title">
-                        SSOI307加分二叉树 区间dp
+                        HDU1520Anniversary party树形dp
                         
                     </h1>
 
@@ -183,18 +183,28 @@
                 </p>
                 <!-- Post Main Content -->
                 <div class="entry-content">
-                    <p><img src="/2018/11/06/SSOI307加分二叉树-区间dp/titile2.jpg" alt="titile2"></p>
+                    <p><img src="/2018/11/06/HDU1520Anniversary-party-树形dp/title.jpg" alt="title"></p>
 <a id="more"></a>
-<p>【问题描述】</p>
-<p>  设一个n个节点的二叉树tree的中序遍历为（l,2,3,…,n），其中数字1,2,3,…,n为节点编号。每个节点都有一个分数（均为正整数），记第i个节点的分数为di，tree及它的每个子树都有一个加分，任一棵子树subtree（也包含tree本身）的加分计算方法如下：<br>subtree的左子树的加分× subtree的右子树的加分＋subtree的根的分数<br> 若某个子树为空，规定其加分为1，叶子的加分就是叶节点本身的分数。不考虑它的空子树。<br> 试求一棵符合中序遍历为（1,2,3,…,n）且加分最高的二叉树tree。要求输出；<br> （1）tree的最高加分<br> （2）tree最高得分的前序遍历<br>【输入格式】</p>
-<p>第1行：一个整数n（n＜30），为节点个数。<br>第2行：n个用空格隔开的整数，为每个节点的分数（分数＜100）。<br>【输出格式】</p>
-<p>第1行：一个整数，为最高加分（结果不会超过4,000,000,000）。<br>第2行：n个用空格隔开的整数，为该树的前序遍历。<br>【输入样例1】</p>
-<p>5<br>5 7 1 2 10<br>【输出样例1】</p>
-<p>145<br>3 1 2 4 5</p>
-<p>思路:</p>
-<p>​    虽然这是一个在树上的动态规划题，但实际还是一道区间DP，dp【i】【j】代表区间[i, j]的最高得分，dp【1】【n】即为答案，利用数组query【i】【j】记录该区间的根节点，通过dfs就可以得到最高得分的前序遍历。</p>
+<p>题意：</p>
+<p>Problem Description</p>
+<p>There is going to be a party to celebrate the 80-th Anniversary of the Ural State University. The University has a hierarchical structure of employees. It means that the supervisor relation forms a tree rooted at the rector V. E. Tretyakov. In order to make the party funny for every one, the rector does not want both an employee and his or her immediate supervisor to be present. The personnel office has evaluated conviviality of each employee, so everyone has some number (rating) attached to him or her. Your task is to make a list of guests with the maximal possible sum of guests’ conviviality ratings.</p>
+<p>Input</p>
+<p>Employees are numbered from 1 to N. A first line of input contains a number N. 1 &lt;= N &lt;= 6 000. Each of the subsequent N lines contains the conviviality rating of the corresponding employee. Conviviality rating is an integer number in a range from -128 to 127. After that go T lines that describe a supervisor relation tree. Each line of the tree specification has the form:<br>L K<br>It means that the K-th employee is an immediate supervisor of the L-th employee. Input is ended with the line<br>0 0 </p>
+<p>Output</p>
+<p>Output should contain the maximal sum of guests’ ratings.</p>
+<p>Sample Input</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">7</span><br><span class="line">1</span><br><span class="line">1</span><br><span class="line">1</span><br><span class="line">1</span><br><span class="line">1</span><br><span class="line">1</span><br><span class="line">1</span><br><span class="line">1 3</span><br><span class="line">2 3</span><br><span class="line">6 4</span><br><span class="line">7 4</span><br><span class="line">4 5</span><br><span class="line">3 5</span><br><span class="line">0 0</span><br></pre></td></tr></table></figure>
+<p>Sample Output</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">5</span><br></pre></td></tr></table></figure>
+<p>​    翻译成汉语再翻译成直男的视野，大概意思就是给出一个树，树上n个点，每个点都有一个权值，不能同时选取相邻的两个节点，问满足上述条件选取节点的最大权值和</p>
+<p>思路：</p>
+<p>​    这道题是一道典型的树形dp，我们利用邻接表记录节点之间的关系，由根到叶进行dp。</p>
+<p>​    对于dp【i】【0】代表以该节点为根节点的子树且根节点不被选取的最大权值和</p>
+<p>​    dp【i】【1】代表以该节点为根节点的子树且根节点被选取的最大权值和</p>
+<p>​    我们可以得到父子之间的递推关系式子：</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">//当父节点不被选取时，它的dp[inx][0]等于每个儿子节点被选取和不被选取的最大值的和</span><br><span class="line">dp[inx][0] += max(dp[son][1], dp[son][0]);</span><br><span class="line"></span><br><span class="line">//当父节点被选取时，它的dp[inx][1]等于每个儿子节不被选取的和 + 父亲节点的权值</span><br><span class="line">dp[inx][1] = val[inx];</span><br><span class="line">dp[inx][1] += dp[son][0];</span><br></pre></td></tr></table></figure>
 <p>代码：</p>
-<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">#include &lt;stdio.h&gt;</span><br><span class="line">#include &lt;string.h&gt;</span><br><span class="line">#include &lt;algorithm&gt;</span><br><span class="line">#define ll long long</span><br><span class="line">#define mem(a) memset(a, 0, sizeof(a))</span><br><span class="line">using namespace std;</span><br><span class="line"></span><br><span class="line">ll dp[35][35];</span><br><span class="line">int query[35][35];</span><br><span class="line">int tot, n;</span><br><span class="line"></span><br><span class="line">void dfs(int left, int right) &#123;</span><br><span class="line">    if (left &gt; right) return;</span><br><span class="line">    int k = query[left][right];</span><br><span class="line">    if (tot != n - 1) &#123;</span><br><span class="line">        printf(&quot;%d &quot;, k);</span><br><span class="line">    &#125; else &#123;</span><br><span class="line">        printf(&quot;%d\n&quot;, k);</span><br><span class="line">    &#125;</span><br><span class="line">    tot++;</span><br><span class="line">    dfs(left, k - 1);</span><br><span class="line">    dfs(k + 1, right);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">int main () &#123;</span><br><span class="line">    while (scanf(&quot;%d&quot;, &amp;n) == 1) &#123;</span><br><span class="line">        tot = 0;</span><br><span class="line">        memset(dp, 0, sizeof(dp));</span><br><span class="line">        memset(query, 0, sizeof(query));</span><br><span class="line">        for (int i = 1; i &lt;= n; i ++) &#123;</span><br><span class="line">            scanf(&quot;%lld&quot;, &amp;dp[i][i]);</span><br><span class="line">            query[i][i] = i;</span><br><span class="line">        &#125;</span><br><span class="line">        for (int len = 1; len &lt;= n - 1; len++) &#123;</span><br><span class="line">            for (int i = 1; i + len &lt;= n; i++) &#123;</span><br><span class="line">                for (int k = i; k &lt;= i + len; k++) &#123;</span><br><span class="line">                    ll left, right;</span><br><span class="line">                    if(k == i) &#123;</span><br><span class="line">                        right = dp[i + 1][i + len];</span><br><span class="line">                        left = 1;</span><br><span class="line">                    &#125; else if (k == i + len) &#123;</span><br><span class="line">                        right = 1;</span><br><span class="line">                        left = dp[i][i + len - 1];</span><br><span class="line">                    &#125; else &#123;</span><br><span class="line">                        right = dp[k + 1][i + len];</span><br><span class="line">                        left = dp[i][k - 1];</span><br><span class="line">                    &#125;</span><br><span class="line">                    if (dp[k][k] + right * left &gt; dp[i][i + len]) &#123;</span><br><span class="line">                        dp[i][i + len] = dp[k][k] + right * left;</span><br><span class="line">                        query[i][i + len] = k;</span><br><span class="line">                    &#125;</span><br><span class="line">                &#125;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        printf(&quot;%lld\n&quot;, dp[1][n]);</span><br><span class="line">        dfs(1, n);</span><br><span class="line">    &#125;</span><br><span class="line">    return 0;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">#include &lt;stdio.h&gt;</span><br><span class="line">#include &lt;vector&gt;</span><br><span class="line">#include &lt;string.h&gt;</span><br><span class="line">#include &lt;algorithm&gt;</span><br><span class="line">#define N 6005</span><br><span class="line">#define ll long long</span><br><span class="line">using namespace std;</span><br><span class="line"></span><br><span class="line">int n;</span><br><span class="line">int val[N];</span><br><span class="line">int pre[N];</span><br><span class="line">vector&lt;int&gt;point[N];</span><br><span class="line">ll dp[N][2];        //1参加 0不参加</span><br><span class="line"></span><br><span class="line">void init() &#123;</span><br><span class="line">    int a, b;</span><br><span class="line">    memset(dp, 0, sizeof(dp));</span><br><span class="line">    for (int i = 1; i &lt;= n; i++) &#123;</span><br><span class="line">        pre[i] = i;</span><br><span class="line">        point[i].clear();</span><br><span class="line">    &#125;</span><br><span class="line">    for (int i = 1; i &lt;= n; i ++) &#123;</span><br><span class="line">        scanf(&quot;%d&quot;, &amp;val[i]);</span><br><span class="line">    &#125;</span><br><span class="line">    while (scanf(&quot;%d%d&quot;, &amp;a, &amp;b) == 2) &#123;</span><br><span class="line">        if (a == 0 &amp;&amp; b == 0) break;</span><br><span class="line">        point[b].push_back(a);</span><br><span class="line">        pre[a] = b;</span><br><span class="line">    &#125;</span><br><span class="line">    return;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">void dfs(int inx) &#123;</span><br><span class="line">    dp[inx][1] = val[inx];</span><br><span class="line">    for (int i = 0; i &lt; point[inx].size(); i++) &#123;</span><br><span class="line">        int son = point[inx][i];</span><br><span class="line">        dfs(son);</span><br><span class="line">        dp[inx][0] += max(dp[son][1], dp[son][0]);</span><br><span class="line">        dp[inx][1] += dp[son][0];</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">int main () &#123;</span><br><span class="line">    while (scanf(&quot;%d&quot;, &amp;n) == 1) &#123;</span><br><span class="line">        init();</span><br><span class="line">        int root;</span><br><span class="line">        for (int i = 1; i &lt;= n; i++) &#123;</span><br><span class="line">            if(pre[i] == i) &#123;</span><br><span class="line">                root = i;</span><br><span class="line">                break;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        dfs(root);</span><br><span class="line">        printf(&quot;%d\n&quot;, max(dp[root][1], dp[root][0]));</span><br><span class="line">    &#125;</span><br><span class="line">    return 0;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 <p><a href="http://www.ivan-zcy.top">转载请注明出处！！！</a>  </p>
 <p>如果有写的不对或者不全面的地方 可通过主页的联系方式进行指正，谢谢</p>
 
@@ -206,13 +216,9 @@
         <div class="container" >
             <ul class="pager">
                 
-                <li class="previous">
-                    <a href="/2018/11/06/HDU1520Anniversary-party-树形dp/" rel="prev">下一篇</a>
-                </li>
-                
                 
                 <li class="next">
-                    <a href="/2018/11/06/计蒜客Not-a-subsequence动态规划/" rel="prev">上一篇</a>
+                    <a href="/2018/11/06/SSOI307加分二叉树-区间dp/" rel="prev">上一篇</a>
                 </li>
                 
             </ul>
