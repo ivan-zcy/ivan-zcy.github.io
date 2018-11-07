@@ -1,3 +1,4 @@
+http://www.ivan-zcy.top/2018/11/07/CodeForces219D-树形dp/
 http://www.ivan-zcy.top/2018/11/07/HDU2196-Computer树形dp/
 http://www.ivan-zcy.top/2018/11/06/HDU1520Anniversary-party-树形dp/
 http://www.ivan-zcy.top/2018/11/06/SSOI307加分二叉树-区间dp/
@@ -97,4 +98,3 @@ http://www.ivan-zcy.top/2018/09/30/c语言查缺补漏-1/
 http://www.ivan-zcy.top/2018/09/30/实用网站汇总——持续更新/
 http://www.ivan-zcy.top/2018/09/30/Blog搭建流程-Mac系统完结帖/
 http://www.ivan-zcy.top/2018/09/29/18-09-29博客搭建进度/
-http://www.ivan-zcy.top/2018/09/28/hexo发表博客常用命令/
