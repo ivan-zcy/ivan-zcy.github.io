@@ -14,7 +14,7 @@
 
   <!--Open Graph Title-->
   
-      <meta property="og:title" content="2018icpc青岛Books 思维"/>
+      <meta property="og:title" content="2018icpc青岛Flippy Sequence 思维"/>
   
   <!--Open Graph Description-->
   
@@ -42,7 +42,7 @@
     </script>
   <!-- Title -->
   
-  <title>2018icpc青岛Books 思维 - Zcy</title>
+  <title>2018icpc青岛Flippy Sequence 思维 - Zcy</title>
 
 
   <link rel="shortcut icon" href="/favicon.ico">
@@ -173,7 +173,7 @@
                 <!-- Title date & tags -->
                 <div class="post-header">
                     <h1 class="entry-title">
-                        2018icpc青岛Books 思维
+                        2018icpc青岛Flippy Sequence 思维
                         
                     </h1>
 
@@ -183,38 +183,26 @@
                 </p>
                 <!-- Post Main Content -->
                 <div class="entry-content">
-                    <p><img src="/2018/11/09/2018icpc青岛Books-思维/titile.jpg" alt="titile"></p>
+                    <p><img src="/2018/11/09/2018icpc青岛Flippy-Sequence-思维/titile3.jpg" alt="titile3"></p>
 <a id="more"></a>
 <p>题意：</p>
-<p>DreamGrid went to the bookshop yesterday. There are  books in the bookshop in total. Because DreamGrid is very rich, he bought the books according to the strategy below: </p>
-<ul>
-<li>Check the  books from the 1st one to the -th one <strong>in order</strong>.</li>
-<li>For each book being checked now, if DreamGrid has enough money (not less than the book price), he’ll buy the book and his money will be reduced by the price of the book.</li>
-<li>In case that his money is less than the price of the book being checked now, he will skip that book.</li>
-</ul>
-<p>BaoBao is curious about how rich DreamGrid is. You are asked to tell him the maximum possible amount of money DreamGrid took before buying the books, which is a non-negative integer. All he knows are the prices of the  books and the number of books DreamGrid bought in total, indicated by . </p>
-<p>Input</p>
-<p>There are multiple test cases. The first line of the input contains an integer , indicating the number of test cases. For each test case:</p>
-<p>The first line contains two integers  and  (, ), indicating the number of books in the bookshop and the number of books DreamGrid bought in total.</p>
-<p>The second line contains  non-negative integers  (), where  indicates the price of the -th book checked by DreamGrid.</p>
-<p>It’s guaranteed that the sum of  in all test cases will not exceed .</p>
-<p>#### </p>
-<p>Output</p>
-<p>For each test case output one line.</p>
-<p>If it’s impossible to buy  books for any initial number of money, output “Impossible” (without quotes).</p>
-<p>If DreamGrid may take an infinite amount of money, output “Richman” (without quotes).</p>
-<p>In other cases, output a non-negative integer, indicating the maximum number of money he may take.</p>
-<p>#### </p>
+<p><img src="/2018/11/09/2018icpc青岛Flippy-Sequence-思维/1.png" alt="1"></p>
+<p><img src="/2018/11/09/2018icpc青岛Flippy-Sequence-思维/2.png" alt="2"></p>
 <p>Sample Input</p>
-<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">4</span><br><span class="line">4 2</span><br><span class="line">1 2 4 8</span><br><span class="line">4 0</span><br><span class="line">100 99 98 97</span><br><span class="line">2 2</span><br><span class="line">10000 10000</span><br><span class="line">5 3</span><br><span class="line">0 0 0 0 1</span><br></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">3</span><br><span class="line">1</span><br><span class="line">1</span><br><span class="line">0</span><br><span class="line">2</span><br><span class="line">00</span><br><span class="line">11</span><br><span class="line">5</span><br><span class="line">01010</span><br><span class="line">00111</span><br></pre></td></tr></table></figure>
 <p>#### </p>
 <p>Sample Output</p>
-<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">6</span><br><span class="line">96</span><br><span class="line">Richman</span><br><span class="line">Impossible</span><br></pre></td></tr></table></figure>
-<p>​    大概意思就是给T组样例，每组一个n，m代表n本书，买了其中m本。然后再给出n本书的价格。购买规则是从前往后遍历书，只要书的价格小于自己剩余的钱数，就购买，否则就跳过。问恰好能买m本拥有的钱最多是多少？若过能全买输出Richman，如果不能恰好买m本输出Impossible；</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">0</span><br><span class="line">2</span><br><span class="line">6</span><br></pre></td></tr></table></figure>
+<p>#### </p>
+<p>Hint</p>
+<p>For the second sample test case, there are two valid operation pairs: (1, 1, 2, 2) and (2, 2, 1, 1).</p>
+<p>For the third sample test case, there are six valid operation pairs: (2, 3, 5, 5), (5, 5, 2, 3), (2, 5, 4, 4), (4, 4, 2, 5), (2, 4, 4, 5) and (4, 5, 2, 4).</p>
+<p>​    题意就是给你T组样例，每组样例给你两个长度为n的字符串s1,s2，每个字符串必须且只能反转一个连续的区间（0变1，1变0），问两个字符串反转完毕变成相同字符串的方案数？</p>
 <p>思路：</p>
-<p>​    若n == m就Richman，否则第一遍遍历价格为0的书的数量。如果大于m就Impossible。否则就遍历剩下的不为0的图书，小于&lt;= m - 价格为0的数量时，累加钱数，当&gt; m - 价格为0的数量时，比较出其中的最小值。最后答案为累加的钱数+ 最小值 -1</p>
+<p>​    我们把两个字符串每一位相同的设为0，不同的设为1.若出现了3个及3个以上连续的1，那么永远无法通过反转一次得到相同字符串，此时输出0；若出现了2个连续的1，那么一定是6种方案；若出现了1个连续的1，方案数= (连续1的个数 - 1) ✖️ 2 + （n - 连续1的个数) ✖️2；若没有出现连续的1，方案数=（1 + n）✖️ n / 2。</p>
+<p>​    一定要细心细心再细心！！因为细节没处理好WA了4发当时心态都崩了。</p>
 <p>代码：</p>
-<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">#include &lt;stdio.h&gt;</span><br><span class="line">#include &lt;algorithm&gt;</span><br><span class="line">using namespace std;</span><br><span class="line">int a[100005];</span><br><span class="line"></span><br><span class="line">int main () &#123;</span><br><span class="line">    int T, n, m;</span><br><span class="line">    scanf(&quot;%d&quot;, &amp;T);</span><br><span class="line">    while (T--) &#123;</span><br><span class="line">        long long sum = 0;</span><br><span class="line">        int num = 0;</span><br><span class="line">        int minn = 0x3f3f3f3f;</span><br><span class="line">        int flag = 0;</span><br><span class="line">        scanf(&quot;%d%d&quot;, &amp;n, &amp;m);</span><br><span class="line">        if (n == m) flag = 1;</span><br><span class="line">        for (int i = 1; i &lt;= n; i++) &#123;</span><br><span class="line">            scanf(&quot;%d&quot;, &amp;a[i]);</span><br><span class="line">            if (a[i] == 0) num ++;</span><br><span class="line">        &#125;</span><br><span class="line">        if (num &gt; m) flag = 2;</span><br><span class="line">        else m -= num;</span><br><span class="line">        if (!flag) &#123;</span><br><span class="line">            int tot = 0;</span><br><span class="line">            for (int i = 1; i &lt;= n; i++) &#123;</span><br><span class="line">                if (flag) break;</span><br><span class="line">                if (a[i] == 0) continue;</span><br><span class="line">                tot++;</span><br><span class="line">                if (tot &lt;= m) &#123;</span><br><span class="line">                    sum += a[i];</span><br><span class="line">                &#125; else &#123;</span><br><span class="line">                    minn = min(minn, a[i]);</span><br><span class="line">                &#125;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        if (minn == 0) &#123;</span><br><span class="line">            flag = 2;</span><br><span class="line">        &#125; else &#123;</span><br><span class="line">            sum += minn - 1;</span><br><span class="line">        &#125;</span><br><span class="line">        if (flag == 1) printf(&quot;Richman\n&quot;);</span><br><span class="line">        else if(flag == 2) printf(&quot;Impossible\n&quot;);</span><br><span class="line">        else printf(&quot;%lld\n&quot;, sum);</span><br><span class="line">    &#125;</span><br><span class="line">    return 0;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">#include &lt;stdio.h&gt;</span><br><span class="line">#define N 1000005</span><br><span class="line">char s1[N], s2[N];</span><br><span class="line">int main () &#123;</span><br><span class="line">    int T, n, c;</span><br><span class="line">    scanf(&quot;%d&quot;, &amp;T);</span><br><span class="line">    while (T--) &#123;</span><br><span class="line">        scanf(&quot;%d&quot;, &amp;n);</span><br><span class="line">        scanf(&quot;%s%s&quot;, s1, s2);</span><br><span class="line">        int num = 0;</span><br><span class="line">        int flag = 0, flaa = 0;</span><br><span class="line">        int start, endd;</span><br><span class="line">        int num1 = 0, num2 = 0, num3 = 0;</span><br><span class="line">        for (int i = 0; i &lt; n; i++) &#123;</span><br><span class="line">            if (s1[i] == s2[i]) c = 0;</span><br><span class="line">            else c = 1;</span><br><span class="line">            if (c == 0) &#123;</span><br><span class="line">                if (flag) &#123;</span><br><span class="line">                    num++;</span><br><span class="line">                    if (num == 1) &#123;</span><br><span class="line">                        endd = i - 1;</span><br><span class="line">                    &#125;</span><br><span class="line">                    flag = 0;</span><br><span class="line">                &#125;</span><br><span class="line">                if (num == 1) &#123;</span><br><span class="line">                    num2++;</span><br><span class="line">                &#125;</span><br><span class="line">            &#125; else &#123;</span><br><span class="line">                if (num == 0) &#123;</span><br><span class="line">                    if (flag == 0) &#123;</span><br><span class="line">                        start = i;</span><br><span class="line">                    &#125;</span><br><span class="line">                    num1++;</span><br><span class="line">                &#125; else if(num == 1) &#123;</span><br><span class="line">                    num3++;</span><br><span class="line">                &#125; else &#123;</span><br><span class="line">                    flaa = 1;</span><br><span class="line">                    break;</span><br><span class="line">                &#125;</span><br><span class="line">                if(i == n - 1) &#123;</span><br><span class="line">                    num++;</span><br><span class="line">                    if (num == 1) &#123;</span><br><span class="line">                        endd = i;</span><br><span class="line">                    &#125;</span><br><span class="line">                &#125;</span><br><span class="line">                flag = 1;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        if (flaa) &#123;</span><br><span class="line">            printf(&quot;0\n&quot;);</span><br><span class="line">        &#125;</span><br><span class="line">        else if (num == 0) &#123;</span><br><span class="line">            long long sum = (long long)(1 + n) * n / 2;</span><br><span class="line">            printf(&quot;%lld\n&quot;, sum);</span><br><span class="line">        &#125;</span><br><span class="line">        else if (num == 1) &#123;</span><br><span class="line">            long long sum = (long long)(num1 - 1) * 2;</span><br><span class="line">            sum += (n - (endd - start + 1)) * 2;</span><br><span class="line">            printf(&quot;%lld\n&quot;, sum);</span><br><span class="line">        &#125; else if (num == 2) &#123;</span><br><span class="line">            printf(&quot;6\n&quot;);</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    return 0;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 <p><a href="http://www.ivan-zcy.top">转载请注明出处！！！</a>  </p>
 <p>如果有写的不对或者不全面的地方 可通过主页的联系方式进行指正，谢谢</p>
 
@@ -226,13 +214,9 @@
         <div class="container" >
             <ul class="pager">
                 
-                <li class="previous">
-                    <a href="/2018/11/09/2018icpc青岛Flippy-Sequence-思维/" rel="prev">下一篇</a>
-                </li>
-                
                 
                 <li class="next">
-                    <a href="/2018/11/09/2018icpc青岛Function-and-Function-规律/" rel="prev">上一篇</a>
+                    <a href="/2018/11/09/2018icpc青岛Books-思维/" rel="prev">上一篇</a>
                 </li>
                 
             </ul>
