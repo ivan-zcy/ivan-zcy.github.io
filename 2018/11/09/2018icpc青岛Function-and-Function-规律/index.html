@@ -14,7 +14,7 @@
 
   <!--Open Graph Title-->
   
-      <meta property="og:title" content="Zcy"/>
+      <meta property="og:title" content="2018icpc青岛Function and Function 规律"/>
   
   <!--Open Graph Description-->
   
@@ -22,7 +22,7 @@
   <meta property="og:site_name" content="Zcy"/>
   <!--Type page-->
   
-      <meta property="og:type" content="website" />
+      <meta property="og:type" content="article" />
   
   <!--Page Cover-->
   
@@ -42,7 +42,7 @@
     </script>
   <!-- Title -->
   
-  <title>ACM - Zcy</title>
+  <title>2018icpc青岛Function and Function 规律 - Zcy</title>
 
 
   <link rel="shortcut icon" href="/favicon.ico">
@@ -165,221 +165,70 @@
 
 
   <!-- Main Content -->
-  
+  <div class="content-area">
+    <div class="post">
+        <!-- Post Content -->
+        <div class="container">
+            <article>
+                <!-- Title date & tags -->
+                <div class="post-header">
+                    <h1 class="entry-title">
+                        2018icpc青岛Function and Function 规律
+                        
+                    </h1>
 
-<!-- Main Content -->
-<div class="archive content-area">
-  <div class="container">
-    <h1 class="entry-title">#ACM</h1>
-    <div class="row">
-      <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
-        <!-- Use lodash to classify posts. See https://lodash.com/docs#groupBy -->
+                </div>
+                <p class="a-posted-on">
+                    2018-11-09
+                </p>
+                <!-- Post Main Content -->
+                <div class="entry-content">
+                    <p><img src="/2018/11/09/2018icpc青岛Function-and-Function-规律/title.jpg" alt="title"></p>
+<a id="more"></a>
+<p>题意：</p>
+<p><img src="/2018/11/09/2018icpc青岛Function-and-Function-规律/1.png" alt="1"></p>
+<p><img src="/2018/11/09/2018icpc青岛Function-and-Function-规律/2.png" alt="2"></p>
+<p>Sample Input</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">6</span><br><span class="line">123456789 1</span><br><span class="line">888888888 1</span><br><span class="line">888888888 2</span><br><span class="line">888888888 999999999</span><br><span class="line">98640 12345</span><br><span class="line">1000000000 0</span><br></pre></td></tr></table></figure>
+<p>Sample Output</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">5</span><br><span class="line">18</span><br><span class="line">2</span><br><span class="line">0</span><br><span class="line">0</span><br><span class="line">1000000000</span><br></pre></td></tr></table></figure>
+<p>​    大概意思就是给出f(n)和g^k(n)的通项公式，让你求g^k(n)。</p>
+<p>思路：</p>
+<p>​    由于n的范围是1e9，每一位累加和肯定不会超过100，只需要几次递归就可以得到10以内的f(n)，至于10以内的递归，我们可以一眼看出它们的循环结和规律</p>
+<p>代码：</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">#include &lt;stdio.h&gt;</span><br><span class="line"></span><br><span class="line">int a[10] = &#123;1, 0, 0, 0, 1, 0, 1, 0, 2, 1&#125;;</span><br><span class="line"></span><br><span class="line">int dfs (int x, int k) &#123;</span><br><span class="line">    if (k == 0) return x;</span><br><span class="line">    if (x &lt; 10) &#123;</span><br><span class="line">        if (x == 8) &#123;</span><br><span class="line">            if (k == 1) return a[8];</span><br><span class="line">            else if(k == 2) return a[2];</span><br><span class="line">            if(k % 2 == 1) return a[0];</span><br><span class="line">            else return a[1];</span><br><span class="line">        &#125; else if(x == 0) &#123;</span><br><span class="line">            if(k % 2 == 1) return a[0];</span><br><span class="line">            else return a[1];</span><br><span class="line">        &#125; else if(x == 1) &#123;</span><br><span class="line">            if(k % 2 == 1) return a[1];</span><br><span class="line">            else return a[0];</span><br><span class="line">        &#125; else if(x == 2 || x == 3 || x== 5 || x == 7) &#123;</span><br><span class="line">            if (k == 1) return a[x];</span><br><span class="line">            else if (k % 2 == 0) &#123;</span><br><span class="line">                return a[0];</span><br><span class="line">            &#125; else &#123;</span><br><span class="line">                return a[1];</span><br><span class="line">            &#125;</span><br><span class="line">        &#125; else if (x == 4 || x == 6 || x == 9) &#123;</span><br><span class="line">            if (k == 1) return a[x];</span><br><span class="line">            else if (k % 2 == 0) &#123;</span><br><span class="line">                return a[1];</span><br><span class="line">            &#125; else &#123;</span><br><span class="line">                return a[0];</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    int sum = 0;</span><br><span class="line">    while (x) &#123;</span><br><span class="line">        sum += a[x % 10];</span><br><span class="line">        x /= 10;</span><br><span class="line">    &#125;</span><br><span class="line">    return dfs(sum, k - 1);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">int main () &#123;</span><br><span class="line">    int T, x, k;</span><br><span class="line">    scanf(&quot;%d&quot;, &amp;T);</span><br><span class="line">    while(T --) &#123;</span><br><span class="line">        scanf(&quot;%d%d&quot;, &amp;x, &amp;k);</span><br><span class="line">        int ans =dfs (x, k);</span><br><span class="line">        printf(&quot;%d\n&quot;, ans);</span><br><span class="line">    &#125;</span><br><span class="line">    return 0;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p><a href="http://www.ivan-zcy.top">转载请注明出处！！！</a>  </p>
+<p>如果有写的不对或者不全面的地方 可通过主页的联系方式进行指正，谢谢</p>
+
+                </div>
+            </article>
+        </div>
+        <!-- Pre or Next -->
         
-        
-          <h2 class="year">2018</h2>
-          <ul class="list">
+        <div class="container" >
+            <ul class="pager">
+                
+                
+                <li class="next">
+                    <a href="/2018/11/08/HDU3586Information-Disturbing-二分-树形dp/" rel="prev">上一篇</a>
+                </li>
+                
+            </ul>
+        </div>
+        　　　　<!-- Comments -->
+        <div class="container">
             
-  <li>
-    <span class="date">
-      2018-11-09
-    </span>
-    <a href="/2018/11/09/2018icpc青岛Function-and-Function-规律/" class="title">
-      2018icpc青岛Function and Function 规律
-    </a>
-  </li>
+<section id="comment">
+  <!-- <h1 class="title">Comments</h1> -->
 
-  <li>
-    <span class="date">
-      2018-11-08
-    </span>
-    <a href="/2018/11/08/HDU3586Information-Disturbing-二分-树形dp/" class="title">
-      HDU3586Information Disturbing 二分+树形dp
-    </a>
-  </li>
-
-  <li>
-    <span class="date">
-      2018-11-08
-    </span>
-    <a href="/2018/11/08/POJ3140Contestants-Division-树形dp/" class="title">
-      POJ3140Contestants Division 树形dp
-    </a>
-  </li>
-
-  <li>
-    <span class="date">
-      2018-11-07
-    </span>
-    <a href="/2018/11/07/POJ3107-Godfather-树形dp-模拟vector/" class="title">
-      POJ3107 Godfather 树形dp+模拟vector
-    </a>
-  </li>
-
-  <li>
-    <span class="date">
-      2018-11-07
-    </span>
-    <a href="/2018/11/07/CodeForces219D-树形dp/" class="title">
-      CodeForces219D 树形dp
-    </a>
-  </li>
-
-  <li>
-    <span class="date">
-      2018-11-07
-    </span>
-    <a href="/2018/11/07/HDU2196-Computer树形dp/" class="title">
-      HDU2196 Computer树形dp
-    </a>
-  </li>
-
-  <li>
-    <span class="date">
-      2018-11-06
-    </span>
-    <a href="/2018/11/06/HDU1520Anniversary-party-树形dp/" class="title">
-      HDU1520Anniversary party树形dp
-    </a>
-  </li>
-
-  <li>
-    <span class="date">
-      2018-11-06
-    </span>
-    <a href="/2018/11/06/SSOI307加分二叉树-区间dp/" class="title">
-      SSOI307加分二叉树 区间dp
-    </a>
-  </li>
-
-  <li>
-    <span class="date">
-      2018-11-06
-    </span>
-    <a href="/2018/11/06/计蒜客Not-a-subsequence动态规划/" class="title">
-      计蒜客Not a subsequence动态规划
-    </a>
-  </li>
-
-  <li>
-    <span class="date">
-      2018-11-05
-    </span>
-    <a href="/2018/11/05/计蒜客Gold-Rush水题/" class="title">
-      计蒜客Gold Rush水题
-    </a>
-  </li>
-
-  <li>
-    <span class="date">
-      2018-11-05
-    </span>
-    <a href="/2018/11/05/计蒜客Algebraic-Teamwork思维/" class="title">
-      计蒜客Algebraic Teamwork思维
-    </a>
-  </li>
-
-  <li>
-    <span class="date">
-      2018-11-05
-    </span>
-    <a href="/2018/11/05/计蒜客Bounty-Hunter/" class="title">
-      计蒜客Bounty Hunter多路dp
-    </a>
-  </li>
-
-  <li>
-    <span class="date">
-      2018-11-04
-    </span>
-    <a href="/2018/11/04/计蒜客Equator/" class="title">
-      计蒜客Equator尺取法
-    </a>
-  </li>
-
-  <li>
-    <span class="date">
-      2018-10-24
-    </span>
-    <a href="/2018/10/24/HDU1430-康托展开/" class="title">
-      HDU1430 康托展开
-    </a>
-  </li>
-
-  <li>
-    <span class="date">
-      2018-10-23
-    </span>
-    <a href="/2018/10/23/杜教BM模版-推规律/" class="title">
-      杜教BM模版(推规律)
-    </a>
-  </li>
-
-  <li>
-    <span class="date">
-      2018-10-21
-    </span>
-    <a href="/2018/10/21/UVA8512线段树维护线性基/" class="title">
-      UVA8512线段树维护线性基
-    </a>
-  </li>
-
-  <li>
-    <span class="date">
-      2018-10-21
-    </span>
-    <a href="/2018/10/21/快到难以想象的快速读模版/" class="title">
-      快到难以想象的快速读模版
-    </a>
-  </li>
-
-  <li>
-    <span class="date">
-      2018-10-20
-    </span>
-    <a href="/2018/10/20/HDU5971/" class="title">
-      HDU5971二分图染色
-    </a>
-  </li>
-
-  <li>
-    <span class="date">
-      2018-10-20
-    </span>
-    <a href="/2018/10/20/HDU-5976/" class="title">
-      HDU 5976思维
-    </a>
-  </li>
-
-  <li>
-    <span class="date">
-      2018-10-20
-    </span>
-    <a href="/2018/10/20/HDU5974/" class="title">
-      HDU5974方程化简
-    </a>
-  </li>
-
-
-          </ul>
-        
-      </div>
-    </div>
-  </div>
   
-<div class="container" >
-  <ul class="pager">
-    
-    
-      <li class="next">
-        <a href="/tags/ACM/page/2/">
-          上一页
-        </a>
-      </li>
-    
-  </ul>
-</div>
+</section>
 
 
+        </div>
+        
+        　　　　
+    </div>
 </div>
 
 
