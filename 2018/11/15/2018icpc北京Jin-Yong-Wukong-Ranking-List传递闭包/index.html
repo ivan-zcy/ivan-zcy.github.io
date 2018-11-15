@@ -14,7 +14,7 @@
 
   <!--Open Graph Title-->
   
-      <meta property="og:title" content="2018icpc徐州站总结"/>
+      <meta property="og:title" content="2018icpc北京Jin Yong’s Wukong Ranking List传递闭包"/>
   
   <!--Open Graph Description-->
   
@@ -42,7 +42,7 @@
     </script>
   <!-- Title -->
   
-  <title>2018icpc徐州站总结 - Zcy</title>
+  <title>2018icpc北京Jin Yong’s Wukong Ranking List传递闭包 - Zcy</title>
 
 
   <link rel="shortcut icon" href="/favicon.ico">
@@ -173,26 +173,54 @@
                 <!-- Title date & tags -->
                 <div class="post-header">
                     <h1 class="entry-title">
-                        2018icpc徐州站总结
+                        2018icpc北京Jin Yong’s Wukong Ranking List传递闭包
                         
                     </h1>
 
                 </div>
                 <p class="a-posted-on">
-                    2018-11-14
+                    2018-11-15
                 </p>
                 <!-- Post Main Content -->
                 <div class="entry-content">
-                    <p>​    <img src="/2018/11/14/2018icpc徐州站总结/title3.jpg" alt="title3"></p>
+                    <p><img src="/2018/11/15/2018icpc北京Jin-Yong-Wukong-Ranking-List传递闭包/title2.jpg" alt="title"></p>
 <a id="more"></a>
-<p>​    这场比赛有很多没想到吧，努力了那么久，没想到以打铁草草收场。赛后听题解说c题和i题是水题，直到最后一个小时才有人开始做这两个题。我们队也根本没有想过这两个题会是水题。直到比赛半个多小时过去，清华大学才Accept掉第一个A题。所有队伍都开始尝试做这道，我们队也不例外。</p>
-<p>​    关于A题，题意跳转连接：<a href="http://www.ivan-zcy.top/2018/11/14/icpc2018徐州Rikka-with-Minimum-Spanning/">跳转</a> 这道题题干特别特别长，大概就是给出一个随机函数自动生成n个点m条边的无向图，让你求它的最小生成树个数✖️最小生成树权值的值。关于求最小生成树权值很简单，直接可以用Kruskal求解，而最小生成树个数我们队想了好久，刚开始试图Matrix_Tree算法来求，结果发现由于N为1e5，二维数组根本没有办法放开。后来改用dfs，修修改改直到4小时40分钟才Accept掉。</p>
-<p>​    毫无疑问，打铁了。。。距离铜牌只差了12分钟罚时。。。而且给出的正解，竟然说随机函数不可能生成两个及以上的最小生成树。。。。自己辛辛苦苦用最小生成树个数✖️最小生成树权值求出来的，一些队只用简单的最小生成树权值就求出来。。。欲哭无泪，只能说自己还是太菜。。。</p>
-<p>​    来时抱着争银保铜的信心，结果遗憾草草收场…</p>
-<p>​    抛去比赛，中国矿业大学的校园很大很美，校园里大到可以举办半程马拉松，Orz，又是别人家的大学系列。除此之外徐州的地锅鸡也非常非常好吃。一切都过去了，就这样吧～</p>
-<p><img src="/2018/11/14/2018icpc徐州站总结/2.jpg" alt="2"></p>
-<p><img src="/2018/11/14/2018icpc徐州站总结/3.jpg" alt="3"></p>
-<p><img src="/2018/11/14/2018icpc徐州站总结/1.jpg" alt="1"></p>
+<p>时间限制:1000ms</p>
+<p>单点时限:1000ms</p>
+<p>内存限制:512MB</p>
+<p>描述</p>
+<p>Jin Yong was the most famous and popular Chinese wuxia (The one who fight bad people by his Wukong i.e. Wushu and Kongfu) novelist who lived in Hong Kong. Between 1955 and 1972, he wrote 14 novels which earned him a reputation as one of the greatest and most popular Chinese writers. Over 100 million copies of his works have been sold worldwide，not including a countless number of pirated copies. Jin Yong’s works seem to have magic. Once you begin to read a novel of his, you just can’t stop until you finish it.Last month, Jin Yong passed away at the age of 94. Many Jin Yong’s fans in PKU held a meeting to memorize him. Jin Yong’s fans always like to discuss or argue or even quarrel about whose Wukong are better among the wuxia characters of his novel. During the meeting, this happened again:Every fans said some words like “Qiao Feng’s Wukong is better than Guo Jing’s”. Obviously, those words may contradict each other and then cause quarrels. As a boring and girlfriendless male programmer of EECS school, you always want to make some things. So you are eager to point out the contradictions as soon as possible. That means, you want to find out the first one whose words contradict the words said by others before him.Please note that if A is better than B, and B is better than C, then of course A must be better than C.</p>
+<p>输入</p>
+<p>There are no more than 15 test cases.For each test case:The first line is an integer n( 1 &lt;= n &lt;=20), meaning that there are n sentences.The following n lines are those n sentences which is in the format below:s1 s2This means someone said that s1’s Wukong was better than s2’s. Both s1 and s2 are names of Jin Yong’s characters which consists of only English letters. It’s guaranteed that s1 and s2 are different, and their length is no more than 30. Names are case sensitive.</p>
+<p>输出</p>
+<p>For each test case, print the first sentence which cause a contradiction. If there are no contradiction, print 0 instead.</p>
+<p>提示</p>
+<p>DON’T try to figure out who are those names in the sample and waste your time.</p>
+<ul>
+<li><p>样例输入</p>
+<p><code>2</code></p>
+<p> <code>BrokenReputation ExtinctNun</code></p>
+<p> <code>HelloLaught EnvelopeNotFlat</code></p>
+<p><code>6</code></p>
+<p><code>LandOverWind LonelyLight</code></p>
+<p><code>FireMonk CutTheForest</code></p>
+<p><code>CutTheForest LookCrazy</code></p>
+<p><code>MakeFoxRush LetMeGo</code></p>
+<p><code>HeroAunt UniqueLand</code></p>
+<p><code>LookCrazy FireMonk</code></p>
+</li>
+<li><p>样例输出</p>
+<p><code>0</code></p>
+<p><code>LookCrazy FireMonk</code></p>
+</li>
+</ul>
+<p>​    题意就是给出一个n代表有n行，每行两个a，b，代表a的武功高于b，问最早从第几行开始导致前后矛盾，若不矛盾输出0</p>
+<p>思路：</p>
+<p>​    比赛时队友用传递闭包做的，今天自己做了一下。这个题可以转化为有向图判定是否成环（利用map&lt;string, int&gt;映射一下名字），可以用bool型的book{i}{j}来代表从i到j是否连通。每一行都更新一下，若book{i}{j}和book{j}{i}都为1就代表前后矛盾</p>
+<p>代码：</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">#include &lt;stdio.h&gt;</span><br><span class="line">#include &lt;map&gt;</span><br><span class="line">#include &lt;iostream&gt;</span><br><span class="line">#include &lt;string&gt;</span><br><span class="line">#include &lt;string.h&gt;</span><br><span class="line">using namespace std;</span><br><span class="line"></span><br><span class="line">string s1[25], s2[25];</span><br><span class="line">map&lt;string, int&gt;zcy;</span><br><span class="line">bool book[50][50];</span><br><span class="line">int res1[50], res2[50];</span><br><span class="line"></span><br><span class="line">int main () &#123;</span><br><span class="line">    int n;</span><br><span class="line">    while (scanf(&quot;%d&quot;, &amp;n) == 1) &#123;</span><br><span class="line">        zcy.clear();</span><br><span class="line">        memset(book, 0, sizeof(book));</span><br><span class="line">        int tot = 0;</span><br><span class="line">        int flag = 0;</span><br><span class="line">        for (int i = 1; i &lt;= n; i++) &#123;</span><br><span class="line">            cin &gt;&gt; s1[i];</span><br><span class="line">            cin &gt;&gt; s2[i];</span><br><span class="line">            if (!zcy[s1[i]]) &#123;</span><br><span class="line">                zcy[s1[i]] = ++tot;</span><br><span class="line">            &#125;</span><br><span class="line">            if (!zcy[s2[i]]) &#123;</span><br><span class="line">                zcy[s2[i]] = ++tot;</span><br><span class="line">            &#125;</span><br><span class="line">            if (book[zcy[s2[i]]][zcy[s1[i]]] || flag) &#123;</span><br><span class="line">                continue;</span><br><span class="line">            &#125;</span><br><span class="line">            res1[0] = zcy[s2[i]];</span><br><span class="line">            res2[0] = zcy[s1[i]];</span><br><span class="line">            int tot1 = 0, tot2 = 0;</span><br><span class="line">            for (int j = 1; j &lt;= tot; j++) &#123;</span><br><span class="line">                if(book[j][zcy[s2[i]]] == 1) &#123;</span><br><span class="line">                    res1[++tot1] = j;</span><br><span class="line">                &#125;</span><br><span class="line">            &#125;</span><br><span class="line">            for (int j = 1; j &lt;= tot; j++) &#123;</span><br><span class="line">                if(book[zcy[s1[i]]][j] == 1) &#123;</span><br><span class="line">                    res2[++tot2] = j;</span><br><span class="line">                &#125;</span><br><span class="line">            &#125;</span><br><span class="line">            for (int p = 0; p &lt;= tot1; p++) &#123;</span><br><span class="line">                for (int q = 0; q &lt;= tot2; q++) &#123;</span><br><span class="line">                    if(book[res2[q]][res1[p]] == 0) &#123;</span><br><span class="line">                        book[res1[p]][res2[q]] = 1;</span><br><span class="line">                    &#125; else &#123;</span><br><span class="line">                        flag = 1;</span><br><span class="line">                        cout &lt;&lt; s1[i] &lt;&lt; &quot; &quot; &lt;&lt; s2[i] &lt;&lt; endl;</span><br><span class="line">                        break;</span><br><span class="line">                    &#125;</span><br><span class="line">                &#125;</span><br><span class="line">                if(flag) break;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        if (!flag) &#123;</span><br><span class="line">            printf(&quot;0\n&quot;);</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    return 0;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p><a href="http://www.ivan-zcy.top">转载请注明出处！！！</a>  </p>
+<p>如果有写的不对或者不全面的地方 可通过主页的联系方式进行指正，谢谢</p>
 
                 </div>
             </article>
@@ -202,13 +230,9 @@
         <div class="container" >
             <ul class="pager">
                 
-                <li class="previous">
-                    <a href="/2018/11/15/2018icpc北京Jin-Yong-Wukong-Ranking-List传递闭包/" rel="prev">下一篇</a>
-                </li>
-                
                 
                 <li class="next">
-                    <a href="/2018/11/14/icpc2018徐州Rikka-with-Minimum-Spanning/" rel="prev">上一篇</a>
+                    <a href="/2018/11/14/2018icpc徐州站总结/" rel="prev">上一篇</a>
                 </li>
                 
             </ul>
