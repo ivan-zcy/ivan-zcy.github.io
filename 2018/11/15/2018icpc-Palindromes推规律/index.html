@@ -14,7 +14,7 @@
 
   <!--Open Graph Title-->
   
-      <meta property="og:title" content="Zcy"/>
+      <meta property="og:title" content="2018icpc Palindromes推规律"/>
   
   <!--Open Graph Description-->
   
@@ -22,7 +22,7 @@
   <meta property="og:site_name" content="Zcy"/>
   <!--Type page-->
   
-      <meta property="og:type" content="website" />
+      <meta property="og:type" content="article" />
   
   <!--Page Cover-->
   
@@ -42,7 +42,7 @@
     </script>
   <!-- Title -->
   
-  <title>思维 - Zcy</title>
+  <title>2018icpc Palindromes推规律 - Zcy</title>
 
 
   <link rel="shortcut icon" href="/favicon.ico">
@@ -165,73 +165,75 @@
 
 
   <!-- Main Content -->
-  
+  <div class="content-area">
+    <div class="post">
+        <!-- Post Content -->
+        <div class="container">
+            <article>
+                <!-- Title date & tags -->
+                <div class="post-header">
+                    <h1 class="entry-title">
+                        2018icpc Palindromes推规律
+                        
+                    </h1>
 
-<!-- Main Content -->
-<div class="archive content-area">
-  <div class="container">
-    <h1 class="entry-title">#思维</h1>
-    <div class="row">
-      <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
-        <!-- Use lodash to classify posts. See https://lodash.com/docs#groupBy -->
+                </div>
+                <p class="a-posted-on">
+                    2018-11-15
+                </p>
+                <!-- Post Main Content -->
+                <div class="entry-content">
+                    <p>题意：</p>
+<p>时间限制:1000ms</p>
+<p>单点时限:1000ms</p>
+<p>内存限制:512MB</p>
+<p>描述</p>
+<p>Recently, Nvoenewr learnt palindromes in his class.A palindrome is a nonnegative integer that is the same when read from left to right and when read from right to left. For example, 0, 1, 2, 11, 99, 232, 666, 998244353353442899 are palindromes, while 10, 23, 233, 1314 are not palindromes.Now, given a number, Nvoenewr can determine whether it’s a palindrome or not by using loops which his teacher has told him on the class. But he is now interested in another question: What’s the K-th palindrome? It seems that this question is too difficult for him, so now he asks you for help.Nvoenewr counts the number from small to big, like this: 0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 11, 22, 33, 44, 55, 66, 77, 88, 99, 101 and so on. So the first palindrome is 0 and the eleventh palindrome is 11 itself.<br>Nvoenewr may ask you several questions, and the K may be very big.</p>
+<p>输入</p>
+<p>The first line contains one integer T(T &lt;= 20) —— the number of questions that Nvoenewr will ask you.Each of the next T lines contains one integer K. You should find the K-th palindrome for Nvoenewr.Let’s say K is a n-digit number. It’s guaranteed that K &gt;= 1, 1 &lt;= n &lt;= 100000 and the sum of n in all T questions is not greater than 1000000.</p>
+<p>输出</p>
+<p>Print T lines. The i-th line contains your answer of Nvoenewr’s i-th question.</p>
+<p>样例输入</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">4</span><br><span class="line">1</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">20</span><br></pre></td></tr></table></figure>
+<p>样例输出</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">0</span><br><span class="line">9</span><br><span class="line">11</span><br><span class="line">101</span><br></pre></td></tr></table></figure>
+<p>​    翻译成汉语就是问第n个回文数是多少？n的长度范围是1e5</p>
+<p>思路：</p>
+<p>​    队友当时告诉我用数位dp做，然后我想了一手觉得还是找联系吧。然后发现只要处理前九位就能填满1e5的数据范围。。直到错了两发才发现，他喵的n的数据范围不是1e5，而是n的数字长度为1e5。好吧，即然这样肯定是有规律了，然后就利用之前处理的前1e9个打表找到其中的规律然后Accept（规律见代码）</p>
+<p>代码：</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">#include &lt;stdio.h&gt;</span><br><span class="line">#include &lt;string.h&gt;</span><br><span class="line">#define N 100000</span><br><span class="line"></span><br><span class="line">char s[N + 5];</span><br><span class="line"></span><br><span class="line">int main () &#123;</span><br><span class="line">    int T;</span><br><span class="line">    scanf(&quot;%d&quot;, &amp;T);</span><br><span class="line">    while (T --) &#123;</span><br><span class="line">        scanf(&quot;%s&quot;, s);</span><br><span class="line">        int len = strlen(s);</span><br><span class="line">        if (len == 1) &#123;</span><br><span class="line">            printf(&quot;%d\n&quot;, s[0] - &apos;0&apos; - 1);</span><br><span class="line">            continue;</span><br><span class="line">        &#125;</span><br><span class="line">        if(len == 2 &amp;&amp; s[0] == &apos;1&apos; &amp;&amp; s[1] == &apos;0&apos;) &#123;</span><br><span class="line">            printf(&quot;9\n&quot;);</span><br><span class="line">            continue;</span><br><span class="line">        &#125;</span><br><span class="line">        if (s[0] == &apos;1&apos;) &#123;</span><br><span class="line">            if (s[1] == &apos;0&apos;) &#123;</span><br><span class="line">                printf(&quot;9&quot;);</span><br><span class="line">                for (int i = 2; i &lt; len; i++) &#123;</span><br><span class="line">                    printf(&quot;%c&quot;, s[i]);</span><br><span class="line">                &#125;</span><br><span class="line">                for (int i = len - 2; i &gt; 1; i--) &#123;</span><br><span class="line">                    printf(&quot;%c&quot;, s[i]);</span><br><span class="line">                &#125;</span><br><span class="line">                printf(&quot;9\n&quot;);</span><br><span class="line">            &#125; else &#123;</span><br><span class="line">                for (int i = 1; i &lt; len; i++) &#123;</span><br><span class="line">                    printf(&quot;%c&quot;, s[i]);</span><br><span class="line">                &#125;</span><br><span class="line">                for (int i = len - 1; i &gt; 0; i--) &#123;</span><br><span class="line">                    printf(&quot;%c&quot;, s[i]);</span><br><span class="line">                &#125;</span><br><span class="line">                printf(&quot;\n&quot;);</span><br><span class="line">            &#125;</span><br><span class="line">        &#125; else &#123;</span><br><span class="line">            printf(&quot;%d&quot;, s[0] - &apos;0&apos; - 1);</span><br><span class="line">            for (int i = 1; i &lt; len; i++) &#123;</span><br><span class="line">                printf(&quot;%c&quot;, s[i]);</span><br><span class="line">            &#125;</span><br><span class="line">            for (int i = len - 2; i &gt; 0; i--) &#123;</span><br><span class="line">                printf(&quot;%c&quot;, s[i]);</span><br><span class="line">            &#125;</span><br><span class="line">            printf(&quot;%d\n&quot;, s[0] - &apos;0&apos; - 1);</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    return 0;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p><a href="http://www.ivan-zcy.top">转载请注明出处！！！</a>  </p>
+<p>如果有写的不对或者不全面的地方 可通过主页的联系方式进行指正，谢谢</p>
+
+                </div>
+            </article>
+        </div>
+        <!-- Pre or Next -->
         
-        
-          <h2 class="year">2018</h2>
-          <ul class="list">
+        <div class="container" >
+            <ul class="pager">
+                
+                
+                <li class="next">
+                    <a href="/2018/11/15/2018icpc北京Jin-Yong-Wukong-Ranking-List传递闭包/" rel="prev">上一篇</a>
+                </li>
+                
+            </ul>
+        </div>
+        　　　　<!-- Comments -->
+        <div class="container">
             
-  <li>
-    <span class="date">
-      2018-11-15
-    </span>
-    <a href="/2018/11/15/2018icpc-Palindromes推规律/" class="title">
-      2018icpc Palindromes推规律
-    </a>
-  </li>
+<section id="comment">
+  <!-- <h1 class="title">Comments</h1> -->
 
-  <li>
-    <span class="date">
-      2018-11-09
-    </span>
-    <a href="/2018/11/09/2018icpc青岛Tournament-规律-思维/" class="title">
-      2018icpc青岛Tournament 规律+思维
-    </a>
-  </li>
-
-  <li>
-    <span class="date">
-      2018-11-09
-    </span>
-    <a href="/2018/11/09/2018icpc青岛Flippy-Sequence-思维/" class="title">
-      2018icpc青岛Flippy Sequence 思维
-    </a>
-  </li>
-
-  <li>
-    <span class="date">
-      2018-11-05
-    </span>
-    <a href="/2018/11/05/计蒜客Algebraic-Teamwork思维/" class="title">
-      计蒜客Algebraic Teamwork思维
-    </a>
-  </li>
-
-  <li>
-    <span class="date">
-      2018-10-10
-    </span>
-    <a href="/2018/10/10/Project-Euler-32/" class="title">
-      Project Euler-032思维
-    </a>
-  </li>
-
-
-          </ul>
-        
-      </div>
-    </div>
-  </div>
   
+</section>
 
+
+        </div>
+        
+        　　　　
+    </div>
 </div>
 
 
