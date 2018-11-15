@@ -14,7 +14,7 @@
 
   <!--Open Graph Title-->
   
-      <meta property="og:title" content="2018icpc北京Frog and Portal转换二进制"/>
+      <meta property="og:title" content="2018icpc北京站总结"/>
   
   <!--Open Graph Description-->
   
@@ -42,7 +42,7 @@
     </script>
   <!-- Title -->
   
-  <title>2018icpc北京Frog and Portal转换二进制 - Zcy</title>
+  <title>2018icpc北京站总结 - Zcy</title>
 
 
   <link rel="shortcut icon" href="/favicon.ico">
@@ -173,7 +173,7 @@
                 <!-- Title date & tags -->
                 <div class="post-header">
                     <h1 class="entry-title">
-                        2018icpc北京Frog and Portal转换二进制
+                        2018icpc北京站总结
                         
                     </h1>
 
@@ -183,52 +183,18 @@
                 </p>
                 <!-- Post Main Content -->
                 <div class="entry-content">
-                    <p><img src="/2018/11/15/2018icpc北京Frog-and-Portal转换二进制/titile2.jpg" alt="titile2"></p>
+                    <p><img src="/2018/11/15/2018icpc北京站总结/title.jpg" alt="title"></p>
 <a id="more"></a>
-<p>题意：</p>
-<p>时间限制:1000ms</p>
-<p>单点时限:1000ms</p>
-<p>内存限制:512MB</p>
-<p>描述</p>
-<p>A small frog wants to get to the other side of a river. The frog is initially located at one bank of the river (position 0) and wants to get to the other bank (position 200). Luckily, there are 199 leaves (from position 1 to position 199) on the river, and the frog can jump between the leaves. When at position p, the frog can jump to position p+1 or position p+2.How many different ways can the small frog get to the bank at position 200? This is a classical problem. The solution is the 201st number of Fibonacci sequence. The Fibonacci sequence is constructed as follows: F1=F2=1;Fn=Fn-1+Fn-2.Now you can build some portals on the leaves. For each leaf, you can choose whether to build a portal on it. And you should set a destination for each portal. When the frog gets to a leaf with a portal, it will be teleported to the corresponding destination immediately. If there is a portal at the destination, the frog will be teleported again immediately. If some portal destinations form a cycle, the frog will be permanently trapped inside. Note that You cannot build two portals on the same leaf.Can you build the portals such that the number of different ways that the small frog gets to position 200 from position 0 is M?</p>
-<p>输入</p>
-<p>There are no more than 100 test cases.Each test case consists of an integer M, indicating the number of ways that the small frog gets to position 200 from position 0. (0 ≤ M &lt; 232)</p>
-<p>输出</p>
-<p>For each test case:The first line contains a number K, indicating the number of portals.Then K lines follow. Each line has two numbers ai and bi, indicating that you place a portal at position ai and it teleports the frog to position bi.You should guarantee that 1 ≤ K, ai, bi ≤ 199, and ai ≠ aj if i ≠ j. If there are multiple solutions, any one of them is acceptable.</p>
-<p>样例输入</p>
-<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">0</span><br><span class="line">1</span><br><span class="line">5</span><br></pre></td></tr></table></figure>
-<p>样例输出</p>
-<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">2</span><br><span class="line">1 1</span><br><span class="line">2 1</span><br><span class="line">2</span><br><span class="line">1 199</span><br><span class="line">2 2</span><br><span class="line">2</span><br><span class="line">4 199</span><br><span class="line">5 5</span><br></pre></td></tr></table></figure>
-<p>​    这道题意思就是一共有200层楼梯，可以一次上一层，也可以一次上两层。我们可以建造若干个传送门，可以直接从a传送到b（强制传送）。给你一个n，问到第200层有n种方案数，需要建多少个传送门，如何建？（多种建造方案任选一种即可）</p>
-<p>思路：</p>
-<p>​    这道题应该深思如何建造传送门。有3种合理的建造：</p>
-<ol>
-<li><p>由k层传送到199层，这样总方案数会加上第k层的方案数</p>
-</li>
-<li><p>由k层传送到k层。死循环，总方案数不会记入该层方案数</p>
-</li>
-<li><p>由k层传送到k+1层。会使k层的方案数累计到k+1层中。</p>
-<p>由这三种构造，我们可以转化为二进制来求解。</p>
-<p>比如当n为7时，它的二进制为111，也就是1 + 2 + 4</p>
-<p>那么传送门就应该建6个。</p>
-<p>分别是1传送到199（总方案数+1）</p>
-<p>（这样2，3分别有1，1种方案数）</p>
-<p>3传送到4</p>
-<p>（这样4，5分别有2，2种方案数）</p>
-<p>5传送到199 （总方案数+2）</p>
-<p>（这样6，7分别有2，2种方案数）</p>
-<p>7传送到8</p>
-<p>（这样8，9分别有4，4种方案数）</p>
-<p>9传送到199 （总方案数+4）</p>
-<p>10传送到10 （封死）</p>
-<p>（10以后无法到达200，方案数为0）</p>
-<p>这样总方案数为7，符合条件</p>
-</li>
-</ol>
-<p>代码：</p>
-<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">#include &lt;stdio.h&gt;</span><br><span class="line">#include &lt;string.h&gt;</span><br><span class="line">int flag[205];</span><br><span class="line">long long dp[205];</span><br><span class="line">int main () &#123;</span><br><span class="line">    long long n;</span><br><span class="line">    while(scanf(&quot;%lld&quot;, &amp;n) == 1) &#123;</span><br><span class="line">        int ans = 0;</span><br><span class="line">        memset(flag, 0, sizeof(flag));</span><br><span class="line">        if (n == 0) &#123;</span><br><span class="line">            printf(&quot;2\n1 1\n2 1\n&quot;);</span><br><span class="line">            continue;</span><br><span class="line">        &#125;</span><br><span class="line">        if (n % 2) &#123;</span><br><span class="line">            flag[1] = 1;</span><br><span class="line">            ans ++;</span><br><span class="line">            n /= 2;</span><br><span class="line">            int inx = 3;</span><br><span class="line">            while(n) &#123;</span><br><span class="line">                flag[inx] = 2;</span><br><span class="line">                ans++;</span><br><span class="line">                inx += 2;</span><br><span class="line">                if (n % 2) &#123;</span><br><span class="line">                    flag[inx] = 1;</span><br><span class="line">                    ans++;</span><br><span class="line">                    inx += 2;</span><br><span class="line">                &#125;</span><br><span class="line">                n /= 2;</span><br><span class="line">            &#125;</span><br><span class="line">            ans++;</span><br><span class="line">            flag[inx - 1] = 3;</span><br><span class="line">        &#125; else &#123;</span><br><span class="line">            n /= 2;</span><br><span class="line">            int inx = 1;</span><br><span class="line">            while(n) &#123;</span><br><span class="line">                flag[inx] = 2;</span><br><span class="line">                ans++;</span><br><span class="line">                inx += 2;</span><br><span class="line">                if (n % 2) &#123;</span><br><span class="line">                    flag[inx] = 1;</span><br><span class="line">                    ans++;</span><br><span class="line">                    inx += 2;</span><br><span class="line">                &#125;</span><br><span class="line">                n /= 2;</span><br><span class="line">            &#125;</span><br><span class="line">            ans++;</span><br><span class="line">            flag[inx - 1] = 3;</span><br><span class="line">        &#125;</span><br><span class="line">        printf(&quot;%d\n&quot;, ans);</span><br><span class="line">        for (int i = 1; i &lt;= 198; i++) &#123;</span><br><span class="line">            if (flag[i] == 1) &#123;</span><br><span class="line">                printf(&quot;%d 199\n&quot;, i);</span><br><span class="line">            &#125; else if (flag[i] == 2) &#123;</span><br><span class="line">                printf(&quot;%d %d\n&quot;, i, i + 1);</span><br><span class="line">            &#125; else if (flag[i] == 3)&#123;</span><br><span class="line">                printf(&quot;%d %d\n&quot;, i, i);</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    return 0;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<p><a href="http://www.ivan-zcy.top">转载请注明出处！！！</a>  </p>
-<p>如果有写的不对或者不全面的地方 可通过主页的联系方式进行指正，谢谢</p>
+<p>​    亚洲区预赛北京站应该是国内最难打的一站吧。。刚开始就没抱什么期待。比赛前一星期做了青岛的重现赛，5题银牌水平，突然就对北京有了一丝期待，但愿能获个奖，希望今年不白玩。</p>
+<p>​    现场赛开始后刚开始，队友告诉我I题可以用数位dp做，连忙看起了i，另两个队友看起了A题。没过10分钟清华大学A题一血。增林老哥紧随其后没多久A题Accept。赛后问队友A题好像是传递闭包，然后自己今天补了一下这道题：<a href="http://www.ivan-zcy.top/2018/11/15/2018icpc北京Jin-Yong-Wukong-Ranking-List传递闭包/">链接</a></p>
+<p>​       I题修修改改，找其中关系解决了n取1e5范围的所有可能。结果WA了，再读题才发现，它喵的这道题n的长度是1e5，而不是数字。。。那肯定规律题没跑了，让志愿者打印了之前处理前9位数的表。找到了规律。在第2个小时Accpet掉：<a href="http://www.ivan-zcy.top/2018/11/15/2018icpc-Palindromes推规律/">链接</a></p>
+<p>​    D题现场赛被我刨除相邻建传送门的可能。。从那之后思路再也没往那上面靠过。很遗憾没出，今天补了补20多分钟就出了，满心悔恨～还是自己脑子太笨了。。 <a href="http://www.ivan-zcy.top/2018/11/15/2018icpc北京Frog-and-Portal转换二进制/">链接</a></p>
+<p>​    B题至今很迷，不知道问题出到哪儿了。我把WA的代码贴出来，希望大佬们能出一组样例Hack一下我的代码。。</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">#include &lt;stdio.h&gt;</span><br><span class="line">#include &lt;string&gt;</span><br><span class="line">#include &lt;iostream&gt;</span><br><span class="line">#include &lt;string.h&gt;</span><br><span class="line">using namespace std;</span><br><span class="line"></span><br><span class="line">string str;</span><br><span class="line">int num[205];</span><br><span class="line">int ans[205];</span><br><span class="line">int add[205];</span><br><span class="line">char c;</span><br><span class="line"></span><br><span class="line">int main () &#123;</span><br><span class="line">    str.clear();</span><br><span class="line">    memset(ans, 0, sizeof(ans));</span><br><span class="line">    memset(add, 0, sizeof(add));</span><br><span class="line">    int tot = 0;</span><br><span class="line">    int flggg = 0;</span><br><span class="line">    int numm = 0;</span><br><span class="line">    while((c = getchar()) != EOF) &#123;</span><br><span class="line">        if (c == &apos;#&apos;) break;</span><br><span class="line">        if (c == &apos;\n&apos;) &#123;</span><br><span class="line">            tot++;</span><br><span class="line">            num[tot] = numm;</span><br><span class="line">            numm = 0;</span><br><span class="line">            if (str[str.length() - 1] &gt;= &apos;0&apos; &amp;&amp; str[str.length() - 1] &lt;= &apos;9&apos;) &#123;</span><br><span class="line">                flggg = 1;</span><br><span class="line">            &#125; else &#123;</span><br><span class="line">                flggg = 2;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125; else &#123;</span><br><span class="line">            numm++;</span><br><span class="line">            if (c &gt;= &apos;0&apos; &amp;&amp; c &lt;= &apos;9&apos; &amp;&amp; flggg == 1) &#123;</span><br><span class="line">                str += c;</span><br><span class="line">                flggg = 0;</span><br><span class="line">            &#125; else if (flggg) &#123;</span><br><span class="line">                numm++;</span><br><span class="line">                str += &quot; &quot;;</span><br><span class="line">                str += c;</span><br><span class="line">                flggg = 0;</span><br><span class="line">            &#125; else &#123;</span><br><span class="line">                str += c;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    str += &quot; &quot;;</span><br><span class="line">    num[tot]++;</span><br><span class="line">    for (int i = 1; i &lt;= tot; i ++) &#123;</span><br><span class="line">        add[i] = add[i - 1] + num[i];</span><br><span class="line">    &#125;</span><br><span class="line">    int flag = 0, start = -1, flaa = 0, num = 0;</span><br><span class="line">    for (int i = 0; i &lt; str.length(); i++) &#123;</span><br><span class="line">        if (flag == 1) &#123;</span><br><span class="line">            if (str[i] &gt;= &apos;a&apos; &amp;&amp; str[i] &lt;= &apos;z&apos;) &#123;</span><br><span class="line">                flag = 2;</span><br><span class="line">            &#125; else if (str[i] &gt;= &apos;0&apos; &amp;&amp; str[i] &lt;= &apos;9&apos; &amp;&amp; flaa == 1)&#123;</span><br><span class="line">                flag = 2;</span><br><span class="line">            &#125; else if (str[i] == &apos; &apos;)&#123;</span><br><span class="line">                if (start != -1) &#123;</span><br><span class="line">                    if (num != 0) printf(&quot; &quot;);</span><br><span class="line">                    for (int j = start; j &lt; i; j++) &#123;</span><br><span class="line">                        printf(&quot;%c&quot;, str[j]);</span><br><span class="line">                    &#125;</span><br><span class="line">                    num++;</span><br><span class="line">                    for (int j = 1; j &lt;= tot; j++) &#123;</span><br><span class="line">                        if (add[j] &gt; start) &#123;</span><br><span class="line">                            ans[j] ++;</span><br><span class="line">                            break;</span><br><span class="line">                        &#125;</span><br><span class="line">                    &#125;</span><br><span class="line">                &#125;</span><br><span class="line">                start = -1;</span><br><span class="line">                flag = 0;</span><br><span class="line">                flaa = 0;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125; else if (flag == 2)&#123;</span><br><span class="line">            if (str[i] == &apos; &apos;) &#123;</span><br><span class="line">                start = -1;</span><br><span class="line">                flag = 0;</span><br><span class="line">                flaa = 0;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125; else &#123;</span><br><span class="line">            if (str[i] &gt;= &apos;0&apos; &amp;&amp; str[i] &lt;= &apos;9&apos;) &#123;</span><br><span class="line">                flag = 1;</span><br><span class="line">                start = i;</span><br><span class="line">                if (str[i] == &apos;0&apos;) flaa = 1;</span><br><span class="line">            &#125; else if (str[i] &gt;= &apos;a&apos; &amp;&amp; str[i] &lt;= &apos;z&apos;) &#123;</span><br><span class="line">                flag = 2;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    if (num != 0) &#123;</span><br><span class="line">        printf(&quot;\n&quot;);</span><br><span class="line">    &#125;</span><br><span class="line">    for (int i = 1; i &lt;= tot; i ++) &#123;</span><br><span class="line">        printf(&quot;%d\n&quot;, ans[i]);</span><br><span class="line">    &#125;</span><br><span class="line">    return 0;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>​    最后很惊险的拿了亚洲区预赛北京站的铜牌。。虽然今年很遗憾，但也算满足了。哪里跌倒哪里爬起，以后的日子继续加油吧～</p>
+<p><img src="/2018/11/15/2018icpc北京站总结/1.jpg" alt="1"></p>
+<p><img src="/2018/11/15/2018icpc北京站总结/2.jpg" alt="2"></p>
+<p><img src="/2018/11/15/2018icpc北京站总结/3.jpg" alt="3"></p>
 
                 </div>
             </article>
@@ -238,13 +204,9 @@
         <div class="container" >
             <ul class="pager">
                 
-                <li class="previous">
-                    <a href="/2018/11/15/2018icpc北京站总结/" rel="prev">下一篇</a>
-                </li>
-                
                 
                 <li class="next">
-                    <a href="/2018/11/15/2018icpc-Palindromes推规律/" rel="prev">上一篇</a>
+                    <a href="/2018/11/15/2018icpc北京Frog-and-Portal转换二进制/" rel="prev">上一篇</a>
                 </li>
                 
             </ul>
