@@ -1156,7 +1156,8 @@ pre {
     opacity: 0.5; }
 
 .archive {
-  padding-bottom: 60px; }
+  padding-bottom: 60px;
+  opacity: 0.6; }
   .archive h2.year {
     color: #444444;
     padding-left: 1em; }
