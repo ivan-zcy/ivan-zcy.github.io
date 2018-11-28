@@ -1189,7 +1189,7 @@ pre {
   width: 149px; }
 
 #rocket-to-top .level-2 {
-  background: url("http://i2.bvimg.com/670216/49f569558029c36c.png") no-repeat scroll -149px 0 transparent;
+  background: url("/img/rocket_button.jpg") no-repeat scroll -149px 0 transparent;
   display: none;
   height: 250px;
   opacity: 0;
@@ -1203,7 +1203,7 @@ pre {
   z-index: 2; }
 
 #rocket-to-top {
-  background: url("http://i2.bvimg.com/670216/49f569558029c36c.png") no-repeat scroll 0 0 transparent;
+  background: url("/img/rocket_button.jpg") no-repeat scroll 0 0 transparent;
   cursor: default;
   display: block;
   height: 150px;
