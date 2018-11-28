@@ -1174,14 +1174,16 @@ pre {
 
 #canvas {
   width: 100%;
-  height: 100%; }
+  height: 100%;
+  opacity: 0.2; }
 
 .bg_content {
   position: fixed;
   top: 0;
   z-index: -1;
   width: 100%;
-  height: 100%; }
+  height: 100%;
+  opacity: 0.2; }
 
 #comment #ds-thread #ds-reset a.ds-like-thread-button {
   background-color: #fff;
