@@ -622,7 +622,7 @@ Content
   background: white;
   position: relative;
   margin: 20px 0;
-  opacity: 0.7; }
+  opacity: 0.9; }
 
 .container {
   max-width: 850px;
@@ -1372,5 +1372,5 @@ pre {
 
 @media (max-width: 700px) {
   #tags .tags-container {
-    opacity: 0.8;
+    opacity: 0.9;
     width: 100%; } }
