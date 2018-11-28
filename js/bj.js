@@ -27,7 +27,7 @@
 		Round_item.prototype.move = function(){
 			this.y-=0.15;
 			if(this.y<=-10){
-				this.y=HEIGHT+10;canvas
+				this.y=HEIGHT+10;
 			}
 			this.draw();
 		};
