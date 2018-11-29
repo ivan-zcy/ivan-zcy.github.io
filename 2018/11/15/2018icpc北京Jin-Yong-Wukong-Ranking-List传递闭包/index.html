@@ -72,18 +72,6 @@
         }
     </style>
 
-    <!--博文密码-->
-    <script>
-        (function(){
-            if('{{ page.password }}'){
-                if (prompt('请输入文章密码') !== '{{ page.password }}'){
-                    alert('密码错误！');
-                    history.back();
-                }
-            }
-        })();
-    </script>
-
 </head>
 
 <body>
@@ -316,6 +304,17 @@
         　　　　
     </div>
 </div>
+<!--博文密码-->
+<script>
+    (function(){
+        if('{{ page.password }}'){
+            if (prompt('请输入文章密码') !== '{{ page.password }}'){
+                alert('密码错误！');
+                history.back();
+            }
+        }
+    })();
+</script>
 
 
   <div id="Thplayer"></div>
