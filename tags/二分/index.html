@@ -71,6 +71,19 @@
             border-left-color: #54efef;    /*左边框颜色*/
         }
     </style>
+
+    <!--博文密码-->
+    <script>
+        (function(){
+            if('{{ page.password }}'){
+                if (prompt('请输入文章密码') !== '{{ page.password }}'){
+                    alert('密码错误！');
+                    history.back();
+                }
+            }
+        })();
+    </script>
+
 </head>
 
 <body>
