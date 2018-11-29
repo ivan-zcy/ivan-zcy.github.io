@@ -543,7 +543,7 @@ Content
   .headline h1 {
     margin-top: 50px;
     margin-bottom: 50px;
-    color: #d32f2f; }
+    color: #cccccc; }
 
 .cover_mask {
   position: absolute;
@@ -840,7 +840,7 @@ Footer
 .site-header {
   width: 100%;
   background: #fff;
-  border-top: 2px solid #ec1106;
+  border-top: 2px solid #cccccc;
   z-index: 30;
   position: fixed;
   top: 0;
@@ -1089,7 +1089,7 @@ pre {
     color: #0092db; }
   pre .keyword,
   pre .attribute {
-    color: #e96900; }
+    color: #cccccc; }
   pre .number,
   pre .literal {
     color: #ae81ff; }
@@ -1146,7 +1146,7 @@ pre {
   pre .tex .formula {
     color: #b3b3b3; }
   pre .deletion {
-    color: #BA4545; }
+    color: #cccccc; }
   pre .coffeescript .javascript,
   pre .javascript .xml,
   pre .tex .formula,
