@@ -474,17 +474,6 @@ Ctrl+w o 使光标所在缓冲区最大化，其他缓冲区隐藏
         　　　　
     </div>
 </div>
-<!--博文密码-->
-<script>
-    (function(){
-        if('{{ page.password }}'){
-            if (prompt('请输入文章密码') !== '{{ page.password }}'){
-                alert('密码错误！');
-                history.back();
-            }
-        }
-    })();
-</script>
 
 
   <div id="Thplayer"></div>

@@ -202,7 +202,7 @@
       <span class="post-meta-item-icon">
         <i class="fa fa-keyboard-o"></i>
         <span class="post-meta-item-text">  字数统计: </span>
-        <span class="post-count">365字</span>
+        <span class="post-count">357字</span>
       </span>
     </span>
 
@@ -249,7 +249,6 @@
 <p>​    ——博文尾部自动添加声明</p>
 <p>​    ——实现博文字数统计</p>
 <p>​    ——添加顶部加载条</p>
-<p>​    ——博文允许设置密码</p>
 
                 </div>
             </article>
@@ -291,17 +290,6 @@
         　　　　
     </div>
 </div>
-<!--博文密码-->
-<script>
-    (function(){
-        if('{{ page.password }}'){
-            if (prompt('请输入文章密码') !== '{{ page.password }}'){
-                alert('密码错误！');
-                history.back();
-            }
-        }
-    })();
-</script>
 
 
   <div id="Thplayer"></div>
