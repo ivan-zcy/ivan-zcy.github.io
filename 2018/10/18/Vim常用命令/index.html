@@ -394,6 +394,11 @@ Ctrl+w o 使光标所在缓冲区最大化，其他缓冲区隐藏
                 </div>
             </article>
         </div>
+        <div>
+            {% if not is_index %}
+            {% include 'passage-end-tag.swig' %}
+            {% endif %}
+        </div>
         <!-- Pre or Next -->
         
         <div class="container" >

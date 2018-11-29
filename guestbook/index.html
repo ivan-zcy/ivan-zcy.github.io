@@ -197,6 +197,11 @@ window.document.write('<script id="changyan_mobile_js" charset="utf-8" type="tex
                 </div>
             </article>
         </div>
+        <div>
+            {% if not is_index %}
+            {% include 'passage-end-tag.swig' %}
+            {% endif %}
+        </div>
         <!-- Pre or Next -->
         
         　　　　
