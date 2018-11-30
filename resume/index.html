@@ -14,7 +14,7 @@
 
   <!--Open Graph Title-->
   
-      <meta property="og:title" content="C语言查缺补漏(十二)"/>
+      <meta property="og:title" content="resume"/>
   
   <!--Open Graph Description-->
   
@@ -42,7 +42,7 @@
     </script>
   <!-- Title -->
   
-  <title>C语言查缺补漏(十二) - Zcy</title>
+  <title>resume - Zcy</title>
 
 
   <link rel="shortcut icon" href="/favicon.ico">
@@ -199,7 +199,7 @@
                 <!-- Title date & tags -->
                 <div class="post-header">
                     <h1 class="entry-title">
-                        C语言查缺补漏(十二)
+                        resume
                         
                     </h1>
 
@@ -211,7 +211,7 @@
       <span class="post-meta-item-icon">
         <i class="fa fa-keyboard-o"></i>
         <span class="post-meta-item-text">  字数统计: </span>
-        <span class="post-count">466字</span>
+        <span class="post-count">0字</span>
       </span>
     </span>
 
@@ -226,30 +226,11 @@
                 </div>
 
                 <p class="a-posted-on" style="color: #ccc;">
-                    2018-10-06
+                    2018-11-30
                 </p>
                 <!-- Post Main Content -->
                 <div class="entry-content">
-                    <p><img src="/2018/10/06/C语言查缺补漏-12/title.jpg" alt="title"></p>
-<a id="more"></a>
-<h3 id="忽略点十二：main函数参数"><a href="#忽略点十二：main函数参数" class="headerlink" title="忽略点十二：main函数参数"></a>忽略点十二：main函数参数</h3><p>​    大家都知道，main函数的完整格式如下：</p>
-<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">int main(int argc, char *argv[]) &#123;</span><br><span class="line">    // ...</span><br><span class="line">    return 0;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<p>​    这两个参数有什么用呢？</p>
-<p>​    <code>main</code>函数第一个参数是整数型，代表命令行参数的个数（系统依据用户输入的参数个数自动生成，非手动输入），第二个参是<code>char *argv[]</code>，也就是char型指针数组，用于储存用户从命令行中传进来的参</p>
-<p>​    例如：在命令行中输入<code>./main hello world</code></p>
-<p>​    此时，<code>argc</code>为 <code>3</code>，<code>argv[0]</code>为<code>./main</code>，<code>argv[1]</code>为<code>hello</code>，<code>argv[2]</code>为<code>world</code></p>
-<p>​    命令行参数默认是由空格分隔，但如果某个参数中含空格我们应该怎么办</p>
-<p>这时我们在输入含空格的参数时要用引号将整个参数包裹起来，例如：</p>
-<p>​    执行<code>./main “hello world” is my greet</code></p>
-<p>​    此时，<code>argc</code>为 <code>5</code>，<code>argv[0]</code>为<code>./main</code>，<code>argv[1]</code>为<code>hello world</code>，<code>argv[2]</code>为<code>is</code>，<code>argv[3]</code>为<code>my</code>，<code>argv[4]</code>为<code>greet</code></p>
-<h5 id="易错点！！！！"><a href="#易错点！！！！" class="headerlink" title="易错点！！！！"></a>易错点！！！！</h5><h5 id="int-main-int-arc-char-argv-中argc取的不是main函数的参数个数！！！"><a href="#int-main-int-arc-char-argv-中argc取的不是main函数的参数个数！！！" class="headerlink" title="int main(int arc, char **argv)中argc取的不是main函数的参数个数！！！"></a>int main(int arc, char **argv)中argc取的不是main函数的参数个数！！！</h5><p>​    main函数个数固定是2！！argc取的是命令行中键入的参数个数！！而不是main函数的参数个数</p>
-<p>​    关于参数的使用：</p>
-<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">int main(int argc, char **argv) &#123;		//**argv等价于*argv[]</span><br><span class="line">    for (int i = 0; i &lt; argc; i ++) &#123;</span><br><span class="line">        printf(&quot;%s\n&quot;, argv[i]);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<p>​    main函数的参数也挺有用的，比如你可以设置进入一个软件的两种模式</p>
-<p>​    比如当<code>strcmp(argv[1], “master”) == 0</code>时，进入该软件的管理员模式，其余情况或者无参时进入用户模式等等。</p>
-<p>​    除了上述，main函数参还有很多黑科技！！！等待大家去发现，哈哈哈～</p>
-<p><a href="http://www.ivan-zcy.top">转载请注明出处！！！</a>  </p>
-<p>如果有写的不对或者不全面的地方 可通过主页的联系方式进行指正，谢谢！</p>
+                    <p><img src="/resume/简历.jpg" alt="简历"></p>
 
                 </div>
             </article>
@@ -265,32 +246,6 @@
         </div>
         <br>
         <!-- Pre or Next -->
-        
-        <div class="container" >
-            <ul class="pager">
-                
-                <li class="previous">
-                    <a href="/2018/10/06/C语言查缺补漏-13/" rel="prev">下一篇</a>
-                </li>
-                
-                
-                <li class="next">
-                    <a href="/2018/10/06/C语言查缺补漏-11/" rel="prev">上一篇</a>
-                </li>
-                
-            </ul>
-        </div>
-        　　　　<!-- Comments -->
-        <div class="container">
-            
-<section id="comment">
-  <!-- <h1 class="title">Comments</h1> -->
-
-  
-</section>
-
-
-        </div>
         
         　　　　
     </div>
