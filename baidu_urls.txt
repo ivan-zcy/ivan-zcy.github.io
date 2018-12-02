@@ -1,4 +1,6 @@
 http://www.ivan-zcy.top/2018/12/02/哈理工院赛-小乐乐搭积木/
+http://www.ivan-zcy.top/2018/12/02/哈理工院赛-小乐乐学博弈/
+http://www.ivan-zcy.top/2018/12/02/哈理工院赛-小乐乐匹配字符串/
 http://www.ivan-zcy.top/2018/12/02/哈理工院赛-小乐乐玩木桶-1/
 http://www.ivan-zcy.top/2018/12/02/哈理工院赛-小乐乐玩木桶/
 http://www.ivan-zcy.top/2018/12/02/哈理工院赛-小乐乐的组合数/
@@ -96,5 +98,3 @@ http://www.ivan-zcy.top/2018/10/09/Project-Euler-005/
 http://www.ivan-zcy.top/2018/10/09/Project-Euler-030/
 http://www.ivan-zcy.top/2018/10/08/Project-Euler-003/
 http://www.ivan-zcy.top/2018/10/08/Project-Euler-002/
-http://www.ivan-zcy.top/2018/10/08/Project-Euler-001/
-http://www.ivan-zcy.top/2018/10/07/C语言查缺补漏-十七/
