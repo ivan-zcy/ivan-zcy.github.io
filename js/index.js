@@ -12,7 +12,7 @@ if (match) {
 
 
 "undefined" == typeof window.define && (window.define = function() {}, window.define.amd = 1),
-    "undefined" == typeof window.$AJB && (window.$AJB = {}),
+"undefined" == typeof window.$AJB && (window.$AJB = {}),
     $AJB.lib = {},
     $AJB.general = {},
     $AJB.page = {},
@@ -40,8 +40,8 @@ if (match) {
         function a(a) {
             function c() {
                 b(h, "click", function() {
-                        e.fire(g, f)
-                    }),
+                    e.fire(g, f)
+                }),
                     j.innerHTML = d.isAndroid ? "GO" : "▶"
             }
             var h = a.getElementsByClassName("button")[0],
@@ -89,7 +89,7 @@ if (match) {
                     update: function() {
                         var a = h.point,
                             c = 30;
-                        h.enabled && (0 === e ? (d = h.color, a[0] < b / 2 ? (a[0] = Math.min(a[0] + c, b / 2), h.point = a) : (h.point = a, g = !0)) : 1 === e && (d = "#000", a[0] > b / 2 ? (a[0] = Math.max(a[0] - c, b / 2), h.point = a) : (h.point = a, g = !0)))
+                        h.enabled && (0 === e ? (d = h.color, a[0] < b / 2 ? (a[0] = Math.min(a[0] + c, b / 2), h.point = a) : (h.point = a, g = !0)) : 1 === e && (d = "#a9ecfd", a[0] > b / 2 ? (a[0] = Math.max(a[0] - c, b / 2), h.point = a) : (h.point = a, g = !0)))
                     },
                     render: function() {
                         var e = h.point;
@@ -158,8 +158,8 @@ if (match) {
         function d(a) {
             var b = 1;
             return h(document.body, "mousedown", function() {
-                    b = -b
-                }),
+                b = -b
+            }),
 
 
                 function() {
@@ -172,8 +172,8 @@ if (match) {
 
         function e(a, b, c, d) {
             return h(document.body, "mousedown", function() {
-                    d = -d
-                }),
+                d = -d
+            }),
 
 
                 function() {
@@ -366,7 +366,7 @@ if (match) {
                         if (h) {
                             for (b = n[0].rad(), a = g - 3 * b; h--;) n[h].pos(f, d.simple(n[h].sv, a, n[h].st, 50)),
                                 c = n[n.length - 1].pos().y,
-                                n[h].pos().y === a && (o.fire(e, n[h]), n.splice(h, 1));
+                            n[h].pos().y === a && (o.fire(e, n[h]), n.splice(h, 1));
                             for (; i--;) m[i].pos(f, c + 3 * b * (i + 1))
                         }
                     },
@@ -410,10 +410,10 @@ if (match) {
                 h = {
                     pos: function(a, b) {
                         return "undefined" != typeof a && (i = a),
-                            "undefined" != typeof b && (j = b), {
-                                x: i,
-                                y: j
-                            }
+                        "undefined" != typeof b && (j = b), {
+                            x: i,
+                            y: j
+                        }
                     },
                     scale: function(a) {
                         return "undefined" != typeof a && (f = a),
@@ -424,7 +424,7 @@ if (match) {
                             c
                     },
                     render: function(e) {
-                        b.drawCircle(a, i, j, c, "#ffffff"),
+                        b.drawCircle(a, i, j, c, "#a9ecfd"),
                             "undefined" != typeof d ? g(d) : "undefined" != typeof e && g(e)
                     },
                     destroy: function() {
@@ -516,7 +516,7 @@ if (match) {
                         var c, e = l.length,
                             f = a.width,
                             h = a.height;
-                        for (d.clearRect(0, 0, f, h), c = 0; e > c; c++) b.drawLine(d, n, o, l[c].ball.pos().x, l[c].ball.pos().y, "#ffffff", 1.5 * g),
+                        for (d.clearRect(0, 0, f, h), c = 0; e > c; c++) b.drawLine(d, n, o, l[c].ball.pos().x, l[c].ball.pos().y, "#a9ecfd", 1.5 * g),
                             l[c].ball.render();
                         i.render()
                     },
@@ -602,7 +602,7 @@ if (match) {
             }
 
             function r() {
-                "pass" !== A && (a.style.backgroundColor = "#1cb01a", A = "pass", v = +new Date)
+                "pass" !== A && (a.style.backgroundColor = "#1CB01A", A = "pass", v = +new Date)
             }
 
             function s() {
@@ -688,12 +688,12 @@ if (match) {
 
         function e() {
             n(document.body, "mousedown", function(a) {
-                    var b;
-                    if (a && a.changedTouches)
-                        for (b = a.changedTouches.length; b--;) h.shot();
-                    else h.shot();
-                    "1" != a.target.getAttribute("data-capture") && q(a)
-                }),
+                var b;
+                if (a && a.changedTouches)
+                    for (b = a.changedTouches.length; b--;) h.shot();
+                else h.shot();
+                "1" != a.target.getAttribute("data-capture") && q(a)
+            }),
                 n(w, "mousedown", function() {
                     w.style.display = "none"
                 }),
@@ -821,13 +821,13 @@ if (match) {
                         C.hide(),
                         i.switchStage(1, function() {
                             h.run(D)
-                                // ga('send', {
-                                //     'hitType': 'event', // Required.
-                                //     'eventCategory': 'click', // Required.
-                                //     'eventAction': 'start_' + openid, // Required.
-                                //     'eventLabel': 'other',
-                                //     'eventValue': 1
-                                // })
+                            // ga('send', {
+                            //     'hitType': 'event', // Required.
+                            //     'eventCategory': 'click', // Required.
+                            //     'eventAction': 'start_' + openid, // Required.
+                            //     'eventLabel': 'other',
+                            //     'eventValue': 1
+                            // })
                         })
                 })
         }
