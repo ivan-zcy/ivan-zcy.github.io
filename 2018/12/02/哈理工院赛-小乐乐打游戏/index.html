@@ -14,7 +14,7 @@
 
   <!--Open Graph Title-->
   
-      <meta property="og:title" content="哈理工院赛-小乐乐搭积木"/>
+      <meta property="og:title" content="哈理工院赛-小乐乐打游戏"/>
   
   <!--Open Graph Description-->
   
@@ -42,7 +42,7 @@
     </script>
   <!-- Title -->
   
-  <title>哈理工院赛-小乐乐搭积木 - Zcy</title>
+  <title>哈理工院赛-小乐乐打游戏 - Zcy</title>
 
 
   <link rel="shortcut icon" href="/favicon.ico">
@@ -200,7 +200,7 @@
                 <!-- Title date & tags -->
                 <div class="post-header">
                     <h1 class="entry-title">
-                        哈理工院赛-小乐乐搭积木
+                        哈理工院赛-小乐乐打游戏
                         
                     </h1>
 
@@ -212,7 +212,7 @@
       <span class="post-meta-item-icon">
         <i class="fa fa-keyboard-o"></i>
         <span class="post-meta-item-text">  字数统计: </span>
-        <span class="post-count">407字</span>
+        <span class="post-count">896字</span>
       </span>
     </span>
 
@@ -221,7 +221,7 @@
       <span class="post-meta-item-icon">
         <i class="fa fa-hourglass-half"></i>
         <span class="post-meta-item-text">  阅读时长: </span>
-        <span class="post-count">1分</span>
+        <span class="post-count">4分</span>
       </span>
     </span>
                 </div>
@@ -231,36 +231,23 @@
                 </p>
                 <!-- Post Main Content -->
                 <div class="entry-content">
-                    <p><img src="/2018/12/02/哈理工院赛-小乐乐搭积木/title.jpg" alt="title"></p>
+                    <p><img src="/2018/12/02/哈理工院赛-小乐乐打游戏/title8.jpg" alt="title8"></p>
 <a id="more"></a>
 <p>题目描述</p>
-<p>小乐乐想要给自己搭建一个积木城堡。 </p>
-<p>积木城堡我们假设为n*m的平面矩形。 </p>
-<p>小乐乐现在手里有1<em>2，2</em>1两种地砖。 </p>
-<p>小乐乐想知道自己有多少种组合方案。 </p>
+<p>​        小乐乐觉得学习太简单了，剩下那么多的时间好无聊，于是便想打游戏。<br>​        最近新出了一个特别火的游戏，叫吃猪，小乐乐准备玩一玩。<br>​        吃猪游戏很简单，给定一个地图，大小为n*m，在地图中会随机出现一个火山口，只要小乐乐能逃离这个地图，他便能吃猪！<br>​        但吃鸡远没有那么简单：<br>​        1.小乐乐每走一次只能上下左右四个方向中走一步。<br>​        2.小乐乐每走一步，火山喷发的岩浆就会向四周蔓延一个格子，所有岩浆走过的地方都视为被岩浆覆盖。<br>​        3.小乐乐碰到岩浆就会死。<br>​        4.地图中还有很多障碍，使得小乐乐不能到达，但是岩浆却可以把障碍融化。<br>​        5.小乐乐只有走到题目给定的终点才算游戏胜利，才能吃猪。<br>​        小乐乐哪见过这场面，当场就蒙了，就想请帮帮他，告诉他是否能吃猪。</p>
 <p>输入描述:</p>
-<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">第一行输入整数n,m。(1&lt;=n,m&lt;=10)</span><br></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">多组样例输入</span><br><span class="line"></span><br><span class="line">第一行给定n,m,(1 &lt;= n, m &lt;= 1000)代表地图的大小。</span><br><span class="line"></span><br><span class="line">接下来n行，每一行m个字符，代表地图，对于每一个字符，如果是&apos;.&apos;，代表是平地，&apos;S&apos;代表小乐乐起始的位置，</span><br><span class="line">&apos;E&apos;代表终点，&apos;#&apos;代表障碍物，&apos;F&apos;代表火山口。</span><br></pre></td></tr></table></figure>
 <p>输出描述:</p>
-<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">输出组合方案数。</span><br></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">输出只有一行。如果小乐乐能吃猪，输出&quot;PIG PIG PIG!&quot;。否则输出&quot;A! WO SI LA!&quot;。</span><br></pre></td></tr></table></figure>
 <p>示例1</p>
 <p>输入</p>
-<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">2 3</span><br></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">3 3</span><br><span class="line">F..</span><br><span class="line">#S#</span><br><span class="line">#.E</span><br></pre></td></tr></table></figure>
 <p>输出</p>
-<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">3</span><br></pre></td></tr></table></figure>
-<p>示例2</p>
-<p>输入</p>
-<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">1 3</span><br></pre></td></tr></table></figure>
-<p>输出</p>
-<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">0</span><br></pre></td></tr></table></figure>
-<p>示例3</p>
-<p>输入</p>
-<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">2 5</span><br></pre></td></tr></table></figure>
-<p>输出</p>
-<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">8</span><br></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">PIG PIG PIG!</span><br></pre></td></tr></table></figure>
 <p>思路：</p>
-<p>​    状压dp的入门题，把每一行的状态压缩成一个二进制数（竖为1横为0），然后转化为十进制。依次遍历第一行的所有状态方案数都初始化为1，然后依据dp递推式推出其余行。最后累加最后一行的所有可行性方案的和即可。</p>
+<p>​    两个BFS，注意下细节即可。。。</p>
 <p>代码：</p>
-<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">#include&lt;cstdio&gt;</span><br><span class="line">#include&lt;cstring&gt;</span><br><span class="line">#define ll long long</span><br><span class="line">#define Maxn 2048</span><br><span class="line">using namespace std;</span><br><span class="line">int chg[Maxn*Maxn][2];</span><br><span class="line">ll dp[1&lt;&lt;13][13];</span><br><span class="line">int n,m,tot;</span><br><span class="line"> </span><br><span class="line">void dfs(int c,int s,int scur)&#123;</span><br><span class="line">    if(c&gt;m) return;</span><br><span class="line">    if(c==m)&#123;</span><br><span class="line">        chg[tot][0]=s;</span><br><span class="line">        chg[tot++][1]=scur;</span><br><span class="line">        return;</span><br><span class="line">    &#125;</span><br><span class="line">    dfs(c+1,s&lt;&lt;1,scur&lt;&lt;1|1);</span><br><span class="line">    dfs(c+1,s&lt;&lt;1|1,scur&lt;&lt;1);</span><br><span class="line">    dfs(c+2,s&lt;&lt;2|3,scur&lt;&lt;2|3);</span><br><span class="line">&#125;</span><br><span class="line"> </span><br><span class="line">int main()</span><br><span class="line">&#123;</span><br><span class="line">    scanf(&quot;%d%d&quot;, &amp;n, &amp;m);</span><br><span class="line">    if(m&gt;n) &#123;</span><br><span class="line">        int kk = m;</span><br><span class="line">        m = n;</span><br><span class="line">        n = kk;</span><br><span class="line">    &#125;</span><br><span class="line">    tot=0;</span><br><span class="line">    dfs(0,0,0);</span><br><span class="line">    memset(dp,0,sizeof dp);</span><br><span class="line">    dp[(1&lt;&lt;m)-1][0]=1;</span><br><span class="line">    for(int i=1;i&lt;=n;i++)&#123;</span><br><span class="line">        for(int j=0;j&lt;tot;j++)</span><br><span class="line">            dp[chg[j][1]][i]+=dp[chg[j][0]][i-1];</span><br><span class="line">    &#125;</span><br><span class="line">    printf(&quot;%lld\n&quot;,dp[(1&lt;&lt;m)-1][n]);</span><br><span class="line">    return 0;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">#include &lt;bits/stdc++.h&gt;</span><br><span class="line">using namespace std;</span><br><span class="line">struct node&#123;</span><br><span class="line">    int x,y,foot;</span><br><span class="line">&#125;;</span><br><span class="line">int dx[5]=&#123;0,1,-1,0&#125;,n,m;</span><br><span class="line">int dy[5]=&#123;1,0,0,-1&#125;;</span><br><span class="line">char a[1001][1001];</span><br><span class="line">int vis[1001][1001];</span><br><span class="line">int footstep[1001][1001];</span><br><span class="line">int bfs(int startx,int starty)&#123;</span><br><span class="line">    deque&lt;node&gt;Q;</span><br><span class="line">    node start;</span><br><span class="line">    start.x = startx;</span><br><span class="line">    start.y = starty;</span><br><span class="line">    start.foot = 0;</span><br><span class="line">    vis[startx][starty] = 1;</span><br><span class="line">    Q.push_back(start);</span><br><span class="line">    while(!Q.empty())&#123;</span><br><span class="line">        node now = Q.front();</span><br><span class="line">        Q.pop_front();</span><br><span class="line">        // printf(&quot;x=%d y=%d foot = %d\n&quot;,now.x,now.y,now.foot);</span><br><span class="line">        for(int i = 0; i &lt; 4; i++)&#123;</span><br><span class="line">            int x = now.x+dx[i];</span><br><span class="line">            int y = now.y+dy[i];</span><br><span class="line"> </span><br><span class="line">            if(x&gt;=0&amp;&amp;x&lt;n &amp;&amp;y&gt;=0&amp;&amp;y&lt;m &amp;&amp; a[x][y] != &apos;#&apos; &amp;&amp; a[x][y] != &apos;F&apos;&amp;&amp; !vis[x][y] &amp;&amp; now.foot+1&lt;=footstep[x][y])&#123;</span><br><span class="line">                if(a[x][y] == &apos;E&apos;)&#123;</span><br><span class="line">                    return now.foot+1;</span><br><span class="line">                &#125;</span><br><span class="line"> </span><br><span class="line">                vis[x][y] = 1;</span><br><span class="line">                node then;</span><br><span class="line">                then.x = x;</span><br><span class="line">                then.y = y;</span><br><span class="line">                then.foot = now.foot+1;</span><br><span class="line">                Q.push_back(then);</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    Q.clear();</span><br><span class="line">    return 0;</span><br><span class="line">&#125;</span><br><span class="line">void bfs1(int startx,int starty)&#123;</span><br><span class="line">    deque&lt;node&gt;Q;</span><br><span class="line">    node start;</span><br><span class="line">    start.x = startx;</span><br><span class="line">    start.y = starty;</span><br><span class="line">    start.foot = 0;</span><br><span class="line">    footstep[startx][starty] = 0;</span><br><span class="line">    vis[startx][starty] = 1;</span><br><span class="line">   Q.push_back(start);</span><br><span class="line">    while(!Q.empty())&#123;</span><br><span class="line">        node now = Q.front();</span><br><span class="line">        Q.pop_front();</span><br><span class="line">        for(int i = 0; i &lt; 4; i++)&#123;</span><br><span class="line">            int x = now.x+dx[i];</span><br><span class="line">            int y = now.y+dy[i];</span><br><span class="line">            if(x&gt;=0&amp;&amp;x&lt;n &amp;&amp;y&gt;=0&amp;&amp;y&lt;m &amp;&amp;!vis[x][y])&#123;</span><br><span class="line">                footstep[x][y] = now.foot+1;</span><br><span class="line">                vis[x][y] = 1;</span><br><span class="line">                node then;</span><br><span class="line">                then.x = x;</span><br><span class="line">                then.y = y;</span><br><span class="line">                then.foot = now.foot+1;</span><br><span class="line">                Q.push_back(then);</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    Q.clear();</span><br><span class="line">&#125;</span><br><span class="line"> </span><br><span class="line">int main()&#123;</span><br><span class="line">    while(~scanf(&quot;%d%d&quot;,&amp;n,&amp;m))&#123;</span><br><span class="line">        int Sx,Sy,Ex,Ey;</span><br><span class="line">        for(int i = 0; i &lt; n; i++)&#123;</span><br><span class="line">            scanf(&quot;%s&quot;,a[i]);</span><br><span class="line">            for(int j = 0; j &lt; m; j++)&#123;</span><br><span class="line">                if(a[i][j] == &apos;S&apos;)&#123;</span><br><span class="line">                    Sx = i,Sy = j;</span><br><span class="line">                &#125;else if(a[i][j] == &apos;F&apos;)&#123;</span><br><span class="line">                    Ex = i,Ey = j;</span><br><span class="line">                &#125;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        memset(footstep,0,sizeof(footstep));</span><br><span class="line">        memset(vis,0,sizeof(vis));</span><br><span class="line">        bfs1(Ex,Ey);</span><br><span class="line">        memset(vis,0,sizeof(vis));</span><br><span class="line">        int ans1 = bfs(Sx,Sy);</span><br><span class="line">        if(ans1)&#123;</span><br><span class="line">            printf(&quot;PIG PIG PIG!\n&quot;);</span><br><span class="line">        &#125;else&#123;</span><br><span class="line">            printf(&quot;A! WO SI LA!\n&quot;);</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    return 0;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 
                 </div>
             </article>
@@ -280,9 +267,13 @@
         <div class="container" >
             <ul class="pager">
                 
+                <li class="previous">
+                    <a href="/2018/12/02/哈理工院赛-小乐乐搭积木/" rel="prev">下一篇</a>
+                </li>
+                
                 
                 <li class="next">
-                    <a href="/2018/12/02/哈理工院赛-小乐乐打游戏/" rel="prev">上一篇</a>
+                    <a href="/2018/12/02/哈理工院赛-小乐乐下象棋/" rel="prev">上一篇</a>
                 </li>
                 
             </ul>
