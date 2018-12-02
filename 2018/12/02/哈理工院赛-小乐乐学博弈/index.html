@@ -212,7 +212,7 @@
       <span class="post-meta-item-icon">
         <i class="fa fa-keyboard-o"></i>
         <span class="post-meta-item-text">  字数统计: </span>
-        <span class="post-count">0字</span>
+        <span class="post-count">389字</span>
       </span>
     </span>
 
@@ -232,7 +232,24 @@
                 <!-- Post Main Content -->
                 <div class="entry-content">
                     <p><img src="/2018/12/02/哈理工院赛-小乐乐学博弈/title4.jpg" alt="title4"></p>
-<!---->
+<a id="more"></a>
+<p>题目描述</p>
+<p>小乐乐和小皮蛋开始学习关于博弈的知识。<br>给定两堆石子，第一堆有n个石子，第二堆有m个石子。<br>每次操作可以从一堆石子中拿走一些石子，拿走石子的数量可以是1 - k个，小乐乐先手拿石子，然后依次轮流。<br>假如到小乐乐的轮次，小乐乐拿不了了(也就是所有的石子都被拿光了)，那么小皮蛋就获胜，反之亦然。<br>假设小乐乐和小皮蛋都绝顶聪明，都会采用最佳的策略，请问最后谁会赢。</p>
+<p>输入描述:</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">多组数据输入，对于每一组数据，只有一行由空格分开的三个整数n, m, k(0 &lt;= n, m &lt;= 1000000000, k &gt;= |n - m|).</span><br></pre></td></tr></table></figure>
+<p>输出描述:</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">如果小乐乐会赢，输出&quot;HAI YOU SEI!&quot;,否则输出&quot;LAOZI CHUI SI NI!&quot;。</span><br></pre></td></tr></table></figure>
+<p>示例1</p>
+<p>输入</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">130 135 5</span><br></pre></td></tr></table></figure>
+<p>输出</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">HAI YOU SEI!</span><br></pre></td></tr></table></figure>
+<p>说明</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">小乐乐会赢</span><br></pre></td></tr></table></figure>
+<p>思路：</p>
+<p>​    这道题有个输入限制k &gt;= |n - m|，自己看着n,m,k的数很大都是1e9，觉得应该是很简单的一个题，规律不可能太复杂。然后自己写了n多的样例，发现只有在n == m的时候小乐乐才会输。莽了一发过了</p>
+<p>代码：</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">#include &lt;stdio.h&gt;</span><br><span class="line">int main () &#123;</span><br><span class="line">    int n, m, k;</span><br><span class="line">    while(scanf(&quot;%d%d%d&quot;, &amp;n, &amp;m, &amp;k) == 3) &#123;</span><br><span class="line">        if (n == m) &#123;</span><br><span class="line">            printf(&quot;LAOZI CHUI SI NI!\n&quot;);</span><br><span class="line">        &#125; else&#123;</span><br><span class="line">            printf(&quot;HAI YOU SEI!\n&quot;);</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    return 0;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 
                 </div>
             </article>
