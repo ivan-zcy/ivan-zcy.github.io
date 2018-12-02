@@ -14,7 +14,7 @@
 
   <!--Open Graph Title-->
   
-      <meta property="og:title" content="哈理工院赛-小乐乐学博弈"/>
+      <meta property="og:title" content="哈理工院赛-小乐乐和25"/>
   
   <!--Open Graph Description-->
   
@@ -42,7 +42,7 @@
     </script>
   <!-- Title -->
   
-  <title>哈理工院赛-小乐乐学博弈 - Zcy</title>
+  <title>哈理工院赛-小乐乐和25 - Zcy</title>
 
 
   <link rel="shortcut icon" href="/favicon.ico">
@@ -200,7 +200,7 @@
                 <!-- Title date & tags -->
                 <div class="post-header">
                     <h1 class="entry-title">
-                        哈理工院赛-小乐乐学博弈
+                        哈理工院赛-小乐乐和25
                         
                     </h1>
 
@@ -212,7 +212,7 @@
       <span class="post-meta-item-icon">
         <i class="fa fa-keyboard-o"></i>
         <span class="post-meta-item-text">  字数统计: </span>
-        <span class="post-count">389字</span>
+        <span class="post-count">809字</span>
       </span>
     </span>
 
@@ -221,7 +221,7 @@
       <span class="post-meta-item-icon">
         <i class="fa fa-hourglass-half"></i>
         <span class="post-meta-item-text">  阅读时长: </span>
-        <span class="post-count">1分</span>
+        <span class="post-count">4分</span>
       </span>
     </span>
                 </div>
@@ -231,25 +231,30 @@
                 </p>
                 <!-- Post Main Content -->
                 <div class="entry-content">
-                    <p><img src="/2018/12/02/哈理工院赛-小乐乐学博弈/title4.jpg" alt="title4"></p>
+                    <p><img src="/2018/12/02/哈理工院赛-小乐乐和25/title6.jpg" alt="title6"></p>
 <a id="more"></a>
 <p>题目描述</p>
-<p>小乐乐和小皮蛋开始学习关于博弈的知识。<br>给定两堆石子，第一堆有n个石子，第二堆有m个石子。<br>每次操作可以从一堆石子中拿走一些石子，拿走石子的数量可以是1 - k个，小乐乐先手拿石子，然后依次轮流。<br>假如到小乐乐的轮次，小乐乐拿不了了(也就是所有的石子都被拿光了)，那么小皮蛋就获胜，反之亦然。<br>假设小乐乐和小皮蛋都绝顶聪明，都会采用最佳的策略，请问最后谁会赢。</p>
+<p>小乐乐特别喜欢25这个数字，他想把所有的数字都变成25的倍数。<br>现在小乐乐得到一个数字，想问问你最少用几次操作才可以把这个数字改造成25的倍数。<br>对于一次操作我们可以把相邻的两位做交换，比如123经过一次操作之后就可以变成213或者132。</p>
 <p>输入描述:</p>
-<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">多组数据输入，对于每一组数据，只有一行由空格分开的三个整数n, m, k(0 &lt;= n, m &lt;= 1000000000, k &gt;= |n - m|).</span><br></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">多组数据输入</span><br><span class="line"></span><br><span class="line">对于每组数据，只有一行输入一个整数n(1 &lt;= n &lt;= 1000000000)。</span><br></pre></td></tr></table></figure>
 <p>输出描述:</p>
-<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">如果小乐乐会赢，输出&quot;HAI YOU SEI!&quot;,否则输出&quot;LAOZI CHUI SI NI!&quot;。</span><br></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">如果经过最少x次操作后，这个数就变成了25的倍数，那么输出x；</span><br><span class="line"></span><br><span class="line">如果这个数无论怎么变化都变不成25的倍数，输出-1.</span><br></pre></td></tr></table></figure>
 <p>示例1</p>
 <p>输入</p>
-<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">130 135 5</span><br></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">2018</span><br></pre></td></tr></table></figure>
 <p>输出</p>
-<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">HAI YOU SEI!</span><br></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">-1</span><br></pre></td></tr></table></figure>
+<p>示例2</p>
+<p>输入</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">2020</span><br></pre></td></tr></table></figure>
+<p>输出</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">1</span><br></pre></td></tr></table></figure>
 <p>说明</p>
-<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">小乐乐会赢</span><br></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">经过一次之后变成2200</span><br></pre></td></tr></table></figure>
 <p>思路：</p>
-<p>​    这道题有个输入限制k &gt;= |n - m|，自己看着n,m,k的数很大都是1e9，觉得应该是很简单的一个题，规律不可能太复杂。然后自己写了n多的样例，发现只有在n == m的时候小乐乐才会输。莽了一发过了</p>
+<p>​    要想是25的倍数，只要保证最后最后两位是00或者25或者50或者75即可。然后对这四种情况进行模拟即可</p>
 <p>代码：</p>
-<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">#include &lt;stdio.h&gt;</span><br><span class="line">int main () &#123;</span><br><span class="line">    int n, m, k;</span><br><span class="line">    while(scanf(&quot;%d%d%d&quot;, &amp;n, &amp;m, &amp;k) == 3) &#123;</span><br><span class="line">        if (n == m) &#123;</span><br><span class="line">            printf(&quot;LAOZI CHUI SI NI!\n&quot;);</span><br><span class="line">        &#125; else&#123;</span><br><span class="line">            printf(&quot;HAI YOU SEI!\n&quot;);</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    return 0;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">#include &lt;stdio.h&gt;</span><br><span class="line">#include &lt;stdlib.h&gt;</span><br><span class="line">#include &lt;algorithm&gt;</span><br><span class="line">using namespace std;</span><br><span class="line">int a[15];</span><br><span class="line">int main() &#123;</span><br><span class="line">    int n;</span><br><span class="line">    while(scanf(&quot;%d&quot;, &amp;n) == 1) &#123;</span><br><span class="line">        int num0 = 0, num2 = 0, num5 = 0, num7 = 0;</span><br><span class="line">        int tot = 0, flag = 0;</span><br><span class="line">        int minn = 0x3f3f3f3f;</span><br><span class="line">        while(n) &#123;</span><br><span class="line">            a[++tot] = n % 10;</span><br><span class="line">            n /= 10;</span><br><span class="line">            if (a[tot] == 0) &#123;</span><br><span class="line">                num0++;</span><br><span class="line">            &#125; else if(a[tot] == 2) &#123;</span><br><span class="line">                num2++;</span><br><span class="line">            &#125; else if(a[tot] == 5) &#123;</span><br><span class="line">                num5++;</span><br><span class="line">            &#125; else if(a[tot] == 7) &#123;</span><br><span class="line">                num7++;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        if (num0 &gt;= 2) &#123;</span><br><span class="line">            flag = 1;</span><br><span class="line">            int aa[15];</span><br><span class="line">            int ls = 0;</span><br><span class="line">            for (int i = 1; i&lt;= tot; i++) &#123;</span><br><span class="line">                aa[i] = a[i];</span><br><span class="line">            &#125;</span><br><span class="line">            for (int i = 1; i &lt;= tot; i++) &#123;</span><br><span class="line">                if(aa[i] == 0) &#123;</span><br><span class="line">                    ls += abs(i - 1);</span><br><span class="line">                    for (int j = i; j &gt; 1; j--) &#123;</span><br><span class="line">                        aa[j] = aa[j - 1];</span><br><span class="line">                    &#125;</span><br><span class="line">                    break;</span><br><span class="line">                &#125;</span><br><span class="line">            &#125;</span><br><span class="line">            for (int i = 2; i &lt;= tot; i++) &#123;</span><br><span class="line">                if(aa[i] == 0) &#123;</span><br><span class="line">                    ls += abs(i - 2);</span><br><span class="line">                    for (int j = i; j &gt; 2; j--) &#123;</span><br><span class="line">                        aa[j] = aa[j - 1];</span><br><span class="line">                    &#125;</span><br><span class="line">                    break;</span><br><span class="line">                &#125;</span><br><span class="line">            &#125;</span><br><span class="line">            minn = min(minn, ls);</span><br><span class="line">        &#125;</span><br><span class="line">        if (num2 &gt;= 1 &amp;&amp; num5 &gt;= 1) &#123;</span><br><span class="line">            flag = 1;</span><br><span class="line">            int aa[15];</span><br><span class="line">            int ls = 0;</span><br><span class="line">            for (int i = 1; i&lt;= tot; i++) &#123;</span><br><span class="line">                aa[i] = a[i];</span><br><span class="line">            &#125;</span><br><span class="line">            for (int i = 1; i &lt;= tot; i++) &#123;</span><br><span class="line">                if(aa[i] == 5) &#123;</span><br><span class="line">                    ls += abs(i - 1);</span><br><span class="line">                    for (int j = i; j &gt; 1; j--) &#123;</span><br><span class="line">                        aa[j] = aa[j - 1];</span><br><span class="line">                    &#125;</span><br><span class="line">                    break;</span><br><span class="line">                &#125;</span><br><span class="line">            &#125;</span><br><span class="line">            for (int i = 2; i &lt;= tot; i++) &#123;</span><br><span class="line">                if(aa[i] == 2) &#123;</span><br><span class="line">                    ls += abs(i - 2);</span><br><span class="line">                    for (int j = i; j &gt; 2; j--) &#123;</span><br><span class="line">                        aa[j] = aa[j - 1];</span><br><span class="line">                    &#125;</span><br><span class="line">                    break;</span><br><span class="line">                &#125;</span><br><span class="line">            &#125;</span><br><span class="line">            minn = min(minn, ls);</span><br><span class="line"> </span><br><span class="line">        &#125;</span><br><span class="line">        if(num5 &gt;= 1 &amp;&amp; num0 &gt;= 1) &#123;</span><br><span class="line">            flag = 1;</span><br><span class="line">            int aa[15];</span><br><span class="line">            int ls = 0;</span><br><span class="line">            for (int i = 1; i&lt;= tot; i++) &#123;</span><br><span class="line">                aa[i] = a[i];</span><br><span class="line">            &#125;</span><br><span class="line">            for (int i = 1; i &lt;= tot; i++) &#123;</span><br><span class="line">                if(aa[i] == 0) &#123;</span><br><span class="line">                    ls += abs(i - 1);</span><br><span class="line">                    for (int j = i; j &gt; 1; j--) &#123;</span><br><span class="line">                        aa[j] = aa[j - 1];</span><br><span class="line">                    &#125;</span><br><span class="line">                    break;</span><br><span class="line">                &#125;</span><br><span class="line">            &#125;</span><br><span class="line">            for (int i = 2; i &lt;= tot; i++) &#123;</span><br><span class="line">                if(aa[i] == 5) &#123;</span><br><span class="line">                    ls += abs(i - 2);</span><br><span class="line">                    for (int j = i; j &gt; 2; j--) &#123;</span><br><span class="line">                        aa[j] = aa[j - 1];</span><br><span class="line">                    &#125;</span><br><span class="line">                    break;</span><br><span class="line">                &#125;</span><br><span class="line">            &#125;</span><br><span class="line">            minn = min(minn, ls);</span><br><span class="line">        &#125;</span><br><span class="line">        if(num7 &gt;= 1 &amp;&amp; num5 &gt;= 1) &#123;</span><br><span class="line">            flag = 1;</span><br><span class="line">            int aa[15];</span><br><span class="line">            int ls = 0;</span><br><span class="line">            for (int i = 1; i&lt;= tot; i++) &#123;</span><br><span class="line">                aa[i] = a[i];</span><br><span class="line">            &#125;</span><br><span class="line">            for (int i = 1; i &lt;= tot; i++) &#123;</span><br><span class="line">                if(aa[i] == 5) &#123;</span><br><span class="line">                    ls += abs(i - 1);</span><br><span class="line">                    for (int j = i; j &gt; 1; j--) &#123;</span><br><span class="line">                        aa[j] = aa[j - 1];</span><br><span class="line">                    &#125;</span><br><span class="line">                    break;</span><br><span class="line">                &#125;</span><br><span class="line">            &#125;</span><br><span class="line">            for (int i = 2; i &lt;= tot; i++) &#123;</span><br><span class="line">                if(aa[i] == 7) &#123;</span><br><span class="line">                    ls += abs(i - 2);</span><br><span class="line">                    for (int j = i; j &gt; 2; j--) &#123;</span><br><span class="line">                        aa[j] = aa[j - 1];</span><br><span class="line">                    &#125;</span><br><span class="line">                    break;</span><br><span class="line">                &#125;</span><br><span class="line">            &#125;</span><br><span class="line">            minn = min(minn, ls);</span><br><span class="line">        &#125;</span><br><span class="line">        if (!flag) &#123;</span><br><span class="line">            printf(&quot;-1\n&quot;);</span><br><span class="line">        &#125; else &#123;</span><br><span class="line">            printf(&quot;%d\n&quot;, minn);</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    return 0;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 
                 </div>
             </article>
@@ -270,12 +275,12 @@
             <ul class="pager">
                 
                 <li class="previous">
-                    <a href="/2018/12/02/哈理工院赛-小乐乐和25/" rel="prev">下一篇</a>
+                    <a href="/2018/12/02/哈理工院赛-小乐乐搭积木/" rel="prev">下一篇</a>
                 </li>
                 
                 
                 <li class="next">
-                    <a href="/2018/12/02/哈理工院赛-小乐乐匹配字符串/" rel="prev">上一篇</a>
+                    <a href="/2018/12/02/哈理工院赛-小乐乐学博弈/" rel="prev">上一篇</a>
                 </li>
                 
             </ul>
