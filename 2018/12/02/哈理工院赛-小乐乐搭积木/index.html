@@ -14,7 +14,7 @@
 
   <!--Open Graph Title-->
   
-      <meta property="og:title" content="Zcy"/>
+      <meta property="og:title" content="哈理工院赛-小乐乐搭积木"/>
   
   <!--Open Graph Description-->
   
@@ -22,7 +22,7 @@
   <meta property="og:site_name" content="Zcy"/>
   <!--Type page-->
   
-      <meta property="og:type" content="website" />
+      <meta property="og:type" content="article" />
   
   <!--Page Cover-->
   
@@ -42,7 +42,7 @@
     </script>
   <!-- Title -->
   
-  <title>ACM - Zcy</title>
+  <title>哈理工院赛-小乐乐搭积木 - Zcy</title>
 
 
   <link rel="shortcut icon" href="/favicon.ico">
@@ -192,227 +192,113 @@
 
 
   <!-- Main Content -->
-  
+  <div class="content-area">
+    <div class="post">
+        <!-- Post Content -->
+        <div class="container">
+            <article>
+                <!-- Title date & tags -->
+                <div class="post-header">
+                    <h1 class="entry-title">
+                        哈理工院赛-小乐乐搭积木
+                        
+                    </h1>
 
-<!-- Main Content -->
-<div class="archive content-area">
-  <div class="container">
-    <h1 class="entry-title">#ACM</h1>
-    <div class="row">
-      <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
-        <!-- Use lodash to classify posts. See https://lodash.com/docs#groupBy -->
+                </div>
+
+
+                <div style="text-align:center;color: #ccc;">
+    <span class="post-time" >
+      <span class="post-meta-item-icon">
+        <i class="fa fa-keyboard-o"></i>
+        <span class="post-meta-item-text">  字数统计: </span>
+        <span class="post-count">407字</span>
+      </span>
+    </span>
+
+                    <span class="post-time">
+      &nbsp; | &nbsp;
+      <span class="post-meta-item-icon">
+        <i class="fa fa-hourglass-half"></i>
+        <span class="post-meta-item-text">  阅读时长: </span>
+        <span class="post-count">1分</span>
+      </span>
+    </span>
+                </div>
+
+                <p class="a-posted-on" style="color: #ccc;">
+                    2018-12-02
+                </p>
+                <!-- Post Main Content -->
+                <div class="entry-content">
+                    <p>题目描述</p>
+<p>小乐乐想要给自己搭建一个积木城堡。 </p>
+<p>积木城堡我们假设为n*m的平面矩形。 </p>
+<p>小乐乐现在手里有1<em>2，2</em>1两种地砖。 </p>
+<p>小乐乐想知道自己有多少种组合方案。 </p>
+<p>输入描述:</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">第一行输入整数n,m。(1&lt;=n,m&lt;=10)</span><br></pre></td></tr></table></figure>
+<p>输出描述:</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">输出组合方案数。</span><br></pre></td></tr></table></figure>
+<p>示例1</p>
+<p>输入</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">2 3</span><br></pre></td></tr></table></figure>
+<p>输出</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">3</span><br></pre></td></tr></table></figure>
+<p>示例2</p>
+<p>输入</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">1 3</span><br></pre></td></tr></table></figure>
+<p>输出</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">0</span><br></pre></td></tr></table></figure>
+<p>示例3</p>
+<p>输入</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">2 5</span><br></pre></td></tr></table></figure>
+<p>输出</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">8</span><br></pre></td></tr></table></figure>
+<p>思路：</p>
+<p>​    状压dp的入门题，把每一行的状态压缩成一个二进制数（竖为1横为0），然后转化为十进制。依次遍历第一行的所有状态方案数都初始化为1，然后依据dp递推式推出其余行。最后累加最后一行的所有可行性方案的和即可。</p>
+<p>代码：</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">#include&lt;cstdio&gt;</span><br><span class="line">#include&lt;cstring&gt;</span><br><span class="line">#define ll long long</span><br><span class="line">#define Maxn 2048</span><br><span class="line">using namespace std;</span><br><span class="line">int chg[Maxn*Maxn][2];</span><br><span class="line">ll dp[1&lt;&lt;13][13];</span><br><span class="line">int n,m,tot;</span><br><span class="line"> </span><br><span class="line">void dfs(int c,int s,int scur)&#123;</span><br><span class="line">    if(c&gt;m) return;</span><br><span class="line">    if(c==m)&#123;</span><br><span class="line">        chg[tot][0]=s;</span><br><span class="line">        chg[tot++][1]=scur;</span><br><span class="line">        return;</span><br><span class="line">    &#125;</span><br><span class="line">    dfs(c+1,s&lt;&lt;1,scur&lt;&lt;1|1);</span><br><span class="line">    dfs(c+1,s&lt;&lt;1|1,scur&lt;&lt;1);</span><br><span class="line">    dfs(c+2,s&lt;&lt;2|3,scur&lt;&lt;2|3);</span><br><span class="line">&#125;</span><br><span class="line"> </span><br><span class="line">int main()</span><br><span class="line">&#123;</span><br><span class="line">    scanf(&quot;%d%d&quot;, &amp;n, &amp;m);</span><br><span class="line">    if(m&gt;n) &#123;</span><br><span class="line">        int kk = m;</span><br><span class="line">        m = n;</span><br><span class="line">        n = kk;</span><br><span class="line">    &#125;</span><br><span class="line">    tot=0;</span><br><span class="line">    dfs(0,0,0);</span><br><span class="line">    memset(dp,0,sizeof dp);</span><br><span class="line">    dp[(1&lt;&lt;m)-1][0]=1;</span><br><span class="line">    for(int i=1;i&lt;=n;i++)&#123;</span><br><span class="line">        for(int j=0;j&lt;tot;j++)</span><br><span class="line">            dp[chg[j][1]][i]+=dp[chg[j][0]][i-1];</span><br><span class="line">    &#125;</span><br><span class="line">    printf(&quot;%lld\n&quot;,dp[(1&lt;&lt;m)-1][n]);</span><br><span class="line">    return 0;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+                </div>
+            </article>
+        </div>
+        <br>
+        <div style="text-align:center;color: #ccc;font-size:14px;">
+            <br>
+            <br>
+            <a href="http://www.ivan-zcy.top" style="color: #99FFFF;font-size:18px;">转载请注明出处！！！</a>
+            <br>
+            <br>
+            如果有写的不对或者不全面的地方 可通过主页的联系方式进行指正，谢谢!
+        </div>
+        <br>
+        <!-- Pre or Next -->
         
-        
-          <h2 class="year">2018</h2>
-          <ul class="list">
+        <div class="container" >
+            <ul class="pager">
+                
+                
+                <li class="next">
+                    <a href="/2018/12/02/哈理工院赛-小乐乐的组合数/" rel="prev">上一篇</a>
+                </li>
+                
+            </ul>
+        </div>
+        　　　　<!-- Comments -->
+        <div class="container">
             
-  <li>
-    <span class="date">
-      2018-11-06
-    </span>
-    <a href="/2018/11/06/SSOI307加分二叉树-区间dp/" class="title">
-      SSOI307加分二叉树 区间dp
-    </a>
-  </li>
+<section id="comment">
+  <!-- <h1 class="title">Comments</h1> -->
 
-  <li>
-    <span class="date">
-      2018-11-06
-    </span>
-    <a href="/2018/11/06/计蒜客Not-a-subsequence动态规划/" class="title">
-      计蒜客Not a subsequence动态规划
-    </a>
-  </li>
-
-  <li>
-    <span class="date">
-      2018-11-05
-    </span>
-    <a href="/2018/11/05/计蒜客Gold-Rush水题/" class="title">
-      计蒜客Gold Rush水题
-    </a>
-  </li>
-
-  <li>
-    <span class="date">
-      2018-11-05
-    </span>
-    <a href="/2018/11/05/计蒜客Algebraic-Teamwork思维/" class="title">
-      计蒜客Algebraic Teamwork思维
-    </a>
-  </li>
-
-  <li>
-    <span class="date">
-      2018-11-05
-    </span>
-    <a href="/2018/11/05/计蒜客Bounty-Hunter/" class="title">
-      计蒜客Bounty Hunter多路dp
-    </a>
-  </li>
-
-  <li>
-    <span class="date">
-      2018-11-04
-    </span>
-    <a href="/2018/11/04/计蒜客Equator/" class="title">
-      计蒜客Equator尺取法
-    </a>
-  </li>
-
-  <li>
-    <span class="date">
-      2018-10-24
-    </span>
-    <a href="/2018/10/24/HDU1430-康托展开/" class="title">
-      HDU1430 康托展开
-    </a>
-  </li>
-
-  <li>
-    <span class="date">
-      2018-10-23
-    </span>
-    <a href="/2018/10/23/杜教BM模版-推规律/" class="title">
-      杜教BM模版(推规律)
-    </a>
-  </li>
-
-  <li>
-    <span class="date">
-      2018-10-21
-    </span>
-    <a href="/2018/10/21/UVA8512线段树维护线性基/" class="title">
-      UVA8512线段树维护线性基
-    </a>
-  </li>
-
-  <li>
-    <span class="date">
-      2018-10-21
-    </span>
-    <a href="/2018/10/21/快到难以想象的快速读模版/" class="title">
-      快到难以想象的快速读模版
-    </a>
-  </li>
-
-  <li>
-    <span class="date">
-      2018-10-20
-    </span>
-    <a href="/2018/10/20/HDU5971/" class="title">
-      HDU5971二分图染色
-    </a>
-  </li>
-
-  <li>
-    <span class="date">
-      2018-10-20
-    </span>
-    <a href="/2018/10/20/HDU-5976/" class="title">
-      HDU 5976思维
-    </a>
-  </li>
-
-  <li>
-    <span class="date">
-      2018-10-20
-    </span>
-    <a href="/2018/10/20/HDU5974/" class="title">
-      HDU5974方程化简
-    </a>
-  </li>
-
-  <li>
-    <span class="date">
-      2018-10-20
-    </span>
-    <a href="/2018/10/20/HDU5978/" class="title">
-      HDU5978水题
-    </a>
-  </li>
-
-  <li>
-    <span class="date">
-      2018-10-20
-    </span>
-    <a href="/2018/10/20/HDU5980/" class="title">
-      HDU5980水题
-    </a>
-  </li>
-
-  <li>
-    <span class="date">
-      2018-10-20
-    </span>
-    <a href="/2018/10/20/HDU5979/" class="title">
-      HDU5979水题
-    </a>
-  </li>
-
-  <li>
-    <span class="date">
-      2018-10-19
-    </span>
-    <a href="/2018/10/19/hihoCoder-1636/" class="title">
-      hihoCoder 1636区间dp
-    </a>
-  </li>
-
-  <li>
-    <span class="date">
-      2018-10-18
-    </span>
-    <a href="/2018/10/18/ACM快速读写模版/" class="title">
-      ACM快速读写模版
-    </a>
-  </li>
-
-  <li>
-    <span class="date">
-      2018-10-18
-    </span>
-    <a href="/2018/10/18/UVALive-8521/" class="title">
-      UVALive 8521组合数+dp
-    </a>
-  </li>
-
-  <li>
-    <span class="date">
-      2018-10-17
-    </span>
-    <a href="/2018/10/17/hihoCoder-1632/" class="title">
-      hihoCoder 1632模拟
-    </a>
-  </li>
-
-
-          </ul>
-        
-      </div>
-    </div>
-  </div>
   
-<div class="container" >
-  <ul class="pager">
-    
-      <li class="previous">
-        <a href="/tags/ACM/">
-          下一页
-        </a>
-      </li>
-    
-    
-      <li class="next">
-        <a href="/tags/ACM/page/3/">
-          上一页
-        </a>
-      </li>
-    
-  </ul>
-</div>
+</section>
 
 
+        </div>
+        
+        　　　　
+    </div>
 </div>
 
 
