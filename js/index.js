@@ -89,7 +89,7 @@ if (match) {
                     update: function() {
                         var a = h.point,
                             c = 30;
-                        h.enabled && (0 === e ? (d = h.color, a[0] < b / 2 ? (a[0] = Math.min(a[0] + c, b / 2), h.point = a) : (h.point = a, g = !0)) : 1 === e && (d = "#a9ecfd", a[0] > b / 2 ? (a[0] = Math.max(a[0] - c, b / 2), h.point = a) : (h.point = a, g = !0)))
+                        h.enabled && (0 === e ? (d = h.color, a[0] < b / 2 ? (a[0] = Math.min(a[0] + c, b / 2), h.point = a) : (h.point = a, g = !0)) : 1 === e && (d = "#cccccc", a[0] > b / 2 ? (a[0] = Math.max(a[0] - c, b / 2), h.point = a) : (h.point = a, g = !0)))
                     },
                     render: function() {
                         var e = h.point;
