@@ -83,7 +83,7 @@ Free to use this as you like
 						 data-date-timezone="+8"
 						 ></div>
               <div class="elem-center">
-                 <span style="color: #FFFFFF;font-size: 35px;"><a href="/index.html">返回小屋</a></span>
+                 <span style="color: #FFFFFF;font-size: 35px;">关于我</span>
         <div class="digit"> <span class="days"></span> <span class="txt"></span> </div>
       </div>
               <div class="elem-bottom">
@@ -294,30 +294,10 @@ Free to use this as you like
 <script src="./js/form_script.js"></script> 
 
 <!-- Javascript main files --> 
-<script src="./js/main.js"></script> 
-<script type="text/javascript" src="js/jquery.jplayer.min.js"></script> 
-<script type="text/javascript">
- $(document).ready(function(){
-  $("#jquery_jplayer_1").jPlayer({
-   ready: function () {
-    $(this).jPlayer("setMedia", {
-     mp3: "http://www.ytmp3.cn/down/37418.mp3",
-	 
-    }).jPlayer("play");
-   },
-   ended: function() { // The $.jPlayer.event.ended event
-    $(this).jPlayer("play"); // Repeat the media
-  },
-   swfPath: "/js",
-   supplied: "mp3"
-  });
- });
-</script>
-<div id="jquery_jplayer_1"></div>
-<div id="jp_container_1"> <a href="#" class="jp-play">
-  <li class="ion-music-note" data-pack="default" data-tags="songs"></li>
-  </a> <a href="#" class="jp-pause">
-  <li class="ion-headphone" data-pack="default" data-tags="music, earbuds, beats"></li>
+<script src="./js/main.js"></script>
+
+<div id="jp_container_1"> <a href="/index.html" class="jp-play">
+    返回小屋
   </a> </div>
 <script src="/live2dw/lib/L2Dwidget.min.js?0c58a1486de42ac6cc1c59c7d98ae887"></script><script>L2Dwidget.init({"model":{"jsonPath":"/live2dw/assets/haruto.model.json"},"display":{"position":"left","width":70,"height":140},"mobile":{"show":true},"log":false,"pluginJsPath":"lib/","pluginModelPath":"assets/","pluginRootPath":"live2dw/","tagMode":false});</script></body>
 </html>
