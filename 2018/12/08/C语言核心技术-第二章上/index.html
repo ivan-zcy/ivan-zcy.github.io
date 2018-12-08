@@ -14,7 +14,7 @@
 
   <!--Open Graph Title-->
   
-      <meta property="og:title" content="Zcy"/>
+      <meta property="og:title" content="C语言核心技术-第二章上"/>
   
   <!--Open Graph Description-->
   
@@ -22,7 +22,7 @@
   <meta property="og:site_name" content="Zcy"/>
   <!--Type page-->
   
-      <meta property="og:type" content="website" />
+      <meta property="og:type" content="article" />
   
   <!--Page Cover-->
   
@@ -42,7 +42,7 @@
     </script>
   <!-- Title -->
   
-  <title>Zcy</title>
+  <title>C语言核心技术-第二章上 - Zcy</title>
 
 
   <link rel="shortcut icon" href="/favicon.ico">
@@ -207,291 +207,113 @@
 
 
   <!-- Main Content -->
-  <div class="site-content home">
-      <div class="content-header" style="background: url(/img/back.jpg) no-repeat bottom;">
-        <div class="headline">
-            <a href="#" class="demo">
-                <div class="img" style="background-image:url(/img/avator.jpg)"></div>
-                <div class="cover_mask">
-                    <div class="info">
-                        <span>Welcome</br>by:Zcy</span>
-                    </div>
+  <div class="content-area">
+    <div class="post">
+        <!-- Post Content -->
+        <div class="container">
+            <article>
+                <!-- Title date & tags -->
+                <div class="post-header">
+                    <h1 class="entry-title">
+                        C语言核心技术-第二章上
+                        
+                    </h1>
+
                 </div>
-                <div class="border"></div>
-            </a>
-            <h1 id="Hotnews"></h1>
-            <script type="application/javascript">
-               var content = "沉下心来做事";
-               var i = 0;
-               function show(){
-                   var str  = content.substr(0,i);
-                   Hotnews.innerHTML = str + "_";
-                   i++;
-                   if (i>content.length) i=0;
-                   setTimeout("show()",600);
-               }
-               window.onload = show();
-               </script>
-            <div class="header-link">
-              
-                
-                  <a href="https://github.com/ivan-zcy" class="icon-github" target="_blank">
-                      <i class="fa fa-github" aria-hidden="true"></i>
-                  </a>
-                
-                  <a href="https://m.weibo.cn/u/6086305650?uid=6086305650&luicode=10000011&lfid=100103type%3D1%26q%3DIvan-酷酷酷酷" class="icon-weibo" target="_blank">
-                      <i class="fa fa-weibo" aria-hidden="true"></i>
-                  </a>
-                
-                  <a href="http://shang.qq.com/open_webaio.html?sigt=1bb29cf0e25d41c832c39e41e587e146da3754f5d273a017917c3d540899734e4339f99eeba019c94b5c389758e3c6ce&sigu=f77cd5fff2ab7f3340b356ec5e3a8696346394fadda6a1b9119fbca25f6746b7dda8e820567392d1&tuin=296763002" class="icon-qq" target="_blank">
-                      <i class="fa fa-qq" aria-hidden="true"></i>
-                  </a>
-                
-                  <a href="http://mail.qq.com/cgi-bin/qm_share?t=qm_mailme&email=PgwHCAkIDQ4ODH5PTxBdUVM" class="icon-envelope" target="_blank">
-                      <i class="fa fa-envelope" aria-hidden="true"></i>
-                  </a>
-                
-              
-            </div>
+
+
+                <div style="text-align:center;color: #ccc;">
+    <span class="post-time" >
+      <span class="post-meta-item-icon">
+        <i class="fa fa-keyboard-o"></i>
+        <span class="post-meta-item-text">  字数统计: </span>
+        <span class="post-count">791字</span>
+      </span>
+    </span>
+
+                    <span class="post-time">
+      &nbsp; | &nbsp;
+      <span class="post-meta-item-icon">
+        <i class="fa fa-hourglass-half"></i>
+        <span class="post-meta-item-text">  阅读时长: </span>
+        <span class="post-count">3分</span>
+      </span>
+    </span>
+                </div>
+
+                <p class="a-posted-on" style="color: #ccc;">
+                    2018-12-08
+                </p>
+                <!-- Post Main Content -->
+                <div class="entry-content">
+                    <p><img src="/2018/12/08/C语言核心技术-第二章上/title3.jpg" alt="title3"></p>
+<a id="more"></a>
+<p>第二章 数据类型</p>
+<p>​    C语言中，对象引用到内存中的一个位置，该位置内容可表示为该对象的值。一个对象的数据类型决定了这个对象在内存中所占用的空间大小，以及所采用的编码方式</p>
+<p>2.1整数类型</p>
+<p>​    char类型也是一个标准的整数类型</p>
+<p>​    C语言只定义了标准类型最小的存储空间，char类型只占用一个字节，short类型至少占用2字节，long类型至少占用4字节，long long类型至少占用8字节(1字节 == 8位)</p>
+<p>2.1.1stdint.h头文件</p>
+<p>​    stdint.h头文件定义了整数类型以满足对于已知位长的定义：</p>
+<p>​    intN_t / uintN_t    位长为N的整数/无符号整数</p>
+<p>​    int_leastN_t / uint_leastN_t    位长至少为N的整数/无符号整数</p>
+<p>​    int_fastN_t / uint_fastN_t    位长至少为N的最快速的整数/无符号整数</p>
+<p>​    intmax_t / uintmax_t    位长最大的整数/无符号整数</p>
+<p>​    intptr_t / uintptr_t    位长足以存储指针值的整数/无符号整数</p>
+<p>​    关于intptr_t的足以存储指针值的整数如何理解，我百度了一下它的宏定义：</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">/* Types for `void *&apos; pointers.  */</span><br><span class="line"></span><br><span class="line">#if __WORDSIZE == 64  </span><br><span class="line"># ifndef __intptr_t_defined  </span><br><span class="line">typedef long int  intptr_t;  </span><br><span class="line">#  define __intptr_t_defined  </span><br><span class="line"># endif  </span><br><span class="line">typedef unsigned long int  uintptr_t;</span><br><span class="line"></span><br><span class="line">#else  </span><br><span class="line"># ifndef __intptr_t_defined  </span><br><span class="line">typedef int   intptr_t;  </span><br><span class="line">#  define __intptr_t_defined  </span><br><span class="line"># endif  </span><br><span class="line">typedef unsigned int    uintptr_t;  </span><br><span class="line">#endif</span><br></pre></td></tr></table></figure>
+<p>​    显然，intptr_t不是指针类型，而是long int型。至于为什么解释成void *指针，尽管概念上地址是指针, 但内存管理常常使用一个无符号整型更好地完成。因为内核对待物理内存如同一个大数组，并且内存地址只是一个数组索引。而一个指针容易解引用，当直接处理内存存取时, 使用一个整数类型能避免这种解引用，因此避免了 bug。所以内核中内存地址常常是unsigned long型。（关于解引用，可以解释为返回内存地址中保存的值，关于它的解释找到一篇特别好的博文 <a href="https://www.cnblogs.com/Mayfly-nymph/p/8213837.html" target="_blank" rel="noopener">跳转</a> ）</p>
+<p>2.1.2limits.h头文件</p>
+<p>​    该头文件有很多宏定义，用于获得整数类型的范围，例如：INT_MIN,UINT_MAX,INT_LEAST64_MIN 等等</p>
+<p>2.2浮点类型</p>
+<p>​    关于浮点类型精度丢失的原因：</p>
+<p>​    是因为我们在程序里写的是十进制小数，而计算机内部只能用二进制的小数表示, 所以导致无法精确的表达</p>
+<p>​    对于二进制小数，小数点右边能表达的值是 1/2, 1/4, 1/8, 1/16, 1/32, 1/64, 1/128 … 1/(2^n），所以十进制小数都是由这些小数一点点拼凑出来的一个近似值, 所以才会不准确</p>
+<p>​    例如用二进制来表示十进制的1.2:<br>​    1.01 = 1 + 1/4 = 1.25 , 偏大<br>​    1.001 = 1 + 1/8 = 1.125 , 偏小<br>​    1.0011 = 1 + 1/8 + 1/16 = 1.1875，偏小<br>​    1.001101 = 1 + 1/8+ 1/16 + 1/64 = 1.203125 , 偏大<br>​    1.0011001 = 1 + 1/8 + 1/16 + 1/128 = 1.1953125 ,偏小<br>​    1.00110011 = 1 + 1/8+1/16+1/128+1/256 = 0.19921875 , 偏小<br>​    直到越来越接近…这就是精度缺失的根本原因</p>
+
+                </div>
+            </article>
         </div>
+        <br>
+        <div style="text-align:center;color: #ccc;font-size:14px;">
+            <br>
+            <br>
+            <a href="http://www.ivan-zcy.top" style="color: #99FFFF;font-size:18px;">转载请注明出处！！！</a>
+            <br>
+            <br>
+            如果有写的不对或者不全面的地方 可通过主页的联系方式进行指正，谢谢!
+        </div>
+        <br>
+        <!-- Pre or Next -->
+        
+        <div class="container" >
+            <ul class="pager">
+                
+                <li class="previous">
+                    <a href="/2018/12/08/C语言核心技术-第二章下/" rel="prev">下一篇</a>
+                </li>
+                
+                
+                <li class="next">
+                    <a href="/2018/12/07/C语言核心技术—第一章下/" rel="prev">上一篇</a>
+                </li>
+                
+            </ul>
+        </div>
+        　　　　<!-- Comments -->
+        <div class="container">
+            
+<section id="comment">
+  <!-- <h1 class="title">Comments</h1> -->
+
+  
+</section>
+
+
+        </div>
+        
+        　　　　
     </div>
-  <main class="content-area">
-    
-        <div class="article">
-          <div class="container" >
-  <article class="post">
-    <h1 class="entry-title">
-      <a href="/2018/10/19/浅谈线性基/" rel="bookmark">
-        (数论二)浅谈线性基  
-      </a>
-    </h1>
-
-
-    
-    <div class="entry-content">
-      <p>
-        <p><img src="/2018/10/19/浅谈线性基/titile1.jpg" alt="titile1"></p>
-      </p>
-    </div>
-    <div class="post-more-link text-center">
-            <a class="btn" href="/2018/10/19/浅谈线性基/" rel="contents">
-              阅读全文 »
-            </a>
-    </div>
-    <p class="posted-on">
-        <i class="fa fa-calendar" aria-hidden="true"></i>
-    	2018-10-19
-    </p>
-    <div class="tags-links">
-      <i class="fa fa-tags" aria-hidden="true"></i>
-      
-      <a href="/tags/数论原理/" rel="tag">
-        数论原理
-      </a>
-      
-    </div>
-    
-  </article>
-</div>
-
-        </div> 
-    
-        <div class="article">
-          <div class="container" >
-  <article class="post">
-    <h1 class="entry-title">
-      <a href="/2018/10/19/hihoCoder-1636/" rel="bookmark">
-        hihoCoder 1636区间dp  
-      </a>
-    </h1>
-
-
-    
-    <div class="entry-content">
-      <p>
-        <p><img src="/2018/10/19/hihoCoder-1636/title.jpg" alt="title"></p>
-      </p>
-    </div>
-    <div class="post-more-link text-center">
-            <a class="btn" href="/2018/10/19/hihoCoder-1636/" rel="contents">
-              阅读全文 »
-            </a>
-    </div>
-    <p class="posted-on">
-        <i class="fa fa-calendar" aria-hidden="true"></i>
-    	2018-10-19
-    </p>
-    <div class="tags-links">
-      <i class="fa fa-tags" aria-hidden="true"></i>
-      
-      <a href="/tags/ACM/" rel="tag">
-        ACM
-      </a>
-      
-      <a href="/tags/动态规划/" rel="tag">
-        动态规划
-      </a>
-      
-    </div>
-    
-  </article>
-</div>
-
-        </div> 
-    
-        <div class="article">
-          <div class="container" >
-  <article class="post">
-    <h1 class="entry-title">
-      <a href="/2018/10/18/ACM快速读写模版/" rel="bookmark">
-        ACM快速读写模版  
-      </a>
-    </h1>
-
-
-    
-    <div class="entry-content">
-      <p>
-        <p><img src="/2018/10/18/ACM快速读写模版/title.jpg" alt="title"></p>
-      </p>
-    </div>
-    <div class="post-more-link text-center">
-            <a class="btn" href="/2018/10/18/ACM快速读写模版/" rel="contents">
-              阅读全文 »
-            </a>
-    </div>
-    <p class="posted-on">
-        <i class="fa fa-calendar" aria-hidden="true"></i>
-    	2018-10-18
-    </p>
-    <div class="tags-links">
-      <i class="fa fa-tags" aria-hidden="true"></i>
-      
-      <a href="/tags/ACM/" rel="tag">
-        ACM
-      </a>
-      
-      <a href="/tags/模版/" rel="tag">
-        模版
-      </a>
-      
-    </div>
-    
-  </article>
-</div>
-
-        </div> 
-    
-        <div class="article">
-          <div class="container" >
-  <article class="post">
-    <h1 class="entry-title">
-      <a href="/2018/10/18/UVALive-8521/" rel="bookmark">
-        UVALive 8521组合数+dp  
-      </a>
-    </h1>
-
-
-    
-    <div class="entry-content">
-      <p>
-        <p><img src="/2018/10/18/UVALive-8521/title6.jpg" alt="title6"></p>
-      </p>
-    </div>
-    <div class="post-more-link text-center">
-            <a class="btn" href="/2018/10/18/UVALive-8521/" rel="contents">
-              阅读全文 »
-            </a>
-    </div>
-    <p class="posted-on">
-        <i class="fa fa-calendar" aria-hidden="true"></i>
-    	2018-10-18
-    </p>
-    <div class="tags-links">
-      <i class="fa fa-tags" aria-hidden="true"></i>
-      
-      <a href="/tags/ACM/" rel="tag">
-        ACM
-      </a>
-      
-      <a href="/tags/动态规划/" rel="tag">
-        动态规划
-      </a>
-      
-    </div>
-    
-  </article>
-</div>
-
-        </div> 
-    
-        <div class="article">
-          <div class="container" >
-  <article class="post">
-    <h1 class="entry-title">
-      <a href="/2018/10/18/Vim常用命令/" rel="bookmark">
-        Vim常用命令（转）  
-      </a>
-    </h1>
-
-
-    
-    <div class="entry-content">
-      <p>
-        <p><img src="/2018/10/18/Vim常用命令/title3.jpg" alt="title3"></p>
-      </p>
-    </div>
-    <div class="post-more-link text-center">
-            <a class="btn" href="/2018/10/18/Vim常用命令/" rel="contents">
-              阅读全文 »
-            </a>
-    </div>
-    <p class="posted-on">
-        <i class="fa fa-calendar" aria-hidden="true"></i>
-    	2018-10-18
-    </p>
-    <div class="tags-links">
-      <i class="fa fa-tags" aria-hidden="true"></i>
-      
-      <a href="/tags/收藏/" rel="tag">
-        收藏
-      </a>
-      
-      <a href="/tags/Vim/" rel="tag">
-        Vim
-      </a>
-      
-    </div>
-    
-  </article>
-</div>
-
-        </div> 
-    
-
-    
-<div class="container" >
-  <ul class="pager">
-    
-      <li class="previous">
-        <a href="/page/14/">
-          下一页
-        </a>
-      </li>
-    
-    
-      <li class="next">
-        <a href="/page/16/">
-          上一页
-        </a>
-      </li>
-    
-  </ul>
-</div>
-
-
-  </main>
-
 </div>
 
 
