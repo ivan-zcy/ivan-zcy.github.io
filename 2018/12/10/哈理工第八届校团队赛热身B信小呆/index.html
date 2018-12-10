@@ -227,7 +227,7 @@
       <span class="post-meta-item-icon">
         <i class="fa fa-keyboard-o"></i>
         <span class="post-meta-item-text">  字数统计: </span>
-        <span class="post-count">9字</span>
+        <span class="post-count">462字</span>
       </span>
     </span>
 
@@ -236,7 +236,7 @@
       <span class="post-meta-item-icon">
         <i class="fa fa-hourglass-half"></i>
         <span class="post-meta-item-text">  阅读时长: </span>
-        <span class="post-count">1分</span>
+        <span class="post-count">2分</span>
       </span>
     </span>
                 </div>
@@ -250,11 +250,26 @@
 <a id="more"></a>
 <p>题意：</p>
 <p>Description  </p>
-<p>​    </p>
+<p>​    小g得到一张满x减x的购物劵，他想在自己购物车中选择一部分物品来买，购物车里没种物品只能买一件，并且他想尽量少花钱。由于小g很穷很笨，如果它购物车里所有物品价值总和比x小，那么他只能选择放弃这张优惠劵</p>
+<p>​    也就是说他会在n个物品中选若干，使得花费总和大于等于x且最小</p>
+<p>​    问花费最少的钱能拿到货物的最大价值是多少？</p>
 <p>Input  </p>
+<p>​    输入第一行是t(t &lt;= 100)，表示t组样例。接下来输入n和x (0 &lt; n &lt; 100, 0 &lt; x &lt; 10000)，代表小g购物车有n件物品，优惠劵满x减x，接下来一行有n个数(0 &lt; ai &lt; 100)代表n个物品的价格</p>
 <p>Output  </p>
+<p>​    对于每组样例，请输出“Case x: y”, x是输入样例组数，y是小g在花最少的钱能拿到货物的最大价值</p>
 <p>Sample Input  </p>
+<p>2</p>
+<p>3 10</p>
+<p>1 2 3</p>
+<p>3 10</p>
+<p>5 6 3</p>
 <p>Sample Output  </p>
+<p>Case 1: 0</p>
+<p>Case 2: 11</p>
+<p>思路：</p>
+<p>​    01背包的变形题,dp【i】代表总价值为i的货物搭配是否存在(1存在，0不存在)，然后从x开始遍历，若存在dp【i】则直接输出并跳出，不存在输出0</p>
+<p>代码：</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">#include &lt;stdio.h&gt;</span><br><span class="line">#include &lt;string.h&gt;</span><br><span class="line">bool dp[10005];</span><br><span class="line">int main() &#123;</span><br><span class="line">    int T, tot = 0, a, n, x;</span><br><span class="line">    scanf(&quot;%d&quot;, &amp;T);</span><br><span class="line">    while(T--) &#123;</span><br><span class="line">        memset(dp, 0, sizeof(dp));</span><br><span class="line">        scanf(&quot;%d%d&quot;, &amp;n, &amp;x);</span><br><span class="line">        dp[0] = 1;</span><br><span class="line">        for (int i = 0; i &lt; n; i++) &#123;</span><br><span class="line">            scanf(&quot;%d&quot;, &amp;a);</span><br><span class="line">            for (int j = i * 100; j &gt;= 0; j--) &#123;</span><br><span class="line">                if (dp[j]) &#123;</span><br><span class="line">                    dp[j + a] = 1;</span><br><span class="line">                &#125;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        int flag = 0;</span><br><span class="line">        for (int i = x; i &lt;= n * 100; i++) &#123;</span><br><span class="line">            if(dp[i]) &#123;</span><br><span class="line">                flag = i;</span><br><span class="line">                break;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        printf(&quot;Case %d: %d\n&quot;, ++tot, flag);</span><br><span class="line">    &#125;</span><br><span class="line">    return 0;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 
                 </div>
             </article>
