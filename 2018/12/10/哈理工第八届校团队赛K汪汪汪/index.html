@@ -14,7 +14,7 @@
 
   <!--Open Graph Title-->
   
-      <meta property="og:title" content="Zcy"/>
+      <meta property="og:title" content="哈理工第八届校团队赛K汪汪汪"/>
   
   <!--Open Graph Description-->
   
@@ -22,7 +22,7 @@
   <meta property="og:site_name" content="Zcy"/>
   <!--Type page-->
   
-      <meta property="og:type" content="website" />
+      <meta property="og:type" content="article" />
   
   <!--Page Cover-->
   
@@ -42,7 +42,7 @@
     </script>
   <!-- Title -->
   
-  <title>Zcy</title>
+  <title>哈理工第八届校团队赛K汪汪汪 - Zcy</title>
 
 
   <link rel="shortcut icon" href="/favicon.ico">
@@ -207,295 +207,115 @@
 
 
   <!-- Main Content -->
-  <div class="site-content home">
-      <div class="content-header" style="background: url(/img/back.jpg) no-repeat bottom;">
-        <div class="headline">
-            <a href="#" class="demo">
-                <div class="img" style="background-image:url(/img/avator.jpg)"></div>
-                <div class="cover_mask">
-                    <div class="info">
-                        <span>Welcome</br>by:Zcy</span>
-                    </div>
+  <div class="content-area">
+    <div class="post">
+        <!-- Post Content -->
+        <div class="container">
+            <article>
+                <!-- Title date & tags -->
+                <div class="post-header">
+                    <h1 class="entry-title">
+                        哈理工第八届校团队赛K汪汪汪
+                        
+                    </h1>
+
                 </div>
-                <div class="border"></div>
-            </a>
-            <h1 id="Hotnews"></h1>
-            <script type="application/javascript">
-               var content = "沉下心来做事";
-               var i = 0;
-               function show(){
-                   var str  = content.substr(0,i);
-                   Hotnews.innerHTML = str + "_";
-                   i++;
-                   if (i>content.length) i=0;
-                   setTimeout("show()",600);
-               }
-               window.onload = show();
-               </script>
-            <div class="header-link">
-              
-                
-                  <a href="https://github.com/ivan-zcy" class="icon-github" target="_blank">
-                      <i class="fa fa-github" aria-hidden="true"></i>
-                  </a>
-                
-                  <a href="https://m.weibo.cn/u/6086305650?uid=6086305650&luicode=10000011&lfid=100103type%3D1%26q%3DIvan-酷酷酷酷" class="icon-weibo" target="_blank">
-                      <i class="fa fa-weibo" aria-hidden="true"></i>
-                  </a>
-                
-                  <a href="http://shang.qq.com/open_webaio.html?sigt=1bb29cf0e25d41c832c39e41e587e146da3754f5d273a017917c3d540899734e4339f99eeba019c94b5c389758e3c6ce&sigu=f77cd5fff2ab7f3340b356ec5e3a8696346394fadda6a1b9119fbca25f6746b7dda8e820567392d1&tuin=296763002" class="icon-qq" target="_blank">
-                      <i class="fa fa-qq" aria-hidden="true"></i>
-                  </a>
-                
-                  <a href="http://mail.qq.com/cgi-bin/qm_share?t=qm_mailme&email=PgwHCAkIDQ4ODH5PTxBdUVM" class="icon-envelope" target="_blank">
-                      <i class="fa fa-envelope" aria-hidden="true"></i>
-                  </a>
-                
-              
-            </div>
+
+
+                <div style="text-align:center;color: #ccc;">
+    <span class="post-time" >
+      <span class="post-meta-item-icon">
+        <i class="fa fa-keyboard-o"></i>
+        <span class="post-meta-item-text">  字数统计: </span>
+        <span class="post-count">539字</span>
+      </span>
+    </span>
+
+                    <span class="post-time">
+      &nbsp; | &nbsp;
+      <span class="post-meta-item-icon">
+        <i class="fa fa-hourglass-half"></i>
+        <span class="post-meta-item-text">  阅读时长: </span>
+        <span class="post-count">2分</span>
+      </span>
+    </span>
+                </div>
+
+                <p class="a-posted-on" style="color: #ccc;">
+                    2018-12-10
+                </p>
+                <!-- Post Main Content -->
+                <div class="entry-content">
+                    <p><img src="/2018/12/10/哈理工第八届校团队赛K汪汪汪/title7.jpg" alt="title7"></p>
+<a id="more"></a>
+<p>题意：</p>
+<p>Description</p>
+<p> 给n个区间[l, r]，判断是否存在区间交叉。即是否存在1 &lt;= i &lt; j &lt;= n，使得li &lt; lj &lt; ri &lt; rj。  </p>
+<p>Input  </p>
+<p>多组数据每组数据第一行一个整数n，第二行到第n + 1行每行两个数分别代表该区间的左右端点。  </p>
+<p>Output  </p>
+<p>如果存在交叉，输出“YES”；否则输出“NO”  </p>
+<p>Sample Input  </p>
+<p>2</p>
+<p>1 3</p>
+<p>2 4</p>
+<p>3</p>
+<p>1 7</p>
+<p>2 4</p>
+<p>5 6  </p>
+<p>Sample Output  </p>
+<p>YES</p>
+<p>NO  </p>
+<p>Hint  </p>
+<p>1 &lt;= n &lt;= 1e5, 1 &lt;= li &lt; ri &lt;= 2e5, 每组数据中所有的l，r互不相同。所有组数据n的和不超过1e6.读入数据较大，请使用高效的读入方式。</p>
+<p>思路：</p>
+<p>​    利用sort按照l从小到大排序，若l相同则按照r从小到大排序，然后遍历，二分查找即可。</p>
+<p>代码：</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">#include &lt;stdio.h&gt;</span><br><span class="line">#include &lt;algorithm&gt;</span><br><span class="line">using namespace std;</span><br><span class="line"></span><br><span class="line">namespace IO &#123;</span><br><span class="line">    const int MX = 4e7;</span><br><span class="line">    char buf[MX];</span><br><span class="line">    int c, sz;</span><br><span class="line"></span><br><span class="line">    void begin() &#123;</span><br><span class="line">        c = 0;</span><br><span class="line">        sz = fread(buf, 1, MX, stdin);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    inline bool read(int &amp;t) &#123;</span><br><span class="line">        while (c &lt; sz &amp;&amp; buf[c] != &apos;-&apos; &amp;&amp; (buf[c] &lt; &apos;0&apos; || buf[c] &gt; &apos;9&apos;)) c++;</span><br><span class="line">        if (c &gt;= sz) return false;</span><br><span class="line">        bool flag = 0; if(buf[c] == &apos;-&apos;) &#123;</span><br><span class="line">            flag = 1;</span><br><span class="line">            c++;</span><br><span class="line">        &#125;</span><br><span class="line">        for(t = 0; c &lt; sz &amp;&amp; &apos;0&apos; &lt;= buf[c] &amp;&amp; buf[c] &lt;= &apos;9&apos;; c++)</span><br><span class="line">            t = t * 10 + buf[c] - &apos;0&apos;;</span><br><span class="line">        if(flag) t = -t;</span><br><span class="line">        return true;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">struct node &#123;</span><br><span class="line">    int l, r;</span><br><span class="line">&#125;stu[100005];</span><br><span class="line"></span><br><span class="line">int n;</span><br><span class="line"></span><br><span class="line">bool zcy(node A, node B) &#123;</span><br><span class="line">    if (A.l == B.l) &#123;</span><br><span class="line">        return A.r &lt; B.r;</span><br><span class="line">    &#125;</span><br><span class="line">    return A.l &lt; B.l;</span><br><span class="line">&#125;;</span><br><span class="line"></span><br><span class="line">int erfen(int val) &#123;</span><br><span class="line">    int star = 0, endd = n - 1;</span><br><span class="line">    int ans = -1;</span><br><span class="line">    while(star &lt;= endd) &#123;</span><br><span class="line">        int mid = (star + endd) / 2;</span><br><span class="line">        if (stu[mid].l &lt;= val) &#123;</span><br><span class="line">            star = mid + 1;</span><br><span class="line">        &#125; else &#123;</span><br><span class="line">            ans = mid;</span><br><span class="line">            endd = mid - 1;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    return ans;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">int main () &#123;</span><br><span class="line">    IO::begin();</span><br><span class="line">    while (IO::read(n)) &#123;</span><br><span class="line">        for (int i = 0; i &lt; n; i++) &#123;</span><br><span class="line">            IO::read(stu[i].l);</span><br><span class="line">            IO::read(stu[i].r);</span><br><span class="line">        &#125;</span><br><span class="line">        sort(stu, stu + n, zcy);</span><br><span class="line">        int flag = 0;</span><br><span class="line">        for (int i = 0; i &lt; n - 1; i++) &#123;</span><br><span class="line">            int inx = erfen(stu[i].l);</span><br><span class="line">            if (inx == -1) &#123;</span><br><span class="line">                break;</span><br><span class="line">            &#125;</span><br><span class="line">            for (int j = inx; j &lt; n &amp;&amp; stu[j].l &lt; stu[i].r; j++) &#123;</span><br><span class="line">                if(stu[j].r &gt; stu[i].r) &#123;</span><br><span class="line">                    flag = 1;</span><br><span class="line">                    break;</span><br><span class="line">                &#125;</span><br><span class="line">            &#125;</span><br><span class="line">            if (flag) &#123;</span><br><span class="line">                break;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        if (flag) &#123;</span><br><span class="line">            printf(&quot;YES\n&quot;);</span><br><span class="line">        &#125; else &#123;</span><br><span class="line">            printf(&quot;NO\n&quot;);</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    return 0;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+                </div>
+            </article>
         </div>
+        <br>
+        <div style="text-align:center;color: #ccc;font-size:14px;">
+            <br>
+            <br>
+            <a href="http://www.ivan-zcy.top" style="color: #99FFFF;font-size:18px;">转载请注明出处！！！</a>
+            <br>
+            <br>
+            如果有写的不对或者不全面的地方 可通过主页的联系方式进行指正，谢谢!
+        </div>
+        <br>
+        <!-- Pre or Next -->
+        
+        <div class="container" >
+            <ul class="pager">
+                
+                <li class="previous">
+                    <a href="/2018/12/10/哈理工第八届校团队赛H刘禅的课程/" rel="prev">下一篇</a>
+                </li>
+                
+                
+                <li class="next">
+                    <a href="/2018/12/10/哈理工第八届校团队赛D所以我也想玩这个序列游戏/" rel="prev">上一篇</a>
+                </li>
+                
+            </ul>
+        </div>
+        　　　　<!-- Comments -->
+        <div class="container">
+            
+<section id="comment">
+  <!-- <h1 class="title">Comments</h1> -->
+
+  
+</section>
+
+
+        </div>
+        
+        　　　　
     </div>
-  <main class="content-area">
-    
-        <div class="article">
-          <div class="container" >
-  <article class="post">
-    <h1 class="entry-title">
-      <a href="/2018/11/07/POJ3107-Godfather-树形dp-模拟vector/" rel="bookmark">
-        POJ3107 Godfather 树形dp+模拟vector  
-      </a>
-    </h1>
-
-
-    
-    <div class="entry-content">
-      <p>
-        <p><img src="/2018/11/07/POJ3107-Godfather-树形dp-模拟vector/titile.jpg" alt="titile"></p>
-      </p>
-    </div>
-    <div class="post-more-link text-center">
-            <a class="btn" href="/2018/11/07/POJ3107-Godfather-树形dp-模拟vector/" rel="contents">
-              阅读全文 »
-            </a>
-    </div>
-    <p class="posted-on">
-        <i class="fa fa-calendar" aria-hidden="true"></i>
-    	2018-11-07
-    </p>
-    <div class="tags-links">
-      <i class="fa fa-tags" aria-hidden="true"></i>
-      
-      <a href="/tags/ACM/" rel="tag">
-        ACM
-      </a>
-      
-      <a href="/tags/动态规划/" rel="tag">
-        动态规划
-      </a>
-      
-    </div>
-    
-  </article>
-</div>
-
-        </div> 
-    
-        <div class="article">
-          <div class="container" >
-  <article class="post">
-    <h1 class="entry-title">
-      <a href="/2018/11/07/CodeForces219D-树形dp/" rel="bookmark">
-        CodeForces219D 树形dp  
-      </a>
-    </h1>
-
-
-    
-    <div class="entry-content">
-      <p>
-        <p><img src="/2018/11/07/CodeForces219D-树形dp/title.jpg" alt="title"></p>
-      </p>
-    </div>
-    <div class="post-more-link text-center">
-            <a class="btn" href="/2018/11/07/CodeForces219D-树形dp/" rel="contents">
-              阅读全文 »
-            </a>
-    </div>
-    <p class="posted-on">
-        <i class="fa fa-calendar" aria-hidden="true"></i>
-    	2018-11-07
-    </p>
-    <div class="tags-links">
-      <i class="fa fa-tags" aria-hidden="true"></i>
-      
-      <a href="/tags/ACM/" rel="tag">
-        ACM
-      </a>
-      
-      <a href="/tags/动态规划/" rel="tag">
-        动态规划
-      </a>
-      
-    </div>
-    
-  </article>
-</div>
-
-        </div> 
-    
-        <div class="article">
-          <div class="container" >
-  <article class="post">
-    <h1 class="entry-title">
-      <a href="/2018/11/07/HDU2196-Computer树形dp/" rel="bookmark">
-        HDU2196 Computer树形dp  
-      </a>
-    </h1>
-
-
-    
-    <div class="entry-content">
-      <p>
-        <p><img src="/2018/11/07/HDU2196-Computer树形dp/title1.jpg" alt="title1"></p>
-      </p>
-    </div>
-    <div class="post-more-link text-center">
-            <a class="btn" href="/2018/11/07/HDU2196-Computer树形dp/" rel="contents">
-              阅读全文 »
-            </a>
-    </div>
-    <p class="posted-on">
-        <i class="fa fa-calendar" aria-hidden="true"></i>
-    	2018-11-07
-    </p>
-    <div class="tags-links">
-      <i class="fa fa-tags" aria-hidden="true"></i>
-      
-      <a href="/tags/ACM/" rel="tag">
-        ACM
-      </a>
-      
-      <a href="/tags/动态规划/" rel="tag">
-        动态规划
-      </a>
-      
-    </div>
-    
-  </article>
-</div>
-
-        </div> 
-    
-        <div class="article">
-          <div class="container" >
-  <article class="post">
-    <h1 class="entry-title">
-      <a href="/2018/11/06/HDU1520Anniversary-party-树形dp/" rel="bookmark">
-        HDU1520Anniversary party树形dp  
-      </a>
-    </h1>
-
-
-    
-    <div class="entry-content">
-      <p>
-        <p><img src="/2018/11/06/HDU1520Anniversary-party-树形dp/title.jpg" alt="title"></p>
-      </p>
-    </div>
-    <div class="post-more-link text-center">
-            <a class="btn" href="/2018/11/06/HDU1520Anniversary-party-树形dp/" rel="contents">
-              阅读全文 »
-            </a>
-    </div>
-    <p class="posted-on">
-        <i class="fa fa-calendar" aria-hidden="true"></i>
-    	2018-11-06
-    </p>
-    <div class="tags-links">
-      <i class="fa fa-tags" aria-hidden="true"></i>
-      
-      <a href="/tags/ACM/" rel="tag">
-        ACM
-      </a>
-      
-      <a href="/tags/动态规划/" rel="tag">
-        动态规划
-      </a>
-      
-    </div>
-    
-  </article>
-</div>
-
-        </div> 
-    
-        <div class="article">
-          <div class="container" >
-  <article class="post">
-    <h1 class="entry-title">
-      <a href="/2018/11/06/SSOI307加分二叉树-区间dp/" rel="bookmark">
-        SSOI307加分二叉树 区间dp  
-      </a>
-    </h1>
-
-
-    
-    <div class="entry-content">
-      <p>
-        <p><img src="/2018/11/06/SSOI307加分二叉树-区间dp/titile2.jpg" alt="titile2"></p>
-      </p>
-    </div>
-    <div class="post-more-link text-center">
-            <a class="btn" href="/2018/11/06/SSOI307加分二叉树-区间dp/" rel="contents">
-              阅读全文 »
-            </a>
-    </div>
-    <p class="posted-on">
-        <i class="fa fa-calendar" aria-hidden="true"></i>
-    	2018-11-06
-    </p>
-    <div class="tags-links">
-      <i class="fa fa-tags" aria-hidden="true"></i>
-      
-      <a href="/tags/ACM/" rel="tag">
-        ACM
-      </a>
-      
-      <a href="/tags/动态规划/" rel="tag">
-        动态规划
-      </a>
-      
-    </div>
-    
-  </article>
-</div>
-
-        </div> 
-    
-
-    
-<div class="container" >
-  <ul class="pager">
-    
-      <li class="previous">
-        <a href="/page/8/">
-          下一页
-        </a>
-      </li>
-    
-    
-      <li class="next">
-        <a href="/page/10/">
-          上一页
-        </a>
-      </li>
-    
-  </ul>
-</div>
-
-
-  </main>
-
 </div>
 
 
