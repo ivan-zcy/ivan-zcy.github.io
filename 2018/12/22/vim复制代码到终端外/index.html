@@ -14,7 +14,7 @@
 
   <!--Open Graph Title-->
   
-      <meta property="og:title" content="Mac下mysql无法启动的解决办法"/>
+      <meta property="og:title" content="vim复制代码到终端外"/>
   
   <!--Open Graph Description-->
   
@@ -42,7 +42,7 @@
     </script>
   <!-- Title -->
   
-  <title>Mac下mysql无法启动的解决办法 - Zcy</title>
+  <title>vim复制代码到终端外 - Zcy</title>
 
 
   <link rel="shortcut icon" href="/favicon.ico">
@@ -206,7 +206,7 @@
                 <!-- Title date & tags -->
                 <div class="post-header">
                     <h1 class="entry-title">
-                        Mac下mysql无法启动的解决办法
+                        vim复制代码到终端外
                         
                     </h1>
 
@@ -218,7 +218,7 @@
       <span class="post-meta-item-icon">
         <i class="fa fa-keyboard-o"></i>
         <span class="post-meta-item-text">  字数统计: </span>
-        <span class="post-count">120字</span>
+        <span class="post-count">107字</span>
       </span>
     </span>
 
@@ -233,16 +233,20 @@
                 </div>
 
                 <p class="a-posted-on" style="color: #ccc;">
-                    2018-12-19
+                    2018-12-22
                 </p>
                 <!-- Post Main Content -->
                 <div class="entry-content">
-                    <p><img src="/2018/12/19/Mac下mysql无法启动的解决办法/title4.jpg" alt="title4"></p>
+                    <p>​                            <img src="/2018/12/22/vim复制代码到终端外/title5.jpg" alt="title5"></p>
 <a id="more"></a>
-<p>​    又到了做课设的日子～然后发现电脑里的mysql服务怎么都打不开，上网百度了一下，原因是某种情况下导致”/usr/local/MySQL/data”的拥有者发生了改变，所以只需要将其拥有者修改为“mysql“就可以了。（个人觉得是更改了管理员导致的吧）</p>
-<p>​    这时候，我们只需要在终端中运行，mysql服务就能运行了</p>
-<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">sudo chown -R mysql /usr/local/mysql/data1</span><br></pre></td></tr></table></figure>
-<p>​    Over～</p>
+<p>​    1) 打开 iTerm2 的偏好设置，找到General -&gt; Selection，取消 Copy to pasteboard on selection。</p>
+<p>​    2)在 ~/.vimrc 里添加 </p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">set clipboard=unnamed</span><br></pre></td></tr></table></figure>
+<p>上面的步骤完成了以后，如果要复制整段代码，就按下面的步骤做：</p>
+<p>​    1.vim打开某一文件，按 ESC 进入 normal 模式<br>​    2.v 进入 visual 模式。</p>
+<p>​    3.shift+g 选中光标后的所有内容</p>
+<p>​    4. y复制选中内容</p>
+<p>​    5. cmd+v 粘贴代码</p>
 
                 </div>
             </article>
@@ -262,13 +266,9 @@
         <div class="container" >
             <ul class="pager">
                 
-                <li class="previous">
-                    <a href="/2018/12/22/vim复制代码到终端外/" rel="prev">下一篇</a>
-                </li>
-                
                 
                 <li class="next">
-                    <a href="/2018/12/18/海量数找前1000大/" rel="prev">上一篇</a>
+                    <a href="/2018/12/19/Mac下mysql无法启动的解决办法/" rel="prev">上一篇</a>
                 </li>
                 
             </ul>
