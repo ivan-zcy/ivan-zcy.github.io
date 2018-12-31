@@ -14,7 +14,7 @@
 
   <!--Open Graph Title-->
   
-      <meta property="og:title" content="洛谷1108低价购买"/>
+      <meta property="og:title" content="洛谷1137旅行计划"/>
   
   <!--Open Graph Description-->
   
@@ -42,7 +42,7 @@
     </script>
   <!-- Title -->
   
-  <title>洛谷1108低价购买 - Zcy</title>
+  <title>洛谷1137旅行计划 - Zcy</title>
 
 
   <link rel="shortcut icon" href="/favicon.ico">
@@ -206,7 +206,7 @@
                 <!-- Title date & tags -->
                 <div class="post-header">
                     <h1 class="entry-title">
-                        洛谷1108低价购买
+                        洛谷1137旅行计划
                         
                     </h1>
 
@@ -218,7 +218,7 @@
       <span class="post-meta-item-icon">
         <i class="fa fa-keyboard-o"></i>
         <span class="post-meta-item-text">  字数统计: </span>
-        <span class="post-count">867字</span>
+        <span class="post-count">604字</span>
       </span>
     </span>
 
@@ -227,7 +227,7 @@
       <span class="post-meta-item-icon">
         <i class="fa fa-hourglass-half"></i>
         <span class="post-meta-item-text">  阅读时长: </span>
-        <span class="post-count">4分</span>
+        <span class="post-count">2分</span>
       </span>
     </span>
                 </div>
@@ -237,36 +237,28 @@
                 </p>
                 <!-- Post Main Content -->
                 <div class="entry-content">
-                    <p><img src="/2018/12/31/洛谷1108低价购买/title5.jpg" alt="title5"></p>
+                    <p><img src="/2018/12/31/洛谷1137旅行计划/title9.jpg" alt="title9"></p>
 <a id="more"></a>
-<h2 id="题目描述"><a href="#题目描述" class="headerlink" title="题目描述"></a>题目描述</h2><p>“低价购买”这条建议是在奶牛股票市场取得成功的一半规则。要想被认为是伟大的投资者，你必须遵循以下的问题建议:“低价购买；再低价购买”。每次你购买一支股票,你必须用低于你上次购买它的价格购买它。买的次数越多越好!你的目标是在遵循以上建议的前提下，求你最多能购买股票的次数。你将被给出一段时间内一支股票每天的出售价(216216范围内的正整数)，你可以选择在哪些天购买这支股票。每次购买都必须遵循“低价购买；再低价购买”的原则。写一个程序计算最大购买次数。</p>
-<p>这里是某支股票的价格清单：</p>
-<p>日期 1,2,3,4,5,6,7,8,9,10,11,121,2,3,4,5,6,7,8,9,10,11,12</p>
-<p>价格68,69,54,64,68,64,70,67,78,62,98,8768,69,54,64,68,64,70,67,78,62,98,87</p>
-<p>最优秀的投资者可以购买最多44次股票，可行方案中的一种是：</p>
-<p>日期 2,5,6,102,5,6,10</p>
-<p>价格 69,68,64,6269,68,64,62</p>
+<h2 id="题目描述"><a href="#题目描述" class="headerlink" title="题目描述"></a>题目描述</h2><p>小明要去一个国家旅游。这个国家有N个城市，编号为1至N，并且有M条道路连接着，小明准备从其中一个城市出发，并只往东走到城市i停止。</p>
+<p>所以他就需要选择最先到达的城市，并制定一条路线以城市i为终点，使得线路上除了第一个城市，每个城市都在路线前一个城市东面，并且满足这个前提下还希望游览的城市尽量多。</p>
+<p>现在，你只知道每一条道路所连接的两个城市的相对位置关系，但并不知道所有城市具体的位置。现在对于所有的i，都需要你为小明制定一条路线，并求出以城市i为终点最多能够游览多少个城市。</p>
 <h2 id="输入输出格式"><a href="#输入输出格式" class="headerlink" title="输入输出格式"></a>输入输出格式</h2><p>输入格式：</p>
-<p>第1行: N(1≤N≤5000)N(1≤N≤5000)，股票发行天数</p>
-<p>第2行: NN个数，是每天的股票价格。</p>
+<p>第1行为两个正整数N,M。</p>
+<p>接下来M行，每行两个正整数x,y，表示了有一条连接城市x与城市y的道路，保证了城市x在城市y西面。</p>
 <p>输出格式：</p>
-<p>两个数:最大购买次数和拥有最大购买次数的方案数(≤231≤231)当二种方案“看起来一样”时（就是说它们构成的价格队列一样的时候）,这22种方案被认为是相同的。</p>
+<p>N行，第i行包含一个正整数，表示以第i个城市为终点最多能游览多少个城市。</p>
 <h2 id="输入输出样例"><a href="#输入输出样例" class="headerlink" title="输入输出样例"></a>输入输出样例</h2><p>输入样例#1：</p>
-<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">12</span><br><span class="line">68 69 54 64 68 64 70 67 78 62 98 87</span><br></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">5 6</span><br><span class="line">1 2</span><br><span class="line">1 3</span><br><span class="line">2 3</span><br><span class="line">2 4</span><br><span class="line">3 4</span><br><span class="line">2 5</span><br></pre></td></tr></table></figure>
 <p>输出样例#1：</p>
-<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">4 2</span><br></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">3</span><br></pre></td></tr></table></figure>
+<h2 id="说明"><a href="#说明" class="headerlink" title="说明"></a>说明</h2><p>均选择从城市1出发可以得到以上答案。</p>
+<p>对于20%的数据，N≤100；</p>
+<p>对于60%的数据，N≤1000；</p>
+<p>对于100%的数据，N≤100000,M≤200000</p>
 <p>思路：</p>
-<p>​    这道题有两问，一问是求最长下降子序列，一个是求最长下降子序列的个数。我们可以先举个例子来看一下：设置f数组为最长下降子序列的长度，g数组为最长下降子序列的个数，对于样例：</p>
-<p>val数组：3 7 6 4 5 5 3</p>
-<p>f数组：1 1 2 3 3 3 4</p>
-<p>g数组：1 1 1 1 0 1 2    </p>
-<p>​    也就是说，g数组有三个规则：</p>
-<pre><code>1. 当f【i】为1的时候，g【1】 = 1
-2. 当f【i】==f【j】+1&amp;&amp;val【i】&lt; val【j】时，g【i】+= g【j】
-3. 当f【i】== f【j】&amp;&amp;val【i】==val【j】时，g【i】= 0
-</code></pre><p>最后max（f【i】）即是最长长度，所有f【i】==最长长度的g【i】的和即为个数</p>
+<p>​    这道题利用拓扑排序找到所有能够从i节点到达的节点j，令dp【j】 = dp【i】+ 1，最后dp数组就是所求</p>
 <p>代码：</p>
-<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">#include &lt;iostream&gt;</span><br><span class="line">#include &lt;algorithm&gt;</span><br><span class="line">using std::cin;</span><br><span class="line">using std::cout;</span><br><span class="line">using std::endl;</span><br><span class="line"></span><br><span class="line">int val[5005] = &#123;0&#125;;</span><br><span class="line">int dp[5005][2] = &#123;0&#125;;</span><br><span class="line"></span><br><span class="line">int main () &#123;</span><br><span class="line">    int n;</span><br><span class="line">    cin &gt;&gt; n;</span><br><span class="line">    for (int i = 1; i &lt;= n; i++) &#123;</span><br><span class="line">        cin &gt;&gt; val[i];</span><br><span class="line">        dp[i][0] = 1;</span><br><span class="line">    &#125;</span><br><span class="line">    for (int i = 1; i &lt;= n; i++) &#123;</span><br><span class="line">        for (int j = 1; j &lt; i; j++) &#123;</span><br><span class="line">            if (val[j] &gt; val[i]) &#123;</span><br><span class="line">                dp[i][0] = std::max(dp[i][0], dp[j][0] + 1);</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        if (dp[i][0] == 1) &#123;</span><br><span class="line">            dp[i][1] = 1;</span><br><span class="line">        &#125;</span><br><span class="line">        for (int j = 1; j &lt; i; j++) &#123;</span><br><span class="line">            if (dp[i][0] == dp[j][0] + 1 &amp;&amp; val[j] &gt; val[i]) &#123;</span><br><span class="line">                dp[i][1] += dp[j][1];</span><br><span class="line">            &#125;</span><br><span class="line">            if (dp[i][0] == dp[j][0] &amp;&amp; val[j] == val[i]) &#123;</span><br><span class="line">                dp[i][1] = 0;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    int maxx = 1, sum = 0;</span><br><span class="line">    for (int i = 1; i &lt;= n; i++) &#123;</span><br><span class="line">        maxx = std::max(dp[i][0], maxx);</span><br><span class="line">    &#125;</span><br><span class="line">    for (int i = 1; i &lt;= n; i++) &#123;</span><br><span class="line">        if (dp[i][0] == maxx) &#123;</span><br><span class="line">            sum += dp[i][1];</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    cout &lt;&lt; maxx &lt;&lt; &quot; &quot; &lt;&lt; sum &lt;&lt; endl;</span><br><span class="line">    return 0;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">#include &lt;stdio.h&gt;</span><br><span class="line">#include &lt;vector&gt;</span><br><span class="line">#include &lt;queue&gt;</span><br><span class="line">using namespace std;</span><br><span class="line"></span><br><span class="line">int n, m;</span><br><span class="line">int ru[100005] = &#123;0&#125;;</span><br><span class="line">int dp[100005] = &#123;0&#125;;</span><br><span class="line">vector&lt;int&gt;zcy[100005];</span><br><span class="line">queue&lt;int&gt;que;</span><br><span class="line"></span><br><span class="line">void tupo() &#123;</span><br><span class="line">    for (int i = 1; i &lt;= n; i++) &#123;</span><br><span class="line">        dp[i] = 1;</span><br><span class="line">        if (!ru[i]) &#123;</span><br><span class="line">            que.push(i);</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    while(!que.empty()) &#123;</span><br><span class="line">        int t = que.front();</span><br><span class="line">        que.pop();</span><br><span class="line">        for (int i = 0; i &lt; zcy[t].size(); i++) &#123;</span><br><span class="line">            int k = zcy[t][i];</span><br><span class="line">            dp[k] = max(dp[k], dp[t] + 1);</span><br><span class="line">            ru[k] --;</span><br><span class="line">            if (!ru[k]) que.push(k);</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">int main () &#123;</span><br><span class="line">    int a, b;</span><br><span class="line">    scanf(&quot;%d%d&quot;, &amp;n, &amp;m);</span><br><span class="line">    for (int i = 0; i &lt; m; i++) &#123;</span><br><span class="line">        scanf(&quot;%d%d&quot;, &amp;a, &amp;b);</span><br><span class="line">        zcy[a].push_back(b);</span><br><span class="line">        ru[b]++;</span><br><span class="line">    &#125;</span><br><span class="line">    tupo();</span><br><span class="line">    for (int i = 1; i &lt;= n; i++) &#123;</span><br><span class="line">        printf(&quot;%d\n&quot;, dp[i]);</span><br><span class="line">    &#125;</span><br><span class="line">    return 0;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 
                 </div>
             </article>
@@ -286,13 +278,9 @@
         <div class="container" >
             <ul class="pager">
                 
-                <li class="previous">
-                    <a href="/2018/12/31/洛谷1137旅行计划/" rel="prev">下一篇</a>
-                </li>
-                
                 
                 <li class="next">
-                    <a href="/2018/12/29/CodeForces1096DEasy-Problem/" rel="prev">上一篇</a>
+                    <a href="/2018/12/31/洛谷1108低价购买/" rel="prev">上一篇</a>
                 </li>
                 
             </ul>
