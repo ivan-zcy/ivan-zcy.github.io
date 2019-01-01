@@ -14,7 +14,7 @@
 
   <!--Open Graph Title-->
   
-      <meta property="og:title" content="Euler56"/>
+      <meta property="og:title" content="探究rand()随机数"/>
   
   <!--Open Graph Description-->
   
@@ -42,7 +42,7 @@
     </script>
   <!-- Title -->
   
-  <title>Euler56 - Zcy</title>
+  <title>探究rand()随机数 - Zcy</title>
 
 
   <link rel="shortcut icon" href="/favicon.ico">
@@ -206,7 +206,7 @@
                 <!-- Title date & tags -->
                 <div class="post-header">
                     <h1 class="entry-title">
-                        Euler56
+                        探究rand()随机数
                         
                     </h1>
 
@@ -218,7 +218,7 @@
       <span class="post-meta-item-icon">
         <i class="fa fa-keyboard-o"></i>
         <span class="post-meta-item-text">  字数统计: </span>
-        <span class="post-count">290字</span>
+        <span class="post-count">785字</span>
       </span>
     </span>
 
@@ -227,7 +227,7 @@
       <span class="post-meta-item-icon">
         <i class="fa fa-hourglass-half"></i>
         <span class="post-meta-item-text">  阅读时长: </span>
-        <span class="post-count">1分</span>
+        <span class="post-count">3分</span>
       </span>
     </span>
                 </div>
@@ -237,15 +237,20 @@
                 </p>
                 <!-- Post Main Content -->
                 <div class="entry-content">
-                    <p><img src="/2019/01/01/Euler56/title4.jpg" alt="title4"></p>
+                    <p><img src="/2019/01/01/探究rand-随机数/title2.jpg" alt="title2"></p>
 <a id="more"></a>
-<p>题意：</p>
-<p>一古戈尔（10100）是一个巨大的数字：一后面跟着一百个零。100100则更是无法想像地巨大：一后面跟着两百个零。然而，尽管这两个数如此巨大，各位数字和却都只有1。</p>
-<p>若a, b &lt; 100，所有能表示为ab的自然数中，最大的各位数字和是多少？</p>
-<p>思路：</p>
-<p>​    一道考验基操的题——大数乘法。打一遍当热热手～</p>
-<p>代码：</p>
-<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">#include &lt;stdio.h&gt;</span><br><span class="line">#include &lt;string.h&gt;</span><br><span class="line">#include &lt;vector&gt;</span><br><span class="line">#include &lt;math.h&gt;</span><br><span class="line">#include &lt;algorithm&gt;</span><br><span class="line">#include &lt;stack&gt;</span><br><span class="line">#define ll long long</span><br><span class="line">using namespace std;</span><br><span class="line"></span><br><span class="line">void mul (int *num, int val) &#123;</span><br><span class="line">    for (int i = 1; i &lt;= num[0]; i++) &#123;</span><br><span class="line">        num[i] *= val;</span><br><span class="line">    &#125;</span><br><span class="line">    for (int i = 1; i &lt;= num[0]; i++) &#123;</span><br><span class="line">        if (num[i] &gt;= 10) &#123;</span><br><span class="line">            num[i + 1] += num[i] / 10;</span><br><span class="line">            num[i] %= 10;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    while(num[num[0] + 1]) &#123;</span><br><span class="line">        num[0] ++;</span><br><span class="line">        num[num[0] + 1] = num[num[0]] / 10;</span><br><span class="line">        num[num[0]] %= 10;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">int main () &#123;</span><br><span class="line">    int mx = 0;</span><br><span class="line">    for (int i = 1; i &lt;= 100; i++) &#123;</span><br><span class="line">        int num[205] = &#123;1, 1&#125;;</span><br><span class="line">        for (int j = 1; j &lt;= 100; j++) &#123;</span><br><span class="line">            int k = 0;</span><br><span class="line">            mul(num, i);</span><br><span class="line">            for (int p = 1; p &lt;= num[0]; p++) &#123;</span><br><span class="line">                k += num[p];</span><br><span class="line">            &#125;</span><br><span class="line">            if (k &gt; mx) &#123;</span><br><span class="line">                mx = k;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    printf(&quot;%d\n&quot;, mx);</span><br><span class="line">    return 0;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>####关于srand()函数</p>
+<p>​    srand（）函数用于设置随机种子，一般参数为time（0）作为随机种子</p>
+<h4 id="关于time-函数"><a href="#关于time-函数" class="headerlink" title="关于time()函数"></a>关于time()函数</h4><p>​    time（0）函数返回当前时间戳（以秒为单位，从1900.01.01开始，时间戳是32位整数，所以2036年就会失效）</p>
+<p>####关于rand()函数</p>
+<p>​    rand（）会随机生成一个整型(实质是一套算法，若种子相同，一套算法算出来的东西也相同)</p>
+<h4 id="关于rand-函数的随机性"><a href="#关于rand-函数的随机性" class="headerlink" title="关于rand()函数的随机性"></a>关于rand()函数的随机性</h4><p>​    由于rand()函数也是一种算法，传入相同的随机种子，生成的数也是相同的，所以广义上来说，随机数并不是真正的随机，是一种伪随机。</p>
+<p>​    一个随机算法，需要保证在规定的范围内的每一个数都有可能出现且出现的概率是相同的，根据传入的随机种子不同，随机数也不同。</p>
+<p>####rand()函数算法如何实现0～2^32 - 1均匀随机的出现？</p>
+<p>​    利用费马定理：如果p是一个素数，a^(φ(p)) % p = 1(当a与p互素时)</p>
+<p>​    具体见代码</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">#include &lt;iostream&gt;</span><br><span class="line">using namespace std;</span><br><span class="line">#define MAX_N 100000</span><br><span class="line"></span><br><span class="line">//100000以内的素数数组</span><br><span class="line">int prime[MAX_N + 5] = &#123;0&#125;;</span><br><span class="line"></span><br><span class="line">//my_seed是一个随机种子，rand()算法核心的两个参数a_num, b_num,</span><br><span class="line">//利用my_seed = my_seed * a_num % b_num能够保证my_seed在1～b_num - 1均匀的出现</span><br><span class="line">static int my_seed = 37, a_num, b_num;</span><br><span class="line"></span><br><span class="line">//自定义rand()函数</span><br><span class="line">int my_rand() &#123;</span><br><span class="line">#define i my_seed</span><br><span class="line">    do &#123;</span><br><span class="line">        //rand()算法的核心，该算式能够保证i在1～9999均匀的出现</span><br><span class="line">        i = i * a_num % b_num;</span><br><span class="line">    &#125; while (i &gt; 10000);</span><br><span class="line">    return i;</span><br><span class="line">#undef i</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">//至于a_num和b_num如何得到，下面是求解过程</span><br><span class="line"></span><br><span class="line">//预处理全部素数</span><br><span class="line">void init_prime() &#123;</span><br><span class="line">    for (int i = 2; 2 * i &lt;= MAX_N; i++) &#123;</span><br><span class="line">        if (!prime[i]) &#123;</span><br><span class="line">            prime[++prime[0]] = i;</span><br><span class="line">        &#125;</span><br><span class="line">        for (int j = 1; j &lt;= prime[0]; j++) &#123;</span><br><span class="line">            if (i * prime[j] &gt; MAX_N) break;</span><br><span class="line">            prime[i * prime[j]] = 1;</span><br><span class="line">            if (i % prime[j] == 0) break;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    return ;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">//快速幂函a^b % c</span><br><span class="line">int quick_mod(int a, int b, int c) &#123;</span><br><span class="line">    int ans = 1, temp = a % c;</span><br><span class="line">    while (b) &#123;</span><br><span class="line">        if (b &amp; 1) ans *= temp;</span><br><span class="line">        temp *= temp;</span><br><span class="line">        temp %= c;</span><br><span class="line">        ans %= c;</span><br><span class="line">        b &gt;&gt;= 1;</span><br><span class="line">    &#125;</span><br><span class="line">    return ans;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">//由于b为质数且a,b互质，根据费马定理小定理a^(φ(p)) % p = 1，也就是a^(p - 1) % p = 1</span><br><span class="line">//因此我们只需要确定p - 1的全部约数不为1，即确定a^i是循环节为p - 1的算式</span><br><span class="line">int get_len(int a, int b) &#123;</span><br><span class="line">    for (int i = 1; i &lt; b - 1; i++) &#123;</span><br><span class="line">        if ((b - 1) % i) continue;</span><br><span class="line">        if (quick_mod(a, i, b) == 1) return i;</span><br><span class="line">    &#125;</span><br><span class="line">    return b - 1;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">void get_a_and_b(int *a, int *b) &#123;</span><br><span class="line">    //找到一个大于13000的素数b_num</span><br><span class="line">    for (int i = 1; i &lt;= prime[0]; i++) &#123;</span><br><span class="line">        *b = prime[i];</span><br><span class="line">        if (prime[i] &gt; 13000) break;    </span><br><span class="line">    &#125;</span><br><span class="line">    //根据b_num找到符合条件的a_num</span><br><span class="line">    for (int i = 2; i &lt; *b; i++) &#123;      </span><br><span class="line">        if (get_len(i, *b) != *b - 1) continue;</span><br><span class="line">        *a = i;</span><br><span class="line">        break;</span><br><span class="line">    &#125;</span><br><span class="line">    return ;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">//对a（也就是a_num），b(也就是b_num)进行验证</span><br><span class="line">void check(int a, int b) &#123;</span><br><span class="line">    a_num = a, b_num = b;</span><br><span class="line">    int vis[10001] = &#123;0&#125;;</span><br><span class="line">    for (int i = 0; i &lt; 10000; i++) &#123;</span><br><span class="line">        int temp = my_rand();</span><br><span class="line">        if (vis[temp]) &#123;</span><br><span class="line">            cout &lt;&lt; &quot;error&quot; &lt;&lt; endl;</span><br><span class="line">            exit(0);</span><br><span class="line">        &#125;</span><br><span class="line">        vis[temp] = 1;</span><br><span class="line">    &#125;</span><br><span class="line">    cout &lt;&lt; a &lt;&lt; &quot; &quot; &lt;&lt; b &lt;&lt; &quot; OK&quot; &lt;&lt; endl;</span><br><span class="line">    return ;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">int main() &#123;</span><br><span class="line">    init_prime();</span><br><span class="line">    int a, b;</span><br><span class="line">    get_a_and_b(&amp;a, &amp;b);</span><br><span class="line">    check(a, b);</span><br><span class="line">    return 0;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
                 </div>
             </article>
         </div>
@@ -264,13 +269,9 @@
         <div class="container" >
             <ul class="pager">
                 
-                <li class="previous">
-                    <a href="/2019/01/01/探究rand-随机数/" rel="prev">下一篇</a>
-                </li>
-                
                 
                 <li class="next">
-                    <a href="/2019/01/01/Euler53/" rel="prev">上一篇</a>
+                    <a href="/2019/01/01/Euler56/" rel="prev">上一篇</a>
                 </li>
                 
             </ul>
