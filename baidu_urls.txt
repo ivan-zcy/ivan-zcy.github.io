@@ -1,3 +1,4 @@
+http://www.ivan-zcy.top/2019/01/16/动态规划优化问题-3/
 http://www.ivan-zcy.top/2019/01/16/动态规划优化问题-2/
 http://www.ivan-zcy.top/2019/01/16/动态规划优化问题-1/
 http://www.ivan-zcy.top/2019/01/11/C语言碎碎念/
@@ -97,4 +98,3 @@ http://www.ivan-zcy.top/2018/10/23/杜教BM模版-推规律/
 http://www.ivan-zcy.top/2018/10/23/18-10-23博客搭建进度/
 http://www.ivan-zcy.top/2018/10/22/关于sqrt与log的巧用/
 http://www.ivan-zcy.top/2018/10/22/关于欧拉-定理-公式-函数/
-http://www.ivan-zcy.top/2018/10/22/关于逆元/
