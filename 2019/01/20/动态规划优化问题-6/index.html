@@ -218,7 +218,7 @@
       <span class="post-meta-item-icon">
         <i class="fa fa-keyboard-o"></i>
         <span class="post-meta-item-text">  字数统计: </span>
-        <span class="post-count">0字</span>
+        <span class="post-count">516字</span>
       </span>
     </span>
 
@@ -227,7 +227,7 @@
       <span class="post-meta-item-icon">
         <i class="fa fa-hourglass-half"></i>
         <span class="post-meta-item-text">  阅读时长: </span>
-        <span class="post-count">1分</span>
+        <span class="post-count">2分</span>
       </span>
     </span>
                 </div>
@@ -237,7 +237,17 @@
                 </p>
                 <!-- Post Main Content -->
                 <div class="entry-content">
-                    
+                    <p><img src="/2019/01/20/动态规划优化问题-6/title1.jpg" alt="title1"></p>
+<a id="more"></a>
+<p>例五：矩形问题</p>
+<p>​    在一个n✖️m的黑白相间的矩形中，问有多少个全白色的子矩形（0代表黑色，1代表白）</p>
+<p>​    最暴力的方法就是挨个子矩形都去判断，这样的时间复杂度为O(n^2✖️m^2)，在这里就不说了。</p>
+<p>​    我们可以优化，设<code>dp[i][j]</code>代表以(i, j)为右下角的子矩形的个数，再通过<code>l[i][j]</code>数组记录第i行j列向上有多少个连续的白矩形。这样就可以把题目优化到O(n✖️m^2)，伪代码如下：</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">for (int i = 1; i &lt;= n; i++) &#123;</span><br><span class="line">    for (int j = 1; j &lt;= m; j++) &#123;</span><br><span class="line">    	minn = l[i][j];</span><br><span class="line">        for (int k = j; k &gt;= 1; k--) &#123;</span><br><span class="line">            minn = min(minn, l[i][k]);</span><br><span class="line">            if (!minn) break;</span><br><span class="line">            ans += minn;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>​    但是如果n和m的取值范围都是1e3怎么办？这时，我们就可以通过转移优化中的单调栈优化来进一步进行优化</p>
+<p>​    我们创建一个单调栈数组<code>sta[i]</code>代表第i行的单调栈。保持单调栈递增，那么就可以将题目优化到O(n✖️m)了，详情请看代码：</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">#include &lt;stdio.h&gt;</span><br><span class="line">#include &lt;ctype.h&gt;</span><br><span class="line">#include &lt;stack&gt;</span><br><span class="line">#define ll long long</span><br><span class="line">using namespace std;</span><br><span class="line"></span><br><span class="line">inline int read() &#123;</span><br><span class="line">    int num=0;</span><br><span class="line">    char ch=0;</span><br><span class="line">    while (!isdigit(ch)) &#123;</span><br><span class="line">        ch = getchar();</span><br><span class="line">    &#125;</span><br><span class="line">    while (isdigit(ch)) &#123;</span><br><span class="line">        num = (num&lt;&lt;3) + (num&lt;&lt;1) + (ch^48);</span><br><span class="line">        ch = getchar();</span><br><span class="line">    &#125;</span><br><span class="line">    return num;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">struct node &#123;</span><br><span class="line">    int inx, val, sum;</span><br><span class="line">    node(int x, int y, int z) &#123;</span><br><span class="line">        inx = x;</span><br><span class="line">        val = y;</span><br><span class="line">        sum = z;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;;</span><br><span class="line"></span><br><span class="line">stack&lt;node&gt;que[1005];</span><br><span class="line">int l[1005][1005] = &#123;0&#125;;</span><br><span class="line"></span><br><span class="line">int main () &#123;</span><br><span class="line">    int n, m, a;</span><br><span class="line">    ll ans = 0;</span><br><span class="line">    n = read();</span><br><span class="line">    m = read();</span><br><span class="line">    for (int i = 1; i &lt;= n; i++) &#123;</span><br><span class="line">        for (int j = 1; j &lt;= m; j++) &#123;</span><br><span class="line">            a = read();</span><br><span class="line">            if (a) &#123;</span><br><span class="line">                l[i][j] = l[i - 1][j] + 1;</span><br><span class="line">            &#125;</span><br><span class="line">            while (!que[i].empty()) &#123;</span><br><span class="line">                if (que[i].top().val &gt;= l[i][j]) &#123;</span><br><span class="line">                    que[i].pop();</span><br><span class="line">                &#125; else &#123;</span><br><span class="line">                    break;</span><br><span class="line">                &#125;</span><br><span class="line">            &#125;</span><br><span class="line">            node sta(j, l[i][j], 0);</span><br><span class="line">            if (que[i].empty()) &#123;</span><br><span class="line">                sta.sum = j * l[i][j];</span><br><span class="line">            &#125; else &#123;</span><br><span class="line">                sta.sum = que[i].top().sum + (j - que[i].top().inx) * l[i][j];</span><br><span class="line">            &#125;</span><br><span class="line">            que[i].push(sta);</span><br><span class="line">            ans += sta.sum;</span><br><span class="line">            if (ans &gt;= 100007) &#123;</span><br><span class="line">                ans %= 100007;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    printf(&quot;%lld\n&quot;, ans);</span><br><span class="line">    return 0;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
                 </div>
             </article>
         </div>
