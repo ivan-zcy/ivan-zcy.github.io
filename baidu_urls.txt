@@ -1,5 +1,6 @@
+http://www.ivan-zcy.top/2019/01/21/Git简单用法-二/
 http://www.ivan-zcy.top/2019/01/21/简易实现Linux命令-待完善/
-http://www.ivan-zcy.top/2019/01/21/Git简单实用/
+http://www.ivan-zcy.top/2019/01/21/Git简单用法-一/
 http://www.ivan-zcy.top/2019/01/21/实现ssh免密登陆/
 http://www.ivan-zcy.top/2019/01/20/啥是佩奇源码/
 http://www.ivan-zcy.top/2019/01/20/动态规划优化问题-6/
@@ -97,4 +98,3 @@ http://www.ivan-zcy.top/2018/10/24/莫比乌斯反演/
 http://www.ivan-zcy.top/2018/10/24/二项式反演/
 http://www.ivan-zcy.top/2018/10/24/母函数/
 http://www.ivan-zcy.top/2018/10/24/HDU1430-康托展开/
-http://www.ivan-zcy.top/2018/10/24/康托展开/
