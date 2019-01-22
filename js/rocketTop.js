@@ -1,14 +1,11 @@
-var x=$(window);
-var e=$("#shape");
-
 $("html,body").ready(function(){
-	var scrollbar=x.scrollTop();
+	var scrollbar=$(window).scrollTop();
 	var isClick=0;
 
 	(scrollbar<=0)?($("#shape").hide()):($("#shape").show());
 
 	$(window).scroll(function(){
-		scrollbar=x.scrollTop();
+		scrollbar=$(window).scrollTop();
 		(scrollbar<=0)?($("#shape").hide()):($("#shape").show());			
 	})
 
