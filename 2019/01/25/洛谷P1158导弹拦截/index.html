@@ -14,7 +14,7 @@
 
   <!--Open Graph Title-->
   
-      <meta property="og:title" content="Zcy"/>
+      <meta property="og:title" content="洛谷P1158导弹拦截"/>
   
   <!--Open Graph Description-->
   
@@ -22,7 +22,7 @@
   <meta property="og:site_name" content="Zcy"/>
   <!--Type page-->
   
-      <meta property="og:type" content="website" />
+      <meta property="og:type" content="article" />
   
   <!--Page Cover-->
   
@@ -42,7 +42,7 @@
     </script>
   <!-- Title -->
   
-  <title>Vim - Zcy</title>
+  <title>洛谷P1158导弹拦截 - Zcy</title>
 
 
   <link rel="shortcut icon" href="/favicon.ico">
@@ -194,37 +194,112 @@
 
 
   <!-- Main Content -->
-  
+  <div class="content-area">
+    <div class="post">
+        <!-- Post Content -->
+        <div class="container">
+            <article>
+                <!-- Title date & tags -->
+                <div class="post-header">
+                    <h1 class="entry-title">
+                        洛谷P1158导弹拦截
+                        
+                    </h1>
 
-<!-- Main Content -->
-<div class="archive content-area">
-  <div class="container">
-    <h1 class="entry-title">#Vim</h1>
-    <div class="row">
-      <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
-        <!-- Use lodash to classify posts. See https://lodash.com/docs#groupBy -->
-        
-        
-          <h2 class="year">2018</h2>
-          <ul class="list">
-            
-  <li>
-    <span class="date">
-      2018-10-18
+                </div>
+
+
+                <div style="text-align:center;color: #ccc;">
+    <span class="post-time" >
+      <span class="post-meta-item-icon">
+        <i class="fa fa-keyboard-o"></i>
+        <span class="post-meta-item-text">  字数统计: </span>
+        <span class="post-count">866字</span>
+      </span>
     </span>
-    <a href="/2018/10/18/Vim常用命令/" class="title">
-      Vim常用命令（转）
-    </a>
-  </li>
 
+                    <span class="post-time">
+      &nbsp; | &nbsp;
+      <span class="post-meta-item-icon">
+        <i class="fa fa-hourglass-half"></i>
+        <span class="post-meta-item-text">  阅读时长: </span>
+        <span class="post-count">3分</span>
+      </span>
+    </span>
+                </div>
 
-          </ul>
+                <p class="a-posted-on" style="color: #ccc;">
+                    2019-01-25
+                </p>
+                <!-- Post Main Content -->
+                <div class="entry-content">
+                    <p><img src="/2019/01/25/洛谷P1158导弹拦截/title.jpg" alt="title"></p>
+<a id="more"></a>
+<h2 id="题目描述"><a href="#题目描述" class="headerlink" title="题目描述"></a>题目描述</h2><p>经过 11年的韬光养晦，某国研发出了一种新的导弹拦截系统，凡是与它的距离不超过其工作半径的导弹都能够被它成功拦截。当工作半径为 0时，则能够拦截与它位置恰好相同的导弹。但该导弹拦截系统也存在这样的缺陷：每套系统每天只能设定一次工作半径。而当天的使用代价，就是所有系统工作半径的平方和。</p>
+<p>某天，雷达捕捉到敌国的导弹来袭。由于该系统尚处于试验阶段，所以只有两套系统投入工作。如果现在的要求是拦截所有的导弹，请计算这一天的最小使用代价。</p>
+<h2 id="输入输出格式"><a href="#输入输出格式" class="headerlink" title="输入输出格式"></a>输入输出格式</h2><p>输入格式：</p>
+<p>第一行包含 4个整数x1、y1、x2、y2，每两个整数之间用一个空格隔开，表示这两套导弹拦截系统的坐标分别为(x1,y1)、(x2,y2)。 第二行包含1个整数N，表示有 N颗导弹。接下来N行，每行两个整数 x,y，中间用 一个空格隔开，表示一颗导弹的坐标(x,y)。不同导弹的坐标可能相同。</p>
+<p>输出格式：</p>
+<p>一个整数，即当天的最小使用代价。</p>
+<h2 id="输入输出样例"><a href="#输入输出样例" class="headerlink" title="输入输出样例"></a>输入输出样例</h2><p>输入样例#1：</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">0 0 10 0</span><br><span class="line">2</span><br><span class="line">-3 3</span><br><span class="line">10 0</span><br></pre></td></tr></table></figure>
+<p>输出样例#1：</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">18</span><br></pre></td></tr></table></figure>
+<p>输入样例#2：</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">0 0 6 0</span><br><span class="line">5</span><br><span class="line">-4 -2</span><br><span class="line">-2 3</span><br><span class="line">4 0</span><br><span class="line">6 -2</span><br><span class="line">9 1</span><br></pre></td></tr></table></figure>
+<p>输出样例#2：</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">30</span><br></pre></td></tr></table></figure>
+<p>【数据范围】</p>
+<p>对于10%的数据，N=1</p>
+<p>对于20%的数据，1≤N≤2</p>
+<p>对于40%的数据，1≤N≤100</p>
+<p>对于70%的数据，1≤N≤1000</p>
+<p>对于100%的数据，1≤N≤100000，且所有坐标分量的绝对值都不超过1000。</p>
+<p>题解：</p>
+<p>​    这道题百分之百的数据范围N为1e5，那么说明题目所需的复杂度最大为NlogN，我们可以把所有导弹对第一个拦截系统的距离进行由大到小排序（复杂度为NlogN）</p>
+<p>​    由于已经是按照对第一个拦截系统的距离进行由大到小排序了，我们假设从<code>[i, n]</code>的导弹由第一个拦截，那么第一个拦截系统的最小半径为第i个对于第一个拦截系统 的距离，那么剩下的<code>[1, i - 1]</code>由第二个拦截系统拦截，我们可以在遍历的时候记录一下前i个对于第二个拦截系统的距离的最大值，这样我们只需要求<code>flag + daodan[i].d1</code>的最小值即为正确答案</p>
+<p>代码：</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">/*************************************************************************</span><br><span class="line">    &gt; File Name: p.cpp</span><br><span class="line">    &gt; Author: Zcy</span><br><span class="line">    &gt; Mail: 296763002@qq.com</span><br><span class="line">    &gt; Created Time: 三  1/23 18:16:17 2019</span><br><span class="line"> ************************************************************************/</span><br><span class="line">#include &lt;stdio.h&gt;</span><br><span class="line">#include &lt;unistd.h&gt;</span><br><span class="line">#include &lt;string.h&gt;</span><br><span class="line">#include &lt;algorithm&gt;</span><br><span class="line">using namespace std;</span><br><span class="line"></span><br><span class="line">struct node &#123;</span><br><span class="line">    int x, y;</span><br><span class="line">    int j1, j2;</span><br><span class="line">    void set(int x1, int y1, int x2, int y2) &#123;</span><br><span class="line">        j1 = (x - x1) * (x - x1) + (y - y1) * (y - y1);</span><br><span class="line">        j2 = (x - x2) * (x - x2) + (y - y2) * (y - y2);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;point[100005];</span><br><span class="line"></span><br><span class="line">bool zcy(node A, node B) &#123;</span><br><span class="line">    return A.j1 &gt; B.j1;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">int main () &#123;</span><br><span class="line">    int x1, y1, x2, y2, n;</span><br><span class="line">    scanf(&quot;%d%d%d%d&quot;, &amp;x1, &amp;y1, &amp;x2, &amp;y2);</span><br><span class="line">    scanf(&quot;%d&quot;, &amp;n);</span><br><span class="line">    for (int i = 0; i &lt; n; i++) &#123;</span><br><span class="line">        scanf(&quot;%d%d&quot;, &amp;point[i].x, &amp;point[i].y);</span><br><span class="line">        point[i].set(x1, y1, x2, y2);</span><br><span class="line">    &#125;</span><br><span class="line">    sort(point, point + n, zcy);</span><br><span class="line">    int ans = 0x3f3f3f3f;</span><br><span class="line">    int k = 0;</span><br><span class="line">    for (int i = 0; i &lt; n; i++) &#123;</span><br><span class="line">        ans = min(ans, point[i].j1 + k);</span><br><span class="line">        k = max(point[i].j2, k);</span><br><span class="line">    &#125;</span><br><span class="line">    ans = min(ans, k);</span><br><span class="line">    printf(&quot;%d\n&quot;, ans);</span><br><span class="line">    return 0;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+                </div>
+            </article>
+        </div>
+        <br>
+        <div style="text-align:center;color: #ccc;font-size:14px;">
+            <br>
+            <br>
+            <a href="http://www.ivan-zcy.top" style="color: #99FFFF;font-size:18px;">转载请注明出处！！！</a>
+            <br>
+            <br>
+            如果有写的不对或者不全面的地方 可通过主页的联系方式进行指正，谢谢!
+        </div>
+        <br>
+        <!-- Pre or Next -->
         
-      </div>
-    </div>
-  </div>
-  
+        <div class="container" >
+            <ul class="pager">
+                
+                
+                <li class="next">
+                    <a href="/2019/01/23/洛谷1028数的计算/" rel="prev">上一篇</a>
+                </li>
+                
+            </ul>
+        </div>
+        　　　　<!-- Comments -->
+        <div class="container">
+            
+<section id="comment">
+  <!-- <h1 class="title">Comments</h1> -->
 
+  
+</section>
+
+
+        </div>
+        
+        　　　　
+    </div>
 </div>
 
 
@@ -338,8 +413,5 @@
   <!-- 页面点击小红心 -->
   <script type="text/javascript" src="/js/clicklove.js"></script>
 <script src="/live2dw/lib/L2Dwidget.min.js?0c58a1486de42ac6cc1c59c7d98ae887"></script><script>L2Dwidget.init({"model":{"jsonPath":"/live2dw/assets/haruto.model.json"},"display":{"position":"left","width":70,"height":140},"mobile":{"show":true},"log":false,"pluginJsPath":"lib/","pluginModelPath":"assets/","pluginRootPath":"live2dw/","tagMode":false});</script></body>
-
-</html>
-body>
 
 </html>
