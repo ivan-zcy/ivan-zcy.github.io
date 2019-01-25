@@ -14,7 +14,7 @@
 
   <!--Open Graph Title-->
   
-      <meta property="og:title" content="洛谷P1158导弹拦截"/>
+      <meta property="og:title" content="洛谷1541乌龟棋"/>
   
   <!--Open Graph Description-->
   
@@ -42,7 +42,7 @@
     </script>
   <!-- Title -->
   
-  <title>洛谷P1158导弹拦截 - Zcy</title>
+  <title>洛谷1541乌龟棋 - Zcy</title>
 
 
   <link rel="shortcut icon" href="/favicon.ico">
@@ -202,7 +202,7 @@
                 <!-- Title date & tags -->
                 <div class="post-header">
                     <h1 class="entry-title">
-                        洛谷P1158导弹拦截
+                        洛谷1541乌龟棋
                         
                     </h1>
 
@@ -214,7 +214,7 @@
       <span class="post-meta-item-icon">
         <i class="fa fa-keyboard-o"></i>
         <span class="post-meta-item-text">  字数统计: </span>
-        <span class="post-count">866字</span>
+        <span class="post-count">1.1k字</span>
       </span>
     </span>
 
@@ -223,7 +223,7 @@
       <span class="post-meta-item-icon">
         <i class="fa fa-hourglass-half"></i>
         <span class="post-meta-item-text">  阅读时长: </span>
-        <span class="post-count">3分</span>
+        <span class="post-count">4分</span>
       </span>
     </span>
                 </div>
@@ -233,33 +233,33 @@
                 </p>
                 <!-- Post Main Content -->
                 <div class="entry-content">
-                    <p><img src="/2019/01/25/洛谷P1158导弹拦截/title.jpg" alt="title"></p>
+                    <p><img src="/2019/01/25/洛谷1541乌龟棋/title2.jpg" alt="title2"></p>
 <a id="more"></a>
-<h2 id="题目描述"><a href="#题目描述" class="headerlink" title="题目描述"></a>题目描述</h2><p>经过 11年的韬光养晦，某国研发出了一种新的导弹拦截系统，凡是与它的距离不超过其工作半径的导弹都能够被它成功拦截。当工作半径为 0时，则能够拦截与它位置恰好相同的导弹。但该导弹拦截系统也存在这样的缺陷：每套系统每天只能设定一次工作半径。而当天的使用代价，就是所有系统工作半径的平方和。</p>
-<p>某天，雷达捕捉到敌国的导弹来袭。由于该系统尚处于试验阶段，所以只有两套系统投入工作。如果现在的要求是拦截所有的导弹，请计算这一天的最小使用代价。</p>
+<h2 id="题目背景"><a href="#题目背景" class="headerlink" title="题目背景"></a>题目背景</h2><p>小明过生日的时候，爸爸送给他一副乌龟棋当作礼物。</p>
+<h2 id="题目描述"><a href="#题目描述" class="headerlink" title="题目描述"></a>题目描述</h2><p>乌龟棋的棋盘是一行N<em>N</em>个格子，每个格子上一个分数（非负整数）。棋盘第1格是唯一的起点，第N<em>N</em>格是终点，游戏要求玩家控制一个乌龟棋子从起点出发走到终点。</p>
+<p>乌龟棋中M<em>M</em>张爬行卡片，分成4种不同的类型（M<em>M</em>张卡片中不一定包含所有44种类型的卡片，见样例），每种类型的卡片上分别标有1,2,3,41,2,3,4四个数字之一，表示使用这种卡片后，乌龟棋子将向前爬行相应的格子数。游戏中，玩家每次需要从所有的爬行卡片中选择一张之前没有使用过的爬行卡片，控制乌龟棋子前进相应的格子数，每张卡片只能使用一次。</p>
+<p>游戏中，乌龟棋子自动获得起点格子的分数，并且在后续的爬行中每到达一个格子，就得到该格子相应的分数。玩家最终游戏得分就是乌龟棋子从起点到终点过程中到过的所有格子的分数总和。</p>
+<p>很明显，用不同的爬行卡片使用顺序会使得最终游戏的得分不同，小明想要找到一种卡片使用顺序使得最终游戏得分最多。</p>
+<p>现在，告诉你棋盘上每个格子的分数和所有的爬行卡片，你能告诉小明，他最多能得到多少分吗？</p>
 <h2 id="输入输出格式"><a href="#输入输出格式" class="headerlink" title="输入输出格式"></a>输入输出格式</h2><p>输入格式：</p>
-<p>第一行包含 4个整数x1、y1、x2、y2，每两个整数之间用一个空格隔开，表示这两套导弹拦截系统的坐标分别为(x1,y1)、(x2,y2)。 第二行包含1个整数N，表示有 N颗导弹。接下来N行，每行两个整数 x,y，中间用 一个空格隔开，表示一颗导弹的坐标(x,y)。不同导弹的坐标可能相同。</p>
+<p>每行中两个数之间用一个空格隔开。</p>
+<p>第11行22个正整数N,M<em>N</em>,<em>M</em>，分别表示棋盘格子数和爬行卡片数。</p>
+<p>第22行N<em>N</em>个非负整数，a1,a2,…,aN<em>a</em>1,<em>a</em>2,…,<em>a**N</em>，其中ai<em>a**i</em>表示棋盘第i<em>i</em>个格子上的分数。</p>
+<p>第33行M<em>M</em>个整数，b1,b2,…,bM<em>b</em>1,<em>b</em>2,…,<em>b**M</em>，表示M张爬行卡片上的数字。</p>
+<p>输入数据保证到达终点时刚好用光M<em>M</em>张爬行卡片。</p>
 <p>输出格式：</p>
-<p>一个整数，即当天的最小使用代价。</p>
+<p>11个整数，表示小明最多能得到的分数。</p>
 <h2 id="输入输出样例"><a href="#输入输出样例" class="headerlink" title="输入输出样例"></a>输入输出样例</h2><p>输入样例#1：</p>
-<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">0 0 10 0</span><br><span class="line">2</span><br><span class="line">-3 3</span><br><span class="line">10 0</span><br></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">9 5</span><br><span class="line">6 10 14 2 8 8 18 5 17</span><br><span class="line">1 3 1 2 1</span><br></pre></td></tr></table></figure>
 <p>输出样例#1：</p>
-<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">18</span><br></pre></td></tr></table></figure>
-<p>输入样例#2：</p>
-<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">0 0 6 0</span><br><span class="line">5</span><br><span class="line">-4 -2</span><br><span class="line">-2 3</span><br><span class="line">4 0</span><br><span class="line">6 -2</span><br><span class="line">9 1</span><br></pre></td></tr></table></figure>
-<p>输出样例#2：</p>
-<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">30</span><br></pre></td></tr></table></figure>
-<p>【数据范围】</p>
-<p>对于10%的数据，N=1</p>
-<p>对于20%的数据，1≤N≤2</p>
-<p>对于40%的数据，1≤N≤100</p>
-<p>对于70%的数据，1≤N≤1000</p>
-<p>对于100%的数据，1≤N≤100000，且所有坐标分量的绝对值都不超过1000。</p>
-<p>题解：</p>
-<p>​    这道题百分之百的数据范围N为1e5，那么说明题目所需的复杂度最大为NlogN，我们可以把所有导弹对第一个拦截系统的距离进行由大到小排序（复杂度为NlogN）</p>
-<p>​    由于已经是按照对第一个拦截系统的距离进行由大到小排序了，我们假设从<code>[i, n]</code>的导弹由第一个拦截，那么第一个拦截系统的最小半径为第i个对于第一个拦截系统 的距离，那么剩下的<code>[1, i - 1]</code>由第二个拦截系统拦截，我们可以在遍历的时候记录一下前i个对于第二个拦截系统的距离的最大值，这样我们只需要求<code>flag + daodan[i].d1</code>的最小值即为正确答案</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">73</span><br></pre></td></tr></table></figure>
+<p>思路：</p>
+<p>​    刚开始我是设的<code>dp[i][j][p][q][k]</code>代表第一种卡片i个，第二种卡片j个，第三种卡片p个，第四种卡片q个，走到第k个格子的最大得分。后来发现，我既然得到ijpq了，肯定k是固定的。。。然后就灰溜溜的缩减为了四维dp</p>
+<p>​    我们设了<code>dp[i][j][p][q]</code>后，由于题目上说正好把M张卡片用完，因此我们只需要用一个数组c存每种卡片的张数，那么<code>dp[c[1]][c[2]][c[3]][c[4]]</code>极为答案</p>
+<p>​    这个题有个坑点，就是起始位置是1而不是0，自己在这里傻逼了好久～</p>
+<p>​    废话不说，上代码</p>
 <p>代码：</p>
-<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">/*************************************************************************</span><br><span class="line">    &gt; File Name: p.cpp</span><br><span class="line">    &gt; Author: Zcy</span><br><span class="line">    &gt; Mail: 296763002@qq.com</span><br><span class="line">    &gt; Created Time: 三  1/23 18:16:17 2019</span><br><span class="line"> ************************************************************************/</span><br><span class="line">#include &lt;stdio.h&gt;</span><br><span class="line">#include &lt;unistd.h&gt;</span><br><span class="line">#include &lt;string.h&gt;</span><br><span class="line">#include &lt;algorithm&gt;</span><br><span class="line">using namespace std;</span><br><span class="line"></span><br><span class="line">struct node &#123;</span><br><span class="line">    int x, y;</span><br><span class="line">    int j1, j2;</span><br><span class="line">    void set(int x1, int y1, int x2, int y2) &#123;</span><br><span class="line">        j1 = (x - x1) * (x - x1) + (y - y1) * (y - y1);</span><br><span class="line">        j2 = (x - x2) * (x - x2) + (y - y2) * (y - y2);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;point[100005];</span><br><span class="line"></span><br><span class="line">bool zcy(node A, node B) &#123;</span><br><span class="line">    return A.j1 &gt; B.j1;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">int main () &#123;</span><br><span class="line">    int x1, y1, x2, y2, n;</span><br><span class="line">    scanf(&quot;%d%d%d%d&quot;, &amp;x1, &amp;y1, &amp;x2, &amp;y2);</span><br><span class="line">    scanf(&quot;%d&quot;, &amp;n);</span><br><span class="line">    for (int i = 0; i &lt; n; i++) &#123;</span><br><span class="line">        scanf(&quot;%d%d&quot;, &amp;point[i].x, &amp;point[i].y);</span><br><span class="line">        point[i].set(x1, y1, x2, y2);</span><br><span class="line">    &#125;</span><br><span class="line">    sort(point, point + n, zcy);</span><br><span class="line">    int ans = 0x3f3f3f3f;</span><br><span class="line">    int k = 0;</span><br><span class="line">    for (int i = 0; i &lt; n; i++) &#123;</span><br><span class="line">        ans = min(ans, point[i].j1 + k);</span><br><span class="line">        k = max(point[i].j2, k);</span><br><span class="line">    &#125;</span><br><span class="line">    ans = min(ans, k);</span><br><span class="line">    printf(&quot;%d\n&quot;, ans);</span><br><span class="line">    return 0;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">/*************************************************************************</span><br><span class="line">    &gt; File Name: p.cpp</span><br><span class="line">    &gt; Author: Zcy</span><br><span class="line">    &gt; Mail: 296763002@qq.com</span><br><span class="line">    &gt; Created Time: 三  1/23 18:16:17 2019</span><br><span class="line"> ************************************************************************/</span><br><span class="line">#include &lt;stdio.h&gt;</span><br><span class="line">#include &lt;unistd.h&gt;</span><br><span class="line">#include &lt;string.h&gt;</span><br><span class="line">#include &lt;algorithm&gt;</span><br><span class="line">using namespace std;</span><br><span class="line"></span><br><span class="line">int a[355];</span><br><span class="line">int c[5] = &#123;0&#125;;</span><br><span class="line">int dp[125][125][125][125] = &#123;0&#125;;</span><br><span class="line"></span><br><span class="line">int main () &#123;</span><br><span class="line">    int n, m, b;</span><br><span class="line">    scanf(&quot;%d%d&quot;, &amp;n, &amp;m);</span><br><span class="line">    for (int i = 1; i &lt;= n; i++) &#123;</span><br><span class="line">        scanf(&quot;%d&quot;, &amp;a[i]);</span><br><span class="line">    &#125;</span><br><span class="line">    for (int i = 1; i &lt;= m; i++) &#123;</span><br><span class="line">        scanf(&quot;%d&quot;, &amp;b);</span><br><span class="line">        c[b]++;</span><br><span class="line">    &#125;</span><br><span class="line">    dp[0][0][0][0] = a[1];</span><br><span class="line">    for (int i = 0; i &lt;= c[1]; i++) &#123;</span><br><span class="line">        for (int j = 0; j &lt;= c[2]; j++) &#123;</span><br><span class="line">            for (int p = 0; p &lt;= c[3]; p++) &#123;</span><br><span class="line">                for (int q = 0; q &lt;= c[4]; q++) &#123;</span><br><span class="line">                    if (i != 0) dp[i][j][p][q] = max(dp[i - 1][j][p][q] + a[i + j * 2 + p * 3 + q * 4 + 1], dp[i][j][p][q]);</span><br><span class="line">                    if (j != 0) dp[i][j][p][q] = max(dp[i][j - 1][p][q] + a[i + j * 2 + p * 3 + q * 4 + 1], dp[i][j][p][q]);</span><br><span class="line">                    if (p != 0) dp[i][j][p][q] = max(dp[i][j][p - 1][q] + a[i + j * 2 + p * 3 + q * 4 + 1], dp[i][j][p][q]);</span><br><span class="line">                    if (q != 0) dp[i][j][p][q] = max(dp[i][j][p][q - 1] + a[i + j * 2 + p * 3 + q * 4 + 1], dp[i][j][p][q]);</span><br><span class="line">                &#125;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    printf(&quot;%d\n&quot;, dp[c[1]][c[2]][c[3]][c[4]]);</span><br><span class="line">    return 0;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 
                 </div>
             </article>
@@ -279,13 +279,9 @@
         <div class="container" >
             <ul class="pager">
                 
-                <li class="previous">
-                    <a href="/2019/01/25/洛谷1541乌龟棋/" rel="prev">下一篇</a>
-                </li>
-                
                 
                 <li class="next">
-                    <a href="/2019/01/23/洛谷1028数的计算/" rel="prev">上一篇</a>
+                    <a href="/2019/01/25/洛谷P1158导弹拦截/" rel="prev">上一篇</a>
                 </li>
                 
             </ul>
