@@ -14,7 +14,7 @@
 
   <!--Open Graph Title-->
   
-      <meta property="og:title" content="洛谷1858多人背包"/>
+      <meta property="og:title" content="洛谷1064金明的预算方案"/>
   
   <!--Open Graph Description-->
   
@@ -42,7 +42,7 @@
     </script>
   <!-- Title -->
   
-  <title>洛谷1858多人背包 - Zcy</title>
+  <title>洛谷1064金明的预算方案 - Zcy</title>
 
 
   <link rel="shortcut icon" href="/favicon.ico">
@@ -202,7 +202,7 @@
                 <!-- Title date & tags -->
                 <div class="post-header">
                     <h1 class="entry-title">
-                        洛谷1858多人背包
+                        洛谷1064金明的预算方案
                         
                     </h1>
 
@@ -214,7 +214,7 @@
       <span class="post-meta-item-icon">
         <i class="fa fa-keyboard-o"></i>
         <span class="post-meta-item-text">  字数统计: </span>
-        <span class="post-count">540字</span>
+        <span class="post-count">1.2k字</span>
       </span>
     </span>
 
@@ -223,36 +223,43 @@
       <span class="post-meta-item-icon">
         <i class="fa fa-hourglass-half"></i>
         <span class="post-meta-item-text">  阅读时长: </span>
-        <span class="post-count">2分</span>
+        <span class="post-count">5分</span>
       </span>
     </span>
                 </div>
 
                 <p class="a-posted-on" style="color: #ccc;">
-                    2019-01-25
+                    2019-01-27
                 </p>
                 <!-- Post Main Content -->
                 <div class="entry-content">
-                    <p><img src="/2019/01/25/洛谷1858多人背包/title1.jpg" alt="title1"></p>
+                    <p><img src="/2019/01/27/洛谷1064金明的预算方案/title6.jpg" alt="title6"></p>
 <a id="more"></a>
-<h2 id="题目描述"><a href="#题目描述" class="headerlink" title="题目描述"></a>题目描述</h2><p>求01背包前k优解的价值和</p>
+<h2 id="题目描述"><a href="#题目描述" class="headerlink" title="题目描述"></a>题目描述</h2><p>金明今天很开心，家里购置的新房就要领钥匙了，新房里有一间金明自己专用的很宽敞的房间。更让他高兴的是，妈妈昨天对他说：“你的房间需要购买哪些物品，怎么布置，你说了算，只要不超过N<em>N</em>元钱就行”。今天一早，金明就开始做预算了，他把想买的物品分为两类：主件与附件，附件是从属于某个主件的，下表就是一些主件与附件的例子：</p>
+<p>主件 附件</p>
+<p>电脑 打印机，扫描仪</p>
+<p>书柜 图书</p>
+<p>书桌 台灯，文具</p>
+<p>工作椅 无</p>
+<p>如果要买归类为附件的物品，必须先买该附件所属的主件。每个主件可以有00个、11个或22个附件。附件不再有从属于自己的附件。金明想买的东西很多，肯定会超过妈妈限定的N<em>N</em>元。于是，他把每件物品规定了一个重要度，分为55等：用整数1−51−5表示，第55等最重要。他还从因特网上查到了每件物品的价格（都是1010元的整数倍）。他希望在不超过N<em>N</em>元（可以等于N<em>N</em>元）的前提下，使每件物品的价格与重要度的乘积的总和最大。</p>
+<p>设第j<em>j</em>件物品的价格为v[j]<em>v</em>[<em>j</em>]，重要度为w[j]<em>w</em>[<em>j</em>]，共选中了k<em>k</em>件物品，编号依次为j1,j2,…,jk<em>j</em>1,<em>j</em>2,…,<em>j**k</em>，则所求的总和为：</p>
+<p>v[j1]×w[j1]+v[j2]×w[j2]+…+v[jk]×w[jk]<em>v</em>[<em>j</em>1]×<em>w</em>[<em>j</em>1]+<em>v</em>[<em>j</em>2]×<em>w</em>[<em>j</em>2]+…+<em>v</em>[<em>j**k</em>]×<em>w</em>[<em>j**k</em>]。</p>
+<p>请你帮助金明设计一个满足要求的购物单。</p>
 <h2 id="输入输出格式"><a href="#输入输出格式" class="headerlink" title="输入输出格式"></a>输入输出格式</h2><p>输入格式：</p>
-<p>第一行三个数K、V、N</p>
-<p>接下来每行两个数，表示体积和价值</p>
+<p>第11行，为两个正整数，用一个空格隔开：</p>
+<p>Nm<em>N**m</em> （其中N(&lt;32000)<em>N</em>(&lt;32000)表示总钱数，m(&lt;60)<em>m</em>(&lt;60)为希望购买物品的个数。） 从第22行到第m+1<em>m</em>+1行，第j<em>j</em>行给出了编号为j−1<em>j</em>−1的物品的基本数据，每行有33个非负整数</p>
+<p>vpq<em>v<strong>p</strong>q</em> （其中v<em>v</em>表示该物品的价格（v&lt;10000<em>v</em>&lt;10000），p表示该物品的重要度（1−51−5），q<em>q</em>表示该物品是主件还是附件。如果q=0<em>q</em>=0，表示该物品为主件，如果q&gt;0<em>q</em>&gt;0，表示该物品为附件，q<em>q</em>是所属主件的编号）</p>
 <p>输出格式：</p>
-<p>前k优解的价值和</p>
+<p>一个正整数，为不超过总钱数的物品的价格与重要度乘积的总和的最大（&lt;200000&lt;200000）。</p>
 <h2 id="输入输出样例"><a href="#输入输出样例" class="headerlink" title="输入输出样例"></a>输入输出样例</h2><p>输入样例#1：</p>
-<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">2 10 5</span><br><span class="line">3 12</span><br><span class="line">7 20</span><br><span class="line">2 4</span><br><span class="line">5 6</span><br><span class="line">1 1</span><br></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">1000 5</span><br><span class="line">800 2 0</span><br><span class="line">400 5 1</span><br><span class="line">300 5 1</span><br><span class="line">400 3 0</span><br><span class="line">500 2 0</span><br></pre></td></tr></table></figure>
 <p>输出样例#1：</p>
-<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">57</span><br></pre></td></tr></table></figure>
-<h2 id="说明"><a href="#说明" class="headerlink" title="说明"></a>说明</h2><p>对于100%的数据,K≤50,V≤5000,N≤200</p>
-<p>思路：</p>
-<p>​    这道题本身不算特别难，设置一个二维数组<code>dp[i][j]</code>代表背包容量为i的时候第j优解的价值。V的范围是5000，N的范围是200，如果按照01背包求最优解的话时间复杂度为1e6</p>
-<p>​    可是由于是求第k优，k的范围为1～50，因此我们得在1e6的循环中，用O(k)的复杂度求出前k优，这时候，我们就需要用到归并排序取前50大</p>
-<p>​    这道题太毒瘤了，条件里也没交代说必须正好装满V。。。结果最后答案必须是正好装满V的答案。。。</p>
-<p>​    答案见代码：</p>
-<p>代码：</p>
-<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">/*************************************************************************</span><br><span class="line">    &gt; File Name: p.cpp</span><br><span class="line">    &gt; Author: Zcy</span><br><span class="line">    &gt; Mail: 296763002@qq.com</span><br><span class="line">    &gt; Created Time: 三  1/23 18:16:17 2019</span><br><span class="line"> ************************************************************************/</span><br><span class="line">#include &lt;stdio.h&gt;</span><br><span class="line">#include &lt;unistd.h&gt;</span><br><span class="line">#include &lt;string.h&gt;</span><br><span class="line">#include &lt;algorithm&gt;</span><br><span class="line">using namespace std;</span><br><span class="line"></span><br><span class="line">int dp[5005][55] = &#123;0&#125;;</span><br><span class="line"></span><br><span class="line">int main () &#123;</span><br><span class="line">    int K, V, N, v, w;</span><br><span class="line">    scanf(&quot;%d%d%d&quot;, &amp;K, &amp;V, &amp;N);</span><br><span class="line">    dp[0][0] = 1;	//正好装满初始化dp[0][0] = 1, 若是类似01背包可以不必装满的话，就是初始化dp[i][0] = 1 (0 &lt;= i &lt;= V)</span><br><span class="line">    for (int i = 1; i &lt;= N; i++) &#123;</span><br><span class="line">        scanf(&quot;%d%d&quot;, &amp;v, &amp;w);</span><br><span class="line">        for (int j = V; j &gt;= v; j--) &#123;</span><br><span class="line">            int p1 = 1, p2 = 1;</span><br><span class="line">            int c[55] = &#123;0&#125;;</span><br><span class="line">            while(p1 &lt;= dp[j][0] || p2 &lt;= dp[j - v][0]) &#123;</span><br><span class="line">                if (p2 &gt; dp[j - v][0] || (p2 &lt;= dp[j - v][0] &amp;&amp; p1 &lt;= dp[j][0] &amp;&amp; dp[j][p1] &gt;= dp[j - v][p2] + w)) &#123;</span><br><span class="line">                    c[++c[0]] = dp[j][p1];</span><br><span class="line">                    p1++;</span><br><span class="line">                &#125; else &#123;</span><br><span class="line">                    c[++c[0]] = dp[j - v][p2] + w;</span><br><span class="line">                    p2++;</span><br><span class="line">                &#125;</span><br><span class="line">                if (c[0] &gt;= K) break;</span><br><span class="line">            &#125;</span><br><span class="line">            for (int ppp = 0; ppp &lt;= c[0]; ppp++) &#123;</span><br><span class="line">                dp[j][ppp] = c[ppp];</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    int ans = 0;</span><br><span class="line">    for (int i = 1; i &lt;= K; i++) </span><br><span class="line">        ans += dp[V][i];</span><br><span class="line">    printf(&quot;%d\n&quot;, ans);</span><br><span class="line">    return 0;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">2200</span><br></pre></td></tr></table></figure>
+<p>解析：因为这道题每个主件可以有0， 1， 2个附件，因此有两种解决方案：</p>
+<p>方案一：我们把有从属关系的一个或多个物品当作一类物品，若只有主件，那么共有2种组合方案（0，主件）。若有一个附件，那么有4种组合方案（0，主件，附件，主见附件），若有两个附件，那么有8种组合方案。我们只要把全部组合方案的价格，重要程度列出来，然后用分组背包的思维就可以做了。</p>
+<p>方案二：因为附件数少，因此我们可以用求全部方案数将其转化为分组背包。若附件多怎么办呢？这时，我们可以设置<code>dp[i][j]</code>代表第i类商品总价不超过j元的最大价值（有所属关系的归位一种），然后每次copy<code>dp[i-1]</code>数组，并对主件商品强制购买，附件商品进行01背包。最后和原<code>dp[i - 1]</code>数组每位比较取较大值，即为<code>dp[i]</code>数组，最后<code>dp[商品种类][最大钱数]</code>即为答案</p>
+<p>代码如下：</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">/*************************************************************************</span><br><span class="line">    &gt; File Name: p.cpp</span><br><span class="line">    &gt; Author: Zcy</span><br><span class="line">    &gt; Mail: 296763002@qq.com</span><br><span class="line">    &gt; Created Time: 三  1/23 18:16:17 2019</span><br><span class="line"> ************************************************************************/</span><br><span class="line">#include &lt;stdio.h&gt;</span><br><span class="line">#include &lt;algorithm&gt;</span><br><span class="line">#include &lt;map&gt;</span><br><span class="line">#include &lt;string.h&gt;</span><br><span class="line">#include &lt;vector&gt;</span><br><span class="line">using namespace std;</span><br><span class="line"></span><br><span class="line">vector&lt;int&gt;zcy[65];</span><br><span class="line">map&lt;int, int&gt;maps;</span><br><span class="line"></span><br><span class="line">int v[65], w[65];</span><br><span class="line">int dp[32050] = &#123;0&#125;, temp[32050] = &#123;0&#125;;</span><br><span class="line"></span><br><span class="line">int main () &#123;</span><br><span class="line">    int V, m, tot = 0, father;</span><br><span class="line">    scanf(&quot;%d%d&quot;, &amp;V, &amp;m);</span><br><span class="line">    for (int i = 1; i &lt;= m; i++) &#123;</span><br><span class="line">        scanf(&quot;%d%d%d&quot;, &amp;v[i], &amp;w[i], &amp;father);</span><br><span class="line">        if (father == 0) &#123;</span><br><span class="line">            tot++;</span><br><span class="line">            maps[i] = tot;</span><br><span class="line">            zcy[tot].push_back(i);</span><br><span class="line">        &#125; else &#123;</span><br><span class="line">            zcy[maps[father]].push_back(i);</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    for (int i = 1; i &lt;= tot; i++) &#123;</span><br><span class="line">        memcpy(temp, dp, sizeof(int) * (V + 5));</span><br><span class="line">        int vv = v[zcy[i][0]];</span><br><span class="line">        int ww = w[zcy[i][0]] * vv;</span><br><span class="line">        for (int j = V; j &gt;= vv; j--) &#123;</span><br><span class="line">            temp[j] = temp[j - vv] + ww;</span><br><span class="line">        &#125;</span><br><span class="line">        for (int j = 1; j &lt; zcy[i].size(); j++) &#123;</span><br><span class="line">            int vvv = v[zcy[i][j]];</span><br><span class="line">            int www = w[zcy[i][j]] * vvv;</span><br><span class="line">            for (int p = V; p &gt;= vv + vvv; p--) &#123;</span><br><span class="line">                temp[p] = max(temp[p - vvv] + www, temp[p]);</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        for (int j = 0; j &lt;= V; j++) &#123;</span><br><span class="line">            dp[j] = max(dp[j], temp[j]);</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    printf(&quot;%d\n&quot;, dp[V]);</span><br><span class="line">    return 0;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 
                 </div>
             </article>
@@ -272,13 +279,9 @@
         <div class="container" >
             <ul class="pager">
                 
-                <li class="previous">
-                    <a href="/2019/01/27/洛谷1064金明的预算方案/" rel="prev">下一篇</a>
-                </li>
-                
                 
                 <li class="next">
-                    <a href="/2019/01/25/洛谷1541乌龟棋/" rel="prev">上一篇</a>
+                    <a href="/2019/01/25/洛谷1858多人背包/" rel="prev">上一篇</a>
                 </li>
                 
             </ul>
