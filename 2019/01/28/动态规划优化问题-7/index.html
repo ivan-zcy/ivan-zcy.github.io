@@ -14,7 +14,7 @@
 
   <!--Open Graph Title-->
   
-      <meta property="og:title" content="海贼OJ57有趣的序列"/>
+      <meta property="og:title" content="动态规划优化问题-7"/>
   
   <!--Open Graph Description-->
   
@@ -42,7 +42,7 @@
     </script>
   <!-- Title -->
   
-  <title>海贼OJ57有趣的序列 - Zcy</title>
+  <title>动态规划优化问题-7 - Zcy</title>
 
 
   <link rel="shortcut icon" href="/favicon.ico">
@@ -202,7 +202,7 @@
                 <!-- Title date & tags -->
                 <div class="post-header">
                     <h1 class="entry-title">
-                        海贼OJ57有趣的序列
+                        动态规划优化问题-7
                         
                     </h1>
 
@@ -214,7 +214,7 @@
       <span class="post-meta-item-icon">
         <i class="fa fa-keyboard-o"></i>
         <span class="post-meta-item-text">  字数统计: </span>
-        <span class="post-count">430字</span>
+        <span class="post-count">1.3k字</span>
       </span>
     </span>
 
@@ -223,28 +223,48 @@
       <span class="post-meta-item-icon">
         <i class="fa fa-hourglass-half"></i>
         <span class="post-meta-item-text">  阅读时长: </span>
-        <span class="post-count">2分</span>
+        <span class="post-count">5分</span>
       </span>
     </span>
                 </div>
 
                 <p class="a-posted-on" style="color: #ccc;">
-                    2019-01-27
+                    2019-01-28
                 </p>
                 <!-- Post Main Content -->
                 <div class="entry-content">
-                    <p><img src="/2019/01/27/海贼OJ57有趣的序列/title5.jpg" alt="title5"></p>
+                    <p><img src="/2019/01/28/动态规划优化问题-7/title4.jpg" alt="title4"></p>
 <a id="more"></a>
-<h2 id="有趣的序列"><a href="#有趣的序列" class="headerlink" title="有趣的序列"></a>有趣的序列</h2><h3 id="题目描述"><a href="#题目描述" class="headerlink" title="题目描述"></a>题目描述</h3><p>现在生成一个包含所有自然数的序列</p>
-<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">123456789101112131415...</span><br></pre></td></tr></table></figure>
-<p>其中 d12 是数字 1</p>
-<h3 id="输入"><a href="#输入" class="headerlink" title="输入"></a>输入</h3><p>输入三个数字 x,y,z(1≤x,y,z≤1,000,000)</p>
-<h3 id="输出"><a href="#输出" class="headerlink" title="输出"></a>输出</h3><p>输出一个整数，代表<code>dx×dy×dz</code> 的结果</p>
+<p>之前系列讲了动态规划优化的去除冗余状态，重新定义状态，或者单调栈或单调队列优化等关于动态规划的优化问题。</p>
+<p>接下来讲的就比较难了，属于动态规划的斜率优化问题</p>
+<p>具体我们用例题来详细说明</p>
+<p>例题：古老的打印机</p>
+<p>有一台古老的打字机和一篇待打印的文章，文章中有 n 个字符，每个字符会有一个消耗值 Ci, 打字机工作一次会打印若干连续的 k 个字符，同时打字机会有磨损，打字机的单次磨损计算公式为：</p>
+<p>(∑i=1kCi)2+M</p>
+<p>其中 M 是打字机启动一次的固定磨损值，现在给你 n 个字符的消耗值，问你打字机顺序打印出这 n 个字符的最小磨损值为多少？</p>
+<h4 id="输入"><a href="#输入" class="headerlink" title="输入"></a>输入</h4><p>第一行输入两个数字，n,M(1≤n≤106,1≤M≤104) 代表文章中字符数量和打字机单次启动的固定磨损值。</p>
+<p>第二行输入 n 个数字，第 i 个数字代表文章中第 i 个字符的磨损值 Ci(1≤Ci≤100)。</p>
+<h4 id="输出"><a href="#输出" class="headerlink" title="输出"></a>输出</h4><p>输出一个整数，代表打字机顺序打完 n 个字符的最小磨损值</p>
+<hr>
+<h4 id="样例输入1"><a href="#样例输入1" class="headerlink" title="样例输入1"></a>样例输入1</h4><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">6 40</span><br><span class="line">3 3 6 5 1 2</span><br></pre></td></tr></table></figure>
+<h4 id="样例输出1"><a href="#样例输出1" class="headerlink" title="样例输出1"></a>样例输出1</h4><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">256</span><br></pre></td></tr></table></figure>
 <p>思路：</p>
-<p>​    因为x，y，z范围是1e6，因此我们可以先预处理出<code>sum[i]</code>代表i位数共占多少位置，并预处理出<code>start[i]</code>代表i位数的起始数组</p>
-<p>​    这样，我们传入位置后，若位置&gt;<code>sum[i]</code>，就用位置-=<code>sum[i]</code>并查找下一位，若等于<code>sum[i]</code>，就返回9（因为每位数的最后一个数字的最后一位都是9），若小于<code>sum[i]</code>，就判断是第该位的哪一个数字的哪一位，并把该数返回即可</p>
-<p>代码：</p>
-<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">/*************************************************************************</span><br><span class="line">	&gt; File Name: p.cpp</span><br><span class="line">	&gt; Author: Zcy</span><br><span class="line">	&gt; Mail: 296763002@qq.com</span><br><span class="line">	&gt; Created Time: 三  1/23 18:16:17 2019</span><br><span class="line"> ************************************************************************/</span><br><span class="line"></span><br><span class="line">#include &lt;stdio.h&gt;</span><br><span class="line"></span><br><span class="line">int sum[7] = &#123;0, 9, 180, 2700, 36000, 450000, 5400000&#125;;</span><br><span class="line">int start[7] = &#123;0, 1, 10, 100, 1000, 10000, 100000&#125;;</span><br><span class="line"></span><br><span class="line">int quick(int a, int b) &#123;</span><br><span class="line">	int ans = 1;</span><br><span class="line">	while(b) &#123;</span><br><span class="line">		if(b &amp; 1) &#123;</span><br><span class="line">			ans *= a;</span><br><span class="line">		&#125;</span><br><span class="line">		b &gt;&gt;= 1;</span><br><span class="line">		a *= a;</span><br><span class="line">	&#125;</span><br><span class="line">	return ans;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">int getinx(int inx) &#123;</span><br><span class="line">	for (int i = 1; i &lt;= 6; i++) &#123;</span><br><span class="line">		if (inx &gt; sum[i]) &#123;</span><br><span class="line">			inx -= sum[i];</span><br><span class="line">		&#125; else if (inx == sum[i]) &#123;</span><br><span class="line">			return 9;</span><br><span class="line">		&#125; else &#123;</span><br><span class="line">			int cs = inx / i;</span><br><span class="line">			int ys = inx % i;</span><br><span class="line">			if (ys == 0) &#123;</span><br><span class="line">				cs = cs + start[i] - 1;</span><br><span class="line">				cs %= 10;</span><br><span class="line">				return cs;</span><br><span class="line">			&#125; else &#123;</span><br><span class="line">				cs = cs + start[i];</span><br><span class="line">				int ttt = quick(10, i - ys);</span><br><span class="line">				int kkk = cs / ttt;</span><br><span class="line">				kkk %= 10;</span><br><span class="line">				return kkk;</span><br><span class="line">			&#125;</span><br><span class="line">		&#125;</span><br><span class="line">	&#125;</span><br><span class="line">	return -1;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">int main () &#123;</span><br><span class="line">	int x, y, z;</span><br><span class="line">	scanf(&quot;%d%d%d&quot;, &amp;x, &amp;y, &amp;z);</span><br><span class="line">	// for (int i = 1; i &lt;= 1000; i++) &#123;</span><br><span class="line">	// 	printf(&quot;%d&quot;, getinx(i));</span><br><span class="line">	// &#125;</span><br><span class="line">	int xx = getinx(x);</span><br><span class="line">	int yy = getinx(y);</span><br><span class="line">	int zz = getinx(z);</span><br><span class="line">	printf(&quot;%d\n&quot;, xx * yy * zz);</span><br><span class="line">	return 0;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>​    对于这类问题，我们设<code>s[i]</code>为前i个字符的Ci的和， <code>dp[i]</code>代表前i个字符的最小磨损值，那么我们可以得到:</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">dp[i] = min(dp[j] + (s[i] - s[j])^2 + M) (0 &lt;= j &lt; i)</span><br></pre></td></tr></table></figure>
+<p>​    由上面的递推公式可知，这样的时间复杂度为O(n^2)，而n的范围是1e6，所以肯定1s内跑不完，因此我们需要把它优化为O(n)的时间复杂度</p>
+<p>​    我们展开上面的式子：</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">dp[i] = min(dp[j] + (s[i] - s[j])^2 + M)</span><br><span class="line">	  = min(dp[j] + s[i]^2 + s[j]^2 - 2 * s[i] * s[j] + M)</span><br><span class="line">我们单拿出dp[j] + s[i]^2 + s[j]^2 - 2 * s[i] * s[j] + M来看</span><br><span class="line">其中s[i]^2，M是固定值，dp[j]，s[j]^2是变化值，2 * s[i] * s[j]是两者的混合值</span><br></pre></td></tr></table></figure>
+<p>如果只有固定值和变化值，我们可以通过一个变量维护前i的s[j]^2 + dp[j]的最大值来O(1)的求出dp[i]，可是由于混合值的出现，导致我们无法这样求出</p>
+<p>记住一点：只要看到混合值的出现，就要想办法对其进行斜率优化！！</p>
+<p>具体步骤是</p>
+<p>1.假设j &gt; k且dp[j] + (s[i] - s[j])^2 + M优于dp[k] + (s[i] - s[k])^2 + M，那么：</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">dp[j] + (s[i] - s[j])^2 + M &lt; dp[k] + (s[i] - s[k])^2 + M</span><br><span class="line">等价于：dp[j] + s[j]^2 - 2 * s[j] * s[i] &lt; dp[k] + s[k]^2 - 2 * s[k] * s[i]</span><br><span class="line">等价于：(dp[j] + s[j]^2) - (dp[k] + s[k]^2) &lt; 2 * s[i] * (s[j] - s[k])</span><br><span class="line">等价于：(dp[j] + s[j]^2) - (dp[k] + s[k]^2) / (s[j] - s[k]) &lt; 2 * s[i]</span><br><span class="line">我们假设f(i) = dp[i] * s[i]^2</span><br><span class="line">那么：f(j) - f(k) / (s[j] - s[k]) &lt; 2 * s[i]</span><br></pre></td></tr></table></figure>
+<p>至于为什么叫斜率优化，当我们把s[i]看作x，f(i)看作y，那么f(j) - f(k) / (s[j] - s[k])就是斜率了</p>
+<p>也就是说，只要满足f(j) - f(k) / (s[j] - s[k]) &lt; 2 * s[i]且j &gt; k，那么j就一定优化k</p>
+<p>2.我们设P(x, y)代表点x，y之间的斜率，对i中的p, q, j进行分析（p &lt; q &lt; j &lt; i且P(p, q) &gt; P(q, j)），那么斜率会有三种情况：</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">(1) 2 * s[i] &lt; P(q, j) &lt; P(p, q)</span><br><span class="line">此时，q优于j，p优于q，因此p是最优解</span><br><span class="line">(2) P(q, j) &lt; 2 * s[i] &lt; P(p, q)</span><br><span class="line">此时，j优于q，p优于q，因此j,p中的一个是最优解</span><br><span class="line">(3) P(q, j) &lt; P(p, q) &lt; 2 * s[i]</span><br><span class="line">此时，j优于q，q优于p，因此j是最优解</span><br></pre></td></tr></table></figure>
+<p>​    我们会发现，在p(p, q) &gt; p(q, j)且 p &lt; q &lt; j &lt; i的情况下，无论如何，q都不是最优解，也就是中间的那个永远不是最优，因此，我们可以用单调队列来维护斜率上升的队列来O(1)的求解<code>dp[i]</code>，具体做法见代码：</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">/*************************************************************************</span><br><span class="line">	&gt; File Name: p.cpp</span><br><span class="line">	&gt; Author: Zcy</span><br><span class="line">	&gt; Mail: 296763002@qq.com</span><br><span class="line">	&gt; Created Time: 三  1/23 18:16:17 2019</span><br><span class="line"> ************************************************************************/</span><br><span class="line">#include &lt;stdio.h&gt;</span><br><span class="line">#define ll long long</span><br><span class="line"></span><br><span class="line">ll sum[1000005] = &#123;0&#125;;</span><br><span class="line">ll dp[1000005] = &#123;0&#125;;</span><br><span class="line">int q[1000005] = &#123;0&#125;;</span><br><span class="line">int n, M, a, tail, head;</span><br><span class="line"></span><br><span class="line">void set(int j, int i) &#123;</span><br><span class="line">	dp[i] = dp[j] + (sum[i] - sum[j]) * (sum[i] - sum[j]) + M;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">double getp(int j, int i) &#123;</span><br><span class="line">	double p1 = (dp[i] + sum[i] * sum[i]) - (dp[j] + sum[j] * sum[j]);</span><br><span class="line">	double p2 = sum[i] - sum[j];</span><br><span class="line">	return p1 / p2;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">int main () &#123;</span><br><span class="line">	scanf(&quot;%d%d&quot;, &amp;n, &amp;M);</span><br><span class="line">	for (int i = 1; i &lt;= n; i++) &#123;</span><br><span class="line">		scanf(&quot;%d&quot;, &amp;a);</span><br><span class="line">		sum[i] = sum[i - 1] + a;</span><br><span class="line">	&#125;</span><br><span class="line">	head = tail = 1;</span><br><span class="line">	set(0, 1);</span><br><span class="line">	q[tail++] = 0;</span><br><span class="line">	q[tail++] = 1;</span><br><span class="line">	for (int i = 2; i &lt;= n; i++) &#123;</span><br><span class="line">		while(head + 2 &lt;= tail &amp;&amp; getp(q[head], q[head + 1]) &lt;= 2 * sum[i]) head++;</span><br><span class="line">		set(q[head], i);</span><br><span class="line">		while(head + 2 &lt;= tail &amp;&amp; getp(q[tail - 1], i) &lt;= getp(q[tail -2], q[tail - 1])) tail--;</span><br><span class="line">		q[tail++] = i;</span><br><span class="line">	&#125;</span><br><span class="line">	printf(&quot;%lld\n&quot;, dp[n]);</span><br><span class="line">	return 0;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 
                 </div>
             </article>
@@ -264,13 +284,9 @@
         <div class="container" >
             <ul class="pager">
                 
-                <li class="previous">
-                    <a href="/2019/01/28/动态规划优化问题-7/" rel="prev">下一篇</a>
-                </li>
-                
                 
                 <li class="next">
-                    <a href="/2019/01/27/洛谷1757通天之分组背包/" rel="prev">上一篇</a>
+                    <a href="/2019/01/27/海贼OJ57有趣的序列/" rel="prev">上一篇</a>
                 </li>
                 
             </ul>
