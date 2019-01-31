@@ -52,6 +52,9 @@ var searchFunc = function(path, search_id, content_id) {
                     // 返回搜索结果
                     if (isMatch) {
                         //结果标签
+                        var data_url1 = data_url.substring(0, 17);
+                        var data_url2 = data_url.substring(25);
+                        data_url = data_url1 + data_url2;
                         str += "<li><a href='"+ data_url +"' class='search-result-title' target='_blank'>"+ "> " + data_title +"</a>";
                         var content = data.content.trim().replace(/<[^>]+>/g,"");
                         if (first_occur >= 0) {
