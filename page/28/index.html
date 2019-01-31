@@ -98,13 +98,6 @@
     <nav class="navbar">
       <!--  nav links -->
       <div class="collapse">
-          <section>
-              <span class="h1"><a href="#">站内搜索</a></span>
-              <div id="site_search">
-                  <input type="text" id="local-search-input" style="width: 200px;" results="0"/>
-                  <div id="local-search-result"></div>
-              </div>
-          </section>
         <ul class="navbar-nav">
           
           
@@ -199,11 +192,19 @@
   </div>
 </header>
 
-<script type="text/javascript" src="/js/search.js"></script>
-
 
   <!-- Main Content -->
-  <div class="site-content home">
+  <section>
+    <span class="h1"><a href="#">站内搜索</a></span>
+    <div id="site_search">
+        <input type="text" id="local-search-input" style="width: 200px;" results="0"/>
+        <div id="local-search-result"></div>
+    </div>
+</section>
+
+<script type="text/javascript" src="/js/search.js"></script>
+
+<div class="site-content home">
       <div class="content-header" style="background: url(/img/back.jpg) no-repeat bottom;">
         <div class="headline">
             <a href="#" class="demo">
