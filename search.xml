@@ -1,6 +1,14 @@
 <?xml version="1.0" encoding="utf-8"?>
 <search>
   <entry>
+    <title><![CDATA[C++定义模版]]></title>
+    <url>%2F2019%2F02%2F12%2FC-%E5%AE%9A%E4%B9%89%E6%A8%A1%E7%89%88%2F</url>
+    <content type="text"><![CDATA[​ C++支持泛型编程（即独立于任何特定类型），而模版是泛型编程的基础，因此模版对于C++来说十分重要 ​ 定义模版分为函数模版定义和类模版定义 ##函数模版 对于函数模版定义，一般形式为： template &lt;typename type&gt; ret-type func-name(parameter list) &#123; &#125; ​ type 是函数所使用的数据类型的占位符名称，ret-type是返回值类型，func-name为函数名，parameter list为参数列表 ​ 例如： template &lt;typename T&gt; inline T const&amp; Max (T const&amp; a, T const&amp; b) &#123; return a &lt; b ? b:a; &#125; ##类模版 对于类模版的定义，一般形式为： template &lt;typename type&gt; class class-name &#123; &#125; ​ 在这里，type 是占位符类型名称，可以在类被实例化的时候进行指定。您可以使用一个逗号分隔的列表来定义多个泛型数据类型 例如： template &lt;class T&gt; class Stack &#123; private: vector&lt;T&gt; elems; // 元素 public: void push(T const&amp;); // 入栈&#125;; template &lt;class T&gt; void Stack&lt;T&gt;::push (T const&amp; elem) &#123; elems.push_back(elem); // 追加传入元素的副本&#125;]]></content>
+      <tags>
+        <tag>C++</tag>
+      </tags>
+  </entry>
+  <entry>
     <title><![CDATA[模拟栈实现逆波兰表达式]]></title>
     <url>%2F2019%2F02%2F12%2F%E6%A8%A1%E6%8B%9F%E6%A0%88%E5%AE%9E%E7%8E%B0%E9%80%86%E6%B3%A2%E5%85%B0%E8%A1%A8%E8%BE%BE%E5%BC%8F%2F</url>
     <content type="text"><![CDATA[​ 用C++模拟栈来实现逆波兰表达式求解算式～ /************************************************************************* &gt; File Name: p.cpp &gt; Author: Zcy &gt; Mail: 296763002@qq.com &gt; Created Time: 三 1/23 18:16:17 2019 ************************************************************************/#include &lt;stdio.h&gt;#include &lt;stdlib.h&gt;#include &lt;ctype.h&gt;using namespace std;template &lt;typename type&gt; class S&#123;private: type *val; int head;public: void push(type val) &#123; this -&gt; head ++; this -&gt; val[this -&gt; head] = val; &#125; void pop() &#123; this -&gt; head --; &#125; bool empty() &#123; return this -&gt; head &lt; 0; &#125; type top() &#123; return this -&gt; val[this -&gt; head]; &#125; bool bj(char c) &#123; if ((c == &apos;+&apos; || c == &apos;-&apos;) &amp;&amp; (top() == &apos;*&apos; || top() == &apos;/&apos;)) &#123; return true; &#125; else if ((c == &apos;+&apos; || c == &apos;-&apos;) &amp;&amp; (top() == &apos;+&apos; || top() == &apos;-&apos;))&#123; return true; &#125; else if ((c == &apos;*&apos; || c == &apos;/&apos;) &amp;&amp; (top() == &apos;*&apos; || top() == &apos;/&apos;))&#123; return true; &#125; else &#123; return false; &#125; &#125; void init() &#123; this -&gt; val = (type *)malloc(sizeof(type) * 25); this -&gt; head = -1; &#125; void clear() &#123; free(this -&gt; val); free(this); &#125;&#125;;int jsx(char c, int a, int b) &#123; switch(c) &#123; case &apos;*&apos;: return a * b; break; case &apos;/&apos;: return a / b; break; case &apos;+&apos;: return a + b; break; default: return a - b; &#125;&#125;void js(S&lt;int&gt; *num, S&lt;char&gt; *ch) &#123; int b = num -&gt; top(); num -&gt; pop(); int a = num -&gt; top(); num -&gt; pop(); num -&gt; push(jsx(ch -&gt; top(), a, b)); ch -&gt; pop();&#125;int main () &#123; char *buffer = (char *)malloc(sizeof(char) * 25); scanf(&quot;%s&quot;, buffer); int val = 0; S&lt;int&gt; *num = (S&lt;int&gt; *)malloc(sizeof(S &lt;int&gt;)); S&lt;char&gt; *ch = (S&lt;char&gt; *)malloc(sizeof(S &lt;char&gt;)); num -&gt; init(); ch -&gt; init(); for (int i = 0; buffer[i]; i++) &#123; if (isdigit(buffer[i])) &#123; val = val * 10 + buffer[i] - &apos;0&apos;; &#125; else &#123; num -&gt; push(val); val = 0; while(!ch -&gt; empty() &amp;&amp; ch -&gt; bj(buffer[i])) &#123; js(num, ch); &#125; ch -&gt; push(buffer[i]); &#125; &#125; num -&gt; push(val); while(!ch -&gt; empty()) &#123; js(num, ch); &#125; printf(&quot;%d\n&quot;, num -&gt; top()); free(buffer); num -&gt; clear(); ch -&gt; clear(); return 0;&#125;]]></content>
@@ -1370,8 +1378,8 @@
     <url>%2F2018%2F10%2F13%2FC%E4%B8%8EC-%E5%8C%BA%E5%88%AB-%E8%BD%AC%2F</url>
     <content type="text"><![CDATA[原文地址：点我跳转]]></content>
       <tags>
-        <tag>C语言</tag>
         <tag>C++</tag>
+        <tag>C语言</tag>
       </tags>
   </entry>
   <entry>
