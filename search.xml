@@ -1,6 +1,15 @@
 <?xml version="1.0" encoding="utf-8"?>
 <search>
   <entry>
+    <title><![CDATA[模拟队列]]></title>
+    <url>%2F2019%2F02%2F12%2F%E6%A8%A1%E6%8B%9F%E9%98%9F%E5%88%97%2F</url>
+    <content type="text"><![CDATA[​ C++模拟队列的实现～ /************************************************************************* &gt; File Name: p.cpp &gt; Author: Zcy &gt; Mail: 296763002@qq.com &gt; Created Time: 三 1/23 18:16:17 2019 ************************************************************************/#include &lt;stdio.h&gt;#include &lt;stdlib.h&gt;using namespace std;template &lt;typename type&gt; class Que&#123;private: type *data; int head, tail;public: Que() &#123; head = 0; tail = -1; data = (type *)malloc(sizeof(type) * 105); &#125; ~Que() &#123; free(this -&gt; data); &#125; void add(type data) &#123; tail++; this -&gt; data[tail] = data; return; &#125; void pop() &#123; if (!empty()) &#123; head++; &#125; return; &#125; bool empty() &#123; return head &gt; tail; &#125; void output() &#123; for (int i = head; i &lt;= tail; i++) &#123; printf(&quot;%d%c&quot;, data[i], i == tail? &apos;\n&apos;: &apos; &apos;); &#125; return; &#125; int gethead() &#123; return head; &#125; int gettail() &#123; return tail; &#125;&#125;;int main () &#123; int n, m, val; Que&lt;int&gt; que; scanf(&quot;%d&quot;, &amp;n); for (int i = 1; i &lt;= n; i++) &#123; scanf(&quot;%d&quot;, &amp;val); que.add(val); &#125; scanf(&quot;%d&quot;, &amp;m); for (int i = 1; i &lt;= m; i++) &#123; que.pop(); &#125; que.output(); return 0;&#125;]]></content>
+      <tags>
+        <tag>C++</tag>
+        <tag>模拟</tag>
+      </tags>
+  </entry>
+  <entry>
     <title><![CDATA[19-01-31博客搭建进度]]></title>
     <url>%2F2019%2F01%2F31%2F19-01-31%E5%8D%9A%E5%AE%A2%E6%90%AD%E5%BB%BA%E8%BF%9B%E5%BA%A6%2F</url>
     <content type="text"><![CDATA[​ 特点:简约 流畅 死宅 进度表：​ ——新增标签页，方便查找(感谢帮忙拍版的鹏飞 09.29更新) ​ ——新增返回顶部的小火箭 (09.29更新） ​ ——优化布局(09.29更新) ​ ——新增巨巨们的友情链接(09.29更新) ​ ——主页新增邮箱与QQ跳转链接(10.03更新) ​ ——引入“畅言”评论平台(位于留言界面，需等待3秒加载 10.03更新) ​ ——提供博文百度搜索功能(需审核 10.03更新) ​ ——关联www.ivan-zcy.com 与 www.ivan-zcy.top 域名(10.03更新) ​ ——代码托管从github转到coding，优化网速(10.03更新) ​ ——修正主页博文标签跳转错误(10.03更新) ​ ——新增弹出式音乐播放器(10.05更新) ​ ——新增主页博文出场特效(10.05更新) ​ ——新增鼠标点击爱心效果(10.20更新) ​ ——新增页面卡通人物效果(10.20更新) ​ ——微调音乐布局(10.20更新) ​ ——微调小火箭布局(10.20更新) ​ ——新增标签数量统计(10.23更新) ​ ——新增博文数量统计(10.23更新) ​ ——新增网站运行时间（11.13更新） ​ ——新增pdf在线浏览（仅支持电脑浏览)（11.13更新） ​ ——新增动态背景(11.28更新) ​ ——修改网站图片外链至本地（11.28更新） ​ ——博文尾部自动添加声明（11.29更新） ​ ——实现博文字数统计（11.29更新） ​ ——添加顶部加载条（11.29更新） ​ ——添加简历页 (11.30更新) ​ ——调整底部布局 (12.02更新) ​ ——新增小游戏——见缝插针 (12.02更新) ​ ——修复音乐弹出、小火箭移动端错误问题 （12.04更新） ​ ——更新“关于我”页面特效（12.04更新） ​ ——主页新增搜索博文功能 （01.31更新）]]></content>
