@@ -1,9 +1,19 @@
 <?xml version="1.0" encoding="utf-8"?>
 <search>
   <entry>
+    <title><![CDATA[模拟栈实现逆波兰表达式]]></title>
+    <url>%2F2019%2F02%2F12%2F%E6%A8%A1%E6%8B%9F%E6%A0%88%E5%AE%9E%E7%8E%B0%E9%80%86%E6%B3%A2%E5%85%B0%E8%A1%A8%E8%BE%BE%E5%BC%8F%2F</url>
+    <content type="text"><![CDATA[]]></content>
+      <tags>
+        <tag>C++</tag>
+        <tag>模拟</tag>
+        <tag>逆波兰表达式</tag>
+      </tags>
+  </entry>
+  <entry>
     <title><![CDATA[模拟队列]]></title>
     <url>%2F2019%2F02%2F12%2F%E6%A8%A1%E6%8B%9F%E9%98%9F%E5%88%97%2F</url>
-    <content type="text"><![CDATA[​ C++模拟队列的实现～ /************************************************************************* &gt; File Name: p.cpp &gt; Author: Zcy &gt; Mail: 296763002@qq.com &gt; Created Time: 三 1/23 18:16:17 2019 ************************************************************************/#include &lt;stdio.h&gt;#include &lt;stdlib.h&gt;using namespace std;template &lt;typename type&gt; class Que&#123;private: type *data; int head, tail;public: Que() &#123; head = 0; tail = -1; data = (type *)malloc(sizeof(type) * 105); &#125; ~Que() &#123; free(this -&gt; data); &#125; void add(type data) &#123; tail++; this -&gt; data[tail] = data; return; &#125; void pop() &#123; if (!empty()) &#123; head++; &#125; return; &#125; bool empty() &#123; return head &gt; tail; &#125; void output() &#123; for (int i = head; i &lt;= tail; i++) &#123; printf(&quot;%d%c&quot;, data[i], i == tail? &apos;\n&apos;: &apos; &apos;); &#125; return; &#125; int gethead() &#123; return head; &#125; int gettail() &#123; return tail; &#125;&#125;;int main () &#123; int n, m, val; Que&lt;int&gt; que; scanf(&quot;%d&quot;, &amp;n); for (int i = 1; i &lt;= n; i++) &#123; scanf(&quot;%d&quot;, &amp;val); que.add(val); &#125; scanf(&quot;%d&quot;, &amp;m); for (int i = 1; i &lt;= m; i++) &#123; que.pop(); &#125; que.output(); return 0;&#125;]]></content>
+    <content type="text"><![CDATA[C++模拟队列的实现～ /************************************************************************* &gt; File Name: p.cpp &gt; Author: Zcy &gt; Mail: 296763002@qq.com &gt; Created Time: 三 1/23 18:16:17 2019 ************************************************************************/#include &lt;stdio.h&gt;#include &lt;stdlib.h&gt;using namespace std;template &lt;typename type&gt; class Que&#123;private: type *data; int head, tail;public: Que() &#123; head = 0; tail = -1; data = (type *)malloc(sizeof(type) * 105); &#125; ~Que() &#123; free(this -&gt; data); &#125; void add(type data) &#123; tail++; this -&gt; data[tail] = data; return; &#125; void pop() &#123; if (!empty()) &#123; head++; &#125; return; &#125; bool empty() &#123; return head &gt; tail; &#125; void output() &#123; for (int i = head; i &lt;= tail; i++) &#123; printf(&quot;%d%c&quot;, data[i], i == tail? &apos;\n&apos;: &apos; &apos;); &#125; return; &#125; int gethead() &#123; return head; &#125; int gettail() &#123; return tail; &#125;&#125;;int main () &#123; int n, m, val; Que&lt;int&gt; que; scanf(&quot;%d&quot;, &amp;n); for (int i = 1; i &lt;= n; i++) &#123; scanf(&quot;%d&quot;, &amp;val); que.add(val); &#125; scanf(&quot;%d&quot;, &amp;m); for (int i = 1; i &lt;= m; i++) &#123; que.pop(); &#125; que.output(); return 0;&#125;]]></content>
       <tags>
         <tag>C++</tag>
         <tag>模拟</tag>
