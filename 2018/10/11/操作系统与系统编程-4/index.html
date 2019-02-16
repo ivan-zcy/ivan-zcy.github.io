@@ -214,7 +214,7 @@
       <span class="post-meta-item-icon">
         <i class="fa fa-keyboard-o"></i>
         <span class="post-meta-item-text">  字数统计: </span>
-        <span class="post-count">715字</span>
+        <span class="post-count">766字</span>
       </span>
     </span>
 
@@ -240,7 +240,7 @@
 <p>​        该方法以<code>argv</code>为参运行<code>filename</code>指向的可执行程序，并将<code>envp</code>存储的“变量=数值”对作为环境变量代入这个程序。<code>argv</code>的第一个参数必须与<code>filename</code>一致，真正的参数从第二个开始。</p>
 <h4 id="注意！！"><a href="#注意！！" class="headerlink" title="注意！！"></a>注意！！</h4><p>​    该方法会让<code>filename</code>的程序覆盖进程中正在运行的程序，因此该方法后的代码无法被执行（除非该方法运行失败）</p>
 <p>二.在 Linux 系统中，比起系统调用更常使用以exec开头的六个函数：</p>
-<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">int execl(const char* path, const char* arg, ...);</span><br><span class="line">int execlp(const char* file, const char* arg, ...);</span><br><span class="line">int execle(const char* path, const char* arg,</span><br><span class="line">           ..., char* const envp[]);</span><br><span class="line">int execv(const char* path, char* const argv[]);</span><br><span class="line">int execvp(const char* file, char* const argv[]);</span><br><span class="line">int execvpe(const char* file, char* const argv[],</span><br><span class="line">            char* const envp[]);</span><br></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">int execl(const char* path, const char* arg, ...);</span><br><span class="line">int execlp(const char* file, const char* arg, ...);</span><br><span class="line">int execle(const char* path, const char* arg,</span><br><span class="line">           ..., char* const envp[]);</span><br><span class="line">int execv(const char* path, char* const argv[]);</span><br><span class="line">int execvp(const char* file, char* const argv[]);</span><br><span class="line">int execvpe(const char* file, char* const argv[],</span><br><span class="line">            char* const envp[]);</span><br><span class="line">例如：</span><br><span class="line">execl(&quot;ls&quot;, &quot;ls&quot;, &quot;-al&quot;, (char *)NULL);</span><br><span class="line">execlp(&quot;ls&quot;, &quot;ls&quot;, &quot;-al&quot;, (char *)NULL);</span><br><span class="line">char* const args[] = &#123;&quot;ls&quot;, &quot;al&quot;, &quot;(char *)NULL&quot;&#125;;</span><br><span class="line">execv(&quot;ls&quot;, args);</span><br><span class="line">execvp(&quot;ls&quot;, args);</span><br></pre></td></tr></table></figure>
 <p>​    它们都具有系统调用功能，可将这些函数表示为：“exec + l/v + p/e/pe”，这六个函数主要有两处不同：</p>
 <p>​    第一处不同（l/v）——“l<em>”类函数将所有参数作为一整个字符串代入，而“v</em>”类函数将参数分别放入一个字符串数组中，将数组作参代入函数运行</p>
 <p>​    第二处不同（p/e/pe）——包含 p的函数可以模仿计算机中壳功能，在“file”中不含“/”时使用环境变量 PATH 中的目录来寻找可执行文件，包含 e的函数可以像<code>execve</code>一样将“变量=数值”对作为环境变量代入程序</p>
