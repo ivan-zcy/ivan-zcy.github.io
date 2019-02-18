@@ -1,3 +1,4 @@
+http://www.ivan-zcy.top/2019/02/18/洛谷P1220关路灯/
 http://www.ivan-zcy.top/2019/02/12/C-定义模版/
 http://www.ivan-zcy.top/2019/02/12/模拟栈实现逆波兰表达式/
 http://www.ivan-zcy.top/2019/02/12/模拟队列/
@@ -97,4 +98,3 @@ http://www.ivan-zcy.top/2018/11/09/2018icpc青岛Flippy-Sequence-思维/
 http://www.ivan-zcy.top/2018/11/09/2018icpc青岛Books-思维/
 http://www.ivan-zcy.top/2018/11/09/2018icpc青岛Function-and-Function-规律/
 http://www.ivan-zcy.top/2018/11/08/HDU3586Information-Disturbing-二分-树形dp/
-http://www.ivan-zcy.top/2018/11/08/POJ3140Contestants-Division-树形dp/
