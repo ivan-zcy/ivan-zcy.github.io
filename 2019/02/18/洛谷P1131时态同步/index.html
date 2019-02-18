@@ -214,7 +214,7 @@
       <span class="post-meta-item-icon">
         <i class="fa fa-keyboard-o"></i>
         <span class="post-meta-item-text">  字数统计: </span>
-        <span class="post-count">624字</span>
+        <span class="post-count">1.1k字</span>
       </span>
     </span>
 
@@ -223,7 +223,7 @@
       <span class="post-meta-item-icon">
         <i class="fa fa-hourglass-half"></i>
         <span class="post-meta-item-text">  阅读时长: </span>
-        <span class="post-count">2分</span>
+        <span class="post-count">4分</span>
       </span>
     </span>
                 </div>
@@ -252,7 +252,12 @@
 <p>对于100%100%的数据，N≤500000<em>N</em>≤500000</p>
 <p>对于所有的数据，te≤1000000<em>t**e</em>≤1000000</p>
 <p>思路：</p>
-<p>​    </p>
+<p>​    由“都存在且仅存在一条通路”这句话我们可知这是树形结构。我们可以设<code>f[i]</code>代表以节点i为根结点到叶节点的最远距离，设<code>dp[i]</code>代表以节点i为根结点最少使用道具次数。</p>
+<p>​    那么我们可以得到：</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">f[i] = max(f[j] + c) //j为i的子节点，c为i到j的距离</span><br><span class="line">dp[i] += dp[j] + f[i] - (f[j] + c);  //j为i的子节点</span><br></pre></td></tr></table></figure>
+<p>​    下面给大家提供一种通过树深度来实现非递归的求法</p>
+<p>代码：</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">/*************************************************************************</span><br><span class="line">	&gt; File Name: p.cpp</span><br><span class="line">	&gt; Author: Zcy</span><br><span class="line">	&gt; Mail: 296763002@qq.com</span><br><span class="line">	&gt; Created Time: 三  1/23 18:16:17 2019</span><br><span class="line"> ************************************************************************/</span><br><span class="line"></span><br><span class="line">#include &lt;stdio.h&gt;</span><br><span class="line">#include &lt;algorithm&gt;</span><br><span class="line">#include &lt;vector&gt;</span><br><span class="line">using namespace std;</span><br><span class="line">#define ll long long</span><br><span class="line">typedef pair&lt;int, ll&gt;PIL;</span><br><span class="line"></span><br><span class="line">struct node</span><br><span class="line">&#123;</span><br><span class="line">	vector&lt;PIL&gt; m;</span><br><span class="line">	int sd;</span><br><span class="line">&#125;point[500005];</span><br><span class="line"></span><br><span class="line">int num[500005];</span><br><span class="line">ll dp[500005] = &#123;0&#125;;</span><br><span class="line">ll f[500005] = &#123;0&#125;;</span><br><span class="line"></span><br><span class="line">void dfs(int inx) &#123;</span><br><span class="line">	for (int i = 0; i &lt; point[inx].m.size(); i++) &#123;</span><br><span class="line">		int to = point[inx].m[i].first;</span><br><span class="line">		if (point[to].sd == 0) &#123;</span><br><span class="line">			point[to].sd = point[inx].sd + 1;</span><br><span class="line">			dfs(to);</span><br><span class="line">		&#125;</span><br><span class="line">	&#125;</span><br><span class="line">	return;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">bool cmp(int a, int b) &#123;</span><br><span class="line">	return point[a].sd &gt; point[b].sd;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">int main () &#123;</span><br><span class="line">	int n, c, s, e;</span><br><span class="line">	ll v;</span><br><span class="line">	scanf(&quot;%d%d&quot;, &amp;n, &amp;c);</span><br><span class="line">	for (int i = 1; i &lt;= n; i++) &#123;</span><br><span class="line">		num[i] = i;</span><br><span class="line">		point[i].sd = 0;</span><br><span class="line">	&#125;</span><br><span class="line">	for (int i = 1; i &lt; n; i++) &#123;</span><br><span class="line">		scanf(&quot;%d%d%lld&quot;, &amp;s, &amp;e, &amp;v);</span><br><span class="line">		point[s].m.push_back(PIL(e, v));</span><br><span class="line">		point[e].m.push_back(PIL(s, v));</span><br><span class="line">	&#125;</span><br><span class="line">	point[c].sd = 1;</span><br><span class="line">	dfs(c);</span><br><span class="line">	sort(num + 1, num + 1 + n, cmp);</span><br><span class="line">	for (int i = 1; i &lt;= n; i++) &#123;</span><br><span class="line">		int inx = num[i];</span><br><span class="line">		ll maxx = 0;</span><br><span class="line">		for (int j = 0; j &lt; point[inx].m.size(); j++) &#123;</span><br><span class="line">			int to = point[inx].m[j].first;</span><br><span class="line">			if (point[to].sd &gt; point[inx].sd) &#123;</span><br><span class="line">				maxx = max(maxx, f[to] + point[inx].m[j].second);</span><br><span class="line">			&#125;</span><br><span class="line">		&#125;</span><br><span class="line">		f[inx] = maxx;</span><br><span class="line">		for (int j = 0; j &lt; point[inx].m.size(); j++) &#123;</span><br><span class="line">			int to = point[inx].m[j].first;</span><br><span class="line">			if (point[to].sd &gt; point[inx].sd) &#123;</span><br><span class="line">				dp[inx] += dp[to] + (maxx - (f[to] + point[inx].m[j].second));</span><br><span class="line">			&#125;</span><br><span class="line">		&#125;</span><br><span class="line">	&#125;</span><br><span class="line">	printf(&quot;%lld\n&quot;, dp[c]);</span><br><span class="line">	return 0;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 
                 </div>
             </article>
