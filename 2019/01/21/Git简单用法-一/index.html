@@ -223,7 +223,7 @@
       <span class="post-meta-item-icon">
         <i class="fa fa-hourglass-half"></i>
         <span class="post-meta-item-text">  阅读时长: </span>
-        <span class="post-count">4分</span>
+        <span class="post-count">5分</span>
       </span>
     </span>
                 </div>
@@ -274,6 +274,8 @@
 <h4 id="4-4提交仓库的改动"><a href="#4-4提交仓库的改动" class="headerlink" title="4.4提交仓库的改动"></a>4.4提交仓库的改动</h4><p>​    仓库的每次改动操作后，推送同步到远程仓库前，都需要对这一次或这一批次的操作做提交，命令为<code>git commit</code>，只有完成提交，才可以推送改动到远程仓库</p>
 <p>​    例如提交本次改动：</p>
 <figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">git commit -m &quot;我的注释&quot;</span><br></pre></td></tr></table></figure>
+<p>​    如果加上-a，则无需add便可以直接 commit所有的更新</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">git commit -a -m &quot;我的注释&quot;</span><br></pre></td></tr></table></figure>
 <h4 id="4-5推送到远程仓库"><a href="#4-5推送到远程仓库" class="headerlink" title="4.5推送到远程仓库"></a>4.5推送到远程仓库</h4><p>​    提交仓库改动后就可以开始推送改动的内容到远程仓库了，命令为<code>git push</code>，用法是<code>git push -u origin 分支名</code>，其中分支名默认为master。第一次推送可以使用-u参数（会绑定此时的仓库分支名，这样下次推送就无需加分支名了）</p>
 <figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">$ git push -u origin master</span><br></pre></td></tr></table></figure>
 <h4 id="4-6当远程仓库被修改，如何同步到本地"><a href="#4-6当远程仓库被修改，如何同步到本地" class="headerlink" title="4.6当远程仓库被修改，如何同步到本地"></a>4.6当远程仓库被修改，如何同步到本地</h4><h5 id="4-6-1查看仓库改动"><a href="#4-6-1查看仓库改动" class="headerlink" title="4.6.1查看仓库改动"></a>4.6.1查看仓库改动</h5><p>通过<code>git fetch</code>命令查看有哪些新改动，用法为：</p>
