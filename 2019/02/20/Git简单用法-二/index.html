@@ -214,7 +214,7 @@
       <span class="post-meta-item-icon">
         <i class="fa fa-keyboard-o"></i>
         <span class="post-meta-item-text">  字数统计: </span>
-        <span class="post-count">842字</span>
+        <span class="post-count">924字</span>
       </span>
     </span>
 
@@ -258,6 +258,9 @@
 <p>​    我们要想切换远程分支，只能退而求其次，先把远程分支的内容拷贝到自己新创建的分支上，然后在新分支进行操作，具体做法是：</p>
 <figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">$ git checkout -b 新建分支名 origin/远程分支名</span><br></pre></td></tr></table></figure>
 <p>​    上一行命令就是创建一个新分支，然后把远程分支的内容拷贝到新分支中，我们只需要切换到新分支进行开发就可</p>
+<h2 id="Git可能出现的问题"><a href="#Git可能出现的问题" class="headerlink" title="Git可能出现的问题"></a>Git可能出现的问题</h2><p>​    当在本地创建了一个分支后，在该分支下我们无法实现<code>$git pull</code>    和<code>$git push</code>命令，我们要想在该分支下使用上面两个命令，必须与远程分支关联</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">$ git branch --set-upstream 分支名 origin/远程分支名</span><br></pre></td></tr></table></figure>
+<p>​    这时就Ok了</p>
 <p>##Git日志</p>
 <p>###查看日志</p>
 <p>​    利用<code>$ git log</code>可以查看所有的提交</p>
