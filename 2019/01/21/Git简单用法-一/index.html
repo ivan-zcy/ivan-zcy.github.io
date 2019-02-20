@@ -265,6 +265,7 @@
 <h5 id="4-3-1添加-修改"><a href="#4-3-1添加-修改" class="headerlink" title="4.3.1添加/修改"></a>4.3.1添加/修改</h5><p>​    把一个文件添加或更新内容到本地索引，可以使用<code>git add</code>命令</p>
 <p>​    例如创建一个新的txt文件，并往文件内写入“hello world”，并用<code>git add</code>命令添加到本地索引库中：</p>
 <figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">$ echo &quot;hello world&quot; &gt; newfile.txt</span><br><span class="line">$ git add newfile.txt</span><br></pre></td></tr></table></figure>
+<p>​    可利用<code>$ git add *</code>命令将全部修改过的文件自动添加</p>
 <h5 id="4-3-2删除"><a href="#4-3-2删除" class="headerlink" title="4.3.2删除"></a>4.3.2删除</h5><p>​    把仓库里的文件删掉，可以使用<code>git rm</code>命令</p>
 <p>​    例如删除新创建的newfile.txt文件</p>
 <figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">$ git rm newfile.txt</span><br></pre></td></tr></table></figure>
