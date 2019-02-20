@@ -214,7 +214,7 @@
       <span class="post-meta-item-icon">
         <i class="fa fa-keyboard-o"></i>
         <span class="post-meta-item-text">  字数统计: </span>
-        <span class="post-count">4字</span>
+        <span class="post-count">842字</span>
       </span>
     </span>
 
@@ -223,19 +223,54 @@
       <span class="post-meta-item-icon">
         <i class="fa fa-hourglass-half"></i>
         <span class="post-meta-item-text">  阅读时长: </span>
-        <span class="post-count">1分</span>
+        <span class="post-count">3分</span>
       </span>
     </span>
                 </div>
 
                 <p class="a-posted-on" style="color: #ccc;">
-                    2019-01-21
+                    2019-02-20
                 </p>
                 <!-- Post Main Content -->
                 <div class="entry-content">
-                    <p><img src="/2019/01/21/Git简单用法-二/title.jpg" alt="title"></p>
+                    <p><img src="/2019/02/20/Git简单用法-二/title.jpg" alt="title"></p>
 <a id="more"></a>
-<p>​    明天再补～</p>
+<p>[TOC]</p>
+<p>​    接上次Git简单用法-一 <a href="http://www.ivan-zcy.top/2019/01/21/Git简单用法-一/">跳转 </a> ，二主要讲关于Git的分支用法和Git日志：</p>
+<h2 id="Git分支"><a href="#Git分支" class="headerlink" title="Git分支"></a>Git分支</h2><p>​    分支的主要用于多人开发，可以让开发人员在主线（master分支）之外进行代码提交，同时又不会影响主线。比如我负责项目的一个功能模块，我就创建一个分支，把这部分代码提交到这个分支中，而其它模块的同事</p>
+<p>仍可以利用主线开发，我的提交不会对他们造成任何影响。直到我的功能模块完成通过测试后，最后把我创建的分支合并到主线</p>
+<p>###创建分支</p>
+<p>​    利用<code>$ git branch 分支名</code>便可以创建一个分支</p>
+<p>###查看全部分支</p>
+<p>​    利用<code>$ git branch</code> 可以查看全部分支，以及当前所在分支（带*）</p>
+<p>###切换分支</p>
+<p>​    利用<code>$ git checkout 分支名</code>来切换到其它分支</p>
+<p>###合并分支</p>
+<pre><code>切换到主分支(master)后，利用`$ git merge -m &quot;注释&quot; 分支名`来合并创建的分支
+</code></pre><p>​    合并分支会出现两种情况：</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">（一）当两个分支修改的文件不同时：自动合并，不会有冲突</span><br><span class="line">（二）当两个分支修改了相同文件时：系统将两个分支的修改都保存到了该文件中，通过&lt;&lt;&lt;&lt;,&gt;&gt;&gt;,===来分隔，此时我们根据需要手动更改该文件，然后去掉上述分隔符。然后使用git add和git commit命令来提交冲突的文件</span><br></pre></td></tr></table></figure>
+<h3 id="撤销合并"><a href="#撤销合并" class="headerlink" title="撤销合并"></a>撤销合并</h3><p>​    利用<code>$ git reset --hard HEAD^</code>返回合并之前的状态</p>
+<p>###删除分支</p>
+<p>​    利用<code>$ git branch -d 分支名</code>可以删除已经被主分支合并的分支</p>
+<p>​    利用<code>$ git branch -D 分支名</code>可以强制删除某个分支</p>
+<p>###关于如何获取远程分支</p>
+<p>​    我们通过<code>$ git pull</code>命令能够将远程的所有分支都拉过来，但是利用<code>$ git branch</code> 命令查看发现，当前显示的分支只有自己创建的还有主分支，而远程分支虽然拉下来了，但是无法切换</p>
+<p>​    我们要想切换远程分支，只能退而求其次，先把远程分支的内容拷贝到自己新创建的分支上，然后在新分支进行操作，具体做法是：</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">$ git checkout -b 新建分支名 origin/远程分支名</span><br></pre></td></tr></table></figure>
+<p>​    上一行命令就是创建一个新分支，然后把远程分支的内容拷贝到新分支中，我们只需要切换到新分支进行开发就可</p>
+<p>##Git日志</p>
+<p>###查看日志</p>
+<p>​    利用<code>$ git log</code>可以查看所有的提交</p>
+<p>###日志统计</p>
+<p>​    利用<code>$ git log --stat</code>回显示详细的提交记录</p>
+<p>###日志格式化输出</p>
+<p>​    利用<code>$ git log --pretty=格式类型</code>来指定格式输出日志，主要格式有oneline，short，medium，full，fuller，email，raw等，也可通过<code>--pretty=format:&#39;自定义格式&#39;</code>来输出日志</p>
+<p>###日志可视化输出</p>
+<p>​    利用<code>$ git log --graph</code>可视化显示提交图</p>
+<p>###日志排序</p>
+<p>​    默认按时间线逆序显示，可制定<code>--topo-order</code>参数来按自提交在父提交前显示的排序规则，或者<code>--reverse</code>参数时间线正序显示</p>
+<p>###其它</p>
+<p>​    除此之外日志还有很多用法，具体可通过<code>git help log</code>来查看相应参数用法</p>
 
                 </div>
             </article>
@@ -255,13 +290,9 @@
         <div class="container" >
             <ul class="pager">
                 
-                <li class="previous">
-                    <a href="/2019/01/23/洛谷1028数的计算/" rel="prev">下一篇</a>
-                </li>
-                
                 
                 <li class="next">
-                    <a href="/2019/01/21/简易实现Linux命令-待完善/" rel="prev">上一篇</a>
+                    <a href="/2019/02/18/洛谷P1131时态同步/" rel="prev">上一篇</a>
                 </li>
                 
             </ul>
