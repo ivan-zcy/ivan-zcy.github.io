@@ -1,3 +1,4 @@
+http://www.ivan-zcy.top/2019/02/20/Git简单用法-三/
 http://www.ivan-zcy.top/2019/02/20/Git简单用法-二/
 http://www.ivan-zcy.top/2019/02/20/关于zsh踩过的坑/
 http://www.ivan-zcy.top/2019/02/18/洛谷P1131时态同步/
@@ -97,4 +98,3 @@ http://www.ivan-zcy.top/2018/11/13/ACM常用数学公式/
 http://www.ivan-zcy.top/2018/11/09/2018icpc青岛Tournament-规律-思维/
 http://www.ivan-zcy.top/2018/11/09/POJ3162Walking-Race-树形dp-单调队列-模拟vector/
 http://www.ivan-zcy.top/2018/11/09/2018icpc青岛Flippy-Sequence-思维/
-http://www.ivan-zcy.top/2018/11/09/2018icpc青岛Books-思维/
