@@ -1,6 +1,15 @@
 <?xml version="1.0" encoding="utf-8"?>
 <search>
   <entry>
+    <title><![CDATA[Debug小技巧]]></title>
+    <url>%2F2019%2F02%2F24%2FDebug%E5%B0%8F%E6%8A%80%E5%B7%A7%2F</url>
+    <content type="text"><![CDATA[​ 平时我们写程序需要Debug的时候，在自己觉得会出错的地方加上printf输出相关信息用于测试。当printf的行过多的时候，如果我们忘记了删除，会导致多余的输出。 ​ 这时候，一个非常好用的Debug技巧分享给大家 #include &lt;stdio.h&gt;#ifdef DEBUG //若有宏定义DEBUG #define DBG(...) printf(__VA_ARGS__) //则将DBG()替换为printf(),其中__VA_ARGS__代表可变参#else #define DBG(...) //否则将DBG()替换为空#endifint main () &#123; DBG(&quot;hello, %s!\n&quot;, &quot;zcy&quot;); DBG(&quot;hello, %d\n&quot;, 2019); DBG(&quot;hello, ACM!\n&quot;); return 0;&#125; ​ 如果我们g++编译的时候 -D DEBUG，就会输出DBG()的相关内容，如果直接g++编译，测试用的DBG不会输出。这样就非常方便的进行DEBUG啦 ​ 以下是运行效果图： 当然啦，宏定义的方式不唯一，比如这样定义也可以： #ifdef DEBUG #define DBG(a,b...) printf(a, ##b)#else #define DBG(a,b...)#endif]]></content>
+      <tags>
+        <tag>C语言</tag>
+        <tag>Debug</tag>
+      </tags>
+  </entry>
+  <entry>
     <title><![CDATA[踩坑:父进程怎么知道子进程是否结束]]></title>
     <url>%2F2019%2F02%2F24%2F%E8%B8%A9%E5%9D%91-%E7%88%B6%E8%BF%9B%E7%A8%8B%E6%80%8E%E4%B9%88%E7%9F%A5%E9%81%93%E5%AD%90%E8%BF%9B%E7%A8%8B%E6%98%AF%E5%90%A6%E7%BB%93%E6%9D%9F%2F</url>
     <content type="text"><![CDATA[​ 该方法主要是用于实现父子进程同时运行，且父进程能查看子进程是否结束 ​ 从网上看，大部分人都说在父进程中使用kill(pid, 0) (其中pid为子进程id)来获取子进程是否退出，若是0代表没退，-1代表退了。结果自己实验了几次，发现无论子进程是否退出，都返回0。。。 ​ 也就是说，单纯使用kill()函数无法检查子进程的状态。通过使用waitpid()和wait()函数的等待子进程结束后父进程继续运行的功能后，kill()函数就可以检查子进程的状态了。具体原因一直没有想明白。。。 ​ 学了进程间通信后，学到了一个函数：sign()函数，格式为：sign(int signum, void(*handler)(int))，其中signum代表某种信号，handler代表该信号得处理方式 ​ 我们知道在一个进程终止或者停止时，将SIGCHLD信号发送给其父进程，而系统默认将忽略此信号。此时，我们只需要利用handler函数，就可以判断子进程是否已经停止。具体方法如下： #include &lt;stdio.h&gt;#include &lt;sys/wait.h&gt;#include &lt;signal.h&gt;#include &lt;unistd.h&gt;#include &lt;stdlib.h&gt;void handler(int sig) &#123; if (sig == SIGCHLD) &#123; int status; waitpid(-1, &amp;status, WNOHANG); &#125;&#125; int main() &#123; int pid = fork(); if (pid&lt;0) &#123; perror(&quot;fork faild&quot;); &#125; if (!pid) &#123; sleep(5); printf(&quot;子：子进程over\n&quot;); exit(0); &#125; else &#123; signal(SIGCHLD, handler); while(1) &#123; sleep(1); int ret = kill(pid, 0); if (ret &lt; 0) &#123; printf(&quot;父：子进程已经结束\n&quot;); break; &#125; else &#123; printf(&quot;父：子进程还没有结束\n&quot;); &#125; &#125; &#125; printf(&quot;程序结束!\n&quot;);&#125;]]></content>
