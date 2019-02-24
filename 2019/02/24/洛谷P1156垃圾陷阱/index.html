@@ -14,7 +14,7 @@
 
   <!--Open Graph Title-->
   
-      <meta property="og:title" content="洛谷P1103书本整理"/>
+      <meta property="og:title" content="洛谷P1156垃圾陷阱"/>
   
   <!--Open Graph Description-->
   
@@ -42,7 +42,7 @@
     </script>
   <!-- Title -->
   
-  <title>洛谷P1103书本整理 - Zcy</title>
+  <title>洛谷P1156垃圾陷阱 - Zcy</title>
 
 
   <link rel="shortcut icon" href="/favicon.ico">
@@ -202,7 +202,7 @@
                 <!-- Title date & tags -->
                 <div class="post-header">
                     <h1 class="entry-title">
-                        洛谷P1103书本整理
+                        洛谷P1156垃圾陷阱
                         
                     </h1>
 
@@ -214,7 +214,7 @@
       <span class="post-meta-item-icon">
         <i class="fa fa-keyboard-o"></i>
         <span class="post-meta-item-text">  字数统计: </span>
-        <span class="post-count">707字</span>
+        <span class="post-count">1k字</span>
       </span>
     </span>
 
@@ -223,7 +223,7 @@
       <span class="post-meta-item-icon">
         <i class="fa fa-hourglass-half"></i>
         <span class="post-meta-item-text">  阅读时长: </span>
-        <span class="post-count">3分</span>
+        <span class="post-count">4分</span>
       </span>
     </span>
                 </div>
@@ -233,29 +233,29 @@
                 </p>
                 <!-- Post Main Content -->
                 <div class="entry-content">
-                    <p><img src="/2019/02/24/洛谷P1103书本整理/title1.jpg" alt="title1"></p>
+                    <p><img src="/2019/02/24/洛谷P1156垃圾陷阱/title5.jpg" alt="title5"></p>
 <a id="more"></a>
-<h2 id="题目描述"><a href="#题目描述" class="headerlink" title="题目描述"></a>题目描述</h2><p><code>Frank</code>是一个非常喜爱整洁的人。他有一大堆书和一个书架，想要把书放在书架上。书架可以放下所有的书，所以<code>Frank</code>首先将书按高度顺序排列在书架上。但是<code>Frank</code>发现，由于很多书的宽度不同，所以书看起来还是非常不整齐。于是他决定从中拿掉k本书，使得书架可以看起来整齐一点。</p>
-<p>书架的不整齐度是这样定义的：每两本书宽度的差的绝对值的和。例如有4本书：</p>
-<p>1×21×2<br>5×35×3<br>2×42×4<br>3×13×1<br>那么<code>Frank</code>将其排列整齐后是：</p>
-<p>1×21×2<br>2×42×4<br>3×13×1<br>5×35×3<br>不整齐度就是2+3+2=72+3+2=7</p>
-<p>已知每本书的高度都不一样，请你求出去掉k本书后的最小的不整齐度。</p>
+<h2 id="题目描述"><a href="#题目描述" class="headerlink" title="题目描述"></a>题目描述</h2><p>卡门――农夫约翰极其珍视的一条<code>Holsteins</code>奶牛――已经落了到“垃圾井”中。“垃圾井”是农夫们扔垃圾的地方，它的深度为D(2≤D≤100)<em>D</em>(2≤<em>D</em>≤100)英尺。</p>
+<p>卡门想把垃圾堆起来，等到堆得与井同样高时，她就能逃出井外了。另外，卡门可以通过吃一些垃圾来维持自己的生命。</p>
+<p>每个垃圾都可以用来吃或堆放，并且堆放垃圾不用花费卡门的时间。</p>
+<p>假设卡门预先知道了每个垃圾扔下的时间t(0&lt;t≤1000)<em>t</em>(0&lt;<em>t</em>≤1000)，以及每个垃圾堆放的高度h(1≤h≤25<em>h</em>(1≤<em>h</em>≤25)和吃进该垃圾能维持生命的时间f(1≤f≤30)<em>f</em>(1≤<em>f</em>≤30)，要求出卡门最早能逃出井外的时间，假设卡门当前体内有足够持续1010小时的能量，如果卡门1010小时内没有进食，卡门就将饿死。</p>
 <h2 id="输入输出格式"><a href="#输入输出格式" class="headerlink" title="输入输出格式"></a>输入输出格式</h2><p>输入格式：</p>
-<p>第一行两个数字n<em>n</em>和k<em>k</em>，代表书有几本，从中去掉几本。(1≤n≤100,1≤k&lt;n1≤<em>n</em>≤100,1≤<em>k</em>&lt;<em>n</em>)</p>
-<p>下面的n<em>n</em>行，每行两个数字表示一本书的高度和宽度，均小于200200。</p>
-<p>保证高度不重复</p>
+<p>第一行为22个整数，D<em>D</em>和 G(1≤G≤100)<em>G</em>(1≤<em>G</em>≤100)，G<em>G</em>为被投入井的垃圾的数量。</p>
+<p>第二到第G+1<em>G</em>+1行每行包括33个整数：T(0&lt;T&lt;=1000)<em>T</em>(0&lt;<em>T</em>&lt;=1000)，表示垃圾被投进井中的时间；F(1≤F≤30)<em>F</em>(1≤<em>F</em>≤30)，表示该垃圾能维持卡门生命的时间；和 H(1≤H≤25)<em>H</em>(1≤<em>H</em>≤25)，该垃圾能垫高的高度。</p>
 <p>输出格式：</p>
-<p>一行一个整数，表示书架的最小不整齐度。</p>
+<p>如果卡门可以爬出陷阱，输出一个整表示最早什么时候可以爬出；否则输出卡门最长可以存活多长时间。</p>
 <h2 id="输入输出样例"><a href="#输入输出样例" class="headerlink" title="输入输出样例"></a>输入输出样例</h2><p>输入样例#1：</p>
-<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">4 1</span><br><span class="line">1 2</span><br><span class="line">2 4</span><br><span class="line">3 1</span><br><span class="line">5 3</span><br></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">20 4</span><br><span class="line">5 4 9</span><br><span class="line">9 3 2</span><br><span class="line">12 6 10</span><br><span class="line">13 1 1</span><br></pre></td></tr></table></figure>
 <p>输出样例#1：</p>
-<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">3</span><br></pre></td></tr></table></figure>
-<p>思路：</p>
-<p>​    我们先把书本从低到高排序，然后我们设<code>dp[i][j]</code>代表前i本书去掉j本（一定包含第i本）的最小不整齐度。我们初始<code>dp[0][0] = 0</code>，其余为无穷大，那么：</p>
-<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">if(j + 1 == i) </span><br><span class="line">	dp[i][j] == 0;</span><br><span class="line">else</span><br><span class="line">	dp[i][j] = min(dp[k][j - (book[i].h - book[k].h - 1)] + book[i].w - book[k].w)  (1 &lt;= k &lt; i)</span><br></pre></td></tr></table></figure>
-<p>​    最后<code>dp[k][j - (n - k)]</code>最小的即为答案</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">13</span><br></pre></td></tr></table></figure>
+<p>思维：</p>
+<p>​    我们可以设<code>dp[i][j]</code>代表第第i个垃圾投入后奶牛所处高度为j的最大存活时间，初始化<code>dp[0][0] = 10</code>，其余为-1，那么我们可以得到：</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">dp[i][j] = max(dp[i - 1][j] - (cow[i].t - cow[i - 1].t) + cow[i].f, dp[i - 1][j - cow[i].h] - (cow[i].t - cow[i - 1].t);</span><br></pre></td></tr></table></figure>
+<p>​    由于一次投入的垃圾最多可以上升25，所以奶牛若有可能上来，最终所处位置为<code>[h, h + 25)</code>的集合，所以j的遍历范围为<code>[h, h + 25)</code>，最后遍历垃圾，若在<code>[h, h + 25)</code>存在非-1的数，那么奶牛上来的时间为所处垃圾的投入位置。否则奶牛就上不来</p>
+<p>​    上不来我们只需要遍历垃圾，若<code>dp[i][0]</code>为-1，那么存活时间为<code>dp[i - 1][0] + cow[i - 1].t</code>，注意若遍历完垃圾还没有死，那么存活时间为<code>dp[n][0] + cow[n].t</code></p>
+<p>​    注意一下细节和边界条件即可</p>
 <p>代码：</p>
-<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">/*************************************************************************</span><br><span class="line">	&gt; File Name: p.cpp</span><br><span class="line">	&gt; Author: Zcy</span><br><span class="line">	&gt; Mail: 296763002@qq.com</span><br><span class="line">	&gt; Created Time: 三  1/23 18:16:17 2019</span><br><span class="line"> ************************************************************************/</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">#include &lt;stdio.h&gt;</span><br><span class="line">#include &lt;string.h&gt;</span><br><span class="line">#include &lt;stdlib.h&gt;</span><br><span class="line">#include &lt;algorithm&gt;</span><br><span class="line"></span><br><span class="line">using namespace std;</span><br><span class="line"></span><br><span class="line">int dp[105][105];	//前i本书去掉j本的最小不整齐度，i本必取</span><br><span class="line"></span><br><span class="line">struct node &#123;</span><br><span class="line">	int h, w;</span><br><span class="line">&#125;book[105];</span><br><span class="line"></span><br><span class="line">bool cmp(node A, node B) &#123;</span><br><span class="line">	return A.h &lt; B.h;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">int main () &#123;</span><br><span class="line">	int n, k, minn = 0x3f3f3f3f;</span><br><span class="line">	scanf(&quot;%d%d&quot;, &amp;n, &amp;k);</span><br><span class="line">	for (int i = 1; i &lt;= n; i++) &#123;</span><br><span class="line">		scanf(&quot;%d%d&quot;, &amp;book[i].h, &amp;book[i].w);</span><br><span class="line">	&#125;</span><br><span class="line">	sort(book + 1, book + n + 1, cmp);</span><br><span class="line">	memset(dp, 0x3f3f3f3f, sizeof(dp));</span><br><span class="line">	dp[0][0] = 0;</span><br><span class="line">	for (int i = 1; i &lt;= n; i++) &#123;</span><br><span class="line">		for (int j = 0; j &lt;= k &amp;&amp; j &lt; i; j++) &#123;</span><br><span class="line">			if (i == j + 1) &#123;</span><br><span class="line">				dp[i][j] = 0;</span><br><span class="line">				continue;</span><br><span class="line">			&#125;</span><br><span class="line">			for (int p = 0; p &lt; i; p++) &#123;</span><br><span class="line">				if (j - (i - p - 1) &gt;= 0) &#123;</span><br><span class="line">					dp[i][j] = min(dp[p][j - (i - p - 1)] + abs(book[i].w - book[p].w), dp[i][j]);</span><br><span class="line">				&#125;</span><br><span class="line">			&#125;</span><br><span class="line">		&#125;</span><br><span class="line">	&#125;</span><br><span class="line">	for (int i = 1; i &lt;= n; i++) &#123;</span><br><span class="line">		if (k - (n - i) &gt;= 0) &#123;</span><br><span class="line">			minn = min(dp[i][k - (n - i)], minn);</span><br><span class="line">		&#125;</span><br><span class="line">	&#125;</span><br><span class="line">	printf(&quot;%d\n&quot;, minn);</span><br><span class="line">	return 0;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">/*************************************************************************</span><br><span class="line">	&gt; File Name: p.cpp</span><br><span class="line">	&gt; Author: Zcy</span><br><span class="line">	&gt; Mail: 296763002@qq.com</span><br><span class="line">	&gt; Created Time: 三  1/23 18:16:17 2019</span><br><span class="line"> ************************************************************************/</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">#include &lt;stdio.h&gt;</span><br><span class="line">#include &lt;string.h&gt;</span><br><span class="line">#include &lt;algorithm&gt;</span><br><span class="line">using namespace std;</span><br><span class="line"></span><br><span class="line">struct node</span><br><span class="line">&#123;</span><br><span class="line">	int t, f, h;</span><br><span class="line">&#125;lj[105];</span><br><span class="line"></span><br><span class="line">bool cmp(node A, node B) &#123;</span><br><span class="line">	return A.t &lt; B.t;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">int dp[105][150];</span><br><span class="line"></span><br><span class="line">int main () &#123;</span><br><span class="line">	int h, n, flag = 0;</span><br><span class="line">	scanf(&quot;%d%d&quot;, &amp;h, &amp;n);</span><br><span class="line">	for (int i = 1; i &lt;= n; i++) &#123;</span><br><span class="line">		scanf(&quot;%d%d%d&quot;, &amp;lj[i].t, &amp;lj[i].f, &amp;lj[i].h);</span><br><span class="line">	&#125;</span><br><span class="line">	sort(lj + 1, lj + n + 1, cmp);</span><br><span class="line">	lj[0].t = 0;</span><br><span class="line">	memset(dp, -1, sizeof(dp));</span><br><span class="line">	dp[0][0] = 10;</span><br><span class="line">	for (int i = 1; i &lt;= n; i++) &#123;</span><br><span class="line">		for (int j = 0; j &lt; h + 25; j++) &#123;</span><br><span class="line">			if (dp[i - 1][j] - (lj[i].t - lj[i - 1].t) &gt;= 0) &#123;</span><br><span class="line">				dp[i][j] = max(dp[i - 1][j] - (lj[i].t - lj[i - 1].t)+ lj[i].f, dp[i][j]); //吃</span><br><span class="line">			&#125;</span><br><span class="line">			if (j - lj[i].h &gt;= 0 &amp;&amp; dp[i - 1][j - lj[i].h] - (lj[i].t -lj[i - 1].t) &gt;= 0) &#123;</span><br><span class="line">				dp[i][j] = max(dp[i - 1][j - lj[i].h] - (lj[i].t - lj[i - 1].t), dp[i][j]); </span><br><span class="line">			&#125;</span><br><span class="line">		&#125;</span><br><span class="line">	&#125;</span><br><span class="line">	for (int i = 1; i &lt;= n; i++) &#123;</span><br><span class="line">		for (int j = h; j &lt; h + 25; j++) &#123;</span><br><span class="line">			if (dp[i][j] != -1) &#123;</span><br><span class="line">				flag = 1;</span><br><span class="line">				printf(&quot;%d\n&quot;, lj[i].t);</span><br><span class="line">				break;</span><br><span class="line">			&#125;</span><br><span class="line">		&#125;</span><br><span class="line">		if (flag) &#123;</span><br><span class="line">			break;</span><br><span class="line">		&#125;</span><br><span class="line">	&#125;</span><br><span class="line">	if (!flag) &#123;</span><br><span class="line">		for (int i = 1; i &lt;= n; i++) &#123;</span><br><span class="line">			if (dp[i][0] == -1) &#123;</span><br><span class="line">				flag = 1;</span><br><span class="line">				printf(&quot;%d\n&quot;, dp[i - 1][0] + lj[i - 1].t);</span><br><span class="line">				break;</span><br><span class="line">			&#125;</span><br><span class="line">		&#125;</span><br><span class="line">	&#125;</span><br><span class="line">	if (!flag) &#123;</span><br><span class="line">		printf(&quot;%d\n&quot;, dp[n][0] + lj[n].t);</span><br><span class="line">	&#125;</span><br><span class="line">	return 0;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 
                 </div>
             </article>
@@ -275,13 +275,9 @@
         <div class="container" >
             <ul class="pager">
                 
-                <li class="previous">
-                    <a href="/2019/02/24/洛谷P1156垃圾陷阱/" rel="prev">下一篇</a>
-                </li>
-                
                 
                 <li class="next">
-                    <a href="/2019/02/24/洛谷P1681最大正方形2/" rel="prev">上一篇</a>
+                    <a href="/2019/02/24/洛谷P1103书本整理/" rel="prev">上一篇</a>
                 </li>
                 
             </ul>
