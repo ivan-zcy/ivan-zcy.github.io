@@ -1,6 +1,15 @@
 <?xml version="1.0" encoding="utf-8"?>
 <search>
   <entry>
+    <title><![CDATA[踩坑:父进程怎么知道子进程是否结束]]></title>
+    <url>%2F2019%2F02%2F24%2F%E8%B8%A9%E5%9D%91-%E7%88%B6%E8%BF%9B%E7%A8%8B%E6%80%8E%E4%B9%88%E7%9F%A5%E9%81%93%E5%AD%90%E8%BF%9B%E7%A8%8B%E6%98%AF%E5%90%A6%E7%BB%93%E6%9D%9F%2F</url>
+    <content type="text"><![CDATA[​ 该方法主要是用于实现父子进程同时运行，且父进程能查看子进程是否结束 ​ 从网上看，大部分人都说在父进程中使用kill(pid, 0) (其中pid为子进程id)来获取子进程是否退出，若是0代表没退，-1代表退了。结果自己实验了几次，发现无论子进程是否退出，都返回0。。。 ​ 也就是说，单纯使用kill()函数无法检查子进程的状态。通过使用waitpid()和wait()函数的等待子进程结束后父进程继续运行的功能后，kill()函数就可以检查子进程的状态了。具体原因一直没有想明白。。。 ​ 学了进程间通信后，学到了一个函数：sign()函数，格式为：sign(int signum, void(*handler)(int))，其中signum代表某种信号，handler代表该信号得处理方式 ​ 我们知道在一个进程终止或者停止时，将SIGCHLD信号发送给其父进程，而系统默认将忽略此信号。此时，我们只需要利用handler函数，就可以判断子进程是否已经停止。具体方法如下： #include &lt;stdio.h&gt;#include &lt;sys/wait.h&gt;#include &lt;signal.h&gt;#include &lt;unistd.h&gt;#include &lt;stdlib.h&gt;void handler(int sig) &#123; if (sig == SIGCHLD) &#123; int status; waitpid(-1, &amp;status, WNOHANG); &#125;&#125; int main() &#123; int pid = fork(); if (pid&lt;0) &#123; perror(&quot;fork faild&quot;); &#125; if (!pid) &#123; sleep(5); printf(&quot;子：子进程over\n&quot;); exit(0); &#125; else &#123; signal(SIGCHLD, handler); while(1) &#123; sleep(1); int ret = kill(pid, 0); if (ret &lt; 0) &#123; printf(&quot;父：子进程已经结束\n&quot;); break; &#125; else &#123; printf(&quot;父：子进程还没有结束\n&quot;); &#125; &#125; &#125; printf(&quot;程序结束!\n&quot;);&#125;]]></content>
+      <tags>
+        <tag>C语言</tag>
+        <tag>多进程</tag>
+      </tags>
+  </entry>
+  <entry>
     <title><![CDATA[洛谷P1156垃圾陷阱]]></title>
     <url>%2F2019%2F02%2F24%2F%E6%B4%9B%E8%B0%B7P1156%E5%9E%83%E5%9C%BE%E9%99%B7%E9%98%B1%2F</url>
     <content type="text"><![CDATA[题目描述卡门――农夫约翰极其珍视的一条Holsteins奶牛――已经落了到“垃圾井”中。“垃圾井”是农夫们扔垃圾的地方，它的深度为D(2≤D≤100)D(2≤D≤100)英尺。 卡门想把垃圾堆起来，等到堆得与井同样高时，她就能逃出井外了。另外，卡门可以通过吃一些垃圾来维持自己的生命。 每个垃圾都可以用来吃或堆放，并且堆放垃圾不用花费卡门的时间。 假设卡门预先知道了每个垃圾扔下的时间t(0&lt;t≤1000)t(0&lt;t≤1000)，以及每个垃圾堆放的高度h(1≤h≤25h(1≤h≤25)和吃进该垃圾能维持生命的时间f(1≤f≤30)f(1≤f≤30)，要求出卡门最早能逃出井外的时间，假设卡门当前体内有足够持续1010小时的能量，如果卡门1010小时内没有进食，卡门就将饿死。 输入输出格式输入格式： 第一行为22个整数，DD和 G(1≤G≤100)G(1≤G≤100)，GG为被投入井的垃圾的数量。 第二到第G+1G+1行每行包括33个整数：T(0&lt;T&lt;=1000)T(0&lt;T&lt;=1000)，表示垃圾被投进井中的时间；F(1≤F≤30)F(1≤F≤30)，表示该垃圾能维持卡门生命的时间；和 H(1≤H≤25)H(1≤H≤25)，该垃圾能垫高的高度。 输出格式： 如果卡门可以爬出陷阱，输出一个整表示最早什么时候可以爬出；否则输出卡门最长可以存活多长时间。 输入输出样例输入样例#1： 20 45 4 99 3 212 6 1013 1 1 输出样例#1： 13 思维： ​ 我们可以设dp[i][j]代表第第i个垃圾投入后奶牛所处高度为j的最大存活时间，初始化dp[0][0] = 10，其余为-1，那么我们可以得到： dp[i][j] = max(dp[i - 1][j] - (cow[i].t - cow[i - 1].t) + cow[i].f, dp[i - 1][j - cow[i].h] - (cow[i].t - cow[i - 1].t); ​ 由于一次投入的垃圾最多可以上升25，所以奶牛若有可能上来，最终所处位置为[h, h + 25)的集合，所以j的遍历范围为[h, h + 25)，最后遍历垃圾，若在[h, h + 25)存在非-1的数，那么奶牛上来的时间为所处垃圾的投入位置。否则奶牛就上不来 ​ 上不来我们只需要遍历垃圾，若dp[i][0]为-1，那么存活时间为dp[i - 1][0] + cow[i - 1].t，注意若遍历完垃圾还没有死，那么存活时间为dp[n][0] + cow[n].t ​ 注意一下细节和边界条件即可 代码： /************************************************************************* &gt; File Name: p.cpp &gt; Author: Zcy &gt; Mail: 296763002@qq.com &gt; Created Time: 三 1/23 18:16:17 2019 ************************************************************************/#include &lt;stdio.h&gt;#include &lt;string.h&gt;#include &lt;algorithm&gt;using namespace std;struct node&#123; int t, f, h;&#125;lj[105];bool cmp(node A, node B) &#123; return A.t &lt; B.t;&#125;int dp[105][150];int main () &#123; int h, n, flag = 0; scanf(&quot;%d%d&quot;, &amp;h, &amp;n); for (int i = 1; i &lt;= n; i++) &#123; scanf(&quot;%d%d%d&quot;, &amp;lj[i].t, &amp;lj[i].f, &amp;lj[i].h); &#125; sort(lj + 1, lj + n + 1, cmp); lj[0].t = 0; memset(dp, -1, sizeof(dp)); dp[0][0] = 10; for (int i = 1; i &lt;= n; i++) &#123; for (int j = 0; j &lt; h + 25; j++) &#123; if (dp[i - 1][j] - (lj[i].t - lj[i - 1].t) &gt;= 0) &#123; dp[i][j] = max(dp[i - 1][j] - (lj[i].t - lj[i - 1].t)+ lj[i].f, dp[i][j]); //吃 &#125; if (j - lj[i].h &gt;= 0 &amp;&amp; dp[i - 1][j - lj[i].h] - (lj[i].t -lj[i - 1].t) &gt;= 0) &#123; dp[i][j] = max(dp[i - 1][j - lj[i].h] - (lj[i].t - lj[i - 1].t), dp[i][j]); &#125; &#125; &#125; for (int i = 1; i &lt;= n; i++) &#123; for (int j = h; j &lt; h + 25; j++) &#123; if (dp[i][j] != -1) &#123; flag = 1; printf(&quot;%d\n&quot;, lj[i].t); break; &#125; &#125; if (flag) &#123; break; &#125; &#125; if (!flag) &#123; for (int i = 1; i &lt;= n; i++) &#123; if (dp[i][0] == -1) &#123; flag = 1; printf(&quot;%d\n&quot;, dp[i - 1][0] + lj[i - 1].t); break; &#125; &#125; &#125; if (!flag) &#123; printf(&quot;%d\n&quot;, dp[n][0] + lj[n].t); &#125; return 0;&#125;]]></content>
@@ -1526,6 +1535,7 @@
       <tags>
         <tag>C语言</tag>
         <tag>操作系统</tag>
+        <tag>多进程</tag>
       </tags>
   </entry>
   <entry>
@@ -1544,6 +1554,7 @@
       <tags>
         <tag>C语言</tag>
         <tag>操作系统</tag>
+        <tag>多进程</tag>
       </tags>
   </entry>
   <entry>
