@@ -14,7 +14,7 @@
 
   <!--Open Graph Title-->
   
-      <meta property="og:title" content="Zcy"/>
+      <meta property="og:title" content="洛谷P1681最大正方形2"/>
   
   <!--Open Graph Description-->
   
@@ -22,7 +22,7 @@
   <meta property="og:site_name" content="Zcy"/>
   <!--Type page-->
   
-      <meta property="og:type" content="website" />
+      <meta property="og:type" content="article" />
   
   <!--Page Cover-->
   
@@ -42,7 +42,7 @@
     </script>
   <!-- Title -->
   
-  <title>Zcy</title>
+  <title>洛谷P1681最大正方形2 - Zcy</title>
 
 
   <link rel="shortcut icon" href="/favicon.ico">
@@ -194,292 +194,110 @@
 
 
   <!-- Main Content -->
-  <div class="site-content home">
-      <div class="content-header" style="background: url(/img/back.jpg) no-repeat bottom;">
-        <div class="headline">
-            <a href="#" class="demo">
-                <div class="img" style="background-image:url(/img/avator.jpg)"></div>
-                <div class="cover_mask">
-                    <div class="info">
-                        <span>Welcome</br>by:Zcy</span>
-                    </div>
+  <div class="content-area">
+    <div class="post">
+        <!-- Post Content -->
+        <div class="container">
+            <article>
+                <!-- Title date & tags -->
+                <div class="post-header">
+                    <h1 class="entry-title">
+                        洛谷P1681最大正方形2
+                        
+                    </h1>
+
                 </div>
-                <div class="border"></div>
-            </a>
-            <h1 id="Hotnews"></h1>
-            <script type="application/javascript">
-               var content = "沉下心来做事";
-               var i = 0;
-               function show(){
-                   var str  = content.substr(0,i);
-                   Hotnews.innerHTML = str + "_";
-                   i++;
-                   if (i>content.length) i=0;
-                   setTimeout("show()",600);
-               }
-               window.onload = show();
-               </script>
-            <div class="header-link">
-              
-                
-                  <a href="https://github.com/ivan-zcy" class="icon-github" target="_blank">
-                      <i class="fa fa-github" aria-hidden="true"></i>
-                  </a>
-                
-                  <a href="https://m.weibo.cn/u/6086305650?uid=6086305650&luicode=10000011&lfid=100103type%3D1%26q%3DIvan-酷酷酷酷" class="icon-weibo" target="_blank">
-                      <i class="fa fa-weibo" aria-hidden="true"></i>
-                  </a>
-                
-                  <a href="http://shang.qq.com/open_webaio.html?sigt=1bb29cf0e25d41c832c39e41e587e146da3754f5d273a017917c3d540899734e4339f99eeba019c94b5c389758e3c6ce&sigu=f77cd5fff2ab7f3340b356ec5e3a8696346394fadda6a1b9119fbca25f6746b7dda8e820567392d1&tuin=296763002" class="icon-qq" target="_blank">
-                      <i class="fa fa-qq" aria-hidden="true"></i>
-                  </a>
-                
-                  <a href="http://mail.qq.com/cgi-bin/qm_share?t=qm_mailme&email=PgwHCAkIDQ4ODH5PTxBdUVM" class="icon-envelope" target="_blank">
-                      <i class="fa fa-envelope" aria-hidden="true"></i>
-                  </a>
-                
-              
-            </div>
+
+
+                <div style="text-align:center;color: #ccc;">
+    <span class="post-time" >
+      <span class="post-meta-item-icon">
+        <i class="fa fa-keyboard-o"></i>
+        <span class="post-meta-item-text">  字数统计: </span>
+        <span class="post-count">690字</span>
+      </span>
+    </span>
+
+                    <span class="post-time">
+      &nbsp; | &nbsp;
+      <span class="post-meta-item-icon">
+        <i class="fa fa-hourglass-half"></i>
+        <span class="post-meta-item-text">  阅读时长: </span>
+        <span class="post-count">3分</span>
+      </span>
+    </span>
+                </div>
+
+                <p class="a-posted-on" style="color: #ccc;">
+                    2019-02-24
+                </p>
+                <!-- Post Main Content -->
+                <div class="entry-content">
+                    <p><img src="/2019/02/24/洛谷P1681最大正方形2/title.jpg" alt="title"></p>
+<a id="more"></a>
+<h2 id="题目背景"><a href="#题目背景" class="headerlink" title="题目背景"></a>题目背景</h2><p>忙完了学校的事，v神终于可以做他的“正事”：陪女朋友散步。一天，他和女朋友走着走着，不知不觉就来到了一个千里无烟的地方。v神正要往回走，如发现了一块牌子，牌子上有有一行小字和一张图，小字说道：“找到图上最大的交错正方形之后和我联系，这块地就是你的了。”在房价疯长的年代，v神当然不愿错过这个机会，于是开始找了起来……以v神的能力当然找不出来了，你能帮v神找出来吗？</p>
+<h2 id="题目描述"><a href="#题目描述" class="headerlink" title="题目描述"></a>题目描述</h2><p>图上有一个矩阵，由N*M个格子组成，这些格子由两种颜色构成，黑色和白色。请找到面积最大的且内部是黑白交错（即两个相连的正方形颜色不能相同）的正方形。</p>
+<h2 id="输入输出格式"><a href="#输入输出格式" class="headerlink" title="输入输出格式"></a>输入输出格式</h2><p>输入格式：</p>
+<p>第一行两个整数N和M，分别表示行数和列数。接下来有N行，每行M个数，0或1分别表示这个格子是黑色或白色。</p>
+<p>输出格式：</p>
+<p>仅有一行，表示满足条件最大正方形的 边长</p>
+<h2 id="输入输出样例"><a href="#输入输出样例" class="headerlink" title="输入输出样例"></a>输入输出样例</h2><p>输入样例#1：</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">3 3</span><br><span class="line">0 1 0</span><br><span class="line">1 0 0</span><br><span class="line">1 1 1</span><br></pre></td></tr></table></figure>
+<p>输出样例#1：</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">2</span><br></pre></td></tr></table></figure>
+<h2 id="说明"><a href="#说明" class="headerlink" title="说明"></a>说明</h2><p>样例解释：</p>
+<p>(1,1)到(2,2)这个正方形是满足条件的，它的边长是2</p>
+<p>数据范围约定：</p>
+<p>对于30%的数据，N &lt;= 20</p>
+<p>对于60%的数据，N &lt;=300</p>
+<p>对于100%的数据，N &lt;= 1500</p>
+<p>思路：</p>
+<p>​    这道题可以<code>h[i]</code>代表i行中当前点往左扩的最长距离，<code>l[j]</code>代表i列中当前点往上扩的最长距离，<code>dp[i][j]</code>代表以(i, j)点为右下角的正方形最长边长。那么我们可以得到:</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">dp[i][j] = min(dp[i - 1][j - 1] + 1, l[i], h[j]);</span><br></pre></td></tr></table></figure>
+<p>​    我们用一个maxx维护<code>dp[i][j]</code>的最大值即为答案</p>
+<p>代码：</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">/*************************************************************************</span><br><span class="line">	&gt; File Name: p.cpp</span><br><span class="line">	&gt; Author: Zcy</span><br><span class="line">	&gt; Mail: 296763002@qq.com</span><br><span class="line">	&gt; Created Time: 三  1/23 18:16:17 2019</span><br><span class="line"> ************************************************************************/</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">#include &lt;stdio.h&gt;</span><br><span class="line">#include &lt;algorithm&gt;</span><br><span class="line">using namespace std;</span><br><span class="line"></span><br><span class="line">bool maps[1550][1550];</span><br><span class="line">int h[1550], l[1550];</span><br><span class="line">int dp[1550][1550] = &#123;0&#125;;</span><br><span class="line"></span><br><span class="line">int main () &#123;</span><br><span class="line">	int n, m, a, maxx = 1;</span><br><span class="line">	scanf(&quot;%d%d&quot;, &amp;n, &amp;m);</span><br><span class="line">	for (int i = 1; i &lt;= n; i++) &#123;</span><br><span class="line">		for (int j = 1; j &lt;= m; j++) &#123;</span><br><span class="line">			scanf(&quot;%d&quot;, &amp;maps[i][j]);</span><br><span class="line">			if (i == 1) &#123;</span><br><span class="line">				l[j] = 1;</span><br><span class="line">			&#125; else &#123;</span><br><span class="line">				if (maps[i][j] != maps[i - 1][j]) &#123;</span><br><span class="line">					l[j] += 1;</span><br><span class="line">				&#125; else &#123;</span><br><span class="line">					l[j] = 1;</span><br><span class="line">				&#125;</span><br><span class="line">			&#125;</span><br><span class="line">			if (j == 1) &#123;</span><br><span class="line">				h[i] = 1;</span><br><span class="line">			&#125; else &#123;</span><br><span class="line">				if (maps[i][j] != maps[i][j - 1]) &#123;</span><br><span class="line">					h[i] += 1;</span><br><span class="line">				&#125; else &#123;</span><br><span class="line">					h[i] = 1;</span><br><span class="line">				&#125;</span><br><span class="line">			&#125;</span><br><span class="line">			dp[i][j] = min(min(h[i], l[j]), dp[i - 1][j - 1] + 1);</span><br><span class="line">			maxx = max(dp[i][j], maxx);</span><br><span class="line">		&#125;</span><br><span class="line">	&#125;</span><br><span class="line">	printf(&quot;%d\n&quot;, maxx);</span><br><span class="line">	return 0;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+                </div>
+            </article>
         </div>
-    </div>
-  <main class="content-area">
-      <br>
-      <br>
-          <div class="container">
-              <section>
-                  <div id="site_search" style = "text-align: center">
-                      <span class = "H1" style="color: #de2d0f">博文搜索:</span>
-                      <input type="text" id="local-search-input" style="width: 200px;" results="0"/>
-                      <div id="local-search-result"></div>
-                  </div>
-              </section>
-          </div>
-    
-        <div class="article">
-          <div class="container" >
-  <article class="post">
-    <h1 class="entry-title">
-      <a href="/2018/10/24/二项式反演/" rel="bookmark">
-        (数论十三)二项式反演  
-      </a>
-    </h1>
+        <br>
+        <div style="text-align:center;color: #ccc;font-size:14px;">
+            <br>
+            <br>
+            <a href="http://www.ivan-zcy.top" style="color: #99FFFF;font-size:18px;">转载请注明出处！！！</a>
+            <br>
+            <br>
+            如果有写的不对或者不全面的地方 可通过主页的联系方式进行指正，谢谢!
+        </div>
+        <br>
+        <!-- Pre or Next -->
+        
+        <div class="container" >
+            <ul class="pager">
+                
+                
+                <li class="next">
+                    <a href="/2019/02/23/C网络编程实现聊天室/" rel="prev">上一篇</a>
+                </li>
+                
+            </ul>
+        </div>
+        　　　　<!-- Comments -->
+        <div class="container">
+            
+<section id="comment">
+  <!-- <h1 class="title">Comments</h1> -->
+
+  
+</section>
 
 
-    
-    <div class="entry-content">
-      <p>
-        <p><img src="/2018/10/24/二项式反演/title1.jpg" alt="title1"></p>
-      </p>
+        </div>
+        
+        　　　　
     </div>
-    <div class="post-more-link text-center">
-            <a class="btn" href="/2018/10/24/二项式反演/" rel="contents">
-              阅读全文 »
-            </a>
-    </div>
-    <p class="posted-on">
-        <i class="fa fa-calendar" aria-hidden="true"></i>
-    	2018-10-24
-    </p>
-    <div class="tags-links">
-      <i class="fa fa-tags" aria-hidden="true"></i>
-      
-      <a href="/tags/数论原理/" rel="tag">
-        数论原理
-      </a>
-      
-    </div>
-    
-  </article>
 </div>
-
-        </div> 
-    
-        <div class="article">
-          <div class="container" >
-  <article class="post">
-    <h1 class="entry-title">
-      <a href="/2018/10/24/母函数/" rel="bookmark">
-        (数论十二)母函数  
-      </a>
-    </h1>
-
-
-    
-    <div class="entry-content">
-      <p>
-        <p><img src="/2018/10/24/母函数/title2.jpg" alt="title2"></p>
-      </p>
-    </div>
-    <div class="post-more-link text-center">
-            <a class="btn" href="/2018/10/24/母函数/" rel="contents">
-              阅读全文 »
-            </a>
-    </div>
-    <p class="posted-on">
-        <i class="fa fa-calendar" aria-hidden="true"></i>
-    	2018-10-24
-    </p>
-    <div class="tags-links">
-      <i class="fa fa-tags" aria-hidden="true"></i>
-      
-      <a href="/tags/数论原理/" rel="tag">
-        数论原理
-      </a>
-      
-    </div>
-    
-  </article>
-</div>
-
-        </div> 
-    
-        <div class="article">
-          <div class="container" >
-  <article class="post">
-    <h1 class="entry-title">
-      <a href="/2018/10/24/HDU1430-康托展开/" rel="bookmark">
-        HDU1430 康托展开  
-      </a>
-    </h1>
-
-
-    
-    <div class="entry-content">
-      <p>
-        <p><img src="/2018/10/24/HDU1430-康托展开/title.jpg" alt="title"></p>
-      </p>
-    </div>
-    <div class="post-more-link text-center">
-            <a class="btn" href="/2018/10/24/HDU1430-康托展开/" rel="contents">
-              阅读全文 »
-            </a>
-    </div>
-    <p class="posted-on">
-        <i class="fa fa-calendar" aria-hidden="true"></i>
-    	2018-10-24
-    </p>
-    <div class="tags-links">
-      <i class="fa fa-tags" aria-hidden="true"></i>
-      
-      <a href="/tags/ACM/" rel="tag">
-        ACM
-      </a>
-      
-      <a href="/tags/数论/" rel="tag">
-        数论
-      </a>
-      
-    </div>
-    
-  </article>
-</div>
-
-        </div> 
-    
-        <div class="article">
-          <div class="container" >
-  <article class="post">
-    <h1 class="entry-title">
-      <a href="/2018/10/24/康托展开/" rel="bookmark">
-        (数论十一)康托展开与逆康托展开  
-      </a>
-    </h1>
-
-
-    
-    <div class="entry-content">
-      <p>
-        <p><img src="/2018/10/24/康托展开/title5.jpg" alt="title5"></p>
-      </p>
-    </div>
-    <div class="post-more-link text-center">
-            <a class="btn" href="/2018/10/24/康托展开/" rel="contents">
-              阅读全文 »
-            </a>
-    </div>
-    <p class="posted-on">
-        <i class="fa fa-calendar" aria-hidden="true"></i>
-    	2018-10-24
-    </p>
-    <div class="tags-links">
-      <i class="fa fa-tags" aria-hidden="true"></i>
-      
-      <a href="/tags/数论原理/" rel="tag">
-        数论原理
-      </a>
-      
-    </div>
-    
-  </article>
-</div>
-
-        </div> 
-    
-        <div class="article">
-          <div class="container" >
-  <article class="post">
-    <h1 class="entry-title">
-      <a href="/2018/10/23/关于卢卡斯定理/" rel="bookmark">
-        (数论十)卢卡斯定理与扩展卢卡斯  
-      </a>
-    </h1>
-
-
-    
-    <div class="entry-content">
-      <p>
-        <p><img src="/2018/10/23/关于卢卡斯定理/title.jpg" alt="title"></p>
-      </p>
-    </div>
-    <div class="post-more-link text-center">
-            <a class="btn" href="/2018/10/23/关于卢卡斯定理/" rel="contents">
-              阅读全文 »
-            </a>
-    </div>
-    <p class="posted-on">
-        <i class="fa fa-calendar" aria-hidden="true"></i>
-    	2018-10-23
-    </p>
-    <div class="tags-links">
-      <i class="fa fa-tags" aria-hidden="true"></i>
-      
-      <a href="/tags/数论原理/" rel="tag">
-        数论原理
-      </a>
-      
-    </div>
-    
-  </article>
-</div>
-
-        </div> 
-    
-
-    
-<div class="container" >
-  <ul class="pager">
-    
-      <li class="previous">
-        <a href="/page/24/">
-          下一页
-        </a>
-      </li>
-    
-    
-      <li class="next">
-        <a href="/page/26/">
-          上一页
-        </a>
-      </li>
-    
-  </ul>
-</div>
-
-
-  </main>
-</div>
-
-<script type="text/javascript" src="/js/search.js"></script>
 
 
   <div id="Thplayer"></div>

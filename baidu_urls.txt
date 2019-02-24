@@ -1,3 +1,4 @@
+http://www.ivan-zcy.top/2019/02/24/洛谷P1681最大正方形2/
 http://www.ivan-zcy.top/2019/02/23/C网络编程实现聊天室/
 http://www.ivan-zcy.top/2019/02/23/洛谷P1651塔/
 http://www.ivan-zcy.top/2019/02/22/shell脚本获取系统相关信息/
@@ -97,4 +98,3 @@ http://www.ivan-zcy.top/2018/11/15/2018icpc北京Jin-Yong-Wukong-Ranking-List传
 http://www.ivan-zcy.top/2018/11/14/2018icpc徐州站总结/
 http://www.ivan-zcy.top/2018/11/14/icpc2018徐州Rikka-with-Minimum-Spanning/
 http://www.ivan-zcy.top/2018/11/13/18-11-13博客搭建进度/
-http://www.ivan-zcy.top/2018/11/13/ACM常用数学公式/
