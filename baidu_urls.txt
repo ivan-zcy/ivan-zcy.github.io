@@ -1,5 +1,6 @@
 http://www.ivan-zcy.top/2019/02/24/Debug小技巧/
 http://www.ivan-zcy.top/2019/02/24/踩坑-父进程怎么知道子进程是否结束/
+http://www.ivan-zcy.top/2019/02/24/printf输出带颜色/
 http://www.ivan-zcy.top/2019/02/24/洛谷P1156垃圾陷阱/
 http://www.ivan-zcy.top/2019/02/24/洛谷P1103书本整理/
 http://www.ivan-zcy.top/2019/02/24/洛谷P1681最大正方形2/
@@ -97,4 +98,3 @@ http://www.ivan-zcy.top/2018/11/28/18-11-28博客搭建进度/
 http://www.ivan-zcy.top/2018/11/16/C语言查缺补漏-18/
 http://www.ivan-zcy.top/2018/11/15/2018icpc北京站总结/
 http://www.ivan-zcy.top/2018/11/15/2018icpc北京Frog-and-Portal转换二进制/
-http://www.ivan-zcy.top/2018/11/15/2018icpc-Palindromes推规律/
