@@ -14,7 +14,7 @@
 
   <!--Open Graph Title-->
   
-      <meta property="og:title" content="Zcy"/>
+      <meta property="og:title" content="MAC下brew安装、换源、使用以及坑"/>
   
   <!--Open Graph Description-->
   
@@ -22,7 +22,7 @@
   <meta property="og:site_name" content="Zcy"/>
   <!--Type page-->
   
-      <meta property="og:type" content="website" />
+      <meta property="og:type" content="article" />
   
   <!--Page Cover-->
   
@@ -42,7 +42,7 @@
     </script>
   <!-- Title -->
   
-  <title>Vim - Zcy</title>
+  <title>MAC下brew安装、换源、使用以及坑 - Zcy</title>
 
 
   <link rel="shortcut icon" href="/favicon.ico">
@@ -194,37 +194,119 @@
 
 
   <!-- Main Content -->
-  
+  <div class="content-area">
+    <div class="post">
+        <!-- Post Content -->
+        <div class="container">
+            <article>
+                <!-- Title date & tags -->
+                <div class="post-header">
+                    <h1 class="entry-title">
+                        MAC下brew安装、换源、使用以及坑
+                        
+                    </h1>
 
-<!-- Main Content -->
-<div class="archive content-area">
-  <div class="container">
-    <h1 class="entry-title">#Vim</h1>
-    <div class="row">
-      <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
-        <!-- Use lodash to classify posts. See https://lodash.com/docs#groupBy -->
-        
-        
-          <h2 class="year">2018</h2>
-          <ul class="list">
-            
-  <li>
-    <span class="date">
-      2018-10-18
+                </div>
+
+
+                <div style="text-align:center;color: #ccc;">
+    <span class="post-time" >
+      <span class="post-meta-item-icon">
+        <i class="fa fa-keyboard-o"></i>
+        <span class="post-meta-item-text">  字数统计: </span>
+        <span class="post-count">434字</span>
+      </span>
     </span>
-    <a href="/2018/10/18/Vim常用命令/" class="title">
-      Vim常用命令（转）
-    </a>
-  </li>
 
+                    <span class="post-time">
+      &nbsp; | &nbsp;
+      <span class="post-meta-item-icon">
+        <i class="fa fa-hourglass-half"></i>
+        <span class="post-meta-item-text">  阅读时长: </span>
+        <span class="post-count">1分</span>
+      </span>
+    </span>
+                </div>
 
-          </ul>
+                <p class="a-posted-on" style="color: #ccc;">
+                    2019-02-25
+                </p>
+                <!-- Post Main Content -->
+                <div class="entry-content">
+                    <p><img src="/2019/02/25/MAC下brew安装与使用以及坑/title.jpg" alt="title"></p>
+<a id="more"></a>
+<p>###安装</p>
+<p>​    我们可以利用官方提供的网址进行brew安装：<a href="https://brew.sh" target="_blank" rel="noopener">brew</a></p>
+<p>​    官网上就是让你复制下面这段内容到终端执行：</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">/usr/bin/ruby -e &quot;$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install)&quot;</span><br></pre></td></tr></table></figure>
+<p>坑点一：</p>
+<p>​    有时候安装会告诉你该用户无法执行，这时候你需要切换到拥有管理员权限的用户，这时候你需要</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">sudo su 拥有管理员权限的用户</span><br></pre></td></tr></table></figure>
+<p>​    注意！！！不是root用户而是拥有管理员权限的用户！！</p>
+<p>坑点二：</p>
+<p>​    安装成功后切换回自己平常使用的用户后，使用<code>brew update</code>时，会报在/usr/local无权限执行，这时我们需要利用chomd命令让其拥有可读可写权限</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">sudo chmod 777 /usr/local</span><br></pre></td></tr></table></figure>
+<p>###换源</p>
+<p>​    源是Linux操作系统的必备的概念，源解决的是软件之间的依赖关系。可以直观的把源堪称一个软件仓库。而默认的brew的源在境外，因此下载网速特别慢。因此，我们需要将源由国外的官方源改为大陆的镜像源，比如中科大的源</p>
+<p>​    具体方法：<a href="https://lug.ustc.edu.cn/wiki/mirrors/help/brew.git" target="_blank" rel="noopener">中科大换源</a></p>
+<p>​    按照上述方法换源成功后重新<code>brew update</code>即可</p>
+<p>###使用</p>
+<p>1.更新brew软件仓库信息</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">brew update</span><br></pre></td></tr></table></figure>
+<p>2.安装某个程序</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">brew install xxx</span><br></pre></td></tr></table></figure>
+<p>3.检查所有已有程序是否有新版本</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">brew outdated</span><br></pre></td></tr></table></figure>
+<p>4.升级程序</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">brew upgrade	//升级所有</span><br><span class="line">brew upgrade xxx	//升级指定程序</span><br></pre></td></tr></table></figure>
+<p>5.搜索程序（既搜索本地该程序，也搜索brew库里该程序）</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">brew search xxx</span><br></pre></td></tr></table></figure>
+<p>6.清理落后版本和缓存</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">brew cleanup</span><br></pre></td></tr></table></figure>
+<p>7.删除某程序</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">brew uninstall xxx</span><br></pre></td></tr></table></figure>
+<p>8.查询某程序的依赖关系</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">brew info xxx</span><br></pre></td></tr></table></figure>
+
+                </div>
+            </article>
+        </div>
+        <br>
+        <div style="text-align:center;color: #ccc;font-size:14px;">
+            <br>
+            <br>
+            <a href="http://www.ivan-zcy.top" style="color: #99FFFF;font-size:18px;">转载请注明出处！！！</a>
+            <br>
+            <br>
+            如果有写的不对或者不全面的地方 可通过主页的联系方式进行指正，谢谢!
+        </div>
+        <br>
+        <!-- Pre or Next -->
         
-      </div>
-    </div>
-  </div>
-  
+        <div class="container" >
+            <ul class="pager">
+                
+                
+                <li class="next">
+                    <a href="/2019/02/24/Debug小技巧/" rel="prev">上一篇</a>
+                </li>
+                
+            </ul>
+        </div>
+        　　　　<!-- Comments -->
+        <div class="container">
+            
+<section id="comment">
+  <!-- <h1 class="title">Comments</h1> -->
 
+  
+</section>
+
+
+        </div>
+        
+        　　　　
+    </div>
 </div>
 
 
@@ -338,8 +420,5 @@
   <!-- 页面点击小红心 -->
   <script type="text/javascript" src="/js/clicklove.js"></script>
 <script src="/live2dw/lib/L2Dwidget.min.js?0c58a1486de42ac6cc1c59c7d98ae887"></script><script>L2Dwidget.init({"model":{"jsonPath":"/live2dw/assets/haruto.model.json"},"display":{"position":"left","width":70,"height":140},"mobile":{"show":true},"log":false,"pluginJsPath":"lib/","pluginModelPath":"assets/","pluginRootPath":"live2dw/","tagMode":false});</script></body>
-
-</html>
-body>
 
 </html>

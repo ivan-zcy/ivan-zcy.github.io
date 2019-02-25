@@ -1,6 +1,15 @@
 <?xml version="1.0" encoding="utf-8"?>
 <search>
   <entry>
+    <title><![CDATA[MAC下brew安装、换源、使用以及坑]]></title>
+    <url>%2F2019%2F02%2F25%2FMAC%E4%B8%8Bbrew%E5%AE%89%E8%A3%85%E4%B8%8E%E4%BD%BF%E7%94%A8%E4%BB%A5%E5%8F%8A%E5%9D%91%2F</url>
+    <content type="text"><![CDATA[###安装 ​ 我们可以利用官方提供的网址进行brew安装：brew ​ 官网上就是让你复制下面这段内容到终端执行： /usr/bin/ruby -e &quot;$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install)&quot; 坑点一： ​ 有时候安装会告诉你该用户无法执行，这时候你需要切换到拥有管理员权限的用户，这时候你需要 sudo su 拥有管理员权限的用户 ​ 注意！！！不是root用户而是拥有管理员权限的用户！！ 坑点二： ​ 安装成功后切换回自己平常使用的用户后，使用brew update时，会报在/usr/local无权限执行，这时我们需要利用chomd命令让其拥有可读可写权限 sudo chmod 777 /usr/local ###换源 ​ 源是Linux操作系统的必备的概念，源解决的是软件之间的依赖关系。可以直观的把源堪称一个软件仓库。而默认的brew的源在境外，因此下载网速特别慢。因此，我们需要将源由国外的官方源改为大陆的镜像源，比如中科大的源 ​ 具体方法：中科大换源 ​ 按照上述方法换源成功后重新brew update即可 ###使用 1.更新brew软件仓库信息 brew update 2.安装某个程序 brew install xxx 3.检查所有已有程序是否有新版本 brew outdated 4.升级程序 brew upgrade //升级所有brew upgrade xxx //升级指定程序 5.搜索程序（既搜索本地该程序，也搜索brew库里该程序） brew search xxx 6.清理落后版本和缓存 brew cleanup 7.删除某程序 brew uninstall xxx 8.查询某程序的依赖关系 brew info xxx]]></content>
+      <tags>
+        <tag>Linux</tag>
+        <tag>brew</tag>
+      </tags>
+  </entry>
+  <entry>
     <title><![CDATA[Debug小技巧]]></title>
     <url>%2F2019%2F02%2F24%2FDebug%E5%B0%8F%E6%8A%80%E5%B7%A7%2F</url>
     <content type="text"><![CDATA[​ 平时我们写程序需要Debug的时候，在自己觉得会出错的地方加上printf输出相关信息用于测试。当printf的行过多的时候，如果我们忘记了删除，会导致多余的输出。 ​ 这时候，一个非常好用的Debug技巧分享给大家 #include &lt;stdio.h&gt;#ifdef DEBUG //若有宏定义DEBUG #define DBG(...) printf(__VA_ARGS__) //则将DBG()替换为printf(),其中__VA_ARGS__代表可变参#else #define DBG(...) //否则将DBG()替换为空#endifint main () &#123; DBG(&quot;hello, %s!\n&quot;, &quot;zcy&quot;); DBG(&quot;hello, %d\n&quot;, 2019); DBG(&quot;hello, ACM!\n&quot;); return 0;&#125; ​ 如果我们g++编译的时候 -D DEBUG，就会输出DBG()的相关内容，如果直接g++编译，测试用的DBG不会输出。这样就非常方便的进行DEBUG啦 ​ 以下是运行效果图： 当然啦，宏定义的方式不唯一，比如这样定义也可以： #ifdef DEBUG #define DBG(a,b...) printf(a, ##b)#else #define DBG(a,b...)#endif]]></content>
