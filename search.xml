@@ -1,6 +1,14 @@
 <?xml version="1.0" encoding="utf-8"?>
 <search>
   <entry>
+    <title><![CDATA[格式化字符串-sprintf()函数]]></title>
+    <url>%2F2019%2F02%2F26%2F%E6%A0%BC%E5%BC%8F%E5%8C%96%E5%AD%97%E7%AC%A6%E4%B8%B2-sprintf-%E5%87%BD%E6%95%B0%2F</url>
+    <content type="text"><![CDATA[​ 有时候我们需要格式化一个字符串的内容，这时侯使用sprintf()函数特别方便，它的使用格式如下： int sprintf( char *buffer, const char *format, [ argument] … ); ​ buffer代表字符串指针，format为格式化的样式，其余为参数。例如： char s[105];sprintf(s, &quot;hello, %s, Im %d years old\n&quot;, &quot;Zcy&quot;, 18); ​ 这样，s字符串就变为了”hello, Zcy, Im 18 years old\n” ​ 大概就是酱紫～]]></content>
+      <tags>
+        <tag>C语言</tag>
+      </tags>
+  </entry>
+  <entry>
     <title><![CDATA[MAC下brew安装、换源、使用以及坑]]></title>
     <url>%2F2019%2F02%2F25%2FMAC%E4%B8%8Bbrew%E5%AE%89%E8%A3%85%E4%B8%8E%E4%BD%BF%E7%94%A8%E4%BB%A5%E5%8F%8A%E5%9D%91%2F</url>
     <content type="text"><![CDATA[###安装 ​ 我们可以利用官方提供的网址进行brew安装：brew ​ 官网上就是让你复制下面这段内容到终端执行： /usr/bin/ruby -e &quot;$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install)&quot; 坑点一： ​ 有时候安装会告诉你该用户无法执行，这时候你需要切换到拥有管理员权限的用户，这时候你需要 sudo su 拥有管理员权限的用户 ​ 注意！！！不是root用户而是拥有管理员权限的用户！！ 坑点二： ​ 安装成功后切换回自己平常使用的用户后，使用brew update时，会报在/usr/local无权限执行，这时我们需要利用chomd命令让其拥有可读可写权限 sudo chmod 777 /usr/local ###换源 ​ 源是Linux操作系统的必备的概念，源解决的是软件之间的依赖关系。可以直观的把源堪称一个软件仓库。而默认的brew的源在境外，因此下载网速特别慢。因此，我们需要将源由国外的官方源改为大陆的镜像源，比如中科大的源 ​ 具体方法：中科大换源 ​ 按照上述方法换源成功后重新brew update即可 ###使用 1.更新brew软件仓库信息 brew update 2.安装某个程序 brew install xxx 3.检查所有已有程序是否有新版本 brew outdated 4.升级程序 brew upgrade //升级所有brew upgrade xxx //升级指定程序 5.搜索程序（既搜索本地该程序，也搜索brew库里该程序） brew search xxx 6.清理落后版本和缓存 brew cleanup 7.删除某程序 brew uninstall xxx 8.查询某程序的依赖关系 brew info xxx]]></content>
@@ -71,8 +79,8 @@
     <url>%2F2019%2F02%2F23%2FC%E7%BD%91%E7%BB%9C%E7%BC%96%E7%A8%8B%E5%AE%9E%E7%8E%B0%E8%81%8A%E5%A4%A9%E5%AE%A4%2F</url>
     <content type="text"><![CDATA[主要是利用所学的C语言网络编程来实现聊天室功能，包括客户端和服务端两个部分，common用于封装网络编程的相关函数。 ​ 客户端接收两个参数，分别是IP地址和端口号 ​ 代码已上传至github：跳转 ​ 或者从个人博客项目上查看：跳转 效果如下： 用户1的输入： 用户2的输入： 聊天室（服务器）的显示：]]></content>
       <tags>
-        <tag>C语言</tag>
         <tag>网络编程</tag>
+        <tag>C语言</tag>
       </tags>
   </entry>
   <entry>
