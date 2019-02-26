@@ -214,7 +214,7 @@
       <span class="post-meta-item-icon">
         <i class="fa fa-keyboard-o"></i>
         <span class="post-meta-item-text">  字数统计: </span>
-        <span class="post-count">184字</span>
+        <span class="post-count">268字</span>
       </span>
     </span>
 
@@ -239,7 +239,13 @@
 <p>​    我们知道，变量有声明和定义，声明可以有多次，但是定义只能有一次。打个比方：</p>
 <figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">//a.h文件</span><br><span class="line">int a;</span><br></pre></td></tr></table></figure>
 <p>​    然后我们在b.cpp和c.cpp中引用a.h文件，这样就会出现重复定义。int a;会在每一个文件中重新定义一次</p>
-<p>​    而我们如果再前边加上关键字extern，那么就代表<code>extern int a</code>为一个关于a的声明，此时并没有定义，这时我们就可以在b.cpp和c.pp中引用a.h，因为声明可以多次。</p>
+<p>​    而我们如果再前边加上关键字extern，那么就代表<code>extern int a</code>为一个关于a的声明，此时并没有定义，这时我们就在b.cpp和c.pp中引用a.h不会报错，因为声明可以多次。</p>
+<p>​    举个例子:</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">//a.h</span><br><span class="line">#include &lt;stdio.h&gt;</span><br><span class="line"></span><br><span class="line">extern int a</span><br><span class="line"></span><br><span class="line">void fun();</span><br></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">//a.cpp</span><br><span class="line">#include &quot;a.h&quot;</span><br><span class="line"></span><br><span class="line">void fun() &#123;</span><br><span class="line">    printf(&quot;%d\n&quot;, a);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">#include &quot;a.h&quot;</span><br><span class="line"></span><br><span class="line">int a = 1;		//有且只有一个引用a.h的cpp文件中定义全局变量a</span><br><span class="line"></span><br><span class="line">int main () &#123;</span><br><span class="line">	printf(&quot;%d\n&quot;, a);</span><br><span class="line">	a = 2;</span><br><span class="line">	fun();</span><br><span class="line">    return 0;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>此时输出结果为</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td></tr></table></figure>
 
                 </div>
             </article>

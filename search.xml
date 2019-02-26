@@ -3,7 +3,7 @@
   <entry>
     <title><![CDATA[踩坑:引用头文件导致重复定义问题-extern]]></title>
     <url>%2F2019%2F02%2F26%2F%E8%B8%A9%E5%9D%91-%E5%BC%95%E7%94%A8%E5%A4%B4%E6%96%87%E4%BB%B6%E5%AF%BC%E8%87%B4%E9%87%8D%E5%A4%8D%E5%AE%9A%E4%B9%89%E9%97%AE%E9%A2%98-extern%2F</url>
-    <content type="text"><![CDATA[​ 今天在一个.h头文件中定义了一个全局变量，然后在两个.cpp文件中引用了该头文件，导致变量重复定义问题。 ​ 我们知道，变量有声明和定义，声明可以有多次，但是定义只能有一次。打个比方： //a.h文件int a; ​ 然后我们在b.cpp和c.cpp中引用a.h文件，这样就会出现重复定义。int a;会在每一个文件中重新定义一次 ​ 而我们如果再前边加上关键字extern，那么就代表extern int a为一个关于a的声明，此时并没有定义，这时我们就可以在b.cpp和c.pp中引用a.h，因为声明可以多次。]]></content>
+    <content type="text"><![CDATA[​ 今天在一个.h头文件中定义了一个全局变量，然后在两个.cpp文件中引用了该头文件，导致变量重复定义问题。 ​ 我们知道，变量有声明和定义，声明可以有多次，但是定义只能有一次。打个比方： //a.h文件int a; ​ 然后我们在b.cpp和c.cpp中引用a.h文件，这样就会出现重复定义。int a;会在每一个文件中重新定义一次 ​ 而我们如果再前边加上关键字extern，那么就代表extern int a为一个关于a的声明，此时并没有定义，这时我们就在b.cpp和c.pp中引用a.h不会报错，因为声明可以多次。 ​ 举个例子: //a.h#include &lt;stdio.h&gt;extern int avoid fun(); //a.cpp#include &quot;a.h&quot;void fun() &#123; printf(&quot;%d\n&quot;, a);&#125; #include &quot;a.h&quot;int a = 1; //有且只有一个引用a.h的cpp文件中定义全局变量aint main () &#123; printf(&quot;%d\n&quot;, a); a = 2; fun(); return 0;&#125; 此时输出结果为 12]]></content>
       <tags>
         <tag>收藏</tag>
         <tag>C语言</tag>
@@ -88,8 +88,8 @@
     <url>%2F2019%2F02%2F23%2FC%E7%BD%91%E7%BB%9C%E7%BC%96%E7%A8%8B%E5%AE%9E%E7%8E%B0%E8%81%8A%E5%A4%A9%E5%AE%A4%2F</url>
     <content type="text"><![CDATA[主要是利用所学的C语言网络编程来实现聊天室功能，包括客户端和服务端两个部分，common用于封装网络编程的相关函数。 ​ 客户端接收两个参数，分别是IP地址和端口号 ​ 代码已上传至github：跳转 ​ 或者从个人博客项目上查看：跳转 效果如下： 用户1的输入： 用户2的输入： 聊天室（服务器）的显示：]]></content>
       <tags>
-        <tag>C语言</tag>
         <tag>网络编程</tag>
+        <tag>C语言</tag>
       </tags>
   </entry>
   <entry>
