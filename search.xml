@@ -1,6 +1,15 @@
 <?xml version="1.0" encoding="utf-8"?>
 <search>
   <entry>
+    <title><![CDATA[踩坑:引用头文件导致重复定义问题-extern]]></title>
+    <url>%2F2019%2F02%2F26%2F%E8%B8%A9%E5%9D%91-%E5%BC%95%E7%94%A8%E5%A4%B4%E6%96%87%E4%BB%B6%E5%AF%BC%E8%87%B4%E9%87%8D%E5%A4%8D%E5%AE%9A%E4%B9%89%E9%97%AE%E9%A2%98-extern%2F</url>
+    <content type="text"><![CDATA[​ 今天在一个.h头文件中定义了一个全局变量，然后在两个.cpp文件中引用了该头文件，导致变量重复定义问题。 ​ 我们知道，变量有声明和定义，声明可以有多次，但是定义只能有一次。打个比方： //a.h文件int a; ​ 然后我们在b.cpp和c.cpp中引用a.h文件，这样就会出现重复定义。int a;会在每一个文件中重新定义一次 ​ 而我们如果再前边加上关键字extern，那么就代表extern int a为一个关于a的声明，此时并没有定义，这时我们就可以在b.cpp和c.pp中引用a.h，因为声明可以多次。]]></content>
+      <tags>
+        <tag>收藏</tag>
+        <tag>C语言</tag>
+      </tags>
+  </entry>
+  <entry>
     <title><![CDATA[格式化字符串-sprintf()函数]]></title>
     <url>%2F2019%2F02%2F26%2F%E6%A0%BC%E5%BC%8F%E5%8C%96%E5%AD%97%E7%AC%A6%E4%B8%B2-sprintf-%E5%87%BD%E6%95%B0%2F</url>
     <content type="text"><![CDATA[​ 有时候我们需要格式化一个字符串的内容，这时侯使用sprintf()函数特别方便，它的使用格式如下： int sprintf( char *buffer, const char *format, [ argument] … ); ​ buffer代表字符串指针，format为格式化的样式，其余为参数。例如： char s[105];sprintf(s, &quot;hello, %s, Im %d years old\n&quot;, &quot;Zcy&quot;, 18); ​ 这样，s字符串就变为了”hello, Zcy, Im 18 years old\n” ​ 大概就是酱紫～]]></content>
@@ -79,8 +88,8 @@
     <url>%2F2019%2F02%2F23%2FC%E7%BD%91%E7%BB%9C%E7%BC%96%E7%A8%8B%E5%AE%9E%E7%8E%B0%E8%81%8A%E5%A4%A9%E5%AE%A4%2F</url>
     <content type="text"><![CDATA[主要是利用所学的C语言网络编程来实现聊天室功能，包括客户端和服务端两个部分，common用于封装网络编程的相关函数。 ​ 客户端接收两个参数，分别是IP地址和端口号 ​ 代码已上传至github：跳转 ​ 或者从个人博客项目上查看：跳转 效果如下： 用户1的输入： 用户2的输入： 聊天室（服务器）的显示：]]></content>
       <tags>
-        <tag>网络编程</tag>
         <tag>C语言</tag>
+        <tag>网络编程</tag>
       </tags>
   </entry>
   <entry>
