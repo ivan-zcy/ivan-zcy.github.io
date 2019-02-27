@@ -1,6 +1,16 @@
 <?xml version="1.0" encoding="utf-8"?>
 <search>
   <entry>
+    <title><![CDATA[升级版聊天室]]></title>
+    <url>%2F2019%2F02%2F27%2F%E5%8D%87%E7%BA%A7%E7%89%88%E8%81%8A%E5%A4%A9%E5%AE%A4%2F</url>
+    <content type="text"><![CDATA[主要是利用所学网络编程来实现聊天室功能，包括客户端和服务端两个部分。 代码以上传至github，可通过github或者个人主页查看 客户端客户端的内容如下： 使用配置文件配置自己的监听端口，服务器的监听端口等信息 用户之间可以通过”@用户名 信息”来实现私聊 客户端在一个固定端口上监听服务器转发的来自其他用户的私聊、公聊以及系统信息 客户端所接受到的所有信息保存日志文件中，可利用tail -f 文件名获取实时聊天信息 客户端解析来自服务端的结构体，内容如下： struct Message&#123; char from[20]; int flag;//若flag为1则为私聊信息，0为公聊信息，2则为服务器的通知信息 char message[1024]; &#125;; 服务端 服务端在固定接口接收来自所有客户端的消息 每收到一条公聊消息，都转发给所有在线用户 每收到私聊消息，只转发给目标用户 当私聊用户不存在或下线，通过通知信息告知该用户 在用户上线的时候，发送欢迎信息并告知所有在线用户该用户上线 在收到用户信息#时，发送给该用户当前在线人数以及所有用户信息 具体效果如下： 用户界面： 服务端界面： 用户的log日志显示：]]></content>
+      <tags>
+        <tag>C语言</tag>
+        <tag>网络编程</tag>
+        <tag>多进程</tag>
+      </tags>
+  </entry>
+  <entry>
     <title><![CDATA[踩坑:引用头文件导致重复定义问题-extern]]></title>
     <url>%2F2019%2F02%2F26%2F%E8%B8%A9%E5%9D%91-%E5%BC%95%E7%94%A8%E5%A4%B4%E6%96%87%E4%BB%B6%E5%AF%BC%E8%87%B4%E9%87%8D%E5%A4%8D%E5%AE%9A%E4%B9%89%E9%97%AE%E9%A2%98-extern%2F</url>
     <content type="text"><![CDATA[​ 今天在一个.h头文件中定义了一个全局变量，然后在两个.cpp文件中引用了该头文件，导致变量重复定义问题。 ​ 我们知道，变量有声明和定义，声明可以有多次，但是定义只能有一次。打个比方： //a.h文件int a; ​ 然后我们在b.cpp和c.cpp中引用a.h文件，这样就会出现重复定义。int a;会在每一个文件中重新定义一次 ​ 而我们如果再前边加上关键字extern，那么就代表extern int a为一个关于a的声明，此时并没有定义，这时我们就在b.cpp和c.pp中引用a.h不会报错，因为声明可以多次。 ​ 举个例子: //a.h#include &lt;stdio.h&gt;extern int avoid fun(); //a.cpp#include &quot;a.h&quot;void fun() &#123; printf(&quot;%d\n&quot;, a);&#125; #include &quot;a.h&quot;int a = 1; //有且只有一个引用a.h的cpp文件中定义全局变量aint main () &#123; printf(&quot;%d\n&quot;, a); a = 2; fun(); return 0;&#125; 此时输出结果为 12]]></content>
@@ -88,8 +98,8 @@
     <url>%2F2019%2F02%2F23%2FC%E7%BD%91%E7%BB%9C%E7%BC%96%E7%A8%8B%E5%AE%9E%E7%8E%B0%E8%81%8A%E5%A4%A9%E5%AE%A4%2F</url>
     <content type="text"><![CDATA[主要是利用所学的C语言网络编程来实现聊天室功能，包括客户端和服务端两个部分，common用于封装网络编程的相关函数。 ​ 客户端接收两个参数，分别是IP地址和端口号 ​ 代码已上传至github：跳转 ​ 或者从个人博客项目上查看：跳转 效果如下： 用户1的输入： 用户2的输入： 聊天室（服务器）的显示：]]></content>
       <tags>
-        <tag>网络编程</tag>
         <tag>C语言</tag>
+        <tag>网络编程</tag>
       </tags>
   </entry>
   <entry>
@@ -1578,8 +1588,8 @@
     <content type="text"><![CDATA[系统调用的常用方法：一.系统调用方法用来运行不同的程序，格式为： int execve(const char* filename, char* const argv[], char* const envp[]); ​ 该方法以argv为参运行filename指向的可执行程序，并将envp存储的“变量=数值”对作为环境变量代入这个程序。argv的第一个参数必须与filename一致，真正的参数从第二个开始。 注意！！​ 该方法会让filename的程序覆盖进程中正在运行的程序，因此该方法后的代码无法被执行（除非该方法运行失败） 二.在 Linux 系统中，比起系统调用更常使用以exec开头的六个函数： int execl(const char* path, const char* arg, ...);int execlp(const char* file, const char* arg, ...);int execle(const char* path, const char* arg, ..., char* const envp[]);int execv(const char* path, char* const argv[]);int execvp(const char* file, char* const argv[]);int execvpe(const char* file, char* const argv[], char* const envp[]);例如：execl(&quot;ls&quot;, &quot;ls&quot;, &quot;-al&quot;, (char *)NULL);execlp(&quot;ls&quot;, &quot;ls&quot;, &quot;-al&quot;, (char *)NULL);char* const args[] = &#123;&quot;ls&quot;, &quot;al&quot;, &quot;(char *)NULL&quot;&#125;;execv(&quot;ls&quot;, args);execvp(&quot;ls&quot;, args); ​ 它们都具有系统调用功能，可将这些函数表示为：“exec + l/v + p/e/pe”，这六个函数主要有两处不同： ​ 第一处不同（l/v）——“l”类函数将所有参数作为一整个字符串代入，而“v”类函数将参数分别放入一个字符串数组中，将数组作参代入函数运行 ​ 第二处不同（p/e/pe）——包含 p的函数可以模仿计算机中壳功能，在“file”中不含“/”时使用环境变量 PATH 中的目录来寻找可执行文件，包含 e的函数可以像execve一样将“变量=数值”对作为环境变量代入程序 三.用法 ​ 使用系统调用函数一般先调用fork()产生新进程，然后再新进程中用exec()类函数运行新程序。 ​ 可能大家有疑问，调用fork()会复制了全部父进程地址空间又弃置，会造成浪费。 ​ 其实， Linux 系统采用了 copy_on_write 技术，只有在某一数据被修改时那个数据才会被实际复制到子进程的地址空间。所以在fork()之后直接运行exec()时，父进程的地址空间不会被复制过来。 举个栗子： #include &lt;unistd.h&gt;#include &lt;sys/wait.h&gt;#include &lt;stdio.h&gt;#include &lt;stdlib.h&gt;int count = 0;int main()&#123; int pid = fork(); if (pid==0)&#123; count++; int pid2 = fork(); if (pid2 == 0)&#123; char** argv = (char**) malloc(3*sizeof(char*)); argv[0] = &quot;echo&quot;; argv[1] = &quot;Hello!&quot;; argv[2] = NULL; int pid3 = fork(); count++; if (pid3 == 0)&#123; count++; execvp(&quot;echo&quot;, argv); printf(&quot;Count %d,&quot;,count); exit(0); &#125; else &#123; free(argv); wait(NULL); printf(&quot;%d,&quot;,count); exit(0); &#125; &#125; else &#123; wait(NULL); printf(&quot;%d,&quot;,count); exit(0); &#125; &#125; else &#123; wait(NULL); printf(&quot;%d.&quot;,count); return 0; &#125; &#125; ​ 最后输出为：hello! ​ 2,1,0. 转载请注明出处！！！ 如果有写的不对或者不全面的地方 可通过主页的联系方式进行指正，谢谢]]></content>
       <tags>
         <tag>C语言</tag>
-        <tag>操作系统</tag>
         <tag>多进程</tag>
+        <tag>操作系统</tag>
       </tags>
   </entry>
   <entry>
@@ -1597,8 +1607,8 @@
     <content type="text"><![CDATA[​ （三）进程常用方法：可通过fork()创建进程，fork()函数格式为： #include &lt;unistd.h&gt;pid_t fork(void); ​ fork()函数无参数，直接创建一个新进程，新进程为调用fork()的进程的子进程，返回一个进程标识ID(用于区分父进程与子进程，父进程中返回的标识ID是新创建的子进程ID，而子进程中返回的ID为0) 可通过exit()结束进程，exit()函数格式为： #include &lt;stdlib.h&gt;void exit(int status); ​ 参数status为进程结束时的状态，当调用该函数结束子进程时，status会作为父进程中wait()函数的第一个参 wait()函数格式为: #include &lt;sys/wait.h&gt;pid_t wait(int* stat_loc); ​ stat_loc为等待的子进程结束状态值的指针（由子进程exit(int status)中的参数status提供，成功为0否则对应错误数字) ，当然，我们设为NULL，函数仍可正常运行。 ​ wait()返回值是返回结束的子进程标识 ID； ​ wait()使父进程的状态变为等待态，直到父进程中任意一个子进程成功退出并返回结束状态值，父进程才可进入就绪态； ​ 如果在wait()被调用时已经有可用的结束状态值，那么wait()会立即返回 注意！！​ （1）如果在等待过程中出现错误（如已经没有可等待的子进程），wait()将返回-1 ​ （2）父进程不能直接等待子进程的子进程 wait函数作用： ​ 1使子进程某些指令在执行父进程前完成 ​ 2 使用wait()让父进程等待所有子进程结束后结束，避免僵尸进程的出现 举个栗子： #include &lt;stdio.h&gt;#include &lt;unistd.h&gt;#include &lt;stdlib.h&gt;#include &lt;sys/wait.h&gt;int main() &#123; int pid = fork(); if (pid != 0) &#123; int status; int result = wait (&amp;status); if (result == -1 || status != 0) &#123; printf(&quot;%s\n&quot;, &quot;额，没收到儿子的回信&quot;); return -1; &#125; else &#123; printf(&quot;%s\n&quot;, &quot;我是父亲&quot;); &#125; &#125; else &#123; int second_pid = fork(); if (second_pid != 0) &#123; int new_status; int new_result = wait (&amp;new_status); if (new_result == -1 || new_status != 0) &#123; printf(&quot;%s\n&quot;, &quot;额，没收到孙子的回信&quot;); exit (-1); &#125; else &#123; printf(&quot;%s\n&quot;, &quot;我是儿子&quot;); exit(0); &#125; &#125; else &#123; printf(&quot;%s\n&quot;, &quot;我是孙子&quot;); exit(0); &#125; &#125; return 0;&#125; ​ waitpid()函数格式： #include &lt;sys/wait.h&gt;pid_t waitpid (pid_t pid, int* stat_loc, int options); ​ waitpid()可指定一个标识ID来等待指定进程（当pid &gt; 0时等待标识ID为pid的子进程，当pid == -1时等待任意子进程，当pid == 0时等待进程组标识ID与父进程相同的子进程，当pid &lt; -1时，等待任意进程组标识ID为pid绝对值的进程） ​ options代表特殊选项（目前Linux只支持WNOHANG和WUNTRACED两个选项，这是两个常数，可用”|”运算符连接使用，当options为0时代表没有特殊选项） ​ 关于特殊选项： ​ ——WNOHANG ：若pid指定的子进程没有结束，则waitpid()函数返回0，不予以等待，若结束，则返回该子进程的ID ​ ——WUNTRACED 若子进程进入暂停状态则马上返回，此时子进程的结束状态不予理会 ​ 所以，当pid = -1，options = 0时，waitpid()等价于wait() ​ 说了以上四个有关进程的函数，它可以用在哪呢？ ​ 多进程的应用有很多，比如在网络编程中，每当服务器接收到一个请求，主进程就会用fork()产生一个新进程去处理那个请求，而父进程继续等待其它请求。大家可以自己去探索发现～ 转载请注明出处！！！ 如果有写的不对或者不全面的地方 可通过主页的联系方式进行指正，谢谢]]></content>
       <tags>
         <tag>C语言</tag>
-        <tag>操作系统</tag>
         <tag>多进程</tag>
+        <tag>操作系统</tag>
       </tags>
   </entry>
   <entry>
