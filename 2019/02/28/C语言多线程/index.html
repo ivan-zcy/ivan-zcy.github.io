@@ -214,7 +214,7 @@
       <span class="post-meta-item-icon">
         <i class="fa fa-keyboard-o"></i>
         <span class="post-meta-item-text">  字数统计: </span>
-        <span class="post-count">512字</span>
+        <span class="post-count">529字</span>
       </span>
     </span>
 
@@ -223,7 +223,7 @@
       <span class="post-meta-item-icon">
         <i class="fa fa-hourglass-half"></i>
         <span class="post-meta-item-text">  阅读时长: </span>
-        <span class="post-count">1分</span>
+        <span class="post-count">2分</span>
       </span>
     </span>
                 </div>
@@ -254,7 +254,7 @@
 <p>​    系统默认创建的线程是非分离式的，在非分离式的情况下一个线程结束后其所占用的系统资源并没有真正的释放（也就是说线程并未真正结束），因为我们需要与pthread_join()函数联用才可以确保线程释放</p>
 <p>​    或者采用方法二：设置线程属性为分离式，这样就可以保证线程结束后立即释放所占用的资源。注意！！！设置为分离式的线程不可以用pthread_join()函数等待！！</p>
 <p>​    具体做法如下：</p>
-<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">#include &lt;stdio.h&gt;</span><br><span class="line">#include &lt;pthread.h&gt;</span><br><span class="line">#include &lt;unistd.h&gt;</span><br><span class="line"></span><br><span class="line">void *run(void *arg) &#123;</span><br><span class="line">    printf(&quot;ok\n&quot;);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">int main () &#123;</span><br><span class="line">    pthread_t thread;</span><br><span class="line">	pthread_attr_t attr;</span><br><span class="line">	pthread_attr_init(&amp;attr);</span><br><span class="line">	pthread_attr_setdetachstate(&amp;attr, 1);</span><br><span class="line">	pthread_create(&amp;thread, &amp;attr, run, NULL);</span><br><span class="line">	sleep(1);</span><br><span class="line">	return 0;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">#include &lt;stdio.h&gt;</span><br><span class="line">#include &lt;pthread.h&gt;</span><br><span class="line">#include &lt;unistd.h&gt;</span><br><span class="line"></span><br><span class="line">void *run(void *arg) &#123;</span><br><span class="line">    printf(&quot;ok\n&quot;);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">int main () &#123;</span><br><span class="line">    pthread_t thread;</span><br><span class="line">	pthread_attr_t attr;</span><br><span class="line">	//获取默认信息</span><br><span class="line">	pthread_attr_init(&amp;attr);</span><br><span class="line">	//再设置为分离式</span><br><span class="line">	pthread_attr_setdetachstate(&amp;attr, 1);</span><br><span class="line">	//创建线程</span><br><span class="line">	pthread_create(&amp;thread, &amp;attr, run, NULL);</span><br><span class="line">	sleep(1);</span><br><span class="line">	return 0;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 
                 </div>
             </article>
@@ -273,6 +273,10 @@
         
         <div class="container" >
             <ul class="pager">
+                
+                <li class="previous">
+                    <a href="/2019/03/01/重定向输入输出流-freopen/" rel="prev">下一篇</a>
+                </li>
                 
                 
                 <li class="next">
