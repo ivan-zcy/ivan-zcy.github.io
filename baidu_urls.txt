@@ -1,3 +1,4 @@
+http://www.ivan-zcy.top/2019/03/04/洛谷P1272重建道路/
 http://www.ivan-zcy.top/2019/03/01/进程间同步-读者写者问题/
 http://www.ivan-zcy.top/2019/03/01/重定向输入输出流-freopen/
 http://www.ivan-zcy.top/2019/02/28/C语言多线程/
@@ -97,4 +98,3 @@ http://www.ivan-zcy.top/2018/12/02/哈理工院赛-小乐乐学博弈/
 http://www.ivan-zcy.top/2018/12/02/哈理工院赛-小乐乐匹配字符串/
 http://www.ivan-zcy.top/2018/12/02/哈理工院赛-小乐乐玩木桶-1/
 http://www.ivan-zcy.top/2018/12/02/哈理工院赛-小乐乐玩木桶/
-http://www.ivan-zcy.top/2018/12/02/哈理工院赛-小乐乐的组合数/
