@@ -14,7 +14,7 @@
 
   <!--Open Graph Title-->
   
-      <meta property="og:title" content="洛谷P1280尼克的任务"/>
+      <meta property="og:title" content="洛谷P3195玩具装箱TOY"/>
   
   <!--Open Graph Description-->
   
@@ -42,7 +42,7 @@
     </script>
   <!-- Title -->
   
-  <title>洛谷P1280尼克的任务 - Zcy</title>
+  <title>洛谷P3195玩具装箱TOY - Zcy</title>
 
 
   <link rel="shortcut icon" href="/favicon.ico">
@@ -202,7 +202,7 @@
                 <!-- Title date & tags -->
                 <div class="post-header">
                     <h1 class="entry-title">
-                        洛谷P1280尼克的任务
+                        洛谷P3195玩具装箱TOY
                         
                     </h1>
 
@@ -214,7 +214,7 @@
       <span class="post-meta-item-icon">
         <i class="fa fa-keyboard-o"></i>
         <span class="post-meta-item-text">  字数统计: </span>
-        <span class="post-count">837字</span>
+        <span class="post-count">929字</span>
       </span>
     </span>
 
@@ -223,7 +223,7 @@
       <span class="post-meta-item-icon">
         <i class="fa fa-hourglass-half"></i>
         <span class="post-meta-item-text">  阅读时长: </span>
-        <span class="post-count">3分</span>
+        <span class="post-count">4分</span>
       </span>
     </span>
                 </div>
@@ -233,27 +233,34 @@
                 </p>
                 <!-- Post Main Content -->
                 <div class="entry-content">
-                    <p><img src="/2019/03/04/洛谷P1280尼克的任务/title1.jpg" alt="title1"></p>
+                    <p><img src="/2019/03/04/洛谷P3195玩具装箱TOY/title4.jpg" alt="title4"></p>
 <a id="more"></a>
-<p>题目描述</p>
-<p>尼克每天上班之前都连接上英特网，接收他的上司发来的邮件，这些邮件包含了尼克主管的部门当天要完成的全部任务，每个任务由一个开始时刻与一个持续时间构成。</p>
-<p>尼克的一个工作日为N分钟，从第一分钟开始到第N分钟结束。当尼克到达单位后他就开始干活。如果在同一时刻有多个任务需要完成，尼克可以任选其中的一个来做，而其余的则由他的同事完成，反之如果只有一个任务，则该任务必需由尼克去完成，假如某些任务开始时刻尼克正在工作，则这些任务也由尼克的同事完成。如果某任务于第P分钟开始，持续时间为T分钟，则该任务将在第P+T-1分钟结束。</p>
-<p>写一个程序计算尼克应该如何选取任务，才能获得最大的空暇时间。</p>
+<h2 id="题目描述"><a href="#题目描述" class="headerlink" title="题目描述"></a>题目描述</h2><p>P教授要去看奥运，但是他舍不下他的玩具，于是他决定把所有的玩具运到北京。他使用自己的压缩器进行压缩，其可以将任意物品变成一堆，再放到一种特殊的一维容器中。P教授有编号为 1⋯N1⋯<em>N</em> 的 N<em>N</em> 件玩具，第 i<em>i</em> 件玩具经过压缩后变成一维长度为 Ci<em>C**i</em> .为了方便整理，P教授要求在一个一维容器中的玩具编号是连续的。同时如果一个一维容器中有多个玩具，那么两件玩具之间要加入一个单位长度的填充物，形式地说如果将第 i<em>i</em> 件玩具到第 j<em>j</em> 个玩具放到一个容器中，那么容器的长度将为 x=j−i+∑k=ijCk<em>x</em>=<em>j</em>−<em>i</em>+<em>k</em>=<em>i</em>∑<em>j<strong>C</strong>k</em> 制作容器的费用与容器的长度有关，根据教授研究，如果容器长度为 x<em>x</em> ,其制作费用为 (X−L)(<em>X</em>−<em>L</em>)2 .其中 L<em>L</em> 是一个常量。P教授不关心容器的数目，他可以制作出任意长度的容器，甚至超过 L<em>L</em> 。但他希望费用最小.</p>
+<p>感谢@ACの666 提供的Latex题面</p>
 <h2 id="输入输出格式"><a href="#输入输出格式" class="headerlink" title="输入输出格式"></a>输入输出格式</h2><p>输入格式：</p>
-<p>输入数据第一行含两个用空格隔开的整数N和K(1≤N≤10000，1≤K≤10000)，N表示尼克的工作时间，单位为分钟，K表示任务总数。</p>
-<p>接下来共有K行，每一行有两个用空格隔开的整数P和T，表示该任务从第P分钟开始，持续时间为T分钟，其中1≤P≤N，1≤P+T-1≤N。</p>
+<p>第一行输入两个整数N，L.接下来N行输入Ci.1&lt;=N&lt;=50000,1&lt;=L,Ci&lt;=10^7</p>
 <p>输出格式：</p>
-<p>输出文件仅一行，包含一个整数，表示尼克可能获得的最大空暇时间。</p>
+<p>输出最小费用</p>
 <h2 id="输入输出样例"><a href="#输入输出样例" class="headerlink" title="输入输出样例"></a>输入输出样例</h2><p>输入样例#1：</p>
-<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">15 6</span><br><span class="line">1 2</span><br><span class="line">1 6</span><br><span class="line">4 11</span><br><span class="line">8 5</span><br><span class="line">8 1</span><br><span class="line">11 5</span><br></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">5 4</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">2</span><br><span class="line">1</span><br><span class="line">4</span><br></pre></td></tr></table></figure>
 <p>输出样例#1：</p>
-<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">4</span><br></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">1</span><br></pre></td></tr></table></figure>
 <p>思路：</p>
-<p>​    我们先按照任务开始时间排序，然后设<code>dp[i]</code>代表前i个任务（其中第i个任务一定执行）的最大空闲时间。可以得：</p>
-<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">dp[i] = max(dp[j] + task[i].star - task[j].end - 1); </span><br><span class="line">//需要保证j结束后第一个开始的任务是i</span><br></pre></td></tr></table></figure>
-<p>​    我们再用一个数组<code>book[i]</code>判断第i个任务后面是否还有任务（0无1有），然后遍历所有任务，取<code>dp[i] + n - task[i].end</code>的最大值即可（i需要满足book[i] == 0且dp[i] != -1）</p>
+<p>​    这是一道斜率优化题，我们可以设<code>dp[i]</code>代表前i个玩具的最小费用值，那么我们可以得到：</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">dp[i] = min(dp[j] + (i - j - 1 + [j+1, i]的Ck和 - L)^2)    (j &lt; i)</span><br></pre></td></tr></table></figure>
+<p>​    我们可以设<code>sum[i]</code>代表前i个玩具的Ck值的和，于是算式化简为：</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">dp[i] = min(dp[j] + (i - j - 1 + sum[i] - sum[j] - L)^2)   (j &lt; i)</span><br></pre></td></tr></table></figure>
+<p>​    我们继续设不变量<code>A[i] = i - 1 + sum[i] - L</code>，变量<code>B[j] = j + sum[j]</code>，那么算式就化简为：</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">dp[i] = min(dp[j] + (A[i] - B[j])^2)</span><br><span class="line">      = min(dp[j] + A[i]^2 + B[j]^2 - 2*A[i]*B[j])</span><br></pre></td></tr></table></figure>
+<p>​    我们看到算式中存在不变量，变量，混合值，因此推断其为斜率优化题，于是我们可以设k &lt; j且 j比k更优，那么：</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">dp[j] + A[i]^2 + B[j]^2 - 2*A[i]*B[j] &lt; dp[k] + A[i]^2 + B[k]^2 - 2*A[i]*B[k]</span><br></pre></td></tr></table></figure>
+<p>​    最终化简，得到：</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">((dp[j] + B[j]^2) - (dp[k] + B[k]^2)) / (B[j] - B[k]) &lt; 2 * A[i]</span><br></pre></td></tr></table></figure>
+<p>​    我们再设<code>F[i] = dp[i] + B[i]^2</code>，于是得：</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">(F[j] - f[k]) / (B[j] - B[k]) &lt; 2 * A[i]</span><br></pre></td></tr></table></figure>
+<p>​    我们得到了斜率，根据斜率优化的基操，剩下的通用步骤就不一一赘述，直接上代码</p>
 <p>代码：</p>
-<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">#include &lt;stdio.h&gt;</span><br><span class="line">#include &lt;string.h&gt;</span><br><span class="line">#include &lt;algorithm&gt;</span><br><span class="line">using namespace std;</span><br><span class="line"></span><br><span class="line">struct node</span><br><span class="line">&#123;</span><br><span class="line">    int star, endd;</span><br><span class="line">&#125;task[10005];</span><br><span class="line"></span><br><span class="line">bool cmp(node A, node B) &#123;</span><br><span class="line">    return A.star &lt; B.star;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">int dp[10005];</span><br><span class="line">bool book[10005];</span><br><span class="line"></span><br><span class="line">int main () &#123;</span><br><span class="line">    int n, m, a, b;</span><br><span class="line">    int ans = 0;</span><br><span class="line">    scanf(&quot;%d%d&quot;, &amp;n, &amp;m);</span><br><span class="line">    for (int i = 1; i &lt;= m; i++) &#123;</span><br><span class="line">        scanf(&quot;%d%d&quot;, &amp;a, &amp;b);</span><br><span class="line">        task[i].star = a;</span><br><span class="line">        task[i].endd = a + b - 1;</span><br><span class="line">    &#125;</span><br><span class="line">    sort(task + 1, task + m + 1, cmp);</span><br><span class="line">    memset(dp, -1, sizeof(dp));</span><br><span class="line">    memset(book, 0, sizeof(book));</span><br><span class="line">    for (int i = 1; i &lt;= m; i++) &#123;</span><br><span class="line">        if (task[i].star != task[1].star) &#123;</span><br><span class="line">            break;</span><br><span class="line">        &#125;</span><br><span class="line">        dp[i] = task[i].star - 1;</span><br><span class="line">    &#125;</span><br><span class="line">    dp[1] = task[1].star - 1;</span><br><span class="line">    for (int i = 1; i &lt;= m; i++) &#123;</span><br><span class="line">        if (dp[i] == -1) continue;</span><br><span class="line">        int endd = task[i].endd;</span><br><span class="line">        int flag = 0;</span><br><span class="line">        for (int j = i + 1; j &lt;= m; j++) &#123;</span><br><span class="line">            if (task[j].star &lt;= endd) continue;</span><br><span class="line">            flag = 1;</span><br><span class="line">            for (int p = j; p &lt;= m; p++) &#123;</span><br><span class="line">                if (task[p].star != task[j].star) break;</span><br><span class="line">                dp[p] = max(dp[p], dp[i] + (task[p].star - endd -1));</span><br><span class="line">            &#125;</span><br><span class="line">            break;</span><br><span class="line">        &#125;</span><br><span class="line">        if (flag) &#123;</span><br><span class="line">            book[i] = 1;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    for (int i = 1; i &lt;= m; i++) &#123;</span><br><span class="line">        if (dp[i] == -1 || book[i]) &#123;</span><br><span class="line">            continue;</span><br><span class="line">        &#125;</span><br><span class="line">        ans = max(ans, dp[i] + n - task[i].endd);</span><br><span class="line">    &#125;</span><br><span class="line">    printf(&quot;%d\n&quot;, ans);</span><br><span class="line">    return 0;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">#include &lt;stdio.h&gt;</span><br><span class="line"></span><br><span class="line">#define ll long long</span><br><span class="line">#define N 50000</span><br><span class="line"></span><br><span class="line">ll sum[N + 5] = &#123;0&#125;; </span><br><span class="line">ll A[N + 5] = &#123;0&#125;;</span><br><span class="line">ll B[N + 5] = &#123;0&#125;;</span><br><span class="line">ll F[N + 5] = &#123;0&#125;;</span><br><span class="line">ll dp[N + 5] = &#123;0&#125;;</span><br><span class="line">int q[N + 5] = &#123;0&#125;;</span><br><span class="line">int head = 0, tail = 0;</span><br><span class="line"></span><br><span class="line">double get(int j, int k) &#123;</span><br><span class="line">    return 1.0 * (F[j] - F[k]) / (B[j] - B[k]);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">void set(int i, int j) &#123;</span><br><span class="line">    dp[i] = dp[j] + (A[i] - B[j]) * (A[i] - B[j]);</span><br><span class="line">    F[i] = dp[i] + B[i] * B[i];</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">int main () &#123;</span><br><span class="line">    int n, L, a;</span><br><span class="line">    scanf(&quot;%d%d&quot;, &amp;n, &amp;L);</span><br><span class="line">    for (int i = 1; i &lt;= n; i++) &#123;</span><br><span class="line">        scanf(&quot;%d&quot;, &amp;a);</span><br><span class="line">        sum[i] = sum[i - 1] + a;</span><br><span class="line">        A[i] = i - 1 + sum[i] - L;</span><br><span class="line">        B[i] = i + sum[i];</span><br><span class="line">    &#125;</span><br><span class="line">    q[tail++] = 0;</span><br><span class="line">    q[tail++] = 1;</span><br><span class="line">    set(1, 0);</span><br><span class="line">    for (int i = 2; i &lt;= n; i++) &#123;</span><br><span class="line">        while(tail - head &gt; 1 &amp;&amp; get(q[head + 1], q[head]) &lt;= 2 * A[i]) &#123;</span><br><span class="line">            head++;</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">        set(i, q[head]);</span><br><span class="line"></span><br><span class="line">        while(tail - head &gt; 1 &amp;&amp; get(i, q[tail - 1]) &lt;= get(q[tail - 1], q[tail - 2])) &#123;</span><br><span class="line">            tail--;</span><br><span class="line">        &#125;</span><br><span class="line">        </span><br><span class="line">        q[tail++] = i;</span><br><span class="line">    &#125;</span><br><span class="line">    printf(&quot;%lld\n&quot;, dp[n]);</span><br><span class="line">    return 0;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 
                 </div>
             </article>
@@ -273,13 +280,9 @@
         <div class="container" >
             <ul class="pager">
                 
-                <li class="previous">
-                    <a href="/2019/03/04/洛谷P3195玩具装箱TOY/" rel="prev">下一篇</a>
-                </li>
-                
                 
                 <li class="next">
-                    <a href="/2019/03/04/洛谷P1272重建道路/" rel="prev">上一篇</a>
+                    <a href="/2019/03/04/洛谷P1280尼克的任务/" rel="prev">上一篇</a>
                 </li>
                 
             </ul>
