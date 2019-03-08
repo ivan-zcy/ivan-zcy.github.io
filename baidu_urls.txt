@@ -1,3 +1,4 @@
+http://www.ivan-zcy.top/2019/03/08/分布式树莓派集群健康监控系统/
 http://www.ivan-zcy.top/2019/03/04/洛谷P2120仓库建设/
 http://www.ivan-zcy.top/2019/03/04/洛谷P3195玩具装箱TOY/
 http://www.ivan-zcy.top/2019/03/04/洛谷P1280尼克的任务/
@@ -97,4 +98,3 @@ http://www.ivan-zcy.top/2018/12/02/哈理工院赛-小乐乐搭积木/
 http://www.ivan-zcy.top/2018/12/02/哈理工院赛-小乐乐打游戏/
 http://www.ivan-zcy.top/2018/12/02/哈理工院赛-小乐乐下象棋/
 http://www.ivan-zcy.top/2018/12/02/哈理工院赛-小乐乐和25/
-http://www.ivan-zcy.top/2018/12/02/哈理工院赛-小乐乐学博弈/
