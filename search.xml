@@ -1,6 +1,14 @@
 <?xml version="1.0" encoding="utf-8"?>
 <search>
   <entry>
+    <title><![CDATA[浅谈大小端]]></title>
+    <url>%2F2019%2F03%2F12%2F%E6%B5%85%E8%B0%88%E5%A4%A7%E5%B0%8F%E7%AB%AF%2F</url>
+    <content type="text"><![CDATA[大端和小端缘由​ 每个地址单元都对应一个字节，一个字节是8比特。除了char型是一个字节为，其余比如short是2字节，int4字节等等，他们的宽度大于1字节，就会存在多个字节安排顺序的规则。 ​ 根据不同计算机的字节顺序可以分为大端数据模式和小端数据模式 ​ 我们在不同端模式的主机进行数据传递时需要考虑端模式的不同，因此TCP/IP协议规定在网络上必须采用网络字节排序（大端模式） 概念​ 大端是数据的高字节保存在内存的低地址，数据的低字节保存在内存的高地址，类似于把数据当作字符串处理（像Mac是大端） ​ 小端是数据的高字节保存在内存的高地址，数据的低字节保存在内存的低地址（像windows，Linux都是小端） 测试大小端利用通用体： #include &lt;stdio.h&gt;union t&#123; int val; char s;&#125;;int main () &#123; t a; a.val = 1; if (a.s) &#123; printf(&quot;小端\n&quot;); &#125; else &#123; printf(&quot;大端\n&quot;); &#125; return 0;&#125;]]></content>
+      <tags>
+        <tag>杂谈</tag>
+      </tags>
+  </entry>
+  <entry>
     <title><![CDATA[Linux C实现线程池]]></title>
     <url>%2F2019%2F03%2F11%2FLinux-C%E5%AE%9E%E7%8E%B0%E7%BA%BF%E7%A8%8B%E6%B1%A0%2F</url>
     <content type="text"><![CDATA[[TOC] 池​ 池是一组资源的集合，这组资源在服务器启动之初就被创建和初始化，这称为静态资源分配。它避免了服务器对内核的频繁访问，提高了效率。 ​ 常见的池有进程池，线程池，内存池 内存池​ 先申请一定数量，大小相等的内存块备用。有新的内存需求时，就从内存池中分出一部分内存块，若内存不足则继续申请新的内存。内存池使内存分配效率得到提升 进程池​ 进程池线先由服务器创建一组子进程，子进程数量应和CPU数量差不多。所有子程序具有相同的属性，运行着同样的代码 线程池概念​ 在Linux中线程实际上是由轻量级进程实现的。线程的创建和清理都需要耗费时间和系统资源，当处理高并发时，线程池就有必要引入了。 ​ 线程池提升了多线程程序的性能，因为线程池中线程都是现成且可重复使用的。理想的线程池能够合理地动态调节池内线程数量 ​ 线程池是典型的生产者消费者同步问题，主程序不定时将任务任务添加到一个队列中。池中多个工作线程同时执行出队操作（需保证同一时刻只能一个线程出队成功）。这时候生产者是主程序（用于生产任务），消费者是工作线程（用于执行任务） 组成结构​ 线程池主要包括4个部分： 线程管理器：用于创建并管理线程池 工作线程：线程池中实际执行任务的线程，在创建线程池后会创建好固定数目的线程在池中 任务接口：每个任务必须实现的接口。当队列中有任务时，被池中线程执行，把任务抽象成一个接口，可以做到线程池与具体任务无关 任务队列：用于存放没有处理的任务 应用​ 主要应用于需要大量线程来完成任务且任务时间较短，例如Web服务器完成网页请求。或者是突发性的大量请求 代码实现test.h文件： #include &lt;stdio.h&gt;#include &lt;unistd.h&gt;#include &lt;stdlib.h&gt;#include &lt;pthread.h&gt;//任务接口(节点)struct Work &#123; void* (*func) (void *arg); void *arg; Work *next;&#125;;//线程池中线程执行的回掉函数void* thread_poll_func(void *arg);//线程池struct thread_poll&#123; //任务队列 Work *head; //线程指针 pthread_t *pd; //条件变量和锁 pthread_mutex_t mutex; pthread_cond_t cond; //线程池是否被销毁 bool shutdown; //线程池中线程的总量 int pthread_num; //当前任务队列中任务数量 int work_num; //初始化函数 thread_poll(int pthread_num) &#123; this -&gt; pthread_num = pthread_num; this -&gt; work_num = 0; this -&gt; shutdown = 0; pthread_mutex_init(&amp;this -&gt;mutex, NULL); pthread_cond_init(&amp;this -&gt; cond, NULL); this -&gt; head = NULL; pd = (pthread_t *)malloc(sizeof(pthread_t) * pthread_num); for (int i = 0; i &lt; pthread_num; i++) &#123; pthread_create(&amp;this -&gt; pd[i], NULL, thread_poll_func, this); &#125; &#125; //向线程池投递任务 void add_work(Work *work); //销毁线程池 int del();&#125;; test.cpp文件： #include &quot;test.h&quot;//线程池中线程执行的回掉函数void* thread_poll_func(void *arg) &#123; thread_poll *t = (thread_poll *)arg; while(1) &#123; //上锁 pthread_mutex_lock(&amp;t -&gt; mutex); //循环等待接收任务 while(!(t -&gt; work_num) &amp;&amp; !(t -&gt; shutdown)) &#123; pthread_cond_wait(&amp;t -&gt; cond, &amp;t -&gt; mutex); &#125; //如果线程池被销毁 if (t -&gt; shutdown) &#123; //解锁并退出线程 pthread_mutex_unlock(&amp;t -&gt; mutex); pthread_exit(0); &#125; //取出队首任务 t -&gt; work_num --; Work *p = t -&gt; head; t -&gt; head = p -&gt; next; //解锁 pthread_mutex_unlock(&amp;t -&gt; mutex); //执行任务回掉函数 (p -&gt; func)(p -&gt; arg); //释放该任务空间 free(p); &#125;&#125;//向线程池投递任务void thread_poll::add_work(Work *work) &#123; pthread_mutex_lock(&amp;this -&gt; mutex); //将任务加入到等待队列 Work *p = this -&gt; head; if (p == NULL) &#123; this -&gt; head = work; &#125; else &#123; while(p -&gt; next != NULL) &#123; p = p -&gt; next; &#125; p -&gt; next = work; &#125; this -&gt; work_num ++; pthread_mutex_unlock(&amp;this -&gt; mutex); //唤醒一个等待线程 pthread_cond_signal(&amp;this -&gt; cond);&#125;//销毁线程池int thread_poll::del() &#123; if (this -&gt; shutdown) &#123; return -1; &#125; this -&gt; shutdown = 1; //唤醒所有线程 pthread_cond_broadcast(&amp;this -&gt; cond); //等待所有线程结束,避免僵尸线程 for (int i = 0; i &lt; this -&gt; pthread_num; i++) &#123; pthread_join(this -&gt; pd[i], NULL); &#125; //释放掉所有线程标识符 free(pd); //销毁任务队列的所有任务 Work *p = this -&gt; head; while(p != NULL) &#123; p = this -&gt; head; this -&gt; head = p -&gt; next; free(p); &#125; //销毁条件变量和锁 pthread_cond_destroy(&amp;this -&gt; cond); pthread_mutex_destroy(&amp;this -&gt; mutex); return 0;&#125;//任务的回掉函数void* myfunc(void *arg) &#123; printf(&quot;%d\n&quot;, *(int *)arg); return NULL;&#125;int main () &#123; thread_poll poll(3); int *nuu = (int *)malloc(sizeof(int) * 10); for (int i = 0; i &lt; 10; i++) &#123; nuu[i] = i; Work *work = (Work *)malloc(sizeof(Work)); work -&gt; next = NULL; work -&gt; func = myfunc; work -&gt; arg = (void *)&amp;nuu[i]; poll.add_work(work); &#125; sleep(5); poll.del(); free(nuu); return 0;&#125;]]></content>
@@ -100,8 +108,8 @@
     <url>%2F2019%2F02%2F27%2F%E5%8D%87%E7%BA%A7%E7%89%88%E8%81%8A%E5%A4%A9%E5%AE%A4%2F</url>
     <content type="text"><![CDATA[主要是利用所学网络编程来实现聊天室功能，包括客户端和服务端两个部分。 代码以上传至github，可通过github或者个人主页查看 客户端客户端的内容如下： 使用配置文件配置自己的监听端口，服务器的监听端口等信息 用户之间可以通过”@用户名 信息”来实现私聊 客户端在一个固定端口上监听服务器转发的来自其他用户的私聊、公聊以及系统信息 客户端所接受到的所有信息保存日志文件中，可利用tail -f 文件名获取实时聊天信息 客户端解析来自服务端的结构体，内容如下： struct Message&#123; char from[20]; int flag;//若flag为1则为私聊信息，0为公聊信息，2则为服务器的通知信息 char message[1024]; &#125;; 服务端 服务端在固定接口接收来自所有客户端的消息 每收到一条公聊消息，都转发给所有在线用户 每收到私聊消息，只转发给目标用户 当私聊用户不存在或下线，通过通知信息告知该用户 在用户上线的时候，发送欢迎信息并告知所有在线用户该用户上线 在收到用户信息#时，发送给该用户当前在线人数以及所有用户信息 具体效果如下： 用户界面： 服务端界面： 用户的log日志显示：]]></content>
       <tags>
-        <tag>网络编程</tag>
         <tag>C语言</tag>
+        <tag>网络编程</tag>
         <tag>多进程</tag>
       </tags>
   </entry>
@@ -193,8 +201,8 @@
     <url>%2F2019%2F02%2F23%2FC%E7%BD%91%E7%BB%9C%E7%BC%96%E7%A8%8B%E5%AE%9E%E7%8E%B0%E8%81%8A%E5%A4%A9%E5%AE%A4%2F</url>
     <content type="text"><![CDATA[主要是利用所学的C语言网络编程来实现聊天室功能，包括客户端和服务端两个部分，common用于封装网络编程的相关函数。 ​ 客户端接收两个参数，分别是IP地址和端口号 ​ 代码已上传至github：跳转 ​ 或者从个人博客项目上查看：跳转 效果如下： 用户1的输入： 用户2的输入： 聊天室（服务器）的显示：]]></content>
       <tags>
-        <tag>网络编程</tag>
         <tag>C语言</tag>
+        <tag>网络编程</tag>
       </tags>
   </entry>
   <entry>
