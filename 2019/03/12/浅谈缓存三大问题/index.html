@@ -14,7 +14,7 @@
 
   <!--Open Graph Title-->
   
-      <meta property="og:title" content="Zcy"/>
+      <meta property="og:title" content="浅谈缓存三大问题"/>
   
   <!--Open Graph Description-->
   
@@ -22,7 +22,7 @@
   <meta property="og:site_name" content="Zcy"/>
   <!--Type page-->
   
-      <meta property="og:type" content="website" />
+      <meta property="og:type" content="article" />
   
   <!--Page Cover-->
   
@@ -42,7 +42,7 @@
     </script>
   <!-- Title -->
   
-  <title>Zcy</title>
+  <title>浅谈缓存三大问题 - Zcy</title>
 
 
   <link rel="shortcut icon" href="/favicon.ico">
@@ -194,316 +194,122 @@
 
 
   <!-- Main Content -->
-  <div class="site-content home">
-      <div class="content-header" style="background: url(/img/back.jpg) no-repeat bottom;">
-        <div class="headline">
-            <a href="#" class="demo">
-                <div class="img" style="background-image:url(/img/avator.jpg)"></div>
-                <div class="cover_mask">
-                    <div class="info">
-                        <span>Welcome</br>by:Zcy</span>
-                    </div>
+  <div class="content-area">
+    <div class="post">
+        <!-- Post Content -->
+        <div class="container">
+            <article>
+                <!-- Title date & tags -->
+                <div class="post-header">
+                    <h1 class="entry-title">
+                        浅谈缓存三大问题
+                        
+                    </h1>
+
                 </div>
-                <div class="border"></div>
-            </a>
-            <h1 id="Hotnews"></h1>
-            <script type="application/javascript">
-               var content = "沉下心来做事";
-               var i = 0;
-               function show(){
-                   var str  = content.substr(0,i);
-                   Hotnews.innerHTML = str + "_";
-                   i++;
-                   if (i>content.length) i=0;
-                   setTimeout("show()",600);
-               }
-               window.onload = show();
-               </script>
-            <div class="header-link">
-              
-                
-                  <a href="https://github.com/ivan-zcy" class="icon-github" target="_blank">
-                      <i class="fa fa-github" aria-hidden="true"></i>
-                  </a>
-                
-                  <a href="https://m.weibo.cn/u/6086305650?uid=6086305650&luicode=10000011&lfid=100103type%3D1%26q%3DIvan-酷酷酷酷" class="icon-weibo" target="_blank">
-                      <i class="fa fa-weibo" aria-hidden="true"></i>
-                  </a>
-                
-                  <a href="http://shang.qq.com/open_webaio.html?sigt=1bb29cf0e25d41c832c39e41e587e146da3754f5d273a017917c3d540899734e4339f99eeba019c94b5c389758e3c6ce&sigu=f77cd5fff2ab7f3340b356ec5e3a8696346394fadda6a1b9119fbca25f6746b7dda8e820567392d1&tuin=296763002" class="icon-qq" target="_blank">
-                      <i class="fa fa-qq" aria-hidden="true"></i>
-                  </a>
-                
-                  <a href="http://mail.qq.com/cgi-bin/qm_share?t=qm_mailme&email=PgwHCAkIDQ4ODH5PTxBdUVM" class="icon-envelope" target="_blank">
-                      <i class="fa fa-envelope" aria-hidden="true"></i>
-                  </a>
-                
-              
-            </div>
+
+
+                <div style="text-align:center;color: #ccc;">
+    <span class="post-time" >
+      <span class="post-meta-item-icon">
+        <i class="fa fa-keyboard-o"></i>
+        <span class="post-meta-item-text">  字数统计: </span>
+        <span class="post-count">680字</span>
+      </span>
+    </span>
+
+                    <span class="post-time">
+      &nbsp; | &nbsp;
+      <span class="post-meta-item-icon">
+        <i class="fa fa-hourglass-half"></i>
+        <span class="post-meta-item-text">  阅读时长: </span>
+        <span class="post-count">2分</span>
+      </span>
+    </span>
+                </div>
+
+                <p class="a-posted-on" style="color: #ccc;">
+                    2019-03-12
+                </p>
+                <!-- Post Main Content -->
+                <div class="entry-content">
+                    <p><img src="/2019/03/12/浅谈缓存三大问题/title1.jpg" alt="title1"></p>
+<a id="more"></a>
+<h1 id="关于缓存"><a href="#关于缓存" class="headerlink" title="关于缓存"></a>关于缓存</h1><p>​    大部分系统都存在缓存机制，防止过多直接对数据库的请求操作，增加系统的稳定性与效率。</p>
+<p>##可能导致的问题</p>
+<p>###问题一：缓存穿透</p>
+<p>​    缓存穿透是指查询一个不存在的数据，由于缓存不存在该数据，因此该请求会直接去数据库查询（直接穿透了缓存层）。若有人恶意多次进行该操作可能导致数据库瘫痪</p>
+<p>####解决方案</p>
+<ol>
+<li><p>把所有可能的查询生成一个类似于哈希表的结构，在进行数据库查询前会利用该结构进行过滤，如果不在其中直接过滤掉，从而减轻数据库层面的压力</p>
+</li>
+<li><p>在第一次查询不到某个key对应的val值时，我们把该key和空值存入缓存中</p>
+</li>
+</ol>
+<p>###问题二：缓存雪崩</p>
+<p>​    一般缓存都会有一个失效时间，如果所有缓存的实效时间相同，可能会导致在某一时刻同时失效后，所有请求都发送到数据库层从而导致数据库崩溃</p>
+<p>####解决方案</p>
+<ol>
+<li><p>只让一个线程构建缓存，其它线程等待构建缓存的线程执行完毕后再重新从缓存中获取数据。</p>
+<ol start="2">
+<li>错开不同失效时间即可从一定长度上避免这种问题，因此我们设置缓存实效时间时可以在一个范围内取随机值</li>
+</ol>
+</li>
+</ol>
+<p>###问题三：缓存击穿</p>
+<p>​    缓存击穿是缓存雪崩的特例，缓存击穿是指某一个缓存失效后有大量请求发送到数据库层导致其崩溃。与雪崩相比，它只是一个点并不是全部（比如微博的一个热点缓存失效后依然有大量该热点信息的请求）</p>
+<p>####解决方案</p>
+<ol>
+<li><p>对热点数据进行二级缓存，并对不同级别的缓存设定不同的失效时间</p>
+</li>
+<li><p>采用LRU算法，即最近最少使用。依据“长期不被使用的数据，未来用到的概率也不大“，因此当内存达到阈值时，首先淘汰最近最少被使用的数据，具体实现过程为：</p>
+<p>（1）创建一个缓存哈希链表用于存储数据（相比哈希表多了一个指针用于链表排序）</p>
+<p>（2）添加新节点的时候，将新节点添加到链表尾部</p>
+<p>（3）若该节点以存在，把该节点移动到链表的尾部</p>
+<p>（4）当缓存链表已满时，添加新节点的时候，会把链表头部移除，然后将新节点添加到尾部</p>
+</li>
+</ol>
+
+                </div>
+            </article>
         </div>
-    </div>
-  <main class="content-area">
-      <br>
-      <br>
-          <div class="container">
-              <section>
-                  <div id="site_search" style = "text-align: center">
-                      <span class = "H1" style="color: #de2d0f">博文搜索:</span>
-                      <input type="text" id="local-search-input" style="width: 200px;" results="0"/>
-                      <div id="local-search-result"></div>
-                  </div>
-              </section>
-          </div>
-    
-        <div class="article">
-          <div class="container" >
-  <article class="post">
-    <h1 class="entry-title">
-      <a href="/2018/11/15/2018icpc北京Frog-and-Portal转换二进制/" rel="bookmark">
-        2018icpc北京Frog and Portal转换二进制  
-      </a>
-    </h1>
+        <br>
+        <div style="text-align:center;color: #ccc;font-size:14px;">
+            <br>
+            <br>
+            <a href="http://www.ivan-zcy.top" style="color: #99FFFF;font-size:18px;">转载请注明出处！！！</a>
+            <br>
+            <br>
+            如果有写的不对或者不全面的地方 可通过主页的联系方式进行指正，谢谢!
+        </div>
+        <br>
+        <!-- Pre or Next -->
+        
+        <div class="container" >
+            <ul class="pager">
+                
+                
+                <li class="next">
+                    <a href="/2019/03/12/浅谈大小端/" rel="prev">上一篇</a>
+                </li>
+                
+            </ul>
+        </div>
+        　　　　<!-- Comments -->
+        <div class="container">
+            
+<section id="comment">
+  <!-- <h1 class="title">Comments</h1> -->
+
+  
+</section>
 
 
-    
-    <div class="entry-content">
-      <p>
-        <p><img src="/2018/11/15/2018icpc北京Frog-and-Portal转换二进制/titile2.jpg" alt="titile2"></p>
-      </p>
+        </div>
+        
+        　　　　
     </div>
-    <div class="post-more-link text-center">
-            <a class="btn" href="/2018/11/15/2018icpc北京Frog-and-Portal转换二进制/" rel="contents">
-              阅读全文 »
-            </a>
-    </div>
-    <p class="posted-on">
-        <i class="fa fa-calendar" aria-hidden="true"></i>
-    	2018-11-15
-    </p>
-    <div class="tags-links">
-      <i class="fa fa-tags" aria-hidden="true"></i>
-      
-      <a href="/tags/ACM/" rel="tag">
-        ACM
-      </a>
-      
-      <a href="/tags/思维/" rel="tag">
-        思维
-      </a>
-      
-      <a href="/tags/动态规划/" rel="tag">
-        动态规划
-      </a>
-      
-    </div>
-    
-  </article>
 </div>
-
-        </div> 
-    
-        <div class="article">
-          <div class="container" >
-  <article class="post">
-    <h1 class="entry-title">
-      <a href="/2018/11/15/2018icpc-Palindromes推规律/" rel="bookmark">
-        2018icpc北京Palindromes推规律  
-      </a>
-    </h1>
-
-
-    
-    <div class="entry-content">
-      <p>
-        <p><img src="/2018/11/15/2018icpc-Palindromes推规律/title3.jpg" alt="title3"></p>
-      </p>
-    </div>
-    <div class="post-more-link text-center">
-            <a class="btn" href="/2018/11/15/2018icpc-Palindromes推规律/" rel="contents">
-              阅读全文 »
-            </a>
-    </div>
-    <p class="posted-on">
-        <i class="fa fa-calendar" aria-hidden="true"></i>
-    	2018-11-15
-    </p>
-    <div class="tags-links">
-      <i class="fa fa-tags" aria-hidden="true"></i>
-      
-      <a href="/tags/ACM/" rel="tag">
-        ACM
-      </a>
-      
-      <a href="/tags/思维/" rel="tag">
-        思维
-      </a>
-      
-    </div>
-    
-  </article>
-</div>
-
-        </div> 
-    
-        <div class="article">
-          <div class="container" >
-  <article class="post">
-    <h1 class="entry-title">
-      <a href="/2018/11/15/2018icpc北京Jin-Yong-Wukong-Ranking-List传递闭包/" rel="bookmark">
-        2018icpc北京Jin Yong’s Wukong Ranking List传递闭包  
-      </a>
-    </h1>
-
-
-    
-    <div class="entry-content">
-      <p>
-        <p><img src="/2018/11/15/2018icpc北京Jin-Yong-Wukong-Ranking-List传递闭包/title2.jpg" alt="title"></p>
-      </p>
-    </div>
-    <div class="post-more-link text-center">
-            <a class="btn" href="/2018/11/15/2018icpc北京Jin-Yong-Wukong-Ranking-List传递闭包/" rel="contents">
-              阅读全文 »
-            </a>
-    </div>
-    <p class="posted-on">
-        <i class="fa fa-calendar" aria-hidden="true"></i>
-    	2018-11-15
-    </p>
-    <div class="tags-links">
-      <i class="fa fa-tags" aria-hidden="true"></i>
-      
-      <a href="/tags/ACM/" rel="tag">
-        ACM
-      </a>
-      
-      <a href="/tags/传递闭包/" rel="tag">
-        传递闭包
-      </a>
-      
-      <a href="/tags/图论/" rel="tag">
-        图论
-      </a>
-      
-    </div>
-    
-  </article>
-</div>
-
-        </div> 
-    
-        <div class="article">
-          <div class="container" >
-  <article class="post">
-    <h1 class="entry-title">
-      <a href="/2018/11/14/2018icpc徐州站总结/" rel="bookmark">
-        2018icpc徐州站总结  
-      </a>
-    </h1>
-
-
-    
-    <div class="entry-content">
-      <p>
-        <p>​    <img src="/2018/11/14/2018icpc徐州站总结/title3.jpg" alt="title3"></p>
-      </p>
-    </div>
-    <div class="post-more-link text-center">
-            <a class="btn" href="/2018/11/14/2018icpc徐州站总结/" rel="contents">
-              阅读全文 »
-            </a>
-    </div>
-    <p class="posted-on">
-        <i class="fa fa-calendar" aria-hidden="true"></i>
-    	2018-11-14
-    </p>
-    <div class="tags-links">
-      <i class="fa fa-tags" aria-hidden="true"></i>
-      
-      <a href="/tags/ACM/" rel="tag">
-        ACM
-      </a>
-      
-      <a href="/tags/总结/" rel="tag">
-        总结
-      </a>
-      
-    </div>
-    
-  </article>
-</div>
-
-        </div> 
-    
-        <div class="article">
-          <div class="container" >
-  <article class="post">
-    <h1 class="entry-title">
-      <a href="/2018/11/14/icpc2018徐州Rikka-with-Minimum-Spanning/" rel="bookmark">
-        2018icpc徐州Rikka with Minimum Spanning  
-      </a>
-    </h1>
-
-
-    
-    <div class="entry-content">
-      <p>
-        <p><img src="/2018/11/14/icpc2018徐州Rikka-with-Minimum-Spanning/title1.jpg" alt="title1"></p>
-      </p>
-    </div>
-    <div class="post-more-link text-center">
-            <a class="btn" href="/2018/11/14/icpc2018徐州Rikka-with-Minimum-Spanning/" rel="contents">
-              阅读全文 »
-            </a>
-    </div>
-    <p class="posted-on">
-        <i class="fa fa-calendar" aria-hidden="true"></i>
-    	2018-11-14
-    </p>
-    <div class="tags-links">
-      <i class="fa fa-tags" aria-hidden="true"></i>
-      
-      <a href="/tags/ACM/" rel="tag">
-        ACM
-      </a>
-      
-      <a href="/tags/图论/" rel="tag">
-        图论
-      </a>
-      
-    </div>
-    
-  </article>
-</div>
-
-        </div> 
-    
-
-    
-<div class="container" >
-  <ul class="pager">
-    
-      <li class="previous">
-        <a href="/page/23/">
-          下一页
-        </a>
-      </li>
-    
-    
-      <li class="next">
-        <a href="/page/25/">
-          上一页
-        </a>
-      </li>
-    
-  </ul>
-</div>
-
-
-  </main>
-</div>
-
-<script type="text/javascript" src="/js/search.js"></script>
 
 
   <div id="Thplayer"></div>
