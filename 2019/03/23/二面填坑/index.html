@@ -223,7 +223,7 @@
       <span class="post-meta-item-icon">
         <i class="fa fa-hourglass-half"></i>
         <span class="post-meta-item-text">  阅读时长: </span>
-        <span class="post-count">4分</span>
+        <span class="post-count">5分</span>
       </span>
     </span>
                 </div>
@@ -233,7 +233,7 @@
                 </p>
                 <!-- Post Main Content -->
                 <div class="entry-content">
-                    <p><img src="/2019/03/23/二面填坑/Users/mac/zcy/Blog/source/_posts/二面填坑/title.jpg" alt="title"></p>
+                    <p><img src="/2019/03/23/二面填坑/title.jpg" alt="title"></p>
 <a id="more"></a>
 <p>[TOC]</p>
 <p>​    感觉自己答的普普通通，通过这次面试发现自己在基础上的不足。自己学习了一下当时有些迷糊的知识点，整理如下：</p>
@@ -257,7 +257,8 @@
 <p>(1)首先有一个主进程root，执行完第一个fork()创建一个进程son1，son1继承root的所有变量，环境变量，计数器等，然后更新pid1，假设此时root的pid1为1001，那么son1的pid1为0</p>
 <p>(2)root执行完第二个fork()创建一个进程son2，son2继承root的所有变量，环境变量，计数器等，然后更新pid2，假设此时root的pid2为1002，那么son2的pid2为0，它们两个的pid1都为1001</p>
 <p>(3)son1执行完第二个fork()创建一个进程grandson，grandson继承son1的所有变量，环境变量，计数器等，然后更新pid2，假设此时son1的pid2为1003，那么grandson的pid2为0，它们两个的pid1都为0</p>
-<h3 id="迷糊点4"><a href="#迷糊点4" class="headerlink" title="迷糊点4"></a>迷糊点4</h3><p>​    对于编程中常用的函数参数记忆不清。加强自己的记忆力吧，面试官问到listen()函数的第二个参是什么？当时给忘了，然后越想越着急，苦笑。。事后我说起这个第二个参，同学说不是最大连接数吗。。呃呃呃突然惊醒，感觉自己应该结合实际好好想想，其实这些东西也都不是死记硬背的。。</p>
+<h3 id="迷糊点4"><a href="#迷糊点4" class="headerlink" title="迷糊点4"></a>迷糊点4</h3><p>​    对于编程中常用的函数参数记忆不清。加强自己的记忆力吧，面试官问到listen()函数的第二个参是什么？当时给忘了，然后越想越着急，苦笑。。事后我说起这个第二个参，同学说不是最大连接数吗。。突然惊醒，感觉自己应该结合实际好好想想，其实这些东西也都不是死记硬背的。。</p>
+<p>​    最后，就是感觉到了自己的不足。自己学的东西好像是一个空中楼阁，经不起实战的打磨。继续沉下心来磨砺自己吧，把以后的重心先放在操作系统入门与系统编程上。凡事都要讲求一个透彻明白吧。。。。</p>
 
                 </div>
             </article>
