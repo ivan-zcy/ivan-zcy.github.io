@@ -14,7 +14,7 @@
 
   <!--Open Graph Title-->
   
-      <meta property="og:title" content="浅谈缓存三大问题"/>
+      <meta property="og:title" content="二面遗漏点填坑"/>
   
   <!--Open Graph Description-->
   
@@ -42,7 +42,7 @@
     </script>
   <!-- Title -->
   
-  <title>浅谈缓存三大问题 - Zcy</title>
+  <title>二面遗漏点填坑 - Zcy</title>
 
 
   <link rel="shortcut icon" href="/favicon.ico">
@@ -202,7 +202,7 @@
                 <!-- Title date & tags -->
                 <div class="post-header">
                     <h1 class="entry-title">
-                        浅谈缓存三大问题
+                        二面遗漏点填坑
                         
                     </h1>
 
@@ -214,7 +214,7 @@
       <span class="post-meta-item-icon">
         <i class="fa fa-keyboard-o"></i>
         <span class="post-meta-item-text">  字数统计: </span>
-        <span class="post-count">680字</span>
+        <span class="post-count">1.3k字</span>
       </span>
     </span>
 
@@ -223,52 +223,41 @@
       <span class="post-meta-item-icon">
         <i class="fa fa-hourglass-half"></i>
         <span class="post-meta-item-text">  阅读时长: </span>
-        <span class="post-count">2分</span>
+        <span class="post-count">4分</span>
       </span>
     </span>
                 </div>
 
                 <p class="a-posted-on" style="color: #ccc;">
-                    2019-03-12
+                    2019-03-23
                 </p>
                 <!-- Post Main Content -->
                 <div class="entry-content">
-                    <p><img src="/2019/03/12/浅谈缓存三大问题/title1.jpg" alt="title1"></p>
+                    <p><img src="/2019/03/23/二面填坑/Users/mac/zcy/Blog/source/_posts/二面填坑/title.jpg" alt="title"></p>
 <a id="more"></a>
-<h1 id="关于缓存"><a href="#关于缓存" class="headerlink" title="关于缓存"></a>关于缓存</h1><p>​    大部分系统都存在缓存机制，防止过多直接对数据库的请求操作，增加系统的稳定性与效率。</p>
-<p>##可能导致的问题</p>
-<p>###问题一：缓存穿透</p>
-<p>​    缓存穿透是指查询一个不存在的数据，由于缓存不存在该数据，因此该请求会直接去数据库查询（直接穿透了缓存层）。若有人恶意多次进行该操作可能导致数据库瘫痪</p>
-<p>####解决方案</p>
-<ol>
-<li><p>把所有可能的查询生成一个类似于哈希表的结构，在进行数据库查询前会利用该结构进行过滤，如果不在其中直接过滤掉，从而减轻数据库层面的压力</p>
-</li>
-<li><p>在第一次查询不到某个key对应的val值时，我们把该key和空值存入缓存中</p>
-</li>
-</ol>
-<p>###问题二：缓存雪崩</p>
-<p>​    一般缓存都会有一个失效时间，如果所有缓存的实效时间相同，可能会导致在某一时刻同时失效后，所有请求都发送到数据库层从而导致数据库崩溃</p>
-<p>####解决方案</p>
-<ol>
-<li><p>只让一个线程构建缓存，其它线程等待构建缓存的线程执行完毕后再重新从缓存中获取数据。</p>
-<ol start="2">
-<li>错开不同失效时间即可从一定长度上避免这种问题，因此我们设置缓存实效时间时可以在一个范围内取随机值</li>
-</ol>
-</li>
-</ol>
-<p>###问题三：缓存击穿</p>
-<p>​    缓存击穿是缓存雪崩的特例，缓存击穿是指某一个缓存失效后有大量请求发送到数据库层导致其崩溃。与雪崩相比，它只是一个点并不是全部（比如微博的一个热点缓存失效后依然有大量该热点信息的请求）</p>
-<p>####解决方案</p>
-<ol>
-<li><p>对热点数据进行二级缓存，并对不同级别的缓存设定不同的失效时间</p>
-</li>
-<li><p>采用LRU算法，即最近最少使用。依据“长期不被使用的数据，未来用到的概率也不大“，因此当内存达到阈值时，首先淘汰最近最少被使用的数据，具体实现过程为：</p>
-<p>（1）创建一个缓存哈希链表用于存储数据（相比哈希表多了一个指针用于链表排序）</p>
-<p>（2）添加新节点的时候，将新节点添加到链表尾部</p>
-<p>（3）若该节点以存在，把该节点移动到链表的尾部</p>
-<p>（4）当缓存链表已满时，添加新节点的时候，会把链表头部移除，然后将新节点添加到尾部</p>
-</li>
-</ol>
+<p>[TOC]</p>
+<p>​    感觉自己答的普普通通，通过这次面试发现自己在基础上的不足。自己学习了一下当时有些迷糊的知识点，整理如下：</p>
+<h3 id="迷糊点1"><a href="#迷糊点1" class="headerlink" title="迷糊点1:"></a>迷糊点1:</h3><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">char str[] = “hello!” ;</span><br><span class="line">char *p = str ;</span><br><span class="line">请写出下面输出的结果</span><br><span class="line">printf(&quot;%d\n&quot;,sizeof (str ) );</span><br><span class="line">printf(&quot;%d\n&quot;,sizeof ( p );</span><br></pre></td></tr></table></figure>
+<p>对于sizeof()，在对数组名进行操作时，返回的大小为数组所占用的内存大小，而对指向数组的指针进行操作时，返回的大小为指针的大小（自己对指针返回的大小很犹豫，现在记住了，从这里也可以看出，数组名并不是完全等同于指针）</p>
+<p>​    关于上面的问题，自己学了数组名和指针的区别。（1）在本质上，数组名其实指代一种数据结构，这个数据结构就是数组的全体（2）数组名可以转换为指向其指代实体的指针，而且是一个指针常量！（3）和数组名不同，指向数组的指针则是另外一种变量类型，它用于存放数组的地址（4）如果数组名作函数行参时，在函数体内它就失去了本身的数据机构特性，仅仅只是一个指向改数组的指针</p>
+<p>​    而且通过这个问题，自己查找了一下有关sizeof，发现自己一直以为它是一个函数，而它实质上是一个操作符（从sizeof(int)上就可以看出，因为函数接纳的形参不能是一个int的类型数据）</p>
+<p>下面是辨析的几个例子：</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">Test 1:</span><br><span class="line"> 　char str[10];</span><br><span class="line"> 　char *pStr = str;</span><br><span class="line"> 　cout &lt;&lt; sizeof(str) &lt;&lt; endl;		//10(此时数组名表现为前面的性质(1))</span><br><span class="line"> 　cout &lt;&lt; sizeof(pStr) &lt;&lt; endl;		//4(在32位系统下)</span><br><span class="line"></span><br><span class="line">Test 2:</span><br><span class="line">　 char str1[10] = &quot;hello&quot;;</span><br><span class="line">　 char str2[10];</span><br><span class="line"> 　strcpy(str2,str1);		//此时数组名表现为前面的性质(2)</span><br><span class="line">  </span><br><span class="line">Test 3:</span><br><span class="line">	void arrayTest(char str[])</span><br><span class="line">	&#123;</span><br><span class="line"> 　 		cout &lt;&lt; sizeof(str) &lt;&lt; endl;</span><br><span class="line">	&#125;</span><br><span class="line">	char str1[10] = &quot;hello&quot;;	</span><br><span class="line">	arrayTest(str1);		//此时数组名表现为前面的性质(4)</span><br></pre></td></tr></table></figure>
+<h3 id="迷糊点2"><a href="#迷糊点2" class="headerlink" title="迷糊点2"></a>迷糊点2</h3><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">fork();printf(&quot;#&quot;);</span><br><span class="line">fork();printf(&quot;#&quot;);</span><br></pre></td></tr></table></figure>
+<p>​    当时自己回答的是6，结果电脑测出来是8。记得之前学到的子进程从fork()后开始执行，百思不得其解。。然后百度了一下，不得不说自己确实欠缺好多～</p>
+<p>​    从网上整理了一下思路，大概就是说这是由printf的缓冲机制 + 进程间的继承机制造成的。因为操作系统只是把printf的内容放到了stdout缓冲队列里,并没有实际写到屏幕上。而再运行到fork时,缓冲里面的内容被子进程继承了，所以最后这4个进程一共输出了8次</p>
+<p>​    但是只要系统看到\n就会立刻刷新stdout，或者我们用fflush()函数强制刷新缓冲区这两种方式，就会输出6个#</p>
+<p>​    具体辨析：</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">Test 1:</span><br><span class="line">	fork();printf(&quot;#&quot;);			</span><br><span class="line">	fflush(stdout);</span><br><span class="line">	fork();printf(&quot;#&quot;);</span><br><span class="line">	//输出6个</span><br><span class="line">	</span><br><span class="line">Test 2:</span><br><span class="line">	fork();printf(&quot;#\n&quot;);</span><br><span class="line">    fork();printf(&quot;#\n&quot;);</span><br><span class="line">    //输出6行，每行1个</span><br></pre></td></tr></table></figure>
+<h3 id="迷糊点3"><a href="#迷糊点3" class="headerlink" title="迷糊点3"></a>迷糊点3</h3><p>​    由于迷糊点2的题没有答好，面试官问到关于进程间的继承问题，自己找了一个经典题理解了一下：</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">pid_t pid1 = fork();</span><br><span class="line">pid_t pid2 = fork();</span><br><span class="line">printf(&quot;pid1:%d, pid2:%d\n&quot;, pid1, pid2);</span><br></pre></td></tr></table></figure>
+<p>​    以前对于fork只停留在“新建一个进程，父进程返回一个子进程的pid，子进程返回一个0，然后系统就有两个进程，并开始向下执行内容”这个初步认识的阶段。</p>
+<p>​    其实fork的新进程的所有数据（变量、环境变量、程序计数器等）数值都和原进程一致，但是它是一个全新的进程并作为原进程的子进程</p>
+<p>​    对于上面这个例子的有一下几个步骤：</p>
+<p>(1)首先有一个主进程root，执行完第一个fork()创建一个进程son1，son1继承root的所有变量，环境变量，计数器等，然后更新pid1，假设此时root的pid1为1001，那么son1的pid1为0</p>
+<p>(2)root执行完第二个fork()创建一个进程son2，son2继承root的所有变量，环境变量，计数器等，然后更新pid2，假设此时root的pid2为1002，那么son2的pid2为0，它们两个的pid1都为1001</p>
+<p>(3)son1执行完第二个fork()创建一个进程grandson，grandson继承son1的所有变量，环境变量，计数器等，然后更新pid2，假设此时son1的pid2为1003，那么grandson的pid2为0，它们两个的pid1都为0</p>
+<h3 id="迷糊点4"><a href="#迷糊点4" class="headerlink" title="迷糊点4"></a>迷糊点4</h3><p>​    对于编程中常用的函数参数记忆不清。加强自己的记忆力吧，面试官问到listen()函数的第二个参是什么？当时给忘了，然后越想越着急，苦笑。。事后我说起这个第二个参，同学说不是最大连接数吗。。呃呃呃突然惊醒，感觉自己应该结合实际好好想想，其实这些东西也都不是死记硬背的。。</p>
 
                 </div>
             </article>
@@ -288,13 +277,9 @@
         <div class="container" >
             <ul class="pager">
                 
-                <li class="previous">
-                    <a href="/2019/03/23/二面填坑/" rel="prev">下一篇</a>
-                </li>
-                
                 
                 <li class="next">
-                    <a href="/2019/03/12/浅谈大小端/" rel="prev">上一篇</a>
+                    <a href="/2019/03/12/浅谈缓存三大问题/" rel="prev">上一篇</a>
                 </li>
                 
             </ul>
