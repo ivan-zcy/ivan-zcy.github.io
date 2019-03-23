@@ -1,6 +1,14 @@
 <?xml version="1.0" encoding="utf-8"?>
 <search>
   <entry>
+    <title><![CDATA[沉下心学操作系统(5)进程间通信之管道]]></title>
+    <url>%2F2019%2F03%2F23%2F%E6%B2%89%E4%B8%8B%E5%BF%83%E5%AD%A6%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F-5-%E8%BF%9B%E7%A8%8B%E9%97%B4%E9%80%9A%E4%BF%A1%E4%B9%8B%E7%AE%A1%E9%81%93%2F</url>
+    <content type="text"><![CDATA[[TOC] 通道匿名通道#include &lt;unistd.h&gt;int pipe(int pipefd[2]); ​ 作为进程间共享区，只用于通信，通信结束后就自动移除。它是一个单向的数据传输通道，参数第一个值为读取的文件描述符（对应输入），第二个值为写入的文件描述符（对应输出） ​ 它只能用于拥有公共祖先进程的进程（也就是必须继承同一个文件描述符表，保证它们的文件描述符必须指向同一文件） ​ 下面是匿名通道的实现 #include &lt;stdio.h&gt;#include &lt;unistd.h&gt;#include &lt;stdlib.h&gt;#include &lt;string.h&gt;int main(int argc, char const *argv[]) &#123; //创建管道 int fd[2]; if (pipe(fd) == -1) &#123; perror(&quot;pipe faild&quot;); &#125; //创建进程 pid_t pid = fork(); if (pid == -1) &#123; perror(&quot;fork faild&quot;); &#125; if (!pid) &#123; //子进程 char *s = (char *)malloc(sizeof(char) * 100); strcpy(s, &quot;hello, ACM!&quot;); //关掉读取 close(fd[0]); //写入 write(fd[1], s, strlen(s) + 1); &#125; else &#123; //父进程 char buffer[100]; //关掉写入 close(fd[1]); //读取 read(fd[0], buffer, sizeof(buffer)); printf(&quot;%s\n&quot;, buffer); &#125; return 0;&#125; 命名管道#include &lt;sys/types.h&gt;#include &lt;sys/stat.h&gt;//创建命名管道，它采取先进先出的策略int mkfifo(const char* pathname, mode_t mode);//访问命名管道 ​ 参数一为文件路径，参数二表示这个命名管道的权限可被umask修改 ​ 命名管道可以任意进程间进行通信，且创建它的进程退出后它仍然存在，只有在被删除后才消失。它不同于一般文件在于读取和写入数据的进程必须同时出现（也就是说只有读或写，命名管道就会被阻塞）]]></content>
+      <tags>
+        <tag>操作系统</tag>
+      </tags>
+  </entry>
+  <entry>
     <title><![CDATA[沉下心学操作系统(4)关于文件]]></title>
     <url>%2F2019%2F03%2F23%2F%E6%B2%89%E4%B8%8B%E5%BF%83%E5%AD%A6%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F-4%2F</url>
     <content type="text"><![CDATA[[TOC] 文件描述符​ 每个进程控制块都有一个文件描述符表，可以把它看作一个数组，里面存储指向以打开文件地址的指针，这个数组的下角标就是文件描述符。每次open都会把新打开的文件地址存储到表中的某个空行，并返回下角标作为文件描述符。 ​ 其中0～2为特殊的文件描述符，分别为标准输入，标准输出，标准错误输出，这三个文件描述符在进程初始时自动打开，其中标准输出就是printf输出的对象 关于I/O的系统调用函数open()#include &lt;sys/types.h&gt;#include &lt;sys/stat.h&gt;#include &lt;fcntl.h&gt;int open(const char* pathname, int flags, mode_t mode); ​ 相比fopen()处于系统的更低层，可以对文件进行更基础的操作，但是也失去了一些库函数的帮助 ​ 参数分别是被打开文件路径、进行的操作、创建文件时的使用权限（可省略） ​ 它的返回值为文件描述符 dup2()#include &lt;unistd.h&gt;int dup2(int oldfd, int newfd); ​ 该函数可以使newfd指向oldfd指向的文件 dup()#include &lt;unistd.h&gt;int dup(int oldfd); ​ 该函数会选择最小的空闲文件描述符让它指向oldfd，并返回新的指向该文件的描述符 read()、write()#include &lt;unistd.h&gt;ssize_t read(int fd, void* buf, size_t count);ssize_t write(int fd, const void* buf, size_t count); ​ 参数分别为文件描述符，写入/读入的内容，写入/读入的最大长度。若调用成功返回实际读写的长度，否则返回-1 lseek()#include &lt;sys/types.h&gt;#include &lt;unistd.h&gt;off_t lseek(int fd, off_t offset, int whence); ​ 参数分别为文件描述符，移动的长度，移动目标的起点。whence有3个常用值，SEEK_SET，SEEK_END，SEEK_CUR，分别代表开头，结尾和当前位置 fsync()int fsync(int fd); ​ 由于向磁盘写入数据很花时间，因此内核为了提高效率会推迟写入数据。而fsync()可以同步内存中所有已修改的文件写入到储存设备 close()int close(int fd); ​ 用于关掉文件，fd为文件描述符]]></content>
