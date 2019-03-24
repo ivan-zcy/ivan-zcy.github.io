@@ -14,7 +14,7 @@
 
   <!--Open Graph Title-->
   
-      <meta property="og:title" content="Zcy"/>
+      <meta property="og:title" content="沉下心学操作系统(6)进程间通信之共享内存"/>
   
   <!--Open Graph Description-->
   
@@ -22,7 +22,7 @@
   <meta property="og:site_name" content="Zcy"/>
   <!--Type page-->
   
-      <meta property="og:type" content="website" />
+      <meta property="og:type" content="article" />
   
   <!--Page Cover-->
   
@@ -42,7 +42,7 @@
     </script>
   <!-- Title -->
   
-  <title>Zcy</title>
+  <title>沉下心学操作系统(6)进程间通信之共享内存 - Zcy</title>
 
 
   <link rel="shortcut icon" href="/favicon.ico">
@@ -194,282 +194,97 @@
 
 
   <!-- Main Content -->
-  <div class="site-content home">
-      <div class="content-header" style="background: url(/img/back.jpg) no-repeat bottom;">
-        <div class="headline">
-            <a href="#" class="demo">
-                <div class="img" style="background-image:url(/img/avator.jpg)"></div>
-                <div class="cover_mask">
-                    <div class="info">
-                        <span>Welcome</br>by:Zcy</span>
-                    </div>
+  <div class="content-area">
+    <div class="post">
+        <!-- Post Content -->
+        <div class="container">
+            <article>
+                <!-- Title date & tags -->
+                <div class="post-header">
+                    <h1 class="entry-title">
+                        沉下心学操作系统(6)进程间通信之共享内存
+                        
+                    </h1>
+
                 </div>
-                <div class="border"></div>
-            </a>
-            <h1 id="Hotnews"></h1>
-            <script type="application/javascript">
-               var content = "沉下心来做事";
-               var i = 0;
-               function show(){
-                   var str  = content.substr(0,i);
-                   Hotnews.innerHTML = str + "_";
-                   i++;
-                   if (i>content.length) i=0;
-                   setTimeout("show()",600);
-               }
-               window.onload = show();
-               </script>
-            <div class="header-link">
-              
-                
-                  <a href="https://github.com/ivan-zcy" class="icon-github" target="_blank">
-                      <i class="fa fa-github" aria-hidden="true"></i>
-                  </a>
-                
-                  <a href="https://m.weibo.cn/u/6086305650?uid=6086305650&luicode=10000011&lfid=100103type%3D1%26q%3DIvan-酷酷酷酷" class="icon-weibo" target="_blank">
-                      <i class="fa fa-weibo" aria-hidden="true"></i>
-                  </a>
-                
-                  <a href="http://shang.qq.com/open_webaio.html?sigt=1bb29cf0e25d41c832c39e41e587e146da3754f5d273a017917c3d540899734e4339f99eeba019c94b5c389758e3c6ce&sigu=f77cd5fff2ab7f3340b356ec5e3a8696346394fadda6a1b9119fbca25f6746b7dda8e820567392d1&tuin=296763002" class="icon-qq" target="_blank">
-                      <i class="fa fa-qq" aria-hidden="true"></i>
-                  </a>
-                
-                  <a href="http://mail.qq.com/cgi-bin/qm_share?t=qm_mailme&email=PgwHCAkIDQ4ODH5PTxBdUVM" class="icon-envelope" target="_blank">
-                      <i class="fa fa-envelope" aria-hidden="true"></i>
-                  </a>
-                
-              
-            </div>
+
+
+                <div style="text-align:center;color: #ccc;">
+    <span class="post-time" >
+      <span class="post-meta-item-icon">
+        <i class="fa fa-keyboard-o"></i>
+        <span class="post-meta-item-text">  字数统计: </span>
+        <span class="post-count">423字</span>
+      </span>
+    </span>
+
+                    <span class="post-time">
+      &nbsp; | &nbsp;
+      <span class="post-meta-item-icon">
+        <i class="fa fa-hourglass-half"></i>
+        <span class="post-meta-item-text">  阅读时长: </span>
+        <span class="post-count">1分</span>
+      </span>
+    </span>
+                </div>
+
+                <p class="a-posted-on" style="color: #ccc;">
+                    2019-03-24
+                </p>
+                <!-- Post Main Content -->
+                <div class="entry-content">
+                    <p><img src="/2019/03/24/沉下心学操作系统-6-进程间通信之共享内存/title.jpg" alt="title"></p>
+<a id="more"></a>
+<h3 id="mmap共享内存"><a href="#mmap共享内存" class="headerlink" title="mmap共享内存"></a>mmap共享内存</h3><p>​    共享内存可用于进程间通信，而且还可以提高读写文件的效率。还可以方便我们对文件进行随机的读写</p>
+<h4 id="开启共享内存"><a href="#开启共享内存" class="headerlink" title="开启共享内存"></a>开启共享内存</h4><p>​    mmap能够通过将外存中的文件映射到一段内存中，使多个进程在其地址空间中共享一端内存。</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">#include &lt;sys/mman.h&gt;</span><br><span class="line">void *mmap(void* addr, size_t length, int prot, int flags, int fd, off_t offset);</span><br></pre></td></tr></table></figure>
+<p>​    第一个参数addr为希望映射文件的大概位置（0则代表选择任意地址进行映射），第二参数代表映射内存的长度，第三个参数prot表示映射内存区的使用权限（可读、可写、可执行），第四个参flags决定了内存映射的模式（具体有四个），第五个参数fd是被映射文件对应的文件描述符，第六个参数offset代表映射的起始位置（相对于文件开头的偏移）</p>
+<p>​    mmap()以页为单位分配映射内存区，因此它返回的大小一定是页的整数倍（若申请的不是整数倍，我们访问未被使用部分会返回SIGBUS产生错误）</p>
+<h4 id="关闭共享内存"><a href="#关闭共享内存" class="headerlink" title="关闭共享内存"></a>关闭共享内存</h4><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">int munmap(void* addr, size_t length);</span><br></pre></td></tr></table></figure>
+<p>​    munmap用于关闭映射，参数addr必须是页面的整数倍，长度可以与一开始映射的内存大小不同。</p>
+<p>​    注意，close(fd)并不能关掉映射，只有munmap()可以。</p>
+<h4 id="举例："><a href="#举例：" class="headerlink" title="举例："></a>举例：</h4><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">char* window = (char*) mmap(0, 30, PROT_READ|PROT_WRITE, MAP_SHARED|MAP_ANONYMOUS, -1, 0);</span><br><span class="line">pid_t child = fork();</span><br><span class="line">if (!child) &#123;</span><br><span class="line">    sprintf(window, &quot;Greeting from child.&quot;);</span><br><span class="line">    exit(0);</span><br><span class="line">&#125;</span><br><span class="line">wait(NULL);</span><br><span class="line">printf(&quot;%s\n&quot;, window);		//通过mmap()使父进程和子进程共享了这段内存</span><br></pre></td></tr></table></figure>
+
+                </div>
+            </article>
         </div>
-    </div>
-  <main class="content-area">
-      <br>
-      <br>
-          <div class="container">
-              <section>
-                  <div id="site_search" style = "text-align: center">
-                      <span class = "H1" style="color: #de2d0f">博文搜索:</span>
-                      <input type="text" id="local-search-input" style="width: 200px;" results="0"/>
-                      <div id="local-search-result"></div>
-                  </div>
-              </section>
-          </div>
-    
-        <div class="article">
-          <div class="container" >
-  <article class="post">
-    <h1 class="entry-title">
-      <a href="/2019/03/24/沉下心学操作系统-6-进程间通信之共享内存/" rel="bookmark">
-        沉下心学操作系统(6)进程间通信之共享内存  
-      </a>
-    </h1>
+        <br>
+        <div style="text-align:center;color: #ccc;font-size:14px;">
+            <br>
+            <br>
+            <a href="http://www.ivan-zcy.top" style="color: #99FFFF;font-size:18px;">转载请注明出处！！！</a>
+            <br>
+            <br>
+            如果有写的不对或者不全面的地方 可通过主页的联系方式进行指正，谢谢!
+        </div>
+        <br>
+        <!-- Pre or Next -->
+        
+        <div class="container" >
+            <ul class="pager">
+                
+                
+                <li class="next">
+                    <a href="/2019/03/23/沉下心学操作系统-5-进程间通信之管道/" rel="prev">上一篇</a>
+                </li>
+                
+            </ul>
+        </div>
+        　　　　<!-- Comments -->
+        <div class="container">
+            
+<section id="comment">
+  <!-- <h1 class="title">Comments</h1> -->
+
+  
+</section>
 
 
-    
-    <div class="entry-content">
-      <p>
-        <p><img src="/2019/03/24/沉下心学操作系统-6-进程间通信之共享内存/title.jpg" alt="title"></p>
-      </p>
+        </div>
+        
+        　　　　
     </div>
-    <div class="post-more-link text-center">
-            <a class="btn" href="/2019/03/24/沉下心学操作系统-6-进程间通信之共享内存/" rel="contents">
-              阅读全文 »
-            </a>
-    </div>
-    <p class="posted-on">
-        <i class="fa fa-calendar" aria-hidden="true"></i>
-    	2019-03-24
-    </p>
-    <div class="tags-links">
-      <i class="fa fa-tags" aria-hidden="true"></i>
-      
-      <a href="/tags/操作系统/" rel="tag">
-        操作系统
-      </a>
-      
-    </div>
-    
-  </article>
 </div>
-
-        </div> 
-    
-        <div class="article">
-          <div class="container" >
-  <article class="post">
-    <h1 class="entry-title">
-      <a href="/2019/03/23/沉下心学操作系统-5-进程间通信之管道/" rel="bookmark">
-        沉下心学操作系统(5)进程间通信之管道  
-      </a>
-    </h1>
-
-
-    
-    <div class="entry-content">
-      <p>
-        <p><img src="/2019/03/23/沉下心学操作系统-5-进程间通信之管道/title.jpg" alt="title"></p>
-      </p>
-    </div>
-    <div class="post-more-link text-center">
-            <a class="btn" href="/2019/03/23/沉下心学操作系统-5-进程间通信之管道/" rel="contents">
-              阅读全文 »
-            </a>
-    </div>
-    <p class="posted-on">
-        <i class="fa fa-calendar" aria-hidden="true"></i>
-    	2019-03-23
-    </p>
-    <div class="tags-links">
-      <i class="fa fa-tags" aria-hidden="true"></i>
-      
-      <a href="/tags/操作系统/" rel="tag">
-        操作系统
-      </a>
-      
-    </div>
-    
-  </article>
-</div>
-
-        </div> 
-    
-        <div class="article">
-          <div class="container" >
-  <article class="post">
-    <h1 class="entry-title">
-      <a href="/2019/03/23/沉下心学操作系统-4/" rel="bookmark">
-        沉下心学操作系统(4)关于文件  
-      </a>
-    </h1>
-
-
-    
-    <div class="entry-content">
-      <p>
-        <p><img src="/2019/03/23/沉下心学操作系统-4/title.jpg" alt="title"></p>
-      </p>
-    </div>
-    <div class="post-more-link text-center">
-            <a class="btn" href="/2019/03/23/沉下心学操作系统-4/" rel="contents">
-              阅读全文 »
-            </a>
-    </div>
-    <p class="posted-on">
-        <i class="fa fa-calendar" aria-hidden="true"></i>
-    	2019-03-23
-    </p>
-    <div class="tags-links">
-      <i class="fa fa-tags" aria-hidden="true"></i>
-      
-      <a href="/tags/操作系统/" rel="tag">
-        操作系统
-      </a>
-      
-    </div>
-    
-  </article>
-</div>
-
-        </div> 
-    
-        <div class="article">
-          <div class="container" >
-  <article class="post">
-    <h1 class="entry-title">
-      <a href="/2019/03/23/沉下心学操作系统-3-进程的使用/" rel="bookmark">
-        沉下心学操作系统(3)进程的使用  
-      </a>
-    </h1>
-
-
-    
-    <div class="entry-content">
-      <p>
-        <p><img src="/2019/03/23/沉下心学操作系统-3-进程的使用/title.jpg" alt="title"></p>
-      </p>
-    </div>
-    <div class="post-more-link text-center">
-            <a class="btn" href="/2019/03/23/沉下心学操作系统-3-进程的使用/" rel="contents">
-              阅读全文 »
-            </a>
-    </div>
-    <p class="posted-on">
-        <i class="fa fa-calendar" aria-hidden="true"></i>
-    	2019-03-23
-    </p>
-    <div class="tags-links">
-      <i class="fa fa-tags" aria-hidden="true"></i>
-      
-      <a href="/tags/操作系统/" rel="tag">
-        操作系统
-      </a>
-      
-    </div>
-    
-  </article>
-</div>
-
-        </div> 
-    
-        <div class="article">
-          <div class="container" >
-  <article class="post">
-    <h1 class="entry-title">
-      <a href="/2019/03/23/沉下心学操作系统-2/" rel="bookmark">
-        沉下心学操作系统(2)进程  
-      </a>
-    </h1>
-
-
-    
-    <div class="entry-content">
-      <p>
-        <p><img src="/2019/03/23/沉下心学操作系统-2/title.jpg" alt="title"></p>
-      </p>
-    </div>
-    <div class="post-more-link text-center">
-            <a class="btn" href="/2019/03/23/沉下心学操作系统-2/" rel="contents">
-              阅读全文 »
-            </a>
-    </div>
-    <p class="posted-on">
-        <i class="fa fa-calendar" aria-hidden="true"></i>
-    	2019-03-23
-    </p>
-    <div class="tags-links">
-      <i class="fa fa-tags" aria-hidden="true"></i>
-      
-      <a href="/tags/操作系统/" rel="tag">
-        操作系统
-      </a>
-      
-    </div>
-    
-  </article>
-</div>
-
-        </div> 
-    
-
-    
-<div class="container" >
-  <ul class="pager">
-    
-    
-      <li class="next">
-        <a href="/page/2/">
-          上一页
-        </a>
-      </li>
-    
-  </ul>
-</div>
-
-
-  </main>
-</div>
-
-<script type="text/javascript" src="/js/search.js"></script>
 
 
   <div id="Thplayer"></div>

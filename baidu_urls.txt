@@ -1,3 +1,4 @@
+http://www.ivan-zcy.top/2019/03/24/沉下心学操作系统-6-进程间通信之共享内存/
 http://www.ivan-zcy.top/2019/03/23/沉下心学操作系统-5-进程间通信之管道/
 http://www.ivan-zcy.top/2019/03/23/沉下心学操作系统-4/
 http://www.ivan-zcy.top/2019/03/23/沉下心学操作系统-3-进程的使用/
@@ -97,4 +98,3 @@ http://www.ivan-zcy.top/2018/12/10/哈理工第八届校团队赛D所以我也�
 http://www.ivan-zcy.top/2018/12/10/哈理工第八届校团队赛B咕咕咕/
 http://www.ivan-zcy.top/2018/12/10/哈理工第八届校团队赛热身B信小呆/
 http://www.ivan-zcy.top/2018/12/10/哈理工第八届校团队赛热身C孪生素数猜想/
-http://www.ivan-zcy.top/2018/12/08/C语言核心技术-第三章/

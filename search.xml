@@ -1,6 +1,14 @@
 <?xml version="1.0" encoding="utf-8"?>
 <search>
   <entry>
+    <title><![CDATA[沉下心学操作系统(6)进程间通信之共享内存]]></title>
+    <url>%2F2019%2F03%2F24%2F%E6%B2%89%E4%B8%8B%E5%BF%83%E5%AD%A6%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F-6-%E8%BF%9B%E7%A8%8B%E9%97%B4%E9%80%9A%E4%BF%A1%E4%B9%8B%E5%85%B1%E4%BA%AB%E5%86%85%E5%AD%98%2F</url>
+    <content type="text"><![CDATA[mmap共享内存​ 共享内存可用于进程间通信，而且还可以提高读写文件的效率。还可以方便我们对文件进行随机的读写 开启共享内存​ mmap能够通过将外存中的文件映射到一段内存中，使多个进程在其地址空间中共享一端内存。 #include &lt;sys/mman.h&gt;void *mmap(void* addr, size_t length, int prot, int flags, int fd, off_t offset); ​ 第一个参数addr为希望映射文件的大概位置（0则代表选择任意地址进行映射），第二参数代表映射内存的长度，第三个参数prot表示映射内存区的使用权限（可读、可写、可执行），第四个参flags决定了内存映射的模式（具体有四个），第五个参数fd是被映射文件对应的文件描述符，第六个参数offset代表映射的起始位置（相对于文件开头的偏移） ​ mmap()以页为单位分配映射内存区，因此它返回的大小一定是页的整数倍（若申请的不是整数倍，我们访问未被使用部分会返回SIGBUS产生错误） 关闭共享内存int munmap(void* addr, size_t length); ​ munmap用于关闭映射，参数addr必须是页面的整数倍，长度可以与一开始映射的内存大小不同。 ​ 注意，close(fd)并不能关掉映射，只有munmap()可以。 举例：char* window = (char*) mmap(0, 30, PROT_READ|PROT_WRITE, MAP_SHARED|MAP_ANONYMOUS, -1, 0);pid_t child = fork();if (!child) &#123; sprintf(window, &quot;Greeting from child.&quot;); exit(0);&#125;wait(NULL);printf(&quot;%s\n&quot;, window); //通过mmap()使父进程和子进程共享了这段内存]]></content>
+      <tags>
+        <tag>操作系统</tag>
+      </tags>
+  </entry>
+  <entry>
     <title><![CDATA[沉下心学操作系统(5)进程间通信之管道]]></title>
     <url>%2F2019%2F03%2F23%2F%E6%B2%89%E4%B8%8B%E5%BF%83%E5%AD%A6%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F-5-%E8%BF%9B%E7%A8%8B%E9%97%B4%E9%80%9A%E4%BF%A1%E4%B9%8B%E7%AE%A1%E9%81%93%2F</url>
     <content type="text"><![CDATA[[TOC] 通道匿名通道#include &lt;unistd.h&gt;int pipe(int pipefd[2]); ​ 作为进程间共享区，只用于通信，通信结束后就自动移除。它是一个单向的数据传输通道，参数第一个值为读取的文件描述符（对应输入），第二个值为写入的文件描述符（对应输出） ​ 它只能用于拥有公共祖先进程的进程（也就是必须继承同一个文件描述符表，保证它们的文件描述符必须指向同一文件） ​ 下面是匿名通道的实现 #include &lt;stdio.h&gt;#include &lt;unistd.h&gt;#include &lt;stdlib.h&gt;#include &lt;string.h&gt;int main(int argc, char const *argv[]) &#123; //创建管道 int fd[2]; if (pipe(fd) == -1) &#123; perror(&quot;pipe faild&quot;); &#125; //创建进程 pid_t pid = fork(); if (pid == -1) &#123; perror(&quot;fork faild&quot;); &#125; if (!pid) &#123; //子进程 char *s = (char *)malloc(sizeof(char) * 100); strcpy(s, &quot;hello, ACM!&quot;); //关掉读取 close(fd[0]); //写入 write(fd[1], s, strlen(s) + 1); &#125; else &#123; //父进程 char buffer[100]; //关掉写入 close(fd[1]); //读取 read(fd[0], buffer, sizeof(buffer)); printf(&quot;%s\n&quot;, buffer); &#125; return 0;&#125; 命名管道#include &lt;sys/types.h&gt;#include &lt;sys/stat.h&gt;//创建命名管道，它采取先进先出的策略int mkfifo(const char* pathname, mode_t mode);//访问命名管道 ​ 参数一为文件路径，参数二表示这个命名管道的权限可被umask修改 ​ 命名管道可以任意进程间进行通信，且创建它的进程退出后它仍然存在，只有在被删除后才消失。它不同于一般文件在于读取和写入数据的进程必须同时出现（也就是说只有读或写，命名管道就会被阻塞）]]></content>
@@ -164,8 +172,8 @@
     <url>%2F2019%2F02%2F27%2F%E5%8D%87%E7%BA%A7%E7%89%88%E8%81%8A%E5%A4%A9%E5%AE%A4%2F</url>
     <content type="text"><![CDATA[主要是利用所学网络编程来实现聊天室功能，包括客户端和服务端两个部分。 代码以上传至github，可通过github或者个人主页查看 客户端客户端的内容如下： 使用配置文件配置自己的监听端口，服务器的监听端口等信息 用户之间可以通过”@用户名 信息”来实现私聊 客户端在一个固定端口上监听服务器转发的来自其他用户的私聊、公聊以及系统信息 客户端所接受到的所有信息保存日志文件中，可利用tail -f 文件名获取实时聊天信息 客户端解析来自服务端的结构体，内容如下： struct Message&#123; char from[20]; int flag;//若flag为1则为私聊信息，0为公聊信息，2则为服务器的通知信息 char message[1024]; &#125;; 服务端 服务端在固定接口接收来自所有客户端的消息 每收到一条公聊消息，都转发给所有在线用户 每收到私聊消息，只转发给目标用户 当私聊用户不存在或下线，通过通知信息告知该用户 在用户上线的时候，发送欢迎信息并告知所有在线用户该用户上线 在收到用户信息#时，发送给该用户当前在线人数以及所有用户信息 具体效果如下： 用户界面： 服务端界面： 用户的log日志显示：]]></content>
       <tags>
-        <tag>网络编程</tag>
         <tag>C语言</tag>
+        <tag>网络编程</tag>
         <tag>多进程</tag>
       </tags>
   </entry>
@@ -257,8 +265,8 @@
     <url>%2F2019%2F02%2F23%2FC%E7%BD%91%E7%BB%9C%E7%BC%96%E7%A8%8B%E5%AE%9E%E7%8E%B0%E8%81%8A%E5%A4%A9%E5%AE%A4%2F</url>
     <content type="text"><![CDATA[主要是利用所学的C语言网络编程来实现聊天室功能，包括客户端和服务端两个部分，common用于封装网络编程的相关函数。 ​ 客户端接收两个参数，分别是IP地址和端口号 ​ 代码已上传至github：跳转 ​ 或者从个人博客项目上查看：跳转 效果如下： 用户1的输入： 用户2的输入： 聊天室（服务器）的显示：]]></content>
       <tags>
-        <tag>网络编程</tag>
         <tag>C语言</tag>
+        <tag>网络编程</tag>
       </tags>
   </entry>
   <entry>
