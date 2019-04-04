@@ -1,3 +1,4 @@
+http://www.ivan-zcy.top/2019/04/04/AtCoder-Contest-122-D-We-Like-AGC/
 http://www.ivan-zcy.top/2019/03/27/沉下心学操作系统-9-epoll函数/
 http://www.ivan-zcy.top/2019/03/25/沉下心学操作系统-8-进程间通信之消息队列/
 http://www.ivan-zcy.top/2019/03/25/沉下心学操作系统-7-进程间通信之信号/
@@ -97,4 +98,3 @@ http://www.ivan-zcy.top/2018/12/10/哈理工第八届校团队赛E格子染色�
 http://www.ivan-zcy.top/2018/12/10/哈理工第八届校团队赛C树上路径计数/
 http://www.ivan-zcy.top/2018/12/10/哈理工第八届校团队赛H刘禅的课程/
 http://www.ivan-zcy.top/2018/12/10/哈理工第八届校团队赛K汪汪汪/
-http://www.ivan-zcy.top/2018/12/10/哈理工第八届校团队赛D所以我也想玩这个序列游戏/

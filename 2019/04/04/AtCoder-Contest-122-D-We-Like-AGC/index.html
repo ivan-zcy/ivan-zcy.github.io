@@ -14,7 +14,7 @@
 
   <!--Open Graph Title-->
   
-      <meta property="og:title" content="沉下心学操作系统(9)epoll函数"/>
+      <meta property="og:title" content="AtCoder Contest 122 D We Like AGC"/>
   
   <!--Open Graph Description-->
   
@@ -42,7 +42,7 @@
     </script>
   <!-- Title -->
   
-  <title>沉下心学操作系统(9)epoll函数 - Zcy</title>
+  <title>AtCoder Contest 122 D We Like AGC - Zcy</title>
 
 
   <link rel="shortcut icon" href="/favicon.ico">
@@ -202,7 +202,7 @@
                 <!-- Title date & tags -->
                 <div class="post-header">
                     <h1 class="entry-title">
-                        沉下心学操作系统(9)epoll函数
+                        AtCoder Contest 122 D We Like AGC
                         
                     </h1>
 
@@ -214,7 +214,7 @@
       <span class="post-meta-item-icon">
         <i class="fa fa-keyboard-o"></i>
         <span class="post-meta-item-text">  字数统计: </span>
-        <span class="post-count">592字</span>
+        <span class="post-count">637字</span>
       </span>
     </span>
 
@@ -223,35 +223,50 @@
       <span class="post-meta-item-icon">
         <i class="fa fa-hourglass-half"></i>
         <span class="post-meta-item-text">  阅读时长: </span>
-        <span class="post-count">2分</span>
+        <span class="post-count">3分</span>
       </span>
     </span>
                 </div>
 
                 <p class="a-posted-on" style="color: #ccc;">
-                    2019-03-27
+                    2019-04-04
                 </p>
                 <!-- Post Main Content -->
                 <div class="entry-content">
-                    <p><img src="/2019/03/27/沉下心学操作系统-9-epoll函数/title.jpg" alt="title"></p>
+                    <p><img src="/2019/04/04/AtCoder-Contest-122-D-We-Like-AGC/title.jpg" alt="title"></p>
 <a id="more"></a>
-<p>[TOC]</p>
-<h3 id="epoll函数"><a href="#epoll函数" class="headerlink" title="epoll函数"></a>epoll函数</h3><p>​    epoll用于在一段时间内同时等待多个产生I/O事件的文件</p>
-<p>​    返回值为这段时间产生等待的I/O事件的文件数量，并允许我们通过一个指针遍历产生的所有事件</p>
-<p>​    例如多个子进程向父进程建立通道，所有子进程向管道写入数据，那么在父进程端加入epoll()等待，它就会在一段时间后返回写入数据的子进程数量</p>
-<h4 id="epoll-创建"><a href="#epoll-创建" class="headerlink" title="epoll()创建"></a>epoll()创建</h4><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">#include &lt;sys/epoll.h&gt;</span><br><span class="line">int epoll_create(int size);</span><br></pre></td></tr></table></figure>
-<p>​    参数size表示监控的文件描述符的总量（由于如今系统具备动态分配内存的能力，size参数自动忽略，但我们仍需要加入一个大于0的数保证兼容）</p>
-<p>​    若成功返回一个非零的文件描述符，代表一个epoll()实例</p>
-<p>​    最后需要close()关闭epoll创建的对象</p>
-<h4 id="epoll-加入、删除、修改"><a href="#epoll-加入、删除、修改" class="headerlink" title="epoll()加入、删除、修改"></a>epoll()加入、删除、修改</h4><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">#include &lt;sys/epoll.h&gt;</span><br><span class="line">int epoll_ctl(int epfd, int op, int fd, struct epoll_event* event);</span><br></pre></td></tr></table></figure>
-<p>​    第一个参是是epoll的实例的文件描述符，第二个参op代表有加入，删除，修改三个选项，第三个参是与I/O事件关联的文件，第四个参数指向我们需要监控的事件</p>
-<p>​    关于event的结构体：</p>
-<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">typedef union epoll_data &#123;</span><br><span class="line">    void* ptr;</span><br><span class="line">    int fd;</span><br><span class="line">    unsigned int u32;</span><br><span class="line">    unsigned long long u64;</span><br><span class="line">&#125; epoll_data_t;</span><br><span class="line"></span><br><span class="line">struct epoll_event &#123;</span><br><span class="line">    uint32_t     events;</span><br><span class="line">    epoll_data_t data;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
-<p>​    data可以自由使用，方便进程在事件发生后获取有关事件信息的。一般我们会将与事件关联的文件描述符存储在data.fd里，这样事件发生后我们才能知道事件是哪个文件产生的。</p>
-<p>​    events是由多个或运算连接在一起的事件（比如文件可读，可写，错误，挂起）</p>
-<h4 id="等待I-O事件发生"><a href="#等待I-O事件发生" class="headerlink" title="等待I/O事件发生"></a>等待I/O事件发生</h4><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">int epoll_wait(int epfd, struct epoll_event* events, int maxevents, int timeout);</span><br></pre></td></tr></table></figure>
-<p>​    第一个参数是epoll实例的文件描述符，第二个参指向我们需要监控的事件，第三个参数为最多产生的事件数，第四个参数记录我们在timeout毫秒内产生的事件（当timeout为0立即返回，当&lt;0就是等到有事件发生时再返回）</p>
-<p>​    它的返回值是该时间实际产生的事件数，然后根据该数量遍历events的每一项</p>
+<h3 id="Problem-Statement"><a href="#Problem-Statement" class="headerlink" title="Problem Statement"></a>Problem Statement</h3><p>You are given an integer N. Find the number of strings of length N that satisfy the following conditions, modulo 109+7:</p>
+<ul>
+<li>The string does not contain characters other than <code>A</code>, <code>C</code>, <code>G</code> and <code>T</code>.</li>
+<li>The string does not contain <code>AGC</code> as a substring.</li>
+<li>The condition above cannot be violated by swapping two adjacent characters once.</li>
+</ul>
+<h3 id="Notes"><a href="#Notes" class="headerlink" title="Notes"></a>Notes</h3><p>A substring of a string T is a string obtained by removing zero or more characters from the beginning and the end of T.</p>
+<p>For example, the substrings of <code>ATCODER</code> include <code>TCO</code>, <code>AT</code>, <code>CODER</code>, <code>ATCODER</code> and <code></code> (the empty string), but not <code>AC</code>.</p>
+<h3 id="Constraints"><a href="#Constraints" class="headerlink" title="Constraints"></a>Constraints</h3><ul>
+<li>3≤N≤100</li>
+</ul>
+<hr>
+<h3 id="Input"><a href="#Input" class="headerlink" title="Input"></a>Input</h3><p>Input is given from Standard Input in the following format:</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">N</span><br></pre></td></tr></table></figure>
+<h3 id="Output"><a href="#Output" class="headerlink" title="Output"></a>Output</h3><p>Print the number of strings of length N that satisfy the following conditions, modulo 109+7.</p>
+<hr>
+<h3 id="Sample-Input-1"><a href="#Sample-Input-1" class="headerlink" title="Sample Input 1"></a>Sample Input 1</h3><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">3</span><br></pre></td></tr></table></figure>
+<h3 id="Sample-Output-1"><a href="#Sample-Output-1" class="headerlink" title="Sample Output 1"></a>Sample Output 1</h3><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">61</span><br></pre></td></tr></table></figure>
+<p>There are 43=64 strings of length 3 that do not contain characters other than <code>A</code>, <code>C</code>, <code>G</code> and <code>T</code>. Among them, only <code>AGC</code>, <code>ACG</code> and <code>GAC</code> violate the condition, so the answer is 64−3=61.</p>
+<hr>
+<h3 id="Sample-Input-2"><a href="#Sample-Input-2" class="headerlink" title="Sample Input 2"></a>Sample Input 2</h3><p>Copy</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">4</span><br></pre></td></tr></table></figure>
+<h3 id="Sample-Output-2"><a href="#Sample-Output-2" class="headerlink" title="Sample Output 2"></a>Sample Output 2</h3><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">230</span><br></pre></td></tr></table></figure>
+<hr>
+<h3 id="Sample-Input-3"><a href="#Sample-Input-3" class="headerlink" title="Sample Input 3"></a>Sample Input 3</h3><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">100</span><br></pre></td></tr></table></figure>
+<h3 id="Sample-Output-3"><a href="#Sample-Output-3" class="headerlink" title="Sample Output 3"></a>Sample Output 3</h3><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">388130742</span><br></pre></td></tr></table></figure>
+<p>Be sure to print the number of strings modulo 109+7.</p>
+<p>​    题目大意就是字符串只能由A、C、G、T组成，然后子串中不能出现AGC，还有任意两个相邻的字符交换后不能出现AGC。也就是说排除一下几种情况：</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">AGC</span><br><span class="line">ACG</span><br><span class="line">GAC</span><br><span class="line">AXGC	//X代表A C G T</span><br><span class="line">AGXC</span><br></pre></td></tr></table></figure>
+<p>​    所以我只需要定义<code>dp[i][j][p][q]</code>代表前i个字符，最后3个字符为j，p，q的方案数(0代表A，1代表C，2代表G，3代表T)。详细见代码</p>
+<p>代码：</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">#include &lt;stdio.h&gt;</span><br><span class="line">#define ll long long</span><br><span class="line">#define mod 1000000007</span><br><span class="line"></span><br><span class="line">ll dp[105][4][4][4] = &#123;0&#125;;</span><br><span class="line"></span><br><span class="line">bool pan(int a, int b, int c) &#123;</span><br><span class="line">    if (a == 0 &amp;&amp; b == 2 &amp;&amp; c == 1) return false;</span><br><span class="line">    if (a == 0 &amp;&amp; b == 1 &amp;&amp; c == 2) return false;</span><br><span class="line">    if (a == 2 &amp;&amp; b == 0 &amp;&amp; c == 1) return false;</span><br><span class="line">    return true;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">bool pan1(int a, int b, int c) &#123;</span><br><span class="line">    if (a == 0 &amp;&amp; b == 2 &amp;&amp; c == 1) return false;</span><br><span class="line">    return true;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">int main () &#123;</span><br><span class="line">    int n;</span><br><span class="line">    scanf(&quot;%d&quot;, &amp;n);</span><br><span class="line">    if (n == 1) &#123;</span><br><span class="line">        printf(&quot;4\n&quot;);</span><br><span class="line">    &#125; else if(n == 2) &#123;</span><br><span class="line">        printf(&quot;16\n&quot;);</span><br><span class="line">    &#125; else &#123;</span><br><span class="line">        for (int i = 0; i &lt; 4; i++) &#123;</span><br><span class="line">            for (int j = 0; j &lt; 4; j++) &#123;</span><br><span class="line">                for (int p = 0; p &lt; 4; p++) &#123;</span><br><span class="line">                    if (pan(i, j, p)) &#123;</span><br><span class="line">                        dp[3][i][j][p] = 1;</span><br><span class="line">                    &#125;</span><br><span class="line">                &#125;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">        for (int k = 4; k &lt;= n; k++) &#123;</span><br><span class="line">            for (int i = 0; i &lt; 4; i++) &#123;</span><br><span class="line">                for (int j = 0; j &lt; 4; j++) &#123;</span><br><span class="line">                    for (int p = 0; p &lt; 4; p++) &#123;</span><br><span class="line">                        //dp[k][i][j][p]</span><br><span class="line">                        if (pan(i, j, p)) &#123;</span><br><span class="line">                            for (int q = 0; q &lt; 4; q++) &#123;</span><br><span class="line">                                if (pan(q, i, j) &amp;&amp; pan1(q, j, p) &amp;&amp; pan1(q, i, p)) &#123;</span><br><span class="line">                                    dp[k][i][j][p] = (dp[k][i][j][p] + dp[k - 1][q][i][j]) % mod;</span><br><span class="line">                                &#125; </span><br><span class="line">                            &#125;</span><br><span class="line">                        &#125;</span><br><span class="line">                    &#125;</span><br><span class="line">                &#125;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">        ll ans = 0;</span><br><span class="line">        for (int i = 0; i &lt; 4; i++) &#123;</span><br><span class="line">            for (int j = 0; j &lt; 4; j++) &#123;</span><br><span class="line">                for (int p = 0; p &lt; 4; p++) &#123;</span><br><span class="line">                    ans = (ans + dp[n][i][j][p]) % mod;</span><br><span class="line">                &#125;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        printf(&quot;%lld\n&quot;, ans);</span><br><span class="line">    &#125;</span><br><span class="line">    return 0;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 
                 </div>
             </article>
@@ -271,13 +286,9 @@
         <div class="container" >
             <ul class="pager">
                 
-                <li class="previous">
-                    <a href="/2019/04/04/AtCoder-Contest-122-D-We-Like-AGC/" rel="prev">下一篇</a>
-                </li>
-                
                 
                 <li class="next">
-                    <a href="/2019/03/25/沉下心学操作系统-8-进程间通信之消息队列/" rel="prev">上一篇</a>
+                    <a href="/2019/03/27/沉下心学操作系统-9-epoll函数/" rel="prev">上一篇</a>
                 </li>
                 
             </ul>
