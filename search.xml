@@ -1,6 +1,24 @@
 <?xml version="1.0" encoding="utf-8"?>
 <search>
   <entry>
+    <title><![CDATA[Leetcode 234]]></title>
+    <url>%2F2019%2F04%2F12%2FLeetcode-234%2F</url>
+    <content type="text"><![CDATA[/************************************************************************* &gt; File Name: Leetcode_234.cpp &gt; Author: Zcy &gt; Mail: 296763002@qq.com &gt; Created Time: 五 4/12 16:25:26 2019 ************************************************************************///判断链表是否为回文链表//方法一：遍历链表将元素存到数组中，然后判断数组是否为回文数组//方法二：递归遍历链表，将元素存到队列中，然后在递归后判断队头是否和当前节点val相同//方法三：将后半段或者前半段链表反转，然后用两个指针同时遍历，若相同则为回文链表//方法二/** * Definition for singly-linked list. * struct ListNode &#123; * int val; * ListNode *next; * ListNode(int x) : val(x), next(NULL) &#123;&#125; * &#125;; */class Solution &#123;private: queue&lt;int&gt;que;public: bool isPalindrome(ListNode* head) &#123; if (head == NULL) return true; que.push(head -&gt; val); bool k = isPalindrome(head -&gt; next); if (que.front() != head -&gt; val) &#123; k = false; &#125; que.pop(); return k; &#125;&#125;;//方法三/** * Definition for singly-linked list. * struct ListNode &#123; * int val; * ListNode *next; * ListNode(int x) : val(x), next(NULL) &#123;&#125; * &#125;; */class Solution &#123;public: //获取链表长度 int getlen(ListNode *head) &#123; int num = 0; while(head) &#123; num ++; head = head -&gt; next; &#125; return num; &#125; //反转链表 void r(ListNode *k, ListNode *p) &#123; ListNode *last = NULL, *q; while(p) &#123; q = p -&gt; next; p -&gt; next = last; last = p; p = q; &#125; k -&gt; next = last; &#125; bool isPalindrome(ListNode* head) &#123; //获取链表长度并特判 int len = getlen(head); if (len == 0 || len == 1) return true; int step = (len + 1) / 2 - 1; ListNode *p = head; while(step --) &#123; p = p -&gt; next; &#125; //反转后半段链表 r(p, p -&gt; next); //两个指针分别遍历前半段和后半段 ListNode *q = head; p = p -&gt; next; for (int i = 1; i &lt;= len / 2; i++) &#123; if(p -&gt; val != q -&gt; val) return false; p = p -&gt; next; q = q -&gt; next; &#125; return true; &#125;&#125;;]]></content>
+      <tags>
+        <tag>数据结构</tag>
+        <tag>链表</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title><![CDATA[Leetcode 206]]></title>
+    <url>%2F2019%2F04%2F12%2FLeetcode-206%2F</url>
+    <content type="text"><![CDATA[/************************************************************************* &gt; File Name: Leetcode_206.cpp &gt; Author: Zcy &gt; Mail: 296763002@qq.com &gt; Created Time: 五 4/12 16:07:08 2019 ************************************************************************///反转链表//方法一 迭代法：设置一个虚拟指针指向当前节点的前一个节点，然后依此遍历链表的节点，让当前节点的next指向前一个节点//方法二//方法二 递归法：遇到当前节点或当前节点的next为空时，返回当前节点；否则递归下一个节点，递归后将当前节点的next-&gt;next设置为当前节点，然后当前节点的next设置为NULL//迭代法/** * Definition for singly-linked list. * struct ListNode &#123; * int val; * ListNode *next; * ListNode(int x) : val(x), next(NULL) &#123;&#125; * &#125;; */class Solution &#123;public: ListNode* reverseList(ListNode* head) &#123; ListNode temp(0); temp.next = NULL; ListNode *p = head; while(p) &#123; ListNode *q = p -&gt; next; p -&gt; next = temp.next; temp.next = p; p = q; &#125; return temp.next; &#125;&#125;;//递归法/** * Definition for singly-linked list. * struct ListNode &#123; * int val; * ListNode *next; * ListNode(int x) : val(x), next(NULL) &#123;&#125; * &#125;; */class Solution &#123;public: ListNode* reverseList(ListNode* head) &#123; if (head == NULL || head -&gt; next == NULL) &#123; return head; &#125; ListNode *root = reverseList(head -&gt; next); head -&gt; next -&gt; next = head; head -&gt; next = NULL; return root; &#125;&#125;;]]></content>
+      <tags>
+        <tag>数据结构</tag>
+        <tag>链表</tag>
+      </tags>
+  </entry>
+  <entry>
     <title><![CDATA[Leetcode 237]]></title>
     <url>%2F2019%2F04%2F12%2FLeetcode-237%2F</url>
     <content type="text"><![CDATA[/************************************************************************* &gt; File Name: Leetcode_237.cpp &gt; Author: Zcy &gt; Mail: 296763002@qq.com &gt; Created Time: 五 4/12 11:54:23 2019 ************************************************************************///只给定待删除节点，让你从链表中删除该节点，前提条件：该删除节点不是链表的最后一个节点//由于我们不知道待删除节点的前一个节点，因此我们可以把该节点的下一个节点的值赋值给待删除节点，然后让待删除节点的next指向下一个节点的下一个节点，这样我们删除待删除节点的下一个节点即可//代码实现/** * Definition for singly-linked list. * struct ListNode &#123; * int val; * ListNode *next; * ListNode(int x) : val(x), next(NULL) &#123;&#125; * &#125;; */class Solution &#123;public: void deleteNode(ListNode* node) &#123; ListNode *p = node -&gt; next; node -&gt; val = p -&gt; val; node -&gt; next = p -&gt; next; delete(p); &#125;&#125;;]]></content>
@@ -265,8 +283,8 @@
     <url>%2F2019%2F02%2F27%2F%E5%8D%87%E7%BA%A7%E7%89%88%E8%81%8A%E5%A4%A9%E5%AE%A4%2F</url>
     <content type="text"><![CDATA[主要是利用所学网络编程来实现聊天室功能，包括客户端和服务端两个部分。 代码以上传至github，可通过github或者个人主页查看 客户端客户端的内容如下： 使用配置文件配置自己的监听端口，服务器的监听端口等信息 用户之间可以通过”@用户名 信息”来实现私聊 客户端在一个固定端口上监听服务器转发的来自其他用户的私聊、公聊以及系统信息 客户端所接受到的所有信息保存日志文件中，可利用tail -f 文件名获取实时聊天信息 客户端解析来自服务端的结构体，内容如下： struct Message&#123; char from[20]; int flag;//若flag为1则为私聊信息，0为公聊信息，2则为服务器的通知信息 char message[1024]; &#125;; 服务端 服务端在固定接口接收来自所有客户端的消息 每收到一条公聊消息，都转发给所有在线用户 每收到私聊消息，只转发给目标用户 当私聊用户不存在或下线，通过通知信息告知该用户 在用户上线的时候，发送欢迎信息并告知所有在线用户该用户上线 在收到用户信息#时，发送给该用户当前在线人数以及所有用户信息 具体效果如下： 用户界面： 服务端界面： 用户的log日志显示：]]></content>
       <tags>
-        <tag>C语言</tag>
         <tag>网络编程</tag>
+        <tag>C语言</tag>
         <tag>多进程</tag>
       </tags>
   </entry>
@@ -358,8 +376,8 @@
     <url>%2F2019%2F02%2F23%2FC%E7%BD%91%E7%BB%9C%E7%BC%96%E7%A8%8B%E5%AE%9E%E7%8E%B0%E8%81%8A%E5%A4%A9%E5%AE%A4%2F</url>
     <content type="text"><![CDATA[主要是利用所学的C语言网络编程来实现聊天室功能，包括客户端和服务端两个部分，common用于封装网络编程的相关函数。 ​ 客户端接收两个参数，分别是IP地址和端口号 ​ 代码已上传至github：跳转 ​ 或者从个人博客项目上查看：跳转 效果如下： 用户1的输入： 用户2的输入： 聊天室（服务器）的显示：]]></content>
       <tags>
-        <tag>C语言</tag>
         <tag>网络编程</tag>
+        <tag>C语言</tag>
       </tags>
   </entry>
   <entry>
