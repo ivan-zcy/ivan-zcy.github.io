@@ -1,6 +1,15 @@
 <?xml version="1.0" encoding="utf-8"?>
 <search>
   <entry>
+    <title><![CDATA[Leetcode 19]]></title>
+    <url>%2F2019%2F04%2F12%2FLeetcode-19%2F</url>
+    <content type="text"><![CDATA[/************************************************************************* &gt; File Name: Leetcode_19.cpp &gt; Author: Zcy &gt; Mail: 296763002@qq.com &gt; Created Time: 五 4/12 09:19:32 2019 ************************************************************************///删除链表的倒数第N个节点//(1)为了避免删除第一个节点的特殊操作，我们可以设置一个虚拟头节点//方法一：我们可以第一次遍历得到链表的长度len，然后第二遍遍历找第len - N + 1个节点//方法二：我们可以使用递归的方式，参数为上一个节点的地址和当前节点，返回值为之后有多少个节点。若返回值 == N - 1，我们就删除该节点//方法三：利用两个指针，第一个指针走到N+1步，也就是走到N+2节点处，然后两个指针同时走，当第一个指针走到空后，第二个指针就是待删除节点的上一个位置，然后就可以删除下一个节点了//方法二代码：/* * Definition for singly-linked list. * struct ListNode &#123; * int val; * ListNode *next; * ListNode(int x) : val(x), next(NULL) &#123;&#125; * &#125;; */class Solution &#123;public: int dfs(ListNode *last, ListNode *now, int len) &#123; if (now == NULL) return 0; int k = dfs(now, now -&gt; next, len); if (k == len - 1) &#123; last -&gt; next = now -&gt; next; delete(now); &#125; return k + 1; &#125; ListNode* removeNthFromEnd(ListNode* head, int n) &#123; if (head == NULL || n &lt;= 0) return NULL; //虚拟头指针 ListNode temp(0); temp.next = head; //遍历 dfs(&amp;temp, temp.next, n); return temp.next; &#125;&#125;;//方法三代码：/** * Definition for singly-linked list. * struct ListNode &#123; * int val; * struct ListNode *next; * &#125;; */struct ListNode* removeNthFromEnd(struct ListNode* head, int n) &#123; //特判特殊情况 if (head == NULL || n &lt;= 0) return NULL; //设置虚拟指针 struct ListNode temp; temp.next = head; struct ListNode *p = &amp;temp, *q = &amp;temp; while(n &amp;&amp; p) &#123; p = p -&gt; next; n--; &#125; if (n != 0 || p == NULL) &#123; return temp.next; &#125; p = p -&gt; next; while(p) &#123; p = p -&gt; next; q = q -&gt; next; &#125; //删除节点 p = q -&gt; next; q -&gt; next = p -&gt; next; free(p); return temp.next;&#125;]]></content>
+      <tags>
+        <tag>链表</tag>
+        <tag>数据结构</tag>
+      </tags>
+  </entry>
+  <entry>
     <title><![CDATA[数据结构相关实现]]></title>
     <url>%2F2019%2F04%2F10%2F%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84%E7%9B%B8%E5%85%B3%E5%AE%9E%E7%8E%B0%2F</url>
     <content type="text"><![CDATA[​ 平时布置的数据结构作业代码实现，持续上传到Github中～ ​ Github地址：跳转 ​ 也可从博客中查看：跳转]]></content>
