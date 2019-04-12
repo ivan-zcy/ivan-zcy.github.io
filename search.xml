@@ -1,6 +1,15 @@
 <?xml version="1.0" encoding="utf-8"?>
 <search>
   <entry>
+    <title><![CDATA[Leetcode 237]]></title>
+    <url>%2F2019%2F04%2F12%2FLeetcode-237%2F</url>
+    <content type="text"><![CDATA[/************************************************************************* &gt; File Name: Leetcode_237.cpp &gt; Author: Zcy &gt; Mail: 296763002@qq.com &gt; Created Time: 五 4/12 11:54:23 2019 ************************************************************************///只给定待删除节点，让你从链表中删除该节点，前提条件：该删除节点不是链表的最后一个节点//由于我们不知道待删除节点的前一个节点，因此我们可以把该节点的下一个节点的值赋值给待删除节点，然后让待删除节点的next指向下一个节点的下一个节点，这样我们删除待删除节点的下一个节点即可//代码实现/** * Definition for singly-linked list. * struct ListNode &#123; * int val; * ListNode *next; * ListNode(int x) : val(x), next(NULL) &#123;&#125; * &#125;; */class Solution &#123;public: void deleteNode(ListNode* node) &#123; ListNode *p = node -&gt; next; node -&gt; val = p -&gt; val; node -&gt; next = p -&gt; next; delete(p); &#125;&#125;;]]></content>
+      <tags>
+        <tag>数据结构</tag>
+        <tag>链表</tag>
+      </tags>
+  </entry>
+  <entry>
     <title><![CDATA[LeetCode 202]]></title>
     <url>%2F2019%2F04%2F12%2FLeetCode-202%2F</url>
     <content type="text"><![CDATA[/************************************************************************* &gt; File Name: Leetcode_202.cpp &gt; Author: Zcy &gt; Mail: 296763002@qq.com &gt; Created Time: 五 4/12 11:36:36 2019 ************************************************************************///对于一个整数，每次将该数替换为它每个位置的数字的平方和，若最终能得到1，就为快乐数，让我们判断一个数是否为快乐数//对于int型正整数1～2e9左右，因此转变完一次后最大为730（由1999999999得到），因此这个题的最大范围为730。它具备链表的性质（即通过一个状态能唯一的确定下一个状态）//方法一：我们只要转变次数超过730还没有得到1，那么2～730中必定存在重复的数，也就代表着一定成环，因此不是快乐数//方法二：利用map映射，若某个数经历变换之后某个状态出现两次，则不是快乐数//方法三：就是将其当作链表，利用快慢指针原理判断其是否存在环//方法一class Solution &#123;public: int add(int n) &#123; int sum = 0; while(n) &#123; int k = n % 10; sum += k * k; n /= 10; &#125; return sum; &#125; bool isHappy(int n) &#123; int num = 0; while(n != 1) &#123; n = add(n); num++; if (num &gt; 730) return false; &#125; return true; &#125;&#125;;//方法二class Solution &#123;private: map&lt;int, int&gt;m;public: int add(int n) &#123; int sum = 0; while(n) &#123; int k = n % 10; sum += k * k; n /= 10; &#125; return sum; &#125; bool isHappy(int n) &#123; while(n != 1) &#123; m[n]++; if (m[n] &gt; 1) return false; n = add(n); &#125; return true; &#125;&#125;;//方法三class Solution &#123;private: map&lt;int, int&gt;m;public: int add(int n) &#123; int sum = 0; while(n) &#123; int k = n % 10; sum += k * k; n /= 10; &#125; return sum; &#125; bool isHappy(int n) &#123; int p = n; int q = n; do &#123; p = add(p); q = add(add(q)); &#125; while(p != q); return p == 1; &#125;&#125;;]]></content>
