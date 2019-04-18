@@ -3,7 +3,11 @@
   <entry>
     <title><![CDATA[Leetcode232栈实现队列]]></title>
     <url>%2F2019%2F04%2F18%2FLeetcode232%E6%A0%88%E5%AE%9E%E7%8E%B0%E9%98%9F%E5%88%97%2F</url>
-    <content type="text"></content>
+    <content type="text"><![CDATA[/************************************************************************* &gt; File Name: Leetcode232.cpp &gt; Author: Zcy &gt; Mail: 296763002@qq.com &gt; Created Time: 四 4/18 18:54:37 2019 ************************************************************************///栈实现队列//方法一：两个队列，一个队列用于存，另一个队列用于反转（删除头，返回头操作），之后再反转回去//方法二：把队列反转，需要用一个临时队列//方法一代码：class MyQueue &#123;private: stack&lt;int&gt; p, q;public: /** Initialize your data structure here. */ MyQueue() &#123; &#125; /** Push element x to the back of queue. */ void push(int x) &#123; p.push(x); &#125; /** Removes the element from in front of queue and returns that element. */ int pop() &#123; while(!p.empty()) &#123; q.push(p.top()); p.pop(); &#125; int k = q.top(); q.pop(); while(!q.empty()) &#123; p.push(q.top()); q.pop(); &#125; return k; &#125; /** Get the front element. */ int peek() &#123; while(!p.empty()) &#123; q.push(p.top()); p.pop(); &#125; int k = q.top(); while(!q.empty()) &#123; p.push(q.top()); q.pop(); &#125; return k; &#125; /** Returns whether the queue is empty. */ bool empty() &#123; return p.empty(); &#125;&#125;;//方法二：class MyQueue &#123;private: stack&lt;int&gt; p, q;public: /** Initialize your data structure here. */ MyQueue() &#123; &#125; /** Push element x to the back of queue. */ void push(int x) &#123; while(!p.empty()) &#123; q.push(p.top()); p.pop(); &#125; q.push(x); while(!q.empty()) &#123; p.push(q.top()); q.pop(); &#125; &#125; /** Removes the element from in front of queue and returns that element. */ int pop() &#123; int k = peek(); p.pop(); return k; &#125; /** Get the front element. */ int peek() &#123; return p.top(); &#125; /** Returns whether the queue is empty. */ bool empty() &#123; return p.empty(); &#125;&#125;;/** * Your MyQueue object will be instantiated and called as such: * MyQueue* obj = new MyQueue(); * obj-&gt;push(x); * int param_2 = obj-&gt;pop(); * int param_3 = obj-&gt;peek(); * bool param_4 = obj-&gt;empty(); */]]></content>
+      <tags>
+        <tag>数据结构</tag>
+        <tag>栈</tag>
+      </tags>
   </entry>
   <entry>
     <title><![CDATA[Leetcode225队列实现栈]]></title>
