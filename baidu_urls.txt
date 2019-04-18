@@ -1,3 +1,4 @@
+http://www.ivan-zcy.top/2019/04/18/Leetcode20括号匹配/
 http://www.ivan-zcy.top/2019/04/17/落谷P3379最近公共祖先/
 http://www.ivan-zcy.top/2019/04/12/Leetcode-234/
 http://www.ivan-zcy.top/2019/04/12/Leetcode-206/
@@ -97,4 +98,3 @@ http://www.ivan-zcy.top/2018/12/26/JavaWeb复习三/
 http://www.ivan-zcy.top/2018/12/25/JavaWeb复习二/
 http://www.ivan-zcy.top/2018/12/24/JavaWeb复习一/
 http://www.ivan-zcy.top/2018/12/22/vim复制代码到终端外/
-http://www.ivan-zcy.top/2018/12/19/Mac下mysql无法启动的解决办法/
