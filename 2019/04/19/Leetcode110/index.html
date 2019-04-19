@@ -214,7 +214,7 @@
       <span class="post-meta-item-icon">
         <i class="fa fa-keyboard-o"></i>
         <span class="post-meta-item-text">  字数统计: </span>
-        <span class="post-count">0字</span>
+        <span class="post-count">212字</span>
       </span>
     </span>
 
@@ -235,6 +235,8 @@
                 <div class="entry-content">
                     <p><img src="/2019/04/19/Leetcode110/title5.jpg" alt="title5"></p>
 <a id="more"></a>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">/*************************************************************************</span><br><span class="line">	&gt; File Name: Leetcode110.cpp</span><br><span class="line">	&gt; Author: Zcy</span><br><span class="line">	&gt; Mail: 296763002@qq.com</span><br><span class="line">	&gt; Created Time: 五  4/19 09:50:46 2019</span><br><span class="line"> ************************************************************************/</span><br><span class="line"></span><br><span class="line">//判断是否是平衡二叉树</span><br><span class="line">//方法一：对于每个节点的左右儿子进行dfs查找深度，然后再dfs左子树和右子树是否符合条件，三个同时满足返回真</span><br><span class="line">//方法二：引用传参代表深度，然后一次dfs判断是否为平衡二叉树即可</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"></span><br><span class="line">//方法二代码：</span><br><span class="line">/**</span><br><span class="line"> * Definition for a binary tree node.</span><br><span class="line"> * struct TreeNode &#123;</span><br><span class="line"> *     int val;</span><br><span class="line"> *     TreeNode *left;</span><br><span class="line"> *     TreeNode *right;</span><br><span class="line"> *     TreeNode(int x) : val(x), left(NULL), right(NULL) &#123;&#125;</span><br><span class="line"> * &#125;;</span><br><span class="line"> */</span><br><span class="line">class Solution &#123;</span><br><span class="line">public:</span><br><span class="line">    bool istrue(TreeNode* root, int &amp;h) &#123;</span><br><span class="line">        if (!root) &#123;</span><br><span class="line">            h = 1;</span><br><span class="line">            return true;</span><br><span class="line">        &#125;</span><br><span class="line">    </span><br><span class="line">        if(!istrue(root -&gt; left, h)) return false;</span><br><span class="line">        int h1 = h;</span><br><span class="line">        if(!istrue(root -&gt; right, h)) return false;</span><br><span class="line">        int h2 = h;</span><br><span class="line">        </span><br><span class="line">        h = max(h1, h2) + 1;</span><br><span class="line">        </span><br><span class="line">        if (abs(h1 - h2) &lt;= 1) return true;</span><br><span class="line">        </span><br><span class="line">        return false;</span><br><span class="line">    &#125;</span><br><span class="line">    </span><br><span class="line">    bool isBalanced(TreeNode* root) &#123;</span><br><span class="line">        int h = 0;</span><br><span class="line">        return istrue(root, h);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
+
                 </div>
             </article>
         </div>
