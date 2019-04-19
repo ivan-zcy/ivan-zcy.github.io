@@ -1,3 +1,12 @@
+http://www.ivan-zcy.top/2019/04/19/Leetcode114/
+http://www.ivan-zcy.top/2019/04/19/Leetcode111/
+http://www.ivan-zcy.top/2019/04/19/Leetcode113/
+http://www.ivan-zcy.top/2019/04/19/Leetcode110/
+http://www.ivan-zcy.top/2019/04/19/Leetcode107/
+http://www.ivan-zcy.top/2019/04/19/Leetcode105/
+http://www.ivan-zcy.top/2019/04/19/Leetcode102/
+http://www.ivan-zcy.top/2019/04/19/Leetcode101/
+http://www.ivan-zcy.top/2019/04/19/Leetcode100/
 http://www.ivan-zcy.top/2019/04/18/Leetcode232栈实现队列/
 http://www.ivan-zcy.top/2019/04/18/Leetcode225队列实现栈/
 http://www.ivan-zcy.top/2019/04/18/Leetcode20括号匹配/
@@ -89,12 +98,3 @@ http://www.ivan-zcy.top/2019/01/01/Euler93/
 http://www.ivan-zcy.top/2019/01/01/Euler72/
 http://www.ivan-zcy.top/2019/01/01/Euler61/
 http://www.ivan-zcy.top/2019/01/01/洛谷2719搞笑世界杯/
-http://www.ivan-zcy.top/2019/01/01/洛谷1140相似基因/
-http://www.ivan-zcy.top/2018/12/31/洛谷1436棋盘分割/
-http://www.ivan-zcy.top/2018/12/31/洛谷1481魔族密码/
-http://www.ivan-zcy.top/2018/12/31/洛谷1507NASA的食物计划/
-http://www.ivan-zcy.top/2018/12/31/洛谷1137旅行计划/
-http://www.ivan-zcy.top/2018/12/31/洛谷1108低价购买/
-http://www.ivan-zcy.top/2018/12/29/CodeForces1096DEasy-Problem/
-http://www.ivan-zcy.top/2018/12/26/JavaWeb复习三/
-http://www.ivan-zcy.top/2018/12/25/JavaWeb复习二/
