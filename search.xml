@@ -1,6 +1,29 @@
 <?xml version="1.0" encoding="utf-8"?>
 <search>
   <entry>
+    <title><![CDATA[Leetcode236]]></title>
+    <url>%2F2019%2F04%2F19%2FLeetcode236%2F</url>
+    <content type="text"></content>
+  </entry>
+  <entry>
+    <title><![CDATA[Leetcode235]]></title>
+    <url>%2F2019%2F04%2F19%2FLeetcode235%2F</url>
+    <content type="text"><![CDATA[/************************************************************************* &gt; File Name: Leetcode235.cpp &gt; Author: Zcy &gt; Mail: 296763002@qq.com &gt; Created Time: 五 4/19 17:41:59 2019 ************************************************************************///二叉搜索树的最近公共祖先//方法一：递归从上往下，若都小于该节点递归左节点，若都大于递归右节点，否则直接返回//方法二：非递归//方法一：/** * Definition for a binary tree node. * struct TreeNode &#123; * int val; * TreeNode *left; * TreeNode *right; * TreeNode(int x) : val(x), left(NULL), right(NULL) &#123;&#125; * &#125;; */class Solution &#123;public: TreeNode* lowestCommonAncestor(TreeNode* root, TreeNode* p, TreeNode* q) &#123; if (!root || !p || !q) &#123; return NULL; &#125; if (root -&gt; val &lt; p -&gt; val &amp;&amp; root -&gt; val &lt; q -&gt; val) &#123; return lowestCommonAncestor(root -&gt; right, p, q); &#125; else if(root -&gt; val &gt; p -&gt; val &amp;&amp; root -&gt; val &gt; q -&gt; val) &#123; return lowestCommonAncestor(root -&gt; left, p, q); &#125; return root; &#125;&#125;;//方法二：/** * Definition for a binary tree node. * struct TreeNode &#123; * int val; * TreeNode *left; * TreeNode *right; * TreeNode(int x) : val(x), left(NULL), right(NULL) &#123;&#125; * &#125;; */class Solution &#123;private: queue&lt;TreeNode*&gt;que;public: TreeNode* lowestCommonAncestor(TreeNode* root, TreeNode* p, TreeNode* q) &#123; if (!root || !p || !q) &#123; return NULL; &#125; que.push(root); while(!que.empty()) &#123; TreeNode *temp = que.front(); que.pop(); if (temp -&gt; val &lt; p -&gt; val &amp;&amp; temp -&gt; val &lt; q -&gt; val) &#123; if (temp -&gt; right) &#123; que.push(temp -&gt; right); &#125; &#125; else if (temp -&gt; val &gt; p -&gt; val &amp;&amp; temp -&gt; val &gt; q -&gt; val) &#123; if (temp -&gt; left) &#123; que.push(temp -&gt; left); &#125; &#125; else &#123; return temp; &#125; &#125; return NULL; &#125;&#125;;]]></content>
+      <tags>
+        <tag>数据结构</tag>
+        <tag>二叉树</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title><![CDATA[Leetcode226]]></title>
+    <url>%2F2019%2F04%2F19%2FLeetcode226%2F</url>
+    <content type="text"><![CDATA[/************************************************************************* &gt; File Name: Leetcode226.cpp &gt; Author: Zcy &gt; Mail: 296763002@qq.com &gt; Created Time: 五 4/19 15:52:44 2019 ************************************************************************///翻转二叉树//方法一：递归从上往下递归替换//方法二：非递归//方法一：/** * Definition for a binary tree node. * struct TreeNode &#123; * int val; * TreeNode *left; * TreeNode *right; * TreeNode(int x) : val(x), left(NULL), right(NULL) &#123;&#125; * &#125;; */class Solution &#123;public: TreeNode* invertTree(TreeNode* root) &#123; if (!root) return NULL; TreeNode *temp = root -&gt; left; root -&gt; left = invertTree(root -&gt; right); root -&gt; right = invertTree(temp); return root; &#125;&#125;;//方法二：/** * Definition for a binary tree node. * struct TreeNode &#123; * int val; * TreeNode *left; * TreeNode *right; * TreeNode(int x) : val(x), left(NULL), right(NULL) &#123;&#125; * &#125;; */class Solution &#123;private: queue&lt;TreeNode *&gt;que;public: TreeNode* invertTree(TreeNode* root) &#123; if (!root) return NULL; que.push(root); while(!que.empty()) &#123; TreeNode *temp = que.front(); que.pop(); TreeNode *p = temp -&gt; left; temp -&gt; left = temp -&gt; right; temp -&gt; right = p; if (temp -&gt; left) que.push(temp -&gt; left); if (temp -&gt; right) que.push(temp -&gt; right); &#125; return root; &#125;&#125;;]]></content>
+      <tags>
+        <tag>数据结构</tag>
+        <tag>二叉树</tag>
+      </tags>
+  </entry>
+  <entry>
     <title><![CDATA[Leetcode114]]></title>
     <url>%2F2019%2F04%2F19%2FLeetcode114%2F</url>
     <content type="text"><![CDATA[/************************************************************************* &gt; File Name: Leetcode114.cpp &gt; Author: Zcy &gt; Mail: 296763002@qq.com &gt; Created Time: 五 4/19 11:28:59 2019 ************************************************************************///将二叉树转变为单向链表（前序规则）//方法一：递归，利用一个vec进行存进行前序遍历，然后设置//方法二：非递归//方法一：/** * Definition for a binary tree node. * struct TreeNode &#123; * int val; * TreeNode *left; * TreeNode *right; * TreeNode(int x) : val(x), left(NULL), right(NULL) &#123;&#125; * &#125;; */class Solution &#123;private: vector&lt;TreeNode *&gt;vec;public: void dfs(TreeNode *root) &#123; vec.push_back(root); if (root -&gt; left) dfs(root -&gt; left); if (root -&gt; right) dfs(root -&gt; right); &#125; void flatten(TreeNode* root) &#123; if (!root) return; dfs(root); for (int i = 0; i &lt; vec.size() - 1; i++) &#123; vec[i] -&gt; right = vec[i + 1]; vec[i] -&gt; left = NULL; &#125; vec[vec.size() - 1] -&gt; left = NULL; vec[vec.size() - 1] -&gt; right = NULL; return; &#125;&#125;;//方法二：/** * Definition for a binary tree node. * struct TreeNode &#123; * int val; * TreeNode *left; * TreeNode *right; * TreeNode(int x) : val(x), left(NULL), right(NULL) &#123;&#125; * &#125;; */class Solution &#123;private: stack&lt;TreeNode *&gt;sta; vector&lt;TreeNode *&gt;vec;public: void flatten(TreeNode* root) &#123; if (!root) return; TreeNode *p = root; TreeNode *temp = new TreeNode(0); while(!sta.empty() || p) &#123; while(p) &#123; vec.push_back(p); sta.push(p); p = p -&gt; left; &#125; if(!sta.empty()) &#123; p = sta.top(); sta.pop(); p = p -&gt; right; &#125; &#125; for (int i = 0; i &lt; vec.size() - 1; i++) &#123; vec[i] -&gt; left = NULL; vec[i] -&gt; right = vec[i + 1]; &#125; vec[vec.size() - 1] -&gt; left = NULL; return ; &#125;&#125;;]]></content>
@@ -400,8 +423,8 @@
     <url>%2F2019%2F02%2F27%2F%E5%8D%87%E7%BA%A7%E7%89%88%E8%81%8A%E5%A4%A9%E5%AE%A4%2F</url>
     <content type="text"><![CDATA[主要是利用所学网络编程来实现聊天室功能，包括客户端和服务端两个部分。 代码以上传至github，可通过github或者个人主页查看 客户端客户端的内容如下： 使用配置文件配置自己的监听端口，服务器的监听端口等信息 用户之间可以通过”@用户名 信息”来实现私聊 客户端在一个固定端口上监听服务器转发的来自其他用户的私聊、公聊以及系统信息 客户端所接受到的所有信息保存日志文件中，可利用tail -f 文件名获取实时聊天信息 客户端解析来自服务端的结构体，内容如下： struct Message&#123; char from[20]; int flag;//若flag为1则为私聊信息，0为公聊信息，2则为服务器的通知信息 char message[1024]; &#125;; 服务端 服务端在固定接口接收来自所有客户端的消息 每收到一条公聊消息，都转发给所有在线用户 每收到私聊消息，只转发给目标用户 当私聊用户不存在或下线，通过通知信息告知该用户 在用户上线的时候，发送欢迎信息并告知所有在线用户该用户上线 在收到用户信息#时，发送给该用户当前在线人数以及所有用户信息 具体效果如下： 用户界面： 服务端界面： 用户的log日志显示：]]></content>
       <tags>
-        <tag>C语言</tag>
         <tag>网络编程</tag>
+        <tag>C语言</tag>
         <tag>多进程</tag>
       </tags>
   </entry>
@@ -493,8 +516,8 @@
     <url>%2F2019%2F02%2F23%2FC%E7%BD%91%E7%BB%9C%E7%BC%96%E7%A8%8B%E5%AE%9E%E7%8E%B0%E8%81%8A%E5%A4%A9%E5%AE%A4%2F</url>
     <content type="text"><![CDATA[主要是利用所学的C语言网络编程来实现聊天室功能，包括客户端和服务端两个部分，common用于封装网络编程的相关函数。 ​ 客户端接收两个参数，分别是IP地址和端口号 ​ 代码已上传至github：跳转 ​ 或者从个人博客项目上查看：跳转 效果如下： 用户1的输入： 用户2的输入： 聊天室（服务器）的显示：]]></content>
       <tags>
-        <tag>C语言</tag>
         <tag>网络编程</tag>
+        <tag>C语言</tag>
       </tags>
   </entry>
   <entry>

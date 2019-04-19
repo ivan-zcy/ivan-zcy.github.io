@@ -1,3 +1,6 @@
+http://www.ivan-zcy.top/2019/04/19/Leetcode236/
+http://www.ivan-zcy.top/2019/04/19/Leetcode235/
+http://www.ivan-zcy.top/2019/04/19/Leetcode226/
 http://www.ivan-zcy.top/2019/04/19/Leetcode114/
 http://www.ivan-zcy.top/2019/04/19/Leetcode111/
 http://www.ivan-zcy.top/2019/04/19/Leetcode113/
@@ -95,6 +98,3 @@ http://www.ivan-zcy.top/2019/01/01/探究rand-随机数/
 http://www.ivan-zcy.top/2019/01/01/Euler56/
 http://www.ivan-zcy.top/2019/01/01/Euler53/
 http://www.ivan-zcy.top/2019/01/01/Euler93/
-http://www.ivan-zcy.top/2019/01/01/Euler72/
-http://www.ivan-zcy.top/2019/01/01/Euler61/
-http://www.ivan-zcy.top/2019/01/01/洛谷2719搞笑世界杯/
