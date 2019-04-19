@@ -214,7 +214,7 @@
       <span class="post-meta-item-icon">
         <i class="fa fa-keyboard-o"></i>
         <span class="post-meta-item-text">  字数统计: </span>
-        <span class="post-count">0字</span>
+        <span class="post-count">164字</span>
       </span>
     </span>
 
@@ -233,7 +233,10 @@
                 </p>
                 <!-- Post Main Content -->
                 <div class="entry-content">
-                    
+                    <p><img src="/2019/04/19/Leetcode236/title1.jpg" alt="title1"></p>
+<a id="more"></a>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">/*************************************************************************</span><br><span class="line">	&gt; File Name: Leetcode236.cpp</span><br><span class="line">	&gt; Author: Zcy</span><br><span class="line">	&gt; Mail: 296763002@qq.com</span><br><span class="line">	&gt; Created Time: 五  4/19 18:50:12 2019</span><br><span class="line"> ************************************************************************/</span><br><span class="line"></span><br><span class="line">//二叉树求公共最近祖先</span><br><span class="line">//方法一：递归（最近祖先有一个特点，要么是左右点各有一个节点，要么是祖先是其中一个节点）</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">//方法一：</span><br><span class="line">/**</span><br><span class="line"> * Definition for a binary tree node.</span><br><span class="line"> * struct TreeNode &#123;</span><br><span class="line"> *     int val;</span><br><span class="line"> *     TreeNode *left;</span><br><span class="line"> *     TreeNode *right;</span><br><span class="line"> *     TreeNode(int x) : val(x), left(NULL), right(NULL) &#123;&#125;</span><br><span class="line"> * &#125;;</span><br><span class="line"> */</span><br><span class="line">class Solution &#123;</span><br><span class="line">public:</span><br><span class="line">    TreeNode* lowestCommonAncestor(TreeNode* root, TreeNode* p, TreeNode* q) &#123;</span><br><span class="line">        if (!root || !p || !q) return NULL;</span><br><span class="line">        </span><br><span class="line">        if (root == p || root == q) &#123;</span><br><span class="line">            return root;</span><br><span class="line">        &#125;</span><br><span class="line">        </span><br><span class="line">        TreeNode *temp1 = lowestCommonAncestor(root -&gt; left, p, q);</span><br><span class="line">        TreeNode *temp2 = lowestCommonAncestor(root -&gt; right, p, q);</span><br><span class="line">        </span><br><span class="line">        if (temp1 &amp;&amp; temp2) return root;</span><br><span class="line">        if (temp1) return temp1;</span><br><span class="line">        if (temp2) return temp2;</span><br><span class="line">        </span><br><span class="line">        return NULL;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
+
                 </div>
             </article>
         </div>
