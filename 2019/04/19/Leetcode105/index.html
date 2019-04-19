@@ -214,7 +214,7 @@
       <span class="post-meta-item-icon">
         <i class="fa fa-keyboard-o"></i>
         <span class="post-meta-item-text">  字数统计: </span>
-        <span class="post-count">0字</span>
+        <span class="post-count">241字</span>
       </span>
     </span>
 
@@ -235,6 +235,8 @@
                 <div class="entry-content">
                     <p><img src="/2019/04/19/Leetcode105/title3.jpg" alt="title3"></p>
 <a id="more"></a>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">/*************************************************************************</span><br><span class="line">	&gt; File Name: Leetcode105.cpp</span><br><span class="line">	&gt; Author: Zcy</span><br><span class="line">	&gt; Mail: 296763002@qq.com</span><br><span class="line">	&gt; Created Time: 五  4/19 08:55:40 2019</span><br><span class="line"> ************************************************************************/</span><br><span class="line"></span><br><span class="line">//根据前序、中序构造二叉树</span><br><span class="line">//递归方式，参数传6个（前序、中序数组，前序开始结尾下标，中序开始结尾下标），当开始&gt;结束为终止条件</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">//方法一：</span><br><span class="line">/**</span><br><span class="line"> * Definition for a binary tree node.</span><br><span class="line"> * struct TreeNode &#123;</span><br><span class="line"> *     int val;</span><br><span class="line"> *     TreeNode *left;</span><br><span class="line"> *     TreeNode *right;</span><br><span class="line"> *     TreeNode(int x) : val(x), left(NULL), right(NULL) &#123;&#125;</span><br><span class="line"> * &#125;;</span><br><span class="line"> */</span><br><span class="line">class Solution &#123;</span><br><span class="line">public:</span><br><span class="line">    TreeNode* buildTree(vector&lt;int&gt;&amp; preorder, vector&lt;int&gt;&amp; inorder) &#123;</span><br><span class="line">        return dfs(preorder, 0, preorder.size() - 1, inorder, 0, inorder.size() - 1);</span><br><span class="line">    &#125;</span><br><span class="line">    </span><br><span class="line">    TreeNode* dfs(vector&lt;int&gt;&amp; p, int ps, int pe, vector&lt;int&gt;&amp; q, int qs, int qe) &#123;</span><br><span class="line">        if (ps &gt; pe || qs &gt; qe) return NULL;</span><br><span class="line">        </span><br><span class="line">        TreeNode *temp = new TreeNode(p[ps]);</span><br><span class="line">        int inx = qs;</span><br><span class="line">        </span><br><span class="line">        for (int i = qs; i &lt;= qe; i++) &#123;</span><br><span class="line">            if (q[i] == p[ps]) &#123;</span><br><span class="line">                inx = i;</span><br><span class="line">                break;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        </span><br><span class="line">        //左个数：inx - qs, 右个数：qe - inx</span><br><span class="line">        temp -&gt; left = dfs(p, ps + 1, ps + inx - qs, q, qs, inx - 1);</span><br><span class="line">        temp -&gt; right = dfs(p, ps + inx - qs + 1, pe, q, inx + 1, qe);</span><br><span class="line">            </span><br><span class="line">        return temp;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
+
                 </div>
             </article>
         </div>
