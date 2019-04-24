@@ -1,6 +1,24 @@
 <?xml version="1.0" encoding="utf-8"?>
 <search>
   <entry>
+    <title><![CDATA[Leetcode84]]></title>
+    <url>%2F2019%2F04%2F24%2FLeetcode84%2F</url>
+    <content type="text"><![CDATA[/************************************************************************* &gt; File Name: Leetcode84.cpp &gt; Author: Zcy &gt; Mail: 296763002@qq.com &gt; Created Time: 二 4/23 19:51:20 2019 ************************************************************************///求n个连续柱子组成的最大矩形面积//方法：单调栈来维护//方法一：class Solution &#123;private: stack&lt;int&gt;sta;public: int largestRectangleArea(vector&lt;int&gt;&amp; heights) &#123; int len = heights.size(); int maxx = 0; for (int i = 0; i &lt; len; i++) &#123; if (sta.empty() || heights[sta.top()] &lt;= heights[i]) &#123; sta.push(i); &#125; else &#123; while(!sta.empty() &amp;&amp; heights[sta.top()] &gt; heights[i]) &#123; int inx = sta.top(); sta.pop(); int s = -1, e = i; if (!sta.empty()) &#123; s = sta.top(); &#125; maxx = max(maxx, (e - s - 1) * heights[inx]); &#125; sta.push(i); &#125; &#125; int e; if (!sta.empty()) &#123; e = sta.top(); &#125; while(!sta.empty()) &#123; int s = -1, inx = sta.top(); sta.pop(); if (!sta.empty()) &#123; s = sta.top(); &#125; maxx = max(maxx, (e - s) * heights[inx]); &#125; return maxx; &#125;&#125;;//方法二：int largestRectangleArea(int* heights, int heightsSize) &#123; int *stack = (int *)malloc(sizeof(int) * heightsSize); int *left = (int *)malloc(sizeof(int) * heightsSize); int *right = (int *)malloc(sizeof(int) * heightsSize); //找以该节点往左扩的长度 int top = -1; for (int i = 0; i &lt; heightsSize; i++) &#123; while (top != -1 &amp;&amp; heights[stack[top]] &gt;= heights[i]) --top; left[i] = (top == -1 ? i + 1 : i - stack[top]); stack[++top] = i; &#125; //找以该节点往右扩的长度 top = -1; for (int i = heightsSize - 1; i &gt;= 0; i--) &#123; while (top != -1 &amp;&amp; heights[stack[top]] &gt;= heights[i]) --top; right[i] = (top == -1 ? heightsSize - i : stack[top] - i); stack[++top] = i; &#125; //维护最大范围 int ans = 0; for (int i = 0; i &lt; heightsSize; i++) &#123; ans = fmax(ans, (left[i] + right[i] - 1) * heights[i]); &#125; free(stack); free(left); free(right); return ans;&#125;]]></content>
+      <tags>
+        <tag>数据结构</tag>
+        <tag>栈和队列</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title><![CDATA[Leetcode42]]></title>
+    <url>%2F2019%2F04%2F24%2FLeetcode42%2F</url>
+    <content type="text"><![CDATA[/************************************************************************* &gt; File Name: Leetcode42.cpp &gt; Author: Zcy &gt; Mail: 296763002@qq.com &gt; Created Time: 二 4/23 19:45:30 2019 ************************************************************************///给出n个宽度为1的柱子的高度，问最多存多少水//方法：利用单调栈来维护（只有保持V型才能存水，因此递减就添加到栈，递增就维护和//因此我们需要维护一个单调递减栈，在出栈的时候维护和）class Solution &#123;private: stack &lt;int&gt; sta;public: int trap(vector&lt;int&gt;&amp; height) &#123; int sum = 0; for (int i = 0; i &lt; height.size(); i++) &#123; //单调递减就增加 if (sta.empty() || height[sta.top()] &gt; height[i]) &#123; sta.push(i); &#125; else &#123; //出现递增就维护 while(!sta.empty() &amp;&amp; height[sta.top()] &lt;= height[i]) &#123; int inx = sta.top(); sta.pop(); //避免sta.top()访问错误 if (sta.empty()) break; int x = min(height[sta.top()] - height[inx], height[i] - height[inx]); int y = i - sta.top() - 1; sum += x * y; &#125; sta.push(i); &#125; &#125; return sum; &#125;&#125;;]]></content>
+      <tags>
+        <tag>结构数据</tag>
+        <tag>栈和队列</tag>
+      </tags>
+  </entry>
+  <entry>
     <title><![CDATA[Leetcode236]]></title>
     <url>%2F2019%2F04%2F19%2FLeetcode236%2F</url>
     <content type="text"><![CDATA[/************************************************************************* &gt; File Name: Leetcode236.cpp &gt; Author: Zcy &gt; Mail: 296763002@qq.com &gt; Created Time: 五 4/19 18:50:12 2019 ************************************************************************///二叉树求公共最近祖先//方法一：递归（最近祖先有一个特点，要么是左右点各有一个节点，要么是祖先是其中一个节点）//方法一：/** * Definition for a binary tree node. * struct TreeNode &#123; * int val; * TreeNode *left; * TreeNode *right; * TreeNode(int x) : val(x), left(NULL), right(NULL) &#123;&#125; * &#125;; */class Solution &#123;public: TreeNode* lowestCommonAncestor(TreeNode* root, TreeNode* p, TreeNode* q) &#123; if (!root || !p || !q) return NULL; if (root == p || root == q) &#123; return root; &#125; TreeNode *temp1 = lowestCommonAncestor(root -&gt; left, p, q); TreeNode *temp2 = lowestCommonAncestor(root -&gt; right, p, q); if (temp1 &amp;&amp; temp2) return root; if (temp1) return temp1; if (temp2) return temp2; return NULL; &#125;&#125;;]]></content>

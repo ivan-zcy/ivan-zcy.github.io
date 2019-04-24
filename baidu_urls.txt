@@ -1,3 +1,5 @@
+http://www.ivan-zcy.top/2019/04/24/Leetcode84/
+http://www.ivan-zcy.top/2019/04/24/Leetcode42/
 http://www.ivan-zcy.top/2019/04/19/Leetcode236/
 http://www.ivan-zcy.top/2019/04/19/Leetcode235/
 http://www.ivan-zcy.top/2019/04/19/Leetcode226/
@@ -96,5 +98,3 @@ http://www.ivan-zcy.top/2019/01/10/软件体系结构复习/
 http://www.ivan-zcy.top/2019/01/10/软件质量与保证复习/
 http://www.ivan-zcy.top/2019/01/01/探究rand-随机数/
 http://www.ivan-zcy.top/2019/01/01/Euler56/
-http://www.ivan-zcy.top/2019/01/01/Euler53/
-http://www.ivan-zcy.top/2019/01/01/Euler93/
