@@ -214,7 +214,7 @@
       <span class="post-meta-item-icon">
         <i class="fa fa-keyboard-o"></i>
         <span class="post-meta-item-text">  字数统计: </span>
-        <span class="post-count">374字</span>
+        <span class="post-count">389字</span>
       </span>
     </span>
 
@@ -239,7 +239,7 @@
 <p>​    第一个问题，给一个链表，问把其中的偶数逆序一下，要求O(1)空间复杂度。挂了电话想到一个方法，利用两个头指针把奇数的正序连接，偶数的逆序连接，再奇数-&gt;next偶数，发现不满足题意。暂时没想到除了数组更好的办法</p>
 <figure class="highlight plain"><table><tr><td class="code"><pre><span class="line"></span><br><span class="line"></span><br></pre></td></tr></table></figure>
 <p>​    第二个问题，给出一个字符串a，一个字符串b，问能否得到字符串c（不能改变a，b内部的顺序）</p>
-<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">int dp[1005][1005] = &#123;0&#125;;</span><br><span class="line">//假设字符串都是从1开始</span><br><span class="line">//dp[i][j]代表字符串c的前i个字符串，其中由j个字符串a组成，i - j 个字符串b组成。</span><br><span class="line">dp[0][0] = 1;	//初始化前0个字符可以由0个字符串a，0个字符串b组成</span><br><span class="line"></span><br><span class="line">for (int i = 1; i &lt;= str3.size(); i++)  &#123;</span><br><span class="line">	for (int j = 0; j &lt;= i; j++) &#123;</span><br><span class="line">		if (str3[i] == str1[j] &amp;&amp; dp[i - 1][j - 1]) &#123;</span><br><span class="line">			dp[i][j] = 1;</span><br><span class="line">		&#125; else if (str3[i] == str2[i - j] &amp;&amp; dp[i - 1][j]) &#123;</span><br><span class="line">			dp[i][j] = 1;</span><br><span class="line">		&#125; else &#123;</span><br><span class="line">			dp[i][j] = 0;</span><br><span class="line">		&#125;</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">int dp[1005][1005] = &#123;0&#125;;</span><br><span class="line">//假设字符串都是从1开始,str1的长度为n，str2的长度为m</span><br><span class="line">//dp[i][j]代表字符串c的前i个字符串，其中由j个字符串a组成，i - j 个字符串b组成。</span><br><span class="line">dp[0][0] = 1;	//初始化前0个字符可以由0个字符串a，0个字符串b组成</span><br><span class="line"></span><br><span class="line">for (int i = 1; i &lt;= str3.size(); i++)  &#123;</span><br><span class="line">	for (int j = 0; j &lt;= i &amp;&amp; j &lt;= n; j++) &#123;</span><br><span class="line">		if (str3[i] == str1[j] &amp;&amp; dp[i - 1][j - 1]) &#123;</span><br><span class="line">			dp[i][j] = 1;</span><br><span class="line">		&#125; else if (str3[i] == str2[i - j] &amp;&amp; dp[i - 1][j]) &#123;</span><br><span class="line">			dp[i][j] = 1;</span><br><span class="line">		&#125; else &#123;</span><br><span class="line">			dp[i][j] = 0;</span><br><span class="line">		&#125;</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 <p>​    这道题动态规划入门题。。。挂了电话就立刻想到了。。。冷静冷静，感觉自己应该5.1期间出去旅游走走放松放松。。自己面试心态太炸了，冷静，冷静，冷静！！！！</p>
 
                 </div>
