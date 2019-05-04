@@ -1,6 +1,14 @@
 <?xml version="1.0" encoding="utf-8"?>
 <search>
   <entry>
+    <title><![CDATA[Docker简单使用]]></title>
+    <url>%2F2019%2F05%2F04%2FDocker%E7%AE%80%E5%8D%95%E4%BD%BF%E7%94%A8%2F</url>
+    <content type="text"><![CDATA[什么是docker？​ Docker是一个开源引擎，可以为应用创建一个轻量级的容器。我们在电脑上编译测试通过的容器可以批量在生产环境中部署。 什么是docker容器？​ docker容器可以理解为在沙盒中运行的进程，沙盒包含了该进程运行所必须的资源。包括文件系统、系统类库、shell环境等等。沙盒默认不运行任何程序，我们需要在沙盒中运行一个进程来启动某个容器。这个进程是该容器的唯一进程，当进程结束，容器也会完全停止 docker的用途 web应用的自动化打包和发布； 自动化测试和持续集成、发布； 在服务型环境中部署和调整数据库或其他的后台应用； docker的结构​ Docker系统有两个程序：docker服务端和docker客户端。 ​ docker服务端是一个服务进程，管理所有容器。 ​ docker客户端则扮演着docker服务端的远程控制器，可以用来控制docker的服务端进程。 ​ 大部分情况下，docker服务端和客户端运行在一台机器上。 docker的使用Step1:查找想使用的镜像​ 使用命令$docker search 镜像名查找想使用的镜像 Step2:下载镜像​ 使用命令$docker pull 用户名/镜像名。注意：大部分的镜像都是按照用户名/镜像名来存储的，还有一些ubuntu等基础镜像，可以直接用镜像名来检索到。 Step3:在镜像中运行命令​ 使用命令$docker run 用户名/镜像名 命令来运行，比如安装ping： $docker run learn/tutorial apt-get install -y ping Step4: 保存对容器的修改​ 我们可以先利用$docker ps -l命令获取安装完程序后容器的id。 ​ 利用$docker commit 容器id 保存路径，命令返回新版本镜像的id号 Step5：运行新镜像​ 利用$docker run 保存的路径 命令来运行 查看运行中的镜像​ 利用$docker ps查看所有正在运行中的容器列表，利用docker inspect 容器id查看某个容器更详细的信息 发布自己的映像​ 用docker images命令列出所有安装过的镜像 ​ 用docker push命令可以将一个镜像发布到官网（当然只是发布到自己的空间下面）]]></content>
+      <tags>
+        <tag>Docker</tag>
+      </tags>
+  </entry>
+  <entry>
     <title><![CDATA[面试题反思]]></title>
     <url>%2F2019%2F04%2F28%2F%E9%9D%A2%E8%AF%95%E9%A2%98%E5%8F%8D%E6%80%9D%2F</url>
     <content type="text"><![CDATA[​ 自己好紧张啊。。。。紧张到我自己都不知道自己说什么，对方问的什么。。脑子像浆一样。。。挂了电话强行清醒了一下。。 ​ 第一个问题，给一个链表，问把其中的偶数逆序一下，要求O(1)空间复杂度。挂了电话想到一个方法，利用两个头指针把奇数的正序连接，偶数的逆序连接，再奇数-&gt;next偶数，发现不满足题意。暂时没想到除了数组更好的办法 ​ 第二个问题，给出一个字符串a，一个字符串b，问能否得到字符串c（不能改变a，b内部的顺序） int dp[1005][1005] = &#123;0&#125;;//假设字符串都是从1开始,str1的长度为n，str2的长度为m//dp[i][j]代表字符串c的前i个字符串，其中由j个字符串a组成，i - j 个字符串b组成。dp[0][0] = 1; //初始化前0个字符可以由0个字符串a，0个字符串b组成for (int i = 1; i &lt;= str3.size(); i++) &#123; for (int j = 0; j &lt;= i &amp;&amp; j &lt;= n; j++) &#123; if (str3[i] == str1[j] &amp;&amp; dp[i - 1][j - 1]) &#123; dp[i][j] = 1; &#125; else if (str3[i] == str2[i - j] &amp;&amp; dp[i - 1][j]) &#123; dp[i][j] = 1; &#125; else &#123; dp[i][j] = 0; &#125; &#125;&#125; ​ 这道题动态规划入门题。。。挂了电话就立刻想到了。。。冷静冷静，感觉自己应该5.1期间出去旅游走走放松放松。。自己面试心态太炸了，冷静，冷静，冷静！！！！]]></content>
