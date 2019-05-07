@@ -1,3 +1,4 @@
+http://www.ivan-zcy.top/2019/05/07/操作系统杂谈/
 http://www.ivan-zcy.top/2019/05/04/Docker简单使用/
 http://www.ivan-zcy.top/2019/04/28/面试题反思/
 http://www.ivan-zcy.top/2019/04/24/Leetcode84/
@@ -97,4 +98,3 @@ http://www.ivan-zcy.top/2019/01/11/C语言碎碎念/
 http://www.ivan-zcy.top/2019/01/10/科学上网-服务器搭建/
 http://www.ivan-zcy.top/2019/01/10/软件体系风格/
 http://www.ivan-zcy.top/2019/01/10/软件体系结构复习/
-http://www.ivan-zcy.top/2019/01/10/软件质量与保证复习/
