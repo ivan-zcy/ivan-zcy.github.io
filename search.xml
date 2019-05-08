@@ -65,8 +65,8 @@
     <url>%2F2019%2F04%2F24%2FLeetcode42%2F</url>
     <content type="text"><![CDATA[/************************************************************************* &gt; File Name: Leetcode42.cpp &gt; Author: Zcy &gt; Mail: 296763002@qq.com &gt; Created Time: 二 4/23 19:45:30 2019 ************************************************************************///给出n个宽度为1的柱子的高度，问最多存多少水//方法：利用单调栈来维护（只有保持V型才能存水，因此递减就添加到栈，递增就维护和//因此我们需要维护一个单调递减栈，在出栈的时候维护和）class Solution &#123;private: stack &lt;int&gt; sta;public: int trap(vector&lt;int&gt;&amp; height) &#123; int sum = 0; for (int i = 0; i &lt; height.size(); i++) &#123; //单调递减就增加 if (sta.empty() || height[sta.top()] &gt; height[i]) &#123; sta.push(i); &#125; else &#123; //出现递增就维护 while(!sta.empty() &amp;&amp; height[sta.top()] &lt;= height[i]) &#123; int inx = sta.top(); sta.pop(); //避免sta.top()访问错误 if (sta.empty()) break; int x = min(height[sta.top()] - height[inx], height[i] - height[inx]); int y = i - sta.top() - 1; sum += x * y; &#125; sta.push(i); &#125; &#125; return sum; &#125;&#125;;]]></content>
       <tags>
-        <tag>结构数据</tag>
         <tag>栈和队列</tag>
+        <tag>结构数据</tag>
       </tags>
   </entry>
   <entry>
