@@ -14,7 +14,7 @@
 
   <!--Open Graph Title-->
   
-      <meta property="og:title" content="C++对象内存模型"/>
+      <meta property="og:title" content="C++内存模型"/>
   
   <!--Open Graph Description-->
   
@@ -42,7 +42,7 @@
     </script>
   <!-- Title -->
   
-  <title>C++对象内存模型 - Zcy</title>
+  <title>C++内存模型 - Zcy</title>
 
 
   <link rel="shortcut icon" href="/favicon.ico">
@@ -202,7 +202,7 @@
                 <!-- Title date & tags -->
                 <div class="post-header">
                     <h1 class="entry-title">
-                        C++对象内存模型
+                        C++内存模型
                         
                     </h1>
 
@@ -214,7 +214,7 @@
       <span class="post-meta-item-icon">
         <i class="fa fa-keyboard-o"></i>
         <span class="post-meta-item-text">  字数统计: </span>
-        <span class="post-count">0字</span>
+        <span class="post-count">580字</span>
       </span>
     </span>
 
@@ -233,7 +233,18 @@
                 </p>
                 <!-- Post Main Content -->
                 <div class="entry-content">
-                    
+                    <p><img src="/2019/05/08/C-对象内存模型/title.jpg" alt="title"></p>
+<a id="more"></a>
+<p>[TOC]</p>
+<h2 id="C-内存模型"><a href="#C-内存模型" class="headerlink" title="C++内存模型"></a>C++内存模型</h2><p>​    C++内存由高地址到低地址依次是栈区（向下增长，用于存放函数内的局部变量，形参和函数返回值。系统会自动管理栈区的内存分配与回收）、堆区（向上增长，由程序员主动申请和释放，容易造成内存泄漏）、静态区（也叫全局区，静态变量和全局变量的存储区域一样，静态区的内存直到程序完全结束才会被释放）、常量区（用于存放常量）、代码区（用于存放代码）</p>
+<h3 id="分成多个区的原因"><a href="#分成多个区的原因" class="headerlink" title="分成多个区的原因"></a>分成多个区的原因</h3><p>​    通过对不同数据进行分类，可以方便访问、节约空间和方便管理。对于临时数据和多次使用的代码因为生命周期短，因此放入栈区。全局和静态变量可能在整个程序中都需要访问，因此需要单独管理。堆区可由用户自行分配方便管理</p>
+<h3 id="栈区"><a href="#栈区" class="headerlink" title="栈区"></a>栈区</h3><p>​    栈区内存由系统自动分配释放，栈区是先进后出原则，且栈区地址是向下增长的。</p>
+<h3 id="堆区"><a href="#堆区" class="headerlink" title="堆区"></a>堆区</h3><p>​    堆区是向上增长的，因此后申请的内存地址会依次增大</p>
+<h3 id="静态区（全局区）"><a href="#静态区（全局区）" class="headerlink" title="静态区（全局区）"></a>静态区（全局区）</h3><p>​    静态全局变量、静态局部变量、全局变量都存储在静态区。若未初始化，那么系统会自动为其初始化为0。对于静态局部变量来说，多次调用函数编译器只会为第一次初始化分配内存。</p>
+<h3 id="常量区"><a href="#常量区" class="headerlink" title="常量区"></a>常量区</h3><p>​    用于存储常量，不可被修改。举个例子：</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">char *p = &quot;abc&quot;;</span><br><span class="line">//此时指针变量p存储在栈区，而它指向存储在常量区的字符串常量&quot;abc&quot;，我们可以改变p的指向，但是不可以改变指向的内容</span><br><span class="line"></span><br><span class="line">char s[] = &quot;abc&quot;</span><br><span class="line">//定义了一个字符串数组s，存储在栈区，它的内容是通过字符串常量“abc”拷贝过去的。因此可以改变s中的内容</span><br></pre></td></tr></table></figure>
+<h3 id="代码区"><a href="#代码区" class="headerlink" title="代码区"></a>代码区</h3><p>​    代码区的内存由系统控制，用于存放程序编译后的指令。函数的名称也是一个指针，可以通过查询函数名所处的内存地址，查询函数存放的地址</p>
+
                 </div>
             </article>
         </div>
@@ -251,6 +262,10 @@
         
         <div class="container" >
             <ul class="pager">
+                
+                <li class="previous">
+                    <a href="/2019/05/08/C-内存顺序模型/" rel="prev">下一篇</a>
+                </li>
                 
                 
                 <li class="next">

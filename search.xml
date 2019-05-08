@@ -2,8 +2,26 @@
 <search>
   <entry>
     <title><![CDATA[C++对象内存模型]]></title>
+    <url>%2F2019%2F05%2F08%2FC-%E5%AF%B9%E8%B1%A1%E5%86%85%E5%AD%98%E6%A8%A1%E5%9E%8B-1%2F</url>
+    <content type="text"><![CDATA[C++对象内存模型单继承​ 首先来看一下单继承下的C++对象内存模型]]></content>
+  </entry>
+  <entry>
+    <title><![CDATA[C++顺序内存模型]]></title>
+    <url>%2F2019%2F05%2F08%2FC-%E5%86%85%E5%AD%98%E9%A1%BA%E5%BA%8F%E6%A8%A1%E5%9E%8B%2F</url>
+    <content type="text"><![CDATA[强顺序内存模型​ CPU按照正确的指令顺序执行 弱顺序内存模型​ CPU为了性能提升，采用流水线技术，进一步挖掘指令的并行性，一段连续指令使用了不同的寄存器和内存地址，因此一些处理器可能会讲指令执行的顺序打乱执行。这就是弱顺序的内存模型。这种可能会导致错误发生，比如： int thread_1()&#123; int t = 1; a = t; b = 2;&#125;int thread_2&#123; while(b != 2); cout &lt;&lt; a &lt;&lt; endl;&#125; ​ 可能会导致输出的a为0 解决方案​ C++11之前，采用内存栅栏解决。C++11之后，可指定内存顺序： memory_order_relaxed 不对执行顺序做任何保证memory_order_consume 本线程所有后续有关本操作的必须在本操作完成后执行memory_order_acquire 本线程所有后续的读操作必须在本条操作完成才能执行memory_order_release 本线程所有之前的写操作完成后才执行本操作memory_order_acq_rel 同时包含acquire和releasememory_order_seq_cst 全部顺序执行 ​ 因此我们可以通过下面代码来避免该情况的发生： int thread_1()&#123; int t = 1 a.store(t,memory_order_relaxed); b.store(2,memory_order_release);&#125;int thread_2()&#123; while(b.load(memory_order_acquire) != 2); cout &lt;&lt; a.load(memory_order_relaxed);&#125;]]></content>
+      <tags>
+        <tag>C++</tag>
+        <tag>内存模型</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title><![CDATA[C++内存模型]]></title>
     <url>%2F2019%2F05%2F08%2FC-%E5%AF%B9%E8%B1%A1%E5%86%85%E5%AD%98%E6%A8%A1%E5%9E%8B%2F</url>
-    <content type="text"></content>
+    <content type="text"><![CDATA[[TOC] C++内存模型​ C++内存由高地址到低地址依次是栈区（向下增长，用于存放函数内的局部变量，形参和函数返回值。系统会自动管理栈区的内存分配与回收）、堆区（向上增长，由程序员主动申请和释放，容易造成内存泄漏）、静态区（也叫全局区，静态变量和全局变量的存储区域一样，静态区的内存直到程序完全结束才会被释放）、常量区（用于存放常量）、代码区（用于存放代码） 分成多个区的原因​ 通过对不同数据进行分类，可以方便访问、节约空间和方便管理。对于临时数据和多次使用的代码因为生命周期短，因此放入栈区。全局和静态变量可能在整个程序中都需要访问，因此需要单独管理。堆区可由用户自行分配方便管理 栈区​ 栈区内存由系统自动分配释放，栈区是先进后出原则，且栈区地址是向下增长的。 堆区​ 堆区是向上增长的，因此后申请的内存地址会依次增大 静态区（全局区）​ 静态全局变量、静态局部变量、全局变量都存储在静态区。若未初始化，那么系统会自动为其初始化为0。对于静态局部变量来说，多次调用函数编译器只会为第一次初始化分配内存。 常量区​ 用于存储常量，不可被修改。举个例子： char *p = &quot;abc&quot;;//此时指针变量p存储在栈区，而它指向存储在常量区的字符串常量&quot;abc&quot;，我们可以改变p的指向，但是不可以改变指向的内容char s[] = &quot;abc&quot;//定义了一个字符串数组s，存储在栈区，它的内容是通过字符串常量“abc”拷贝过去的。因此可以改变s中的内容 代码区​ 代码区的内存由系统控制，用于存放程序编译后的指令。函数的名称也是一个指针，可以通过查询函数名所处的内存地址，查询函数存放的地址]]></content>
+      <tags>
+        <tag>C++</tag>
+        <tag>内存模型</tag>
+      </tags>
   </entry>
   <entry>
     <title><![CDATA[操作系统杂谈-1]]></title>
