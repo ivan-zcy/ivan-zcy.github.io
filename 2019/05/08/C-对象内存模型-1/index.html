@@ -214,7 +214,7 @@
       <span class="post-meta-item-icon">
         <i class="fa fa-keyboard-o"></i>
         <span class="post-meta-item-text">  字数统计: </span>
-        <span class="post-count">28字</span>
+        <span class="post-count">603字</span>
       </span>
     </span>
 
@@ -223,7 +223,7 @@
       <span class="post-meta-item-icon">
         <i class="fa fa-hourglass-half"></i>
         <span class="post-meta-item-text">  阅读时长: </span>
-        <span class="post-count">1分</span>
+        <span class="post-count">2分</span>
       </span>
     </span>
                 </div>
@@ -233,7 +233,22 @@
                 </p>
                 <!-- Post Main Content -->
                 <div class="entry-content">
-                    <h2 id="C-对象内存模型"><a href="#C-对象内存模型" class="headerlink" title="C++对象内存模型"></a>C++对象内存模型</h2><h3 id="单继承"><a href="#单继承" class="headerlink" title="单继承"></a>单继承</h3><p>​    首先来看一下单继承下的C++对象内存模型</p>
+                    <p><img src="/2019/05/08/C-对象内存模型-1/title2.jpg" alt="title2"></p>
+<a id="more"></a>
+<p>[TOC]</p>
+<h2 id="C-对象内存模型"><a href="#C-对象内存模型" class="headerlink" title="C++对象内存模型"></a>C++对象内存模型</h2><p>​    一般来说，类成员变量存储顺序按照声明的顺序从低地址到高地址顺序存储。</p>
+<p>​    对于类的静态成员变量，它单独存储在程序的.data段中，不与特定的对象相关联。</p>
+<p>​    如果子类和父类的成员变量（或成员函数）同名，则父类的成员变量（或成员函数）会被隐藏（当然它可以通过类名受限的方式来访问），具体如下：</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">class A &#123;</span><br><span class="line">public:</span><br><span class="line">    int a;</span><br><span class="line">    void f() &#123; </span><br><span class="line">    	printf(&quot;A f\n&quot;);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">class B : public A &#123;</span><br><span class="line">public:</span><br><span class="line">    int a;</span><br><span class="line">    void f() &#123;</span><br><span class="line">        printf(&quot;B f\n&quot;);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">int main() &#123;</span><br><span class="line">    B b;</span><br><span class="line">    b.a = 0;        // 访问的是 B::a</span><br><span class="line">    b.f();          // 访问的是 B::f()</span><br><span class="line">    b.A::a = 1;     // 访问的是 A::a</span><br><span class="line">    b.A::f();       // 访问的是 A::f()</span><br><span class="line">    </span><br><span class="line">    return 0;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h3 id="多继承情况"><a href="#多继承情况" class="headerlink" title="多继承情况"></a>多继承情况</h3><p>​    对于下面情况来说：</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">class A: public B, public C &#123;</span><br><span class="line">    </span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>​    这时在A的对象中，由低地址到高地址依次存B的成员变量、C的成员变量、A的成员变量</p>
+<h3 id="虚继承情况"><a href="#虚继承情况" class="headerlink" title="虚继承情况"></a>虚继承情况</h3><p>​    <img src="/2019/05/08/C-对象内存模型-1/a.png" alt="a"></p>
+<p>​    关于虚继承，大概就是虚基类在子类中只保留一份成员变量，它是通过虚基类表来找到虚基类成员来实现的。</p>
+<h3 id="存在虚函数情况"><a href="#存在虚函数情况" class="headerlink" title="存在虚函数情况"></a>存在虚函数情况</h3><p>​    存在虚函数的通过低地址的虚函数指针找到对应的虚函数表，来指向对应的虚函数地址。</p>
+<h3 id="虚函数多继承情况"><a href="#虚函数多继承情况" class="headerlink" title="虚函数多继承情况"></a>虚函数多继承情况</h3><figure class="highlight c++"><table><tr><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;stdio.h&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;stdlib.h&gt;</span></span></span><br><span class="line"></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">A</span> &#123;</span></span><br><span class="line"><span class="keyword">public</span>:</span><br><span class="line">    <span class="function"><span class="keyword">virtual</span> <span class="keyword">void</span> <span class="title">a</span><span class="params">()</span></span>&#123;</span><br><span class="line">        <span class="built_in">printf</span>(<span class="string">"a\n"</span>);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;;</span><br><span class="line"></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">B</span>:</span> <span class="keyword">public</span> A &#123;</span><br><span class="line"><span class="keyword">public</span>:</span><br><span class="line">    <span class="function"><span class="keyword">virtual</span> <span class="keyword">void</span> <span class="title">b</span><span class="params">()</span> </span>&#123;</span><br><span class="line">        <span class="built_in">printf</span>(<span class="string">"b\n"</span>);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;;</span><br><span class="line"></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">C</span> &#123;</span></span><br><span class="line"><span class="keyword">public</span>:</span><br><span class="line">    <span class="function"><span class="keyword">virtual</span> <span class="keyword">void</span> <span class="title">a</span><span class="params">()</span> </span>&#123;</span><br><span class="line">        <span class="built_in">printf</span>(<span class="string">"c\n"</span>);</span><br><span class="line">    &#125;</span><br><span class="line">    </span><br><span class="line">&#125;;</span><br><span class="line"></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">D</span>:</span>  <span class="keyword">public</span> B, <span class="keyword">public</span> C&#123;</span><br><span class="line"><span class="keyword">public</span>:</span><br><span class="line">    <span class="function"><span class="keyword">virtual</span> <span class="keyword">void</span> <span class="title">d</span><span class="params">()</span> </span>&#123;</span><br><span class="line">        <span class="built_in">printf</span>(<span class="string">"d\n"</span>);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span> <span class="params">()</span> </span>&#123;</span><br><span class="line">    C *a = <span class="keyword">new</span> D();</span><br><span class="line">    a-&gt;a();			<span class="comment">//输出c</span></span><br><span class="line">    <span class="comment">//((D *)a)-&gt;a();      //两个同名虚函数，报错 </span></span><br><span class="line">    <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>​    在这儿需要说明一下动态多态和静态多态。只有通过基类的引用或者指针调用虚函数时，才能发生动态绑定，如果使用对象来操作虚函数的话，仍然会采用静态绑定的方式</p>
+<p>​    在存在虚函数的多继承情况下，会存在多个虚函数表。而父类指针指向子类对象时，父类指针只能得知父类有的虚函数表。因此上面第一个输出c，第二个会报错</p>
 
                 </div>
             </article>

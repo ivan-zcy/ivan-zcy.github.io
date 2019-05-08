@@ -3,7 +3,11 @@
   <entry>
     <title><![CDATA[C++对象内存模型]]></title>
     <url>%2F2019%2F05%2F08%2FC-%E5%AF%B9%E8%B1%A1%E5%86%85%E5%AD%98%E6%A8%A1%E5%9E%8B-1%2F</url>
-    <content type="text"><![CDATA[C++对象内存模型单继承​ 首先来看一下单继承下的C++对象内存模型]]></content>
+    <content type="text"><![CDATA[[TOC] C++对象内存模型​ 一般来说，类成员变量存储顺序按照声明的顺序从低地址到高地址顺序存储。 ​ 对于类的静态成员变量，它单独存储在程序的.data段中，不与特定的对象相关联。 ​ 如果子类和父类的成员变量（或成员函数）同名，则父类的成员变量（或成员函数）会被隐藏（当然它可以通过类名受限的方式来访问），具体如下： class A &#123;public: int a; void f() &#123; printf(&quot;A f\n&quot;); &#125;&#125;class B : public A &#123;public: int a; void f() &#123; printf(&quot;B f\n&quot;); &#125;&#125;int main() &#123; B b; b.a = 0; // 访问的是 B::a b.f(); // 访问的是 B::f() b.A::a = 1; // 访问的是 A::a b.A::f(); // 访问的是 A::f() return 0;&#125; 多继承情况​ 对于下面情况来说： class A: public B, public C &#123; &#125; ​ 这时在A的对象中，由低地址到高地址依次存B的成员变量、C的成员变量、A的成员变量 虚继承情况​ ​ 关于虚继承，大概就是虚基类在子类中只保留一份成员变量，它是通过虚基类表来找到虚基类成员来实现的。 存在虚函数情况​ 存在虚函数的通过低地址的虚函数指针找到对应的虚函数表，来指向对应的虚函数地址。 虚函数多继承情况#include &lt;stdio.h&gt;#include &lt;stdlib.h&gt;class A &#123;public: virtual void a()&#123; printf("a\n"); &#125;&#125;;class B: public A &#123;public: virtual void b() &#123; printf("b\n"); &#125;&#125;;class C &#123;public: virtual void a() &#123; printf("c\n"); &#125; &#125;;class D: public B, public C&#123;public: virtual void d() &#123; printf("d\n"); &#125;&#125;;int main () &#123; C *a = new D(); a-&gt;a(); //输出c //((D *)a)-&gt;a(); //两个同名虚函数，报错 return 0;&#125; ​ 在这儿需要说明一下动态多态和静态多态。只有通过基类的引用或者指针调用虚函数时，才能发生动态绑定，如果使用对象来操作虚函数的话，仍然会采用静态绑定的方式 ​ 在存在虚函数的多继承情况下，会存在多个虚函数表。而父类指针指向子类对象时，父类指针只能得知父类有的虚函数表。因此上面第一个输出c，第二个会报错]]></content>
+      <tags>
+        <tag>C++</tag>
+        <tag>内存模型</tag>
+      </tags>
   </entry>
   <entry>
     <title><![CDATA[C++顺序内存模型]]></title>
