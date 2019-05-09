@@ -1,6 +1,15 @@
 <?xml version="1.0" encoding="utf-8"?>
 <search>
   <entry>
+    <title><![CDATA[动态库和静态库相关]]></title>
+    <url>%2F2019%2F05%2F09%2F%E5%8A%A8%E6%80%81%E5%BA%93%E5%92%8C%E9%9D%99%E6%80%81%E5%BA%93%E7%9B%B8%E5%85%B3%2F</url>
+    <content type="text"><![CDATA[[TOC] ​ 讲静态库和动态库之前，先说一下gcc的编译流程： ​ （图片来自室友男神，地址：跳转） ​ 至于静态库和动态库，他们的区别在于链接阶段的处理不同（一个静态链接方式，一个动态链接方式） 静态库​ 目标文件.o与静态库一起链接成可执行文件，对应的链接方式为静态链接。它和.o文件类似，可以简单看成是一组目标文件的集合（也就是多个目标文件压缩打包后的一个文件） ​ 静态库的命名规则：前缀时lib，后缀是.a 静态库特点1.静态库对函数库的链接是放在编译时期完成的，执行快2.发布应用时不需要发布库3.浪费空间和资源，所有的相关目标文件和牵扯的函数库被链接成可执行文件，体积大4.不利于程序的更新。如果静态库更新了，使用它的应用程序都需要重新编译发布 静态库的创建​ 1.先将代码文件编译成.o文件 ​ 2.通过ar命令将目标文件打包成.a静态库文件 ar -crv libtest.a *.o //.o文件可以有多个 静态库的查看​ 利用nm命令查看静态库的信息 nm libtest.a 静态库的使用​ 在编译的时候，利用-L选项指定静态库的搜索路径，利用-l指定静态库名(由于查找有隐含命名规则，因此无需在前加lib后加.a或.so) g++ p.cpp -L../Test -ltest 动态库​ 动态库命名规则：前缀是lib，后缀是.so 动态库特点​ 动态库可以解决静态库空间浪费的问题，也能解决静态库更新麻烦的问题。 ​ 动态库在程序编译时不回被链接到目标代码中，直到程序运行才被载入（避免了更新麻烦，用户只需要更新动态库即可）。不同的应用程序如果调用相同的库，那么在内存里只需要一份该共享库的实例（避免了空间浪费），也就是在栈区和堆区之间的共享库映射。 ​ 当然动态库的缺点，就是相对于静态库而言，速度较慢。且在发布应用的时候同时需要发布动态库 动态库的创建g++ -fPIC -c *.cpp //首先生成目标文件，注意需要加选项-fpic，它代表创建与地址无关的编译程序，以便能够在多个应用程序中共享g++ -shared -o libtest.so *.o //生成动态库，需要-shared选项指定生成动态链接库//上面两个命令可以合并为：g++ -fPIC -shared -o libtest.so *.cpp 动态库的使用​ 和静态库一样，在编译的时候，利用-L选项指定动态库的搜索路径，利用-l指定动态库名(由于查找有隐含命名规则，因此无需在前加lib后加.a或.so) g++ p.cpp -L../Test -ltest ​ 这样可能会出现动态链接没有找到动态库的问题，这时解决方法： 方法一：将libxxx.so在/lib下面做一个软连接。方法二：将库路径加到环境变量 LD_LIBRARY_PATH中方法三：编辑/etc/ld.so.conf文件，加入动态库文件所在目录的路径，然后运行ldconfig]]></content>
+      <tags>
+        <tag>C++</tag>
+        <tag>库</tag>
+      </tags>
+  </entry>
+  <entry>
     <title><![CDATA[C++对象内存模型]]></title>
     <url>%2F2019%2F05%2F08%2FC-%E5%AF%B9%E8%B1%A1%E5%86%85%E5%AD%98%E6%A8%A1%E5%9E%8B-1%2F</url>
     <content type="text"><![CDATA[[TOC] C++对象内存模型​ 一般来说，类成员变量存储顺序按照声明的顺序从低地址到高地址顺序存储。 ​ 对于类的静态成员变量，它单独存储在程序的.data段中，不与特定的对象相关联。 ​ 如果子类和父类的成员变量（或成员函数）同名，则父类的成员变量（或成员函数）会被隐藏（当然它可以通过类名受限的方式来访问），具体如下： class A &#123;public: int a; void f() &#123; printf(&quot;A f\n&quot;); &#125;&#125;class B : public A &#123;public: int a; void f() &#123; printf(&quot;B f\n&quot;); &#125;&#125;int main() &#123; B b; b.a = 0; // 访问的是 B::a b.f(); // 访问的是 B::f() b.A::a = 1; // 访问的是 A::a b.A::f(); // 访问的是 A::f() return 0;&#125; 多继承情况​ 对于下面情况来说： class A: public B, public C &#123; &#125; ​ 这时在A的对象中，由低地址到高地址依次存B的成员变量、C的成员变量、A的成员变量 虚继承情况​ ​ 关于虚继承，大概就是虚基类在子类中只保留一份成员变量，它是通过虚基类表来找到虚基类成员来实现的。 存在虚函数情况​ 存在虚函数的通过低地址的虚函数指针找到对应的虚函数表，来指向对应的虚函数地址。 虚函数多继承情况#include &lt;stdio.h&gt;#include &lt;stdlib.h&gt;class A &#123;public: virtual void a()&#123; printf("a\n"); &#125;&#125;;class B: public A &#123;public: virtual void b() &#123; printf("b\n"); &#125;&#125;;class C &#123;public: virtual void a() &#123; printf("c\n"); &#125; &#125;;class D: public B, public C&#123;public: virtual void d() &#123; printf("d\n"); &#125;&#125;;int main () &#123; C *a = new D(); a-&gt;a(); //输出c //((D *)a)-&gt;a(); //两个同名虚函数，报错 return 0;&#125; ​ 在这儿需要说明一下动态多态和静态多态。只有通过基类的引用或者指针调用虚函数时，才能发生动态绑定，如果使用对象来操作虚函数的话，仍然会采用静态绑定的方式 ​ 在存在虚函数的多继承情况下，会存在多个虚函数表。而父类指针指向子类对象时，父类指针只能得知父类有的虚函数表。因此上面第一个输出c，第二个会报错]]></content>
@@ -65,8 +74,8 @@
     <url>%2F2019%2F04%2F24%2FLeetcode42%2F</url>
     <content type="text"><![CDATA[/************************************************************************* &gt; File Name: Leetcode42.cpp &gt; Author: Zcy &gt; Mail: 296763002@qq.com &gt; Created Time: 二 4/23 19:45:30 2019 ************************************************************************///给出n个宽度为1的柱子的高度，问最多存多少水//方法：利用单调栈来维护（只有保持V型才能存水，因此递减就添加到栈，递增就维护和//因此我们需要维护一个单调递减栈，在出栈的时候维护和）class Solution &#123;private: stack &lt;int&gt; sta;public: int trap(vector&lt;int&gt;&amp; height) &#123; int sum = 0; for (int i = 0; i &lt; height.size(); i++) &#123; //单调递减就增加 if (sta.empty() || height[sta.top()] &gt; height[i]) &#123; sta.push(i); &#125; else &#123; //出现递增就维护 while(!sta.empty() &amp;&amp; height[sta.top()] &lt;= height[i]) &#123; int inx = sta.top(); sta.pop(); //避免sta.top()访问错误 if (sta.empty()) break; int x = min(height[sta.top()] - height[inx], height[i] - height[inx]); int y = i - sta.top() - 1; sum += x * y; &#125; sta.push(i); &#125; &#125; return sum; &#125;&#125;;]]></content>
       <tags>
-        <tag>栈和队列</tag>
         <tag>结构数据</tag>
+        <tag>栈和队列</tag>
       </tags>
   </entry>
   <entry>
