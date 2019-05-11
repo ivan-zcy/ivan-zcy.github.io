@@ -14,7 +14,7 @@
 
   <!--Open Graph Title-->
   
-      <meta property="og:title" content="Zcy"/>
+      <meta property="og:title" content="一致性哈希"/>
   
   <!--Open Graph Description-->
   
@@ -22,7 +22,7 @@
   <meta property="og:site_name" content="Zcy"/>
   <!--Type page-->
   
-      <meta property="og:type" content="website" />
+      <meta property="og:type" content="article" />
   
   <!--Page Cover-->
   
@@ -42,7 +42,7 @@
     </script>
   <!-- Title -->
   
-  <title>Vim - Zcy</title>
+  <title>一致性哈希 - Zcy</title>
 
 
   <link rel="shortcut icon" href="/favicon.ico">
@@ -194,37 +194,99 @@
 
 
   <!-- Main Content -->
-  
+  <div class="content-area">
+    <div class="post">
+        <!-- Post Content -->
+        <div class="container">
+            <article>
+                <!-- Title date & tags -->
+                <div class="post-header">
+                    <h1 class="entry-title">
+                        一致性哈希
+                        
+                    </h1>
 
-<!-- Main Content -->
-<div class="archive content-area">
-  <div class="container">
-    <h1 class="entry-title">#Vim</h1>
-    <div class="row">
-      <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
-        <!-- Use lodash to classify posts. See https://lodash.com/docs#groupBy -->
-        
-        
-          <h2 class="year">2018</h2>
-          <ul class="list">
-            
-  <li>
-    <span class="date">
-      2018-10-18
+                </div>
+
+
+                <div style="text-align:center;color: #ccc;">
+    <span class="post-time" >
+      <span class="post-meta-item-icon">
+        <i class="fa fa-keyboard-o"></i>
+        <span class="post-meta-item-text">  字数统计: </span>
+        <span class="post-count">635字</span>
+      </span>
     </span>
-    <a href="/2018/10/18/Vim常用命令/" class="title">
-      Vim常用命令（转）
-    </a>
-  </li>
 
+                    <span class="post-time">
+      &nbsp; | &nbsp;
+      <span class="post-meta-item-icon">
+        <i class="fa fa-hourglass-half"></i>
+        <span class="post-meta-item-text">  阅读时长: </span>
+        <span class="post-count">2分</span>
+      </span>
+    </span>
+                </div>
 
-          </ul>
+                <p class="a-posted-on" style="color: #ccc;">
+                    2019-05-11
+                </p>
+                <!-- Post Main Content -->
+                <div class="entry-content">
+                    <p><img src="/2019/05/11/一致性哈希/title1.jpg" alt="title1"></p>
+<a id="more"></a>
+<p>[TOC]</p>
+<h3 id="一致性哈希"><a href="#一致性哈希" class="headerlink" title="一致性哈希"></a>一致性哈希</h3><p>​    一致性哈希是一种特殊的哈希，当哈希表的大小发生变化的时候，平均只有n / m（n为key总数，m为哈希表的大小）个key值需要重新计算映射关系。解决了一般哈希算法，当hash表发生变化几乎所有key都要重新映射的问题。</p>
+<h4 id="实现方法"><a href="#实现方法" class="headerlink" title="实现方法"></a>实现方法</h4><pre><code>1. 一致性hash通过一个hash环来实现，将环分为2^32份
+2. 数据key经过hash函数得到的整型一定在环上，机器和用户（比如ip或者机器名）hash后得到的整型也一定在环上（因为整型的范围为2^32）
+3. 如果key的hash值和机器的hash值映射在环上的同一个位置，那么就将key存在这个节点，否则就沿着环顺时针找第一个存在机器hash映射的位置，然后将key值映射到该位置处
+4. 删除节点时，从被删除节点开始沿着环顺时针找第一个存在机器hash映射的位置，然后把被删除节点的所有key值映射到到该位置处
+5. 增加节点时，把增加节点位置处到逆时针的前一个节点处的所有key值都映射新的节点位置处
+</code></pre><p><img src="/2019/05/11/一致性哈希/1.png" alt="1"></p>
+<h4 id="改进和扩展"><a href="#改进和扩展" class="headerlink" title="改进和扩展"></a>改进和扩展</h4><p>​    我们会发现，可能利用这种方式会照成数据分配严重不均的情况，比如只有两个机器，映射位置分别为1，3，那么2～3位置的key会在3中进行存储，而4～2^32范围和1都在1中存储。因此会造成数据分配的不均问题。</p>
+<p>​    因此，我们可以通过在hash环中添加一些虚拟节点（分配均匀），然后使得可以key尽量均匀的分配到不同的虚拟节点当中，然后把虚拟节点的数据映射到真实节点即可。</p>
+<h4 id="应用"><a href="#应用" class="headerlink" title="应用"></a>应用</h4><p>​    比如我们在做分布式存储的时候（将数据分片存储到多态机器上），我们通过hash来将数据进行映射到不同机器中。这时候我们可能会遇到机器出状况可能会挂掉一个，有时候数据量太大需要对机器数量进行扩大。</p>
+<p>​    这时候机器数量一旦变动就需要对数据重新取模造成大量缓存失效，这时我们就可以用到一致性哈希来解决大量数据失效的问题了。</p>
+
+                </div>
+            </article>
+        </div>
+        <br>
+        <div style="text-align:center;color: #ccc;font-size:14px;">
+            <br>
+            <br>
+            <a href="http://www.ivan-zcy.top" style="color: #99FFFF;font-size:18px;">转载请注明出处！！！</a>
+            <br>
+            <br>
+            如果有写的不对或者不全面的地方 可通过主页的联系方式进行指正，谢谢!
+        </div>
+        <br>
+        <!-- Pre or Next -->
         
-      </div>
-    </div>
-  </div>
-  
+        <div class="container" >
+            <ul class="pager">
+                
+                
+                <li class="next">
+                    <a href="/2019/05/10/布隆过滤器/" rel="prev">上一篇</a>
+                </li>
+                
+            </ul>
+        </div>
+        　　　　<!-- Comments -->
+        <div class="container">
+            
+<section id="comment">
+  <!-- <h1 class="title">Comments</h1> -->
 
+  
+</section>
+
+
+        </div>
+        
+        　　　　
+    </div>
 </div>
 
 
@@ -338,8 +400,5 @@
   <!-- 页面点击小红心 -->
   <script type="text/javascript" src="/js/clicklove.js"></script>
 <script src="/live2dw/lib/L2Dwidget.min.js?0c58a1486de42ac6cc1c59c7d98ae887"></script><script>L2Dwidget.init({"model":{"jsonPath":"/live2dw/assets/haruto.model.json"},"display":{"position":"left","width":70,"height":140},"mobile":{"show":true},"log":false,"pluginJsPath":"lib/","pluginModelPath":"assets/","pluginRootPath":"live2dw/","tagMode":false});</script></body>
-
-</html>
-body>
 
 </html>
