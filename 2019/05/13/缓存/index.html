@@ -214,7 +214,7 @@
       <span class="post-meta-item-icon">
         <i class="fa fa-keyboard-o"></i>
         <span class="post-meta-item-text">  字数统计: </span>
-        <span class="post-count">789字</span>
+        <span class="post-count">856字</span>
       </span>
     </span>
 
@@ -251,6 +251,8 @@
 <p>​    运用局部性原理，CPU会把相邻的指令一起从L1缓存读到寄存器。从磁盘读取数据时，也会一次性把所在磁盘扇区的数据全部读进来（前提是程序设计者在存储数据时把相关数据存在一起）</p>
 <h4 id="缓存淘汰算法"><a href="#缓存淘汰算法" class="headerlink" title="缓存淘汰算法"></a>缓存淘汰算法</h4><p>​    当缓存满时需要对已经缓存的数据进行替换，这时候就需要进行缓存数据的替换。常见的有先进先出（FIFO），LRU（最近最少使用，Java的LinkedHashMap，Redis，MySQL的BufferPool的缓存都是基于LRU实现的），OPT（最优置换，无法实现）</p>
 <p>​    对于mysql来说，系统上线后会先把常用的数据筛选一遍，找到热点数据放入MySQL的BufferPool中。除此之外还做了优化，把缓存划分成两部分，一部分用来存热点数据（永远不被淘汰），另一部分用来存可以被淘汰的冷数据，对冷数据部分进行LRU。当一些数据被频繁访问时，可以作为热数据存到第一部分中</p>
+<h3 id="缓存命中和缓存失效"><a href="#缓存命中和缓存失效" class="headerlink" title="缓存命中和缓存失效"></a>缓存命中和缓存失效</h3><p>​    失效：程序先从缓存中查找数据，没有找到然后在数据库中取数据，若成功则把数据加入到缓存当中</p>
+<p>​    命中：程序从缓存中查找数据，成功后返回</p>
 
                 </div>
             </article>
