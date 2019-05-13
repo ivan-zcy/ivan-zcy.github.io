@@ -14,7 +14,7 @@
 
   <!--Open Graph Title-->
   
-      <meta property="og:title" content="唯一id生成算法"/>
+      <meta property="og:title" content="Zcy"/>
   
   <!--Open Graph Description-->
   
@@ -22,7 +22,7 @@
   <meta property="og:site_name" content="Zcy"/>
   <!--Type page-->
   
-      <meta property="og:type" content="article" />
+      <meta property="og:type" content="website" />
   
   <!--Page Cover-->
   
@@ -42,7 +42,7 @@
     </script>
   <!-- Title -->
   
-  <title>唯一id生成算法 - Zcy</title>
+  <title>存储 - Zcy</title>
 
 
   <link rel="shortcut icon" href="/favicon.ico">
@@ -194,105 +194,37 @@
 
 
   <!-- Main Content -->
-  <div class="content-area">
-    <div class="post">
-        <!-- Post Content -->
-        <div class="container">
-            <article>
-                <!-- Title date & tags -->
-                <div class="post-header">
-                    <h1 class="entry-title">
-                        唯一id生成算法
-                        
-                    </h1>
-
-                </div>
-
-
-                <div style="text-align:center;color: #ccc;">
-    <span class="post-time" >
-      <span class="post-meta-item-icon">
-        <i class="fa fa-keyboard-o"></i>
-        <span class="post-meta-item-text">  字数统计: </span>
-        <span class="post-count">523字</span>
-      </span>
-    </span>
-
-                    <span class="post-time">
-      &nbsp; | &nbsp;
-      <span class="post-meta-item-icon">
-        <i class="fa fa-hourglass-half"></i>
-        <span class="post-meta-item-text">  阅读时长: </span>
-        <span class="post-count">1分</span>
-      </span>
-    </span>
-                </div>
-
-                <p class="a-posted-on" style="color: #ccc;">
-                    2019-05-11
-                </p>
-                <!-- Post Main Content -->
-                <div class="entry-content">
-                    <p><img src="/2019/05/11/唯一id生成算法/title5.jpg" alt="title5"></p>
-<a id="more"></a>
-<p>[TOC]</p>
-<p>​    我们在很多情况下都需要用到一个唯一标识，比如一个用户id，一个订单号等等。因此，我们需要设计一种算法来保证标识的唯一性。</p>
-<p>​    具体算法：</p>
-<h3 id="UUID-和-GUID"><a href="#UUID-和-GUID" class="headerlink" title="UUID 和 GUID"></a>UUID 和 GUID</h3><p>​    UUID含义是通用唯一识别码，让分布式系统中的所有元素，都能有唯一的辨识</p>
-<h3 id="数据库自增主键"><a href="#数据库自增主键" class="headerlink" title="数据库自增主键"></a>数据库自增主键</h3><p>​    这种实现方式特别简单，但是不能对数据库进行分表操作，否则id就会重复。</p>
-<h3 id="数据库自增主键优化"><a href="#数据库自增主键优化" class="headerlink" title="数据库自增主键优化"></a>数据库自增主键优化</h3><p>​    让数据库中不同的表从不同的下标开始，每次自增n（n为表的个数），这样就解决了重复问题。</p>
-<p>​    但是不便于日后维护，因为以后再新扩建一个表就十分麻烦</p>
-<h3 id="数据库自增主键再优化"><a href="#数据库自增主键再优化" class="headerlink" title="数据库自增主键再优化"></a>数据库自增主键再优化</h3><p>​    单独使用一张（或固定几张）数据库表专门来产生自增id。后序不再重新分表，数据量大时可以删除早一些时候产生的数据。</p>
-<h3 id="时间戳"><a href="#时间戳" class="headerlink" title="时间戳"></a>时间戳</h3><p>​    用当前时间戳作为唯一id。这样有个缺点，在同一时间生成的id重复</p>
-<h3 id="snowflake"><a href="#snowflake" class="headerlink" title="snowflake"></a>snowflake</h3><p>​    对于时间戳来说，如果同一时间有多个请求进来，可以在时间戳后接上一个数字（通过锁机制来实现每次递增，每毫秒清零重新计数）</p>
-<p>​    上述解决了高并发问题，而无法解决分布式环境下。我们可以在时间戳+计数的基础上拼接上机器的id。</p>
-<p>​    但是可能在不同的数据中心，机器id编号相同，这样就可以继续拼接上数据中心的id。</p>
-<p>​    这样做可以实现id的唯一性，且长度适中，算法较为简单。</p>
-<h3 id="算法为递增的优势"><a href="#算法为递增的优势" class="headerlink" title="算法为递增的优势"></a>算法为递增的优势</h3><p>​    递增对IO友好，尽可能的使数据靠近在一起，就不需要频繁的抬起磁头，一直写会快很多。对于一些大型分布式数据库，比如HBase，ElasticSearch等都是利用顺序写来提高写性能。</p>
-
-                </div>
-            </article>
-        </div>
-        <br>
-        <div style="text-align:center;color: #ccc;font-size:14px;">
-            <br>
-            <br>
-            <a href="http://www.ivan-zcy.top" style="color: #99FFFF;font-size:18px;">转载请注明出处！！！</a>
-            <br>
-            <br>
-            如果有写的不对或者不全面的地方 可通过主页的联系方式进行指正，谢谢!
-        </div>
-        <br>
-        <!-- Pre or Next -->
-        
-        <div class="container" >
-            <ul class="pager">
-                
-                <li class="previous">
-                    <a href="/2019/05/13/存储介质/" rel="prev">下一篇</a>
-                </li>
-                
-                
-                <li class="next">
-                    <a href="/2019/05/11/一致性哈希/" rel="prev">上一篇</a>
-                </li>
-                
-            </ul>
-        </div>
-        　　　　<!-- Comments -->
-        <div class="container">
-            
-<section id="comment">
-  <!-- <h1 class="title">Comments</h1> -->
-
   
-</section>
 
-
-        </div>
+<!-- Main Content -->
+<div class="archive content-area">
+  <div class="container">
+    <h1 class="entry-title">#存储</h1>
+    <div class="row">
+      <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
+        <!-- Use lodash to classify posts. See https://lodash.com/docs#groupBy -->
         
-        　　　　
+        
+          <h2 class="year">2019</h2>
+          <ul class="list">
+            
+  <li>
+    <span class="date">
+      2019-05-13
+    </span>
+    <a href="/2019/05/13/存储介质/" class="title">
+      存储介质
+    </a>
+  </li>
+
+
+          </ul>
+        
+      </div>
     </div>
+  </div>
+  
+
 </div>
 
 
