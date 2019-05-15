@@ -14,7 +14,7 @@
 
   <!--Open Graph Title-->
   
-      <meta property="og:title" content="数据库索引"/>
+      <meta property="og:title" content="Linux复习归纳1-文件和基本命令"/>
   
   <!--Open Graph Description-->
   
@@ -42,7 +42,7 @@
     </script>
   <!-- Title -->
   
-  <title>数据库索引 - Zcy</title>
+  <title>Linux复习归纳1-文件和基本命令 - Zcy</title>
 
 
   <link rel="shortcut icon" href="/favicon.ico">
@@ -202,7 +202,7 @@
                 <!-- Title date & tags -->
                 <div class="post-header">
                     <h1 class="entry-title">
-                        数据库索引
+                        Linux复习归纳1-文件和基本命令
                         
                     </h1>
 
@@ -214,7 +214,7 @@
       <span class="post-meta-item-icon">
         <i class="fa fa-keyboard-o"></i>
         <span class="post-meta-item-text">  字数统计: </span>
-        <span class="post-count">1.1k字</span>
+        <span class="post-count">1.3k字</span>
       </span>
     </span>
 
@@ -223,38 +223,61 @@
       <span class="post-meta-item-icon">
         <i class="fa fa-hourglass-half"></i>
         <span class="post-meta-item-text">  阅读时长: </span>
-        <span class="post-count">3分</span>
+        <span class="post-count">4分</span>
       </span>
     </span>
                 </div>
 
                 <p class="a-posted-on" style="color: #ccc;">
-                    2019-05-13
+                    2019-05-15
                 </p>
                 <!-- Post Main Content -->
                 <div class="entry-content">
-                    <p><img src="/2019/05/13/数据库索引/title.jpeg" alt="title"></p>
+                    <p><img src="/2019/05/15/Linux复习归纳1-文件和基本命令/title.jpg" alt="title"></p>
 <a id="more"></a>
 <p>[TOC]</p>
-<p>​    索引用于帮助我们快速找到想要的数据，Mysql的索引是B+树，Redis的索引是hash，HBase的索引是LSM树等等</p>
-<p>​    没有最好的索引，只有最适合的索引。不同的索引是为了解决不同的问题而实现的</p>
-<h3 id="Hash"><a href="#Hash" class="headerlink" title="Hash"></a>Hash</h3><p>​    这里就不详细将Hash的原理了。Hash查询的时间复杂度是O（1）的，速度快。但是hash只适合随机查找，不适合范围查找，因为它是无序的，因此也不支持排序。</p>
-<p>​    而且当key多到内存装不下的时候，hash索引必然有一部分会存储到磁盘上。而磁盘上hash的效率就特别慢了。</p>
-<h3 id="B-树"><a href="#B-树" class="headerlink" title="B+树"></a>B+树</h3><p>​    B+树查找的时间复杂度为O(logn)，但它支持范围查找和排序</p>
-<p>​    说B+树前，先说一下它的基石，对于平衡树中的各种细分的种类，它们的大概关系为：</p>
-<p>​    平衡树是对二叉搜索树的改进，红黑树是对平衡树的改进，B树是对红黑树的改进，B+树是对B树的改进。</p>
-<p>​    对于二叉搜索树而言，它综合了数组和链表的优点，它无论是插入还是查找某个元素，平均复杂度都是O(logn)</p>
-<p>​    二叉搜索树可能造成最坏情况O（n）的复杂度（当成一条直线时），这时候我们对二叉搜索树进行改进，让其在插入元素后仍保持平衡（这样就可以维持O(logn)的时间复杂度），它们是通过左旋右旋操作实现的</p>
-<p>​    红黑树相比平衡树，通过引入红黑节点变色操作。损失了一定的平衡性，但是减少了旋转操作的次数，增强了效率。</p>
-<p>​    当数据量特别大的时候，就需要将数据存到磁盘上。由于磁盘的IO查找速度很慢，如果二叉树的层数很多，就需要多次转动磁盘，效率很低。如果我们允许一个节点存储多个元素（由于磁盘实际读取会读取一个磁盘快大小到内存，大概为4k，这样我们把一个节点的大小设置为4k刚好），这样就可以降低树的高度，减少IO磁盘转动的次数，这就是B树</p>
-<p>​    我们可以在B树的基础上，尽可能更多的一个节点读取更多的信息，这就有了B+树。B+树在内部节点中只存储索引字段而不是数据内容，这样节点的存放数据量更多，树的高度更低，IO磁盘转动的次数更少。除此之外，sql中经常会有范围查找，B树只能遍历范围内的每个节点，然后挨个查找。而B+树会将叶子结点会通过指针链接起来。这样范围查找可以直接通过这条链表从范围的起始位置走到结尾。</p>
-<p>​    大概1TB的内容只需要B+树的4层。在此基础上，我们可以一直把B+树的根节点保存在内存中减少一次IO操作。</p>
-<p>​    当B+树面对海量数据的时候也会显得力不从心，毕竟每次写入数据前都先要查找数据应该写入的位置。而且当需要分库分表时（当数据超过两千万左右时，避免B+树的高度增加于是分库分表）特别麻烦。</p>
-<h3 id="LSM-TREE"><a href="#LSM-TREE" class="headerlink" title="LSM TREE"></a>LSM TREE</h3><p>​    在NoSql数据库中（非关系型数据库）使用LSM Tree，它将磁盘的顺序写发挥到极致，适用于大规模数据量写入。</p>
-<h3 id="倒排索引"><a href="#倒排索引" class="headerlink" title="倒排索引"></a>倒排索引</h3><p>​    用于全文检索（例如搜索一个词，把所有出现这个词的网页都显示出来）。是通过分词和字典树来实现的。</p>
-<p>​    它会把每个网页中的词都单独拿出来，扔到集合中，比如hashmap（这里的key是单词，value是包含这个单词的所有文章的编号列表）</p>
-<p>​    当数据量少的可以用hashmap或者平衡树，当数据量大的时候就可以使用字典树了（在字典树节点中存储这个单词所有文章的编号列表）</p>
-
+<h1 id="Linux"><a href="#Linux" class="headerlink" title="Linux"></a>Linux</h1><p>​    把自己所学的linux整理归并一下～</p>
+<h2 id="系统目录结构"><a href="#系统目录结构" class="headerlink" title="系统目录结构"></a>系统目录结构</h2><p>​    Linux一切皆文件！！！！</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">/bin	存放系统可执行程序</span><br><span class="line">/sbin	存放超级管理员可执行程序</span><br><span class="line">/boot	存放内核和启动程序相关文件</span><br><span class="line">/lib	存放库文件（动态共享库）</span><br><span class="line">/etc	存放系统配置文件,比如用户存放信息文件/etc/passwd</span><br><span class="line">/dev	存放设备文件</span><br><span class="line">/tmp	存放临时文件（关机清空）</span><br><span class="line">/home	存放用户的主目录</span><br><span class="line">/usr	应用会安装到此目录，比如软件安放到/usr/local下</span><br><span class="line">/proc	存储系统内存的映射（保留进程运行的信息）</span><br><span class="line">/media	挂载u盘光驱等外接设备（自动挂载）</span><br><span class="line">/mnt	手动挂载外接设备</span><br></pre></td></tr></table></figure>
+<h2 id="常用命令"><a href="#常用命令" class="headerlink" title="常用命令"></a>常用命令</h2><p>​    说命令之前需要说一个神键：自动补齐Tab键，简直不能再好用</p>
+<h3 id="与命令相关"><a href="#与命令相关" class="headerlink" title="与命令相关"></a>与命令相关</h3><h4 id="man"><a href="#man" class="headerlink" title="man"></a>man</h4><p>​    用于查询命令的用法(英文版)，MAC可按照这个教程-&gt; <a href="https://www.jianshu.com/p/bb3edf4d16ce" target="_blank" rel="noopener">跳转</a> 去安装汉化版cman</p>
+<p>​    不懂就查，感觉这是最最最最最有用的命令了</p>
+<h4 id="history"><a href="#history" class="headerlink" title="history"></a>history</h4><p>​    在终端输出历史命令（当然也可以方向键），可使用<code>!序号</code>来执行指定历史编号的命令</p>
+<h4 id="切换管理员"><a href="#切换管理员" class="headerlink" title="切换管理员"></a>切换管理员</h4><p>​    <code>sudo su</code>命令用于切换管理员</p>
+<h3 id="与目录相关"><a href="#与目录相关" class="headerlink" title="与目录相关"></a>与目录相关</h3><h4 id="ls"><a href="#ls" class="headerlink" title="ls"></a>ls</h4><p>​    list的缩写，用于查看指定目录下的所有文件和目录（支持通配符）。常用参数：-a(显示全部，包括隐藏)，-l（查看详细文件信息）-R（递归查看子目录文件），-t（按照文件修改时间排序）</p>
+<h4 id="pwd"><a href="#pwd" class="headerlink" title="pwd"></a>pwd</h4><p>​    用于显示当前工作目录</p>
+<h4 id="tree"><a href="#tree" class="headerlink" title="tree"></a>tree</h4><p>​    用于显示目录的树形结构</p>
+<h4 id="cd"><a href="#cd" class="headerlink" title="cd"></a>cd</h4><p>​    用于切换路径（以/开头的路径为绝对路径，否则为相对路径）</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">cd或cd ~或 cd $HOME		返回家目录</span><br><span class="line">cd -		返回上次目录</span><br><span class="line">cd ..		返回上级目录</span><br><span class="line">cd 绝对或相对路径</span><br></pre></td></tr></table></figure>
+<h4 id="mkdir"><a href="#mkdir" class="headerlink" title="mkdir"></a>mkdir</h4><p>​    用于创建目录，常用参数-r（可以用于递归创建目录）</p>
+<h4 id="touch"><a href="#touch" class="headerlink" title="touch"></a>touch</h4><p>​    用于创建文件（若文件已创建，则只是修改一下文件的访问时间，并不会新创建一个文件）</p>
+<h4 id="rm"><a href="#rm" class="headerlink" title="rm"></a>rm</h4><p>​    rm命令用于删除目录或文件，常用参有-r(循环递归删除)，-f(强制删除)</p>
+<h4 id="cp"><a href="#cp" class="headerlink" title="cp"></a>cp</h4><p>​    -r（用于递归拷贝）</p>
+<p>​    当目标为目录时，则将当前文件或目录拷贝到目标目录</p>
+<p>​    若目标不是目录时，则在目标的上一层创建该目标并拷贝过去</p>
+<h4 id="mv"><a href="#mv" class="headerlink" title="mv"></a>mv</h4><p>​    移动一个文件或文件到另一个目录下（也可用它来重命名），与mv用法差不多，只不过是移动</p>
+<h4 id="which"><a href="#which" class="headerlink" title="which"></a>which</h4><p>​    用于显示对应命令的所在路径</p>
+<h3 id="与文件相关"><a href="#与文件相关" class="headerlink" title="与文件相关"></a>与文件相关</h3><p>​    文件的详细信息包括：文件权限标志位（包括所属者、组、其它权限(rwx)以及文件类型）、硬连接数、所属者、所属用户、文件大小、时间、文件名</p>
+<p>​    文件类型包括：</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">- 普通文件</span><br><span class="line">d 目录文件</span><br><span class="line">c 字符设备文件（鼠标，键盘等）</span><br><span class="line">b 块设备（也就是硬盘）</span><br><span class="line">p 命名管道文件</span><br><span class="line">l link链接文件</span><br><span class="line">s socket套接字文件</span><br></pre></td></tr></table></figure>
+<h4 id="cat"><a href="#cat" class="headerlink" title="cat"></a>cat</h4><p>​    将文件信息显示到终端</p>
+<h4 id="more和less"><a href="#more和less" class="headerlink" title="more和less"></a>more和less</h4><p>​    也是显示文件，可以分屏显示</p>
+<p>​    more会车是按行显示，空格按页显示</p>
+<p>​    less可以回车或者上下方向键可以反复查看文件内容</p>
+<h4 id="head和tail"><a href="#head和tail" class="headerlink" title="head和tail"></a>head和tail</h4><p>​    head是查看文件头，tail是查看文件尾（默认显示10行），可以通过参数-n更改显示行数</p>
+<p>​    其中tail中-f可以一直跟踪文件尾部（比如用于查看实时日志啥的）</p>
+<h4 id="ln"><a href="#ln" class="headerlink" title="ln"></a>ln</h4><p>​    用于建立软或硬链接（硬链接实际上是两个文件映射同一磁盘地址上的内容；软连接就是创建了源文件的快捷方式，新文件映射到源文件）</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">ln 文件 文件	对两个文件建立硬链接</span><br><span class="line">ln -s 文件 文件 对两个文件或文件夹进行软连接（不会增加硬链接计数）</span><br></pre></td></tr></table></figure>
+<h4 id="unlink"><a href="#unlink" class="headerlink" title="unlink"></a>unlink</h4><p>​    用于删除硬链接（当然也可以rm），感觉有点类似于智能指针的shard_ptr</p>
+<h4 id="chmod"><a href="#chmod" class="headerlink" title="chmod"></a>chmod</h4><p>​    用于改变文件权限，大概格式如下：</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">chmod [a|g|o|a] [+|-] [r|w|x] 文件名	//方法一</span><br><span class="line">chmod 数字表示法	文件名			//方法二</span><br></pre></td></tr></table></figure>
+<h4 id="chown与chgrp"><a href="#chown与chgrp" class="headerlink" title="chown与chgrp"></a>chown与chgrp</h4><p>​    chown用于改变所属用户和组，chgrp用于改变所属组（这两个命令需要管理员权限，chgrp有些鸡肋）</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">sudo chown 用户 文件	//改变所属用户</span><br><span class="line">sudo chown 用户:组 文件 //改变所属用户和组</span><br><span class="line">sudo chgrp 组 文件		//改变所属组</span><br></pre></td></tr></table></figure>
+<h3 id="与统计相关"><a href="#与统计相关" class="headerlink" title="与统计相关"></a>与统计相关</h3><h4 id="wc"><a href="#wc" class="headerlink" title="wc"></a>wc</h4><p>​    该命令用于计数，分别输出行数（可单独-l）、单词数(可单独-w)、字节数(可单独-c)</p>
+<h4 id="du"><a href="#du" class="headerlink" title="du"></a>du</h4><p>​    用于显示当前目录下文件的大小。可选参-h(human，适合人类观看模式)</p>
+<h3 id="与系统有关"><a href="#与系统有关" class="headerlink" title="与系统有关"></a>与系统有关</h3><h4 id="whoami"><a href="#whoami" class="headerlink" title="whoami"></a>whoami</h4><p>​    显示当前用户</p>
+<h4 id="df"><a href="#df" class="headerlink" title="df"></a>df</h4><p>​    显示当前系统的磁盘空间(使用情况)。可选参-h(human，适合人类观看模式)</p>
+<h2 id="通配符"><a href="#通配符" class="headerlink" title="通配符"></a>通配符</h2><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">*	匹配任意多字符</span><br><span class="line">?	匹配任意一个字符</span><br><span class="line">[list]	匹配list中任意单个字符</span><br><span class="line">[!list]	匹配除list的任意单个字符</span><br><span class="line">[c1-c2]	匹配c1-c2中任意单个字符</span><br></pre></td></tr></table></figure>
                 </div>
             </article>
         </div>
@@ -273,13 +296,9 @@
         <div class="container" >
             <ul class="pager">
                 
-                <li class="previous">
-                    <a href="/2019/05/15/Linux复习归纳1-文件和基本命令/" rel="prev">下一篇</a>
-                </li>
-                
                 
                 <li class="next">
-                    <a href="/2019/05/13/保持DB和缓存一致性/" rel="prev">上一篇</a>
+                    <a href="/2019/05/13/数据库索引/" rel="prev">上一篇</a>
                 </li>
                 
             </ul>
