@@ -14,7 +14,7 @@
 
   <!--Open Graph Title-->
   
-      <meta property="og:title" content="Linux复习归纳1-文件和基本命令"/>
+      <meta property="og:title" content="Linux复习归纳2-其它常用命令"/>
   
   <!--Open Graph Description-->
   
@@ -42,7 +42,7 @@
     </script>
   <!-- Title -->
   
-  <title>Linux复习归纳1-文件和基本命令 - Zcy</title>
+  <title>Linux复习归纳2-其它常用命令 - Zcy</title>
 
 
   <link rel="shortcut icon" href="/favicon.ico">
@@ -202,7 +202,7 @@
                 <!-- Title date & tags -->
                 <div class="post-header">
                     <h1 class="entry-title">
-                        Linux复习归纳1-文件和基本命令
+                        Linux复习归纳2-其它常用命令
                         
                     </h1>
 
@@ -214,7 +214,7 @@
       <span class="post-meta-item-icon">
         <i class="fa fa-keyboard-o"></i>
         <span class="post-meta-item-text">  字数统计: </span>
-        <span class="post-count">1.3k字</span>
+        <span class="post-count">1.1k字</span>
       </span>
     </span>
 
@@ -223,61 +223,54 @@
       <span class="post-meta-item-icon">
         <i class="fa fa-hourglass-half"></i>
         <span class="post-meta-item-text">  阅读时长: </span>
-        <span class="post-count">4分</span>
+        <span class="post-count">3分</span>
       </span>
     </span>
                 </div>
 
                 <p class="a-posted-on" style="color: #ccc;">
-                    2019-05-15
+                    2019-05-16
                 </p>
                 <!-- Post Main Content -->
                 <div class="entry-content">
-                    <p><img src="/2019/05/15/Linux复习归纳1-文件和基本命令/title.jpg" alt="title"></p>
+                    <p><img src="/2019/05/16/Linux复习归纳2-其它常用命令/title1.jpg" alt="title1"></p>
 <a id="more"></a>
-<p>[TOC]</p>
-<h1 id="Linux"><a href="#Linux" class="headerlink" title="Linux"></a>Linux</h1><p>​    把自己所学的linux整理归并一下～</p>
-<h2 id="系统目录结构"><a href="#系统目录结构" class="headerlink" title="系统目录结构"></a>系统目录结构</h2><p>​    Linux一切皆文件！！！！</p>
-<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">/bin	存放系统可执行程序</span><br><span class="line">/sbin	存放超级管理员可执行程序</span><br><span class="line">/boot	存放内核和启动程序相关文件</span><br><span class="line">/lib	存放库文件（动态共享库）</span><br><span class="line">/etc	存放系统配置文件,比如用户存放信息文件/etc/passwd</span><br><span class="line">/dev	存放设备文件</span><br><span class="line">/tmp	存放临时文件（关机清空）</span><br><span class="line">/home	存放用户的主目录</span><br><span class="line">/usr	应用会安装到此目录，比如软件安放到/usr/local下</span><br><span class="line">/proc	存储系统内存的映射（保留进程运行的信息）</span><br><span class="line">/media	挂载u盘光驱等外接设备（自动挂载）</span><br><span class="line">/mnt	手动挂载外接设备</span><br></pre></td></tr></table></figure>
-<h2 id="常用命令"><a href="#常用命令" class="headerlink" title="常用命令"></a>常用命令</h2><p>​    说命令之前需要说一个神键：自动补齐Tab键，简直不能再好用</p>
-<h3 id="与命令相关"><a href="#与命令相关" class="headerlink" title="与命令相关"></a>与命令相关</h3><h4 id="man"><a href="#man" class="headerlink" title="man"></a>man</h4><p>​    用于查询命令的用法(英文版)，MAC可按照这个教程-&gt; <a href="https://www.jianshu.com/p/bb3edf4d16ce" target="_blank" rel="noopener">跳转</a> 去安装汉化版cman</p>
-<p>​    不懂就查，感觉这是最最最最最有用的命令了</p>
-<h4 id="history"><a href="#history" class="headerlink" title="history"></a>history</h4><p>​    在终端输出历史命令（当然也可以方向键），可使用<code>!序号</code>来执行指定历史编号的命令</p>
-<h4 id="切换管理员"><a href="#切换管理员" class="headerlink" title="切换管理员"></a>切换管理员</h4><p>​    <code>sudo su</code>命令用于切换管理员</p>
-<h3 id="与目录相关"><a href="#与目录相关" class="headerlink" title="与目录相关"></a>与目录相关</h3><h4 id="ls"><a href="#ls" class="headerlink" title="ls"></a>ls</h4><p>​    list的缩写，用于查看指定目录下的所有文件和目录（支持通配符）。常用参数：-a(显示全部，包括隐藏)，-l（查看详细文件信息）-R（递归查看子目录文件），-t（按照文件修改时间排序）</p>
-<h4 id="pwd"><a href="#pwd" class="headerlink" title="pwd"></a>pwd</h4><p>​    用于显示当前工作目录</p>
-<h4 id="tree"><a href="#tree" class="headerlink" title="tree"></a>tree</h4><p>​    用于显示目录的树形结构</p>
-<h4 id="cd"><a href="#cd" class="headerlink" title="cd"></a>cd</h4><p>​    用于切换路径（以/开头的路径为绝对路径，否则为相对路径）</p>
-<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">cd或cd ~或 cd $HOME		返回家目录</span><br><span class="line">cd -		返回上次目录</span><br><span class="line">cd ..		返回上级目录</span><br><span class="line">cd 绝对或相对路径</span><br></pre></td></tr></table></figure>
-<h4 id="mkdir"><a href="#mkdir" class="headerlink" title="mkdir"></a>mkdir</h4><p>​    用于创建目录，常用参数-r（可以用于递归创建目录）</p>
-<h4 id="touch"><a href="#touch" class="headerlink" title="touch"></a>touch</h4><p>​    用于创建文件（若文件已创建，则只是修改一下文件的访问时间，并不会新创建一个文件）</p>
-<h4 id="rm"><a href="#rm" class="headerlink" title="rm"></a>rm</h4><p>​    rm命令用于删除目录或文件，常用参有-r(循环递归删除)，-f(强制删除)</p>
-<h4 id="cp"><a href="#cp" class="headerlink" title="cp"></a>cp</h4><p>​    -r（用于递归拷贝）</p>
-<p>​    当目标为目录时，则将当前文件或目录拷贝到目标目录</p>
-<p>​    若目标不是目录时，则在目标的上一层创建该目标并拷贝过去</p>
-<h4 id="mv"><a href="#mv" class="headerlink" title="mv"></a>mv</h4><p>​    移动一个文件或文件到另一个目录下（也可用它来重命名），与mv用法差不多，只不过是移动</p>
-<h4 id="which"><a href="#which" class="headerlink" title="which"></a>which</h4><p>​    用于显示对应命令的所在路径</p>
-<h3 id="与文件相关"><a href="#与文件相关" class="headerlink" title="与文件相关"></a>与文件相关</h3><p>​    文件的详细信息包括：文件权限标志位（包括所属者、组、其它权限(rwx)以及文件类型）、硬连接数、所属者、所属用户、文件大小、时间、文件名</p>
-<p>​    文件类型包括：</p>
-<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">- 普通文件</span><br><span class="line">d 目录文件</span><br><span class="line">c 字符设备文件（鼠标，键盘等）</span><br><span class="line">b 块设备（也就是硬盘）</span><br><span class="line">p 命名管道文件</span><br><span class="line">l link链接文件</span><br><span class="line">s socket套接字文件</span><br></pre></td></tr></table></figure>
-<h4 id="cat"><a href="#cat" class="headerlink" title="cat"></a>cat</h4><p>​    将文件信息显示到终端</p>
-<h4 id="more和less"><a href="#more和less" class="headerlink" title="more和less"></a>more和less</h4><p>​    也是显示文件，可以分屏显示</p>
-<p>​    more会车是按行显示，空格按页显示</p>
-<p>​    less可以回车或者上下方向键可以反复查看文件内容</p>
-<h4 id="head和tail"><a href="#head和tail" class="headerlink" title="head和tail"></a>head和tail</h4><p>​    head是查看文件头，tail是查看文件尾（默认显示10行），可以通过参数-n更改显示行数</p>
-<p>​    其中tail中-f可以一直跟踪文件尾部（比如用于查看实时日志啥的）</p>
-<h4 id="ln"><a href="#ln" class="headerlink" title="ln"></a>ln</h4><p>​    用于建立软或硬链接（硬链接实际上是两个文件映射同一磁盘地址上的内容；软连接就是创建了源文件的快捷方式，新文件映射到源文件）</p>
-<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">ln 文件 文件	对两个文件建立硬链接</span><br><span class="line">ln -s 文件 文件 对两个文件或文件夹进行软连接（不会增加硬链接计数）</span><br></pre></td></tr></table></figure>
-<h4 id="unlink"><a href="#unlink" class="headerlink" title="unlink"></a>unlink</h4><p>​    用于删除硬链接（当然也可以rm），感觉有点类似于智能指针的shard_ptr</p>
-<h4 id="chmod"><a href="#chmod" class="headerlink" title="chmod"></a>chmod</h4><p>​    用于改变文件权限，大概格式如下：</p>
-<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">chmod [a|g|o|a] [+|-] [r|w|x] 文件名	//方法一</span><br><span class="line">chmod 数字表示法	文件名			//方法二</span><br></pre></td></tr></table></figure>
-<h4 id="chown与chgrp"><a href="#chown与chgrp" class="headerlink" title="chown与chgrp"></a>chown与chgrp</h4><p>​    chown用于改变所属用户和组，chgrp用于改变所属组（这两个命令需要管理员权限，chgrp有些鸡肋）</p>
-<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">sudo chown 用户 文件	//改变所属用户</span><br><span class="line">sudo chown 用户:组 文件 //改变所属用户和组</span><br><span class="line">sudo chgrp 组 文件		//改变所属组</span><br></pre></td></tr></table></figure>
-<h3 id="与统计相关"><a href="#与统计相关" class="headerlink" title="与统计相关"></a>与统计相关</h3><h4 id="wc"><a href="#wc" class="headerlink" title="wc"></a>wc</h4><p>​    该命令用于计数，分别输出行数（可单独-l）、单词数(可单独-w)、字节数(可单独-c)</p>
-<h4 id="du"><a href="#du" class="headerlink" title="du"></a>du</h4><p>​    用于显示当前目录下文件的大小。可选参-h(human，适合人类观看模式)</p>
-<h3 id="与系统有关"><a href="#与系统有关" class="headerlink" title="与系统有关"></a>与系统有关</h3><h4 id="whoami"><a href="#whoami" class="headerlink" title="whoami"></a>whoami</h4><p>​    显示当前用户</p>
-<h4 id="df"><a href="#df" class="headerlink" title="df"></a>df</h4><p>​    显示当前系统的磁盘空间(使用情况)。可选参-h(human，适合人类观看模式)</p>
-<h2 id="通配符"><a href="#通配符" class="headerlink" title="通配符"></a>通配符</h2><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">*	匹配任意多字符</span><br><span class="line">?	匹配任意一个字符</span><br><span class="line">[list]	匹配list中任意单个字符</span><br><span class="line">[!list]	匹配除list的任意单个字符</span><br><span class="line">[c1-c2]	匹配c1-c2中任意单个字符</span><br></pre></td></tr></table></figure>
+<h1 id="linux"><a href="#linux" class="headerlink" title="linux"></a>linux</h1><p>复习归纳2～</p>
+<h2 id="查找和检索"><a href="#查找和检索" class="headerlink" title="查找和检索"></a>查找和检索</h2><h3 id="find"><a href="#find" class="headerlink" title="find"></a>find</h3><p>​    find命令用于查找文件，格式为：<code>find 路径 [选项] 内容</code>，它有很多选项，比如：</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">-name（按照名字查找，比如查找*.c文件，则为-name &quot;*.c&quot;）</span><br><span class="line">-type（按照类型查找，比如查找目录，则为 -type d）</span><br><span class="line">-size（按照大小查找，比如大于1M小于5M，则为-size +1M -size -5M）</span><br><span class="line">-maxdepth（用于规定查找的最深路径，如只查找当前直接路径下，则为-maxdepth 1）</span><br></pre></td></tr></table></figure>
+<h3 id="xargs"><a href="#xargs" class="headerlink" title="xargs"></a>xargs</h3><p>​    常常和管道连用，用于将管道前的输出作为参数传给后面的命令，例如显示查找到的文件的详细信息：</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">find ./ -name &quot;*.c&quot; | xargs ls -al</span><br></pre></td></tr></table></figure>
+<h3 id="grep"><a href="#grep" class="headerlink" title="grep"></a>grep</h3><p>​    用于检索和过滤，也常常和管道连用，例如检索普通文件类型中包含txt的文件：</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">find ./ -type f | grep txt</span><br></pre></td></tr></table></figure>
+<p>​    除此之外，还可以检索文件中的内容，具体格式为<code>grep [选项] 内容 文件</code> （当然也可以<code>cat 文件 | grep [选项] 内容</code>），选项比如-w（精确查找），-c（统计查找到的次数），-i（忽略大小写），-n（带行号），-v（反向检索，也就是除内容以外的行）</p>
+<h2 id="压缩包管理"><a href="#压缩包管理" class="headerlink" title="压缩包管理"></a>压缩包管理</h2><h3 id="zip和unzip"><a href="#zip和unzip" class="headerlink" title="zip和unzip"></a>zip和unzip</h3><p>​    zip用于压缩打包，具体用法为:<code>zip -r 压缩文件.zip 目录或文件（可多个空格隔开）</code></p>
+<p>​    unzip用于解压文件，具体用法为：<code>unzip 压缩文件</code></p>
+<p>​    除此之外，还有gzip与gunzip，rar a和rar x等压缩命令，分别生成.gz和.rar</p>
+<h3 id="tar"><a href="#tar" class="headerlink" title="tar"></a>tar</h3><p>​    最常用的打包工具，后缀一般是.tar.gz</p>
+<p>​    tar命令常用的选项有-z（gz格式压缩，如果不加只是tar包，只打包不压缩），-c（代表压缩文件），-v（代表显示信息），-f（代表指定压缩包的名字），-x（代表解压文件）</p>
+<p>​    压缩文件格式为：<code>tar zcvf 压缩文件.tar.gz 目录或文件</code></p>
+<p>​    解压文件格式为：<code>tar zxvf 压缩文件.tar.gz</code></p>
+<h2 id="安装"><a href="#安装" class="headerlink" title="安装"></a>安装</h2><h3 id="brew或apt-get"><a href="#brew或apt-get" class="headerlink" title="brew或apt-get"></a>brew或apt-get</h3><p>​    linux有apt-get，MacOS有brew等等不同的包管理工具，具体用法也不再重复，详细请看个人博客：<a href="http://www.ivan-zcy.top/%2F2019%2F02%2F25%2FMAC下brew安装与使用以及坑%2F">跳转</a></p>
+<h3 id="源码安装"><a href="#源码安装" class="headerlink" title="源码安装"></a>源码安装</h3><p>​    具体流程大概如下：</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">1. 解压源码代码包</span><br><span class="line">2. cd到解压后的目录</span><br><span class="line">3. ./configure	//用于检测文件是否缺失并创建makefile，并检测编译环境</span><br><span class="line">4. make	//用于编译源码，生成库和可执行程序</span><br><span class="line">5. sudo make install //把库和可执行程序安装到系统路径下</span><br><span class="line">6. sudo make distclean //删除和卸载软件</span><br></pre></td></tr></table></figure>
+<h2 id="用户管理"><a href="#用户管理" class="headerlink" title="用户管理"></a>用户管理</h2><h3 id="useradd"><a href="#useradd" class="headerlink" title="useradd"></a>useradd</h3><p>​    用于创建用户，常用选项有：-g（指定组），-d（指定用户家目录），-m（家目录不存在自动创建），-s（指定shell）</p>
+<h3 id="groupadd"><a href="#groupadd" class="headerlink" title="groupadd"></a>groupadd</h3><p>​    用户创建用户组</p>
+<h3 id="su"><a href="#su" class="headerlink" title="su"></a>su</h3><p>​    用于切换用户，加-带有环境变量的切换</p>
+<h3 id="userdel"><a href="#userdel" class="headerlink" title="userdel"></a>userdel</h3><p>​    用于删除用户，选项-r（连带删除家目录）</p>
+<h2 id="关于进程"><a href="#关于进程" class="headerlink" title="关于进程"></a>关于进程</h2><p>这些先简略占位，日后根据详细应用补～</p>
+<h3 id="who"><a href="#who" class="headerlink" title="who"></a>who</h3><p>​    查看登录设备</p>
+<h3 id="ps"><a href="#ps" class="headerlink" title="ps"></a>ps</h3><p>​    查看进程信息，常用的有<code>ps -aux</code>(显示所有包含其他使用者的进程)`</p>
+<h3 id="kill"><a href="#kill" class="headerlink" title="kill"></a>kill</h3><p>​    用于杀死进程，常用的有<code>kill 9 pid</code></p>
+<h3 id="top"><a href="#top" class="headerlink" title="top"></a>top</h3><p>​    用于实时查看系统信息</p>
+<h2 id="关于网络"><a href="#关于网络" class="headerlink" title="关于网络"></a>关于网络</h2><p>这些先简略占位，日后根据详细应用补～</p>
+<h3 id="ifconfig"><a href="#ifconfig" class="headerlink" title="ifconfig"></a>ifconfig</h3><p>​    主要用于查看ip信息。除此之外，eth0代表本地第一块网卡</p>
+<h3 id="ping"><a href="#ping" class="headerlink" title="ping"></a>ping</h3><p>​    用于检测主机，执行ping指令会使用icmp传输协议，发出要求回应的信息。若对方主机网络没问题，就会回应该信息，从而得知主机运行正常</p>
+<h3 id="nslookup"><a href="#nslookup" class="headerlink" title="nslookup"></a>nslookup</h3><p>​    该命令用于通过域名得到ip</p>
+<h2 id="其它常用命令"><a href="#其它常用命令" class="headerlink" title="其它常用命令"></a>其它常用命令</h2><h3 id="date"><a href="#date" class="headerlink" title="date"></a>date</h3><p>​    用于获取时间的指令，可自定义格式，例如：<code>date +&quot;%Y-%m-%d&quot;</code>等</p>
+<h3 id="echo"><a href="#echo" class="headerlink" title="echo"></a>echo</h3><p>​    用于输出变量或字符</p>
+<h3 id="alias"><a href="#alias" class="headerlink" title="alias"></a>alias</h3><p>​    用于对命令进行重命名，有以下几种用法：</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">用法1: alias			//用于列出目前所有的别名设置</span><br><span class="line">用法2: alias 别名=&apos;指令&apos;	//仅作用于本次终端登录</span><br><span class="line">用法3: 在~/.bashrc文件中写入用法2，永久作用于本用户</span><br><span class="line">用法4: 在/etc/profile中写入用法2，永久作用于本计算机中所有用户</span><br><span class="line"></span><br><span class="line">//用法3、4需要在写入后source一下</span><br></pre></td></tr></table></figure>
+
                 </div>
             </article>
         </div>
@@ -296,13 +289,9 @@
         <div class="container" >
             <ul class="pager">
                 
-                <li class="previous">
-                    <a href="/2019/05/16/Linux复习归纳2-其它常用命令/" rel="prev">下一篇</a>
-                </li>
-                
                 
                 <li class="next">
-                    <a href="/2019/05/13/数据库索引/" rel="prev">上一篇</a>
+                    <a href="/2019/05/15/Linux复习归纳1-文件和基本命令/" rel="prev">上一篇</a>
                 </li>
                 
             </ul>
