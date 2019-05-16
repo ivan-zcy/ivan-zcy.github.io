@@ -214,7 +214,7 @@
       <span class="post-meta-item-icon">
         <i class="fa fa-keyboard-o"></i>
         <span class="post-meta-item-text">  字数统计: </span>
-        <span class="post-count">1.3k字</span>
+        <span class="post-count">1.4k字</span>
       </span>
     </span>
 
@@ -242,24 +242,28 @@
 <h2 id="常用命令"><a href="#常用命令" class="headerlink" title="常用命令"></a>常用命令</h2><p>​    说命令之前需要说一个神键：自动补齐Tab键，简直不能再好用</p>
 <h3 id="与命令相关"><a href="#与命令相关" class="headerlink" title="与命令相关"></a>与命令相关</h3><h4 id="man"><a href="#man" class="headerlink" title="man"></a>man</h4><p>​    用于查询命令的用法(英文版)，MAC可按照这个教程-&gt; <a href="https://www.jianshu.com/p/bb3edf4d16ce" target="_blank" rel="noopener">跳转</a> 去安装汉化版cman</p>
 <p>​    不懂就查，感觉这是最最最最最有用的命令了</p>
+<h4 id="tldr"><a href="#tldr" class="headerlink" title="tldr"></a>tldr</h4><p>​    man真的是好长好长，如果是查询命令的简单应用，可以安装tldr命令来查看用法(too long don’t read，2333)</p>
 <h4 id="history"><a href="#history" class="headerlink" title="history"></a>history</h4><p>​    在终端输出历史命令（当然也可以方向键），可使用<code>!序号</code>来执行指定历史编号的命令</p>
-<h4 id="切换管理员"><a href="#切换管理员" class="headerlink" title="切换管理员"></a>切换管理员</h4><p>​    <code>sudo su</code>命令用于切换管理员</p>
+<h4 id="sudo"><a href="#sudo" class="headerlink" title="sudo"></a>sudo</h4><p>​    该命令一般用于临时获取管理员权限，一般常用的：</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">sudo su 切换为管理员</span><br><span class="line">sudo -i 切换为普通用户</span><br><span class="line">sudo !! 当上一条命令权限被拒绝时，可直接这</span><br></pre></td></tr></table></figure>
 <h3 id="与目录相关"><a href="#与目录相关" class="headerlink" title="与目录相关"></a>与目录相关</h3><h4 id="ls"><a href="#ls" class="headerlink" title="ls"></a>ls</h4><p>​    list的缩写，用于查看指定目录下的所有文件和目录（支持通配符）。常用参数：-a(显示全部，包括隐藏)，-l（查看详细文件信息）-R（递归查看子目录文件），-t（按照文件修改时间排序）</p>
 <h4 id="pwd"><a href="#pwd" class="headerlink" title="pwd"></a>pwd</h4><p>​    用于显示当前工作目录</p>
 <h4 id="tree"><a href="#tree" class="headerlink" title="tree"></a>tree</h4><p>​    用于显示目录的树形结构</p>
 <h4 id="cd"><a href="#cd" class="headerlink" title="cd"></a>cd</h4><p>​    用于切换路径（以/开头的路径为绝对路径，否则为相对路径）</p>
 <figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">cd或cd ~或 cd $HOME		返回家目录</span><br><span class="line">cd -		返回上次目录</span><br><span class="line">cd ..		返回上级目录</span><br><span class="line">cd 绝对或相对路径</span><br></pre></td></tr></table></figure>
-<h4 id="mkdir"><a href="#mkdir" class="headerlink" title="mkdir"></a>mkdir</h4><p>​    用于创建目录，常用参数-r（可以用于递归创建目录）</p>
+<h4 id="mkdir"><a href="#mkdir" class="headerlink" title="mkdir"></a>mkdir</h4><p>​    用于创建目录，常用参数-p（可以用于递归创建目录）</p>
 <h4 id="touch"><a href="#touch" class="headerlink" title="touch"></a>touch</h4><p>​    用于创建文件（若文件已创建，则只是修改一下文件的访问时间，并不会新创建一个文件）</p>
 <h4 id="rm"><a href="#rm" class="headerlink" title="rm"></a>rm</h4><p>​    rm命令用于删除目录或文件，常用参有-r(循环递归删除)，-f(强制删除)</p>
 <h4 id="cp"><a href="#cp" class="headerlink" title="cp"></a>cp</h4><p>​    -r（用于递归拷贝）</p>
 <p>​    当目标为目录时，则将当前文件或目录拷贝到目标目录</p>
 <p>​    若目标不是目录时，则在目标的上一层创建该目标并拷贝过去</p>
+<h3 id="scp"><a href="#scp" class="headerlink" title="scp"></a>scp</h3><p>​    用于远程拷贝，具体格式为：</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">scp file 用户名@ip地址:./path路径</span><br></pre></td></tr></table></figure>
 <h4 id="mv"><a href="#mv" class="headerlink" title="mv"></a>mv</h4><p>​    移动一个文件或文件到另一个目录下（也可用它来重命名），与mv用法差不多，只不过是移动</p>
 <h4 id="which"><a href="#which" class="headerlink" title="which"></a>which</h4><p>​    用于显示对应命令的所在路径</p>
 <h3 id="与文件相关"><a href="#与文件相关" class="headerlink" title="与文件相关"></a>与文件相关</h3><p>​    文件的详细信息包括：文件权限标志位（包括所属者、组、其它权限(rwx)以及文件类型）、硬连接数、所属者、所属用户、文件大小、时间、文件名</p>
 <p>​    文件类型包括：</p>
-<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">- 普通文件</span><br><span class="line">d 目录文件</span><br><span class="line">c 字符设备文件（鼠标，键盘等）</span><br><span class="line">b 块设备（也就是硬盘）</span><br><span class="line">p 命名管道文件</span><br><span class="line">l link链接文件</span><br><span class="line">s socket套接字文件</span><br></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">- 普通文件</span><br><span class="line">d 目录文件</span><br><span class="line">c 字符设备文件（鼠标，键盘等）</span><br><span class="line">b 块设备（也就是硬盘）</span><br><span class="line">p 命名管道文件</span><br><span class="line">l link链接文件</span><br><span class="line">s socket套接字文件</span><br><span class="line"></span><br><span class="line">//隐藏文件以.开头</span><br></pre></td></tr></table></figure>
 <h4 id="cat"><a href="#cat" class="headerlink" title="cat"></a>cat</h4><p>​    将文件信息显示到终端</p>
 <h4 id="more和less"><a href="#more和less" class="headerlink" title="more和less"></a>more和less</h4><p>​    也是显示文件，可以分屏显示</p>
 <p>​    more会车是按行显示，空格按页显示</p>
@@ -277,7 +281,7 @@
 <h4 id="du"><a href="#du" class="headerlink" title="du"></a>du</h4><p>​    用于显示当前目录下文件的大小。可选参-h(human，适合人类观看模式)</p>
 <h3 id="与系统有关"><a href="#与系统有关" class="headerlink" title="与系统有关"></a>与系统有关</h3><h4 id="whoami"><a href="#whoami" class="headerlink" title="whoami"></a>whoami</h4><p>​    显示当前用户</p>
 <h4 id="df"><a href="#df" class="headerlink" title="df"></a>df</h4><p>​    显示当前系统的磁盘空间(使用情况)。可选参-h(human，适合人类观看模式)</p>
-<h2 id="通配符"><a href="#通配符" class="headerlink" title="通配符"></a>通配符</h2><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">*	匹配任意多字符</span><br><span class="line">?	匹配任意一个字符</span><br><span class="line">[list]	匹配list中任意单个字符</span><br><span class="line">[!list]	匹配除list的任意单个字符</span><br><span class="line">[c1-c2]	匹配c1-c2中任意单个字符</span><br></pre></td></tr></table></figure>
+
                 </div>
             </article>
         </div>
