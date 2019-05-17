@@ -270,7 +270,7 @@
 <h3 id="echo"><a href="#echo" class="headerlink" title="echo"></a>echo</h3><p>​    用于输出变量或字符</p>
 <h3 id="alias"><a href="#alias" class="headerlink" title="alias"></a>alias</h3><p>​    用于对命令进行重命名，有以下几种用法：</p>
 <figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">用法1: alias			//用于列出目前所有的别名设置</span><br><span class="line">用法2: alias 别名=&apos;指令&apos;	//仅作用于本次终端登录</span><br><span class="line">用法3: 在~/.bashrc文件中写入用法2，永久作用于本用户</span><br><span class="line">用法4: 在/etc/profile中写入用法2，永久作用于本计算机中所有用户</span><br><span class="line"></span><br><span class="line">//用法3、4需要在写入后source一下</span><br></pre></td></tr></table></figure>
-<h3 id="umask"><a href="#umask" class="headerlink" title="umask"></a>umask</h3><p>​    用于指定创建文件时预设的权限掩码，umask与0777的补码&amp;666，得到的就是创建文件时预设的权限掩码（哈哈哈）</p>
+<h3 id="umask"><a href="#umask" class="headerlink" title="umask"></a>umask</h3><p>​    用于指定创建文件时预设的权限掩码，umask与0777的补码&amp;666，得到的就是创建文件时预设的权限掩码（哈哈哈），可通过<code>umask -S 权限掩码</code>来设置</p>
 
                 </div>
             </article>
