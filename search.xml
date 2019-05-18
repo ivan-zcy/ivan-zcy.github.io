@@ -1,6 +1,14 @@
 <?xml version="1.0" encoding="utf-8"?>
 <search>
   <entry>
+    <title><![CDATA[Linux复习归纳4-高级命令]]></title>
+    <url>%2F2019%2F05%2F18%2FLinux%E5%A4%8D%E4%B9%A0%E5%BD%92%E7%BA%B34-%E9%AB%98%E7%BA%A7%E5%91%BD%E4%BB%A4%2F</url>
+    <content type="text"><![CDATA[[TOC] LINUXLInux复习归纳4～ 高级命令sort​ 用于排序，具体用法： sort 文件 //将文件的每一行作为单位进行比较-u 用于去除重复行-n 对于数字文件来说，按照数字进行排序-o 排序结果重定向到文件（不能用&gt;符） cut​ 用于切割，具体用法： cut -c 范围 文件名 //用于指定保留每行的范围(以字符为单位进行分割)cut -b 范围 文件名 //用于指定保留每行的范围(以字节为单位进行分割，用于汉字等)cut -d &apos;分隔符&apos; -f 范围范围格式:a-b（a和b之间），a（a-a），-b（1-b），a-（a到最后），每行下角标从1开始，也可以通过,分隔符分割多个范围 ​ 注意，cut命令不会对范围进行指令重排 split​ 用于将一个大文件切分为多个小文件，提高可读性 split -b size file //将file切分为多个size大小的文件split -l n file //将file切分为多个最长为n行的文件split -d //使用数字作为小文件名后缀（默认为字母） uniq​ 用于去重，常用参数-c（记录重复次数），-d（只显示重复的行） ​ 可以利用先排序，再uniq的方式，保证文件中每个值的唯一 tr​ 可以将tr看作sed的简化版，可以用来进行替换操作，也可以去除一些字符、去重等，具体用法： tr [选项] &lt;字符集&gt; &lt;字符集&gt;tr &apos;12&apos; &apos;34&apos; //将1替换为3，将2替换为4tr -d &apos;12&apos; //删除所有属于第一个字符集中的字符tr -s &apos;12&apos; //将字符集中包含的连续重复的字符以单个字符表示（去重）tr -c &apos;[a-z][0-9]&apos; &apos; &apos; //不满足第一个字符集的字符用字符集二代替 tee​ 在屏幕上显示的同时，将读取的内容也重定向到指定文件，例如cat file | tee file1 xargs​ 常常和管道连用，用于将管道前的输出作为参数传给后面的命令，例如显示查找到的文件的详细信息： find ./ -name &quot;*.c&quot; | xargs ls -al ​ 常见参数： xargs -eEOF //xargs读到EOF停止xargs -e&quot;string&quot; //xargs读到string停止xargs -n n //后面命令一次需要读入n个参数 grep​ 用于检索和过滤，也常常和管道连用，例如检索普通文件类型中包含txt的文件： find ./ -type f | grep txt ​ 除此之外，还可以检索文件中的内容，具体格式为grep [选项] 内容 文件 （当然也可以cat 文件 | grep [选项] 内容），选项比如-w（精确查找），-c（统计查找到的次数），-i（忽略大小写），-n（带行号），-v（反向检索，也就是除内容以外的行）]]></content>
+      <tags>
+        <tag>Linux</tag>
+      </tags>
+  </entry>
+  <entry>
     <title><![CDATA[Linux复习归纳3-特殊符号和命令]]></title>
     <url>%2F2019%2F05%2F16%2FLinux%E5%A4%8D%E4%B9%A0%E5%BD%92%E7%BA%B33-%E7%89%B9%E6%AE%8A%E7%AC%A6%E5%8F%B7%E5%92%8C%E5%91%BD%E4%BB%A4%2F</url>
     <content type="text"><![CDATA[LINUxlinux复习归纳3～ 特殊符号和命令ctrl+z​ 对程序进行挂起 bg​ 对挂起的命令后台运行 fg​ 可以将后台执行的命令转为前台 jobs​ 可以查看所有在后台执行和挂起的任务 &amp;​ 在命令后加&amp;代表后台执行 命令中如果包含另一个命令，则用``将它括起来，在执行时优先执行``中的子命令，然后将其结果带入父命令继续执行 重定向​ 具体有以下几种： &gt; 内容覆盖&gt;&gt; 内容追加&lt; 从文件到命令的重定向&lt;&lt; 结束符例如： cat &gt; a &lt;&lt; B //代表直到输入中存在&apos;B&apos;才会结束输入 通配符* 匹配任意多字符? 匹配任意一个字符[list] 匹配list中任意单个字符[!list] 匹配除list的任意单个字符[c1-c2] 匹配c1-c2中任意单个字符 元字符= 变量赋值，左右不能有空格`` 取命令的执行结果$ 变量值替换，为避免混淆，可使用$&#123;&#125;| 管道; 命令结束符! 执行历史记录中的命令 转义符&apos;&apos; 硬转义，内部所有的shell元字符、通配符都会被关掉&quot;&quot; 软转义，内部只允许出现特定的shell元字符($ ` \)\ 反斜杠，转义，去除后面紧跟着的元字符或通配符的特殊意义]]></content>

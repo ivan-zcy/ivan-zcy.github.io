@@ -1,3 +1,4 @@
+http://www.ivan-zcy.top/2019/05/18/Linux复习归纳4-高级命令/
 http://www.ivan-zcy.top/2019/05/16/Linux复习归纳3-特殊符号和命令/
 http://www.ivan-zcy.top/2019/05/16/Linux复习归纳2-其它常用命令/
 http://www.ivan-zcy.top/2019/05/15/Linux复习归纳1-文件和基本命令/
@@ -97,4 +98,3 @@ http://www.ivan-zcy.top/2019/01/27/洛谷1757通天之分组背包/
 http://www.ivan-zcy.top/2019/01/27/洛谷1064金明的预算方案/
 http://www.ivan-zcy.top/2019/01/25/洛谷1858多人背包/
 http://www.ivan-zcy.top/2019/01/25/洛谷1541乌龟棋/
-http://www.ivan-zcy.top/2019/01/25/洛谷P1158导弹拦截/
