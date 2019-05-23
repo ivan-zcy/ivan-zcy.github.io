@@ -14,7 +14,7 @@
 
   <!--Open Graph Title-->
   
-      <meta property="og:title" content="Linux复习归纳6-sed"/>
+      <meta property="og:title" content="Linux复习归纳7-awk"/>
   
   <!--Open Graph Description-->
   
@@ -42,7 +42,7 @@
     </script>
   <!-- Title -->
   
-  <title>Linux复习归纳6-sed - Zcy</title>
+  <title>Linux复习归纳7-awk - Zcy</title>
 
 
   <link rel="shortcut icon" href="/favicon.ico">
@@ -202,7 +202,7 @@
                 <!-- Title date & tags -->
                 <div class="post-header">
                     <h1 class="entry-title">
-                        Linux复习归纳6-sed
+                        Linux复习归纳7-awk
                         
                     </h1>
 
@@ -214,7 +214,7 @@
       <span class="post-meta-item-icon">
         <i class="fa fa-keyboard-o"></i>
         <span class="post-meta-item-text">  字数统计: </span>
-        <span class="post-count">848字</span>
+        <span class="post-count">976字</span>
       </span>
     </span>
 
@@ -229,21 +229,39 @@
                 </div>
 
                 <p class="a-posted-on" style="color: #ccc;">
-                    2019-05-20
+                    2019-05-23
                 </p>
                 <!-- Post Main Content -->
                 <div class="entry-content">
-                    <p><img src="/2019/05/20/Linux复习归纳6-sed/title2.jpg" alt="title2"></p>
+                    <p><img src="/2019/05/23/Linux复习归纳7-awk/title5.jpg" alt="title5"></p>
 <a id="more"></a>
-<h1 id="LINUX"><a href="#LINUX" class="headerlink" title="LINUX"></a>LINUX</h1><p>Linux复习归纳6～</p>
-<h2 id="sed"><a href="#sed" class="headerlink" title="sed"></a>sed</h2><p>​    sed是一种流编辑器，能够完美配合正则表达式。</p>
-<p>​    它会先把要处理的行存储在临时缓冲区，接着用sed命令处理缓冲区的内容。处理完成后把缓冲区的内容输出到屏幕，接着处理下一行直到文件末尾。</p>
-<p>​    sed常见的参数：</p>
-<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">-n	//取消默认的完整输出，只要需要的</span><br><span class="line">-e	//允许多项编辑</span><br><span class="line">-i	//修改文件内容</span><br><span class="line">-r	//不需要转义</span><br></pre></td></tr></table></figure>
-<p>​    sed常见命令：</p>
-<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">a\	在当前行最后添加一行或多行（多行除了最后一行外，其余每行末尾都要加\）</span><br><span class="line">c\	此符号后的内容替换当前行的内容（多行除了最后一行外，其余每行末尾都要加\）</span><br><span class="line">i\	当前行之前插入一行或多行（多行除了最后一行外，其余每行末尾都要加\）</span><br><span class="line">&amp;	代表上次匹配的结果</span><br><span class="line">p	//输出</span><br><span class="line">d	//删除</span><br><span class="line">=	//打印匹配行的行号</span><br><span class="line">l	//列出非打印字符</span><br><span class="line">$	//最后一行</span><br><span class="line">n	//读入下一个输入行，并从下一条命令开始对其处理</span><br><span class="line">r	//从文件中读取输入行到匹配行后，仅用于显示</span><br><span class="line">w	//从文件中读取输入行到匹配行后，会实际写入</span><br><span class="line">!	//对所选行以外的所有行应用命令</span><br><span class="line">s	//用一个字符串替换另一个</span><br><span class="line">y	//将字符替换为另一个字符</span><br><span class="line">g	//在行内进行全局替换</span><br><span class="line">h	//把模式空间的内容复制到缓冲区</span><br><span class="line">H	//把模式空间的内容追加到缓冲区</span><br><span class="line">g	//把缓冲区的内容复制到模式空间</span><br><span class="line">G	//把缓冲区的内容追加到模式空间</span><br><span class="line">x	//交换缓冲区和模式空间的内容</span><br><span class="line">q	//结束退出</span><br><span class="line"></span><br><span class="line">//关于命令匹配、删除、替换等操作的范围可以用数字、正则表达式或者两者的组合表示</span><br></pre></td></tr></table></figure>
-<p>例子：</p>
-<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">1. 打印文件第一行：</span><br><span class="line">$ sed -n &apos;1p&apos;	文件名</span><br><span class="line"></span><br><span class="line">2. 打印1-3行</span><br><span class="line">$ sed -n &apos;1,3p&apos; 文件名</span><br><span class="line"></span><br><span class="line">3. 打印所有包含特定字符串&quot;string&quot;的行</span><br><span class="line">$ sed -n &apos;/string/p&apos; 文件名</span><br><span class="line"></span><br><span class="line">4. 打印从包含&quot;string1&quot;的行到包含&quot;string2&quot;的所有行</span><br><span class="line">$ sed -n &apos;/string1/,/string2/p&apos; 文件名</span><br><span class="line"></span><br><span class="line">5. 打印包含&quot;string&quot;的行号</span><br><span class="line">$ sed -n &apos;/string/=&apos; 文件名</span><br><span class="line"></span><br><span class="line">6. 打印包含&quot;string&quot;的行和行号</span><br><span class="line">$ sed -n -e &apos;/string/p&apos; -e &apos;/string/=&apos; 文件名</span><br><span class="line"></span><br><span class="line">7. 打印最后一行</span><br><span class="line">$ sed -n &apos;$p&apos; 文件名</span><br><span class="line"></span><br><span class="line">8. 用字符串&quot;string1&quot;替换为&quot;string2&quot;</span><br><span class="line">$ sed -i &apos;s/string1/string2/g&apos; 文件名	（其中s为替换，g为全部替换）</span><br><span class="line"></span><br><span class="line">9. 文件第一行添加&quot;string1&quot;，最后一行添加&quot;string2&quot;</span><br><span class="line">$ sed -i -e &apos;1i string1&apos; -e &apos;$a string2&apos; 文件名	(1代表第一行，$代表最后一行)</span><br><span class="line"></span><br><span class="line">10. 文件第1-4行每行下面添加&quot;string&quot;</span><br><span class="line">$ sed -i &apos;1,4a string&apos; 文件名</span><br><span class="line"></span><br><span class="line">11. 删除从1-3行</span><br><span class="line">$ sed -i &apos;1,3d&apos; 文件名</span><br><span class="line"></span><br><span class="line">12.	删除从&apos;string1&apos;到第10行的所有行	</span><br><span class="line">$ sed -i &apos;/string1/,10d&apos; 文件名</span><br><span class="line"></span><br><span class="line">13. 将a.txt文件中的内容显示到包含“string”的行后</span><br><span class="line">$ sed &apos;/sring/ r a.txt&apos; 文件名</span><br><span class="line"></span><br><span class="line">14. 将a.txt文件中的内容写入到包含“string”的行后</span><br><span class="line">$ sed &apos;/sring/ w a.txt&apos; 文件名</span><br></pre></td></tr></table></figure>
+<h1 id="Linux"><a href="#Linux" class="headerlink" title="Linux"></a>Linux</h1><p>Linux复习归纳7～</p>
+<h2 id="awk"><a href="#awk" class="headerlink" title="awk"></a>awk</h2><p>​    AWK适合文本处理和报表生成，最基本功能是在文件或者字符串中基于指定规则浏览和抽取信息。它是以文件的一行作为处理单位。</p>
+<h3 id="格式"><a href="#格式" class="headerlink" title="格式"></a>格式</h3><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">awk &apos;&#123;pattern + action&#125;&apos; &#123;filenames&#125;	//其中pattern表示查找的内容，action是找到匹配内容后执行的一系列命令</span><br></pre></td></tr></table></figure>
+<p>​    举个简单的例子</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">1. echo ok | awk &apos;&#123;print &quot;hello,world&quot;&#125;&apos;	//输出hello,world</span><br><span class="line"></span><br><span class="line">2. echo ok | awk &apos;&#123;print $0&#125;&apos;		//输出ok</span><br><span class="line"></span><br><span class="line">3. awk &apos;&#123;print &quot;ok&quot;&#125;&apos; /etc/passwd	//若passwd文件有n行，那么会输出n行ok</span><br><span class="line"></span><br><span class="line">4. awk &apos;&#123;print $0&#125;&apos; /etc/passwd		//原样输出passwd文件</span><br></pre></td></tr></table></figure>
+<p>​    对于一条数据<code>nobody:*:-2:-2:Unprivileged User:/var/empty:/usr/bin/false</code>来说：</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">$0	//代表一整行的数据</span><br><span class="line">$1~$n	//分别代表一行中不同段的数据</span><br><span class="line">NF	//代表字段的数量</span><br><span class="line">NR	//代表记录的数量(一行代表一条记录)</span><br><span class="line">FS	//代表字段的分隔符(默认为空格，对于上面的数据为:)</span><br><span class="line">RS	//代表记录的分隔符(默认为\n)</span><br></pre></td></tr></table></figure>
+<h3 id="指定分隔符"><a href="#指定分隔符" class="headerlink" title="指定分隔符"></a>指定分隔符</h3><p>对于这个字段分隔符，我们可以通过-F来指定(可以同时指定多个分隔符)，具体用法是：</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">$ awk -F &quot;:&quot; &apos;&#123;print &quot;name:&quot; $1 &quot;\tuid:&quot; $3&#125;&apos; /etc/passwd</span><br><span class="line"></span><br><span class="line">除此之外还有另一种方法：</span><br><span class="line">$ awk &apos;&#123;BEGIN&#123;FS=&quot;:&quot;&#125; &#123;print &quot;name:&quot; $1 &quot;\tuid:&quot; $3&#125;&#125;&apos; /etc/passwd</span><br></pre></td></tr></table></figure>
+<p>​    比如查找一个文件从第5行到第8行的内容：</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">$ awk &apos;&#123;if(NR&gt;=5 &amp;&amp; NR&lt;=8) print $0&#125;&apos; test.txt</span><br></pre></td></tr></table></figure>
+<h3 id="BEGIN和END模块"><a href="#BEGIN和END模块" class="headerlink" title="BEGIN和END模块"></a>BEGIN和END模块</h3><p>​    在一些情况下，需要在awk处理文本文件前执行初始化代码（比如用于定义全局变量），该代码存储在BEGIN块中。</p>
+<p>​    在一些情况下，也需要在awk处理完文本文件的全部内容后执行某些代码块（比如用于最终计算）。这时可以将该代码存储在END块中。</p>
+<p>​    比如输出passwd文件内容并计算得到行数：</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">$ awk &apos;BEGIN &#123;count=0;&#125; &#123;count+=count;print $0&#125; END &#123;print &quot;count is &quot;,count&#125;&apos;</span><br></pre></td></tr></table></figure>
+<h3 id="注意点"><a href="#注意点" class="headerlink" title="注意点"></a>注意点</h3><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">1. 关系运算符可以用作数值比较，也可用作字符串比较(双方都是数字，自动看作数值比较，否则即为字符串比较)</span><br></pre></td></tr></table></figure>
+<ol start="2">
+<li>所有算术运算符的操作，都会将操作数自动转为数值(字符串也会自动转为数值，非数值都变为0)</li>
+</ol>
+<h3 id="支持的结构"><a href="#支持的结构" class="headerlink" title="支持的结构"></a>支持的结构</h3><h4 id="条件语句"><a href="#条件语句" class="headerlink" title="条件语句"></a>条件语句</h4><p>​    awk支持if、elseif、else的条件语句</p>
+<h4 id="循环语句"><a href="#循环语句" class="headerlink" title="循环语句"></a>循环语句</h4><p>​    awk支持while、do…while循环语句，也支持for循环语句(for循环支持标准和for…in)</p>
+<h4 id="跳转语句"><a href="#跳转语句" class="headerlink" title="跳转语句"></a>跳转语句</h4><p>​    awk支持break、continue等跳转语句</p>
+<h4 id="数组"><a href="#数组" class="headerlink" title="数组"></a>数组</h4><p>​    awk数组属于关联数组，数字索引会转变为字符串索引(数组的下角标为字符串)，因此数组默认是无序的。</p>
+<p>printf()输出</p>
+<p>​    当然，awk也兼容C中的printf()函数的用法，两者用法一致。</p>
+<h3 id="常用字符串函数"><a href="#常用字符串函数" class="headerlink" title="常用字符串函数"></a>常用字符串函数</h3><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">sub(Ere, Repl, [ln])	//用Repl替换ln中Ere指定的正则表达式的第一个匹配值，返回替换的数量</span><br><span class="line">gsub(Ere, Repl, [ln])	//用Repl替换ln中Ere指定的正则表达式的全部匹配值，返回替换的数量</span><br><span class="line">index(string1, string2) //判断string2是否在string1中出现，若出现返回第一次出现的下标(下标从1开始)，否则返回0</span><br><span class="line">length(string)		//返回string的长度</span><br><span class="line">match(string, Ere)	//返回string中出现Ere指定的正则表达式的位置(下标从1开始)，否则返回0</span><br><span class="line">substr(string, M, [N])	//截取string中[M, M+N-1]的子串，若未指定N，则直到string尾部</span><br><span class="line">tolower(string)	//全部转小写</span><br><span class="line">toupper(string)	//全部转大写</span><br><span class="line">sprintf(Format, Expr...)	//格式化字符串</span><br><span class="line">split(string, A, [Ere])	//将string根据指定分隔符Ere将其分割为字符串数组A[1]..A[n]</span><br></pre></td></tr></table></figure>
+
                 </div>
             </article>
         </div>
@@ -262,13 +280,9 @@
         <div class="container" >
             <ul class="pager">
                 
-                <li class="previous">
-                    <a href="/2019/05/23/Linux复习归纳7-awk/" rel="prev">下一篇</a>
-                </li>
-                
                 
                 <li class="next">
-                    <a href="/2019/05/18/Linux复习归纳5-top/" rel="prev">上一篇</a>
+                    <a href="/2019/05/20/Linux复习归纳6-sed/" rel="prev">上一篇</a>
                 </li>
                 
             </ul>
