@@ -214,7 +214,7 @@
       <span class="post-meta-item-icon">
         <i class="fa fa-keyboard-o"></i>
         <span class="post-meta-item-text">  字数统计: </span>
-        <span class="post-count">869字</span>
+        <span class="post-count">927字</span>
       </span>
     </span>
 
@@ -235,30 +235,33 @@
                 <div class="entry-content">
                     <p><img src="/2018/10/06/C语言查缺补漏-11/title.jpg" alt="title"></p>
 <a id="more"></a>
-<h3 id="忽略点十一：make命令与Makefile文件"><a href="#忽略点十一：make命令与Makefile文件" class="headerlink" title="忽略点十一：make命令与Makefile文件"></a>忽略点十一：make命令与Makefile文件</h3><p>​    在讲make与Makefile之前，我们需要明白为什么它们的作用和优点是什么？</p>
-<p>​    对于C/C++项目，在编译时我们需要把每个模块的代码都生成为目标文件，然后再将目标文件联编生成一个可执行文件。</p>
+<p>[TOC]</p>
+<h2 id="忽略点十一：make命令与Makefile文件"><a href="#忽略点十一：make命令与Makefile文件" class="headerlink" title="忽略点十一：make命令与Makefile文件"></a>忽略点十一：make命令与Makefile文件</h2><p>​    对于C/C++项目，在编译时我们需要把每个模块的代码都生成为目标文件，然后再将目标文件联编生成一个可执行文件。</p>
 <p>​    编译要输入这么多命令，每次修改一点内容就要重新编译整个工程，是不是特别恶心！！！</p>
 <p>​     这时候，上帝就出现了——<code>make</code>命令，它可以读取当前路径下的<code>Makefile</code>文件，并根据<code>Makefile</code>中的规则描述把源文件生成为可执行的程序文件</p>
-<h5 id="注意，Makefile文件无后缀名！！"><a href="#注意，Makefile文件无后缀名！！" class="headerlink" title="注意，Makefile文件无后缀名！！"></a>注意，Makefile文件无后缀名！！</h5><p>​    <code>Makefile</code>文件中包含了一系列形式如下的规则：</p>
+<p>​    注意，Makefile文件无后缀名！！</p>
+<h3 id="格式"><a href="#格式" class="headerlink" title="格式"></a>格式</h3><p>​    <code>Makefile</code>文件中包含了一系列形式如下的规则（makefile三要素：目标、依赖、规则命令）：</p>
 <figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">目标: 依赖1 依赖2 ...</span><br><span class="line">	命令</span><br></pre></td></tr></table></figure>
-<p>​    例如：</p>
-<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">a.o: a.c a.h				#表示生成a.o文件需要依赖a.c与a.h</span><br><span class="line">	gcc -c -o a.o a.c		#生成a.o的命令</span><br></pre></td></tr></table></figure>
-<h5 id="注意！！！每条规则的命令前，必须有一个制表符’-t‘"><a href="#注意！！！每条规则的命令前，必须有一个制表符’-t‘" class="headerlink" title="注意！！！每条规则的命令前，必须有一个制表符’\t‘"></a>注意！！！每条规则的命令前，必须有一个制表符’\t‘</h5><p>​    这样我们想编译生成a.o文件，只需要执行<code>make a.o</code>即可。（为了提高效率，该命令只有a.o不存在或者a.c与a.h中至少有一项变化时才会真正执行）</p>
-<p>​    </p>
-<p>​    对于Makefile文件中存在多条规则：</p>
-<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">main: a.o m.o</span><br><span class="line">    gcc -o main a.o m.o</span><br><span class="line"></span><br><span class="line">m.o: m.c a.h</span><br><span class="line">    gcc -c -o m.o m.c</span><br><span class="line"></span><br><span class="line">a.o: a.c a.h</span><br><span class="line">    gcc -c -o a.o a.c</span><br></pre></td></tr></table></figure>
-<p>​      我们想生成哪一个，就可以在<code>make</code>命令后加上需要生成的目标名称。</p>
-<p>​     例如：<code>make a.o</code></p>
-<h5 id="注意-！在我们执行make-main时，make命令发现a-o和m-o不存在，就会自动生成它们（没有a-o和m-o的规则也能生成）"><a href="#注意-！在我们执行make-main时，make命令发现a-o和m-o不存在，就会自动生成它们（没有a-o和m-o的规则也能生成）" class="headerlink" title="注意!！在我们执行make main时，make命令发现a.o和m.o不存在，就会自动生成它们（没有a.o和m.o的规则也能生成）"></a>注意!！在我们执行<code>make main</code>时，<code>make</code>命令发现<code>a.o</code>和<code>m.o</code>不存在，就会自动生成它们（没有<code>a.o</code>和<code>m.o</code>的规则也能生成）</h5><p>​    为什么没有a.o和m.o规则也能生成呢？因为makefile文件默认生成.o文件格式为：\$(CC)  \$(CFLAGS)  -c  -o 名.o  名.c         </p>
+<p>​    注意！！！每条规则的命令前，必须有一个制表符’\t‘    </p>
+<p>​    为了提高效率，命令只有在需求发生变化后才会真正执行</p>
+<h3 id="存在多条规则"><a href="#存在多条规则" class="headerlink" title="存在多条规则"></a>存在多条规则</h3><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">main: a.o m.o</span><br><span class="line">    gcc -o main a.o m.o</span><br><span class="line">m.o: m.c</span><br><span class="line">    gcc -c -o m.o m.c</span><br><span class="line">a.o: a.c</span><br><span class="line">    gcc -c -o a.o a.c</span><br></pre></td></tr></table></figure>
+<p>​      我们想生成哪一个，就可以在<code>make</code>命令后加上需要生成的目标名称,例如：<code>make a.o</code></p>
+<p>​    注意!！在我们执行<code>make main</code>时，<code>make</code>命令发现<code>a.o</code>和<code>m.o</code>不存在，就会自动生成它们（没有<code>a.o</code>和<code>m.o</code>的规则也能生成）</p>
+<p>​    为什么没有a.o和m.o规则也能生成呢？因为makefile文件默认生成.o文件格式为：\$(CC)  \$(CFLAGS)  -c  -o 名.o  名.c         </p>
 <p>​    而CC默认值为cc，CFLAGS默认值为空（可通过修改CC和CFLAGS来修改对应的编译环境与参数（如-std -Wall等等））</p>
-<h5 id="执行makefile文件中的第一条规则可以在命令行中简写成make！！！"><a href="#执行makefile文件中的第一条规则可以在命令行中简写成make！！！" class="headerlink" title="执行makefile文件中的第一条规则可以在命令行中简写成make！！！"></a>执行makefile文件中的第一条规则可以在命令行中简写成make！！！</h5><p>​         例如上边代码中执行<code>make</code>相当于执行<code>make main</code></p>
-<p>​    可以利用makefile规则添加删除功能：</p>
+<p>​    执行makefile文件中的第一条规则可以在命令行中简写成make，例如上边代码中执行<code>make</code>相当于执行<code>make main</code></p>
+<h3 id="删除与伪目标"><a href="#删除与伪目标" class="headerlink" title="删除与伪目标"></a>删除与伪目标</h3><p>​    可以利用makefile规则添加删除功能：</p>
 <figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">clean:</span><br><span class="line">    rm -f a.o m.o main			//rm命令表示删除，-f表示强制</span><br></pre></td></tr></table></figure>
 <p>​    以上规则有一个Bug——就是当已经存在clean文件，rm命令就不执行了（而且执行一次<code>make clean</code> 就会产生clean文件，该命令最多只能执行一次）</p>
 <p>​    这时我们可以通过 <code>.PHONY</code> 来声明clean为伪目标来解决上述问题（系统不会检查伪目标是否存在，且不会通过规则生成该目标文件）上代码：</p>
-<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">.PHONY: clean</span><br><span class="line"></span><br><span class="line">clean:</span><br><span class="line">    rm -f array.o main.o main</span><br></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">.PHONY: clean</span><br><span class="line">clean:</span><br><span class="line">    rm -f array.o main.o main</span><br></pre></td></tr></table></figure>
+<h3 id="变量的定义和使用"><a href="#变量的定义和使用" class="headerlink" title="变量的定义和使用"></a>变量的定义和使用</h3><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">bojfiles = main.o a.o b.o	//变量的定义</span><br><span class="line"></span><br><span class="line">main: $(objfiles)	//变量的使用</span><br></pre></td></tr></table></figure>
+<p>makefile常用匹配符</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">$@	//目标</span><br><span class="line">$^	//全部依赖</span><br><span class="line">$&lt;	//第一个依赖</span><br><span class="line">$?	//第一个变化的依赖</span><br></pre></td></tr></table></figure>
+<h3 id="makefile常用函数"><a href="#makefile常用函数" class="headerlink" title="makefile常用函数"></a>makefile常用函数</h3><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">//wildcard用于文件匹配</span><br><span class="line">srcfiles = $(wildcard *.c)</span><br><span class="line"></span><br><span class="line">//patsubst用于内容替换</span><br><span class="line">objfiles = $(patsubst %.c,%.o,$(srcfiles))	//将srcfiles的所有.c替换为.o</span><br></pre></td></tr></table></figure>
+<h3 id="makefile规则"><a href="#makefile规则" class="headerlink" title="makefile规则"></a>makefile规则</h3><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">1. 执行时不想输出此条命令，在规则命令前加@</span><br><span class="line">2. 如果当前命令执行错误还想继续往下执行，在规则命令前加-</span><br><span class="line">3. 如果想要运行具体的makefile文件，用make -f 文件名</span><br></pre></td></tr></table></figure>
 <p>抛出一个较为完整的<code>Makefile</code> 栗子：</p>
-<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line"># 井号开头的行是一个注释</span><br><span class="line"># 设置 C 语言的编译器</span><br><span class="line">CC = gcc</span><br><span class="line"></span><br><span class="line"># -g 增加调试信息</span><br><span class="line"># -Wall 打开大部分警告信息</span><br><span class="line">CFLAGS = -g -Wall</span><br><span class="line"></span><br><span class="line"># 整理一下 main 依赖哪些目标文件</span><br><span class="line">MAINOBJS = main.o array.o</span><br><span class="line"></span><br><span class="line">.PHONY: clean</span><br><span class="line"></span><br><span class="line">main: $(MAINOBJS)</span><br><span class="line">    $(CC) $(CFLAGS) -o main $(MAINOBJS)		</span><br><span class="line">    #定义的变量可通过$(变量名)使用</span><br><span class="line"></span><br><span class="line">array.o: array.c array.h</span><br><span class="line">    $(CC) $(CFLAGS) -c -o array.o array.c</span><br><span class="line"></span><br><span class="line">main.o: main.c array.h</span><br><span class="line">    $(CC) $(CFLAGS) -c -o main.o main.c</span><br><span class="line"></span><br><span class="line">clean:</span><br><span class="line">    rm -f $(MAINOBJS) main</span><br></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line"># 井号开头的行是一个注释</span><br><span class="line"># 设置 C 语言的编译器</span><br><span class="line">CC = gcc</span><br><span class="line"></span><br><span class="line"># -g 增加调试信息</span><br><span class="line"># -Wall 打开大部分警告信息</span><br><span class="line">CFLAGS = -g -Wall</span><br><span class="line"></span><br><span class="line"># 设置变量</span><br><span class="line">MAINOBJS = main.o array.o</span><br><span class="line"></span><br><span class="line">.PHONY: clean</span><br><span class="line"></span><br><span class="line">main: $(MAINOBJS)</span><br><span class="line">    $(CC) $(CFLAGS) -o main $(MAINOBJS)		</span><br><span class="line">    #定义的变量可通过$(变量名)使用</span><br><span class="line"></span><br><span class="line">array.o: array.c array.h</span><br><span class="line">    $(CC) $(CFLAGS) -c -o array.o array.c</span><br><span class="line"></span><br><span class="line">main.o: main.c array.h</span><br><span class="line">    $(CC) $(CFLAGS) -c -o main.o main.c</span><br><span class="line"></span><br><span class="line">clean:</span><br><span class="line">    rm -f $(MAINOBJS) main</span><br></pre></td></tr></table></figure>
 <p><a href="http://www.ivan-zcy.top">转载请注明出处！！！</a>  </p>
 <p>如果有写的不对或者不全面的地方 可通过主页的联系方式进行指正，谢谢！</p>
 
