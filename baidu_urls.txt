@@ -1,3 +1,4 @@
+http://www.ivan-zcy.top/2019/06/02/Vim精简版（常用）/
 http://www.ivan-zcy.top/2019/06/02/Linux复习归纳10-tcpdump和Wireshark下篇/
 http://www.ivan-zcy.top/2019/05/23/Linux复习与归纳9-tcpdump上篇/
 http://www.ivan-zcy.top/2019/05/23/Linux复习归纳8-练习题/
@@ -97,4 +98,3 @@ http://www.ivan-zcy.top/2019/02/12/模拟队列/
 http://www.ivan-zcy.top/2019/01/31/19-01-31博客搭建进度/
 http://www.ivan-zcy.top/2019/01/30/模拟链表/
 http://www.ivan-zcy.top/2019/01/30/模拟动态数组/
-http://www.ivan-zcy.top/2019/01/29/洛谷3994高速公路/
