@@ -659,8 +659,8 @@
     <url>%2F2019%2F02%2F27%2F%E5%8D%87%E7%BA%A7%E7%89%88%E8%81%8A%E5%A4%A9%E5%AE%A4%2F</url>
     <content type="text"><![CDATA[主要是利用所学网络编程来实现聊天室功能，包括客户端和服务端两个部分。 代码以上传至github，可通过github或者个人主页查看 客户端客户端的内容如下： 使用配置文件配置自己的监听端口，服务器的监听端口等信息 用户之间可以通过”@用户名 信息”来实现私聊 客户端在一个固定端口上监听服务器转发的来自其他用户的私聊、公聊以及系统信息 客户端所接受到的所有信息保存日志文件中，可利用tail -f 文件名获取实时聊天信息 客户端解析来自服务端的结构体，内容如下： struct Message&#123; char from[20]; int flag;//若flag为1则为私聊信息，0为公聊信息，2则为服务器的通知信息 char message[1024]; &#125;; 服务端 服务端在固定接口接收来自所有客户端的消息 每收到一条公聊消息，都转发给所有在线用户 每收到私聊消息，只转发给目标用户 当私聊用户不存在或下线，通过通知信息告知该用户 在用户上线的时候，发送欢迎信息并告知所有在线用户该用户上线 在收到用户信息#时，发送给该用户当前在线人数以及所有用户信息 具体效果如下： 用户界面： 服务端界面： 用户的log日志显示：]]></content>
       <tags>
-        <tag>C语言</tag>
         <tag>网络编程</tag>
+        <tag>C语言</tag>
         <tag>多进程</tag>
       </tags>
   </entry>
@@ -752,8 +752,8 @@
     <url>%2F2019%2F02%2F23%2FC%E7%BD%91%E7%BB%9C%E7%BC%96%E7%A8%8B%E5%AE%9E%E7%8E%B0%E8%81%8A%E5%A4%A9%E5%AE%A4%2F</url>
     <content type="text"><![CDATA[主要是利用所学的C语言网络编程来实现聊天室功能，包括客户端和服务端两个部分，common用于封装网络编程的相关函数。 ​ 客户端接收两个参数，分别是IP地址和端口号 ​ 代码已上传至github：跳转 ​ 或者从个人博客项目上查看：跳转 效果如下： 用户1的输入： 用户2的输入： 聊天室（服务器）的显示：]]></content>
       <tags>
-        <tag>C语言</tag>
         <tag>网络编程</tag>
+        <tag>C语言</tag>
       </tags>
   </entry>
   <entry>
@@ -1293,7 +1293,7 @@
       </tags>
   </entry>
   <entry>
-    <title><![CDATA[哈理工第八届校团队赛I乘胜追击]]></title>
+    <title><![CDATA[第八届校团队赛I乘胜追击]]></title>
     <url>%2F2018%2F12%2F11%2F%E5%93%88%E7%90%86%E5%B7%A5%E7%AC%AC%E5%85%AB%E5%B1%8A%E6%A0%A1%E5%9B%A2%E9%98%9F%E8%B5%9BI%E4%B9%98%E8%83%9C%E8%BF%BD%E5%87%BB%2F</url>
     <content type="text"><![CDATA[Description 三国时期，群雄割据，战乱频繁。公元228年，孙权派番阳太守周鲂诱骗曹休派兵前来，曹休果然中计。待孙权任陆逊为大都督，朱桓、全琮为左、右督，各领兵三万人迎击曹休时，曹方知被欺。但其仗恃兵力占优，仍决定与吴国交战。彼时陆逊所率大军与与曹休所率大军于石亭展开激战。陆逊探得曹休于长江边共驻扎n座军营，相互以粮道连接，其中第1座军营为大本营。当第i(i&gt;=2)座军营被攻陷时，营中残兵败将将沿粮道向第f[i]座军营逃窜。陆逊极善用兵，常人用a[i]的兵力方能攻下第i座军营，而陆逊仅需a[i]-d[i]的兵力即可攻下。倘给陆以a[i]的兵力，则陆不仅能攻下第i座军营，还可乘胜追击，沿着军士逃跑方向攻下第f[i]座军营。陆逊善用兵如此，故而仅用了最少的兵力便大破曹休，攻下所有军营，生擒一万余人，缴获牛马驴骡车辆上万。试问陆逊于石亭之战中共用兵力几何？（以上史料来自百度百科且有删改，不保证真实准确性） Input 第一行一个整数T(T&lt;=50)，代表数据组数在每组数据中：第一行一个整数n(2&lt;=n&lt;=50000)表示军营数目第二行有n-1个整数f【2】~f【n】(f【i】&lt;i)第三行有n个整数a【1】~a【n】(2&lt;=a【i】&lt;=1e9)第四行有n个整数d【1】~d【n】(1&lt;=d【i】&lt;a【i】) Output 对于每组数据，输出一行一个整数，表示陆逊攻下所有军营所需使用的最少兵力 Sample Input 1 4 1 1 3 100 50 2 5 2 49 1 1 Sample Output 7 Hint 输入数据量较大，请合理控制输入效率。 样例解释： 首先使用2兵力攻击军营3，并追击至大本营1。然后使用5-1=4兵力攻击军营4。最后使用50-49=1兵力攻击军营2。共使用兵力2+4+1=7。 思路： ​ 一道树形dp的题，比较难。二维数组dp【50005】【3】，其中dp【i】【0】代表以i本营为根节点的子树(攻打i本营无花费)的最小花费，dp【i】【1】代表以i本营为根节点的子树(攻打i本营花费a【i】- d【i】)的最小花费，dp【i】【2】代表以i本营为根节点的子树(攻打i本营花费a【i】)的最小花费。然后找到dp的递推式即可求出 代码： #include &lt;stdio.h&gt;#include &lt;vector&gt;#include &lt;string.h&gt;#include &lt;algorithm&gt;#define ll long longusing namespace std;int n;vector &lt;int&gt; zcy[50005];int two[50005], one[50005];ll dp[50005][3]; //dp[i][0]代表无花费，dp[i][1]代表仅攻克自己，dp[i][2]代表连带攻克父节点ll minn[50005];void dfs(int inx, int father) &#123; dp[inx][2] = two[inx]; dp[inx][1] = one[inx]; dp[inx][0] = 0; for (int i = 0; i &lt; zcy[inx].size(); i++) &#123; int ii = zcy[inx][i]; if (ii == father) continue; dfs(ii, inx); if (dp[ii][0]) &#123; minn[i] = min(dp[ii][0], dp[ii][1]); dp[inx][1] += minn[i]; dp[inx][2] += minn[i]; dp[inx][0] += minn[i]; &#125; else &#123; minn[i] = dp[ii][1]; dp[inx][1] += minn[i]; dp[inx][2] += minn[i]; dp[inx][0] += minn[i]; &#125; &#125; ll k = dp[inx][0]; if (k == 0) return; int suu = 0; for (int i = 0; i &lt; zcy[inx].size(); i++) &#123; int ii = zcy[inx][i]; if (ii == father) continue; if (!suu) &#123; dp[inx][0] = k - minn[i] + dp[ii][2]; &#125; else &#123; dp[inx][0] = min(dp[inx][0], k - minn[i] + dp[ii][2]); &#125; suu++; &#125;&#125;int main() &#123; int T, a; scanf(&quot;%d&quot;, &amp;T); while (T--) &#123; scanf(&quot;%d&quot;, &amp;n); memset(dp, 0, sizeof(dp)); for (int i = 1; i &lt;= n; i++) &#123; zcy[i].clear(); &#125; for (int i = 2; i &lt;= n; i++) &#123; scanf(&quot;%d&quot;, &amp;a); zcy[i].push_back(a); zcy[a].push_back(i); &#125; for (int i = 1; i &lt;= n; i++) &#123; scanf(&quot;%d&quot;, &amp;two[i]); &#125; for (int i = 1; i &lt;= n; i++) &#123; scanf(&quot;%d&quot;, &amp;one[i]); one[i] = two[i] - one[i]; &#125; dfs(1, 0); ll ans; if(dp[1][0]) &#123; ans = min(dp[1][0], dp[1][1]); &#125; else &#123; ans = dp[1][1]; &#125; printf(&quot;%lld\n&quot;, ans); &#125; return 0;&#125;]]></content>
       <tags>
@@ -1303,7 +1303,7 @@
       </tags>
   </entry>
   <entry>
-    <title><![CDATA[2018哈理工院个人赛、校团队赛总结]]></title>
+    <title><![CDATA[2018院个人赛、校团队赛总结]]></title>
     <url>%2F2018%2F12%2F10%2F2018%E5%93%88%E7%90%86%E5%B7%A5%E9%99%A2%E4%B8%AA%E4%BA%BA%E8%B5%9B%E3%80%81%E6%A0%A1%E5%9B%A2%E9%98%9F%E8%B5%9B%E6%80%BB%E7%BB%93%2F</url>
     <content type="text"><![CDATA[​ 院个人赛拿了亚军，校团队赛185支队伍拿了第五名。还算满意，今天打算总结总结～ ​ 哈理工院个人赛12月2号举行，10道题4个小时。题目比较简单～ ​ 两道水题 跳转到小乐乐玩木桶 和 跳转到小乐乐玩木桶+ 刚上来没理解题意，之后就过了～ ​ 一道最长公共子序列裸题 跳转到小乐乐匹配字符串 随后就A了 ​ 一道简单的思维题没过多久也A了，有一个小小的坑点 跳转到小乐乐的组合数 ​ 一道博弈题 跳转到小乐乐学博弈 写了很多样例，抱着试试看的态度交了一发过了，没在深思原因 ​ 一道模拟题 跳转到小乐乐和25 我是用模拟写的，考验的是细心吧 ​ 一道状压dp题 跳转到小乐乐搭积木 正好主攻dp和数论，这道题就笑纳啦 ​ 一道bfs题变形，调bug调到哭 跳转到小乐乐打游戏 现场赛没做出来，可恨的是我之前做过也做出来了。。快哭了 ​ 一道dp题 跳转到小乐乐下象棋 哎当时脑子笨了没想到，赛后重做发现还是蛮简单的 ​ 还有一道防Ak题好像是一道主席树变形，自己不主攻线段树也做不出来了 ​ 最后拿了院赛的亚军还行吧，冠军被增林老哥拿去了。膜拜膜拜！Orz～ ​ ​ 哈理工校团队赛12月9号举行，哈工大出题，题目中等偏难～ ​ 刚上来热身赛三道题：第一道大模拟被队友A了，自己懒得再补～ 第二道是一个01背包的变形题，秒A 跳转到信小呆 第三道是一个线性筛的变形题，也A了 跳转到孪生素数猜想 第一次AK，虽然是热身赛，也值得纪念一下，苦笑～ ​ 之后正式赛12道题5小时，最终做出来7个～ ​ 上来快速A掉一个暴力的水题 跳转到咕咕咕 ​ 然后过了一道抽屉原理的题 跳转到所以我也想玩这个序列游戏 ​ 队友过掉了一道二分题 跳转到汪汪汪 赛后自己补了一下 ​ 随后过了一道01分数规划 跳转到刘禅的课程 ​ 一道树形dp的题 跳转到树上路径计数 ​ 随后队友过了一道几何题，队友用算式推出了12维空间求解点关于直线的对称点的公式，膜拜Orz～自己不会就不补了 ​ 然后过了一道篇难的数论题 跳转到格子染色计数 ​ 赛后听题解I题也是一道树形dp，一直没往上靠，脑子好笨呀～赛后补了 跳转到乘胜追击 ​ 校赛第一不愧是亚洲区预赛金牌爷，10题膜拜膜拜Orz～ ​ 现在西区计院和东区软件学院差距越来越大了，前四名全是西区，前十名8个西区。。。无力。。。]]></content>
       <tags>
@@ -1312,7 +1312,7 @@
       </tags>
   </entry>
   <entry>
-    <title><![CDATA[哈理工第八届校团队赛E格子染色计数]]></title>
+    <title><![CDATA[第八届校团队赛E格子染色计数]]></title>
     <url>%2F2018%2F12%2F10%2F%E5%93%88%E7%90%86%E5%B7%A5%E7%AC%AC%E5%85%AB%E5%B1%8A%E6%A0%A1%E5%9B%A2%E9%98%9F%E8%B5%9BE%E6%A0%BC%E5%AD%90%E6%9F%93%E8%89%B2%E8%AE%A1%E6%95%B0%2F</url>
     <content type="text"><![CDATA[题意： Description 有排成一行的n个格子，你需要在 m 种颜色中选取 k 种颜色对这 n 个格子染色，要求k 种颜色都要使用，且相邻格子的颜色不同，求方案数（答案对 10^9 + 7取模）。 Input 第一行为测试数据组数T( 1 &lt;= T &lt;= 10).每组测试数据：第一行有两个个整数n, m, k. (1 &lt;= n, m &lt;= 1e9, k &lt;= 1e6)。 Output 一个整数, 为染色方案数, 输出答案对 1e9 + 7 取模. Sample Input 3 3 4 2 3 4 3 3 4 4 Sample Output 12 24 0 思路： ​ 这道题难度不小，需要利用卢卡斯定理+容斥定理+线性求阶乘逆元来求解～，答案为C(m,k)✖️(k✖️(k-1)^(n-1) - C(k,k-1)✖️(k-1)✖️(k-2)^(n-1) + C(k,k-2)✖️(k-2)✖️(k-3)^(n-1)…C(k,1)✖️1✖️0^(n-1)) 代码： #include &lt;stdio.h&gt;#define ll long long#define N 1000000#define mod 1000000007ll n, m, k;ll fact[N + 5], inv[N + 5];ll extend(ll a, ll b, ll &amp;x, ll &amp;y) &#123; if(a == 0 &amp;&amp; b == 0) return -1; if (b == 0) &#123; x = 1; y = 0; return a; &#125; ll d = extend(b, a % b, y, x); y -= a / b * x; return d;&#125;ll reverse(ll a, ll n) &#123; ll x, y; ll d = extend(a, n, x, y); if (d == 1) return (x % n + n) % n; return -1;&#125;void init() &#123; fact[0] = fact[1] = 1; for (int i = 2; i &lt;= N; i++) &#123; fact[i] = fact[i - 1] * i % mod; &#125; inv[N] = reverse(fact[N], mod); for (int i = N - 1; i &gt;= 0; i--) &#123; inv[i] = inv[i + 1] * (i + 1) % mod; &#125;&#125;ll C(ll n, ll m) &#123; if (n &lt; m || m &lt; 0) return 0; if (n &lt; mod) return fact[n] * inv[m] % mod * inv[n - m] % mod; return C(n / mod, m / mod) * C(n % mod, m % mod) % mod;&#125;ll ls(ll n, ll m) &#123; if (n &lt; m || m &lt; 0) return 0; ll mm = n - m; ll ans = 1; for (int i = mm + 1; i &lt;= n; i++) &#123; ans = i * ans % mod; &#125; return ans * inv[m];&#125;ll quick(ll a, ll b) &#123; ll ans = 1; while(b) &#123; if (b &amp; 1) &#123; ans = ans * a % mod; &#125; b /= 2; a = a * a % mod; &#125; return ans;&#125;int main() &#123; init(); int T; scanf(&quot;%d&quot;, &amp;T); while(T--) &#123; scanf(&quot;%lld%lld%lld&quot;, &amp;n, &amp;m, &amp;k); ll ans = ls(m, k); ll t = k * quick(k - 1, n - 1) % mod; int tot = -1; for (int i = k - 1; i &gt;= 1; i --) &#123; t = (t + tot * (C(k, i) * i % mod * quick(i - 1, n - 1) % mod) + mod) % mod; tot = -tot; &#125; ans = ans * t % mod; printf(&quot;%lld\n&quot;, ans); &#125; return 0;&#125;]]></content>
       <tags>
@@ -1322,7 +1322,7 @@
       </tags>
   </entry>
   <entry>
-    <title><![CDATA[哈理工第八届校团队赛C树上路径计数]]></title>
+    <title><![CDATA[第八届校团队赛C树上路径计数]]></title>
     <url>%2F2018%2F12%2F10%2F%E5%93%88%E7%90%86%E5%B7%A5%E7%AC%AC%E5%85%AB%E5%B1%8A%E6%A0%A1%E5%9B%A2%E9%98%9F%E8%B5%9BC%E6%A0%91%E4%B8%8A%E8%B7%AF%E5%BE%84%E8%AE%A1%E6%95%B0%2F</url>
     <content type="text"><![CDATA[题意： Description 给定一棵有n个顶点的树，你需要统计出树上所有长度为奇数的路径数量。路径长度为经过边的条数。s 到 t 和 t 到 s视作相同。 Input 第一行为测试数据组数T( 1 &lt;= T &lt;= 5).每组测试数据：第一行有一个整数n（1 &lt;= n &lt;= 1e5），表示顶点数。接下来n - 1 行 每行两个整数u, v，表示u, v之间存在一条边。 Output 一个整数, 路径长度为奇数的数量。 Sample Input 2 2 1 2 4 1 2 2 3 1 4 Sample Output 1 4 思路： ​ 这道题典型的树形dp题，规定1节点为root，dp【i】【0】代表以i为根节点的子树的奇数子节点个数，dp【i】【1】代表以i为根节点的子树的偶数子节点个数，dp【1】【0】+dp【1】【0】✖️dp【1】【1】即为答案 代码： #include &lt;stdio.h&gt;#include &lt;vector&gt;#include &lt;string.h&gt;#define ll long longusing namespace std;int n;vector &lt;int&gt;zcy[100005];int dp[100005][2];void dfs(int inx, int father) &#123; for (int i = 0; i &lt; zcy[inx].size(); i++) &#123; int ii = zcy[inx][i]; if(ii ==father) continue; dfs(ii, inx); dp[inx][0] += dp[ii][1] + 1; dp[inx][1] += dp[ii][0]; &#125;&#125;int main() &#123; int T, a, b; scanf(&quot;%d&quot;, &amp;T); while(T--) &#123; memset(dp, 0, sizeof(dp)); scanf(&quot;%d&quot;, &amp;n); for (int i = 1; i &lt;= n; i++) &#123; zcy[i].clear(); &#125; for (int i = 0; i &lt; n - 1; i++) &#123; scanf(&quot;%d%d&quot;, &amp;a, &amp;b); zcy[a].push_back(b); zcy[b].push_back(a); &#125; dfs(1, 0); ll ans = (ll)dp[1][0] * (dp[1][1] + 1); printf(&quot;%lld\n&quot;, ans); &#125; return 0;&#125;]]></content>
       <tags>
@@ -1332,7 +1332,7 @@
       </tags>
   </entry>
   <entry>
-    <title><![CDATA[哈理工第八届校团队赛H刘禅的课程]]></title>
+    <title><![CDATA[第八届校团队赛H刘禅的课程]]></title>
     <url>%2F2018%2F12%2F10%2F%E5%93%88%E7%90%86%E5%B7%A5%E7%AC%AC%E5%85%AB%E5%B1%8A%E6%A0%A1%E5%9B%A2%E9%98%9F%E8%B5%9BH%E5%88%98%E7%A6%85%E7%9A%84%E8%AF%BE%E7%A8%8B%2F</url>
     <content type="text"><![CDATA[题意： Description 刘禅对学习的态度让太傅操碎了心。刘禅有n种课程要学习（礼、乐、射、御、书、数等等），每个课程有对应的重要程度s[i]，刘禅估计了一下，机智的他算出了每个课程他最后能得到的分数c[i]， 太傅给出了他最终成绩的计算公式: 现在他可以推迟k门课程，使得他剩下的n-k门课程的最终成绩尽量高，因为这样父皇才会让他出宫玩耍。机智的刘禅已经算出了答案，不过他想考考你。输出最高的不少于n-k门课程的最终成绩。 Input 多组数据，请读入到文件末尾（数据组数不超过10）第一行两个非负整数n, k(1≤ n≤ 1e5 , 0≤ k &lt; n) 第二行n个正整数s[i] 第三行n个正整数c[i]1&lt;=s[i],c[i]&lt;=1000 Output 一个实数，四舍五入保留6位小数 Sample Input 3 1 1 2 3 3 2 1 Sample Output 2.333333 Hint 去掉最后一门课程即可。 (22+31)/(2+1)=7/3 思路： ​ 01分数规划的裸题，利用二分找结果ans，会得到si✖️ci/ si = ans ,只要贪心求的前n - k大的si✖️ci - ans✖️si的和，大于等于0返回1，否则返回0 代码： #include &lt;stdio.h&gt;#include &lt;algorithm&gt;using namespace std;int a[100005], b[100005];int n, k;double t[100005];bool whd(double A, double B) &#123; return A &gt; B;&#125;bool zcy(double val) &#123; double sum = 0; for (int i = 0; i &lt; n; i++) &#123; t[i] = a[i] - val * b[i]; &#125; sort(t, t + n, whd); for (int i = 0; i &lt; n - k; i++) &#123; sum += t[i]; &#125; if (sum &gt;= 0) return 1; return 0;&#125;int main() &#123; while (scanf(&quot;%d%d&quot;, &amp;n, &amp;k) == 2) &#123; double minn = 0, maxx= 0; for (int i = 0; i &lt; n; i++) &#123; scanf(&quot;%d&quot;, &amp;b[i]); &#125; for (int i = 0; i &lt; n; i++) &#123; scanf(&quot;%d&quot;, &amp;a[i]); a[i] = a[i] * b[i]; if (maxx &lt; a[i]) &#123; maxx = a[i]; &#125; &#125; double mid; for (int i = 0; i &lt; 80; i++) &#123; mid = (minn + maxx) / 2; if (zcy(mid)) minn = mid; else maxx = mid; &#125; printf(&quot;%.6f\n&quot;, mid); &#125; return 0;&#125;]]></content>
       <tags>
@@ -1342,7 +1342,7 @@
       </tags>
   </entry>
   <entry>
-    <title><![CDATA[哈理工第八届校团队赛K汪汪汪]]></title>
+    <title><![CDATA[第八届校团队赛K汪汪汪]]></title>
     <url>%2F2018%2F12%2F10%2F%E5%93%88%E7%90%86%E5%B7%A5%E7%AC%AC%E5%85%AB%E5%B1%8A%E6%A0%A1%E5%9B%A2%E9%98%9F%E8%B5%9BK%E6%B1%AA%E6%B1%AA%E6%B1%AA%2F</url>
     <content type="text"><![CDATA[题意： Description 给n个区间[l, r]，判断是否存在区间交叉。即是否存在1 &lt;= i &lt; j &lt;= n，使得li &lt; lj &lt; ri &lt; rj。 Input 多组数据每组数据第一行一个整数n，第二行到第n + 1行每行两个数分别代表该区间的左右端点。 Output 如果存在交叉，输出“YES”；否则输出“NO” Sample Input 2 1 3 2 4 3 1 7 2 4 5 6 Sample Output YES NO Hint 1 &lt;= n &lt;= 1e5, 1 &lt;= li &lt; ri &lt;= 2e5, 每组数据中所有的l，r互不相同。所有组数据n的和不超过1e6.读入数据较大，请使用高效的读入方式。 思路： ​ 利用sort按照l从小到大排序，若l相同则按照r从小到大排序，然后遍历，二分查找即可。 代码： #include &lt;stdio.h&gt;#include &lt;algorithm&gt;using namespace std;namespace IO &#123; const int MX = 4e7; char buf[MX]; int c, sz; void begin() &#123; c = 0; sz = fread(buf, 1, MX, stdin); &#125; inline bool read(int &amp;t) &#123; while (c &lt; sz &amp;&amp; buf[c] != &apos;-&apos; &amp;&amp; (buf[c] &lt; &apos;0&apos; || buf[c] &gt; &apos;9&apos;)) c++; if (c &gt;= sz) return false; bool flag = 0; if(buf[c] == &apos;-&apos;) &#123; flag = 1; c++; &#125; for(t = 0; c &lt; sz &amp;&amp; &apos;0&apos; &lt;= buf[c] &amp;&amp; buf[c] &lt;= &apos;9&apos;; c++) t = t * 10 + buf[c] - &apos;0&apos;; if(flag) t = -t; return true; &#125;&#125;struct node &#123; int l, r;&#125;stu[100005];int n;bool zcy(node A, node B) &#123; if (A.l == B.l) &#123; return A.r &lt; B.r; &#125; return A.l &lt; B.l;&#125;;int erfen(int val) &#123; int star = 0, endd = n - 1; int ans = -1; while(star &lt;= endd) &#123; int mid = (star + endd) / 2; if (stu[mid].l &lt;= val) &#123; star = mid + 1; &#125; else &#123; ans = mid; endd = mid - 1; &#125; &#125; return ans;&#125;int main () &#123; IO::begin(); while (IO::read(n)) &#123; for (int i = 0; i &lt; n; i++) &#123; IO::read(stu[i].l); IO::read(stu[i].r); &#125; sort(stu, stu + n, zcy); int flag = 0; for (int i = 0; i &lt; n - 1; i++) &#123; int inx = erfen(stu[i].l); if (inx == -1) &#123; break; &#125; for (int j = inx; j &lt; n &amp;&amp; stu[j].l &lt; stu[i].r; j++) &#123; if(stu[j].r &gt; stu[i].r) &#123; flag = 1; break; &#125; &#125; if (flag) &#123; break; &#125; &#125; if (flag) &#123; printf(&quot;YES\n&quot;); &#125; else &#123; printf(&quot;NO\n&quot;); &#125; &#125; return 0;&#125;]]></content>
       <tags>
@@ -1351,7 +1351,7 @@
       </tags>
   </entry>
   <entry>
-    <title><![CDATA[哈理工第八届校团队赛D所以我也想玩这个序列游戏]]></title>
+    <title><![CDATA[第八届校团队赛D所以我也想玩这个序列游戏]]></title>
     <url>%2F2018%2F12%2F10%2F%E5%93%88%E7%90%86%E5%B7%A5%E7%AC%AC%E5%85%AB%E5%B1%8A%E6%A0%A1%E5%9B%A2%E9%98%9F%E8%B5%9BD%E6%89%80%E4%BB%A5%E6%88%91%E4%B9%9F%E6%83%B3%E7%8E%A9%E8%BF%99%E4%B8%AA%E5%BA%8F%E5%88%97%E6%B8%B8%E6%88%8F%2F</url>
     <content type="text"><![CDATA[题意： Description 今天dxy休息，他想出了一个序列游戏，具体描述如下：你有一个长度为n的正整数序列和一个正整数m，问其中是否存在一个非空子区间使得这个子区间的区间和是m的倍数。 Input 多组数据，读入到文件结尾对于每一组数据第一行：两个数n,m第二行：n个正整数，表示题目中的序列n&lt;=10^6，m&lt;=2000，0&lt;a[i]&lt;=10^9 Output 对于每组数据输出一行：若存在所描述的区间，则输出YES，否则输出NO Sample Input 5 3 1 2 3 4 5 5 100 1 2 3 4 5 Sample Output YES NO 思路： ​ 这道题主要利用了抽屉原理，长度为n的一个数组，若n大于等于m，则一定存在一个子区间的和是m的倍数。当n &lt; m时，由于m小于2000，直接暴力求解即可 代码： #include &lt;stdio.h&gt;#include &lt;string.h&gt;#define ll long longint a[1000005];ll sum[1000005];int main () &#123; int n, m; while(scanf(&quot;%d%d&quot;, &amp;n, &amp;m) == 2) &#123; memset(sum, 0, sizeof(sum)); for (int i = 1; i &lt;= n; i++) &#123; scanf(&quot;%d&quot;, &amp;a[i]); sum[i] = sum[i - 1] + a[i]; &#125; if (n &gt;= m) &#123; printf(&quot;YES\n&quot;); continue; &#125; int flag = 0; for (int len = 1; len &lt;= n; len++) &#123; for (int i = 1; i + len - 1 &lt;= n; i++) &#123; if ((sum[i + len - 1] - sum[i - 1]) % m == 0) &#123; flag = 1; break; &#125; &#125; if(flag) &#123; break; &#125; &#125; if(flag) &#123; printf(&quot;YES\n&quot;); &#125; else &#123; printf(&quot;NO\n&quot;); &#125; &#125; return 0;&#125;]]></content>
       <tags>
@@ -1361,7 +1361,7 @@
       </tags>
   </entry>
   <entry>
-    <title><![CDATA[哈理工第八届校团队赛B咕咕咕]]></title>
+    <title><![CDATA[第八届校团队赛B咕咕咕]]></title>
     <url>%2F2018%2F12%2F10%2F%E5%93%88%E7%90%86%E5%B7%A5%E7%AC%AC%E5%85%AB%E5%B1%8A%E6%A0%A1%E5%9B%A2%E9%98%9F%E8%B5%9BB%E5%92%95%E5%92%95%E5%92%95%2F</url>
     <content type="text"><![CDATA[题意： Description 给你一个字符串，请数出有多少个连续字符串”CCPC”，不区分大小写。 Input 输入第一行是数据组数T（T&lt;=10）接下来T行每行有一个字符串。（字符串仅由大小写英文字母构成，长度&lt;=100000） Output 输出T行，每行输出对应字符串中”CCPC”的个数 Sample Input 2 CCpc aCCpcCpcecpC Sample Output 1 2 思路： ​ 大水题，暴力就完了～ 代码： #include &lt;stdio.h&gt;#include &lt;string.h&gt;char s[100005];int main () &#123; int T; scanf(&quot;%d&quot;, &amp;T); while (T--) &#123; int sum = 0; scanf(&quot;%s&quot;, s); int n = strlen(s); for (int i = 0; i &lt; n - 3;i++) &#123; if ((s[i] == &apos;C&apos; || s[i] == &apos;c&apos;) &amp;&amp; (s[i + 1] == &apos;C&apos; || s[i + 1] == &apos;c&apos; ) &amp;&amp; (s[i + 2] == &apos;P&apos; || s[i + 2] == &apos;p&apos;) &amp;&amp; (s[i + 3] == &apos;C&apos; || s[i + 3] == &apos;c&apos;)) &#123; sum ++; &#125; &#125; printf(&quot;%d\n&quot;, sum); &#125; return 0;&#125;]]></content>
       <tags>
@@ -1370,7 +1370,7 @@
       </tags>
   </entry>
   <entry>
-    <title><![CDATA[哈理工第八届校团队赛热身B信小呆]]></title>
+    <title><![CDATA[第八届校团队赛热身B信小呆]]></title>
     <url>%2F2018%2F12%2F10%2F%E5%93%88%E7%90%86%E5%B7%A5%E7%AC%AC%E5%85%AB%E5%B1%8A%E6%A0%A1%E5%9B%A2%E9%98%9F%E8%B5%9B%E7%83%AD%E8%BA%ABB%E4%BF%A1%E5%B0%8F%E5%91%86%2F</url>
     <content type="text"><![CDATA[题意： Description ​ 小g得到一张满x减x的购物劵，他想在自己购物车中选择一部分物品来买，购物车里没种物品只能买一件，并且他想尽量少花钱。由于小g很穷很笨，如果它购物车里所有物品价值总和比x小，那么他只能选择放弃这张优惠劵 ​ 也就是说他会在n个物品中选若干，使得花费总和大于等于x且最小 ​ 问花费最少的钱能拿到货物的最大价值是多少？ Input ​ 输入第一行是t(t &lt;= 100)，表示t组样例。接下来输入n和x (0 &lt; n &lt; 100, 0 &lt; x &lt; 10000)，代表小g购物车有n件物品，优惠劵满x减x，接下来一行有n个数(0 &lt; ai &lt; 100)代表n个物品的价格 Output ​ 对于每组样例，请输出“Case x: y”, x是输入样例组数，y是小g在花最少的钱能拿到货物的最大价值 Sample Input 2 3 10 1 2 3 3 10 5 6 3 Sample Output Case 1: 0 Case 2: 11 思路： ​ 01背包的变形题,dp【i】代表总价值为i的货物搭配是否存在(1存在，0不存在)，然后从x开始遍历，若存在dp【i】则直接输出并跳出，不存在输出0 代码： #include &lt;stdio.h&gt;#include &lt;string.h&gt;bool dp[10005];int main() &#123; int T, tot = 0, a, n, x; scanf(&quot;%d&quot;, &amp;T); while(T--) &#123; memset(dp, 0, sizeof(dp)); scanf(&quot;%d%d&quot;, &amp;n, &amp;x); dp[0] = 1; for (int i = 0; i &lt; n; i++) &#123; scanf(&quot;%d&quot;, &amp;a); for (int j = i * 100; j &gt;= 0; j--) &#123; if (dp[j]) &#123; dp[j + a] = 1; &#125; &#125; &#125; int flag = 0; for (int i = x; i &lt;= n * 100; i++) &#123; if(dp[i]) &#123; flag = i; break; &#125; &#125; printf(&quot;Case %d: %d\n&quot;, ++tot, flag); &#125; return 0;&#125;]]></content>
       <tags>
@@ -1379,7 +1379,7 @@
       </tags>
   </entry>
   <entry>
-    <title><![CDATA[哈理工第八届校团队赛热身C孪生素数猜想]]></title>
+    <title><![CDATA[第八届校团队赛热身C孪生素数猜想]]></title>
     <url>%2F2018%2F12%2F10%2F%E5%93%88%E7%90%86%E5%B7%A5%E7%AC%AC%E5%85%AB%E5%B1%8A%E6%A0%A1%E5%9B%A2%E9%98%9F%E8%B5%9B%E7%83%AD%E8%BA%ABC%E5%AD%AA%E7%94%9F%E7%B4%A0%E6%95%B0%E7%8C%9C%E6%83%B3%2F</url>
     <content type="text"><![CDATA[题意： Description ​ 素数只能被1和自身整除，孪生素数猜想为：存在无穷多个素数对形如（p, p + 2），如3和5， 11和13等 ​ 先给定一个数k，判断k是否为孪生素数 Input ​ 输入第一行是t(t &lt;= 100)，代表数据组数，接下来每组数据输入一个k(2 &lt; k &lt; 100000) Output ​ 对于每组样例，请输出“Case x: y”, x是输入样例组数，如果是孪生数输出Yes，否则输出No Sample Input 3 5 23 30 Sample Output Case 1: Yes Case 2: No Case 3: No 思路： ​ 直接线性筛出1e5 + 2以内的全部素数，然后从素数中再筛选出全部的孪生素数并标记为1.直接判断book[k]是否为1，1Yes，0No 代码： #include &lt;stdio.h&gt;#include &lt;string.h&gt;#define N 100002bool book[N + 5];int prime[N + 5];void init() &#123; memset(book, 0, sizeof(book)); prime[0] = 0; for (int i = 2; i &lt;= N; i++) &#123; if (!book[i]) &#123; prime[++prime[0]] = i; &#125; for (int j = 1; j &lt;= prime[0] &amp;&amp; prime[j] * i &lt;= N; j++) &#123; book[prime[j] * i] = 1; if (i % prime[j] == 0) break; &#125; &#125; memset(book, 0, sizeof(book)); for (int i = 2; i &lt; prime[0]; i++) &#123; if ((prime[i] - 2 == prime[i - 1]) || (prime[i] + 2 == prime[i + 1])) &#123; book[prime[i]] = 1; &#125; &#125; if(prime[prime[0]] - 2 == prime[prime[0] - 1]) &#123; book[prime[0]] = 1; &#125; return;&#125;int main () &#123; init(); int T, k, tot = 0; scanf(&quot;%d&quot;, &amp;T); while(T--) &#123; scanf(&quot;%d&quot;, &amp;k); if(book[k]) &#123; printf(&quot;Case %d: Yes\n&quot;, ++tot); &#125; else &#123; printf(&quot;Case %d: No\n&quot;, ++tot); &#125; &#125; return 0;&#125;]]></content>
       <tags>
@@ -1444,7 +1444,7 @@
       </tags>
   </entry>
   <entry>
-    <title><![CDATA[哈理工院赛-小乐乐搭积木]]></title>
+    <title><![CDATA[院赛-小乐乐搭积木]]></title>
     <url>%2F2018%2F12%2F02%2F%E5%93%88%E7%90%86%E5%B7%A5%E9%99%A2%E8%B5%9B-%E5%B0%8F%E4%B9%90%E4%B9%90%E6%90%AD%E7%A7%AF%E6%9C%A8%2F</url>
     <content type="text"><![CDATA[题目描述 小乐乐想要给自己搭建一个积木城堡。 积木城堡我们假设为n*m的平面矩形。 小乐乐现在手里有12，21两种地砖。 小乐乐想知道自己有多少种组合方案。 输入描述: 第一行输入整数n,m。(1&lt;=n,m&lt;=10) 输出描述: 输出组合方案数。 示例1 输入 2 3 输出 3 示例2 输入 1 3 输出 0 示例3 输入 2 5 输出 8 思路： ​ 状压dp的入门题，把每一行的状态压缩成一个二进制数（竖为1横为0），然后转化为十进制。依次遍历第一行的所有状态方案数都初始化为1，然后依据dp递推式推出其余行。最后累加最后一行的所有可行性方案的和即可。 代码： #include&lt;cstdio&gt;#include&lt;cstring&gt;#define ll long long#define Maxn 2048using namespace std;int chg[Maxn*Maxn][2];ll dp[1&lt;&lt;13][13];int n,m,tot; void dfs(int c,int s,int scur)&#123; if(c&gt;m) return; if(c==m)&#123; chg[tot][0]=s; chg[tot++][1]=scur; return; &#125; dfs(c+1,s&lt;&lt;1,scur&lt;&lt;1|1); dfs(c+1,s&lt;&lt;1|1,scur&lt;&lt;1); dfs(c+2,s&lt;&lt;2|3,scur&lt;&lt;2|3);&#125; int main()&#123; scanf(&quot;%d%d&quot;, &amp;n, &amp;m); if(m&gt;n) &#123; int kk = m; m = n; n = kk; &#125; tot=0; dfs(0,0,0); memset(dp,0,sizeof dp); dp[(1&lt;&lt;m)-1][0]=1; for(int i=1;i&lt;=n;i++)&#123; for(int j=0;j&lt;tot;j++) dp[chg[j][1]][i]+=dp[chg[j][0]][i-1]; &#125; printf(&quot;%lld\n&quot;,dp[(1&lt;&lt;m)-1][n]); return 0;&#125;]]></content>
       <tags>
@@ -1454,7 +1454,7 @@
       </tags>
   </entry>
   <entry>
-    <title><![CDATA[哈理工院赛-小乐乐打游戏]]></title>
+    <title><![CDATA[院赛-小乐乐打游戏]]></title>
     <url>%2F2018%2F12%2F02%2F%E5%93%88%E7%90%86%E5%B7%A5%E9%99%A2%E8%B5%9B-%E5%B0%8F%E4%B9%90%E4%B9%90%E6%89%93%E6%B8%B8%E6%88%8F%2F</url>
     <content type="text"><![CDATA[题目描述 ​ 小乐乐觉得学习太简单了，剩下那么多的时间好无聊，于是便想打游戏。​ 最近新出了一个特别火的游戏，叫吃猪，小乐乐准备玩一玩。​ 吃猪游戏很简单，给定一个地图，大小为n*m，在地图中会随机出现一个火山口，只要小乐乐能逃离这个地图，他便能吃猪！​ 但吃鸡远没有那么简单：​ 1.小乐乐每走一次只能上下左右四个方向中走一步。​ 2.小乐乐每走一步，火山喷发的岩浆就会向四周蔓延一个格子，所有岩浆走过的地方都视为被岩浆覆盖。​ 3.小乐乐碰到岩浆就会死。​ 4.地图中还有很多障碍，使得小乐乐不能到达，但是岩浆却可以把障碍融化。​ 5.小乐乐只有走到题目给定的终点才算游戏胜利，才能吃猪。​ 小乐乐哪见过这场面，当场就蒙了，就想请帮帮他，告诉他是否能吃猪。 输入描述: 多组样例输入第一行给定n,m,(1 &lt;= n, m &lt;= 1000)代表地图的大小。接下来n行，每一行m个字符，代表地图，对于每一个字符，如果是&apos;.&apos;，代表是平地，&apos;S&apos;代表小乐乐起始的位置，&apos;E&apos;代表终点，&apos;#&apos;代表障碍物，&apos;F&apos;代表火山口。 输出描述: 输出只有一行。如果小乐乐能吃猪，输出&quot;PIG PIG PIG!&quot;。否则输出&quot;A! WO SI LA!&quot;。 示例1 输入 3 3F..#S##.E 输出 PIG PIG PIG! 思路： ​ 两个BFS，注意下细节即可。。。 代码： #include &lt;bits/stdc++.h&gt;using namespace std;struct node&#123; int x,y,foot;&#125;;int dx[5]=&#123;0,1,-1,0&#125;,n,m;int dy[5]=&#123;1,0,0,-1&#125;;char a[1001][1001];int vis[1001][1001];int footstep[1001][1001];int bfs(int startx,int starty)&#123; deque&lt;node&gt;Q; node start; start.x = startx; start.y = starty; start.foot = 0; vis[startx][starty] = 1; Q.push_back(start); while(!Q.empty())&#123; node now = Q.front(); Q.pop_front(); // printf(&quot;x=%d y=%d foot = %d\n&quot;,now.x,now.y,now.foot); for(int i = 0; i &lt; 4; i++)&#123; int x = now.x+dx[i]; int y = now.y+dy[i]; if(x&gt;=0&amp;&amp;x&lt;n &amp;&amp;y&gt;=0&amp;&amp;y&lt;m &amp;&amp; a[x][y] != &apos;#&apos; &amp;&amp; a[x][y] != &apos;F&apos;&amp;&amp; !vis[x][y] &amp;&amp; now.foot+1&lt;=footstep[x][y])&#123; if(a[x][y] == &apos;E&apos;)&#123; return now.foot+1; &#125; vis[x][y] = 1; node then; then.x = x; then.y = y; then.foot = now.foot+1; Q.push_back(then); &#125; &#125; &#125; Q.clear(); return 0;&#125;void bfs1(int startx,int starty)&#123; deque&lt;node&gt;Q; node start; start.x = startx; start.y = starty; start.foot = 0; footstep[startx][starty] = 0; vis[startx][starty] = 1; Q.push_back(start); while(!Q.empty())&#123; node now = Q.front(); Q.pop_front(); for(int i = 0; i &lt; 4; i++)&#123; int x = now.x+dx[i]; int y = now.y+dy[i]; if(x&gt;=0&amp;&amp;x&lt;n &amp;&amp;y&gt;=0&amp;&amp;y&lt;m &amp;&amp;!vis[x][y])&#123; footstep[x][y] = now.foot+1; vis[x][y] = 1; node then; then.x = x; then.y = y; then.foot = now.foot+1; Q.push_back(then); &#125; &#125; &#125; Q.clear();&#125; int main()&#123; while(~scanf(&quot;%d%d&quot;,&amp;n,&amp;m))&#123; int Sx,Sy,Ex,Ey; for(int i = 0; i &lt; n; i++)&#123; scanf(&quot;%s&quot;,a[i]); for(int j = 0; j &lt; m; j++)&#123; if(a[i][j] == &apos;S&apos;)&#123; Sx = i,Sy = j; &#125;else if(a[i][j] == &apos;F&apos;)&#123; Ex = i,Ey = j; &#125; &#125; &#125; memset(footstep,0,sizeof(footstep)); memset(vis,0,sizeof(vis)); bfs1(Ex,Ey); memset(vis,0,sizeof(vis)); int ans1 = bfs(Sx,Sy); if(ans1)&#123; printf(&quot;PIG PIG PIG!\n&quot;); &#125;else&#123; printf(&quot;A! WO SI LA!\n&quot;); &#125; &#125; return 0;&#125;]]></content>
       <tags>
@@ -1464,7 +1464,7 @@
       </tags>
   </entry>
   <entry>
-    <title><![CDATA[哈理工院赛-小乐乐下象棋]]></title>
+    <title><![CDATA[院赛-小乐乐下象棋]]></title>
     <url>%2F2018%2F12%2F02%2F%E5%93%88%E7%90%86%E5%B7%A5%E9%99%A2%E8%B5%9B-%E5%B0%8F%E4%B9%90%E4%B9%90%E4%B8%8B%E8%B1%A1%E6%A3%8B%2F</url>
     <content type="text"><![CDATA[题目描述 小乐乐一天天就知道玩，这一天又想玩象棋。我们都知道马走日。现在给定一个棋盘，大小是n*m,把棋盘放在第一象限，棋盘的左下角是(0,0),右上角是(n - 1, m - 1);小乐乐想知道，一个马从左下角(0, 0)开始，走了k步之后，刚好走到右上角(n - 1, m - 1)的方案数。 输入描述: 输入：多组样例输入，每组一行，三个整数n, m, k(1 &lt;= n, m, k &lt;= 200),如题目所示。 输出描述: 输出：输出答案 mod 1000000007 示例1 输入 4 4 2 输出 2 思路： ​ 设置dp【i】【j】【k】代表第k步到达坐标为(i,j)的方案数，然后三层for循环找8个方向即可 代码： #include &lt;stdio.h&gt;#include &lt;string.h&gt;#define mod 1000000007long long dp[205][205][205];int fx[8][2] = &#123;1, 2, 2, 1, -1, 2, -2, 1, -1, -2, -2, -1, 1, -2, 2, -1&#125;;int main () &#123; int n, m, k; while(scanf(&quot;%d%d%d&quot;, &amp;n, &amp;m, &amp;k) == 3) &#123; memset(dp, 0, sizeof(dp)); dp[0][0][0] = 1; for (int p = 1; p &lt;= k; p++) &#123; for (int i = 0; i &lt; n; i++) &#123; for (int j = 0; j &lt; m; j++) &#123; for (int q = 0; q &lt; 8; q++) &#123; int ii = i + fx[q][0]; int jj = j + fx[q][1]; if (ii &gt;= 0 &amp;&amp; ii &lt; n &amp;&amp; jj &gt;= 0 &amp;&amp; jj &lt; m) &#123; dp[i][j][p] = (dp[i][j][p] + dp[ii][jj][p - 1]) % mod; &#125; &#125; &#125; &#125; &#125; printf(&quot;%lld\n&quot;, dp[n - 1][m - 1][k]); &#125; return 0;&#125;]]></content>
       <tags>
@@ -1473,7 +1473,7 @@
       </tags>
   </entry>
   <entry>
-    <title><![CDATA[哈理工院赛-小乐乐和25]]></title>
+    <title><![CDATA[院赛-小乐乐和25]]></title>
     <url>%2F2018%2F12%2F02%2F%E5%93%88%E7%90%86%E5%B7%A5%E9%99%A2%E8%B5%9B-%E5%B0%8F%E4%B9%90%E4%B9%90%E5%92%8C25%2F</url>
     <content type="text"><![CDATA[题目描述 小乐乐特别喜欢25这个数字，他想把所有的数字都变成25的倍数。现在小乐乐得到一个数字，想问问你最少用几次操作才可以把这个数字改造成25的倍数。对于一次操作我们可以把相邻的两位做交换，比如123经过一次操作之后就可以变成213或者132。 输入描述: 多组数据输入对于每组数据，只有一行输入一个整数n(1 &lt;= n &lt;= 1000000000)。 输出描述: 如果经过最少x次操作后，这个数就变成了25的倍数，那么输出x；如果这个数无论怎么变化都变不成25的倍数，输出-1. 示例1 输入 2018 输出 -1 示例2 输入 2020 输出 1 说明 经过一次之后变成2200 思路： ​ 要想是25的倍数，只要保证最后最后两位是00或者25或者50或者75即可。然后对这四种情况进行模拟即可 代码： #include &lt;stdio.h&gt;#include &lt;stdlib.h&gt;#include &lt;algorithm&gt;using namespace std;int a[15];int main() &#123; int n; while(scanf(&quot;%d&quot;, &amp;n) == 1) &#123; int num0 = 0, num2 = 0, num5 = 0, num7 = 0; int tot = 0, flag = 0; int minn = 0x3f3f3f3f; while(n) &#123; a[++tot] = n % 10; n /= 10; if (a[tot] == 0) &#123; num0++; &#125; else if(a[tot] == 2) &#123; num2++; &#125; else if(a[tot] == 5) &#123; num5++; &#125; else if(a[tot] == 7) &#123; num7++; &#125; &#125; if (num0 &gt;= 2) &#123; flag = 1; int aa[15]; int ls = 0; for (int i = 1; i&lt;= tot; i++) &#123; aa[i] = a[i]; &#125; for (int i = 1; i &lt;= tot; i++) &#123; if(aa[i] == 0) &#123; ls += abs(i - 1); for (int j = i; j &gt; 1; j--) &#123; aa[j] = aa[j - 1]; &#125; break; &#125; &#125; for (int i = 2; i &lt;= tot; i++) &#123; if(aa[i] == 0) &#123; ls += abs(i - 2); for (int j = i; j &gt; 2; j--) &#123; aa[j] = aa[j - 1]; &#125; break; &#125; &#125; minn = min(minn, ls); &#125; if (num2 &gt;= 1 &amp;&amp; num5 &gt;= 1) &#123; flag = 1; int aa[15]; int ls = 0; for (int i = 1; i&lt;= tot; i++) &#123; aa[i] = a[i]; &#125; for (int i = 1; i &lt;= tot; i++) &#123; if(aa[i] == 5) &#123; ls += abs(i - 1); for (int j = i; j &gt; 1; j--) &#123; aa[j] = aa[j - 1]; &#125; break; &#125; &#125; for (int i = 2; i &lt;= tot; i++) &#123; if(aa[i] == 2) &#123; ls += abs(i - 2); for (int j = i; j &gt; 2; j--) &#123; aa[j] = aa[j - 1]; &#125; break; &#125; &#125; minn = min(minn, ls); &#125; if(num5 &gt;= 1 &amp;&amp; num0 &gt;= 1) &#123; flag = 1; int aa[15]; int ls = 0; for (int i = 1; i&lt;= tot; i++) &#123; aa[i] = a[i]; &#125; for (int i = 1; i &lt;= tot; i++) &#123; if(aa[i] == 0) &#123; ls += abs(i - 1); for (int j = i; j &gt; 1; j--) &#123; aa[j] = aa[j - 1]; &#125; break; &#125; &#125; for (int i = 2; i &lt;= tot; i++) &#123; if(aa[i] == 5) &#123; ls += abs(i - 2); for (int j = i; j &gt; 2; j--) &#123; aa[j] = aa[j - 1]; &#125; break; &#125; &#125; minn = min(minn, ls); &#125; if(num7 &gt;= 1 &amp;&amp; num5 &gt;= 1) &#123; flag = 1; int aa[15]; int ls = 0; for (int i = 1; i&lt;= tot; i++) &#123; aa[i] = a[i]; &#125; for (int i = 1; i &lt;= tot; i++) &#123; if(aa[i] == 5) &#123; ls += abs(i - 1); for (int j = i; j &gt; 1; j--) &#123; aa[j] = aa[j - 1]; &#125; break; &#125; &#125; for (int i = 2; i &lt;= tot; i++) &#123; if(aa[i] == 7) &#123; ls += abs(i - 2); for (int j = i; j &gt; 2; j--) &#123; aa[j] = aa[j - 1]; &#125; break; &#125; &#125; minn = min(minn, ls); &#125; if (!flag) &#123; printf(&quot;-1\n&quot;); &#125; else &#123; printf(&quot;%d\n&quot;, minn); &#125; &#125; return 0;&#125;]]></content>
       <tags>
@@ -1482,7 +1482,7 @@
       </tags>
   </entry>
   <entry>
-    <title><![CDATA[哈理工院赛-小乐乐学博弈]]></title>
+    <title><![CDATA[院赛-小乐乐学博弈]]></title>
     <url>%2F2018%2F12%2F02%2F%E5%93%88%E7%90%86%E5%B7%A5%E9%99%A2%E8%B5%9B-%E5%B0%8F%E4%B9%90%E4%B9%90%E5%AD%A6%E5%8D%9A%E5%BC%88%2F</url>
     <content type="text"><![CDATA[题目描述 小乐乐和小皮蛋开始学习关于博弈的知识。给定两堆石子，第一堆有n个石子，第二堆有m个石子。每次操作可以从一堆石子中拿走一些石子，拿走石子的数量可以是1 - k个，小乐乐先手拿石子，然后依次轮流。假如到小乐乐的轮次，小乐乐拿不了了(也就是所有的石子都被拿光了)，那么小皮蛋就获胜，反之亦然。假设小乐乐和小皮蛋都绝顶聪明，都会采用最佳的策略，请问最后谁会赢。 输入描述: 多组数据输入，对于每一组数据，只有一行由空格分开的三个整数n, m, k(0 &lt;= n, m &lt;= 1000000000, k &gt;= |n - m|). 输出描述: 如果小乐乐会赢，输出&quot;HAI YOU SEI!&quot;,否则输出&quot;LAOZI CHUI SI NI!&quot;。 示例1 输入 130 135 5 输出 HAI YOU SEI! 说明 小乐乐会赢 思路： ​ 这道题有个输入限制k &gt;= |n - m|，自己看着n,m,k的数很大都是1e9，觉得应该是很简单的一个题，规律不可能太复杂。然后自己写了n多的样例，发现只有在n == m的时候小乐乐才会输。莽了一发过了 代码： #include &lt;stdio.h&gt;int main () &#123; int n, m, k; while(scanf(&quot;%d%d%d&quot;, &amp;n, &amp;m, &amp;k) == 3) &#123; if (n == m) &#123; printf(&quot;LAOZI CHUI SI NI!\n&quot;); &#125; else&#123; printf(&quot;HAI YOU SEI!\n&quot;); &#125; &#125; return 0;&#125;]]></content>
       <tags>
@@ -1491,7 +1491,7 @@
       </tags>
   </entry>
   <entry>
-    <title><![CDATA[哈理工院赛-小乐乐匹配字符串]]></title>
+    <title><![CDATA[院赛-小乐乐匹配字符串]]></title>
     <url>%2F2018%2F12%2F02%2F%E5%93%88%E7%90%86%E5%B7%A5%E9%99%A2%E8%B5%9B-%E5%B0%8F%E4%B9%90%E4%B9%90%E5%8C%B9%E9%85%8D%E5%AD%97%E7%AC%A6%E4%B8%B2%2F</url>
     <content type="text"><![CDATA[题目描述 小乐乐有字符串str1,str2。 小乐乐想要给他们找朋友。 小乐乐想知道在这两个字符串中最多能匹配出多长的相同子串（可非连续）。 输入描述: 第一行输入字符串str1;第二行输入字符串str2;数据保证字符串长度小于1000，且非空，字符串仅由小写字母组成。 输出描述: 输出最长相同子串的长度。 示例1 输入 asdad 输出 2 思路： ​ 动态规划入门题，两层 for循环分别遍历两个字符串的字符，若s1【i】 == s2【j】，则dp【i】【j】= dp【i - 1】【j - 1】+ 1，否则dp【i】【j】= max(dp【i - 1】【j】,dp【i】【j - 1】)即可 代码： #include &lt;stdio.h&gt;#include &lt;string.h&gt;#include &lt;algorithm&gt;using namespace std;char s1[1005], s2[1005];int dp[1005][1005];int main () &#123; memset(dp, 0, sizeof(dp)); scanf(&quot;%s&quot;, s1 + 1); scanf(&quot;%s&quot;, s2 + 1); int n1 = strlen(s1 + 1); int n2 = strlen(s2 + 1); for (int i = 1; i &lt;= n1; i++) &#123; for (int j = 1; j&lt;= n2; j++) &#123; if(s1[i] != s2[j]) &#123; dp[i][j] = max(dp[i][j - 1], dp[i - 1][j]); &#125; else &#123; dp[i][j] = dp[i - 1][j - 1] + 1; &#125; &#125; &#125; printf(&quot;%d\n&quot;, dp[n1][n2]); return 0;&#125;]]></content>
       <tags>
@@ -1500,7 +1500,7 @@
       </tags>
   </entry>
   <entry>
-    <title><![CDATA[哈理工院赛-小乐乐玩木桶+]]></title>
+    <title><![CDATA[院赛-小乐乐玩木桶+]]></title>
     <url>%2F2018%2F12%2F02%2F%E5%93%88%E7%90%86%E5%B7%A5%E9%99%A2%E8%B5%9B-%E5%B0%8F%E4%B9%90%E4%B9%90%E7%8E%A9%E6%9C%A8%E6%A1%B6-1%2F</url>
     <content type="text"><![CDATA[题目描述 小乐乐用散落在森林里的木板做了一个木桶。 已知底面积为S(㎡)。 小乐乐经过各种仪器的精密测量知道了，所有木板的近似长度h[i]。 小乐乐只能选用三块木板去拼木桶，小乐乐拼凑成的木桶的最大装水体积是(㎡)？ （容量测量，底面积乘高，木桶不倾斜） 输入描述: 第一行输入整数n，S。(3&lt;=n&lt;=1000，1&lt;=s&lt;=1000，n表示拼凑木桶所需木板)第二行输入n个整数h[i](1&lt;=h[i]&lt;=1000,h[i]表示i号木板的长度) 输出描述: 输出木桶最大装水体积。 示例1 输入 3 32 3 4 输出 6 思路： ​ 这道题是上一道题的变形 上题链接 只要sort一下，用s✖️第三大的数即可 代码： #include &lt;stdio.h&gt;#include &lt;string.h&gt;#include &lt;algorithm&gt;using namespace std;int a[1005];int main () &#123; int n, m; while(scanf(&quot;%d%d&quot;, &amp;n, &amp;m) == 2) &#123; for (int i = 0; i &lt; n; i++) &#123; scanf(&quot;%d&quot;, &amp;a[i]); &#125; sort(a, a + n); printf(&quot;%d\n&quot;, a[n - 3] * m); &#125; return 0;&#125;]]></content>
       <tags>
@@ -1509,7 +1509,7 @@
       </tags>
   </entry>
   <entry>
-    <title><![CDATA[哈理工院赛-小乐乐玩木桶]]></title>
+    <title><![CDATA[院赛-小乐乐玩木桶]]></title>
     <url>%2F2018%2F12%2F02%2F%E5%93%88%E7%90%86%E5%B7%A5%E9%99%A2%E8%B5%9B-%E5%B0%8F%E4%B9%90%E4%B9%90%E7%8E%A9%E6%9C%A8%E6%A1%B6%2F</url>
     <content type="text"><![CDATA[题目描述 小乐乐用散落在森林里的木板做了一个木桶。 已知底面积为S(㎡)。 小乐乐经过各种仪器的精密测量知道了，所有木板的近似长度h[i]。 小乐乐想知道自己拼凑出的木桶的最大装水体积为？ （容量测量，底面积乘高，木桶不倾斜） 输入描述: 第一行输入整数n，S。(1&lt;=n,s&lt;=1000，n表示拼凑木桶所需木板)第二行输入n个整数h[i](1&lt;=h[i]&lt;=1000,h[i]表示i号木板的长度) 输出描述: 输出木桶最大装水体积。 示例1 输入 3 21 2 3 输出 2 思路： ​ 就是找出最小值，然后用s ✖️最小值即可。。。大水题 代码： #include &lt;stdio.h&gt;#include &lt;string.h&gt;#include &lt;algorithm&gt;using namespace std;int main () &#123; int n, m; while(scanf(&quot;%d%d&quot;, &amp;n, &amp;m) == 2) &#123; int minn = 0x3f3f3f3f; int a; for (int i = 0; i &lt; n; i++) &#123; scanf(&quot;%d&quot;, &amp;a); if (minn &gt; a) &#123; minn = a; &#125; &#125; printf(&quot;%d\n&quot;, minn * m); &#125; return 0;&#125;]]></content>
       <tags>
@@ -1518,7 +1518,7 @@
       </tags>
   </entry>
   <entry>
-    <title><![CDATA[哈理工院赛-小乐乐的组合数+]]></title>
+    <title><![CDATA[院赛-小乐乐的组合数+]]></title>
     <url>%2F2018%2F12%2F02%2F%E5%93%88%E7%90%86%E5%B7%A5%E9%99%A2%E8%B5%9B-%E5%B0%8F%E4%B9%90%E4%B9%90%E7%9A%84%E7%BB%84%E5%90%88%E6%95%B0%2F</url>
     <content type="text"><![CDATA[题目描述 小乐乐得知一周有7天之后就对7产生了兴趣。 小乐乐得到了两堆数字数字时连续的。 第一堆包含[1,n]n个数字，第二堆包含[1,m]m个数字。 小乐乐想要从两堆中各挑选出一个整数x,y，使得x,y的和为7的倍数。 请问小乐乐有多少种组合的方式。 输入描述: 输入整数n,m。(1&lt;=n,m&lt;=1e6) 输出描述: 输出满足的对数。 示例1 输入 6 7 输出 6 说明 (1,6),(2,5),(3,4),(4,3),(5,2),(6,1) 思路： ​ 从n,m中找一个较小值，用i遍历这个较小值，然后累加（(i + 较大值) / 7）- (i / 7)即为答案 代码： #include &lt;stdio.h&gt;int main () &#123; long long n, m; scanf(&quot;%lld%lld&quot;, &amp;n, &amp;m); long long ans = 0; if (n &gt; m) &#123; long long flag = n; n = m; m = flag; &#125; for (int i = 1; i &lt;= n; i++) &#123; long long k = i + m; ans += k / 7 - i / 7; &#125; printf(&quot;%lld\n&quot;, ans); return 0;&#125;]]></content>
       <tags>
