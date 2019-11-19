@@ -1,239 +1,150 @@
 <!DOCTYPE html>
-<html lang="zh-CN">
+<html>
 
-<!-- Head tag -->
 <head>
-  <meta charset="utf-8">
-  <meta http-equiv="X-UA-Compatible" content="IE=edge">
-
-  <!--Description-->
-  
-
-  <!--Author-->
-  
-
-  <!--Open Graph Title-->
-  
-      <meta property="og:title" content="CodeForces1096DEasy Problem"/>
-  
-  <!--Open Graph Description-->
-  
-  <!--Open Graph Site Name-->
-  <meta property="og:site_name" content="Zcy"/>
-  <!--Type page-->
-  
-      <meta property="og:type" content="article" />
-  
-  <!--Page Cover-->
-  
-
-    <meta name="baidu-site-verification" content="8vgn54BtUC" />
-
-    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <!-- 百度统计 -->
-    <script>
-	var _hmt = _hmt || [];
-	(function() {
-  	var hm = document.createElement("script");
-  	hm.src = "https://hm.baidu.com/hm.js?c0451e16533956173997b85f7a8de666";
-  	var s = document.getElementsByTagName("script")[0]; 
-  	s.parentNode.insertBefore(hm, s);
-	})();
-    </script>
-  <!-- Title -->
   
   <title>CodeForces1096DEasy Problem - Zcy</title>
+  <meta charset="UTF-8">
+  <meta name="description" content="">
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  
+  
 
-
-  <link rel="shortcut icon" href="/favicon.ico">
-    <!--font-awesome-->
-    <link href="//netdna.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet">
-    <link rel="stylesheet" href="/css/animate.css">
-    <link rel="stylesheet" href="/css/thplayer.css">
-  <!-- Custom CSS/Sass -->
-  <link rel="stylesheet" href="/css/style.css">
-    <!--顶部上方进度条-->
-    <script src="//cdn.bootcss.com/pace/1.0.2/pace.min.js"></script>
-    <link href="/css/pace-theme-flash.css" rel="stylesheet">
-    <style>
-        .pace .pace-progress {
-            background: #cccccc; /*进度条颜色*/
-            height: 3px;
-        }
-        .pace .pace-progress-inner {
-            box-shadow: 0 0 10px #cccccc, 0 0 5px #cccccc; /*阴影颜色*/
-        }
-        .pace .pace-activity {
-            border-top-color: #cccccc;    /*上边框颜色*/
-            border-left-color: #cccccc;    /*左边框颜色*/
-        }
-    </style>
-
-
-    <!--小火箭-->
-    <link rel="stylesheet" type="text/css" href="/css/rocketTop.css">
-    <script type="text/javascript" src="/js/jquery.min.js"></script>
-    <script type="text/javascript" src="/js/rocketTop.js"></script>
-
+  <link rel="shortcut icon" href="/favicon.ico" type="image/png" />
+  <meta name="keywords" content="ACM,动态规划">
+<meta property="og:type" content="article">
+<meta property="og:title" content="CodeForces1096DEasy Problem">
+<meta property="og:url" content="http://www.ivan-zcy.top/2018/12/29/CodeForces1096DEasy-Problem/index.html">
+<meta property="og:site_name" content="Zcy">
+<meta property="og:locale" content="default">
+<meta property="og:image" content="http://www.ivan-zcy.top/2018/12/29/CodeForces1096DEasy-Problem/title.jpg">
+<meta property="og:updated_time" content="2018-12-29T01:14:32.253Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="CodeForces1096DEasy Problem">
+<meta name="twitter:image" content="http://www.ivan-zcy.top/2018/12/29/CodeForces1096DEasy-Problem/title.jpg">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/mdui@0.4.3/dist/css/mdui.min.css">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/highlight.js@9.15.8/styles/atom-one-dark.css">
+   
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/fancyapps/fancybox@3.5.7/dist/jquery.fancybox.min.css" />
+  
+  
+  <link rel="stylesheet" href="//at.alicdn.com/t/font_1038733_0xvrvpg9c0r.css">
+  <link rel="stylesheet" href="/css/style.css?v=1574134741320">
 </head>
 
-<body>
-
-  <!-- Nav -->
-  <header class="site-header">
-  <div class="header-inside">
-    
-    <div class="logo">
-      <a href="/" rel="home">
-        
-        <img src="/img/timg.jpg" alt="Zcy" height="60">
-        
-      </a>
-    </div>
-    <a class="header-name" href="/">
-            <span>Zcy</span>
-            的小屋
-        </a>
-    <!-- navbar -->
-    <nav class="navbar">
-      <!--  nav links -->
-      <div class="collapse">
-        <ul class="navbar-nav">
-          
-          
-            <li>
-              <a href="/.">
-                
-                  <i class="fa fa-home "></i>
-                
-                小屋
-              </a>
-            </li>
-          
-            <li>
-              <a href="/archives">
-                
-                  <i class="fa fa-archive "></i>
-                
-                点滴
-              </a>
-            </li>
-          
-            <li>
-              <a href="/tags">
-                
-                  <i class="fa fa-archive "></i>
-                
-                标签
-              </a>
-            </li>
-          
-            <li>
-              <a href="/project">
-                
-                  <i class="fa fa-folder-open "></i>
-                
-                项目
-              </a>
-            </li>
-          
-            <li>
-              <a href="/photo">
-                
-                  <i class="fa fa-photo "></i>
-                
-                相册
-              </a>
-            </li>
-          
-            <li>
-              <a href="/guestbook">
-                
-                  <i class="fa fa-edit "></i>
-                
-                留言
-              </a>
-            </li>
-          
-            <li>
-              <a href="/game">
-                
-                  <i class="fa fa-gamepad "></i>
-                
-                游戏
-              </a>
-            </li>
-          
-            <li>
-              <a href="/aboutMe/index.html">
-                
-                  <i class="fa fa-user "></i>
-                
-                关于我
-              </a>
-            </li>
-          
-            <li>
-              <a href="/friendly">
-                
-                  <i class="fa fa-bicycle "></i>
-                
-                链接
-              </a>
-            </li>
-          
-        </ul>
-      </div>
-      <!-- /.navbar-collapse -->
-    </nav>
-    <div class="button-wrap">
-      <button class="menu-toggle">Primary Menu</button>
+<body class="mdui-drawer-body-left">
+  
+  <div id="nexmoe-background">
+    <div class="nexmoe-bg" style="background-image: url(https://i.loli.net/2019/01/13/5c3aec85a4343.jpg)"></div>
+    <div class="mdui-appbar mdui-shadow-0">
+      <div class="mdui-toolbar">
+        <a mdui-drawer="{target: '#drawer', swipe: true}" title="menu" class="mdui-btn mdui-btn-icon"><i class="mdui-icon material-icons">menu</i></a>
+        <div class="mdui-toolbar-spacer"></div>
+        <!--<a href="javascript:;" class="mdui-btn mdui-btn-icon"><i class="mdui-icon material-icons">search</i></a>-->
+        <a href="/" title="Zcy" class="mdui-btn mdui-btn-icon"><img src="/images/avatar.png"></a>
+       </div>
     </div>
   </div>
-</header>
+  <div id="nexmoe-header">
+      <div class="nexmoe-drawer mdui-drawer" id="drawer">
+    <div class="nexmoe-avatar mdui-ripple">
+        <a href="/" title="Zcy">
+            <img src="/images/avatar.png" alt="Zcy">
+        </a>
+    </div>
+    <div class="nexmoe-count">
+        <div><span>Articles</span>298</div>
+        <div><span>Tags</span>92</div>
+        <div><span>Categories</span>0</div>
+    </div>
+    <ul class="nexmoe-list mdui-list" mdui-collapse="{accordion: true}">
+        
+        <a class="nexmoe-list-item mdui-list-item mdui-ripple" href="/" title="回到首页">
+            <i class="mdui-list-item-icon nexmoefont icon-home"></i>
+            <div class="mdui-list-item-content">
+                回到首页
+            </div>
+        </a>
+        
+        <a class="nexmoe-list-item mdui-list-item mdui-ripple" href="/about.html" title="关于博客">
+            <i class="mdui-list-item-icon nexmoefont icon-info-circle"></i>
+            <div class="mdui-list-item-content">
+                关于博客
+            </div>
+        </a>
+        
+        <a class="nexmoe-list-item mdui-list-item mdui-ripple" href="/PY.html" title="我的朋友">
+            <i class="mdui-list-item-icon nexmoefont icon-unorderedlist"></i>
+            <div class="mdui-list-item-content">
+                我的朋友
+            </div>
+        </a>
+        
+    </ul>
+    <aside id="nexmoe-sidebar">
+  
+  <div class="nexmoe-widget-wrap">
+    <h3 class="nexmoe-widget-title">Social</h3>
+    <div class="nexmoe-widget nexmoe-social">
+        <a class="mdui-ripple" href="https://space.bilibili.com/20238211" target="_blank" mdui-tooltip="{content: '哔哩哔哩'}" style="color: rgb(231, 106, 141);background-color: rgba(231, 106, 141, .15);">
+            <i class="nexmoefont icon-bilibili"></i>
+        </a><a class="mdui-ripple" href="https://github.com/nexmoe/" target="_blank" mdui-tooltip="{content: 'GitHub'}" style="color: rgb(25, 23, 23);background-color: rgba(25, 23, 23, .15);">
+            <i class="nexmoefont icon-github"></i>
+        </a>
+    </div>
+</div>
+  
+  
+
+  
+  
+  <div class="nexmoe-widget-wrap">
+    <h3 class="nexmoe-widget-title">Tagcloud</h3>
+    <div id="randomtagcloud" class="nexmoe-widget tagcloud">
+      <a href="/tags/数据结构-链表/" style="font-size: 10px;">-数据结构 -链表</a> <a href="/tags/01分数规划/" style="font-size: 10px;">01分数规划</a> <a href="/tags/ACM/" style="font-size: 20px;">ACM</a> <a href="/tags/BFS/" style="font-size: 10.56px;">BFS</a> <a href="/tags/C/" style="font-size: 15px;">C++</a> <a href="/tags/C核心技术总结/" style="font-size: 12.22px;">C核心技术总结</a> <a href="/tags/C语言/" style="font-size: 18.89px;">C语言</a> <a href="/tags/DFS/" style="font-size: 10px;">DFS</a> <a href="/tags/Debug/" style="font-size: 10px;">Debug</a> <a href="/tags/Docker/" style="font-size: 10px;">Docker</a> <a href="/tags/Git/" style="font-size: 11.11px;">Git</a> <a href="/tags/Github/" style="font-size: 10px;">Github</a> <a href="/tags/Hash/" style="font-size: 10px;">Hash</a> <a href="/tags/JavaWeb/" style="font-size: 11.11px;">JavaWeb</a> <a href="/tags/Linux/" style="font-size: 17.22px;">Linux</a> <a href="/tags/Mac/" style="font-size: 10px;">Mac</a> <a href="/tags/SSH/" style="font-size: 10px;">SSH</a> <a href="/tags/Vim/" style="font-size: 10.56px;">Vim</a> <a href="/tags/brew/" style="font-size: 10px;">brew</a> <a href="/tags/hexo/" style="font-size: 12.22px;">hexo</a> <a href="/tags/markdown/" style="font-size: 10px;">markdown</a> <a href="/tags/mysql/" style="font-size: 10px;">mysql</a> <a href="/tags/shell/" style="font-size: 10px;">shell</a> <a href="/tags/turtle/" style="font-size: 10px;">turtle</a> <a href="/tags/vim/" style="font-size: 10px;">vim</a> <a href="/tags/二分/" style="font-size: 11.11px;">二分</a> <a href="/tags/二叉树/" style="font-size: 15.56px;">二叉树</a> <a href="/tags/传递闭包/" style="font-size: 10px;">传递闭包</a> <a href="/tags/内存模型/" style="font-size: 11.11px;">内存模型</a> <a href="/tags/分布式/" style="font-size: 10px;">分布式</a> <a href="/tags/分组背包/" style="font-size: 10px;">分组背包</a> <a href="/tags/动态规划/" style="font-size: 19.44px;">动态规划</a> <a href="/tags/动态规划进阶/" style="font-size: 13.89px;">动态规划进阶</a> <a href="/tags/区间dp/" style="font-size: 10px;">区间dp</a> <a href="/tags/博弈/" style="font-size: 10px;">博弈</a> <a href="/tags/反思/" style="font-size: 10px;">反思</a> <a href="/tags/后缀表达式/" style="font-size: 10px;">后缀表达式</a> <a href="/tags/图论/" style="font-size: 11.11px;">图论</a> <a href="/tags/多线程/" style="font-size: 10px;">多线程</a> <a href="/tags/多路dp/" style="font-size: 10px;">多路dp</a> <a href="/tags/多进程/" style="font-size: 12.22px;">多进程</a> <a href="/tags/大数/" style="font-size: 10px;">大数</a> <a href="/tags/大模拟/" style="font-size: 10px;">大模拟</a> <a href="/tags/字典树/" style="font-size: 10px;">字典树</a> <a href="/tags/存储/" style="font-size: 11.11px;">存储</a> <a href="/tags/尺取/" style="font-size: 10px;">尺取</a> <a href="/tags/库/" style="font-size: 10px;">库</a> <a href="/tags/思维/" style="font-size: 16.11px;">思维</a> <a href="/tags/总结/" style="font-size: 11.11px;">总结</a> <a href="/tags/抽屉原理/" style="font-size: 10px;">抽屉原理</a> <a href="/tags/拓扑排序/" style="font-size: 10px;">拓扑排序</a> <a href="/tags/探究/" style="font-size: 10px;">探究</a> <a href="/tags/操作系统/" style="font-size: 16.11px;">操作系统</a> <a href="/tags/收藏/" style="font-size: 12.78px;">收藏</a> <a href="/tags/数据库/" style="font-size: 11.11px;">数据库</a> <a href="/tags/数据结构/" style="font-size: 17.78px;">数据结构</a> <a href="/tags/数论/" style="font-size: 18.33px;">数论</a> <a href="/tags/数论原理/" style="font-size: 16.67px;">数论原理</a> <a href="/tags/整理/" style="font-size: 10px;">整理</a> <a href="/tags/斜率优化/" style="font-size: 11.67px;">斜率优化</a> <a href="/tags/最近公共祖先/" style="font-size: 10px;">最近公共祖先</a> <a href="/tags/杂谈/" style="font-size: 11.11px;">杂谈</a> <a href="/tags/栈/" style="font-size: 10.56px;">栈</a> <a href="/tags/栈和队列/" style="font-size: 10.56px;">栈和队列</a> <a href="/tags/树形dp/" style="font-size: 12.22px;">树形dp</a> <a href="/tags/概率dp/" style="font-size: 10px;">概率dp</a> <a href="/tags/模拟/" style="font-size: 12.78px;">模拟</a> <a href="/tags/模版/" style="font-size: 11.11px;">模版</a> <a href="/tags/欧拉函数/" style="font-size: 10px;">欧拉函数</a> <a href="/tags/水题/" style="font-size: 14.44px;">水题</a> <a href="/tags/特殊背包问题/" style="font-size: 10px;">特殊背包问题</a> <a href="/tags/状压DP/" style="font-size: 10px;">状压DP</a> <a href="/tags/科学上网/" style="font-size: 10px;">科学上网</a> <a href="/tags/算法之美/" style="font-size: 11.11px;">算法之美</a> <a href="/tags/线段树/" style="font-size: 10px;">线段树</a> <a href="/tags/线程池/" style="font-size: 10px;">线程池</a> <a href="/tags/组合数/" style="font-size: 10px;">组合数</a> <a href="/tags/结构数据/" style="font-size: 10px;">结构数据</a> <a href="/tags/网络编程/" style="font-size: 10.56px;">网络编程</a> <a href="/tags/背包第k优/" style="font-size: 10px;">背包第k优</a> <a href="/tags/背包问题/" style="font-size: 10px;">背包问题</a> <a href="/tags/规律/" style="font-size: 10px;">规律</a> <a href="/tags/记忆化搜索/" style="font-size: 10px;">记忆化搜索</a> <a href="/tags/软件体系结构/" style="font-size: 10.56px;">软件体系结构</a> <a href="/tags/软件质量保证/" style="font-size: 10px;">软件质量保证</a> <a href="/tags/进程间同步/" style="font-size: 10px;">进程间同步</a> <a href="/tags/进程间通信/" style="font-size: 10px;">进程间通信</a> <a href="/tags/逆波兰表达式/" style="font-size: 10px;">逆波兰表达式</a> <a href="/tags/链表/" style="font-size: 13.33px;">链表</a> <a href="/tags/队列/" style="font-size: 10px;">队列</a> <a href="/tags/随机数/" style="font-size: 10px;">随机数</a> <a href="/tags/随笔/" style="font-size: 16.67px;">随笔</a>
+    </div>
+    
+  </div>
+
+  
+  
+  <div class="nexmoe-widget-wrap">
+    <h3 class="nexmoe-widget-title">Archive</h3>
+    <div class="nexmoe-widget">
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/09/">September 2019</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/06/">June 2019</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/05/">May 2019</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/04/">April 2019</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/03/">March 2019</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/02/">February 2019</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/01/">January 2019</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/12/">December 2018</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/11/">November 2018</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/10/">October 2018</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/09/">September 2018</a></li></ul>
+    </div>
+  </div>
 
 
-  <!-- Main Content -->
-  <div class="content-area">
-    <div class="post">
-        <!-- Post Content -->
-        <div class="container">
-            <article>
-                <!-- Title date & tags -->
-                <div class="post-header">
-                    <h1 class="entry-title">
-                        CodeForces1096DEasy Problem
-                        
-                    </h1>
-
-                </div>
-
-
-                <div style="text-align:center;color: #ccc;">
-    <span class="post-time" >
-      <span class="post-meta-item-icon">
-        <i class="fa fa-keyboard-o"></i>
-        <span class="post-meta-item-text">  字数统计: </span>
-        <span class="post-count">908字</span>
-      </span>
-    </span>
-
-                    <span class="post-time">
-      &nbsp; | &nbsp;
-      <span class="post-meta-item-icon">
-        <i class="fa fa-hourglass-half"></i>
-        <span class="post-meta-item-text">  阅读时长: </span>
-        <span class="post-count">5分</span>
-      </span>
-    </span>
-                </div>
-
-                <p class="a-posted-on" style="color: #ccc;">
-                    2018-12-29
-                </p>
-                <!-- Post Main Content -->
-                <div class="entry-content">
-                    <p><img src="/2018/12/29/CodeForces1096DEasy-Problem/title.jpg" alt="title"></p>
+  
+</aside>
+    <div class="nexmoe-copyright">
+        &copy; 2019 Zcy
+        Powered by <a href="http://hexo.io/" target="_blank">Hexo</a>
+        & <a href="https://nexmoe.com/hexo-theme-nexmoe.html" target="_blank">Nexmoe</a>
+    </div>
+</div><!-- .nexmoe-drawer -->
+  </div>
+  <div id="nexmoe-content">
+    <div class="nexmoe-primary">
+        <div class="nexmoe-post">
+    <div class="nexmoe-post-cover"> 
+        
+            <img src="https://i.loli.net/2019/01/13/5c3aec85a4343.jpg">
+        
+        <h1>CodeForces1096DEasy Problem</h1>
+    </div>
+  <div class="nexmoe-post-meta">
+    <a><i class="nexmoefont icon-calendar-fill"></i>2018年12月29日</a>
+    <a><i class="nexmoefont icon-areachart"></i>908 字</a>
+    <a><i class="nexmoefont icon-time-circle-fill"></i>大概 5 分钟</a>
+    
+    
+      <a class="nexmoefont icon-tag-fill -link" href="/tags/ACM/">ACM</a> <a class="nexmoefont icon-tag-fill -link" href="/tags/动态规划/">动态规划</a>
+    
+  </div>
+  <article>
+    <p><img src="/2018/12/29/CodeForces1096DEasy-Problem/title.jpg" alt="title"></p>
 <a id="more"></a>
 <p>题意：</p>
 <p>Vasya is preparing a contest, and now he has written a statement for an easy problem. The statement is a string of length 𝑛n consisting of lowercase Latin latters. Vasya thinks that the statement can be considered hard if it contains a subsequence hard; otherwise the statement is easy. For example, hard, hzazrzd, haaaaard can be considered hard statements, while har, hart and drah are easy statements. </p>
@@ -265,161 +176,66 @@
 <p>代码：</p>
 <figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">#include &lt;stdio.h&gt;</span><br><span class="line">#include &lt;string.h&gt;</span><br><span class="line">#include &lt;algorithm&gt;</span><br><span class="line"></span><br><span class="line">using namespace std;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">char s[100005];</span><br><span class="line">long long dp[100005][5];</span><br><span class="line">long long val[100005];</span><br><span class="line">int main() &#123;</span><br><span class="line">    int n;</span><br><span class="line">    memset(dp, 0, sizeof(dp));</span><br><span class="line">    scanf(&quot;%d&quot;, &amp;n);</span><br><span class="line">    scanf(&quot;%s&quot;, s + 1);</span><br><span class="line">    long long sum = 0;</span><br><span class="line">    for(int i = 1; i &lt;= n; i++) scanf(&quot;%lld&quot;, &amp;val[i]), sum += val[i];</span><br><span class="line">    for(int i = 1; i &lt;= n; i++) &#123;</span><br><span class="line">        if (s[i] == &apos;h&apos;) &#123;</span><br><span class="line">            dp[i][0] = dp[i - 1][0];</span><br><span class="line">            dp[i][1] = max(dp[i - 1][0], dp[i - 1][1]) + val[i];</span><br><span class="line">            for (int j = 2; j &lt; 5; j++) &#123;</span><br><span class="line">                dp[i][j] = dp[i - 1][j] + val[i];</span><br><span class="line">            &#125;</span><br><span class="line">        &#125; else if (s[i] == &apos;a&apos;) &#123;</span><br><span class="line">            dp[i][0] = dp[i - 1][0] + val[i];</span><br><span class="line">            dp[i][1] = dp[i - 1][1];</span><br><span class="line">            dp[i][2] = max(dp[i - 1][1], dp[i - 1][2]) + val[i];</span><br><span class="line">            for (int j = 3; j &lt; 5; j++) &#123;</span><br><span class="line">                dp[i][j] = dp[i - 1][j] + val[i];</span><br><span class="line">            &#125;</span><br><span class="line">        &#125; else if (s[i] == &apos;r&apos;) &#123;</span><br><span class="line">            dp[i][0] = dp[i - 1][0] + val[i];</span><br><span class="line">            dp[i][1] = dp[i - 1][1] + val[i];</span><br><span class="line">            dp[i][2] = dp[i - 1][2];</span><br><span class="line">            dp[i][3] = max(dp[i - 1][2], dp[i - 1][3]) + val[i];</span><br><span class="line">            for (int j = 4; j &lt; 5; j++) &#123;</span><br><span class="line">                dp[i][j] = dp[i - 1][j] + val[i];</span><br><span class="line">            &#125;</span><br><span class="line">        &#125; else if (s[i] == &apos;d&apos;) &#123;</span><br><span class="line">            dp[i][0] = dp[i - 1][0] + val[i];</span><br><span class="line">            dp[i][1] = dp[i - 1][1] + val[i];</span><br><span class="line">            dp[i][2] = dp[i - 1][2] + val[i];</span><br><span class="line">            dp[i][3] = dp[i - 1][3];</span><br><span class="line">            dp[i][4] = max(dp[i - 1][3], dp[i - 1][4]) + val[i];</span><br><span class="line">        &#125; else &#123;</span><br><span class="line">            for (int j = 0; j &lt; 5; j++) &#123;</span><br><span class="line">                dp[i][j] = dp[i - 1][j] + val[i];</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    long long mx = 0;</span><br><span class="line">    for(int i = 0; i &lt; 4; i++)&#123;</span><br><span class="line">        mx = max(mx, dp[n][i]);</span><br><span class="line">    &#125;</span><br><span class="line">    printf(&quot;%lld\n&quot;, sum - mx);</span><br><span class="line">    return 0;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 
-                </div>
-            </article>
-        </div>
-        <br>
-        <div style="text-align:center;color: #ccc;font-size:14px;">
-            <br>
-            <br>
-            <a href="http://www.ivan-zcy.top" style="color: #99FFFF;font-size:18px;">转载请注明出处！！！</a>
-            <br>
-            <br>
-            如果有写的不对或者不全面的地方 可通过主页的联系方式进行指正，谢谢!
-        </div>
-        <br>
-        <!-- Pre or Next -->
-        
-        <div class="container" >
-            <ul class="pager">
-                
-                <li class="previous">
-                    <a href="/2018/12/31/洛谷1108低价购买/" rel="prev">下一篇</a>
-                </li>
-                
-                
-                <li class="next">
-                    <a href="/2018/12/26/JavaWeb复习三/" rel="prev">上一篇</a>
-                </li>
-                
-            </ul>
-        </div>
-        　　　　<!-- Comments -->
-        <div class="container">
-            
-<section id="comment">
-  <!-- <h1 class="title">Comments</h1> -->
-
+  </article>
   
-</section>
+    
+<div class="nexmoe-post-copyright">
+<i class="mdui-list-item-icon nexmoefont icon-info-circle"></i>
+<strong>Author：</strong><br>
+<strong>Link：</strong><a href="http://www.ivan-zcy.top/2018/12/29/CodeForces1096DEasy-Problem/" title="http://www.ivan-zcy.top/2018/12/29/CodeForces1096DEasy-Problem/" target="_blank" rel="noopener">http://www.ivan-zcy.top/2018/12/29/CodeForces1096DEasy-Problem/</a><br>
 
+  <strong>版权声明：</strong>本文采用 <a href="https://creativecommons.org/licenses/by-nc-sa/3.0/cn/deed.zh" target="_blank">CC BY-NC-SA 3.0 CN</a> 协议进行许可
 
-        </div>
-        
-        　　　　
-    </div>
 </div>
 
 
-  <div id="Thplayer"></div>
-  <script type="application/javascript" src="/js/thplayer.min.js"></script>
-  <script>
-      $("#Thplayer").thplayer({
-          title: "遇见",
-          author: "孙燕姿",
-          cover: "/img/yj.jpg",
-          music: "http://www.ytmp3.cn/down/37418.mp3"
-      });
-  </script>
-
-  <!-- Footer -->
-  <!-- top -->
-
-<!-- Footer -->
-<footer class="site-info">
-    <p>Hosted by <a href="https://pages.coding.me" style="font-weight: bold">Coding Pages</a></p>
-  <script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
-  本站总访问量<span id="busuanzi_value_site_pv"></span>次
-  本站访客数<span id="busuanzi_value_site_uv"></span>人次
-    <p>
-        <span id="timeDate">载入天数...</span><span id="times">载入时分秒...</span>
-    </p>
-  <script>
-      var now = new Date();
-      function createtime() {
-          var grt= new Date("09/28/2018 08:00:00");//此处修改你的建站时间或者网站上线时间
-          now.setTime(now.getTime()+250);
-          days = (now - grt ) / 1000 / 60 / 60 / 24; dnum = Math.floor(days);
-          hours = (now - grt ) / 1000 / 60 / 60 - (24 * dnum); hnum = Math.floor(hours);
-          if(String(hnum).length ==1 ){hnum = "0" + hnum;} minutes = (now - grt ) / 1000 /60 - (24 * 60 * dnum) - (60 * hnum);
-          mnum = Math.floor(minutes); if(String(mnum).length ==1 ){mnum = "0" + mnum;}
-          seconds = (now - grt ) / 1000 - (24 * 60 * 60 * dnum) - (60 * 60 * hnum) - (60 * mnum);
-          snum = Math.round(seconds); if(String(snum).length ==1 ){snum = "0" + snum;}
-          document.getElementById("timeDate").innerHTML = "本站已安全运行 "+dnum+" 天 ";
-          document.getElementById("times").innerHTML = hnum + " 小时 " + mnum + " 分 " + snum + " 秒";
-      }
-      setInterval("createtime()",250);
-  </script>
-  <p>
-    <span>Zcy &copy; 2019</span>
-      
-    <span class="split">|</span>
-    <span>Zcy</span>
-    
-  </p>
-</footer>
-
-
-  <!--小火箭-->
-  <div id="shape">
-    <div class="shapeColor">
-      <div class="shapeFly">
-      </div>
+  
+  <section class="nexmoe-comment">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/gitalk@1.5.0/dist/gitalk.min.css">
+<div id="gitalk"></div>
+<script src="https://cdn.jsdelivr.net/npm/gitalk@1.5.0/dist/gitalk.min.js"></script>
+<script type="text/javascript">
+    var gitalk = new Gitalk({
+        clientID: '80b2453b6d5f37ad6225',
+        clientSecret: '43e99fa852795c9a7b3eb924b2558c64b84bbdeb',
+        id: window.location.pathname,
+        repo: 'nexmoe.github.io',
+        owner: 'nexmoe',
+        admin: 'nexmoe'
+    })
+    gitalk.render('gitalk')
+</script>
+</section>
+</div>
     </div>
   </div>
-
-  <!-- After footer scripts -->
-  <!-- scripts -->
-<script src="/js/app.js"></script>
-
-
-  <script>
-      (function(){
-
-          function _scroll(){
-              var acticles = $('.article > .container');
-              var height = window.innerHeight || document.body.offsetHeight;
-              acticles.each(function () {
-                  var top = this.getBoundingClientRect().top;
-                  if(top < height+1){
-                      if(!$(this).hasClass('animated')) {
-                          $(this).addClass('slideInRight');
-                          $(this).addClass('animated');
-                      }
-                  }
-              })
-
-              $(window).scroll(function () {
-                  acticles.each(function () {
-                      var top = this.getBoundingClientRect().top;
-                      if(top < height+1){
-                          if(!$(this).hasClass('animated')) {
-                              $(this).addClass('slideInRight');
-                              $(this).addClass('animated');
-                          }
-                      }
-                  })
-              })
-          }
+  <script src="https://cdn.jsdelivr.net/npm/mdui@0.4.3/dist/js/mdui.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/jquery@3.4.1/dist/jquery.min.js"></script>
+ 
+    <script src="https://cdn.jsdelivr.net/gh/fancyapps/fancybox@3.5.7/dist/jquery.fancybox.min.js"></script>
 
 
-          var bp = document.createElement('script');
-          var curProtocol = window.location.protocol.split(':')[0];
-          if (curProtocol === 'https') {
-              bp.src = 'https://zz.bdstatic.com/linksubmit/push.js';
-          }
-          else {
-              bp.src = 'http://push.zhanzhang.baidu.com/push.js';
-          }
-          var s = document.getElementsByTagName("script")[0];
-          s.parentNode.insertBefore(bp, s);
-          _scroll();
-      })();
-  </script>
-  <script type="text/javascript"
-          color="0,0,0" opacity='0.5' zIndex="-2" count="35" src="//cdn.bootcss.com/canvas-nest.js/1.0.0/canvas-nest.min.js"></script>
-  <!-- 页面点击小红心 -->
-  <script type="text/javascript" src="/js/clicklove.js"></script>
+ 
+    <script src="https://cdn.jsdelivr.net/npm/smoothscroll-for-websites@1.4.9/SmoothScroll.min.js"></script>
+
+
+<script src="https://cdn.jsdelivr.net/gh/highlightjs/cdn-release@9.15.8/build/highlight.min.js"></script>
+<script>hljs.initHighlightingOnLoad();</script>
+
+<script src="/js/app.js?v=1574134741391"></script>
+<script src="https://cdn.jsdelivr.net/npm/lazysizes@5.1.0/lazysizes.min.js"></script>
+
+
+    <script type="text/javascript" src="https://cdn.jsdelivr.net/gh/xtaodada/xtaodada.github.io@0.0.2/copy.js"></script>
+
+
+
+  
+
+
+
+
+
 <script src="/live2dw/lib/L2Dwidget.min.js?0c58a1486de42ac6cc1c59c7d98ae887"></script><script>L2Dwidget.init({"model":{"jsonPath":"/live2dw/assets/haruto.model.json"},"display":{"position":"left","width":70,"height":140},"mobile":{"show":true},"log":false,"pluginJsPath":"lib/","pluginModelPath":"assets/","pluginRootPath":"live2dw/","tagMode":false});</script></body>
 
 </html>

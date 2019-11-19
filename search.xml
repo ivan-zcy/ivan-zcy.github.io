@@ -233,8 +233,8 @@
     <url>%2F2019%2F04%2F24%2FLeetcode42%2F</url>
     <content type="text"><![CDATA[/************************************************************************* &gt; File Name: Leetcode42.cpp &gt; Author: Zcy &gt; Mail: 296763002@qq.com &gt; Created Time: 二 4/23 19:45:30 2019 ************************************************************************///给出n个宽度为1的柱子的高度，问最多存多少水//方法：利用单调栈来维护（只有保持V型才能存水，因此递减就添加到栈，递增就维护和//因此我们需要维护一个单调递减栈，在出栈的时候维护和）class Solution &#123;private: stack &lt;int&gt; sta;public: int trap(vector&lt;int&gt;&amp; height) &#123; int sum = 0; for (int i = 0; i &lt; height.size(); i++) &#123; //单调递减就增加 if (sta.empty() || height[sta.top()] &gt; height[i]) &#123; sta.push(i); &#125; else &#123; //出现递增就维护 while(!sta.empty() &amp;&amp; height[sta.top()] &lt;= height[i]) &#123; int inx = sta.top(); sta.pop(); //避免sta.top()访问错误 if (sta.empty()) break; int x = min(height[sta.top()] - height[inx], height[i] - height[inx]); int y = i - sta.top() - 1; sum += x * y; &#125; sta.push(i); &#125; &#125; return sum; &#125;&#125;;]]></content>
       <tags>
-        <tag>结构数据</tag>
         <tag>栈和队列</tag>
+        <tag>结构数据</tag>
       </tags>
   </entry>
   <entry>
@@ -664,8 +664,8 @@
     <url>%2F2019%2F02%2F27%2F%E5%8D%87%E7%BA%A7%E7%89%88%E8%81%8A%E5%A4%A9%E5%AE%A4%2F</url>
     <content type="text"><![CDATA[主要是利用所学网络编程来实现聊天室功能，包括客户端和服务端两个部分。 代码以上传至github，可通过github或者个人主页查看 客户端客户端的内容如下： 使用配置文件配置自己的监听端口，服务器的监听端口等信息 用户之间可以通过”@用户名 信息”来实现私聊 客户端在一个固定端口上监听服务器转发的来自其他用户的私聊、公聊以及系统信息 客户端所接受到的所有信息保存日志文件中，可利用tail -f 文件名获取实时聊天信息 客户端解析来自服务端的结构体，内容如下： struct Message&#123; char from[20]; int flag;//若flag为1则为私聊信息，0为公聊信息，2则为服务器的通知信息 char message[1024]; &#125;; 服务端 服务端在固定接口接收来自所有客户端的消息 每收到一条公聊消息，都转发给所有在线用户 每收到私聊消息，只转发给目标用户 当私聊用户不存在或下线，通过通知信息告知该用户 在用户上线的时候，发送欢迎信息并告知所有在线用户该用户上线 在收到用户信息#时，发送给该用户当前在线人数以及所有用户信息 具体效果如下： 用户界面： 服务端界面： 用户的log日志显示：]]></content>
       <tags>
-        <tag>网络编程</tag>
         <tag>C语言</tag>
+        <tag>网络编程</tag>
         <tag>多进程</tag>
       </tags>
   </entry>
@@ -757,8 +757,8 @@
     <url>%2F2019%2F02%2F23%2FC%E7%BD%91%E7%BB%9C%E7%BC%96%E7%A8%8B%E5%AE%9E%E7%8E%B0%E8%81%8A%E5%A4%A9%E5%AE%A4%2F</url>
     <content type="text"><![CDATA[主要是利用所学的C语言网络编程来实现聊天室功能，包括客户端和服务端两个部分，common用于封装网络编程的相关函数。 ​ 客户端接收两个参数，分别是IP地址和端口号 ​ 代码已上传至github：跳转 ​ 或者从个人博客项目上查看：跳转 效果如下： 用户1的输入： 用户2的输入： 聊天室（服务器）的显示：]]></content>
       <tags>
-        <tag>网络编程</tag>
         <tag>C语言</tag>
+        <tag>网络编程</tag>
       </tags>
   </entry>
   <entry>
