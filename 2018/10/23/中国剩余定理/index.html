@@ -1,0 +1,443 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+
+<!-- Head tag -->
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+
+  <!--Description-->
+  
+
+  <!--Author-->
+  
+
+  <!--Open Graph Title-->
+  
+      <meta property="og:title" content="(数论九)中国剩余定理与扩展"/>
+  
+  <!--Open Graph Description-->
+  
+  <!--Open Graph Site Name-->
+  <meta property="og:site_name" content="Zcy"/>
+  <!--Type page-->
+  
+      <meta property="og:type" content="article" />
+  
+  <!--Page Cover-->
+  
+
+    <meta name="baidu-site-verification" content="8vgn54BtUC" />
+
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <!-- 百度统计 -->
+    <script>
+	var _hmt = _hmt || [];
+	(function() {
+  	var hm = document.createElement("script");
+  	hm.src = "https://hm.baidu.com/hm.js?c0451e16533956173997b85f7a8de666";
+  	var s = document.getElementsByTagName("script")[0]; 
+  	s.parentNode.insertBefore(hm, s);
+	})();
+    </script>
+  <!-- Title -->
+  
+  <title>(数论九)中国剩余定理与扩展 - Zcy</title>
+
+
+  <link rel="shortcut icon" href="/favicon.ico">
+    <!--font-awesome-->
+    <link href="//netdna.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="/css/animate.css">
+    <link rel="stylesheet" href="/css/thplayer.css">
+  <!-- Custom CSS/Sass -->
+  <link rel="stylesheet" href="/css/style.css">
+    <!--顶部上方进度条-->
+    <script src="//cdn.bootcss.com/pace/1.0.2/pace.min.js"></script>
+    <link href="/css/pace-theme-flash.css" rel="stylesheet">
+    <style>
+        .pace .pace-progress {
+            background: #cccccc; /*进度条颜色*/
+            height: 3px;
+        }
+        .pace .pace-progress-inner {
+            box-shadow: 0 0 10px #cccccc, 0 0 5px #cccccc; /*阴影颜色*/
+        }
+        .pace .pace-activity {
+            border-top-color: #cccccc;    /*上边框颜色*/
+            border-left-color: #cccccc;    /*左边框颜色*/
+        }
+    </style>
+
+
+    <!--小火箭-->
+    <link rel="stylesheet" type="text/css" href="/css/rocketTop.css">
+    <script type="text/javascript" src="/js/jquery.min.js"></script>
+    <script type="text/javascript" src="/js/rocketTop.js"></script>
+
+</head>
+
+<body>
+
+  <!-- Nav -->
+  <header class="site-header">
+  <div class="header-inside">
+    
+    <div class="logo">
+      <a href="/" rel="home">
+        
+        <img src="/img/timg.jpg" alt="Zcy" height="60">
+        
+      </a>
+    </div>
+    <a class="header-name" href="/">
+            <span>Zcy</span>
+            的小屋
+        </a>
+    <!-- navbar -->
+    <nav class="navbar">
+      <!--  nav links -->
+      <div class="collapse">
+        <ul class="navbar-nav">
+          
+          
+            <li>
+              <a href="/.">
+                
+                  <i class="fa fa-home "></i>
+                
+                小屋
+              </a>
+            </li>
+          
+            <li>
+              <a href="/archives">
+                
+                  <i class="fa fa-archive "></i>
+                
+                点滴
+              </a>
+            </li>
+          
+            <li>
+              <a href="/tags">
+                
+                  <i class="fa fa-archive "></i>
+                
+                标签
+              </a>
+            </li>
+          
+            <li>
+              <a href="/project">
+                
+                  <i class="fa fa-folder-open "></i>
+                
+                项目
+              </a>
+            </li>
+          
+            <li>
+              <a href="/photo">
+                
+                  <i class="fa fa-photo "></i>
+                
+                相册
+              </a>
+            </li>
+          
+            <li>
+              <a href="/guestbook">
+                
+                  <i class="fa fa-edit "></i>
+                
+                留言
+              </a>
+            </li>
+          
+            <li>
+              <a href="/game">
+                
+                  <i class="fa fa-gamepad "></i>
+                
+                游戏
+              </a>
+            </li>
+          
+            <li>
+              <a href="/aboutMe/index.html">
+                
+                  <i class="fa fa-user "></i>
+                
+                关于我
+              </a>
+            </li>
+          
+            <li>
+              <a href="/friendly">
+                
+                  <i class="fa fa-bicycle "></i>
+                
+                链接
+              </a>
+            </li>
+          
+        </ul>
+      </div>
+      <!-- /.navbar-collapse -->
+    </nav>
+    <div class="button-wrap">
+      <button class="menu-toggle">Primary Menu</button>
+    </div>
+  </div>
+</header>
+
+
+  <!-- Main Content -->
+  <div class="content-area">
+    <div class="post">
+        <!-- Post Content -->
+        <div class="container">
+            <article>
+                <!-- Title date & tags -->
+                <div class="post-header">
+                    <h1 class="entry-title">
+                        (数论九)中国剩余定理与扩展
+                        
+                    </h1>
+
+                </div>
+
+
+                <div style="text-align:center;color: #ccc;">
+    <span class="post-time" >
+      <span class="post-meta-item-icon">
+        <i class="fa fa-keyboard-o"></i>
+        <span class="post-meta-item-text">  字数统计: </span>
+        <span class="post-count">1k字</span>
+      </span>
+    </span>
+
+                    <span class="post-time">
+      &nbsp; | &nbsp;
+      <span class="post-meta-item-icon">
+        <i class="fa fa-hourglass-half"></i>
+        <span class="post-meta-item-text">  阅读时长: </span>
+        <span class="post-count">5分</span>
+      </span>
+    </span>
+                </div>
+
+                <p class="a-posted-on" style="color: #ccc;">
+                    2018-10-23
+                </p>
+                <!-- Post Main Content -->
+                <div class="entry-content">
+                    <p><img src="/2018/10/23/中国剩余定理/title1.jpg" alt="title1"></p>
+<a id="more"></a>
+<p>​    学习中国剩余定理之前必须学会求解逆元： <a href="http://www.ivan-zcy.top/2018/10/22/关于逆元/">跳转</a></p>
+<p>一.中国剩余定理：</p>
+<p>​    记得小时候听过一个故事，就是韩信想知道自己有多少士兵，然后就先让士兵排成x列，余出来a个人，后来又让士兵排成y列，余出来b个人，后来又让士兵排成z列，余出来c个人，最后韩信直接算出了自己的士兵数。。Orz～</p>
+<p>​    呃呃呃，感觉有点像小学的时候做过的奥数题。。。    </p>
+<p>​    假使x，y，z分别为3，5，7，a，b，c分别为2，3，2，那么我们问最小士兵数是多少？</p>
+<p>​    注意一点！！！x,y,z必须满足两两互质！！！</p>
+<p>​    根据逆元的性质，我们可以知道：</p>
+<p>​    3✖️5✖️mod_reverse(15, 7) ≡ 1 （mod 7） （1）</p>
+<p>​    3✖️7✖️mod_reverse(21, 5) ≡ 1 （mod 5)      (2)</p>
+<p>​    5✖️7✖️mod_reverse(35, 3) ≡ 1 （mod 3）    (3)</p>
+<p>​    把(1)乘2，(2)乘3，(3)乘2，得：</p>
+<p>​    2✖️3✖️5✖️mod_reverse(15, 7) ≡ 2 （mod 7） （4）</p>
+<p>​    3✖️3✖️7✖️mod_reverse(21, 5) ≡ 3 （mod 5)      (5)</p>
+<p>​    2✖️5✖️7✖️mod_reverse(35, 3) ≡ 2 （mod 3）    (6)</p>
+<p>​    我们设：</p>
+<p>​    a = 2✖️3✖️5✖️mod_reverse(15, 7)</p>
+<p>​    b = 3✖️3✖️7✖️mod_reverse(21, 5)</p>
+<p>​    c = 2✖️5✖️7✖️mod_reverse(35, 3)</p>
+<p>​    因此我们可以得到：</p>
+<p>​    (a + b + c) % 3 = a % 3 + b % 3 + c % 3 = 0 + 0 + 2 = 2;</p>
+<p>​    (a + b + c) % 5 = a % 5 + b % 5 + c % 5 = 0 + 3 + 0 = 3;</p>
+<p>​    (a + b + c) % 7 = a % 7 + b % 7 + c % 7 = 2 + 0 + 0 = 2;</p>
+<p>​    所以说，士兵数为a + b + c就满足该条件</p>
+<p>​    代码实现如下：</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">//省略扩展欧几里得求逆元的函数</span><br><span class="line">ll china (ll n, ll *a, ll *m) &#123;			//m[i]代表3，5，7等除数，a[i]代表2，3，2等余数</span><br><span class="line">    ll M = 1;			//M代表所有除数的乘积</span><br><span class="line">    ll res = 0;</span><br><span class="line">    for (int i = 0; i &lt; n; i++) &#123;</span><br><span class="line">        M *= m[i];</span><br><span class="line">    &#125;</span><br><span class="line">    for (int i = 0; i &lt; n; i++) &#123;</span><br><span class="line">        ll w = M / m[i];</span><br><span class="line">        ret = (ret + a[i] * w * mod_reverse(w, m[i])) % M;</span><br><span class="line">        //若上面的式子爆longlong，可利用快速乘来求解</span><br><span class="line">    &#125;</span><br><span class="line">    return (ret + M) % M;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>​    </p>
+<p>二.中国剩余定理扩展：</p>
+<p>​    前边注意中已经标注了，中国剩余定理的前提是x，y，z（也就是说除数）必须两两互质。如果不互质我们又该怎么办呢？</p>
+<p>​    我们假设x ≡ a1 (mod n1)</p>
+<p>​            x ≡ a2 (mod n2)</p>
+<p>​    合并两式，得：n1k1 = n2k2 + a2 - a1</p>
+<p>​    两边同除gcd(n1, n2)，得：</p>
+<p>​    n1k1 / gcd(n1, n2) = n2k2 / gcd(n1, n2) + (a2 - a1) / gcd(n1, n2)</p>
+<p>​    由于n1 / gcd(n1, n2) 与n2 / gcd(n1, n2)互质，因此：</p>
+<p>​    n1k1 / gcd(n1, n2) ≡  (a2 - a1) / gcd(n1, n2)    （mod n2 / gcd(n1, n2)）</p>
+<p>​    同除n1 / gcd (n1, n2)，得：k1 ≡ mod_reverse(n1 / gcd(n1, n2), n2 / gcd(n1, n2))✖️ (a2 - a1) / gcd(n1, n2) （mod n2 / gcd(n1, n2)）</p>
+<p>​    k1 = mod_reverse(n1 / gcd(n1, n2), n2 / gcd(n1, n2))✖️ (a2 - a1) / gcd(n1, n2) + n2 / gcd(n1, n2)✖️y</p>
+<p>​    把k1代入x = n1k1 + a1，得：</p>
+<p>​    x =     mod_reverse(n1 / gcd(n1, n2), n2 / gcd(n1, n2))✖️ (a2 - a1) / gcd(n1, n2)✖️n1 + n1n2 / gcd(n1, n2)✖️y</p>
+<p>​    呃呃呃，解x就求出来了…</p>
+<p>​    这是两个式子的联立，那么多个呢？</p>
+<p>​    对于多个，我们先求出两个数的解x，把x带入到a2中，并把n2替换为lcm(n1, n2)，然后继续求2，3的解，直到递推到n结束。最后n - 1和 n的解x即为答案。</p>
+<p>​    代码如下：</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">const int maxn=1e5+5;</span><br><span class="line">int n;</span><br><span class="line">ll m[maxn],a[maxn];			//m[i]为除数，a[i]为余数</span><br><span class="line"></span><br><span class="line">//求gcd</span><br><span class="line">ll gcd (ll a, ll b) &#123;					</span><br><span class="line">    return a % b == 0? b: gcd(b, a % b);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">//扩展欧几里得算法</span><br><span class="line">ll extend_gcd (ll a, ll b, ll &amp;x, ll &amp;y) &#123;	</span><br><span class="line">    if (a == 0 &amp;&amp; b == 0) return -1;</span><br><span class="line">    if (b == 0) &#123;</span><br><span class="line">        x = 1;</span><br><span class="line">        y = 0;</span><br><span class="line">        return a;</span><br><span class="line">    &#125;</span><br><span class="line">    ll d = extend_gcd(b, a % b, y, x);</span><br><span class="line">    y -= a / b * x;</span><br><span class="line">    return d;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">//求a关于n的逆元</span><br><span class="line">ll mod_reverse (ll a, ll n) &#123;</span><br><span class="line">    ll x, y;</span><br><span class="line">    ll d = extend_gcd(a, n, x, y);</span><br><span class="line">    if (d == 1) return (x % n + n) % n;</span><br><span class="line">    return -1;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">//中国剩余定理扩展</span><br><span class="line">ll work()&#123;</span><br><span class="line">    int flag = 0;</span><br><span class="line">    for (int i = 2; i &lt;= n; i++) &#123;</span><br><span class="line">        ll n1 = m[i - 1], n2 = m[i];</span><br><span class="line">        ll a1 = a[i - 1], a2 = a[i];</span><br><span class="line">        ll d = gcd(n1, n2);</span><br><span class="line">        if ((a2 - a1) % d != 0) &#123;</span><br><span class="line">            flag = 1;</span><br><span class="line">            break;</span><br><span class="line">        &#125;</span><br><span class="line">        m[i] = m[i - 1] / d * m[i];</span><br><span class="line">        ll x = (mod_reverse(n1 / d, n2 / d) * (a2 - a1) / d) % (n2 / d) * n1 + a1;</span><br><span class="line">        x = (x % m[i] + m[i]) % m[i];</span><br><span class="line">        a[i] = x;</span><br><span class="line">    &#125;</span><br><span class="line">    if (flag) return -1;</span><br><span class="line">    return a[n];</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>​    大概就是这样～</p>
+<p><a href="http://www.ivan-zcy.top">转载请注明出处！！！</a>  </p>
+<p>如果有写的不对或者不全面的地方 可通过主页的联系方式进行指正，谢谢</p>
+
+                </div>
+            </article>
+        </div>
+        <br>
+        <div style="text-align:center;color: #ccc;font-size:14px;">
+            <br>
+            <br>
+            <a href="http://www.ivan-zcy.top" style="color: #99FFFF;font-size:18px;">转载请注明出处！！！</a>
+            <br>
+            <br>
+            如果有写的不对或者不全面的地方 可通过主页的联系方式进行指正，谢谢!
+        </div>
+        <br>
+        <!-- Pre or Next -->
+        
+        <div class="container" >
+            <ul class="pager">
+                
+                <li class="previous">
+                    <a href="/2018/10/23/关于卢卡斯定理/" rel="prev">下一篇</a>
+                </li>
+                
+                
+                <li class="next">
+                    <a href="/2018/10/23/容斥原理与抽屉原理/" rel="prev">上一篇</a>
+                </li>
+                
+            </ul>
+        </div>
+        　　　　<!-- Comments -->
+        <div class="container">
+            
+<section id="comment">
+  <!-- <h1 class="title">Comments</h1> -->
+
+  
+</section>
+
+
+        </div>
+        
+        　　　　
+    </div>
+</div>
+
+
+  <div id="Thplayer"></div>
+  <script type="application/javascript" src="/js/thplayer.min.js"></script>
+  <script>
+      $("#Thplayer").thplayer({
+          title: "遇见",
+          author: "孙燕姿",
+          cover: "/img/yj.jpg",
+          music: "http://www.ytmp3.cn/down/37418.mp3"
+      });
+  </script>
+
+  <!-- Footer -->
+  <!-- top -->
+
+<!-- Footer -->
+<footer class="site-info">
+    <p>Hosted by <a href="https://pages.coding.me" style="font-weight: bold">Coding Pages</a></p>
+  <script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+  本站总访问量<span id="busuanzi_value_site_pv"></span>次
+  本站访客数<span id="busuanzi_value_site_uv"></span>人次
+    <p>
+        <span id="timeDate">载入天数...</span><span id="times">载入时分秒...</span>
+    </p>
+  <script>
+      var now = new Date();
+      function createtime() {
+          var grt= new Date("09/28/2018 08:00:00");//此处修改你的建站时间或者网站上线时间
+          now.setTime(now.getTime()+250);
+          days = (now - grt ) / 1000 / 60 / 60 / 24; dnum = Math.floor(days);
+          hours = (now - grt ) / 1000 / 60 / 60 - (24 * dnum); hnum = Math.floor(hours);
+          if(String(hnum).length ==1 ){hnum = "0" + hnum;} minutes = (now - grt ) / 1000 /60 - (24 * 60 * dnum) - (60 * hnum);
+          mnum = Math.floor(minutes); if(String(mnum).length ==1 ){mnum = "0" + mnum;}
+          seconds = (now - grt ) / 1000 - (24 * 60 * 60 * dnum) - (60 * 60 * hnum) - (60 * mnum);
+          snum = Math.round(seconds); if(String(snum).length ==1 ){snum = "0" + snum;}
+          document.getElementById("timeDate").innerHTML = "本站已安全运行 "+dnum+" 天 ";
+          document.getElementById("times").innerHTML = hnum + " 小时 " + mnum + " 分 " + snum + " 秒";
+      }
+      setInterval("createtime()",250);
+  </script>
+  <p>
+    <span>Zcy &copy; 2019</span>
+      
+    <span class="split">|</span>
+    <span>Zcy</span>
+    
+  </p>
+</footer>
+
+
+  <!--小火箭-->
+  <div id="shape">
+    <div class="shapeColor">
+      <div class="shapeFly">
+      </div>
+    </div>
+  </div>
+
+  <!-- After footer scripts -->
+  <!-- scripts -->
+<script src="/js/app.js"></script>
+
+
+  <script>
+      (function(){
+
+          function _scroll(){
+              var acticles = $('.article > .container');
+              var height = window.innerHeight || document.body.offsetHeight;
+              acticles.each(function () {
+                  var top = this.getBoundingClientRect().top;
+                  if(top < height+1){
+                      if(!$(this).hasClass('animated')) {
+                          $(this).addClass('slideInRight');
+                          $(this).addClass('animated');
+                      }
+                  }
+              })
+
+              $(window).scroll(function () {
+                  acticles.each(function () {
+                      var top = this.getBoundingClientRect().top;
+                      if(top < height+1){
+                          if(!$(this).hasClass('animated')) {
+                              $(this).addClass('slideInRight');
+                              $(this).addClass('animated');
+                          }
+                      }
+                  })
+              })
+          }
+
+
+          var bp = document.createElement('script');
+          var curProtocol = window.location.protocol.split(':')[0];
+          if (curProtocol === 'https') {
+              bp.src = 'https://zz.bdstatic.com/linksubmit/push.js';
+          }
+          else {
+              bp.src = 'http://push.zhanzhang.baidu.com/push.js';
+          }
+          var s = document.getElementsByTagName("script")[0];
+          s.parentNode.insertBefore(bp, s);
+          _scroll();
+      })();
+  </script>
+  <script type="text/javascript"
+          color="0,0,0" opacity='0.5' zIndex="-2" count="35" src="//cdn.bootcss.com/canvas-nest.js/1.0.0/canvas-nest.min.js"></script>
+  <!-- 页面点击小红心 -->
+  <script type="text/javascript" src="/js/clicklove.js"></script>
+<script src="/live2dw/lib/L2Dwidget.min.js?0c58a1486de42ac6cc1c59c7d98ae887"></script><script>L2Dwidget.init({"model":{"jsonPath":"/live2dw/assets/haruto.model.json"},"display":{"position":"left","width":70,"height":140},"mobile":{"show":true},"log":false,"pluginJsPath":"lib/","pluginModelPath":"assets/","pluginRootPath":"live2dw/","tagMode":false});</script></body>
+
+</html>

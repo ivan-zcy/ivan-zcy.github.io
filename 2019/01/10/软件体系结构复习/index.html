@@ -1,0 +1,504 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+
+<!-- Head tag -->
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+
+  <!--Description-->
+  
+
+  <!--Author-->
+  
+
+  <!--Open Graph Title-->
+  
+      <meta property="og:title" content="软件体系结构复习"/>
+  
+  <!--Open Graph Description-->
+  
+  <!--Open Graph Site Name-->
+  <meta property="og:site_name" content="Zcy"/>
+  <!--Type page-->
+  
+      <meta property="og:type" content="article" />
+  
+  <!--Page Cover-->
+  
+
+    <meta name="baidu-site-verification" content="8vgn54BtUC" />
+
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <!-- 百度统计 -->
+    <script>
+	var _hmt = _hmt || [];
+	(function() {
+  	var hm = document.createElement("script");
+  	hm.src = "https://hm.baidu.com/hm.js?c0451e16533956173997b85f7a8de666";
+  	var s = document.getElementsByTagName("script")[0]; 
+  	s.parentNode.insertBefore(hm, s);
+	})();
+    </script>
+  <!-- Title -->
+  
+  <title>软件体系结构复习 - Zcy</title>
+
+
+  <link rel="shortcut icon" href="/favicon.ico">
+    <!--font-awesome-->
+    <link href="//netdna.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="/css/animate.css">
+    <link rel="stylesheet" href="/css/thplayer.css">
+  <!-- Custom CSS/Sass -->
+  <link rel="stylesheet" href="/css/style.css">
+    <!--顶部上方进度条-->
+    <script src="//cdn.bootcss.com/pace/1.0.2/pace.min.js"></script>
+    <link href="/css/pace-theme-flash.css" rel="stylesheet">
+    <style>
+        .pace .pace-progress {
+            background: #cccccc; /*进度条颜色*/
+            height: 3px;
+        }
+        .pace .pace-progress-inner {
+            box-shadow: 0 0 10px #cccccc, 0 0 5px #cccccc; /*阴影颜色*/
+        }
+        .pace .pace-activity {
+            border-top-color: #cccccc;    /*上边框颜色*/
+            border-left-color: #cccccc;    /*左边框颜色*/
+        }
+    </style>
+
+
+    <!--小火箭-->
+    <link rel="stylesheet" type="text/css" href="/css/rocketTop.css">
+    <script type="text/javascript" src="/js/jquery.min.js"></script>
+    <script type="text/javascript" src="/js/rocketTop.js"></script>
+
+</head>
+
+<body>
+
+  <!-- Nav -->
+  <header class="site-header">
+  <div class="header-inside">
+    
+    <div class="logo">
+      <a href="/" rel="home">
+        
+        <img src="/img/timg.jpg" alt="Zcy" height="60">
+        
+      </a>
+    </div>
+    <a class="header-name" href="/">
+            <span>Zcy</span>
+            的小屋
+        </a>
+    <!-- navbar -->
+    <nav class="navbar">
+      <!--  nav links -->
+      <div class="collapse">
+        <ul class="navbar-nav">
+          
+          
+            <li>
+              <a href="/.">
+                
+                  <i class="fa fa-home "></i>
+                
+                小屋
+              </a>
+            </li>
+          
+            <li>
+              <a href="/archives">
+                
+                  <i class="fa fa-archive "></i>
+                
+                点滴
+              </a>
+            </li>
+          
+            <li>
+              <a href="/tags">
+                
+                  <i class="fa fa-archive "></i>
+                
+                标签
+              </a>
+            </li>
+          
+            <li>
+              <a href="/project">
+                
+                  <i class="fa fa-folder-open "></i>
+                
+                项目
+              </a>
+            </li>
+          
+            <li>
+              <a href="/photo">
+                
+                  <i class="fa fa-photo "></i>
+                
+                相册
+              </a>
+            </li>
+          
+            <li>
+              <a href="/guestbook">
+                
+                  <i class="fa fa-edit "></i>
+                
+                留言
+              </a>
+            </li>
+          
+            <li>
+              <a href="/game">
+                
+                  <i class="fa fa-gamepad "></i>
+                
+                游戏
+              </a>
+            </li>
+          
+            <li>
+              <a href="/aboutMe/index.html">
+                
+                  <i class="fa fa-user "></i>
+                
+                关于我
+              </a>
+            </li>
+          
+            <li>
+              <a href="/friendly">
+                
+                  <i class="fa fa-bicycle "></i>
+                
+                链接
+              </a>
+            </li>
+          
+        </ul>
+      </div>
+      <!-- /.navbar-collapse -->
+    </nav>
+    <div class="button-wrap">
+      <button class="menu-toggle">Primary Menu</button>
+    </div>
+  </div>
+</header>
+
+
+  <!-- Main Content -->
+  <div class="content-area">
+    <div class="post">
+        <!-- Post Content -->
+        <div class="container">
+            <article>
+                <!-- Title date & tags -->
+                <div class="post-header">
+                    <h1 class="entry-title">
+                        软件体系结构复习
+                        
+                    </h1>
+
+                </div>
+
+
+                <div style="text-align:center;color: #ccc;">
+    <span class="post-time" >
+      <span class="post-meta-item-icon">
+        <i class="fa fa-keyboard-o"></i>
+        <span class="post-meta-item-text">  字数统计: </span>
+        <span class="post-count">3k字</span>
+      </span>
+    </span>
+
+                    <span class="post-time">
+      &nbsp; | &nbsp;
+      <span class="post-meta-item-icon">
+        <i class="fa fa-hourglass-half"></i>
+        <span class="post-meta-item-text">  阅读时长: </span>
+        <span class="post-count">9分</span>
+      </span>
+    </span>
+                </div>
+
+                <p class="a-posted-on" style="color: #ccc;">
+                    2019-01-10
+                </p>
+                <!-- Post Main Content -->
+                <div class="entry-content">
+                    <p><img src="/2019/01/10/软件体系结构复习/title5.jpg" alt="title5"></p>
+<a id="more"></a>
+<ol>
+<li>软件复用技术的出发点是在开发应用系统时不再采用一切从零开始的模式，而是以已有工作为基础，充分利用过去应用开发过程中所积累的经验与知识，将开发的重点集中于当前应用的特有部分</li>
+</ol>
+<ol start="2">
+<li>软件复用根据复用对象的类型不同，分为代码复用、设计复用、分析复用和测试复用 </li>
+</ol>
+<ol start="3">
+<li>代码复用：分为目标代码复用和源代码复用。<ol>
+<li>目标代码复用级别最低，历史也最久。目前大多数编程语言的运行支持环境都提供了链接和绑定功能来支持这种复用。</li>
+<li>源代码复用的级别略高于目标代码复用，程序员在编程时可以将一些想要复用的代码段复制到自己的程序中，但这样做往往会产生一种新老代码不匹配的现象。因此，大规模的实现源程序复用只能依靠构件库。构件库包含了大量的可复用构件。例如对象链接及嵌入技术(OLE)，OLE既能在源程序级别上定义构件构造新系统，又能使这些构件在目标代码级别上仍然时一些独立的可复用构件，能够在运行时被灵活的组合到不同的应用系统中。</li>
+</ol>
+</li>
+</ol>
+<ol start="4">
+<li><p>设计复用比源程序复用的级别更高。设计复用受实现环境的影响较小，因此被复用的机会更多，所需的修改也更少。设计复用的途径有三种：</p>
+<p> (1)从现有系统的设计结果中提取一些可复用的设计元素用于新系统的设计过程中</p>
+<p> (2)把现有系统的全部设计文档在新的软、硬件平台上重新实现，即一个设计用于多个具体实现</p>
+<p> (3)独立于任何具体应用，有计划的开发一些可复用的设计元素</p>
+</li>
+</ol>
+<ol start="5">
+<li><p>分析复用比设计复用的级别更高，可复用的分析成分是针对问题域的某些事物或某些问题所给出的具有普遍意义的解法。分析复用的途径有三种：</p>
+<p> (1)从现有系统的分析结果中提取可复用的分析成分用于分析新系统</p>
+<p> (2)根据完整的分析文档来产生针对不同软硬件平台和其他实现条件的多项设计结果</p>
+<p> (3)独立于具体应用问题，开发专门用于复用的分析成分</p>
+</li>
+</ol>
+<ol start="6">
+<li>测试复用分为测试用例复用和测试过程复用。测试复用无法和代码复用、设计复用、分析复用进行级别上的比较，但从信息的形态上来看，大体与代码复用的级别相当</li>
+</ol>
+<ol start="7">
+<li><p>软件复用根据信息复用的方式不同，可以分为黑盒复用和白盒复用。</p>
+<p> 黑盒复用是指对已有软件结构不做任何修改，直接进行复用，是最理想的复用方式</p>
+<p> 白盒复用是指已有软件结构不能完全满足用户要求，需要进行适应性修改后才能使用。是最常用的复用方式</p>
+</li>
+<li><p>软件复用的实现技术一般包括组装和生成两种类型</p>
+<p> 在组装技术中，软件构件是复用的基石。构件在软件开发过程中类似于硬件中的芯片，通过组装可以形成更大的构件。构件是对某一函数、过程、子程序、数据类型及算法等可复用软件成分的抽象。对构件进行描述时应选择即不依赖具体硬件平台也不依赖具体编程语言的抽象描述语言，这样可以避免开发的构件因机器和语言的限制导致复用性降低</p>
+<p> 在生成技术中，由程序生成器完成对软件结构模式的复用。生成器导出的模式相当于种子，从中可生长出新的专用软件构件。生成技术利用可复用模式，通过生成程序产生一个新的程序或程序段，产生的程序即是模式的实例。可复用的模式分为代码模式和规则模式。</p>
+</li>
+</ol>
+<ol start="9">
+<li><p>基于构件的软件开发</p>
+<p> 基本思想：将用户需求分解为一系列的子功能构建，在开发过程中不必重新设计这些基本功能模块，只需要从现有构件库中寻找合适的构件来组装应用系统</p>
+<p> 优点：(1)大大提高软件的可复用性和开发效率</p>
+<p> (2)使产品在客户需求吻合度、上线时间和质量上领先于同类产品</p>
+<p> (3)使产品的开发与维护变得简单</p>
+<p> (4)客户可以随时应对商业环境和IT技术的变化，以实现快速定制</p>
+<p> 基本目标：以组装的方式生成新应用系统，组装以形式上独立的构件服务为基础进行</p>
+<p> 具备要素：构件组装的应用程序、独立服务、公共构件基础设施和通用服务</p>
+</li>
+</ol>
+<ol start="10">
+<li><p>软件构件技术的发展历程</p>
+<p>20世纪60年代初：提出了结构化分析与设计方法。意为通过工程化方法，规范开发过程，使软件系统具有良好的结构，即产生可拼装和裁剪的模块化结构。</p>
+<p>20世纪80年代末：出现了面向对象编程技术。其基本思想使使用对象来描述客观事物，对象封装了属性和操作方法。</p>
+<p>20世纪90年代：软件构件技术得到迅速发展。强调开发过程应融入构件化技术和体系结构技术，要求开发的系统具备易理解，自适应，互操作，可扩展和可复用的特点。</p>
+</li>
+</ol>
+<ol start="11">
+<li>为什么要建立软件体系结构：建立软件体系结构是整个开发过程的关键性步骤，设计一个完整的框架结构和一套构造规则是项目开发成功的关键。软件体系结构的设计对于大型项目开发的成败起着举足轻重的作用。</li>
+</ol>
+<ol start="12">
+<li><p>软件体系结构研究在整个开发过程中占有重要地位的原因是/为什么要研究软件体系结构</p>
+<p>(1)软件体系结构可以作为项目开发的指导方针</p>
+<p>(2)软件体系结构是设计过程的开端，体现了系统最早期的设计决策，对软件生命周期的影响很大</p>
+<p>(3)软件体系结构具有可复用性</p>
+<p>(4)促进系统的理解</p>
+<p>(5)软件体系结构描述除了提供清晰精确的文档之外，还对文档进行了一致性分析和依赖性分析，暴露其中隐藏的各种问题</p>
+<p>(6)构件复用是建立体系结构良好的软件系统的出发点</p>
+<p>(7)软件体系结构规定了系统演化的方向，提供了系统管理的有效手段</p>
+<p>(8)软件体系结构对系统演化具有重要的意义</p>
+<p>(9)软件体系结构影响着开发组织和维护组织的结构</p>
+</li>
+</ol>
+<ol start="13">
+<li><p>领域设计</p>
+<p>步骤：(1)将依赖关系从现实中分离，使之容易辨认和修改，以适应新的需求</p>
+</li>
+</ol>
+<p>​         (2)分层框架，使软件资源可以按照特定应用、操作系统及硬件平台的</p>
+<p> 要求分层</p>
+<p>​         (3)在每一层寻找适合领域设计框架的通用软件资源，并以此为基础寻</p>
+<p>​           找其他基础性资源</p>
+<p>   复用元素的选择原则：</p>
+<p>(1)在软件开发和维护过程中，使用最频繁的元素</p>
+<p>​        (2)提供最大利益的元素</p>
+<p>​       (3)用于创建和维护对本公司具有重要意义的策略性软件元素</p>
+<p>​       (4)复用消费者所需要的软件元素</p>
+<ol start="14">
+<li>软件产品线包括核心资源开发，软件项目开发和技术协调组织管理</li>
+</ol>
+<p>核心资源开发被称为领域工程，利用核心资源的软件项目开发被称为应用工程。核心资源开发的目的是创建软件项目批量生产和大粒度复用的基础设施。核心资源开发的输出包括三点：产品线范围、核心资源、开发计划</p>
+<p>软件项目开发活动依赖于核心资源开发活动的输出结果(产品线范围、核心资源和开发计划)以及各个项目的实际需求。软件项目开发活动的输入包括四点：项目实际需求、产品线范围、用于创建该项目的核心资源、开发计划。</p>
+<p>技术协调和组织管理对于软件产品线的成功至关重要。技术协调负责监视核心资源开发活动和软件项目开发活动。组织管理必须建立合适的组织机构，确保各组织单位得到充足的资源。此外还需要建立一个实时性的调整计划，并对开发活动中涉及的档案进行有效的管理。尤其是开发进度和预算计划</p>
+<p>三者的关系：核心资源开发与软件项目开发之间存在反馈循环，核心资源促进了应用系统的创建，新应用系统的开发又更新了核心资源，从应用系统个性中总结出的共性知识又将丰富产品线的核心资源。核心资源开发和软件项目开发都需要人力财力物理的投入，因此需要持久、强力有远见的组织管理。在产品线开发过程中，三大活动不断进行迭代循环，促进产品线的基础设施不断完善，开发的应用系统的质量不断提高，提高了领域开发的效率。</p>
+<ol start="15">
+<li>场景：是对于风险承担者与系统进行交互的简短描述。在评估过程中，使用场景可以将那些模糊的、不适用于分析的质量属性需求描述转换为具体的、易于理解的表达形式</li>
+</ol>
+<p>场景分为直接场景和间接场景。直接场景在设计体系结构到系统构造的过程中使用，代表系统的外部视角和观点。间接场景在对现有体系结构进行改变和演化的过程中使用</p>
+<p>​    场景的作用：</p>
+<p>(1)场景可以覆盖系统的若干需求，并使抽象的需求可操作化</p>
+<p>​        (2)在系统开发的早期，场景可以用来构造软件体系结构的雏形</p>
+<p>​        (3)场景可以指导从软件体系结构到系统实际建造的过渡过程</p>
+<p>​        (4)场景提供了对需求更深刻的理解，帮助用户认识软件产品并做出采</p>
+<p>购决策。还可以帮助用户完善软件文档，在软件体系结构层面实现软</p>
+<p>件的可跟踪性</p>
+<p>​        (5)场景在系统建造过程中，可用来控制系统风险并对质量目标具体化</p>
+<p>​        (6)软件体系结构在一个系统的软件生命周期中可能需要变动，场景成为分析变动的必要性及评估体系结构在更新后的合理性等方面的基础</p>
+
+                </div>
+            </article>
+        </div>
+        <br>
+        <div style="text-align:center;color: #ccc;font-size:14px;">
+            <br>
+            <br>
+            <a href="http://www.ivan-zcy.top" style="color: #99FFFF;font-size:18px;">转载请注明出处！！！</a>
+            <br>
+            <br>
+            如果有写的不对或者不全面的地方 可通过主页的联系方式进行指正，谢谢!
+        </div>
+        <br>
+        <!-- Pre or Next -->
+        
+        <div class="container" >
+            <ul class="pager">
+                
+                <li class="previous">
+                    <a href="/2019/01/10/软件体系风格/" rel="prev">下一篇</a>
+                </li>
+                
+                
+                <li class="next">
+                    <a href="/2019/01/10/软件质量与保证复习/" rel="prev">上一篇</a>
+                </li>
+                
+            </ul>
+        </div>
+        　　　　<!-- Comments -->
+        <div class="container">
+            
+<section id="comment">
+  <!-- <h1 class="title">Comments</h1> -->
+
+  
+</section>
+
+
+        </div>
+        
+        　　　　
+    </div>
+</div>
+
+
+  <div id="Thplayer"></div>
+  <script type="application/javascript" src="/js/thplayer.min.js"></script>
+  <script>
+      $("#Thplayer").thplayer({
+          title: "遇见",
+          author: "孙燕姿",
+          cover: "/img/yj.jpg",
+          music: "http://www.ytmp3.cn/down/37418.mp3"
+      });
+  </script>
+
+  <!-- Footer -->
+  <!-- top -->
+
+<!-- Footer -->
+<footer class="site-info">
+    <p>Hosted by <a href="https://pages.coding.me" style="font-weight: bold">Coding Pages</a></p>
+  <script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+  本站总访问量<span id="busuanzi_value_site_pv"></span>次
+  本站访客数<span id="busuanzi_value_site_uv"></span>人次
+    <p>
+        <span id="timeDate">载入天数...</span><span id="times">载入时分秒...</span>
+    </p>
+  <script>
+      var now = new Date();
+      function createtime() {
+          var grt= new Date("09/28/2018 08:00:00");//此处修改你的建站时间或者网站上线时间
+          now.setTime(now.getTime()+250);
+          days = (now - grt ) / 1000 / 60 / 60 / 24; dnum = Math.floor(days);
+          hours = (now - grt ) / 1000 / 60 / 60 - (24 * dnum); hnum = Math.floor(hours);
+          if(String(hnum).length ==1 ){hnum = "0" + hnum;} minutes = (now - grt ) / 1000 /60 - (24 * 60 * dnum) - (60 * hnum);
+          mnum = Math.floor(minutes); if(String(mnum).length ==1 ){mnum = "0" + mnum;}
+          seconds = (now - grt ) / 1000 - (24 * 60 * 60 * dnum) - (60 * 60 * hnum) - (60 * mnum);
+          snum = Math.round(seconds); if(String(snum).length ==1 ){snum = "0" + snum;}
+          document.getElementById("timeDate").innerHTML = "本站已安全运行 "+dnum+" 天 ";
+          document.getElementById("times").innerHTML = hnum + " 小时 " + mnum + " 分 " + snum + " 秒";
+      }
+      setInterval("createtime()",250);
+  </script>
+  <p>
+    <span>Zcy &copy; 2019</span>
+      
+    <span class="split">|</span>
+    <span>Zcy</span>
+    
+  </p>
+</footer>
+
+
+  <!--小火箭-->
+  <div id="shape">
+    <div class="shapeColor">
+      <div class="shapeFly">
+      </div>
+    </div>
+  </div>
+
+  <!-- After footer scripts -->
+  <!-- scripts -->
+<script src="/js/app.js"></script>
+
+
+  <script>
+      (function(){
+
+          function _scroll(){
+              var acticles = $('.article > .container');
+              var height = window.innerHeight || document.body.offsetHeight;
+              acticles.each(function () {
+                  var top = this.getBoundingClientRect().top;
+                  if(top < height+1){
+                      if(!$(this).hasClass('animated')) {
+                          $(this).addClass('slideInRight');
+                          $(this).addClass('animated');
+                      }
+                  }
+              })
+
+              $(window).scroll(function () {
+                  acticles.each(function () {
+                      var top = this.getBoundingClientRect().top;
+                      if(top < height+1){
+                          if(!$(this).hasClass('animated')) {
+                              $(this).addClass('slideInRight');
+                              $(this).addClass('animated');
+                          }
+                      }
+                  })
+              })
+          }
+
+
+          var bp = document.createElement('script');
+          var curProtocol = window.location.protocol.split(':')[0];
+          if (curProtocol === 'https') {
+              bp.src = 'https://zz.bdstatic.com/linksubmit/push.js';
+          }
+          else {
+              bp.src = 'http://push.zhanzhang.baidu.com/push.js';
+          }
+          var s = document.getElementsByTagName("script")[0];
+          s.parentNode.insertBefore(bp, s);
+          _scroll();
+      })();
+  </script>
+  <script type="text/javascript"
+          color="0,0,0" opacity='0.5' zIndex="-2" count="35" src="//cdn.bootcss.com/canvas-nest.js/1.0.0/canvas-nest.min.js"></script>
+  <!-- 页面点击小红心 -->
+  <script type="text/javascript" src="/js/clicklove.js"></script>
+<script src="/live2dw/lib/L2Dwidget.min.js?0c58a1486de42ac6cc1c59c7d98ae887"></script><script>L2Dwidget.init({"model":{"jsonPath":"/live2dw/assets/haruto.model.json"},"display":{"position":"left","width":70,"height":140},"mobile":{"show":true},"log":false,"pluginJsPath":"lib/","pluginModelPath":"assets/","pluginRootPath":"live2dw/","tagMode":false});</script></body>
+
+</html>

@@ -1,0 +1,409 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+
+<!-- Head tag -->
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+
+  <!--Description-->
+  
+
+  <!--Author-->
+  
+
+  <!--Open Graph Title-->
+  
+      <meta property="og:title" content="事务隔离级别、脏读、不可重复读、幻读"/>
+  
+  <!--Open Graph Description-->
+  
+  <!--Open Graph Site Name-->
+  <meta property="og:site_name" content="Zcy"/>
+  <!--Type page-->
+  
+      <meta property="og:type" content="article" />
+  
+  <!--Page Cover-->
+  
+
+    <meta name="baidu-site-verification" content="8vgn54BtUC" />
+
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <!-- 百度统计 -->
+    <script>
+	var _hmt = _hmt || [];
+	(function() {
+  	var hm = document.createElement("script");
+  	hm.src = "https://hm.baidu.com/hm.js?c0451e16533956173997b85f7a8de666";
+  	var s = document.getElementsByTagName("script")[0]; 
+  	s.parentNode.insertBefore(hm, s);
+	})();
+    </script>
+  <!-- Title -->
+  
+  <title>事务隔离级别、脏读、不可重复读、幻读 - Zcy</title>
+
+
+  <link rel="shortcut icon" href="/favicon.ico">
+    <!--font-awesome-->
+    <link href="//netdna.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="/css/animate.css">
+    <link rel="stylesheet" href="/css/thplayer.css">
+  <!-- Custom CSS/Sass -->
+  <link rel="stylesheet" href="/css/style.css">
+    <!--顶部上方进度条-->
+    <script src="//cdn.bootcss.com/pace/1.0.2/pace.min.js"></script>
+    <link href="/css/pace-theme-flash.css" rel="stylesheet">
+    <style>
+        .pace .pace-progress {
+            background: #cccccc; /*进度条颜色*/
+            height: 3px;
+        }
+        .pace .pace-progress-inner {
+            box-shadow: 0 0 10px #cccccc, 0 0 5px #cccccc; /*阴影颜色*/
+        }
+        .pace .pace-activity {
+            border-top-color: #cccccc;    /*上边框颜色*/
+            border-left-color: #cccccc;    /*左边框颜色*/
+        }
+    </style>
+
+
+    <!--小火箭-->
+    <link rel="stylesheet" type="text/css" href="/css/rocketTop.css">
+    <script type="text/javascript" src="/js/jquery.min.js"></script>
+    <script type="text/javascript" src="/js/rocketTop.js"></script>
+
+</head>
+
+<body>
+
+  <!-- Nav -->
+  <header class="site-header">
+  <div class="header-inside">
+    
+    <div class="logo">
+      <a href="/" rel="home">
+        
+        <img src="/img/timg.jpg" alt="Zcy" height="60">
+        
+      </a>
+    </div>
+    <a class="header-name" href="/">
+            <span>Zcy</span>
+            的小屋
+        </a>
+    <!-- navbar -->
+    <nav class="navbar">
+      <!--  nav links -->
+      <div class="collapse">
+        <ul class="navbar-nav">
+          
+          
+            <li>
+              <a href="/.">
+                
+                  <i class="fa fa-home "></i>
+                
+                小屋
+              </a>
+            </li>
+          
+            <li>
+              <a href="/archives">
+                
+                  <i class="fa fa-archive "></i>
+                
+                点滴
+              </a>
+            </li>
+          
+            <li>
+              <a href="/tags">
+                
+                  <i class="fa fa-archive "></i>
+                
+                标签
+              </a>
+            </li>
+          
+            <li>
+              <a href="/project">
+                
+                  <i class="fa fa-folder-open "></i>
+                
+                项目
+              </a>
+            </li>
+          
+            <li>
+              <a href="/photo">
+                
+                  <i class="fa fa-photo "></i>
+                
+                相册
+              </a>
+            </li>
+          
+            <li>
+              <a href="/guestbook">
+                
+                  <i class="fa fa-edit "></i>
+                
+                留言
+              </a>
+            </li>
+          
+            <li>
+              <a href="/game">
+                
+                  <i class="fa fa-gamepad "></i>
+                
+                游戏
+              </a>
+            </li>
+          
+            <li>
+              <a href="/aboutMe/index.html">
+                
+                  <i class="fa fa-user "></i>
+                
+                关于我
+              </a>
+            </li>
+          
+            <li>
+              <a href="/friendly">
+                
+                  <i class="fa fa-bicycle "></i>
+                
+                链接
+              </a>
+            </li>
+          
+        </ul>
+      </div>
+      <!-- /.navbar-collapse -->
+    </nav>
+    <div class="button-wrap">
+      <button class="menu-toggle">Primary Menu</button>
+    </div>
+  </div>
+</header>
+
+
+  <!-- Main Content -->
+  <div class="content-area">
+    <div class="post">
+        <!-- Post Content -->
+        <div class="container">
+            <article>
+                <!-- Title date & tags -->
+                <div class="post-header">
+                    <h1 class="entry-title">
+                        事务隔离级别、脏读、不可重复读、幻读
+                        
+                    </h1>
+
+                </div>
+
+
+                <div style="text-align:center;color: #ccc;">
+    <span class="post-time" >
+      <span class="post-meta-item-icon">
+        <i class="fa fa-keyboard-o"></i>
+        <span class="post-meta-item-text">  字数统计: </span>
+        <span class="post-count">633字</span>
+      </span>
+    </span>
+
+                    <span class="post-time">
+      &nbsp; | &nbsp;
+      <span class="post-meta-item-icon">
+        <i class="fa fa-hourglass-half"></i>
+        <span class="post-meta-item-text">  阅读时长: </span>
+        <span class="post-count">2分</span>
+      </span>
+    </span>
+                </div>
+
+                <p class="a-posted-on" style="color: #ccc;">
+                    2019-05-13
+                </p>
+                <!-- Post Main Content -->
+                <div class="entry-content">
+                    <p><img src="/2019/05/13/事务隔离级别、脏读、幻读、不可重复读/title3.jpg" alt="title3"></p>
+<a id="more"></a>
+<p>[TOC]</p>
+<h3 id="数据库隔离级别"><a href="#数据库隔离级别" class="headerlink" title="数据库隔离级别"></a>数据库隔离级别</h3><p>​    事务隔离是多个事务同时进行时的隔离。它们之间的相互影响与隔离级别有关</p>
+<p>​    数据库隔离级别数据库事务的隔离级别有4个，分别是读未提交（可能出现脏读、不可重复读、幻读）、读已提交（可能出现不可重复读、幻读）、可重复读（可能出现幻读）、可串形化。隔离级别越来越高，事务之间的影响越来越小，效率越来越低</p>
+<h4 id="读未提交"><a href="#读未提交" class="headerlink" title="读未提交"></a>读未提交</h4><p>​    举个例子：两个窗口卖最后一张票，第一个窗口有一个人买票，但是该事务未提交。第二个窗口另一个人再买票发现票已经有人买，然后就离开了。结果第一个窗口的人不买了，于是回滚了事务并提交，最后票没卖出去。</p>
+<p>​    上述情况中，第二个窗口的人读到的”票已经有人买了”是一个脏数据，它并不是最后事务提交的数据。因此读未提交可能会出现脏读的情况。</p>
+<h4 id="读已提交"><a href="#读已提交" class="headerlink" title="读已提交"></a>读已提交</h4><p>​    它解决了上面脏读的情况</p>
+<p>​    举个例子：A拿银行卡消费，查询卡里有100元钱。同时B将该卡的100元转走，在A之前提交了事务，当A进行消费时，扣款失败。</p>
+<p>​    也就是说，A先读数据，B跟着更新了数据并提交了事务，当A再次读取数据时，数据已经发生变化，这就是所谓的不可重复读。Oracle默认为读已提交</p>
+<h4 id="可重复读"><a href="#可重复读" class="headerlink" title="可重复读"></a>可重复读</h4><p>​    它保证同一事务中只会读取到当前事务对数据的修改，其它事务修改的数据不会影响当前事务的读取。（意为可重复读到相同的东西）</p>
+<p>​    也就是在上述情况下，当A拿银行卡消费时，B不能进行转账。</p>
+<p>​    但是在这个级别下，还可能出现幻读的情况。</p>
+<p>​    幻读的例子：比如当前有20元钱，A事务查询钱数得到20，此时B事务更新了钱数为0并提交了事务。然后A事务执行更新update操作，然后再查询钱数得到0。mysql默认为读已提交</p>
+<h4 id="可串形化"><a href="#可串形化" class="headerlink" title="可串形化"></a>可串形化</h4><p>​    串形将所有的事务一个一个的进行，所以穿行化的事务隔离级别不会出现脏读、不可重复读、幻读等问题。代价就是性能特别低</p>
+
+                </div>
+            </article>
+        </div>
+        <br>
+        <div style="text-align:center;color: #ccc;font-size:14px;">
+            <br>
+            <br>
+            <a href="http://www.ivan-zcy.top" style="color: #99FFFF;font-size:18px;">转载请注明出处！！！</a>
+            <br>
+            <br>
+            如果有写的不对或者不全面的地方 可通过主页的联系方式进行指正，谢谢!
+        </div>
+        <br>
+        <!-- Pre or Next -->
+        
+        <div class="container" >
+            <ul class="pager">
+                
+                <li class="previous">
+                    <a href="/2019/05/13/保持DB和缓存一致性/" rel="prev">下一篇</a>
+                </li>
+                
+                
+                <li class="next">
+                    <a href="/2019/05/13/缓存/" rel="prev">上一篇</a>
+                </li>
+                
+            </ul>
+        </div>
+        　　　　<!-- Comments -->
+        <div class="container">
+            
+<section id="comment">
+  <!-- <h1 class="title">Comments</h1> -->
+
+  
+</section>
+
+
+        </div>
+        
+        　　　　
+    </div>
+</div>
+
+
+  <div id="Thplayer"></div>
+  <script type="application/javascript" src="/js/thplayer.min.js"></script>
+  <script>
+      $("#Thplayer").thplayer({
+          title: "遇见",
+          author: "孙燕姿",
+          cover: "/img/yj.jpg",
+          music: "http://www.ytmp3.cn/down/37418.mp3"
+      });
+  </script>
+
+  <!-- Footer -->
+  <!-- top -->
+
+<!-- Footer -->
+<footer class="site-info">
+    <p>Hosted by <a href="https://pages.coding.me" style="font-weight: bold">Coding Pages</a></p>
+  <script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+  本站总访问量<span id="busuanzi_value_site_pv"></span>次
+  本站访客数<span id="busuanzi_value_site_uv"></span>人次
+    <p>
+        <span id="timeDate">载入天数...</span><span id="times">载入时分秒...</span>
+    </p>
+  <script>
+      var now = new Date();
+      function createtime() {
+          var grt= new Date("09/28/2018 08:00:00");//此处修改你的建站时间或者网站上线时间
+          now.setTime(now.getTime()+250);
+          days = (now - grt ) / 1000 / 60 / 60 / 24; dnum = Math.floor(days);
+          hours = (now - grt ) / 1000 / 60 / 60 - (24 * dnum); hnum = Math.floor(hours);
+          if(String(hnum).length ==1 ){hnum = "0" + hnum;} minutes = (now - grt ) / 1000 /60 - (24 * 60 * dnum) - (60 * hnum);
+          mnum = Math.floor(minutes); if(String(mnum).length ==1 ){mnum = "0" + mnum;}
+          seconds = (now - grt ) / 1000 - (24 * 60 * 60 * dnum) - (60 * 60 * hnum) - (60 * mnum);
+          snum = Math.round(seconds); if(String(snum).length ==1 ){snum = "0" + snum;}
+          document.getElementById("timeDate").innerHTML = "本站已安全运行 "+dnum+" 天 ";
+          document.getElementById("times").innerHTML = hnum + " 小时 " + mnum + " 分 " + snum + " 秒";
+      }
+      setInterval("createtime()",250);
+  </script>
+  <p>
+    <span>Zcy &copy; 2019</span>
+      
+    <span class="split">|</span>
+    <span>Zcy</span>
+    
+  </p>
+</footer>
+
+
+  <!--小火箭-->
+  <div id="shape">
+    <div class="shapeColor">
+      <div class="shapeFly">
+      </div>
+    </div>
+  </div>
+
+  <!-- After footer scripts -->
+  <!-- scripts -->
+<script src="/js/app.js"></script>
+
+
+  <script>
+      (function(){
+
+          function _scroll(){
+              var acticles = $('.article > .container');
+              var height = window.innerHeight || document.body.offsetHeight;
+              acticles.each(function () {
+                  var top = this.getBoundingClientRect().top;
+                  if(top < height+1){
+                      if(!$(this).hasClass('animated')) {
+                          $(this).addClass('slideInRight');
+                          $(this).addClass('animated');
+                      }
+                  }
+              })
+
+              $(window).scroll(function () {
+                  acticles.each(function () {
+                      var top = this.getBoundingClientRect().top;
+                      if(top < height+1){
+                          if(!$(this).hasClass('animated')) {
+                              $(this).addClass('slideInRight');
+                              $(this).addClass('animated');
+                          }
+                      }
+                  })
+              })
+          }
+
+
+          var bp = document.createElement('script');
+          var curProtocol = window.location.protocol.split(':')[0];
+          if (curProtocol === 'https') {
+              bp.src = 'https://zz.bdstatic.com/linksubmit/push.js';
+          }
+          else {
+              bp.src = 'http://push.zhanzhang.baidu.com/push.js';
+          }
+          var s = document.getElementsByTagName("script")[0];
+          s.parentNode.insertBefore(bp, s);
+          _scroll();
+      })();
+  </script>
+  <script type="text/javascript"
+          color="0,0,0" opacity='0.5' zIndex="-2" count="35" src="//cdn.bootcss.com/canvas-nest.js/1.0.0/canvas-nest.min.js"></script>
+  <!-- 页面点击小红心 -->
+  <script type="text/javascript" src="/js/clicklove.js"></script>
+<script src="/live2dw/lib/L2Dwidget.min.js?0c58a1486de42ac6cc1c59c7d98ae887"></script><script>L2Dwidget.init({"model":{"jsonPath":"/live2dw/assets/haruto.model.json"},"display":{"position":"left","width":70,"height":140},"mobile":{"show":true},"log":false,"pluginJsPath":"lib/","pluginModelPath":"assets/","pluginRootPath":"live2dw/","tagMode":false});</script></body>
+
+</html>

@@ -1,0 +1,438 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+
+<!-- Head tag -->
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+
+  <!--Description-->
+  
+
+  <!--Author-->
+  
+
+  <!--Open Graph Title-->
+  
+      <meta property="og:title" content="C语言查缺补漏(四)"/>
+  
+  <!--Open Graph Description-->
+  
+  <!--Open Graph Site Name-->
+  <meta property="og:site_name" content="Zcy"/>
+  <!--Type page-->
+  
+      <meta property="og:type" content="article" />
+  
+  <!--Page Cover-->
+  
+
+    <meta name="baidu-site-verification" content="8vgn54BtUC" />
+
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <!-- 百度统计 -->
+    <script>
+	var _hmt = _hmt || [];
+	(function() {
+  	var hm = document.createElement("script");
+  	hm.src = "https://hm.baidu.com/hm.js?c0451e16533956173997b85f7a8de666";
+  	var s = document.getElementsByTagName("script")[0]; 
+  	s.parentNode.insertBefore(hm, s);
+	})();
+    </script>
+  <!-- Title -->
+  
+  <title>C语言查缺补漏(四) - Zcy</title>
+
+
+  <link rel="shortcut icon" href="/favicon.ico">
+    <!--font-awesome-->
+    <link href="//netdna.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="/css/animate.css">
+    <link rel="stylesheet" href="/css/thplayer.css">
+  <!-- Custom CSS/Sass -->
+  <link rel="stylesheet" href="/css/style.css">
+    <!--顶部上方进度条-->
+    <script src="//cdn.bootcss.com/pace/1.0.2/pace.min.js"></script>
+    <link href="/css/pace-theme-flash.css" rel="stylesheet">
+    <style>
+        .pace .pace-progress {
+            background: #cccccc; /*进度条颜色*/
+            height: 3px;
+        }
+        .pace .pace-progress-inner {
+            box-shadow: 0 0 10px #cccccc, 0 0 5px #cccccc; /*阴影颜色*/
+        }
+        .pace .pace-activity {
+            border-top-color: #cccccc;    /*上边框颜色*/
+            border-left-color: #cccccc;    /*左边框颜色*/
+        }
+    </style>
+
+
+    <!--小火箭-->
+    <link rel="stylesheet" type="text/css" href="/css/rocketTop.css">
+    <script type="text/javascript" src="/js/jquery.min.js"></script>
+    <script type="text/javascript" src="/js/rocketTop.js"></script>
+
+</head>
+
+<body>
+
+  <!-- Nav -->
+  <header class="site-header">
+  <div class="header-inside">
+    
+    <div class="logo">
+      <a href="/" rel="home">
+        
+        <img src="/img/timg.jpg" alt="Zcy" height="60">
+        
+      </a>
+    </div>
+    <a class="header-name" href="/">
+            <span>Zcy</span>
+            的小屋
+        </a>
+    <!-- navbar -->
+    <nav class="navbar">
+      <!--  nav links -->
+      <div class="collapse">
+        <ul class="navbar-nav">
+          
+          
+            <li>
+              <a href="/.">
+                
+                  <i class="fa fa-home "></i>
+                
+                小屋
+              </a>
+            </li>
+          
+            <li>
+              <a href="/archives">
+                
+                  <i class="fa fa-archive "></i>
+                
+                点滴
+              </a>
+            </li>
+          
+            <li>
+              <a href="/tags">
+                
+                  <i class="fa fa-archive "></i>
+                
+                标签
+              </a>
+            </li>
+          
+            <li>
+              <a href="/project">
+                
+                  <i class="fa fa-folder-open "></i>
+                
+                项目
+              </a>
+            </li>
+          
+            <li>
+              <a href="/photo">
+                
+                  <i class="fa fa-photo "></i>
+                
+                相册
+              </a>
+            </li>
+          
+            <li>
+              <a href="/guestbook">
+                
+                  <i class="fa fa-edit "></i>
+                
+                留言
+              </a>
+            </li>
+          
+            <li>
+              <a href="/game">
+                
+                  <i class="fa fa-gamepad "></i>
+                
+                游戏
+              </a>
+            </li>
+          
+            <li>
+              <a href="/aboutMe/index.html">
+                
+                  <i class="fa fa-user "></i>
+                
+                关于我
+              </a>
+            </li>
+          
+            <li>
+              <a href="/friendly">
+                
+                  <i class="fa fa-bicycle "></i>
+                
+                链接
+              </a>
+            </li>
+          
+        </ul>
+      </div>
+      <!-- /.navbar-collapse -->
+    </nav>
+    <div class="button-wrap">
+      <button class="menu-toggle">Primary Menu</button>
+    </div>
+  </div>
+</header>
+
+
+  <!-- Main Content -->
+  <div class="content-area">
+    <div class="post">
+        <!-- Post Content -->
+        <div class="container">
+            <article>
+                <!-- Title date & tags -->
+                <div class="post-header">
+                    <h1 class="entry-title">
+                        C语言查缺补漏(四)
+                        
+                    </h1>
+
+                </div>
+
+
+                <div style="text-align:center;color: #ccc;">
+    <span class="post-time" >
+      <span class="post-meta-item-icon">
+        <i class="fa fa-keyboard-o"></i>
+        <span class="post-meta-item-text">  字数统计: </span>
+        <span class="post-count">981字</span>
+      </span>
+    </span>
+
+                    <span class="post-time">
+      &nbsp; | &nbsp;
+      <span class="post-meta-item-icon">
+        <i class="fa fa-hourglass-half"></i>
+        <span class="post-meta-item-text">  阅读时长: </span>
+        <span class="post-count">3分</span>
+      </span>
+    </span>
+                </div>
+
+                <p class="a-posted-on" style="color: #ccc;">
+                    2018-10-01
+                </p>
+                <!-- Post Main Content -->
+                <div class="entry-content">
+                    <p><img src="/2018/10/01/C语言查缺补漏-4/title.jpg" alt="title"></p>
+<a id="more"></a>
+<h3 id="忽略点四-宏定义的使用与-、-用法"><a href="#忽略点四-宏定义的使用与-、-用法" class="headerlink" title="忽略点四:宏定义的使用与#、##用法"></a>忽略点四:宏定义的使用与#、##用法</h3><p>​    初学C语言时常常忽略宏定义的使用，因为觉得声明局部变量，全局变量，静态变量就够用了，所以忽略了宏定义的使用</p>
+<p>​    上述想法完全是错误的，因为宏定义在系统编译时就将其全部替换，定义的变量不会在运行时候分配内存。所以它有无可替代的优点：效率特别高！！！不占用内存空间！！！</p>
+<p>​    宏定义不仅可以定义变量，使用带参数的宏定义可完成函数调用的功能，又能减少系统开销，提高运行效率。</p>
+<p>​    如果不使用宏定义，在发生函数调用时，需要保留调用函数的现场，以便子函数执行结束后能返回继续执行，同样在子函数执行完后要恢复调用函数的现场，这都需要一定的时间，当函数调用次数特别多的时候，这些时间的消耗是不可忽略的。</p>
+<p>​    而使用宏定义就不会出现这个问题，因为它在预处理阶段即进行了宏展开，在执行时不需要转换。</p>
+<p>宏定义有无参宏定义和带参数宏定义两种</p>
+<h5 id="1-无参宏定义的一般形式为"><a href="#1-无参宏定义的一般形式为" class="headerlink" title="1.无参宏定义的一般形式为:"></a>1.无参宏定义的一般形式为:</h5><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line"># define 宏名 字符序列    //宏名与字符序列之间用空格符分隔，用于替代后面的字符序列</span><br></pre></td></tr></table></figure>
+<p>​    </p>
+<p>​    ——每个宏定义都在源程序中单独占一行，换行符是宏定义的结束标志。如果一个宏定义一行不够时可采用续行的方法。续行是在按回车前先输入符号”/“</p>
+<p>​    <strong>注意！！回车要紧接在符号”/“后，中间不能插入其它符号</strong></p>
+<p>​    ——宏定义的有效范围称为辖域，辖域从定义开始到源文件末尾。可用预处理命令#undef终止宏定义名的辖域</p>
+<p>​    ——宏名可被重复定义，重定义后会覆盖之前的字符序列</p>
+<p>一般无参宏定义用于定义常量，比如定义数组长度（数组长度不能由变量定义，除了宏定义外，还可以使用const 关键字定义）</p>
+<h5 id="2-带参宏定义的一般形式为"><a href="#2-带参宏定义的一般形式为" class="headerlink" title="2.带参宏定义的一般形式为:"></a>2.带参宏定义的一般形式为:</h5><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line"># define 宏名(参数表) 字符序列  //参数间用逗号分隔，字符序列中应包含参数表中的参数</span><br></pre></td></tr></table></figure>
+<p>​    <strong>注意！！宏名与左圆括号之间不允许有空白符</strong></p>
+<h4 id="以下是易错点！！！！！！！！！！！！！"><a href="#以下是易错点！！！！！！！！！！！！！" class="headerlink" title="以下是易错点！！！！！！！！！！！！！"></a>以下是易错点！！！！！！！！！！！！！</h4><p>​    易错点一：大家要深入理解宏替换的“替换”两个字！例如：</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">#define F(x) x * x</span><br></pre></td></tr></table></figure>
+<p>​    如果a = 1, b = 2，那么F(a + b)为多少？</p>
+<p>​    很多同学会认为是9，但是答案是5。</p>
+<p>​    原因是替换！只是简单的替换！！！</p>
+<p>​    F(x) = x <em> x = 1 + 2 </em> 1 + 2 = 5</p>
+<p>​    就是酱紫。。所以代码需要改成#define F(x) (x) * (x) 才会输出9</p>
+<p>​    在宏定义中，我们使用#把宏参数变为一个字符串</p>
+<p>​    用##把两个宏参数连在一起（这里说的是在预处理是对源文件的操作）<br>​    例如：</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">#define S(s)   #s </span><br><span class="line">#define F(a,b) int(a##e##b)</span><br></pre></td></tr></table></figure>
+<p>​    </p>
+<p>​    易错点二：</p>
+<p>​    对于以下代码</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">#define a 1e5</span><br><span class="line">const int b = 1e5;</span><br></pre></td></tr></table></figure>
+<p>​    输出a和b的值，分别是多少呢？</p>
+<p>​    a:   -272632256</p>
+<p>​    b: 100000</p>
+<p>​    所以，要想宏定义科学计数法，需：</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">#define a int(1e5)</span><br></pre></td></tr></table></figure>
+<p>​    此时a的值为100000</p>
+<h3 id="关于宏中-和-的用法："><a href="#关于宏中-和-的用法：" class="headerlink" title="关于宏中#和##的用法："></a>关于宏中#和##的用法：</h3><p>在字符序列中：</p>
+<p>​    用#可以把宏参数变为一个字符串</p>
+<p>​    用##可以把两个宏参数连接在一起</p>
+<p>例如下面代码：</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">#define STR(s)     #s 		</span><br><span class="line">#define CONS(a,b) int(a##e##b)</span><br><span class="line">//...省略其余代码</span><br><span class="line">printf(STR(hello));           	// 输出字符串&quot;vck&quot; </span><br><span class="line">printf(&quot;%d/n&quot;, CONS(1,5)); 		// 输出:100000</span><br></pre></td></tr></table></figure>
+<p><a href="http://www.ivan-zcy.top">转载请注明出处！！！</a>  </p>
+<p>如果有写的不对或者不全面的地方 可通过主页的联系方式进行指正，谢谢！</p>
+
+                </div>
+            </article>
+        </div>
+        <br>
+        <div style="text-align:center;color: #ccc;font-size:14px;">
+            <br>
+            <br>
+            <a href="http://www.ivan-zcy.top" style="color: #99FFFF;font-size:18px;">转载请注明出处！！！</a>
+            <br>
+            <br>
+            如果有写的不对或者不全面的地方 可通过主页的联系方式进行指正，谢谢!
+        </div>
+        <br>
+        <!-- Pre or Next -->
+        
+        <div class="container" >
+            <ul class="pager">
+                
+                <li class="previous">
+                    <a href="/2018/10/01/C语言查缺补漏-5/" rel="prev">下一篇</a>
+                </li>
+                
+                
+                <li class="next">
+                    <a href="/2018/09/30/C语言查缺补漏-3/" rel="prev">上一篇</a>
+                </li>
+                
+            </ul>
+        </div>
+        　　　　<!-- Comments -->
+        <div class="container">
+            
+<section id="comment">
+  <!-- <h1 class="title">Comments</h1> -->
+
+  
+</section>
+
+
+        </div>
+        
+        　　　　
+    </div>
+</div>
+
+
+  <div id="Thplayer"></div>
+  <script type="application/javascript" src="/js/thplayer.min.js"></script>
+  <script>
+      $("#Thplayer").thplayer({
+          title: "遇见",
+          author: "孙燕姿",
+          cover: "/img/yj.jpg",
+          music: "http://www.ytmp3.cn/down/37418.mp3"
+      });
+  </script>
+
+  <!-- Footer -->
+  <!-- top -->
+
+<!-- Footer -->
+<footer class="site-info">
+    <p>Hosted by <a href="https://pages.coding.me" style="font-weight: bold">Coding Pages</a></p>
+  <script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+  本站总访问量<span id="busuanzi_value_site_pv"></span>次
+  本站访客数<span id="busuanzi_value_site_uv"></span>人次
+    <p>
+        <span id="timeDate">载入天数...</span><span id="times">载入时分秒...</span>
+    </p>
+  <script>
+      var now = new Date();
+      function createtime() {
+          var grt= new Date("09/28/2018 08:00:00");//此处修改你的建站时间或者网站上线时间
+          now.setTime(now.getTime()+250);
+          days = (now - grt ) / 1000 / 60 / 60 / 24; dnum = Math.floor(days);
+          hours = (now - grt ) / 1000 / 60 / 60 - (24 * dnum); hnum = Math.floor(hours);
+          if(String(hnum).length ==1 ){hnum = "0" + hnum;} minutes = (now - grt ) / 1000 /60 - (24 * 60 * dnum) - (60 * hnum);
+          mnum = Math.floor(minutes); if(String(mnum).length ==1 ){mnum = "0" + mnum;}
+          seconds = (now - grt ) / 1000 - (24 * 60 * 60 * dnum) - (60 * 60 * hnum) - (60 * mnum);
+          snum = Math.round(seconds); if(String(snum).length ==1 ){snum = "0" + snum;}
+          document.getElementById("timeDate").innerHTML = "本站已安全运行 "+dnum+" 天 ";
+          document.getElementById("times").innerHTML = hnum + " 小时 " + mnum + " 分 " + snum + " 秒";
+      }
+      setInterval("createtime()",250);
+  </script>
+  <p>
+    <span>Zcy &copy; 2019</span>
+      
+    <span class="split">|</span>
+    <span>Zcy</span>
+    
+  </p>
+</footer>
+
+
+  <!--小火箭-->
+  <div id="shape">
+    <div class="shapeColor">
+      <div class="shapeFly">
+      </div>
+    </div>
+  </div>
+
+  <!-- After footer scripts -->
+  <!-- scripts -->
+<script src="/js/app.js"></script>
+
+
+  <script>
+      (function(){
+
+          function _scroll(){
+              var acticles = $('.article > .container');
+              var height = window.innerHeight || document.body.offsetHeight;
+              acticles.each(function () {
+                  var top = this.getBoundingClientRect().top;
+                  if(top < height+1){
+                      if(!$(this).hasClass('animated')) {
+                          $(this).addClass('slideInRight');
+                          $(this).addClass('animated');
+                      }
+                  }
+              })
+
+              $(window).scroll(function () {
+                  acticles.each(function () {
+                      var top = this.getBoundingClientRect().top;
+                      if(top < height+1){
+                          if(!$(this).hasClass('animated')) {
+                              $(this).addClass('slideInRight');
+                              $(this).addClass('animated');
+                          }
+                      }
+                  })
+              })
+          }
+
+
+          var bp = document.createElement('script');
+          var curProtocol = window.location.protocol.split(':')[0];
+          if (curProtocol === 'https') {
+              bp.src = 'https://zz.bdstatic.com/linksubmit/push.js';
+          }
+          else {
+              bp.src = 'http://push.zhanzhang.baidu.com/push.js';
+          }
+          var s = document.getElementsByTagName("script")[0];
+          s.parentNode.insertBefore(bp, s);
+          _scroll();
+      })();
+  </script>
+  <script type="text/javascript"
+          color="0,0,0" opacity='0.5' zIndex="-2" count="35" src="//cdn.bootcss.com/canvas-nest.js/1.0.0/canvas-nest.min.js"></script>
+  <!-- 页面点击小红心 -->
+  <script type="text/javascript" src="/js/clicklove.js"></script>
+<script src="/live2dw/lib/L2Dwidget.min.js?0c58a1486de42ac6cc1c59c7d98ae887"></script><script>L2Dwidget.init({"model":{"jsonPath":"/live2dw/assets/haruto.model.json"},"display":{"position":"left","width":70,"height":140},"mobile":{"show":true},"log":false,"pluginJsPath":"lib/","pluginModelPath":"assets/","pluginRootPath":"live2dw/","tagMode":false});</script></body>
+
+</html>

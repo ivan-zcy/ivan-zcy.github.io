@@ -1,0 +1,407 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+
+<!-- Head tag -->
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+
+  <!--Description-->
+  
+
+  <!--Author-->
+  
+
+  <!--Open Graph Title-->
+  
+      <meta property="og:title" content="探究rand()随机数"/>
+  
+  <!--Open Graph Description-->
+  
+  <!--Open Graph Site Name-->
+  <meta property="og:site_name" content="Zcy"/>
+  <!--Type page-->
+  
+      <meta property="og:type" content="article" />
+  
+  <!--Page Cover-->
+  
+
+    <meta name="baidu-site-verification" content="8vgn54BtUC" />
+
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <!-- 百度统计 -->
+    <script>
+	var _hmt = _hmt || [];
+	(function() {
+  	var hm = document.createElement("script");
+  	hm.src = "https://hm.baidu.com/hm.js?c0451e16533956173997b85f7a8de666";
+  	var s = document.getElementsByTagName("script")[0]; 
+  	s.parentNode.insertBefore(hm, s);
+	})();
+    </script>
+  <!-- Title -->
+  
+  <title>探究rand()随机数 - Zcy</title>
+
+
+  <link rel="shortcut icon" href="/favicon.ico">
+    <!--font-awesome-->
+    <link href="//netdna.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="/css/animate.css">
+    <link rel="stylesheet" href="/css/thplayer.css">
+  <!-- Custom CSS/Sass -->
+  <link rel="stylesheet" href="/css/style.css">
+    <!--顶部上方进度条-->
+    <script src="//cdn.bootcss.com/pace/1.0.2/pace.min.js"></script>
+    <link href="/css/pace-theme-flash.css" rel="stylesheet">
+    <style>
+        .pace .pace-progress {
+            background: #cccccc; /*进度条颜色*/
+            height: 3px;
+        }
+        .pace .pace-progress-inner {
+            box-shadow: 0 0 10px #cccccc, 0 0 5px #cccccc; /*阴影颜色*/
+        }
+        .pace .pace-activity {
+            border-top-color: #cccccc;    /*上边框颜色*/
+            border-left-color: #cccccc;    /*左边框颜色*/
+        }
+    </style>
+
+
+    <!--小火箭-->
+    <link rel="stylesheet" type="text/css" href="/css/rocketTop.css">
+    <script type="text/javascript" src="/js/jquery.min.js"></script>
+    <script type="text/javascript" src="/js/rocketTop.js"></script>
+
+</head>
+
+<body>
+
+  <!-- Nav -->
+  <header class="site-header">
+  <div class="header-inside">
+    
+    <div class="logo">
+      <a href="/" rel="home">
+        
+        <img src="/img/timg.jpg" alt="Zcy" height="60">
+        
+      </a>
+    </div>
+    <a class="header-name" href="/">
+            <span>Zcy</span>
+            的小屋
+        </a>
+    <!-- navbar -->
+    <nav class="navbar">
+      <!--  nav links -->
+      <div class="collapse">
+        <ul class="navbar-nav">
+          
+          
+            <li>
+              <a href="/.">
+                
+                  <i class="fa fa-home "></i>
+                
+                小屋
+              </a>
+            </li>
+          
+            <li>
+              <a href="/archives">
+                
+                  <i class="fa fa-archive "></i>
+                
+                点滴
+              </a>
+            </li>
+          
+            <li>
+              <a href="/tags">
+                
+                  <i class="fa fa-archive "></i>
+                
+                标签
+              </a>
+            </li>
+          
+            <li>
+              <a href="/project">
+                
+                  <i class="fa fa-folder-open "></i>
+                
+                项目
+              </a>
+            </li>
+          
+            <li>
+              <a href="/photo">
+                
+                  <i class="fa fa-photo "></i>
+                
+                相册
+              </a>
+            </li>
+          
+            <li>
+              <a href="/guestbook">
+                
+                  <i class="fa fa-edit "></i>
+                
+                留言
+              </a>
+            </li>
+          
+            <li>
+              <a href="/game">
+                
+                  <i class="fa fa-gamepad "></i>
+                
+                游戏
+              </a>
+            </li>
+          
+            <li>
+              <a href="/aboutMe/index.html">
+                
+                  <i class="fa fa-user "></i>
+                
+                关于我
+              </a>
+            </li>
+          
+            <li>
+              <a href="/friendly">
+                
+                  <i class="fa fa-bicycle "></i>
+                
+                链接
+              </a>
+            </li>
+          
+        </ul>
+      </div>
+      <!-- /.navbar-collapse -->
+    </nav>
+    <div class="button-wrap">
+      <button class="menu-toggle">Primary Menu</button>
+    </div>
+  </div>
+</header>
+
+
+  <!-- Main Content -->
+  <div class="content-area">
+    <div class="post">
+        <!-- Post Content -->
+        <div class="container">
+            <article>
+                <!-- Title date & tags -->
+                <div class="post-header">
+                    <h1 class="entry-title">
+                        探究rand()随机数
+                        
+                    </h1>
+
+                </div>
+
+
+                <div style="text-align:center;color: #ccc;">
+    <span class="post-time" >
+      <span class="post-meta-item-icon">
+        <i class="fa fa-keyboard-o"></i>
+        <span class="post-meta-item-text">  字数统计: </span>
+        <span class="post-count">785字</span>
+      </span>
+    </span>
+
+                    <span class="post-time">
+      &nbsp; | &nbsp;
+      <span class="post-meta-item-icon">
+        <i class="fa fa-hourglass-half"></i>
+        <span class="post-meta-item-text">  阅读时长: </span>
+        <span class="post-count">3分</span>
+      </span>
+    </span>
+                </div>
+
+                <p class="a-posted-on" style="color: #ccc;">
+                    2019-01-01
+                </p>
+                <!-- Post Main Content -->
+                <div class="entry-content">
+                    <p><img src="/2019/01/01/探究rand-随机数/title2.jpg" alt="title2"></p>
+<a id="more"></a>
+<p>####关于srand()函数</p>
+<p>​    srand（）函数用于设置随机种子，一般参数为time（0）作为随机种子</p>
+<h4 id="关于time-函数"><a href="#关于time-函数" class="headerlink" title="关于time()函数"></a>关于time()函数</h4><p>​    time（0）函数返回当前时间戳（以秒为单位，从1900.01.01开始，时间戳是32位整数，所以2036年就会失效）</p>
+<p>####关于rand()函数</p>
+<p>​    rand（）会随机生成一个整型(实质是一套算法，若种子相同，一套算法算出来的东西也相同)</p>
+<h4 id="关于rand-函数的随机性"><a href="#关于rand-函数的随机性" class="headerlink" title="关于rand()函数的随机性"></a>关于rand()函数的随机性</h4><p>​    由于rand()函数也是一种算法，传入相同的随机种子，生成的数也是相同的，所以广义上来说，随机数并不是真正的随机，是一种伪随机。</p>
+<p>​    一个随机算法，需要保证在规定的范围内的每一个数都有可能出现且出现的概率是相同的，根据传入的随机种子不同，随机数也不同。</p>
+<p>####rand()函数算法如何实现0～2^32 - 1均匀随机的出现？</p>
+<p>​    利用费马定理：如果p是一个素数，a^(φ(p)) % p = 1(当a与p互素时)</p>
+<p>​    具体见代码</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">#include &lt;iostream&gt;</span><br><span class="line">using namespace std;</span><br><span class="line">#define MAX_N 100000</span><br><span class="line"></span><br><span class="line">//100000以内的素数数组</span><br><span class="line">int prime[MAX_N + 5] = &#123;0&#125;;</span><br><span class="line"></span><br><span class="line">//my_seed是一个随机种子，rand()算法核心的两个参数a_num, b_num,</span><br><span class="line">//利用my_seed = my_seed * a_num % b_num能够保证my_seed在1～b_num - 1均匀的出现</span><br><span class="line">static int my_seed = 37, a_num, b_num;</span><br><span class="line"></span><br><span class="line">//自定义rand()函数</span><br><span class="line">int my_rand() &#123;</span><br><span class="line">#define i my_seed</span><br><span class="line">    do &#123;</span><br><span class="line">        //rand()算法的核心，该算式能够保证i在1～9999均匀的出现</span><br><span class="line">        i = i * a_num % b_num;</span><br><span class="line">    &#125; while (i &gt; 10000);</span><br><span class="line">    return i;</span><br><span class="line">#undef i</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">//至于a_num和b_num如何得到，下面是求解过程</span><br><span class="line"></span><br><span class="line">//预处理全部素数</span><br><span class="line">void init_prime() &#123;</span><br><span class="line">    for (int i = 2; 2 * i &lt;= MAX_N; i++) &#123;</span><br><span class="line">        if (!prime[i]) &#123;</span><br><span class="line">            prime[++prime[0]] = i;</span><br><span class="line">        &#125;</span><br><span class="line">        for (int j = 1; j &lt;= prime[0]; j++) &#123;</span><br><span class="line">            if (i * prime[j] &gt; MAX_N) break;</span><br><span class="line">            prime[i * prime[j]] = 1;</span><br><span class="line">            if (i % prime[j] == 0) break;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    return ;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">//快速幂函a^b % c</span><br><span class="line">int quick_mod(int a, int b, int c) &#123;</span><br><span class="line">    int ans = 1, temp = a % c;</span><br><span class="line">    while (b) &#123;</span><br><span class="line">        if (b &amp; 1) ans *= temp;</span><br><span class="line">        temp *= temp;</span><br><span class="line">        temp %= c;</span><br><span class="line">        ans %= c;</span><br><span class="line">        b &gt;&gt;= 1;</span><br><span class="line">    &#125;</span><br><span class="line">    return ans;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">//由于b为质数且a,b互质，根据费马定理小定理a^(φ(p)) % p = 1，也就是a^(p - 1) % p = 1</span><br><span class="line">//因此我们只需要确定p - 1的全部约数不为1，即确定a^i是循环节为p - 1的算式</span><br><span class="line">int get_len(int a, int b) &#123;</span><br><span class="line">    for (int i = 1; i &lt; b - 1; i++) &#123;</span><br><span class="line">        if ((b - 1) % i) continue;</span><br><span class="line">        if (quick_mod(a, i, b) == 1) return i;</span><br><span class="line">    &#125;</span><br><span class="line">    return b - 1;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">void get_a_and_b(int *a, int *b) &#123;</span><br><span class="line">    //找到一个大于13000的素数b_num</span><br><span class="line">    for (int i = 1; i &lt;= prime[0]; i++) &#123;</span><br><span class="line">        *b = prime[i];</span><br><span class="line">        if (prime[i] &gt; 13000) break;    </span><br><span class="line">    &#125;</span><br><span class="line">    //根据b_num找到符合条件的a_num</span><br><span class="line">    for (int i = 2; i &lt; *b; i++) &#123;      </span><br><span class="line">        if (get_len(i, *b) != *b - 1) continue;</span><br><span class="line">        *a = i;</span><br><span class="line">        break;</span><br><span class="line">    &#125;</span><br><span class="line">    return ;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">//对a（也就是a_num），b(也就是b_num)进行验证</span><br><span class="line">void check(int a, int b) &#123;</span><br><span class="line">    a_num = a, b_num = b;</span><br><span class="line">    int vis[10001] = &#123;0&#125;;</span><br><span class="line">    for (int i = 0; i &lt; 10000; i++) &#123;</span><br><span class="line">        int temp = my_rand();</span><br><span class="line">        if (vis[temp]) &#123;</span><br><span class="line">            cout &lt;&lt; &quot;error&quot; &lt;&lt; endl;</span><br><span class="line">            exit(0);</span><br><span class="line">        &#125;</span><br><span class="line">        vis[temp] = 1;</span><br><span class="line">    &#125;</span><br><span class="line">    cout &lt;&lt; a &lt;&lt; &quot; &quot; &lt;&lt; b &lt;&lt; &quot; OK&quot; &lt;&lt; endl;</span><br><span class="line">    return ;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">int main() &#123;</span><br><span class="line">    init_prime();</span><br><span class="line">    int a, b;</span><br><span class="line">    get_a_and_b(&amp;a, &amp;b);</span><br><span class="line">    check(a, b);</span><br><span class="line">    return 0;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+                </div>
+            </article>
+        </div>
+        <br>
+        <div style="text-align:center;color: #ccc;font-size:14px;">
+            <br>
+            <br>
+            <a href="http://www.ivan-zcy.top" style="color: #99FFFF;font-size:18px;">转载请注明出处！！！</a>
+            <br>
+            <br>
+            如果有写的不对或者不全面的地方 可通过主页的联系方式进行指正，谢谢!
+        </div>
+        <br>
+        <!-- Pre or Next -->
+        
+        <div class="container" >
+            <ul class="pager">
+                
+                <li class="previous">
+                    <a href="/2019/01/10/软件质量与保证复习/" rel="prev">下一篇</a>
+                </li>
+                
+                
+                <li class="next">
+                    <a href="/2019/01/01/Euler56/" rel="prev">上一篇</a>
+                </li>
+                
+            </ul>
+        </div>
+        　　　　<!-- Comments -->
+        <div class="container">
+            
+<section id="comment">
+  <!-- <h1 class="title">Comments</h1> -->
+
+  
+</section>
+
+
+        </div>
+        
+        　　　　
+    </div>
+</div>
+
+
+  <div id="Thplayer"></div>
+  <script type="application/javascript" src="/js/thplayer.min.js"></script>
+  <script>
+      $("#Thplayer").thplayer({
+          title: "遇见",
+          author: "孙燕姿",
+          cover: "/img/yj.jpg",
+          music: "http://www.ytmp3.cn/down/37418.mp3"
+      });
+  </script>
+
+  <!-- Footer -->
+  <!-- top -->
+
+<!-- Footer -->
+<footer class="site-info">
+    <p>Hosted by <a href="https://pages.coding.me" style="font-weight: bold">Coding Pages</a></p>
+  <script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+  本站总访问量<span id="busuanzi_value_site_pv"></span>次
+  本站访客数<span id="busuanzi_value_site_uv"></span>人次
+    <p>
+        <span id="timeDate">载入天数...</span><span id="times">载入时分秒...</span>
+    </p>
+  <script>
+      var now = new Date();
+      function createtime() {
+          var grt= new Date("09/28/2018 08:00:00");//此处修改你的建站时间或者网站上线时间
+          now.setTime(now.getTime()+250);
+          days = (now - grt ) / 1000 / 60 / 60 / 24; dnum = Math.floor(days);
+          hours = (now - grt ) / 1000 / 60 / 60 - (24 * dnum); hnum = Math.floor(hours);
+          if(String(hnum).length ==1 ){hnum = "0" + hnum;} minutes = (now - grt ) / 1000 /60 - (24 * 60 * dnum) - (60 * hnum);
+          mnum = Math.floor(minutes); if(String(mnum).length ==1 ){mnum = "0" + mnum;}
+          seconds = (now - grt ) / 1000 - (24 * 60 * 60 * dnum) - (60 * 60 * hnum) - (60 * mnum);
+          snum = Math.round(seconds); if(String(snum).length ==1 ){snum = "0" + snum;}
+          document.getElementById("timeDate").innerHTML = "本站已安全运行 "+dnum+" 天 ";
+          document.getElementById("times").innerHTML = hnum + " 小时 " + mnum + " 分 " + snum + " 秒";
+      }
+      setInterval("createtime()",250);
+  </script>
+  <p>
+    <span>Zcy &copy; 2019</span>
+      
+    <span class="split">|</span>
+    <span>Zcy</span>
+    
+  </p>
+</footer>
+
+
+  <!--小火箭-->
+  <div id="shape">
+    <div class="shapeColor">
+      <div class="shapeFly">
+      </div>
+    </div>
+  </div>
+
+  <!-- After footer scripts -->
+  <!-- scripts -->
+<script src="/js/app.js"></script>
+
+
+  <script>
+      (function(){
+
+          function _scroll(){
+              var acticles = $('.article > .container');
+              var height = window.innerHeight || document.body.offsetHeight;
+              acticles.each(function () {
+                  var top = this.getBoundingClientRect().top;
+                  if(top < height+1){
+                      if(!$(this).hasClass('animated')) {
+                          $(this).addClass('slideInRight');
+                          $(this).addClass('animated');
+                      }
+                  }
+              })
+
+              $(window).scroll(function () {
+                  acticles.each(function () {
+                      var top = this.getBoundingClientRect().top;
+                      if(top < height+1){
+                          if(!$(this).hasClass('animated')) {
+                              $(this).addClass('slideInRight');
+                              $(this).addClass('animated');
+                          }
+                      }
+                  })
+              })
+          }
+
+
+          var bp = document.createElement('script');
+          var curProtocol = window.location.protocol.split(':')[0];
+          if (curProtocol === 'https') {
+              bp.src = 'https://zz.bdstatic.com/linksubmit/push.js';
+          }
+          else {
+              bp.src = 'http://push.zhanzhang.baidu.com/push.js';
+          }
+          var s = document.getElementsByTagName("script")[0];
+          s.parentNode.insertBefore(bp, s);
+          _scroll();
+      })();
+  </script>
+  <script type="text/javascript"
+          color="0,0,0" opacity='0.5' zIndex="-2" count="35" src="//cdn.bootcss.com/canvas-nest.js/1.0.0/canvas-nest.min.js"></script>
+  <!-- 页面点击小红心 -->
+  <script type="text/javascript" src="/js/clicklove.js"></script>
+<script src="/live2dw/lib/L2Dwidget.min.js?0c58a1486de42ac6cc1c59c7d98ae887"></script><script>L2Dwidget.init({"model":{"jsonPath":"/live2dw/assets/haruto.model.json"},"display":{"position":"left","width":70,"height":140},"mobile":{"show":true},"log":false,"pluginJsPath":"lib/","pluginModelPath":"assets/","pluginRootPath":"live2dw/","tagMode":false});</script></body>
+
+</html>

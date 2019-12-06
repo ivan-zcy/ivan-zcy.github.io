@@ -1,0 +1,447 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+
+<!-- Head tag -->
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+
+  <!--Description-->
+  
+
+  <!--Author-->
+  
+
+  <!--Open Graph Title-->
+  
+      <meta property="og:title" content="Linux复习归纳1-文件和基本命令"/>
+  
+  <!--Open Graph Description-->
+  
+  <!--Open Graph Site Name-->
+  <meta property="og:site_name" content="Zcy"/>
+  <!--Type page-->
+  
+      <meta property="og:type" content="article" />
+  
+  <!--Page Cover-->
+  
+
+    <meta name="baidu-site-verification" content="8vgn54BtUC" />
+
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <!-- 百度统计 -->
+    <script>
+	var _hmt = _hmt || [];
+	(function() {
+  	var hm = document.createElement("script");
+  	hm.src = "https://hm.baidu.com/hm.js?c0451e16533956173997b85f7a8de666";
+  	var s = document.getElementsByTagName("script")[0]; 
+  	s.parentNode.insertBefore(hm, s);
+	})();
+    </script>
+  <!-- Title -->
+  
+  <title>Linux复习归纳1-文件和基本命令 - Zcy</title>
+
+
+  <link rel="shortcut icon" href="/favicon.ico">
+    <!--font-awesome-->
+    <link href="//netdna.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="/css/animate.css">
+    <link rel="stylesheet" href="/css/thplayer.css">
+  <!-- Custom CSS/Sass -->
+  <link rel="stylesheet" href="/css/style.css">
+    <!--顶部上方进度条-->
+    <script src="//cdn.bootcss.com/pace/1.0.2/pace.min.js"></script>
+    <link href="/css/pace-theme-flash.css" rel="stylesheet">
+    <style>
+        .pace .pace-progress {
+            background: #cccccc; /*进度条颜色*/
+            height: 3px;
+        }
+        .pace .pace-progress-inner {
+            box-shadow: 0 0 10px #cccccc, 0 0 5px #cccccc; /*阴影颜色*/
+        }
+        .pace .pace-activity {
+            border-top-color: #cccccc;    /*上边框颜色*/
+            border-left-color: #cccccc;    /*左边框颜色*/
+        }
+    </style>
+
+
+    <!--小火箭-->
+    <link rel="stylesheet" type="text/css" href="/css/rocketTop.css">
+    <script type="text/javascript" src="/js/jquery.min.js"></script>
+    <script type="text/javascript" src="/js/rocketTop.js"></script>
+
+</head>
+
+<body>
+
+  <!-- Nav -->
+  <header class="site-header">
+  <div class="header-inside">
+    
+    <div class="logo">
+      <a href="/" rel="home">
+        
+        <img src="/img/timg.jpg" alt="Zcy" height="60">
+        
+      </a>
+    </div>
+    <a class="header-name" href="/">
+            <span>Zcy</span>
+            的小屋
+        </a>
+    <!-- navbar -->
+    <nav class="navbar">
+      <!--  nav links -->
+      <div class="collapse">
+        <ul class="navbar-nav">
+          
+          
+            <li>
+              <a href="/.">
+                
+                  <i class="fa fa-home "></i>
+                
+                小屋
+              </a>
+            </li>
+          
+            <li>
+              <a href="/archives">
+                
+                  <i class="fa fa-archive "></i>
+                
+                点滴
+              </a>
+            </li>
+          
+            <li>
+              <a href="/tags">
+                
+                  <i class="fa fa-archive "></i>
+                
+                标签
+              </a>
+            </li>
+          
+            <li>
+              <a href="/project">
+                
+                  <i class="fa fa-folder-open "></i>
+                
+                项目
+              </a>
+            </li>
+          
+            <li>
+              <a href="/photo">
+                
+                  <i class="fa fa-photo "></i>
+                
+                相册
+              </a>
+            </li>
+          
+            <li>
+              <a href="/guestbook">
+                
+                  <i class="fa fa-edit "></i>
+                
+                留言
+              </a>
+            </li>
+          
+            <li>
+              <a href="/game">
+                
+                  <i class="fa fa-gamepad "></i>
+                
+                游戏
+              </a>
+            </li>
+          
+            <li>
+              <a href="/aboutMe/index.html">
+                
+                  <i class="fa fa-user "></i>
+                
+                关于我
+              </a>
+            </li>
+          
+            <li>
+              <a href="/friendly">
+                
+                  <i class="fa fa-bicycle "></i>
+                
+                链接
+              </a>
+            </li>
+          
+        </ul>
+      </div>
+      <!-- /.navbar-collapse -->
+    </nav>
+    <div class="button-wrap">
+      <button class="menu-toggle">Primary Menu</button>
+    </div>
+  </div>
+</header>
+
+
+  <!-- Main Content -->
+  <div class="content-area">
+    <div class="post">
+        <!-- Post Content -->
+        <div class="container">
+            <article>
+                <!-- Title date & tags -->
+                <div class="post-header">
+                    <h1 class="entry-title">
+                        Linux复习归纳1-文件和基本命令
+                        
+                    </h1>
+
+                </div>
+
+
+                <div style="text-align:center;color: #ccc;">
+    <span class="post-time" >
+      <span class="post-meta-item-icon">
+        <i class="fa fa-keyboard-o"></i>
+        <span class="post-meta-item-text">  字数统计: </span>
+        <span class="post-count">1.4k字</span>
+      </span>
+    </span>
+
+                    <span class="post-time">
+      &nbsp; | &nbsp;
+      <span class="post-meta-item-icon">
+        <i class="fa fa-hourglass-half"></i>
+        <span class="post-meta-item-text">  阅读时长: </span>
+        <span class="post-count">5分</span>
+      </span>
+    </span>
+                </div>
+
+                <p class="a-posted-on" style="color: #ccc;">
+                    2019-05-15
+                </p>
+                <!-- Post Main Content -->
+                <div class="entry-content">
+                    <p><img src="/2019/05/15/Linux复习归纳1-文件和基本命令/title.jpg" alt="title"></p>
+<a id="more"></a>
+<p>[TOC]</p>
+<h1 id="Linux"><a href="#Linux" class="headerlink" title="Linux"></a>Linux</h1><p>​    把自己所学的linux整理归并一下～</p>
+<h2 id="系统目录结构"><a href="#系统目录结构" class="headerlink" title="系统目录结构"></a>系统目录结构</h2><p>​    Linux一切皆文件！！！！</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">/bin	存放系统可执行程序</span><br><span class="line">/sbin	存放超级管理员可执行程序</span><br><span class="line">/boot	存放内核和启动程序相关文件</span><br><span class="line">/lib	存放库文件（动态共享库）</span><br><span class="line">/etc	存放系统配置文件,比如用户存放信息文件/etc/passwd</span><br><span class="line">/dev	存放设备文件</span><br><span class="line">/tmp	存放临时文件（关机清空）</span><br><span class="line">/home	存放用户的主目录</span><br><span class="line">/usr	应用会安装到此目录，比如软件安放到/usr/local下</span><br><span class="line">/proc	存储系统内存的映射（保留进程运行的信息）</span><br><span class="line">/media	挂载u盘光驱等外接设备（自动挂载）</span><br><span class="line">/mnt	手动挂载外接设备</span><br></pre></td></tr></table></figure>
+<h2 id="常用命令"><a href="#常用命令" class="headerlink" title="常用命令"></a>常用命令</h2><p>​    说命令之前需要说一个神键：自动补齐Tab键，简直不能再好用</p>
+<h3 id="与命令相关"><a href="#与命令相关" class="headerlink" title="与命令相关"></a>与命令相关</h3><h4 id="man"><a href="#man" class="headerlink" title="man"></a>man</h4><p>​    用于查询命令的用法(英文版)，MAC可按照这个教程-&gt; <a href="https://www.jianshu.com/p/bb3edf4d16ce" target="_blank" rel="noopener">跳转</a> 去安装汉化版cman</p>
+<p>​    不懂就查，感觉这是最最最最最有用的命令了</p>
+<h4 id="tldr"><a href="#tldr" class="headerlink" title="tldr"></a>tldr</h4><p>​    man真的是好长好长，如果是查询命令的简单应用，可以安装tldr命令来查看用法(too long don’t read，2333)</p>
+<h4 id="history"><a href="#history" class="headerlink" title="history"></a>history</h4><p>​    在终端输出历史命令（当然也可以方向键），可使用<code>!序号</code>来执行指定历史编号的命令</p>
+<h4 id="sudo"><a href="#sudo" class="headerlink" title="sudo"></a>sudo</h4><p>​    该命令一般用于临时获取管理员权限，一般常用的：</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">sudo su 切换为管理员</span><br><span class="line">sudo -i 切换为普通用户</span><br><span class="line">sudo !! 当上一条命令权限被拒绝时，可直接这</span><br></pre></td></tr></table></figure>
+<h3 id="与目录相关"><a href="#与目录相关" class="headerlink" title="与目录相关"></a>与目录相关</h3><h4 id="ls"><a href="#ls" class="headerlink" title="ls"></a>ls</h4><p>​    list的缩写，用于查看指定目录下的所有文件和目录（支持通配符）。常用参数：-a(显示全部，包括隐藏)，-l（查看详细文件信息）-R（递归查看子目录文件），-t（按照文件修改时间排序）</p>
+<h4 id="pwd"><a href="#pwd" class="headerlink" title="pwd"></a>pwd</h4><p>​    用于显示当前工作目录</p>
+<h4 id="tree"><a href="#tree" class="headerlink" title="tree"></a>tree</h4><p>​    用于显示目录的树形结构</p>
+<h4 id="cd"><a href="#cd" class="headerlink" title="cd"></a>cd</h4><p>​    用于切换路径（以/开头的路径为绝对路径，否则为相对路径）</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">cd或cd ~或 cd $HOME		返回家目录</span><br><span class="line">cd -		返回上次目录</span><br><span class="line">cd ..		返回上级目录</span><br><span class="line">cd 绝对或相对路径</span><br></pre></td></tr></table></figure>
+<h4 id="mkdir"><a href="#mkdir" class="headerlink" title="mkdir"></a>mkdir</h4><p>​    用于创建目录，常用参数-p（可以用于递归创建目录）</p>
+<h4 id="touch"><a href="#touch" class="headerlink" title="touch"></a>touch</h4><p>​    用于创建文件（若文件已创建，则只是修改一下文件的访问时间，并不会新创建一个文件）</p>
+<h4 id="rm"><a href="#rm" class="headerlink" title="rm"></a>rm</h4><p>​    rm命令用于删除目录或文件，常用参有-r(循环递归删除)，-f(强制删除)</p>
+<h4 id="cp"><a href="#cp" class="headerlink" title="cp"></a>cp</h4><p>​    -r（用于递归拷贝）</p>
+<p>​    当目标为目录时，则将当前文件或目录拷贝到目标目录</p>
+<p>​    若目标不是目录时，则在目标的上一层创建该目标并拷贝过去</p>
+<h3 id="scp"><a href="#scp" class="headerlink" title="scp"></a>scp</h3><p>​    用于远程拷贝，具体格式为：</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">scp file 用户名@ip地址:./path路径</span><br></pre></td></tr></table></figure>
+<h4 id="mv"><a href="#mv" class="headerlink" title="mv"></a>mv</h4><p>​    移动一个文件或文件到另一个目录下（也可用它来重命名），与mv用法差不多，只不过是移动</p>
+<h4 id="which"><a href="#which" class="headerlink" title="which"></a>which</h4><p>​    用于显示对应命令的所在路径</p>
+<h3 id="与文件相关"><a href="#与文件相关" class="headerlink" title="与文件相关"></a>与文件相关</h3><p>​    文件的详细信息包括：文件权限标志位（包括所属者、组、其它权限(rwx)以及文件类型）、硬连接数、所属者、所属用户、文件大小、时间、文件名</p>
+<p>​    文件类型包括：</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">- 普通文件</span><br><span class="line">d 目录文件</span><br><span class="line">c 字符设备文件（鼠标，键盘等）</span><br><span class="line">b 块设备（也就是硬盘）</span><br><span class="line">p 命名管道文件</span><br><span class="line">l link链接文件</span><br><span class="line">s socket套接字文件</span><br><span class="line"></span><br><span class="line">//隐藏文件以.开头</span><br></pre></td></tr></table></figure>
+<h4 id="cat"><a href="#cat" class="headerlink" title="cat"></a>cat</h4><p>​    将文件信息显示到终端</p>
+<h4 id="more和less"><a href="#more和less" class="headerlink" title="more和less"></a>more和less</h4><p>​    也是显示文件，可以分屏显示</p>
+<p>​    more会车是按行显示，空格按页显示</p>
+<p>​    less可以回车或者上下方向键可以反复查看文件内容</p>
+<h4 id="head和tail"><a href="#head和tail" class="headerlink" title="head和tail"></a>head和tail</h4><p>​    head是查看文件头，tail是查看文件尾（默认显示10行），可以通过参数-n更改显示行数</p>
+<p>​    其中tail中-f可以一直跟踪文件尾部（比如用于查看实时日志啥的）</p>
+<h4 id="ln"><a href="#ln" class="headerlink" title="ln"></a>ln</h4><p>​    用于建立软或硬链接（硬链接实际上是两个文件映射同一磁盘地址上的内容；软连接就是创建了源文件的快捷方式，新文件映射到源文件）</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">ln 文件 文件	对两个文件建立硬链接</span><br><span class="line">ln -s 文件 文件 对两个文件或文件夹进行软连接（不会增加硬链接计数）</span><br></pre></td></tr></table></figure>
+<h4 id="unlink"><a href="#unlink" class="headerlink" title="unlink"></a>unlink</h4><p>​    用于删除硬链接（当然也可以rm），感觉有点类似于智能指针的shard_ptr</p>
+<h4 id="chmod"><a href="#chmod" class="headerlink" title="chmod"></a>chmod</h4><p>​    用于改变文件权限，大概格式如下：</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">chmod [a|g|o|a] [+|-] [r|w|x] 文件名	//方法一</span><br><span class="line">chmod 数字表示法	文件名			//方法二</span><br></pre></td></tr></table></figure>
+<h4 id="chown与chgrp"><a href="#chown与chgrp" class="headerlink" title="chown与chgrp"></a>chown与chgrp</h4><p>​    chown用于改变所属用户和组，chgrp用于改变所属组（这两个命令需要管理员权限，chgrp有些鸡肋）</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">sudo chown 用户 文件	//改变所属用户</span><br><span class="line">sudo chown 用户:组 文件 //改变所属用户和组</span><br><span class="line">sudo chgrp 组 文件		//改变所属组</span><br></pre></td></tr></table></figure>
+<h3 id="与统计相关"><a href="#与统计相关" class="headerlink" title="与统计相关"></a>与统计相关</h3><h4 id="wc"><a href="#wc" class="headerlink" title="wc"></a>wc</h4><p>​    该命令用于计数，分别输出行数（可单独-l）、单词数(可单独-w)、字节数(可单独-c)</p>
+<h4 id="du"><a href="#du" class="headerlink" title="du"></a>du</h4><p>​    用于显示当前目录下文件的大小。可选参-h(human，适合人类观看模式)</p>
+<h4 id="whoami"><a href="#whoami" class="headerlink" title="whoami"></a>whoami</h4><p>​    显示当前用户</p>
+<h4 id="who"><a href="#who" class="headerlink" title="who"></a>who</h4><p>​    显示当前登录系统的用户信息</p>
+<h4 id="df"><a href="#df" class="headerlink" title="df"></a>df</h4><p>​    显示当前系统的磁盘空间(使用情况)。可选参-h(human，适合人类观看模式)</p>
+<h4 id="W"><a href="#W" class="headerlink" title="W"></a>W</h4><p>​    获取当前登录用户和正在执行的进程</p>
+<h4 id="uptime"><a href="#uptime" class="headerlink" title="uptime"></a>uptime</h4><p>​    获取系统运行时长和平均负载</p>
+<h4 id="uname"><a href="#uname" class="headerlink" title="uname"></a>uname</h4><p>​    打印当前系统信息</p>
+<h4 id="last"><a href="#last" class="headerlink" title="last"></a>last</h4><p>​    显示用户最近登录信息</p>
+
+                </div>
+            </article>
+        </div>
+        <br>
+        <div style="text-align:center;color: #ccc;font-size:14px;">
+            <br>
+            <br>
+            <a href="http://www.ivan-zcy.top" style="color: #99FFFF;font-size:18px;">转载请注明出处！！！</a>
+            <br>
+            <br>
+            如果有写的不对或者不全面的地方 可通过主页的联系方式进行指正，谢谢!
+        </div>
+        <br>
+        <!-- Pre or Next -->
+        
+        <div class="container" >
+            <ul class="pager">
+                
+                <li class="previous">
+                    <a href="/2019/05/16/Linux复习归纳2-其它常用命令/" rel="prev">下一篇</a>
+                </li>
+                
+                
+                <li class="next">
+                    <a href="/2019/05/13/数据库索引/" rel="prev">上一篇</a>
+                </li>
+                
+            </ul>
+        </div>
+        　　　　<!-- Comments -->
+        <div class="container">
+            
+<section id="comment">
+  <!-- <h1 class="title">Comments</h1> -->
+
+  
+</section>
+
+
+        </div>
+        
+        　　　　
+    </div>
+</div>
+
+
+  <div id="Thplayer"></div>
+  <script type="application/javascript" src="/js/thplayer.min.js"></script>
+  <script>
+      $("#Thplayer").thplayer({
+          title: "遇见",
+          author: "孙燕姿",
+          cover: "/img/yj.jpg",
+          music: "http://www.ytmp3.cn/down/37418.mp3"
+      });
+  </script>
+
+  <!-- Footer -->
+  <!-- top -->
+
+<!-- Footer -->
+<footer class="site-info">
+    <p>Hosted by <a href="https://pages.coding.me" style="font-weight: bold">Coding Pages</a></p>
+  <script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+  本站总访问量<span id="busuanzi_value_site_pv"></span>次
+  本站访客数<span id="busuanzi_value_site_uv"></span>人次
+    <p>
+        <span id="timeDate">载入天数...</span><span id="times">载入时分秒...</span>
+    </p>
+  <script>
+      var now = new Date();
+      function createtime() {
+          var grt= new Date("09/28/2018 08:00:00");//此处修改你的建站时间或者网站上线时间
+          now.setTime(now.getTime()+250);
+          days = (now - grt ) / 1000 / 60 / 60 / 24; dnum = Math.floor(days);
+          hours = (now - grt ) / 1000 / 60 / 60 - (24 * dnum); hnum = Math.floor(hours);
+          if(String(hnum).length ==1 ){hnum = "0" + hnum;} minutes = (now - grt ) / 1000 /60 - (24 * 60 * dnum) - (60 * hnum);
+          mnum = Math.floor(minutes); if(String(mnum).length ==1 ){mnum = "0" + mnum;}
+          seconds = (now - grt ) / 1000 - (24 * 60 * 60 * dnum) - (60 * 60 * hnum) - (60 * mnum);
+          snum = Math.round(seconds); if(String(snum).length ==1 ){snum = "0" + snum;}
+          document.getElementById("timeDate").innerHTML = "本站已安全运行 "+dnum+" 天 ";
+          document.getElementById("times").innerHTML = hnum + " 小时 " + mnum + " 分 " + snum + " 秒";
+      }
+      setInterval("createtime()",250);
+  </script>
+  <p>
+    <span>Zcy &copy; 2019</span>
+      
+    <span class="split">|</span>
+    <span>Zcy</span>
+    
+  </p>
+</footer>
+
+
+  <!--小火箭-->
+  <div id="shape">
+    <div class="shapeColor">
+      <div class="shapeFly">
+      </div>
+    </div>
+  </div>
+
+  <!-- After footer scripts -->
+  <!-- scripts -->
+<script src="/js/app.js"></script>
+
+
+  <script>
+      (function(){
+
+          function _scroll(){
+              var acticles = $('.article > .container');
+              var height = window.innerHeight || document.body.offsetHeight;
+              acticles.each(function () {
+                  var top = this.getBoundingClientRect().top;
+                  if(top < height+1){
+                      if(!$(this).hasClass('animated')) {
+                          $(this).addClass('slideInRight');
+                          $(this).addClass('animated');
+                      }
+                  }
+              })
+
+              $(window).scroll(function () {
+                  acticles.each(function () {
+                      var top = this.getBoundingClientRect().top;
+                      if(top < height+1){
+                          if(!$(this).hasClass('animated')) {
+                              $(this).addClass('slideInRight');
+                              $(this).addClass('animated');
+                          }
+                      }
+                  })
+              })
+          }
+
+
+          var bp = document.createElement('script');
+          var curProtocol = window.location.protocol.split(':')[0];
+          if (curProtocol === 'https') {
+              bp.src = 'https://zz.bdstatic.com/linksubmit/push.js';
+          }
+          else {
+              bp.src = 'http://push.zhanzhang.baidu.com/push.js';
+          }
+          var s = document.getElementsByTagName("script")[0];
+          s.parentNode.insertBefore(bp, s);
+          _scroll();
+      })();
+  </script>
+  <script type="text/javascript"
+          color="0,0,0" opacity='0.5' zIndex="-2" count="35" src="//cdn.bootcss.com/canvas-nest.js/1.0.0/canvas-nest.min.js"></script>
+  <!-- 页面点击小红心 -->
+  <script type="text/javascript" src="/js/clicklove.js"></script>
+<script src="/live2dw/lib/L2Dwidget.min.js?0c58a1486de42ac6cc1c59c7d98ae887"></script><script>L2Dwidget.init({"model":{"jsonPath":"/live2dw/assets/haruto.model.json"},"display":{"position":"left","width":70,"height":140},"mobile":{"show":true},"log":false,"pluginJsPath":"lib/","pluginModelPath":"assets/","pluginRootPath":"live2dw/","tagMode":false});</script></body>
+
+</html>

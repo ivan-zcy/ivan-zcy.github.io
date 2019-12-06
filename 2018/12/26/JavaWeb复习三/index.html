@@ -1,0 +1,448 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+
+<!-- Head tag -->
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+
+  <!--Description-->
+  
+
+  <!--Author-->
+  
+
+  <!--Open Graph Title-->
+  
+      <meta property="og:title" content="JavaWeb复习(三)"/>
+  
+  <!--Open Graph Description-->
+  
+  <!--Open Graph Site Name-->
+  <meta property="og:site_name" content="Zcy"/>
+  <!--Type page-->
+  
+      <meta property="og:type" content="article" />
+  
+  <!--Page Cover-->
+  
+
+    <meta name="baidu-site-verification" content="8vgn54BtUC" />
+
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <!-- 百度统计 -->
+    <script>
+	var _hmt = _hmt || [];
+	(function() {
+  	var hm = document.createElement("script");
+  	hm.src = "https://hm.baidu.com/hm.js?c0451e16533956173997b85f7a8de666";
+  	var s = document.getElementsByTagName("script")[0]; 
+  	s.parentNode.insertBefore(hm, s);
+	})();
+    </script>
+  <!-- Title -->
+  
+  <title>JavaWeb复习(三) - Zcy</title>
+
+
+  <link rel="shortcut icon" href="/favicon.ico">
+    <!--font-awesome-->
+    <link href="//netdna.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="/css/animate.css">
+    <link rel="stylesheet" href="/css/thplayer.css">
+  <!-- Custom CSS/Sass -->
+  <link rel="stylesheet" href="/css/style.css">
+    <!--顶部上方进度条-->
+    <script src="//cdn.bootcss.com/pace/1.0.2/pace.min.js"></script>
+    <link href="/css/pace-theme-flash.css" rel="stylesheet">
+    <style>
+        .pace .pace-progress {
+            background: #cccccc; /*进度条颜色*/
+            height: 3px;
+        }
+        .pace .pace-progress-inner {
+            box-shadow: 0 0 10px #cccccc, 0 0 5px #cccccc; /*阴影颜色*/
+        }
+        .pace .pace-activity {
+            border-top-color: #cccccc;    /*上边框颜色*/
+            border-left-color: #cccccc;    /*左边框颜色*/
+        }
+    </style>
+
+
+    <!--小火箭-->
+    <link rel="stylesheet" type="text/css" href="/css/rocketTop.css">
+    <script type="text/javascript" src="/js/jquery.min.js"></script>
+    <script type="text/javascript" src="/js/rocketTop.js"></script>
+
+</head>
+
+<body>
+
+  <!-- Nav -->
+  <header class="site-header">
+  <div class="header-inside">
+    
+    <div class="logo">
+      <a href="/" rel="home">
+        
+        <img src="/img/timg.jpg" alt="Zcy" height="60">
+        
+      </a>
+    </div>
+    <a class="header-name" href="/">
+            <span>Zcy</span>
+            的小屋
+        </a>
+    <!-- navbar -->
+    <nav class="navbar">
+      <!--  nav links -->
+      <div class="collapse">
+        <ul class="navbar-nav">
+          
+          
+            <li>
+              <a href="/.">
+                
+                  <i class="fa fa-home "></i>
+                
+                小屋
+              </a>
+            </li>
+          
+            <li>
+              <a href="/archives">
+                
+                  <i class="fa fa-archive "></i>
+                
+                点滴
+              </a>
+            </li>
+          
+            <li>
+              <a href="/tags">
+                
+                  <i class="fa fa-archive "></i>
+                
+                标签
+              </a>
+            </li>
+          
+            <li>
+              <a href="/project">
+                
+                  <i class="fa fa-folder-open "></i>
+                
+                项目
+              </a>
+            </li>
+          
+            <li>
+              <a href="/photo">
+                
+                  <i class="fa fa-photo "></i>
+                
+                相册
+              </a>
+            </li>
+          
+            <li>
+              <a href="/guestbook">
+                
+                  <i class="fa fa-edit "></i>
+                
+                留言
+              </a>
+            </li>
+          
+            <li>
+              <a href="/game">
+                
+                  <i class="fa fa-gamepad "></i>
+                
+                游戏
+              </a>
+            </li>
+          
+            <li>
+              <a href="/aboutMe/index.html">
+                
+                  <i class="fa fa-user "></i>
+                
+                关于我
+              </a>
+            </li>
+          
+            <li>
+              <a href="/friendly">
+                
+                  <i class="fa fa-bicycle "></i>
+                
+                链接
+              </a>
+            </li>
+          
+        </ul>
+      </div>
+      <!-- /.navbar-collapse -->
+    </nav>
+    <div class="button-wrap">
+      <button class="menu-toggle">Primary Menu</button>
+    </div>
+  </div>
+</header>
+
+
+  <!-- Main Content -->
+  <div class="content-area">
+    <div class="post">
+        <!-- Post Content -->
+        <div class="container">
+            <article>
+                <!-- Title date & tags -->
+                <div class="post-header">
+                    <h1 class="entry-title">
+                        JavaWeb复习(三)
+                        
+                    </h1>
+
+                </div>
+
+
+                <div style="text-align:center;color: #ccc;">
+    <span class="post-time" >
+      <span class="post-meta-item-icon">
+        <i class="fa fa-keyboard-o"></i>
+        <span class="post-meta-item-text">  字数统计: </span>
+        <span class="post-count">1.5k字</span>
+      </span>
+    </span>
+
+                    <span class="post-time">
+      &nbsp; | &nbsp;
+      <span class="post-meta-item-icon">
+        <i class="fa fa-hourglass-half"></i>
+        <span class="post-meta-item-text">  阅读时长: </span>
+        <span class="post-count">6分</span>
+      </span>
+    </span>
+                </div>
+
+                <p class="a-posted-on" style="color: #ccc;">
+                    2018-12-26
+                </p>
+                <!-- Post Main Content -->
+                <div class="entry-content">
+                    <p><img src="/2018/12/26/JavaWeb复习三/title.jpg" alt="title"></p>
+<a id="more"></a>
+<p>[TOC]</p>
+<h1 id="三-创建和部署MVC-Web应用"><a href="#三-创建和部署MVC-Web应用" class="headerlink" title="三 创建和部署MVC Web应用"></a>三 创建和部署MVC Web应用</h1><h2 id="3-1-一个简单应用的组成"><a href="#3-1-一个简单应用的组成" class="headerlink" title="3.1 一个简单应用的组成"></a>3.1 一个简单应用的组成</h2><p>​    一个简单Web应用包括html表单、servlet控制器、一个模型（普通Java类）、一个xml部署描述文件、一个jsp视图</p>
+<h2 id="3-2-步骤"><a href="#3-2-步骤" class="headerlink" title="3.2 步骤"></a>3.2 步骤</h2><h3 id="3-2-1-分析用户视图以及高层体系结构"><a href="#3-2-1-分析用户视图以及高层体系结构" class="headerlink" title="3.2.1 分析用户视图以及高层体系结构"></a>3.2.1 分析用户视图以及高层体系结构</h3><p><img src="/2018/12/26/JavaWeb复习三/1.png" alt="1"></p>
+<h4 id="3-2-1-1对于访问链接："><a href="#3-2-1-1对于访问链接：" class="headerlink" title="3.2.1.1对于访问链接："></a>3.2.1.1对于访问链接：</h4><p>根据上图：</p>
+<p>​    1:客户请求访问页面    </p>
+<p>​    2.容器找到html页面</p>
+<p>​    3.容器把页面返还给浏览器</p>
+<h4 id="3-2-1-2-对于访问servlet："><a href="#3-2-1-2-对于访问servlet：" class="headerlink" title="3.2.1.2 对于访问servlet："></a>3.2.1.2 对于访问servlet：</h4><p>根据上图：</p>
+<p>​    4:客户把请求数据发送给容器</p>
+<p>​    5.容器根据url找到对应的servlet，并把请求传递给这个servlet</p>
+<p>​    6.servlet调用模型（普通java类）</p>
+<p>​    7.类返回一个结果，servelet把回答增加到请求对象</p>
+<p>​    8.servlet把请求转给jsp</p>
+<p>​    9.jsp从请求对象得到答案</p>
+<p>​    10.jsp为生成容器生成页面</p>
+<p>​    11.容器把页面返回给用户</p>
+<h3 id="3-3-2-创建项目的开发环境"><a href="#3-3-2-创建项目的开发环境" class="headerlink" title="3.3.2 创建项目的开发环境"></a>3.3.2 创建项目的开发环境</h3><p>​    MVC项目的标准层级结构</p>
+<p><img src="/2018/12/26/JavaWeb复习三/2.png" alt="2"></p>
+<h3 id="3-3-3-创建项目的部署环境"><a href="#3-3-3-创建项目的部署环境" class="headerlink" title="3.3.3 创建项目的部署环境"></a>3.3.3 创建项目的部署环境</h3><p>​    Tomcat的层级结构：</p>
+<p><img src="/2018/12/26/JavaWeb复习三/3.png" alt="3">    </p>
+<h3 id="3-3-4-对Web应用各组件进行迭代开发和测试"><a href="#3-3-4-对Web应用各组件进行迭代开发和测试" class="headerlink" title="3.3.4 对Web应用各组件进行迭代开发和测试"></a>3.3.4 对Web应用各组件进行迭代开发和测试</h3><h4 id="3-3-4-1-构建和测试html表单"><a href="#3-3-4-1-构建和测试html表单" class="headerlink" title="3.3.4.1 构建和测试html表单"></a>3.3.4.1 构建和测试html表单</h4><h5 id="3-3-4-1-1-构建："><a href="#3-3-4-1-1-构建：" class="headerlink" title="3.3.4.1.1 构建："></a>3.3.4.1.1 构建：</h5><p>​    举个例子：</p>
+<figure class="highlight html"><table><tr><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">html</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">body</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">h1</span>&gt;</span>填写表单<span class="tag">&lt;/<span class="name">h1</span>&gt;</span></span><br><span class="line">        <span class="comment">&lt;!--html认为/login就是要调用的servlet(客户知道的url名)，在项目目录结构中并不存在--&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">form</span> <span class="attr">name</span>=<span class="string">"haha"</span> <span class="attr">method</span>=<span class="string">"POST"</span> <span class="attr">action</span>=<span class="string">"/login"</span>&gt;</span></span><br><span class="line">            </span><br><span class="line">            姓名：<span class="tag">&lt;<span class="name">input</span> <span class="attr">type</span>=<span class="string">"text"</span> <span class="attr">name</span>=<span class="string">"name"</span>&gt;</span></span><br><span class="line">            <span class="tag">&lt;<span class="name">br</span>&gt;</span></span><br><span class="line">            性别：<span class="tag">&lt;<span class="name">input</span> <span class="attr">type</span>=<span class="string">"radio"</span> <span class="attr">name</span>=<span class="string">"sex"</span> <span class="attr">value</span>=<span class="string">"men"</span>&gt;</span>男</span><br><span class="line">            	 <span class="tag">&lt;<span class="name">input</span> <span class="attr">type</span>=<span class="string">"radio"</span> <span class="attr">name</span>=<span class="string">"sex"</span> <span class="attr">value</span>=<span class="string">"women"</span>&gt;</span>女</span><br><span class="line">            <span class="tag">&lt;<span class="name">br</span>&gt;</span></span><br><span class="line">            </span><br><span class="line">            <span class="tag">&lt;<span class="name">input</span> <span class="attr">type</span>=<span class="string">"SUBMIT"</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;/<span class="name">form</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;/<span class="name">body</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">html</span>&gt;</span></span><br></pre></td></tr></table></figure>
+<h5 id="3-3-4-1-2-部署和测试"><a href="#3-3-4-1-2-部署和测试" class="headerlink" title="3.3.4.1.2:部署和测试"></a>3.3.4.1.2:部署和测试</h5><p>​    1.在开发环境中创建html，然后保持在项目名/web下</p>
+<p>​    2.把html文件的副本放在tomcat/webapps/项目名中</p>
+<p>​    3.创建web.xml文档，保存在开发环境项目名/etc下</p>
+<figure class="highlight xml"><table><tr><td class="code"><pre><span class="line"><span class="comment">&lt;!--该部署文件的主要目的是定义逻辑名与实际类文件之间的映射--&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">web-app</span>&gt;</span></span><br><span class="line">	<span class="tag">&lt;<span class="name">servlet</span>&gt;</span></span><br><span class="line">    	<span class="tag">&lt;<span class="name">servlet-name</span>&gt;</span>部署名<span class="tag">&lt;/<span class="name">servlet-name</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">servlet-class</span>&gt;</span>类文件的完全限定名<span class="tag">&lt;/<span class="name">servlet-class</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;/<span class="name">servlet</span>&gt;</span></span><br><span class="line">    </span><br><span class="line">    <span class="tag">&lt;<span class="name">servlet-mapping</span>&gt;</span></span><br><span class="line">    	<span class="tag">&lt;<span class="name">servlet-name</span>&gt;</span>部署名<span class="tag">&lt;/<span class="name">servlet-name</span>&gt;</span></span><br><span class="line">        <span class="comment">&lt;!--.do只是一个约定--&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">url-pattern</span>&gt;</span>/用户可知的url名.do<span class="tag">&lt;/<span class="name">url-pattern</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;/<span class="name">servlet-mapping</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">web-app</span>&gt;</span></span><br></pre></td></tr></table></figure>
+<p>​    4.把web.xml文件的副本放在/tomcat/webapps/项目名/WEB-INF目录下</p>
+<p>​    5.启动tomcat（cd到tomcat主目录，然后运行/bin/startup.sh）</p>
+<p>​    6.测试页面（输入<a href="http://localhost:8080/项目名）" target="_blank" rel="noopener">http://localhost:8080/项目名）</a></p>
+<h4 id="3-3-4-2-构建控制器servlet第一个版本"><a href="#3-3-4-2-构建控制器servlet第一个版本" class="headerlink" title="3.3.4.2 构建控制器servlet第一个版本"></a>3.3.4.2 构建控制器servlet第一个版本</h4><h5 id="3-3-4-2-1-编写servlet"><a href="#3-3-4-2-1-编写servlet" class="headerlink" title="3.3.4.2.1 编写servlet"></a>3.3.4.2.1 编写servlet</h5><p>​    利用html表单测试这个控制器（确保html页面能适当调用servlet，且servlet能正确接收html参数）</p>
+<figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="keyword">package</span> com.web</span><br><span class="line"></span><br><span class="line"><span class="keyword">import</span> java.io.*;</span><br><span class="line"><span class="keyword">import</span> javax.servlet.*;</span><br><span class="line"><span class="keyword">import</span> javax.servlet.http.*;</span><br><span class="line"></span><br><span class="line">pulbic <span class="class"><span class="keyword">class</span> <span class="title">TestServlet</span> <span class="keyword">extends</span> <span class="title">HttpServlet</span> </span>&#123;</span><br><span class="line">    <span class="comment">//重写doPost方法</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">doPost</span><span class="params">(HttpServletRequest request, HttpServletResponse response)</span> <span class="keyword">throws</span> IOException, ServletException </span>&#123;</span><br><span class="line">        response.setContentType(<span class="string">"text/html"</span>);</span><br><span class="line">        PrintWriter out = response.getWriter();</span><br><span class="line">        out.println(<span class="string">"haha&lt;br&gt;"</span>);</span><br><span class="line">        <span class="comment">//获取表单中的name信息（根据html标记中的name属性匹配）</span></span><br><span class="line">        String s = request.getParameter(<span class="string">"name"</span>);</span><br><span class="line">        out.println(<span class="string">"he is "</span> + s);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h5 id="3-3-4-2-2-编译servlet"><a href="#3-3-4-2-2-编译servlet" class="headerlink" title="3.3.4.2.2 编译servlet"></a>3.3.4.2.2 编译servlet</h5><p>​    命令如下：</p>
+<figure class="highlight shell"><table><tr><td class="code"><pre><span class="line">//切到项目目录下</span><br><span class="line">cd project</span><br><span class="line">//路径根据不同的存放目录是不同的，tomcat之后是相同的</span><br><span class="line">//-d用来告诉编译器，.class文件放在适当包结构中的clases目录下</span><br><span class="line">javac -classpath /路径/tomcat/common/lib/servlet-api.jar:classes:. -d classes src/com/web/testServlet.java</span><br></pre></td></tr></table></figure>
+<h5 id="3-3-4-2-3-部署servlet"><a href="#3-3-4-2-3-部署servlet" class="headerlink" title="3.3.4.2.3 部署servlet"></a>3.3.4.2.3 部署servlet</h5><p>​    创建.class文件副本，把它移到tomcat/项目/WEB-INF/classes/com/web下</p>
+<h5 id="3-3-4-2-4-测试servlet"><a href="#3-3-4-2-4-测试servlet" class="headerlink" title="3.3.4.2.4 测试servlet"></a>3.3.4.2.4 测试servlet</h5><p>​    重启tomcat然后访问网页即可</p>
+<h4 id="3-3-4-3-为模型类构建测试类，构建并测试模型类"><a href="#3-3-4-3-为模型类构建测试类，构建并测试模型类" class="headerlink" title="3.3.4.3 为模型类构建测试类，构建并测试模型类"></a>3.3.4.3 为模型类构建测试类，构建并测试模型类</h4><p>​    例如：</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">package com.model;</span><br><span class="line"></span><br><span class="line">public class Test&#123;</span><br><span class="line">    public String getName(String name) &#123;</span><br><span class="line">        String s = &quot;hello, &quot;;</span><br><span class="line">        s = s + name;</span><br><span class="line">        return s;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h4 id="3-3-4-4-servlet升级到第二版"><a href="#3-3-4-4-servlet升级到第二版" class="headerlink" title="3.3.4.4 servlet升级到第二版"></a>3.3.4.4 servlet升级到第二版</h4><h5 id="3-3-4-4-1-改写"><a href="#3-3-4-4-1-改写" class="headerlink" title="3.3.4.4.1 改写"></a>3.3.4.4.1 改写</h5><p>​    可以调用模型类,如下：</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">package com.web</span><br><span class="line"></span><br><span class="line">import com.model.*;</span><br><span class="line">import java.io.*;</span><br><span class="line">import javax.servlet.*;</span><br><span class="line">import javax.servlet.http.*;</span><br><span class="line"></span><br><span class="line">pulbic class TestServlet extends HttpServlet &#123;</span><br><span class="line">    //重写doPost方法</span><br><span class="line">    public void doPost(HttpServletRequest request, HttpServletResponse response) throws IOException, ServletException &#123;</span><br><span class="line">        //新补充的内容：</span><br><span class="line">        String s = request.getParameter(&quot;name&quot;);</span><br><span class="line">        Test t = new Test();</span><br><span class="line">        String s1 = t.getName(s);</span><br><span class="line">        </span><br><span class="line">        response.setContentType(&quot;text/html&quot;);</span><br><span class="line">        PrintWriter out = response.getWriter();</span><br><span class="line">        out.println(&quot;haha&lt;br&gt;&quot;);</span><br><span class="line">        //获取表单中的name信息（根据html标记中的name属性匹配）</span><br><span class="line">        out.println(s1);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h5 id="3-3-4-4-2-部署"><a href="#3-3-4-4-2-部署" class="headerlink" title="3.3.4.4.2 部署"></a>3.3.4.4.2 部署</h5><p>​    1.编译servlet</p>
+<p>​    2.将servlet文件的副本替换到之前的/tomcat/wabapps/项目/WEB-INF/classes/com/web下</p>
+<p>​    3.把模型的class文件移动到/tomcat/wabapps/项目/WEB-INF/classes/com/model下</p>
+<p>​    4.重启tomcat</p>
+<p>​    5.打开浏览器浏览</p>
+<h4 id="3-3-4-5-构建jsp，servlet升级到第三版"><a href="#3-3-4-5-构建jsp，servlet升级到第三版" class="headerlink" title="3.3.4.5 构建jsp，servlet升级到第三版"></a>3.3.4.5 构建jsp，servlet升级到第三版</h4><p>​    可以把表示分派到jsp完成</p>
+<p>​    jsp代码如下：</p>
+<figure class="highlight"><table><tr><td class="code"><pre><span class="line">&lt;%@ page <span class="keyword">import</span>=<span class="string">"java.util.*"</span> %&gt;</span><br><span class="line">&lt;html&gt;</span><br><span class="line">    &lt;body&gt;</span><br><span class="line">        &lt;h1&gt;这是一个标题&lt;/h1&gt;</span><br><span class="line">        &lt;!-- &lt;% %&gt;标记里有一些标准Java代码--&gt;</span><br><span class="line">        &lt;%</span><br><span class="line">        	&lt;!--从这里从请求对象得到一个styles属性--&gt;</span><br><span class="line">        	String s = (String)resquest.getAttribute(<span class="string">"styles"</span>);</span><br><span class="line">        	out.print(<span class="string">"&lt;br&gt;"</span> + s);</span><br><span class="line">        %&gt;</span><br><span class="line">    &lt;/body&gt;</span><br><span class="line">&lt;/html&gt;</span><br></pre></td></tr></table></figure>
+<p>​    然后将jsp文件保存在项目目录/web下</p>
+<p>​    将它的副本移动到tomcat/项目名下</p>
+<p>​    servlet代码修改为：</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">package com.web</span><br><span class="line"></span><br><span class="line">import com.model.*;</span><br><span class="line">import java.io.*;</span><br><span class="line">import javax.servlet.*;</span><br><span class="line">import javax.servlet.http.*;</span><br><span class="line"></span><br><span class="line">pulbic class TestServlet extends HttpServlet &#123;</span><br><span class="line">    //重写doPost方法</span><br><span class="line">    public void doPost(HttpServletRequest request, HttpServletResponse response) throws IOException, ServletException &#123;</span><br><span class="line">        //新补充的内容：</span><br><span class="line">        String s = request.getParameter(&quot;name&quot;);</span><br><span class="line">        Test t = new Test();</span><br><span class="line">        String s1 = t.getName(s);</span><br><span class="line">        </span><br><span class="line">        //response.setContentType(&quot;text/html&quot;);</span><br><span class="line">        //PrintWriter out = response.getWriter();</span><br><span class="line">        //out.println(&quot;haha&lt;br&gt;&quot;);</span><br><span class="line">        //获取表单中的name信息（根据html标记中的name属性匹配）</span><br><span class="line">        //out.println(s1);</span><br><span class="line">        </span><br><span class="line">        //为请求对象增加styles属性，供jsp使用</span><br><span class="line">        request.setAttribute(&quot;styles&quot;, s1);</span><br><span class="line">        //为jsp实例化一个请求分派器</span><br><span class="line">        RequestDispatcher view = request.getRequestDispatcher(&quot;test.jsp&quot;);</span><br><span class="line">        //使用请求分派器要求容器准备好jsp，并向jsp发送请求和响应</span><br><span class="line">        view.forward(request, response);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>​    重新部署servlet即可，重启tomcat查看</p>
+
+                </div>
+            </article>
+        </div>
+        <br>
+        <div style="text-align:center;color: #ccc;font-size:14px;">
+            <br>
+            <br>
+            <a href="http://www.ivan-zcy.top" style="color: #99FFFF;font-size:18px;">转载请注明出处！！！</a>
+            <br>
+            <br>
+            如果有写的不对或者不全面的地方 可通过主页的联系方式进行指正，谢谢!
+        </div>
+        <br>
+        <!-- Pre or Next -->
+        
+        <div class="container" >
+            <ul class="pager">
+                
+                <li class="previous">
+                    <a href="/2018/12/29/CodeForces1096DEasy-Problem/" rel="prev">下一篇</a>
+                </li>
+                
+                
+                <li class="next">
+                    <a href="/2018/12/25/JavaWeb复习二/" rel="prev">上一篇</a>
+                </li>
+                
+            </ul>
+        </div>
+        　　　　<!-- Comments -->
+        <div class="container">
+            
+<section id="comment">
+  <!-- <h1 class="title">Comments</h1> -->
+
+  
+</section>
+
+
+        </div>
+        
+        　　　　
+    </div>
+</div>
+
+
+  <div id="Thplayer"></div>
+  <script type="application/javascript" src="/js/thplayer.min.js"></script>
+  <script>
+      $("#Thplayer").thplayer({
+          title: "遇见",
+          author: "孙燕姿",
+          cover: "/img/yj.jpg",
+          music: "http://www.ytmp3.cn/down/37418.mp3"
+      });
+  </script>
+
+  <!-- Footer -->
+  <!-- top -->
+
+<!-- Footer -->
+<footer class="site-info">
+    <p>Hosted by <a href="https://pages.coding.me" style="font-weight: bold">Coding Pages</a></p>
+  <script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+  本站总访问量<span id="busuanzi_value_site_pv"></span>次
+  本站访客数<span id="busuanzi_value_site_uv"></span>人次
+    <p>
+        <span id="timeDate">载入天数...</span><span id="times">载入时分秒...</span>
+    </p>
+  <script>
+      var now = new Date();
+      function createtime() {
+          var grt= new Date("09/28/2018 08:00:00");//此处修改你的建站时间或者网站上线时间
+          now.setTime(now.getTime()+250);
+          days = (now - grt ) / 1000 / 60 / 60 / 24; dnum = Math.floor(days);
+          hours = (now - grt ) / 1000 / 60 / 60 - (24 * dnum); hnum = Math.floor(hours);
+          if(String(hnum).length ==1 ){hnum = "0" + hnum;} minutes = (now - grt ) / 1000 /60 - (24 * 60 * dnum) - (60 * hnum);
+          mnum = Math.floor(minutes); if(String(mnum).length ==1 ){mnum = "0" + mnum;}
+          seconds = (now - grt ) / 1000 - (24 * 60 * 60 * dnum) - (60 * 60 * hnum) - (60 * mnum);
+          snum = Math.round(seconds); if(String(snum).length ==1 ){snum = "0" + snum;}
+          document.getElementById("timeDate").innerHTML = "本站已安全运行 "+dnum+" 天 ";
+          document.getElementById("times").innerHTML = hnum + " 小时 " + mnum + " 分 " + snum + " 秒";
+      }
+      setInterval("createtime()",250);
+  </script>
+  <p>
+    <span>Zcy &copy; 2019</span>
+      
+    <span class="split">|</span>
+    <span>Zcy</span>
+    
+  </p>
+</footer>
+
+
+  <!--小火箭-->
+  <div id="shape">
+    <div class="shapeColor">
+      <div class="shapeFly">
+      </div>
+    </div>
+  </div>
+
+  <!-- After footer scripts -->
+  <!-- scripts -->
+<script src="/js/app.js"></script>
+
+
+  <script>
+      (function(){
+
+          function _scroll(){
+              var acticles = $('.article > .container');
+              var height = window.innerHeight || document.body.offsetHeight;
+              acticles.each(function () {
+                  var top = this.getBoundingClientRect().top;
+                  if(top < height+1){
+                      if(!$(this).hasClass('animated')) {
+                          $(this).addClass('slideInRight');
+                          $(this).addClass('animated');
+                      }
+                  }
+              })
+
+              $(window).scroll(function () {
+                  acticles.each(function () {
+                      var top = this.getBoundingClientRect().top;
+                      if(top < height+1){
+                          if(!$(this).hasClass('animated')) {
+                              $(this).addClass('slideInRight');
+                              $(this).addClass('animated');
+                          }
+                      }
+                  })
+              })
+          }
+
+
+          var bp = document.createElement('script');
+          var curProtocol = window.location.protocol.split(':')[0];
+          if (curProtocol === 'https') {
+              bp.src = 'https://zz.bdstatic.com/linksubmit/push.js';
+          }
+          else {
+              bp.src = 'http://push.zhanzhang.baidu.com/push.js';
+          }
+          var s = document.getElementsByTagName("script")[0];
+          s.parentNode.insertBefore(bp, s);
+          _scroll();
+      })();
+  </script>
+  <script type="text/javascript"
+          color="0,0,0" opacity='0.5' zIndex="-2" count="35" src="//cdn.bootcss.com/canvas-nest.js/1.0.0/canvas-nest.min.js"></script>
+  <!-- 页面点击小红心 -->
+  <script type="text/javascript" src="/js/clicklove.js"></script>
+<script src="/live2dw/lib/L2Dwidget.min.js?0c58a1486de42ac6cc1c59c7d98ae887"></script><script>L2Dwidget.init({"model":{"jsonPath":"/live2dw/assets/haruto.model.json"},"display":{"position":"left","width":70,"height":140},"mobile":{"show":true},"log":false,"pluginJsPath":"lib/","pluginModelPath":"assets/","pluginRootPath":"live2dw/","tagMode":false});</script></body>
+
+</html>

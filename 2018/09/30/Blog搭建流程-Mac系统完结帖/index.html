@@ -1,0 +1,488 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+
+<!-- Head tag -->
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+
+  <!--Description-->
+  
+
+  <!--Author-->
+  
+
+  <!--Open Graph Title-->
+  
+      <meta property="og:title" content="Blog搭建流程(Mac系统完结帖)"/>
+  
+  <!--Open Graph Description-->
+  
+  <!--Open Graph Site Name-->
+  <meta property="og:site_name" content="Zcy"/>
+  <!--Type page-->
+  
+      <meta property="og:type" content="article" />
+  
+  <!--Page Cover-->
+  
+
+    <meta name="baidu-site-verification" content="8vgn54BtUC" />
+
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <!-- 百度统计 -->
+    <script>
+	var _hmt = _hmt || [];
+	(function() {
+  	var hm = document.createElement("script");
+  	hm.src = "https://hm.baidu.com/hm.js?c0451e16533956173997b85f7a8de666";
+  	var s = document.getElementsByTagName("script")[0]; 
+  	s.parentNode.insertBefore(hm, s);
+	})();
+    </script>
+  <!-- Title -->
+  
+  <title>Blog搭建流程(Mac系统完结帖) - Zcy</title>
+
+
+  <link rel="shortcut icon" href="/favicon.ico">
+    <!--font-awesome-->
+    <link href="//netdna.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="/css/animate.css">
+    <link rel="stylesheet" href="/css/thplayer.css">
+  <!-- Custom CSS/Sass -->
+  <link rel="stylesheet" href="/css/style.css">
+    <!--顶部上方进度条-->
+    <script src="//cdn.bootcss.com/pace/1.0.2/pace.min.js"></script>
+    <link href="/css/pace-theme-flash.css" rel="stylesheet">
+    <style>
+        .pace .pace-progress {
+            background: #cccccc; /*进度条颜色*/
+            height: 3px;
+        }
+        .pace .pace-progress-inner {
+            box-shadow: 0 0 10px #cccccc, 0 0 5px #cccccc; /*阴影颜色*/
+        }
+        .pace .pace-activity {
+            border-top-color: #cccccc;    /*上边框颜色*/
+            border-left-color: #cccccc;    /*左边框颜色*/
+        }
+    </style>
+
+
+    <!--小火箭-->
+    <link rel="stylesheet" type="text/css" href="/css/rocketTop.css">
+    <script type="text/javascript" src="/js/jquery.min.js"></script>
+    <script type="text/javascript" src="/js/rocketTop.js"></script>
+
+</head>
+
+<body>
+
+  <!-- Nav -->
+  <header class="site-header">
+  <div class="header-inside">
+    
+    <div class="logo">
+      <a href="/" rel="home">
+        
+        <img src="/img/timg.jpg" alt="Zcy" height="60">
+        
+      </a>
+    </div>
+    <a class="header-name" href="/">
+            <span>Zcy</span>
+            的小屋
+        </a>
+    <!-- navbar -->
+    <nav class="navbar">
+      <!--  nav links -->
+      <div class="collapse">
+        <ul class="navbar-nav">
+          
+          
+            <li>
+              <a href="/.">
+                
+                  <i class="fa fa-home "></i>
+                
+                小屋
+              </a>
+            </li>
+          
+            <li>
+              <a href="/archives">
+                
+                  <i class="fa fa-archive "></i>
+                
+                点滴
+              </a>
+            </li>
+          
+            <li>
+              <a href="/tags">
+                
+                  <i class="fa fa-archive "></i>
+                
+                标签
+              </a>
+            </li>
+          
+            <li>
+              <a href="/project">
+                
+                  <i class="fa fa-folder-open "></i>
+                
+                项目
+              </a>
+            </li>
+          
+            <li>
+              <a href="/photo">
+                
+                  <i class="fa fa-photo "></i>
+                
+                相册
+              </a>
+            </li>
+          
+            <li>
+              <a href="/guestbook">
+                
+                  <i class="fa fa-edit "></i>
+                
+                留言
+              </a>
+            </li>
+          
+            <li>
+              <a href="/game">
+                
+                  <i class="fa fa-gamepad "></i>
+                
+                游戏
+              </a>
+            </li>
+          
+            <li>
+              <a href="/aboutMe/index.html">
+                
+                  <i class="fa fa-user "></i>
+                
+                关于我
+              </a>
+            </li>
+          
+            <li>
+              <a href="/friendly">
+                
+                  <i class="fa fa-bicycle "></i>
+                
+                链接
+              </a>
+            </li>
+          
+        </ul>
+      </div>
+      <!-- /.navbar-collapse -->
+    </nav>
+    <div class="button-wrap">
+      <button class="menu-toggle">Primary Menu</button>
+    </div>
+  </div>
+</header>
+
+
+  <!-- Main Content -->
+  <div class="content-area">
+    <div class="post">
+        <!-- Post Content -->
+        <div class="container">
+            <article>
+                <!-- Title date & tags -->
+                <div class="post-header">
+                    <h1 class="entry-title">
+                        Blog搭建流程(Mac系统完结帖)
+                        
+                    </h1>
+
+                </div>
+
+
+                <div style="text-align:center;color: #ccc;">
+    <span class="post-time" >
+      <span class="post-meta-item-icon">
+        <i class="fa fa-keyboard-o"></i>
+        <span class="post-meta-item-text">  字数统计: </span>
+        <span class="post-count">1.8k字</span>
+      </span>
+    </span>
+
+                    <span class="post-time">
+      &nbsp; | &nbsp;
+      <span class="post-meta-item-icon">
+        <i class="fa fa-hourglass-half"></i>
+        <span class="post-meta-item-text">  阅读时长: </span>
+        <span class="post-count">7分</span>
+      </span>
+    </span>
+                </div>
+
+                <p class="a-posted-on" style="color: #ccc;">
+                    2018-09-30
+                </p>
+                <!-- Post Main Content -->
+                <div class="entry-content">
+                    <p><img src="/2018/09/30/Blog搭建流程-Mac系统完结帖/title.jpg" alt="title"></p>
+<a id="more"></a>
+<p>讲完这一篇hexo就算暂时性翻过去了 以后专注于算法和C++底层  加油加油！</p>
+<h3 id="Step1-安装Node-js"><a href="#Step1-安装Node-js" class="headerlink" title="Step1 安装Node.js"></a>Step1 安装Node.js</h3><p>可通过以下两种方式在 Mac OS 上安装 node.js：</p>
+<p>方式一： 在<a href="https://nodejs.org/en/download/" target="_blank" rel="noopener">官方下载网站</a>下载 pkg 安装包，直接点击安装即可</p>
+<p>方式二： 使用 brew 命令来安装：</p>
+<ul>
+<li><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">brew install node</span><br></pre></td></tr></table></figure>
+</li>
+</ul>
+<h3 id="Step2-安装Git"><a href="#Step2-安装Git" class="headerlink" title="Step2 安装Git"></a>Step2 安装Git</h3><p>首先查看电脑是否安装Git，终端输入：</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">git</span><br></pre></td></tr></table></figure>
+<p>安装过则会输出下表，然后跳过该步</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">WMBdeMacBook-Pro:~ WENBO$ git</span><br><span class="line">usage: git [--version] [--help] [-C &lt;path&gt;] [-c name=value]</span><br><span class="line">           [--exec-path[=&lt;path&gt;]] [--html-path] [--man-path] [--info-path]</span><br><span class="line">           [-p | --paginate | --no-pager] [--no-replace-objects] [--bare]</span><br><span class="line">           [--git-dir=&lt;path&gt;] [--work-tree=&lt;path&gt;] [--namespace=&lt;name&gt;]</span><br><span class="line">           &lt;command&gt; [&lt;args&gt;]</span><br><span class="line"></span><br><span class="line">These are common Git commands used in various situations:</span><br><span class="line"></span><br><span class="line">start a working area (see also: git help tutorial)</span><br><span class="line">   clone      Clone a repository into a new directory</span><br><span class="line">   init       Create an empty Git repository or reinitialize an existing one</span><br><span class="line"></span><br><span class="line">work on the current change (see also: git help everyday)</span><br><span class="line">   add        Add file contents to the index</span><br><span class="line">   mv         Move or rename a file, a directory, or a symlink</span><br><span class="line">   reset      Reset current HEAD to the specified state</span><br><span class="line">   rm         Remove files from the working tree and from the index</span><br><span class="line"></span><br><span class="line">examine the history and state (see also: git help revisions)</span><br><span class="line">   bisect     Use binary search to find the commit that introduced a bug</span><br><span class="line">   grep       Print lines matching a pattern</span><br><span class="line">   log        Show commit logs</span><br><span class="line">   show       Show various types of objects</span><br><span class="line">   status     Show the working tree status</span><br><span class="line"></span><br><span class="line">grow, mark and tweak your common history</span><br><span class="line">   branch     List, create, or delete branches</span><br><span class="line">   checkout   Switch branches or restore working tree files</span><br><span class="line">   commit     Record changes to the repository</span><br><span class="line">   diff       Show changes between commits, commit and working tree, etc</span><br><span class="line">   merge      Join two or more development histories together</span><br><span class="line">   rebase     Reapply commits on top of another base tip</span><br><span class="line">   tag        Create, list, delete or verify a tag object signed with GPG</span><br><span class="line"></span><br><span class="line">collaborate (see also: git help workflows)</span><br><span class="line">   fetch      Download objects and refs from another repository</span><br><span class="line">   pull       Fetch from and integrate with another repository or a local branch</span><br><span class="line">   push       Update remote refs along with associated objects</span><br><span class="line"></span><br><span class="line">&apos;git help -a&apos; and &apos;git help -g&apos; list available subcommands and some</span><br><span class="line">concept guides. See &apos;git help &lt;command&gt;&apos; or &apos;git help &lt;concept&gt;&apos;</span><br><span class="line">to read about a specific subcommand or concept.</span><br></pre></td></tr></table></figure>
+<p>​    </p>
+<p>​    如果没有显示上面内容，我们可以通过homebrew安装GIt，若未安装homebrew 则通过终端执行：</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">/usr/bin/ruby -e &quot;$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install)&quot;</span><br></pre></td></tr></table></figure>
+<p>​    随后执行一下命令进行Git的安装</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">brew install git</span><br></pre></td></tr></table></figure>
+<h3 id="Step3-注册Github账号并新建仓库"><a href="#Step3-注册Github账号并新建仓库" class="headerlink" title="Step3 注册Github账号并新建仓库"></a>Step3 注册Github账号并新建仓库</h3><p>​    网站链接：<a href="https://github.com" target="_blank" rel="noopener">Github</a> </p>
+<p>​    注册完账号后需新建一个仓库。注意！！新建的仓库名字必须是username.github.io。例如我username是ivan-zcy，那么仓库名字必须是ivan-zcy.github.io</p>
+<h3 id="Step4-配置SSH-Key（可省略-建议配置）"><a href="#Step4-配置SSH-Key（可省略-建议配置）" class="headerlink" title="Step4 配置SSH Key（可省略 建议配置）"></a>Step4 配置SSH Key（可省略 建议配置）</h3><p>这一步能省略 但是配置后更新博客就不用每次都输入用户名密码了</p>
+<p>步骤：<br>​    1 检查主机是否已存在SSH Key</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">cd .ssh</span><br><span class="line">ls -la</span><br></pre></td></tr></table></figure>
+<p>若输出的文件列表中存在id_rsa.pub 或 id_dsa.pub 文件，则直接跳到第三小步</p>
+<p>​    </p>
+<p>​    2 创建SSH Key<br>在终端输入如下命令</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">ssh-keygen -t rsa -C &quot;your_email@example.com&quot;</span><br></pre></td></tr></table></figure>
+<p>按下回车 会让输入文件名，直接回车会创建默认文件名的文件  然后会提示输入两次密码(可为空)</p>
+<p>​    3 添加SSH Key到Github</p>
+<p>（如果之前在Github中添加过SSH 则跳过该步）</p>
+<p>如果你没有指定文件名（也就是使用默认文件名），那么在.ssh文件夹下会有一个id_rsa.pub文件，打开该文件并复制里面的内容</p>
+<p>登录Github，点击右上角头像右边的三角图标，点击Settings –&gt; SSH and GPG keys –&gt; New SSH key。Title 随便填一个，在Key栏中填入复制的内容，点击Add SSH key，就添加成功了</p>
+<p>​    4 检验SSH Key是否配置成功<br>在终端输入如下命令</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">ssh -T git@github.com</span><br></pre></td></tr></table></figure>
+<p>如果最后出现</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">Hi username! You&apos;ve successfully authenticated, but GitHub does not provide shell access.</span><br></pre></td></tr></table></figure>
+<p>就说明SSH Key配置成功了</p>
+<h3 id="Step5-安装Hexo"><a href="#Step5-安装Hexo" class="headerlink" title="Step5 安装Hexo"></a>Step5 安装Hexo</h3><p>使用npm命令安装Hexo</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">npm install -g hexo</span><br></pre></td></tr></table></figure>
+<p>接着在任意位置创建一个文件夹，如Blog，cd到该路径下执行</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">hexo init</span><br></pre></td></tr></table></figure>
+<p>该命令会在目标文件夹内建立网站所需的基础文件</p>
+<p>接着安装安装依赖包</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">npm install</span><br></pre></td></tr></table></figure>
+<p>此时本地博客就搭建好了</p>
+<p>执行</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">hexo generate</span><br><span class="line">hexo server</span><br></pre></td></tr></table></figure>
+<p>此时可在浏览器中输入<a href="https://link.jianshu.com/?t=http://localhost:4000/" target="_blank" rel="noopener">http://localhost:4000/</a>进行本地查看（其他人无法访问）</p>
+<p>​    当然 此时可修改本地博客路径下的_config文件对博客进行全局设置，里边设置项挺多就不一一列举啦！自行百度</p>
+<p>​    </p>
+<h3 id="Step6-同步到远程Github仓库"><a href="#Step6-同步到远程Github仓库" class="headerlink" title="Step6 同步到远程Github仓库"></a>Step6 同步到远程Github仓库</h3><p>在本地Blog路径下找到_config.yml，把deploy节点修改为：</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">deploy:</span><br><span class="line">  type: git</span><br><span class="line">  repo: git@github.com:username/username.github.io.git</span><br><span class="line">  branch: master</span><br></pre></td></tr></table></figure>
+<p>（其中 username为你的Github用户名）</p>
+<p>为了能够使Hexo部署到GitHub上，需安装一个插件</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">npm install hexo-deployer-git --save</span><br></pre></td></tr></table></figure>
+<p>然后输入以下命令</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">hexo clean</span><br><span class="line">hexo generate</span><br><span class="line">hexo deploy</span><br></pre></td></tr></table></figure>
+<p>这时候就可以在浏览器通过输入username.github.io就可以访问你的博客了</p>
+<h3 id="Step7-配置主题"><a href="#Step7-配置主题" class="headerlink" title="Step7 配置主题"></a>Step7 配置主题</h3><p>​    前边写过配置主题的博文 抛出一个传送门：</p>
+<p>​                    <a href="http://www.ivan-zcy.top/2018/09/28/hexo更换主题流程/">滴滴，我是传送门</a></p>
+<p>​    （主题在github上 知乎上 hexo官网上有很多很多 适合自己就好）</p>
+<p>​    </p>
+<h3 id="注意点！！！！"><a href="#注意点！！！！" class="headerlink" title="注意点！！！！"></a>注意点！！！！</h3><p>一些主题的功能需要我们自己预先创建好对应的页面，例如标签tags 关于about等等等等</p>
+<p>此时我们需要在本地Blog路径下</p>
+<p>​    1 添加关于页面（可选）</p>
+<p>使用：<code>hexo new page &quot;about&quot;</code>新建一个 关于我 页面。<br>主题的 <code>_config.yml</code>文件中的 <code>menu</code>中进行匹配</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">menu:</span><br><span class="line">  home: /      //主页</span><br><span class="line">  categories: /categories //分类</span><br><span class="line">  archives: /archives   //归档</span><br><span class="line">  tags: /tags   //标签</span><br><span class="line">  about: /about   //关于                  （添加此行即可）</span><br></pre></td></tr></table></figure>
+<p>​    也可在本地博客路径 –&gt; source  –&gt; about文件下，通过修改其中的index.md对其页面进行配置</p>
+<p>​    2 添加标签页面（可选）</p>
+<p>使用： <code>hexo new page tags</code>新建一个 标签 页面。<br>主题的 <code>_config.yml</code>文件中的 <code>menu</code>中进行匹配</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">menu:</span><br><span class="line">  home: /      //主页</span><br><span class="line">  categories: /categories //分类</span><br><span class="line">  archives: /archives   //归档</span><br><span class="line">  tags: /tags   //标签                  （添加此行即可）</span><br><span class="line">  about: /about   //关于</span><br></pre></td></tr></table></figure>
+<p>​    也可在本地博客路径 –&gt; source  –&gt; tags文件下，通过修改其中的index.md对其页面进行配置</p>
+<p>​    </p>
+<p>​    除了上边两个之外还有分类categories，自定义页面等等就不一一列举啦 自行百度吧！</p>
+<h3 id="Step8-发布博文"><a href="#Step8-发布博文" class="headerlink" title="Step8 发布博文"></a>Step8 发布博文</h3><p>​    接着抛链接：</p>
+<p>​            <a href="http://www.ivan-zcy.top/2018/09/28/hexo发表博客常用命令/">滴滴，我也是一个传送门</a></p>
+<h3 id="Step9-绑定个人域名"><a href="#Step9-绑定个人域名" class="headerlink" title="Step9 绑定个人域名"></a>Step9 绑定个人域名</h3><p>​    步骤：</p>
+<p>​    1 购买域名 </p>
+<p>建议从<a href="https://account.aliyun.com/login/login.htm?oauth_callback=http%3A%2F%2Fnetcn.console.aliyun.com%2Fcore%2Fdomain%2Flist%3Fspm%3Da2c1d.8251892.0.0.4f0f52f2SzXZY4" target="_blank" rel="noopener">阿里云平台</a>啦之类的国内大型平台购买（这一步通常需要身份验证之类的 大概需要几天时间吧也记不清楚了 反正挺麻烦挺磨唧的）</p>
+<p>​    2 配置DNS地址 </p>
+<p>进入阿里云控制台 –&gt; 域名 –&gt; 域名列表 找到自己的域名 点击下图红圈圈的“管理”​    </p>
+<p><img src="/2018/09/30/Blog搭建流程-Mac系统完结帖/1.png" alt="1"></p>
+<p>​    </p>
+<p>​    3 进行域名解析 </p>
+<p>找到管理界面下的域名解析 在其中添加3条记录（username是github的用户名）</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">@          A             192.30.252.153</span><br><span class="line">@          A             192.30.252.154</span><br><span class="line">www      CNAME         username.github.io.</span><br></pre></td></tr></table></figure>
+<p>​    4添加CNAME文件<br>新建一个名为CNAME的文件(无后缀)，内容为你的域名地址。将该文件放到本地博客的source文件夹里面，并更新到Github</p>
+<p>​    这时候你的博客就建完啦！</p>
+<p>​    最后附上主页地址： <a href="http://www.ivan-zcy.top">戳我</a>      </p>
+<p>​    一起造作吧！！！！</p>
+<h4 id="参考链接："><a href="#参考链接：" class="headerlink" title="参考链接："></a>参考链接：</h4><p><a href="https://segmentfault.com/a/1190000008040387" target="_blank" rel="noopener">https://segmentfault.com/a/1190000008040387</a></p>
+<p><a href="https://blog.csdn.net/ganzhilin520/article/details/79047249" target="_blank" rel="noopener">https://blog.csdn.net/ganzhilin520/article/details/79047249</a></p>
+<p><a href="https://www.jianshu.com/p/e5f95eb990ad" target="_blank" rel="noopener">https://www.jianshu.com/p/e5f95eb990ad</a></p>
+
+                </div>
+            </article>
+        </div>
+        <br>
+        <div style="text-align:center;color: #ccc;font-size:14px;">
+            <br>
+            <br>
+            <a href="http://www.ivan-zcy.top" style="color: #99FFFF;font-size:18px;">转载请注明出处！！！</a>
+            <br>
+            <br>
+            如果有写的不对或者不全面的地方 可通过主页的联系方式进行指正，谢谢!
+        </div>
+        <br>
+        <!-- Pre or Next -->
+        
+        <div class="container" >
+            <ul class="pager">
+                
+                <li class="previous">
+                    <a href="/2018/09/30/实用网站汇总——持续更新/" rel="prev">下一篇</a>
+                </li>
+                
+                
+                <li class="next">
+                    <a href="/2018/09/29/18-09-29博客搭建进度/" rel="prev">上一篇</a>
+                </li>
+                
+            </ul>
+        </div>
+        　　　　<!-- Comments -->
+        <div class="container">
+            
+<section id="comment">
+  <!-- <h1 class="title">Comments</h1> -->
+
+  
+</section>
+
+
+        </div>
+        
+        　　　　
+    </div>
+</div>
+
+
+  <div id="Thplayer"></div>
+  <script type="application/javascript" src="/js/thplayer.min.js"></script>
+  <script>
+      $("#Thplayer").thplayer({
+          title: "遇见",
+          author: "孙燕姿",
+          cover: "/img/yj.jpg",
+          music: "http://www.ytmp3.cn/down/37418.mp3"
+      });
+  </script>
+
+  <!-- Footer -->
+  <!-- top -->
+
+<!-- Footer -->
+<footer class="site-info">
+    <p>Hosted by <a href="https://pages.coding.me" style="font-weight: bold">Coding Pages</a></p>
+  <script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+  本站总访问量<span id="busuanzi_value_site_pv"></span>次
+  本站访客数<span id="busuanzi_value_site_uv"></span>人次
+    <p>
+        <span id="timeDate">载入天数...</span><span id="times">载入时分秒...</span>
+    </p>
+  <script>
+      var now = new Date();
+      function createtime() {
+          var grt= new Date("09/28/2018 08:00:00");//此处修改你的建站时间或者网站上线时间
+          now.setTime(now.getTime()+250);
+          days = (now - grt ) / 1000 / 60 / 60 / 24; dnum = Math.floor(days);
+          hours = (now - grt ) / 1000 / 60 / 60 - (24 * dnum); hnum = Math.floor(hours);
+          if(String(hnum).length ==1 ){hnum = "0" + hnum;} minutes = (now - grt ) / 1000 /60 - (24 * 60 * dnum) - (60 * hnum);
+          mnum = Math.floor(minutes); if(String(mnum).length ==1 ){mnum = "0" + mnum;}
+          seconds = (now - grt ) / 1000 - (24 * 60 * 60 * dnum) - (60 * 60 * hnum) - (60 * mnum);
+          snum = Math.round(seconds); if(String(snum).length ==1 ){snum = "0" + snum;}
+          document.getElementById("timeDate").innerHTML = "本站已安全运行 "+dnum+" 天 ";
+          document.getElementById("times").innerHTML = hnum + " 小时 " + mnum + " 分 " + snum + " 秒";
+      }
+      setInterval("createtime()",250);
+  </script>
+  <p>
+    <span>Zcy &copy; 2019</span>
+      
+    <span class="split">|</span>
+    <span>Zcy</span>
+    
+  </p>
+</footer>
+
+
+  <!--小火箭-->
+  <div id="shape">
+    <div class="shapeColor">
+      <div class="shapeFly">
+      </div>
+    </div>
+  </div>
+
+  <!-- After footer scripts -->
+  <!-- scripts -->
+<script src="/js/app.js"></script>
+
+
+  <script>
+      (function(){
+
+          function _scroll(){
+              var acticles = $('.article > .container');
+              var height = window.innerHeight || document.body.offsetHeight;
+              acticles.each(function () {
+                  var top = this.getBoundingClientRect().top;
+                  if(top < height+1){
+                      if(!$(this).hasClass('animated')) {
+                          $(this).addClass('slideInRight');
+                          $(this).addClass('animated');
+                      }
+                  }
+              })
+
+              $(window).scroll(function () {
+                  acticles.each(function () {
+                      var top = this.getBoundingClientRect().top;
+                      if(top < height+1){
+                          if(!$(this).hasClass('animated')) {
+                              $(this).addClass('slideInRight');
+                              $(this).addClass('animated');
+                          }
+                      }
+                  })
+              })
+          }
+
+
+          var bp = document.createElement('script');
+          var curProtocol = window.location.protocol.split(':')[0];
+          if (curProtocol === 'https') {
+              bp.src = 'https://zz.bdstatic.com/linksubmit/push.js';
+          }
+          else {
+              bp.src = 'http://push.zhanzhang.baidu.com/push.js';
+          }
+          var s = document.getElementsByTagName("script")[0];
+          s.parentNode.insertBefore(bp, s);
+          _scroll();
+      })();
+  </script>
+  <script type="text/javascript"
+          color="0,0,0" opacity='0.5' zIndex="-2" count="35" src="//cdn.bootcss.com/canvas-nest.js/1.0.0/canvas-nest.min.js"></script>
+  <!-- 页面点击小红心 -->
+  <script type="text/javascript" src="/js/clicklove.js"></script>
+<script src="/live2dw/lib/L2Dwidget.min.js?0c58a1486de42ac6cc1c59c7d98ae887"></script><script>L2Dwidget.init({"model":{"jsonPath":"/live2dw/assets/haruto.model.json"},"display":{"position":"left","width":70,"height":140},"mobile":{"show":true},"log":false,"pluginJsPath":"lib/","pluginModelPath":"assets/","pluginRootPath":"live2dw/","tagMode":false});</script></body>
+
+</html>

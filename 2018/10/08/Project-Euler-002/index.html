@@ -1,0 +1,417 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+
+<!-- Head tag -->
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+
+  <!--Description-->
+  
+
+  <!--Author-->
+  
+
+  <!--Open Graph Title-->
+  
+      <meta property="og:title" content="Project Euler-002矩阵快速幂+二分"/>
+  
+  <!--Open Graph Description-->
+  
+  <!--Open Graph Site Name-->
+  <meta property="og:site_name" content="Zcy"/>
+  <!--Type page-->
+  
+      <meta property="og:type" content="article" />
+  
+  <!--Page Cover-->
+  
+
+    <meta name="baidu-site-verification" content="8vgn54BtUC" />
+
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <!-- 百度统计 -->
+    <script>
+	var _hmt = _hmt || [];
+	(function() {
+  	var hm = document.createElement("script");
+  	hm.src = "https://hm.baidu.com/hm.js?c0451e16533956173997b85f7a8de666";
+  	var s = document.getElementsByTagName("script")[0]; 
+  	s.parentNode.insertBefore(hm, s);
+	})();
+    </script>
+  <!-- Title -->
+  
+  <title>Project Euler-002矩阵快速幂+二分 - Zcy</title>
+
+
+  <link rel="shortcut icon" href="/favicon.ico">
+    <!--font-awesome-->
+    <link href="//netdna.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="/css/animate.css">
+    <link rel="stylesheet" href="/css/thplayer.css">
+  <!-- Custom CSS/Sass -->
+  <link rel="stylesheet" href="/css/style.css">
+    <!--顶部上方进度条-->
+    <script src="//cdn.bootcss.com/pace/1.0.2/pace.min.js"></script>
+    <link href="/css/pace-theme-flash.css" rel="stylesheet">
+    <style>
+        .pace .pace-progress {
+            background: #cccccc; /*进度条颜色*/
+            height: 3px;
+        }
+        .pace .pace-progress-inner {
+            box-shadow: 0 0 10px #cccccc, 0 0 5px #cccccc; /*阴影颜色*/
+        }
+        .pace .pace-activity {
+            border-top-color: #cccccc;    /*上边框颜色*/
+            border-left-color: #cccccc;    /*左边框颜色*/
+        }
+    </style>
+
+
+    <!--小火箭-->
+    <link rel="stylesheet" type="text/css" href="/css/rocketTop.css">
+    <script type="text/javascript" src="/js/jquery.min.js"></script>
+    <script type="text/javascript" src="/js/rocketTop.js"></script>
+
+</head>
+
+<body>
+
+  <!-- Nav -->
+  <header class="site-header">
+  <div class="header-inside">
+    
+    <div class="logo">
+      <a href="/" rel="home">
+        
+        <img src="/img/timg.jpg" alt="Zcy" height="60">
+        
+      </a>
+    </div>
+    <a class="header-name" href="/">
+            <span>Zcy</span>
+            的小屋
+        </a>
+    <!-- navbar -->
+    <nav class="navbar">
+      <!--  nav links -->
+      <div class="collapse">
+        <ul class="navbar-nav">
+          
+          
+            <li>
+              <a href="/.">
+                
+                  <i class="fa fa-home "></i>
+                
+                小屋
+              </a>
+            </li>
+          
+            <li>
+              <a href="/archives">
+                
+                  <i class="fa fa-archive "></i>
+                
+                点滴
+              </a>
+            </li>
+          
+            <li>
+              <a href="/tags">
+                
+                  <i class="fa fa-archive "></i>
+                
+                标签
+              </a>
+            </li>
+          
+            <li>
+              <a href="/project">
+                
+                  <i class="fa fa-folder-open "></i>
+                
+                项目
+              </a>
+            </li>
+          
+            <li>
+              <a href="/photo">
+                
+                  <i class="fa fa-photo "></i>
+                
+                相册
+              </a>
+            </li>
+          
+            <li>
+              <a href="/guestbook">
+                
+                  <i class="fa fa-edit "></i>
+                
+                留言
+              </a>
+            </li>
+          
+            <li>
+              <a href="/game">
+                
+                  <i class="fa fa-gamepad "></i>
+                
+                游戏
+              </a>
+            </li>
+          
+            <li>
+              <a href="/aboutMe/index.html">
+                
+                  <i class="fa fa-user "></i>
+                
+                关于我
+              </a>
+            </li>
+          
+            <li>
+              <a href="/friendly">
+                
+                  <i class="fa fa-bicycle "></i>
+                
+                链接
+              </a>
+            </li>
+          
+        </ul>
+      </div>
+      <!-- /.navbar-collapse -->
+    </nav>
+    <div class="button-wrap">
+      <button class="menu-toggle">Primary Menu</button>
+    </div>
+  </div>
+</header>
+
+
+  <!-- Main Content -->
+  <div class="content-area">
+    <div class="post">
+        <!-- Post Content -->
+        <div class="container">
+            <article>
+                <!-- Title date & tags -->
+                <div class="post-header">
+                    <h1 class="entry-title">
+                        Project Euler-002矩阵快速幂+二分
+                        
+                    </h1>
+
+                </div>
+
+
+                <div style="text-align:center;color: #ccc;">
+    <span class="post-time" >
+      <span class="post-meta-item-icon">
+        <i class="fa fa-keyboard-o"></i>
+        <span class="post-meta-item-text">  字数统计: </span>
+        <span class="post-count">883字</span>
+      </span>
+    </span>
+
+                    <span class="post-time">
+      &nbsp; | &nbsp;
+      <span class="post-meta-item-icon">
+        <i class="fa fa-hourglass-half"></i>
+        <span class="post-meta-item-text">  阅读时长: </span>
+        <span class="post-count">4分</span>
+      </span>
+    </span>
+                </div>
+
+                <p class="a-posted-on" style="color: #ccc;">
+                    2018-10-08
+                </p>
+                <!-- Post Main Content -->
+                <div class="entry-content">
+                    <p><img src="/2018/10/08/Project-Euler-002/title.jpg" alt="title"></p>
+<a id="more"></a>
+<h3 id="002题："><a href="#002题：" class="headerlink" title="002题："></a>002题：</h3><p>题意：</p>
+<p>​    斐波那契数列中每一项都是前两项的和。由1和2开始生成的斐波那契数列前10项为：</p>
+<p>​    1, 2, 3, 5, 8, 13, 21, 34, 55, 89, …</p>
+<p>​    考虑该斐波那契数列中不超过四百万的项，求其中为偶数的项之和</p>
+<p>思路：</p>
+<p>​    本题也想到了两个思路：</p>
+<p>​    思路一：由于斐波那契数列增长速度非常快，所以不超过四百万的斐波那契数顶多有100个，极限了。因此我们可以通过while(Fib[i] &lt;= 4e6) 循环查找出为偶数的项并累加求和</p>
+<p>​    思路二（有点脱了裤子放屁的感觉～）：我们通过斐波那契数列的性质可知，对于该斐波那契数列：</p>
+<p>​    1 2 3 5 8 13 21 34…..</p>
+<p>​    有以下两个有用的性质：</p>
+<p>​    1.  S(n) = Fib[n + 2] - 2     </p>
+<p>​        //S(n)代表斐波那契数列前n项和 ，Fib[i]代表下标为i的斐波那契数</p>
+<p>​    2.  对于前下角标为3的倍数 + 2个斐波那契数，项数为偶数的和等于项数为奇数的和 + 1</p>
+<p>​    </p>
+<p>​    因此我们可以通过二分法套矩阵快速幂来求取4e6以内的最大斐波那契数，并返回该数在斐波那契数中的下角标n，然后用矩阵快速幂求Fib[n + 2]，求的n + 2的下角标为3的倍数 + 2，所以偶数项的和为（Fib[n+2] - 1） / 2;</p>
+<p>代码如下：</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">#include &lt;stdio.h&gt;</span><br><span class="line">#include &lt;string.h&gt;</span><br><span class="line">#define ll long long</span><br><span class="line">int N = 2;</span><br><span class="line">//用于矩阵相乘</span><br><span class="line">void multi(ll *a, ll *b) &#123;		</span><br><span class="line">    ll c[N][N];</span><br><span class="line">    memset(c, 0, sizeof(c));</span><br><span class="line">    for (int i = 0; i &lt; N; i++) &#123;</span><br><span class="line">        for (int j = 0; j &lt; N; j++) &#123;</span><br><span class="line">            for (int k = 0; k &lt; N; k++) &#123;</span><br><span class="line">                c[i][j] += *(a + i * N + k) * *(b + k * N + j);</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    for (int i = 0; i &lt; N; i++) &#123;</span><br><span class="line">        for (int j = 0; j &lt; N; j++) &#123;</span><br><span class="line">            *(a + i * N + j) = c[i][j];</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line">//矩阵快速幂</span><br><span class="line">void quick(ll *a, ll n) &#123;	</span><br><span class="line">    ll ans[N][N];</span><br><span class="line">    memset(ans, 0, sizeof(ans));</span><br><span class="line">    for (int i = 0; i &lt; N; i++) &#123;</span><br><span class="line">        ans[i][i] = 1;</span><br><span class="line">    &#125;</span><br><span class="line">    while (n) &#123;</span><br><span class="line">        if (n &amp; 1) &#123;</span><br><span class="line">            multi(ans[0], a);</span><br><span class="line">        &#125;</span><br><span class="line">        n &gt;&gt;= 1;</span><br><span class="line">        multi(a, a);</span><br><span class="line">    &#125;</span><br><span class="line">    for (int i = 0; i &lt; N; i++) &#123;</span><br><span class="line">        for (int j = 0; j &lt; N; j++) &#123;</span><br><span class="line">            *(a + i * N + j) = ans[i][j];</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line">//二分法找4e6以内最大斐波那契数，并返回该下角标</span><br><span class="line">int erfen(int l, int r, ll val) &#123;	</span><br><span class="line">    while (l &lt;= r) &#123;</span><br><span class="line">        int mid = (l + r) &gt;&gt; 1;</span><br><span class="line">        ll root[N][N], a[N][N];</span><br><span class="line">        memset(root, 0, sizeof(root));</span><br><span class="line">        memset(a, 0, sizeof(a));</span><br><span class="line">        root[1][0] = 1;</span><br><span class="line">        a[0][1] = 1; a[1][0] = 1; a[1][1] = 1;</span><br><span class="line">        quick(a[0], mid);</span><br><span class="line">        multi(a[0], root[0]);</span><br><span class="line">        ll res = a[1][0];</span><br><span class="line">        if(res &lt;= val) &#123;</span><br><span class="line">            l = mid + 1;</span><br><span class="line">        &#125;else &#123;</span><br><span class="line">            r = mid - 1;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    return r;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">int main() &#123;</span><br><span class="line">	//感觉不会超过100个啦，就二分的下标1到100</span><br><span class="line">    int res = erfen(1, 100, 4000000);	</span><br><span class="line">    ll root[N][N], a[N][N], sum;</span><br><span class="line">    memset(root, 0, sizeof(root));</span><br><span class="line">    memset(a, 0, sizeof(a));</span><br><span class="line">    root[1][0] = 1;</span><br><span class="line">    a[0][1] = 1; a[1][0] = 1; a[1][1] = 1;</span><br><span class="line">    if (res % 3 == 2) &#123;</span><br><span class="line">        quick(a[0], res + 2);</span><br><span class="line">        multi(a[0], root[0]);</span><br><span class="line">        sum = (a[1][0] - 1 )/ 2;</span><br><span class="line">    &#125;else if(res % 3 == 1) &#123;</span><br><span class="line">        //由于满足res % 3 == 2 就不再考虑</span><br><span class="line">    &#125;else &#123;</span><br><span class="line">        //由于满足res % 3 == 2 就不再考虑</span><br><span class="line">    &#125;</span><br><span class="line">    printf(&quot;%lld\n&quot;, sum);	</span><br><span class="line">    return 0;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>​    最后求出结果为：<strong>4613732</strong></p>
+<p>​    第二个想法虽好，但由于最后发现下角标的值才40多！！可能二分+矩阵快速幂比纯暴力还慢。。。就酱紫～</p>
+<p><a href="http://www.ivan-zcy.top">转载请注明出处！！！</a>  </p>
+<p>如果有写的不对或者不全面的地方 可通过主页的联系方式进行指正，谢谢！</p>
+
+                </div>
+            </article>
+        </div>
+        <br>
+        <div style="text-align:center;color: #ccc;font-size:14px;">
+            <br>
+            <br>
+            <a href="http://www.ivan-zcy.top" style="color: #99FFFF;font-size:18px;">转载请注明出处！！！</a>
+            <br>
+            <br>
+            如果有写的不对或者不全面的地方 可通过主页的联系方式进行指正，谢谢!
+        </div>
+        <br>
+        <!-- Pre or Next -->
+        
+        <div class="container" >
+            <ul class="pager">
+                
+                <li class="previous">
+                    <a href="/2018/10/08/Project-Euler-003/" rel="prev">下一篇</a>
+                </li>
+                
+                
+                <li class="next">
+                    <a href="/2018/10/08/Project-Euler-001/" rel="prev">上一篇</a>
+                </li>
+                
+            </ul>
+        </div>
+        　　　　<!-- Comments -->
+        <div class="container">
+            
+<section id="comment">
+  <!-- <h1 class="title">Comments</h1> -->
+
+  
+</section>
+
+
+        </div>
+        
+        　　　　
+    </div>
+</div>
+
+
+  <div id="Thplayer"></div>
+  <script type="application/javascript" src="/js/thplayer.min.js"></script>
+  <script>
+      $("#Thplayer").thplayer({
+          title: "遇见",
+          author: "孙燕姿",
+          cover: "/img/yj.jpg",
+          music: "http://www.ytmp3.cn/down/37418.mp3"
+      });
+  </script>
+
+  <!-- Footer -->
+  <!-- top -->
+
+<!-- Footer -->
+<footer class="site-info">
+    <p>Hosted by <a href="https://pages.coding.me" style="font-weight: bold">Coding Pages</a></p>
+  <script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+  本站总访问量<span id="busuanzi_value_site_pv"></span>次
+  本站访客数<span id="busuanzi_value_site_uv"></span>人次
+    <p>
+        <span id="timeDate">载入天数...</span><span id="times">载入时分秒...</span>
+    </p>
+  <script>
+      var now = new Date();
+      function createtime() {
+          var grt= new Date("09/28/2018 08:00:00");//此处修改你的建站时间或者网站上线时间
+          now.setTime(now.getTime()+250);
+          days = (now - grt ) / 1000 / 60 / 60 / 24; dnum = Math.floor(days);
+          hours = (now - grt ) / 1000 / 60 / 60 - (24 * dnum); hnum = Math.floor(hours);
+          if(String(hnum).length ==1 ){hnum = "0" + hnum;} minutes = (now - grt ) / 1000 /60 - (24 * 60 * dnum) - (60 * hnum);
+          mnum = Math.floor(minutes); if(String(mnum).length ==1 ){mnum = "0" + mnum;}
+          seconds = (now - grt ) / 1000 - (24 * 60 * 60 * dnum) - (60 * 60 * hnum) - (60 * mnum);
+          snum = Math.round(seconds); if(String(snum).length ==1 ){snum = "0" + snum;}
+          document.getElementById("timeDate").innerHTML = "本站已安全运行 "+dnum+" 天 ";
+          document.getElementById("times").innerHTML = hnum + " 小时 " + mnum + " 分 " + snum + " 秒";
+      }
+      setInterval("createtime()",250);
+  </script>
+  <p>
+    <span>Zcy &copy; 2019</span>
+      
+    <span class="split">|</span>
+    <span>Zcy</span>
+    
+  </p>
+</footer>
+
+
+  <!--小火箭-->
+  <div id="shape">
+    <div class="shapeColor">
+      <div class="shapeFly">
+      </div>
+    </div>
+  </div>
+
+  <!-- After footer scripts -->
+  <!-- scripts -->
+<script src="/js/app.js"></script>
+
+
+  <script>
+      (function(){
+
+          function _scroll(){
+              var acticles = $('.article > .container');
+              var height = window.innerHeight || document.body.offsetHeight;
+              acticles.each(function () {
+                  var top = this.getBoundingClientRect().top;
+                  if(top < height+1){
+                      if(!$(this).hasClass('animated')) {
+                          $(this).addClass('slideInRight');
+                          $(this).addClass('animated');
+                      }
+                  }
+              })
+
+              $(window).scroll(function () {
+                  acticles.each(function () {
+                      var top = this.getBoundingClientRect().top;
+                      if(top < height+1){
+                          if(!$(this).hasClass('animated')) {
+                              $(this).addClass('slideInRight');
+                              $(this).addClass('animated');
+                          }
+                      }
+                  })
+              })
+          }
+
+
+          var bp = document.createElement('script');
+          var curProtocol = window.location.protocol.split(':')[0];
+          if (curProtocol === 'https') {
+              bp.src = 'https://zz.bdstatic.com/linksubmit/push.js';
+          }
+          else {
+              bp.src = 'http://push.zhanzhang.baidu.com/push.js';
+          }
+          var s = document.getElementsByTagName("script")[0];
+          s.parentNode.insertBefore(bp, s);
+          _scroll();
+      })();
+  </script>
+  <script type="text/javascript"
+          color="0,0,0" opacity='0.5' zIndex="-2" count="35" src="//cdn.bootcss.com/canvas-nest.js/1.0.0/canvas-nest.min.js"></script>
+  <!-- 页面点击小红心 -->
+  <script type="text/javascript" src="/js/clicklove.js"></script>
+<script src="/live2dw/lib/L2Dwidget.min.js?0c58a1486de42ac6cc1c59c7d98ae887"></script><script>L2Dwidget.init({"model":{"jsonPath":"/live2dw/assets/haruto.model.json"},"display":{"position":"left","width":70,"height":140},"mobile":{"show":true},"log":false,"pluginJsPath":"lib/","pluginModelPath":"assets/","pluginRootPath":"live2dw/","tagMode":false});</script></body>
+
+</html>

@@ -1,0 +1,421 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+
+<!-- Head tag -->
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+
+  <!--Description-->
+  
+
+  <!--Author-->
+  
+
+  <!--Open Graph Title-->
+  
+      <meta property="og:title" content="动态库和静态库相关"/>
+  
+  <!--Open Graph Description-->
+  
+  <!--Open Graph Site Name-->
+  <meta property="og:site_name" content="Zcy"/>
+  <!--Type page-->
+  
+      <meta property="og:type" content="article" />
+  
+  <!--Page Cover-->
+  
+
+    <meta name="baidu-site-verification" content="8vgn54BtUC" />
+
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <!-- 百度统计 -->
+    <script>
+	var _hmt = _hmt || [];
+	(function() {
+  	var hm = document.createElement("script");
+  	hm.src = "https://hm.baidu.com/hm.js?c0451e16533956173997b85f7a8de666";
+  	var s = document.getElementsByTagName("script")[0]; 
+  	s.parentNode.insertBefore(hm, s);
+	})();
+    </script>
+  <!-- Title -->
+  
+  <title>动态库和静态库相关 - Zcy</title>
+
+
+  <link rel="shortcut icon" href="/favicon.ico">
+    <!--font-awesome-->
+    <link href="//netdna.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="/css/animate.css">
+    <link rel="stylesheet" href="/css/thplayer.css">
+  <!-- Custom CSS/Sass -->
+  <link rel="stylesheet" href="/css/style.css">
+    <!--顶部上方进度条-->
+    <script src="//cdn.bootcss.com/pace/1.0.2/pace.min.js"></script>
+    <link href="/css/pace-theme-flash.css" rel="stylesheet">
+    <style>
+        .pace .pace-progress {
+            background: #cccccc; /*进度条颜色*/
+            height: 3px;
+        }
+        .pace .pace-progress-inner {
+            box-shadow: 0 0 10px #cccccc, 0 0 5px #cccccc; /*阴影颜色*/
+        }
+        .pace .pace-activity {
+            border-top-color: #cccccc;    /*上边框颜色*/
+            border-left-color: #cccccc;    /*左边框颜色*/
+        }
+    </style>
+
+
+    <!--小火箭-->
+    <link rel="stylesheet" type="text/css" href="/css/rocketTop.css">
+    <script type="text/javascript" src="/js/jquery.min.js"></script>
+    <script type="text/javascript" src="/js/rocketTop.js"></script>
+
+</head>
+
+<body>
+
+  <!-- Nav -->
+  <header class="site-header">
+  <div class="header-inside">
+    
+    <div class="logo">
+      <a href="/" rel="home">
+        
+        <img src="/img/timg.jpg" alt="Zcy" height="60">
+        
+      </a>
+    </div>
+    <a class="header-name" href="/">
+            <span>Zcy</span>
+            的小屋
+        </a>
+    <!-- navbar -->
+    <nav class="navbar">
+      <!--  nav links -->
+      <div class="collapse">
+        <ul class="navbar-nav">
+          
+          
+            <li>
+              <a href="/.">
+                
+                  <i class="fa fa-home "></i>
+                
+                小屋
+              </a>
+            </li>
+          
+            <li>
+              <a href="/archives">
+                
+                  <i class="fa fa-archive "></i>
+                
+                点滴
+              </a>
+            </li>
+          
+            <li>
+              <a href="/tags">
+                
+                  <i class="fa fa-archive "></i>
+                
+                标签
+              </a>
+            </li>
+          
+            <li>
+              <a href="/project">
+                
+                  <i class="fa fa-folder-open "></i>
+                
+                项目
+              </a>
+            </li>
+          
+            <li>
+              <a href="/photo">
+                
+                  <i class="fa fa-photo "></i>
+                
+                相册
+              </a>
+            </li>
+          
+            <li>
+              <a href="/guestbook">
+                
+                  <i class="fa fa-edit "></i>
+                
+                留言
+              </a>
+            </li>
+          
+            <li>
+              <a href="/game">
+                
+                  <i class="fa fa-gamepad "></i>
+                
+                游戏
+              </a>
+            </li>
+          
+            <li>
+              <a href="/aboutMe/index.html">
+                
+                  <i class="fa fa-user "></i>
+                
+                关于我
+              </a>
+            </li>
+          
+            <li>
+              <a href="/friendly">
+                
+                  <i class="fa fa-bicycle "></i>
+                
+                链接
+              </a>
+            </li>
+          
+        </ul>
+      </div>
+      <!-- /.navbar-collapse -->
+    </nav>
+    <div class="button-wrap">
+      <button class="menu-toggle">Primary Menu</button>
+    </div>
+  </div>
+</header>
+
+
+  <!-- Main Content -->
+  <div class="content-area">
+    <div class="post">
+        <!-- Post Content -->
+        <div class="container">
+            <article>
+                <!-- Title date & tags -->
+                <div class="post-header">
+                    <h1 class="entry-title">
+                        动态库和静态库相关
+                        
+                    </h1>
+
+                </div>
+
+
+                <div style="text-align:center;color: #ccc;">
+    <span class="post-time" >
+      <span class="post-meta-item-icon">
+        <i class="fa fa-keyboard-o"></i>
+        <span class="post-meta-item-text">  字数统计: </span>
+        <span class="post-count">970字</span>
+      </span>
+    </span>
+
+                    <span class="post-time">
+      &nbsp; | &nbsp;
+      <span class="post-meta-item-icon">
+        <i class="fa fa-hourglass-half"></i>
+        <span class="post-meta-item-text">  阅读时长: </span>
+        <span class="post-count">3分</span>
+      </span>
+    </span>
+                </div>
+
+                <p class="a-posted-on" style="color: #ccc;">
+                    2019-05-09
+                </p>
+                <!-- Post Main Content -->
+                <div class="entry-content">
+                    <p><img src="/2019/05/09/动态库和静态库相关/title4.jpg" alt="title4"></p>
+<a id="more"></a>
+<p>[TOC]</p>
+<p>​    讲静态库和动态库之前，先说一下gcc的编译流程：</p>
+<p><img src="/2019/05/09/动态库和静态库相关/1.jpg" alt="1"></p>
+<p>​    （图片来自室友男神，地址：<a href="https://zhangkingsasa.com/2019/04/30/linux丨gcc编译过程/" target="_blank" rel="noopener">跳转</a>）    </p>
+<p>​    至于静态库和动态库，他们的区别在于链接阶段的处理不同（一个静态链接方式，一个动态链接方式）</p>
+<h3 id="静态库"><a href="#静态库" class="headerlink" title="静态库"></a>静态库</h3><p>​    目标文件.o与静态库一起链接成可执行文件，对应的链接方式为静态链接。它和.o文件类似，可以简单看成是一组目标文件的集合（也就是多个目标文件压缩打包后的一个文件）</p>
+<p>​    静态库的命名规则：前缀时lib，后缀是.a</p>
+<h4 id="静态库特点"><a href="#静态库特点" class="headerlink" title="静态库特点"></a>静态库特点</h4><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">1.静态库对函数库的链接是放在编译时期完成的，执行快</span><br><span class="line">2.发布应用时不需要发布库</span><br><span class="line">3.浪费空间和资源，所有的相关目标文件和牵扯的函数库被链接成可执行文件，体积大</span><br><span class="line">4.不利于程序的更新。如果静态库更新了，使用它的应用程序都需要重新编译发布</span><br></pre></td></tr></table></figure>
+<h4 id="静态库的创建"><a href="#静态库的创建" class="headerlink" title="静态库的创建"></a>静态库的创建</h4><p>​    1.先将代码文件编译成.o文件</p>
+<p>​    2.通过ar命令将目标文件打包成.a静态库文件</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">ar -crv libtest.a *.o		//.o文件可以有多个</span><br></pre></td></tr></table></figure>
+<h4 id="静态库的查看"><a href="#静态库的查看" class="headerlink" title="静态库的查看"></a>静态库的查看</h4><p>​    利用nm命令查看静态库的信息</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">nm libtest.a</span><br></pre></td></tr></table></figure>
+<h4 id="静态库的使用"><a href="#静态库的使用" class="headerlink" title="静态库的使用"></a>静态库的使用</h4><p>​    在编译的时候，利用-L选项指定静态库的搜索路径，利用-l指定静态库名(由于查找有隐含命名规则，因此无需在前加lib后加.a或.so)</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">g++ p.cpp -L../Test -ltest	//如果有头文件的话，需要将头文件和静态库一起发布，并引用头文件</span><br></pre></td></tr></table></figure>
+<h3 id="动态库"><a href="#动态库" class="headerlink" title="动态库"></a>动态库</h3><p>​    动态库命名规则：前缀是lib，后缀是.so</p>
+<h4 id="动态库特点"><a href="#动态库特点" class="headerlink" title="动态库特点"></a>动态库特点</h4><p>​    动态库可以解决静态库空间浪费的问题，也能解决静态库更新麻烦的问题。</p>
+<p>​    动态库在程序编译时不回被链接到目标代码中，直到程序运行才被载入（避免了更新麻烦，用户只需要更新动态库即可）。不同的应用程序如果调用相同的库，那么在内存里只需要一份该共享库的实例（避免了空间浪费），也就是在栈区和堆区之间的共享库映射。（而静态库是直接将代码加载到程序的代码段中）</p>
+<p><img src="/2019/05/09/动态库和静态库相关/2.png" alt="2"></p>
+<p>​    当然动态库的缺点，就是相对于静态库而言，速度较慢。且在发布应用的时候同时需要发布动态库</p>
+<h4 id="动态库的创建"><a href="#动态库的创建" class="headerlink" title="动态库的创建"></a>动态库的创建</h4><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">g++ -fPIC -c *.cpp			//首先生成目标文件，注意需要加选项-fpic，它代表创建与地址无关的编译程序，以便能够在多个应用程序中共享</span><br><span class="line"></span><br><span class="line">g++ -shared -o libtest.so *.o	//生成动态库，需要-shared选项指定生成动态链接库</span><br><span class="line"></span><br><span class="line">//上面两个命令可以合并为：</span><br><span class="line">g++ -fPIC -shared -o libtest.so *.cpp</span><br></pre></td></tr></table></figure>
+<h4 id="动态库的使用"><a href="#动态库的使用" class="headerlink" title="动态库的使用"></a>动态库的使用</h4><p>​    和静态库一样，在编译的时候，利用-L选项指定动态库的搜索路径，利用-l指定动态库名(由于查找有隐含命名规则，因此无需在前加lib后加.a或.so)</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">g++ p.cpp -L../Test -ltest</span><br></pre></td></tr></table></figure>
+<p>​    这样可能会出现动态链接没有找到动态库的问题，这时解决方法：</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">方法一：直接把.so拷贝过去或者将libxxx.so在/lib下面做一个软连接指向该文件（注意，软连接必须写绝对路径），这种方式不推荐</span><br><span class="line">方法二：将库路径加到环境变量 LD_LIBRARY_PATH中（通过export LD_LIBRARY_PATH=路径设置:$export LD_LIBRARY_PATH），也不推荐</span><br><span class="line">方法三：编辑/etc/ld.so.conf文件，加入动态库文件所在目录的路径，然后运行ldconfig</span><br></pre></td></tr></table></figure>
+
+                </div>
+            </article>
+        </div>
+        <br>
+        <div style="text-align:center;color: #ccc;font-size:14px;">
+            <br>
+            <br>
+            <a href="http://www.ivan-zcy.top" style="color: #99FFFF;font-size:18px;">转载请注明出处！！！</a>
+            <br>
+            <br>
+            如果有写的不对或者不全面的地方 可通过主页的联系方式进行指正，谢谢!
+        </div>
+        <br>
+        <!-- Pre or Next -->
+        
+        <div class="container" >
+            <ul class="pager">
+                
+                <li class="previous">
+                    <a href="/2019/05/10/布隆过滤器/" rel="prev">下一篇</a>
+                </li>
+                
+                
+                <li class="next">
+                    <a href="/2019/05/08/C-对象内存模型-1/" rel="prev">上一篇</a>
+                </li>
+                
+            </ul>
+        </div>
+        　　　　<!-- Comments -->
+        <div class="container">
+            
+<section id="comment">
+  <!-- <h1 class="title">Comments</h1> -->
+
+  
+</section>
+
+
+        </div>
+        
+        　　　　
+    </div>
+</div>
+
+
+  <div id="Thplayer"></div>
+  <script type="application/javascript" src="/js/thplayer.min.js"></script>
+  <script>
+      $("#Thplayer").thplayer({
+          title: "遇见",
+          author: "孙燕姿",
+          cover: "/img/yj.jpg",
+          music: "http://www.ytmp3.cn/down/37418.mp3"
+      });
+  </script>
+
+  <!-- Footer -->
+  <!-- top -->
+
+<!-- Footer -->
+<footer class="site-info">
+    <p>Hosted by <a href="https://pages.coding.me" style="font-weight: bold">Coding Pages</a></p>
+  <script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+  本站总访问量<span id="busuanzi_value_site_pv"></span>次
+  本站访客数<span id="busuanzi_value_site_uv"></span>人次
+    <p>
+        <span id="timeDate">载入天数...</span><span id="times">载入时分秒...</span>
+    </p>
+  <script>
+      var now = new Date();
+      function createtime() {
+          var grt= new Date("09/28/2018 08:00:00");//此处修改你的建站时间或者网站上线时间
+          now.setTime(now.getTime()+250);
+          days = (now - grt ) / 1000 / 60 / 60 / 24; dnum = Math.floor(days);
+          hours = (now - grt ) / 1000 / 60 / 60 - (24 * dnum); hnum = Math.floor(hours);
+          if(String(hnum).length ==1 ){hnum = "0" + hnum;} minutes = (now - grt ) / 1000 /60 - (24 * 60 * dnum) - (60 * hnum);
+          mnum = Math.floor(minutes); if(String(mnum).length ==1 ){mnum = "0" + mnum;}
+          seconds = (now - grt ) / 1000 - (24 * 60 * 60 * dnum) - (60 * 60 * hnum) - (60 * mnum);
+          snum = Math.round(seconds); if(String(snum).length ==1 ){snum = "0" + snum;}
+          document.getElementById("timeDate").innerHTML = "本站已安全运行 "+dnum+" 天 ";
+          document.getElementById("times").innerHTML = hnum + " 小时 " + mnum + " 分 " + snum + " 秒";
+      }
+      setInterval("createtime()",250);
+  </script>
+  <p>
+    <span>Zcy &copy; 2019</span>
+      
+    <span class="split">|</span>
+    <span>Zcy</span>
+    
+  </p>
+</footer>
+
+
+  <!--小火箭-->
+  <div id="shape">
+    <div class="shapeColor">
+      <div class="shapeFly">
+      </div>
+    </div>
+  </div>
+
+  <!-- After footer scripts -->
+  <!-- scripts -->
+<script src="/js/app.js"></script>
+
+
+  <script>
+      (function(){
+
+          function _scroll(){
+              var acticles = $('.article > .container');
+              var height = window.innerHeight || document.body.offsetHeight;
+              acticles.each(function () {
+                  var top = this.getBoundingClientRect().top;
+                  if(top < height+1){
+                      if(!$(this).hasClass('animated')) {
+                          $(this).addClass('slideInRight');
+                          $(this).addClass('animated');
+                      }
+                  }
+              })
+
+              $(window).scroll(function () {
+                  acticles.each(function () {
+                      var top = this.getBoundingClientRect().top;
+                      if(top < height+1){
+                          if(!$(this).hasClass('animated')) {
+                              $(this).addClass('slideInRight');
+                              $(this).addClass('animated');
+                          }
+                      }
+                  })
+              })
+          }
+
+
+          var bp = document.createElement('script');
+          var curProtocol = window.location.protocol.split(':')[0];
+          if (curProtocol === 'https') {
+              bp.src = 'https://zz.bdstatic.com/linksubmit/push.js';
+          }
+          else {
+              bp.src = 'http://push.zhanzhang.baidu.com/push.js';
+          }
+          var s = document.getElementsByTagName("script")[0];
+          s.parentNode.insertBefore(bp, s);
+          _scroll();
+      })();
+  </script>
+  <script type="text/javascript"
+          color="0,0,0" opacity='0.5' zIndex="-2" count="35" src="//cdn.bootcss.com/canvas-nest.js/1.0.0/canvas-nest.min.js"></script>
+  <!-- 页面点击小红心 -->
+  <script type="text/javascript" src="/js/clicklove.js"></script>
+<script src="/live2dw/lib/L2Dwidget.min.js?0c58a1486de42ac6cc1c59c7d98ae887"></script><script>L2Dwidget.init({"model":{"jsonPath":"/live2dw/assets/haruto.model.json"},"display":{"position":"left","width":70,"height":140},"mobile":{"show":true},"log":false,"pluginJsPath":"lib/","pluginModelPath":"assets/","pluginRootPath":"live2dw/","tagMode":false});</script></body>
+
+</html>
