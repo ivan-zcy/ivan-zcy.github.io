@@ -624,8 +624,7 @@ Content
 .container {
   max-width: 1000px;
   margin: 0 auto;
-  opacity: 0.86;
-  background-color: #f5f4d6; }
+  opacity: 0.86; }
 
 .inside-wrapper {
   max-width: 920px;
@@ -929,7 +928,8 @@ a.header-name {
 
 .post {
   padding: 0px 20px 30px;
-  box-shadow: 5px 5px 25px #dadada; }
+  box-shadow: 5px 5px 25px #dadada;
+  background-color: #f5f4d6; }
   .post .nav-links a {
     text-decoration: none;
     color: #3a3a3a;
