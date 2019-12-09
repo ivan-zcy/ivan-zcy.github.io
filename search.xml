@@ -233,8 +233,8 @@
     <url>%2F2019%2F04%2F24%2FLeetcode42%2F</url>
     <content type="text"><![CDATA[/************************************************************************* &gt; File Name: Leetcode42.cpp &gt; Author: Zcy &gt; Mail: 296763002@qq.com &gt; Created Time: 二 4/23 19:45:30 2019 ************************************************************************///给出n个宽度为1的柱子的高度，问最多存多少水//方法：利用单调栈来维护（只有保持V型才能存水，因此递减就添加到栈，递增就维护和//因此我们需要维护一个单调递减栈，在出栈的时候维护和）class Solution &#123;private: stack &lt;int&gt; sta;public: int trap(vector&lt;int&gt;&amp; height) &#123; int sum = 0; for (int i = 0; i &lt; height.size(); i++) &#123; //单调递减就增加 if (sta.empty() || height[sta.top()] &gt; height[i]) &#123; sta.push(i); &#125; else &#123; //出现递增就维护 while(!sta.empty() &amp;&amp; height[sta.top()] &lt;= height[i]) &#123; int inx = sta.top(); sta.pop(); //避免sta.top()访问错误 if (sta.empty()) break; int x = min(height[sta.top()] - height[inx], height[i] - height[inx]); int y = i - sta.top() - 1; sum += x * y; &#125; sta.push(i); &#125; &#125; return sum; &#125;&#125;;]]></content>
       <tags>
-        <tag>结构数据</tag>
         <tag>栈和队列</tag>
+        <tag>结构数据</tag>
       </tags>
   </entry>
   <entry>
@@ -386,8 +386,8 @@
     <url>%2F2019%2F04%2F12%2FLeetcode-234%2F</url>
     <content type="text"><![CDATA[/************************************************************************* &gt; File Name: Leetcode_234.cpp &gt; Author: Zcy &gt; Mail: 296763002@qq.com &gt; Created Time: 五 4/12 16:25:26 2019 ************************************************************************///判断链表是否为回文链表//方法一：遍历链表将元素存到数组中，然后判断数组是否为回文数组//方法二：递归遍历链表，将元素存到队列中，然后在递归后判断队头是否和当前节点val相同//方法三：将后半段或者前半段链表反转，然后用两个指针同时遍历，若相同则为回文链表//方法二/** * Definition for singly-linked list. * struct ListNode &#123; * int val; * ListNode *next; * ListNode(int x) : val(x), next(NULL) &#123;&#125; * &#125;; */class Solution &#123;private: queue&lt;int&gt;que;public: bool isPalindrome(ListNode* head) &#123; if (head == NULL) return true; que.push(head -&gt; val); bool k = isPalindrome(head -&gt; next); if (que.front() != head -&gt; val) &#123; k = false; &#125; que.pop(); return k; &#125;&#125;;//方法三/** * Definition for singly-linked list. * struct ListNode &#123; * int val; * ListNode *next; * ListNode(int x) : val(x), next(NULL) &#123;&#125; * &#125;; */class Solution &#123;public: //获取链表长度 int getlen(ListNode *head) &#123; int num = 0; while(head) &#123; num ++; head = head -&gt; next; &#125; return num; &#125; //反转链表 void r(ListNode *k, ListNode *p) &#123; ListNode *last = NULL, *q; while(p) &#123; q = p -&gt; next; p -&gt; next = last; last = p; p = q; &#125; k -&gt; next = last; &#125; bool isPalindrome(ListNode* head) &#123; //获取链表长度并特判 int len = getlen(head); if (len == 0 || len == 1) return true; int step = (len + 1) / 2 - 1; ListNode *p = head; while(step --) &#123; p = p -&gt; next; &#125; //反转后半段链表 r(p, p -&gt; next); //两个指针分别遍历前半段和后半段 ListNode *q = head; p = p -&gt; next; for (int i = 1; i &lt;= len / 2; i++) &#123; if(p -&gt; val != q -&gt; val) return false; p = p -&gt; next; q = q -&gt; next; &#125; return true; &#125;&#125;;]]></content>
       <tags>
-        <tag>数据结构</tag>
         <tag>链表</tag>
+        <tag>数据结构</tag>
       </tags>
   </entry>
   <entry>
@@ -395,8 +395,8 @@
     <url>%2F2019%2F04%2F12%2FLeetcode-206%2F</url>
     <content type="text"><![CDATA[/************************************************************************* &gt; File Name: Leetcode_206.cpp &gt; Author: Zcy &gt; Mail: 296763002@qq.com &gt; Created Time: 五 4/12 16:07:08 2019 ************************************************************************///反转链表//方法一 迭代法：设置一个虚拟指针指向当前节点的前一个节点，然后依此遍历链表的节点，让当前节点的next指向前一个节点//方法二//方法二 递归法：遇到当前节点或当前节点的next为空时，返回当前节点；否则递归下一个节点，递归后将当前节点的next-&gt;next设置为当前节点，然后当前节点的next设置为NULL//迭代法/** * Definition for singly-linked list. * struct ListNode &#123; * int val; * ListNode *next; * ListNode(int x) : val(x), next(NULL) &#123;&#125; * &#125;; */class Solution &#123;public: ListNode* reverseList(ListNode* head) &#123; ListNode temp(0); temp.next = NULL; ListNode *p = head; while(p) &#123; ListNode *q = p -&gt; next; p -&gt; next = temp.next; temp.next = p; p = q; &#125; return temp.next; &#125;&#125;;//递归法/** * Definition for singly-linked list. * struct ListNode &#123; * int val; * ListNode *next; * ListNode(int x) : val(x), next(NULL) &#123;&#125; * &#125;; */class Solution &#123;public: ListNode* reverseList(ListNode* head) &#123; if (head == NULL || head -&gt; next == NULL) &#123; return head; &#125; ListNode *root = reverseList(head -&gt; next); head -&gt; next -&gt; next = head; head -&gt; next = NULL; return root; &#125;&#125;;]]></content>
       <tags>
-        <tag>数据结构</tag>
         <tag>链表</tag>
+        <tag>数据结构</tag>
       </tags>
   </entry>
   <entry>
@@ -404,8 +404,8 @@
     <url>%2F2019%2F04%2F12%2FLeetcode-237%2F</url>
     <content type="text"><![CDATA[/************************************************************************* &gt; File Name: Leetcode_237.cpp &gt; Author: Zcy &gt; Mail: 296763002@qq.com &gt; Created Time: 五 4/12 11:54:23 2019 ************************************************************************///只给定待删除节点，让你从链表中删除该节点，前提条件：该删除节点不是链表的最后一个节点//由于我们不知道待删除节点的前一个节点，因此我们可以把该节点的下一个节点的值赋值给待删除节点，然后让待删除节点的next指向下一个节点的下一个节点，这样我们删除待删除节点的下一个节点即可//代码实现/** * Definition for singly-linked list. * struct ListNode &#123; * int val; * ListNode *next; * ListNode(int x) : val(x), next(NULL) &#123;&#125; * &#125;; */class Solution &#123;public: void deleteNode(ListNode* node) &#123; ListNode *p = node -&gt; next; node -&gt; val = p -&gt; val; node -&gt; next = p -&gt; next; delete(p); &#125;&#125;;]]></content>
       <tags>
-        <tag>数据结构</tag>
         <tag>链表</tag>
+        <tag>数据结构</tag>
       </tags>
   </entry>
   <entry>
@@ -413,8 +413,8 @@
     <url>%2F2019%2F04%2F12%2FLeetCode-202%2F</url>
     <content type="text"><![CDATA[/************************************************************************* &gt; File Name: Leetcode_202.cpp &gt; Author: Zcy &gt; Mail: 296763002@qq.com &gt; Created Time: 五 4/12 11:36:36 2019 ************************************************************************///对于一个整数，每次将该数替换为它每个位置的数字的平方和，若最终能得到1，就为快乐数，让我们判断一个数是否为快乐数//对于int型正整数1～2e9左右，因此转变完一次后最大为730（由1999999999得到），因此这个题的最大范围为730。它具备链表的性质（即通过一个状态能唯一的确定下一个状态）//方法一：我们只要转变次数超过730还没有得到1，那么2～730中必定存在重复的数，也就代表着一定成环，因此不是快乐数//方法二：利用map映射，若某个数经历变换之后某个状态出现两次，则不是快乐数//方法三：就是将其当作链表，利用快慢指针原理判断其是否存在环//方法一class Solution &#123;public: int add(int n) &#123; int sum = 0; while(n) &#123; int k = n % 10; sum += k * k; n /= 10; &#125; return sum; &#125; bool isHappy(int n) &#123; int num = 0; while(n != 1) &#123; n = add(n); num++; if (num &gt; 730) return false; &#125; return true; &#125;&#125;;//方法二class Solution &#123;private: map&lt;int, int&gt;m;public: int add(int n) &#123; int sum = 0; while(n) &#123; int k = n % 10; sum += k * k; n /= 10; &#125; return sum; &#125; bool isHappy(int n) &#123; while(n != 1) &#123; m[n]++; if (m[n] &gt; 1) return false; n = add(n); &#125; return true; &#125;&#125;;//方法三class Solution &#123;private: map&lt;int, int&gt;m;public: int add(int n) &#123; int sum = 0; while(n) &#123; int k = n % 10; sum += k * k; n /= 10; &#125; return sum; &#125; bool isHappy(int n) &#123; int p = n; int q = n; do &#123; p = add(p); q = add(add(q)); &#125; while(p != q); return p == 1; &#125;&#125;;]]></content>
       <tags>
-        <tag>数据结构</tag>
         <tag>链表</tag>
+        <tag>数据结构</tag>
       </tags>
   </entry>
   <entry>
@@ -422,8 +422,8 @@
     <url>%2F2019%2F04%2F12%2FLeetcode-160%2F</url>
     <content type="text"><![CDATA[/************************************************************************* &gt; File Name: Leetcode_160.cpp &gt; Author: Zcy &gt; Mail: 296763002@qq.com &gt; Created Time: 五 4/12 10:50:18 2019 ************************************************************************///判断两个链表是否相交//方法一：对两个链表节点的哈希值映射一下，若存在映射关系则代表相交//方法二：对两个链表进行遍历确定两个链表的长度，然后进行第二次遍历：长的链表先走差值步，然后两个链表同时走，若存在相同，则代表相交//方法三：两个链表同时走，若第一个链表走到头，则第一个链表走第二个链表；若第二个链表走到头，则第二个链表走第一个链表。若存在相同，则代表相交//方法一/** * Definition for singly-linked list. * struct ListNode &#123; * int val; * ListNode *next; * ListNode(int x) : val(x), next(NULL) &#123;&#125; * &#125;; */class Solution &#123;private: map&lt;ListNode *, int&gt;m;public: ListNode *getIntersectionNode(ListNode *headA, ListNode *headB) &#123; while(headA) &#123; m[headA] ++; headA = headA -&gt; next; &#125; while(headB) &#123; if (m[headB]) &#123; return headB; &#125; headB = headB -&gt; next; &#125; return NULL; &#125;&#125;;//方法三/** * Definition for singly-linked list. * struct ListNode &#123; * int val; * ListNode *next; * ListNode(int x) : val(x), next(NULL) &#123;&#125; * &#125;; */class Solution &#123;public: ListNode *getIntersectionNode(ListNode *headA, ListNode *headB) &#123; if (headA == NULL || headB == NULL) return NULL; ListNode *p = headA; ListNode *q = headB; while(p != q) &#123; p = p -&gt; next; q = q -&gt; next; if (p == NULL) &#123; p = headB; headB = NULL; &#125; if (q == NULL) &#123; q = headA; headA = NULL; &#125; &#125; return p; &#125;&#125;;//方法三的技巧实现/** * Definition for singly-linked list. * struct ListNode &#123; * int val; * ListNode *next; * ListNode(int x) : val(x), next(NULL) &#123;&#125; * &#125;; */class Solution &#123;public: ListNode *getIntersectionNode(ListNode *headA, ListNode *headB) &#123; if (headA == NULL || headB == NULL) return NULL; ListNode *p = headA; ListNode *q = headB; //当第二次遍历结束后，两者都变成了NULL while(p != q) &#123; if(!p) p = headB; else p = p -&gt; next; if(!q) q = headA; else q = q -&gt; next; &#125; return p; &#125;&#125;;]]></content>
       <tags>
-        <tag>数据结构</tag>
         <tag>链表</tag>
+        <tag>数据结构</tag>
       </tags>
   </entry>
   <entry>
@@ -439,8 +439,8 @@
     <url>%2F2019%2F04%2F12%2FLeetcode-24%2F</url>
     <content type="text"><![CDATA[/************************************************************************* &gt; File Name: Leetcode_24.cpp &gt; Author: Zcy &gt; Mail: 296763002@qq.com &gt; Created Time: 五 4/12 10:13:48 2019 ************************************************************************///两两交换链表中的节点//我们设置虚拟头节点//方法一：我们利用一个变量进行计数，若遇到奇数，若存在下一个节点，就和下一个节点进行数值的交换//方法二：我们可以利用两个临时指针（p用来指向要交换的两个节点的之前节点，q用来指向要交换的两个节点的第一个节点），来实现对实际节点的交换//方法二实现/** * Definition for singly-linked list. * struct ListNode &#123; * int val; * ListNode *next; * ListNode(int x) : val(x), next(NULL) &#123;&#125; * &#125;; */class Solution &#123;public: ListNode* swapPairs(ListNode* head) &#123; //虚拟头节点 struct ListNode temp(0); temp.next = head; //两个临时指针 struct ListNode *p = &amp;temp, *q = temp.next; while(q &amp;&amp; q -&gt; next) &#123; p -&gt; next = q -&gt; next; q -&gt; next = p -&gt; next -&gt; next; p -&gt; next -&gt; next = q; p = q; q = q -&gt; next; &#125; return temp.next; &#125;&#125;;]]></content>
       <tags>
-        <tag>数据结构</tag>
         <tag>链表</tag>
+        <tag>数据结构</tag>
       </tags>
   </entry>
   <entry>
@@ -448,8 +448,8 @@
     <url>%2F2019%2F04%2F12%2FLeetcode-19%2F</url>
     <content type="text"><![CDATA[/************************************************************************* &gt; File Name: Leetcode_19.cpp &gt; Author: Zcy &gt; Mail: 296763002@qq.com &gt; Created Time: 五 4/12 09:19:32 2019 ************************************************************************///删除链表的倒数第N个节点//(1)为了避免删除第一个节点的特殊操作，我们可以设置一个虚拟头节点//方法一：我们可以第一次遍历得到链表的长度len，然后第二遍遍历找第len - N + 1个节点//方法二：我们可以使用递归的方式，参数为上一个节点的地址和当前节点，返回值为之后有多少个节点。若返回值 == N - 1，我们就删除该节点//方法三：利用两个指针，第一个指针走到N+1步，也就是走到N+2节点处，然后两个指针同时走，当第一个指针走到空后，第二个指针就是待删除节点的上一个位置，然后就可以删除下一个节点了//方法二代码：/* * Definition for singly-linked list. * struct ListNode &#123; * int val; * ListNode *next; * ListNode(int x) : val(x), next(NULL) &#123;&#125; * &#125;; */class Solution &#123;public: int dfs(ListNode *last, ListNode *now, int len) &#123; if (now == NULL) return 0; int k = dfs(now, now -&gt; next, len); if (k == len - 1) &#123; last -&gt; next = now -&gt; next; delete(now); &#125; return k + 1; &#125; ListNode* removeNthFromEnd(ListNode* head, int n) &#123; if (head == NULL || n &lt;= 0) return NULL; //虚拟头指针 ListNode temp(0); temp.next = head; //遍历 dfs(&amp;temp, temp.next, n); return temp.next; &#125;&#125;;//方法三代码：/** * Definition for singly-linked list. * struct ListNode &#123; * int val; * struct ListNode *next; * &#125;; */struct ListNode* removeNthFromEnd(struct ListNode* head, int n) &#123; //特判特殊情况 if (head == NULL || n &lt;= 0) return NULL; //设置虚拟指针 struct ListNode temp; temp.next = head; struct ListNode *p = &amp;temp, *q = &amp;temp; while(n &amp;&amp; p) &#123; p = p -&gt; next; n--; &#125; if (n != 0 || p == NULL) &#123; return temp.next; &#125; p = p -&gt; next; while(p) &#123; p = p -&gt; next; q = q -&gt; next; &#125; //删除节点 p = q -&gt; next; q -&gt; next = p -&gt; next; free(p); return temp.next;&#125;]]></content>
       <tags>
-        <tag>数据结构</tag>
         <tag>链表</tag>
+        <tag>数据结构</tag>
       </tags>
   </entry>
   <entry>

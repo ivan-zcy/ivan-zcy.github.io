@@ -2,8 +2,7 @@
 html {
   font-family: sans-serif;
   -webkit-text-size-adjust: 100%;
-  -ms-text-size-adjust: 100%;
-  background-color: #f5f4d6; }
+  -ms-text-size-adjust: 100%; }
 
 body {
   margin: 0;
@@ -625,7 +624,8 @@ Content
 .container {
   max-width: 1000px;
   margin: 0 auto;
-  opacity: 0.86; }
+  opacity: 0.86;
+  background-color: #f5f4d6; }
 
 .inside-wrapper {
   max-width: 920px;
