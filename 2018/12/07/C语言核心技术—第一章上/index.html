@@ -390,8 +390,10 @@
           function _scroll(){
               var acticles = $('.article > .container');
               var height = window.innerHeight || document.body.offsetHeight;
+              console.log("height:" + height + "\n")
               acticles.each(function () {
                   var top = this.getBoundingClientRect().top;
+                  console.log(top + "\n")
                   if(top < height+1){
                       if(!$(this).hasClass('animated')) {
                           $(this).addClass('slideInRight');
